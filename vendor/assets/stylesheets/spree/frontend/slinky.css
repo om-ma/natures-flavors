@@ -1,0 +1,95 @@
+.slinky-menu {
+    overflow: hidden;
+    transform: translateZ(0);
+  }
+  
+  .slinky-menu > ul {
+    left: 0;
+    position: relative;
+    transform: translateZ(0);
+  }
+  
+  .slinky-menu ul, .slinky-menu li {
+    list-style: none;
+    margin: 0;
+  }
+  
+  .slinky-menu ul {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .slinky-menu a {
+    align-items: center;
+    display: flex;
+  }
+  
+  .slinky-menu a span {
+    flex: 1;
+    line-height: 1.4;
+  }
+  
+  .slinky-menu li ul {
+    display: none;
+    left: 100%;
+    position: absolute;
+    top: 0;
+  }
+  
+  .slinky-menu .header {
+    display: flex;
+  }
+  
+  .slinky-menu .header .title {
+    flex: 1;
+    line-height: 1.4;
+    margin: 0;
+    order: 1;
+  }
+  
+  .slinky-theme-default .title {
+    color: #333;
+    padding: 1em;
+  }
+  
+  .slinky-theme-default li {
+    line-height: 1;
+  }
+  
+  .slinky-theme-default a:not(.back) {
+    color: #333;
+    padding: 1em;
+  }
+  
+  .slinky-theme-default a:not(.back):hover {
+    background-color: rgba(90,200,250,0.25);
+  }
+  
+  .slinky-theme-default .back:before {
+    content: '';
+    background: url("../images/arrow-left-white-icon.svg") no-repeat scroll center;
+    width: 9px;
+    height: 17px;
+    opacity: 1;
+    transition: 200ms;
+  }
+  
+  .slinky-theme-default .back:before {
+    padding: 1em;
+  }
+  
+  .slinky-theme-default .back:after {
+    content: 'BACK';
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+  }
+  
+  .slinky-theme-default .next:hover:after, .slinky-theme-default .back:hover:before {
+    opacity: 1;
+  }
+  
+  .slinky-theme-default .next:active:after, .slinky-theme-default .back:active:before {
+    opacity: 1;
+  }

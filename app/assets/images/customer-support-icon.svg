@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="20px" viewBox="0 0 13 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Shape</title>
+    <defs>
+        <linearGradient x1="45.0273787%" y1="25.284182%" x2="59.2450114%" y2="86.0333934%" id="linearGradient-1">
+            <stop stop-color="#C52A2E" offset="0%"></stop>
+            <stop stop-color="#A71E22" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0.Elements" transform="translate(-564.000000, -490.000000)" fill="url(#linearGradient-1)">
+            <path d="M575.25,490 L565.25,490 C564.56125,490 564,490.56125 564,491.25 L564,508.75 C564,509.44 564.56125,510 565.25,510 L575.25,510 C575.94,510 576.5,509.44 576.5,508.75 L576.5,491.25 C576.5,490.56125 575.94,490 575.25,490 Z M570.25,508.75 C569.56,508.75 569,508.19 569,507.5 C569,506.81 569.56,506.25 570.25,506.25 C570.94,506.25 571.5,506.81 571.5,507.5 C571.5,508.19 570.94,508.75 570.25,508.75 Z M575.25,505 L565.25,505 L565.25,492.5 L575.25,492.5 L575.25,505 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  spree:
+    password: "Password*"
+    email: "Email Address*"
+    forgot_password: "Forgot your Password?"
+    login: "Sign In" 
+    confirm_password: "Confirm Password*"
