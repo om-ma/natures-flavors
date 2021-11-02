@@ -17,22 +17,19 @@
     </div>
   </fieldset>
 <% end %> -->
-
- 
-  <%= form_for Spree::User.new, as: :spree_user, url: spree.create_new_session_path do |f| %>
-    <%= render :partial => 'spree/shared/sign_in_header' %>
-      <fieldset id="password-credentials">
-        <div class="form-group mb-20"> 
-          <%= f.email_field :email, class: 'form-control username-control', tabindex: 1, placeholder: Spree.t(:email) %>
-          <div class="invalid-feedback d-none">
-            <p>Please enter valid email address!</p>
-          </div>
-        </div>
-        <div class="form-group mb-15">
-          <%= f.password_field :password, class: 'form-control password-control', tabindex: 2, placeholder: Spree.t(:password) %>
-        </div>
-        <div class="form-group d-flex align-items-center justify-content-between mb-45"><%= link_to Spree.t(:forgot_password), spree.recover_password_path %><%= link_to Spree.t(:Register), spree.signup_path %> </div>
-  
-          <%= f.submit Spree.t(:login), class: 'btn btn-primary btn-block', tabindex: 3 %>
-      </fieldset>
-  <%end%>
+<%= form_for Spree::User.new, as: :spree_user, url: spree.create_new_session_path do |f| %>
+  <%= render :partial => 'spree/shared/sign_in_header' %>
+  <fieldset id="password-credentials">
+    <div class="form-group mb-20">
+      <%= f.email_field :email, class: 'form-control username-control', tabindex: 1, placeholder: Spree.t(:email) %>
+      <div class="invalid-feedback d-none">
+        <p>Please enter valid email address!</p>
+      </div>
+    </div>
+    <div class="form-group mb-15">
+      <%= f.password_field :password, class: 'form-control password-control', tabindex: 2, placeholder: Spree.t(:password) %>
+    </div>
+    <div class="form-group d-flex align-items-center justify-content-between mb-45"><%= link_to Spree.t(:forgot_password), spree.recover_password_path %><%= link_to Spree.t(:Register), spree.signup_path %> </div>
+      <%= f.submit Spree.t(:login), class: 'btn btn-primary btn-block', tabindex: 3 %>
+  </fieldset>
+<%end%>

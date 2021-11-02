@@ -20,33 +20,33 @@
     </div>
   </div>
 </div> -->
-
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @spree_user } %>
 <main class="page-contents">
    <div class="signin-wrapper">
-   <div class="row no-gutters">
-      <div class="col-lg-4"> 
-      </div>
-      <div class="col-lg-3">
-         <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>        
-         <div id="forgot-password">
-            <h1 class="title">Forgot Password?</h1>
-            <div >
-               <p><%= Spree.t(:instructions_to_reset_password) %></p>
-               <div class="form-group mb-20">
-                  <p>
-                     <%= f.label :email, Spree.t(:email) %>
-                     <%= f.email_field :email, :class => "form-control username-control" %>
-                  </p>
-                  <p>
-                     <%= f.submit Spree.t(:reset_password), :class => 'btn btn-primary btn-block' %>
-                  </p>
-                  <% end %>
-               </div>
-            </div>
+      <div class="row no-gutters">
+         <div class="col-lg-4"> 
          </div>
-      </div>
-      <div class="col-lg-5"> 
+         <div class="col-lg-3">
+            <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>        
+               <div id="forgot-password">
+                  <h1 class="title">Forgot Password?</h1>
+                  <div >
+                     <p><%= Spree.t(:instructions_to_reset_password) %></p>
+                     <div class="form-group mb-20">
+                        <p>
+                           <%= f.label :email, Spree.t(:email) %>
+                           <%= f.email_field :email, :class => "form-control username-control" %>
+                        </p>
+                        <p>
+                           <%= f.submit Spree.t(:reset_password), :class => 'btn btn-primary btn-block' %>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            <% end %>
+         </div>
+         <div class="col-lg-5"> 
+         </div>
       </div>
    </div>
 </main>
