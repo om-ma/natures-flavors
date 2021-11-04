@@ -6,10 +6,6 @@
   </ul>
 </nav>  
    -->
-  
-  
-  
-
       <div class="col-xl-10 position-static">
         <div class="navbar-collapse">
           <ul class="navbar-nav tablet-hide">
@@ -57,7 +53,13 @@
             <li class="nav-item"><a class="nav-link" href="#">Syrups</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Baking Ingredients</a></li>
             <li class="nav-item"><a class="nav-link" href="#">More</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><strong>Logout</strong></a></li>
+            <li class="nav-item">
+              <% if spree_current_user.present? %>
+                <%= link_to "Logout", destroy_spree_user_session_path ,class:"nav-link" %>             
+              <% else %>
+                <%= link_to "Login", new_spree_user_session_path ,class:"nav-link"%>
+              <% end %>
+            </li>
           </ul>
           <div class="quick-menu ml-auto">
             <%= render partial: 'spree/shared/search' %>
@@ -65,6 +67,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </nav>
   

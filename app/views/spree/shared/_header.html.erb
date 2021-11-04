@@ -17,13 +17,13 @@
 <header id="header" data-hook>
   <nav class="navbar navbar-expand-xl" id="top-nav-bar">
     <div class="row no-gutters w-100">
-      <figure id="logo" class="col-xl-2" data-hook>
+      <div id="logo" class="col-xl-2" data-hook>
         <%= link_to root_path, class: 'navbar-brand' do %>
           <%= image_tag 'logo.svg', alt: "Nature's Flavors" %>
         <% end %>
-      </figure>
+      </div>
       <%= render partial: 'spree/shared/nav_bar' %>
-    </div>
+    </div> 
   </nav>
     <%= render partial: 'spree/shared/mobile_menu' %>
 </header>
