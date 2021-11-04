@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="122px" height="122px" viewBox="0 0 122 122" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Shape</title>
+    <defs>
+        <linearGradient x1="27.8761605%" y1="0%" x2="72.3937529%" y2="78.5122418%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F1F1F1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0.Elements" transform="translate(-522.000000, -125.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M583,125 C549.310129,125 522,152.311082 522,186 C522,219.690824 549.310129,247 583,247 C616.689871,247 644,219.690824 644,186 C644,152.311082 616.689871,125 583,125 Z M583,216.5 C578.788617,216.5 575.375,213.087813 575.375,208.875 C575.375,204.664094 578.788617,201.25 583,201.25 C587.211383,201.25 590.625,204.664094 590.625,208.875 C590.625,213.087813 587.211383,216.5 583,216.5 Z M590.625,189.8125 L575.375,189.8125 L571.5625,159.3125 C571.5625,157.207047 573.269547,155.5 575.375,155.5 L590.625,155.5 C592.730453,155.5 594.4375,157.207047 594.4375,159.3125 L590.625,189.8125 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
