@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <figure id="logo" class="col-md-4 col-sm-3" data-hook>
-          <%#= logo %>
+          <%= logo %>
         </figure>
         <%#= render partial: 'spree/shared/nav_bar' %>
       </div>
@@ -12,8 +12,18 @@
   <div class="container">
     <%#= render partial: 'spree/shared/main_nav_bar' %>
   </div>
-</div> -->
+</div>  -->
+
 <header id="header" data-hook>
-   <%= render partial: 'spree/shared/nav_bar' %>
-   <%= render partial: 'spree/shared/mobile_menu' %>
+  <nav class="navbar navbar-expand-xl" id="top-nav-bar">
+    <div class="row no-gutters w-100">
+      <figure id="logo" class="col-xl-2" data-hook>
+        <%= link_to root_path, class: 'navbar-brand' do %>
+          <%= image_tag 'logo.svg', alt: "Nature's Flavors" %>
+        <% end %>
+      </figure>
+      <%= render partial: 'spree/shared/nav_bar' %>
+    </div>
+  </nav>
+    <%= render partial: 'spree/shared/mobile_menu' %>
 </header>
