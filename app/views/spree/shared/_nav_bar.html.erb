@@ -6,11 +6,8 @@
   </ul>
 </nav>  
    -->
-  
-  
-  
-  <nav class="navbar navbar-expand-xl">
-    <div class="row no-gutters w-100">
+   <nav class="navbar navbar-expand-xl">
+     <div class="row no-gutters w-100">
       <div class="col-xl-2">
         <%= link_to root_path, class: 'navbar-brand' do %>
           <%= image_tag 'logo.svg', alt: "Nature's Flavors" %>
@@ -19,7 +16,10 @@
       <div class="col-xl-10 position-static">
         <div class="navbar-collapse">
           <ul class="navbar-nav tablet-hide">
-            <li class="nav-item"><a class="nav-link" href="#">Extracts &amp; Flavorings</a>
+            <li class="nav-item">
+              <% taxon_category = Spree::Taxon.find_by_name("Extracts and Flavorings") %>
+                <%= link_to taxon_category.name, seo_url(taxon_category), class: 'nav-link' %>
+
               <div class="dropdown-menu-wrap">
                 <div class="row no-gutters">
                   <div class="col-lg-2"></div>

@@ -12,7 +12,7 @@
    <%= render partial: 'spree/shared/header' %>
    <div>
       <div  data-hook>
-         <%= spree_breadcrumbs(@taxon) %>
+         <%#= spree_breadcrumbs(@taxon) %>
          <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
          <div id="content"  data-hook>
             <%= flash_messages %>
