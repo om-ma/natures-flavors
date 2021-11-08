@@ -1,4 +1,4 @@
-<nav class="col-md-12">
+<!-- <nav class="col-md-12">
    <div id="main-nav-bar" class="navbar">
       <ul class="nav navbar-nav" data-hook>
          <li id="home-link" data-hook><%= link_to Spree.t(:home), spree.root_path %></li>
@@ -13,4 +13,16 @@
          <script>Spree.fetch_cart()</script>
       </ul>
    </div>
-</nav>
+</nav> -->
+<a class="nav-search tablet-visible" id="main-nav-bar"  href="#"><span>Find</span></a>
+<% if spree_current_user.present? %>
+   <%= link_to  destroy_spree_user_session_path, :class => 'nav-profile tablet-hide' do %>
+      <span id="span">Logout </span>
+   <% end %>            
+<% else %>
+   <%= link_to new_spree_user_session_path , :class => 'nav-profile tablet-hide' do %>
+      <span id="span">Login </span>    
+   <% end %>
+<% end %>
+<a class="nav-cart" id="link-to-cart" data-hook href="#"><span>Cart</span><small class="cart-counter">4</small></a> 
+<a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>

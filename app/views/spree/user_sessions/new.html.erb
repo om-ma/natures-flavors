@@ -24,6 +24,9 @@
       <div class="row no-gutters">
          <div class="col-lg-6">
             <div id="existing-customer"  data-hook="login">
+               <%if flash[:alert] %>
+                  <%= flash[:alert] %>
+               <% end %>
                <%= render :partial => 'spree/shared/login' %> 
             </div>
             <div data-hook="login_extras"></div>
