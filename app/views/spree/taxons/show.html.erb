@@ -1,3 +1,23 @@
+<!-- <h1 class="taxon-title"><%= @taxon.name %></h1>
+
+<%# content_for :sidebar do %>
+  <div data-hook="taxon_sidebar_navigation">
+    <%#= render partial: 'spree/shared/taxonomies' %>
+    <%#= render partial: 'spree/shared/filters' if @taxon.leaf? %>
+  </div>
+<%# end %>
+
+<div data-hook="taxon_products">
+  <%#= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
+</div>
+
+<%# unless params[:keywords].present? %>
+  <div data-hook="taxon_children">
+    <%# cache [I18n.locale, @taxon] do %>
+      <%#= render partial: 'taxon', collection: @taxon.children %>
+    <%# end %>
+  </div> -->
+<%# end %>
 <main class="page-contents">
   <div class="category-wrapper">
     <div class="row no-gutters" data-hook="taxon_sidebar_navigation">
@@ -10,6 +30,18 @@
             <%= render partial: 'spree/taxons/mobile_filters' %>
             <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-sm-2 no-gutters" data-hook="taxon_products">
               <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
+            </div>
+            <div class="pagination-wrap">
+              <ul class="pagination d-flex align-items-center justify-content-center">
+                <li class="page-item"><a class="btn btn-outline mobile-hide" href="#"><span>Previous Page</span></a></li>
+                <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><span>...</span></li>
+                <li class="page-item"><a class="page-link" href="#">25</a></li>
+                <li class="page-item"><a class="btn btn-primary" href="#"><span>Next Page</span></a></li>
+              </ul>
+              <div class="pagination-counter d-flex align-items-center">Showing 1 - 24 of 532 products</div>
             </div>
           </div>
       </div>   
