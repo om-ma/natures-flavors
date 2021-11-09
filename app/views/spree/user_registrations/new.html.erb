@@ -28,16 +28,18 @@
                   <div data-hook="signup_inside_form">
                      <nav class="breadcrumb-wrap d-flex flex-wrap align-items-center justify-content-between">
                         <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Registration</li>
+                           <li class="breadcrumb-item"><a href="#">Home</a></li>
+                           <li class="breadcrumb-item active">Registration</li>
                         </ol>
                      </nav>
+                     <h1 class="title mb-0">Registration</h1>
+                     <div class="sm-title mb-20" id="password-credentials" >It looks like you’re new here. We need a bit more info...</div>
                      <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
                      <div class="registration-note">By clicking "Continue", you agree to our <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</div>
                      <button type="submit" class="btn btn-primary btn-block mb-25">Continue</button>
-                        <%= link_to spree.login_path, class: 'text-center' do%>
-                           <div>Already Registered?</div>
-                        <% end%>
+                     <%= link_to spree.login_path, class: 'text-center' do%>
+                        <div>Already Registered?</div>
+                     <% end%>
                      <div data-hook="login_extras"></div>
                   </div>
                <%end%>
@@ -52,28 +54,28 @@
                   </div>
                   <div class="right"><a href="#" class="btn btn-primary">All Deals</a></div>
                </div>
-               <div class="products-wrapper d-lg-flex align-items-start">
+               <div class="products-wrapper d-sm-flex align-items-start">
                   <div class="product-wrap">
-                     <%= link_to root_path  do%>
+                     <a href="#">
                         <div class="product-img">
-                           <%= image_tag 'product-thumb-1.jpg', alt: "" %>
+                           <%= image_tag "product-thumb-1" %>
                            <div class="price"><span>$24.51</span>$13.51</div>
                         </div>
                         <div class="product-desc">
                            <h4>Acorn Flavored Powder, Natural</h4>
                         </div>
-                     <%end%>
+                     </a>
                   </div>
                   <div class="product-wrap">
-                     <%= link_to root_path  do%>
+                     <a href="#">
                         <div class="product-img">
-                           <%= image_tag 'product-thumb-2.jpg', alt: "" %>
+                           <%= image_tag "product-thumb-2" %>
                            <div class="price"><span>$24.51</span>$13.51</div>
                         </div>
                         <div class="product-desc">
                            <h4>Acai Compound, Natural</h4>
                         </div>
-                     <%end%>
+                     </a>
                   </div>
                </div>
             </div>

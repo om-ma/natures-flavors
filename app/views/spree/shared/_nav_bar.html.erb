@@ -8,7 +8,7 @@
    -->
 <nav class="navbar navbar-expand-xl" id="top-nav-bar" id="spree-header">
   <div class="row no-gutters w-100" id="nav-bar">
-    <div id="logo" class="col-xl-2" data-hook data-hook>
+    <div id="logo" id="home-link" class="col-xl-2" data-hook data-hook>
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag 'logo.svg', alt: "Nature's Flavors" %>
       <% end %>
@@ -68,9 +68,23 @@
             <% end %>
           </li>
         </ul>
-        <div class="quick-menu ml-auto" id="search-bar" data-hook id="main-nav-bar">
+        <div class="quick-menu ml-auto" id="link-to-cart">
           <%= render partial: 'spree/shared/search' %>
-          <%= render partial: 'spree/shared/main_nav_bar' %>
+          <a class="nav-search tablet-visible"   href="#"><span>Find</span></a>
+          <% if spree_current_user.present? %>
+            <%= link_to  destroy_spree_user_session_path, :class => 'nav-profile tablet-hide' do %>
+              <span id="span">Logout </span>
+            <% end %>            
+          <% else %>
+            <%= link_to new_spree_user_session_path , :class => 'nav-profile tablet-hide' do %>
+              <span id="span">Login </span>    
+            <% end %>
+          <% end %>
+          <%= link_to cart_path, :class =>'nav-cart' do%>
+            <span id="cart">cart </span>
+            <small class="cart-counter">4</small>     
+          <% end %>
+          <a class="m  obile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
         </div>
       </div>
     </div>

@@ -26,10 +26,10 @@
       <div class="row no-gutters">
          <div class="col-lg-4"> 
          </div>
-         <div class="col-lg-3">
+         <div class="col-lg-5">
             <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>        
                <div id="forgot-password">
-                  <h1 class="title">Forgot Password?</h1>
+                  <div class="title"><%= Spree.t(:forgot_password) %></div>
                   <div >
                      <p><%= Spree.t(:instructions_to_reset_password) %></p>
                      <div class="form-group mb-20">
@@ -45,7 +45,7 @@
                </div>
             <% end %>
          </div>
-         <div class="col-lg-5"> 
+         <div class="col-lg-3"> 
          </div>
       </div>
    </div>
