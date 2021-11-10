@@ -28,7 +28,7 @@
   <div class="registration-wrapper">
      <div class="row no-gutters">
         <div class="col-lg-6">
-           <div >
+          <div>
             <%= form_for @spree_user, as: :spree_user, url: spree.update_password_path, method: :put do |f| %>
               <div>
                 <h1 class="title">Change Password</h1>
@@ -45,8 +45,8 @@
                 <%= f.hidden_field :reset_password_token %>
                 <%= f.submit Spree.t(:update), class: 'btn btn-primary btn-block' %>
               </div>
-          <% end %>
-           </div>
+            <% end %>
+          </div>
         </div>
         <div class="col-lg-6">
            <div class="latest-deals">
