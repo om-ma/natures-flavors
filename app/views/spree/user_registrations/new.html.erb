@@ -33,13 +33,21 @@
                      <h1 class="title mb-0">Registration</h1>
                      <div class="sm-title mb-20" id="password-credentials" >It looks like you’re new here. We need a bit more info...</div>
                      <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
-                     <div class="registration-note">By clicking "Continue", you agree to our <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</div>
+                     <div class="registration-note">
+                      By clicking "Continue", you agree to our
+                       <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</div>
                      <button type="submit" class="btn btn-primary btn-block mb-25">Continue</button>
+<<<<<<< HEAD
                      <div class="text-center">
                         <%= link_to spree.login_path do%>
                          Already Registered?
                         <% end%>
                      </div>
+=======
+                     <%= link_to spree.login_path, class: 'text-center' do %>
+                        <div>Already Registered?</div>
+                     <% end %>
+>>>>>>> 3721a93bf2098cbceac42d79aae586f9fe3f5d6c
                      <div data-hook="login_extras"></div>
                   </div>
                <%end%>
@@ -58,7 +66,7 @@
                   <div class="product-wrap">
                      <a href="#">
                         <div class="product-img">
-                           <%= image_tag "product-thumb-1" %>
+                           <%= image_tag "product-thumb-1.jpg" %>
                            <div class="price"><span>$24.51</span>$13.51</div>
                         </div>
                         <div class="product-desc">
@@ -69,7 +77,7 @@
                   <div class="product-wrap">
                      <a href="#">
                         <div class="product-img">
-                           <%= image_tag "product-thumb-2" %>
+                           <%= image_tag "product-thumb-2.jpg" %>
                            <div class="price"><span>$24.51</span>$13.51</div>
                         </div>
                         <div class="product-desc">
