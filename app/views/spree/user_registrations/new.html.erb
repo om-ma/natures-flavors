@@ -1,4 +1,4 @@
-<% @body_id = 'signup' %>
+<%# @body_id = 'signup' %>
 <%#= render partial: 'spree/shared/error_messages', locals: { target: @user } %>
 <!-- <div class="col-lg-6 offset-lg-3">
   <h3 class="spree-header spree-mb-large spree-mt-large"><%= Spree.t(:new_customer) %></h3>
@@ -33,11 +33,13 @@
                      <h1 class="title mb-0">Registration</h1>
                      <div class="sm-title mb-20" id="password-credentials" >It looks like you’re new here. We need a bit more info...</div>
                      <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
-                     <div class="registration-note">By clicking "Continue", you agree to our <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</div>
+                     <div class="registration-note">
+                      By clicking "Continue", you agree to our
+                       <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</div>
                      <button type="submit" class="btn btn-primary btn-block mb-25">Continue</button>
-                     <%= link_to spree.login_path, class: 'text-center' do%>
+                     <%= link_to spree.login_path, class: 'text-center' do %>
                         <div>Already Registered?</div>
-                     <% end%>
+                     <% end %>
                      <div data-hook="login_extras"></div>
                   </div>
                <%end%>
