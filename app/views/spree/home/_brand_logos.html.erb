@@ -1,0 +1,14 @@
+<div class="media-partners-wrapper phone-hide">
+   <div class="container">
+      <div class="sm-title text-center">You can find products made with our flavors at:</div>
+        <%taxon_brand = Spree::Taxon.find_by_name("Brands")%>
+        <% brands = taxon_brand.children %>
+        <ul class="media-list d-flex flex-wrap align-items-center justify-content-center">
+        <% brands.each do |brand| %>
+            <% if brand.icon&.attachment %>
+            <li>  <%= image_tag main_app.url_for(brand.icon.attachment) %> </li>
+            <% end %>
+        <%end%>
+        </ul>
+  </div>
+</div>
