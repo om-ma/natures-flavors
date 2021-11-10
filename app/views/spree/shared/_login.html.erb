@@ -24,7 +24,12 @@
     </ol>
   </nav>
   <h1 class="title">Sign In</h1>
-  <div class="signin-note">Welcome to our new site. If you had an account on our previous system, please reset your password to access the new system by click <%= link_to Spree.t(:forgot_your_password?), spree.recover_password_path %>. Contact us if you need further assistance.</div>
+  <div class="signin-note">Welcome to our new site. If you had an account on our previous system, please reset your password to access the new system by click 
+    <%= link_to  spree.recover_password_path do%>
+      Forgot your password.
+    <%end%>
+    Contact us if you need further assistance.
+  </div>
   <div class="form-group mb-20" id="password-credentials">
     <%= f.email_field :email, class: 'form-control username-control', tabindex: 1, placeholder: Spree.t(:email) %>
     <div class="invalid-feedback d-none">

@@ -37,9 +37,11 @@
                       By clicking "Continue", you agree to our
                        <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</div>
                      <button type="submit" class="btn btn-primary btn-block mb-25">Continue</button>
-                     <%= link_to spree.login_path, class: 'text-center' do %>
-                        <div>Already Registered?</div>
-                     <% end %>
+                     <div class="text-center">
+                        <%= link_to spree.login_path do%>
+                         Already Registered?
+                        <% end%>
+                     </div>
                      <div data-hook="login_extras"></div>
                   </div>
                <%end%>

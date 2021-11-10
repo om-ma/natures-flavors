@@ -797,7 +797,11 @@ a.btn.btn-block {
 	top: 15px;
 	width: 20px;
 	height: 20px;
-	background: url("../images/search-icon-red.svg") no-repeat scroll center;
+	background-image: image-url("search-icon-red.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: scroll;
+
 }
 
 .header-search .form-control {
