@@ -34,7 +34,7 @@ en:
   spree:
     password: "Password*"
     email: "Email Address*"
-    forgot_password: "Forgot your Password?"
+    forgot_password: "Forgot your password?"
     login: "Sign In" 
     confirm_password: "Confirm Password*"
     search: "Search..."

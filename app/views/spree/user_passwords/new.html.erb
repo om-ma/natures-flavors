@@ -22,33 +22,64 @@
 </div> -->
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @spree_user } %>
 <main class="page-contents">
-   <div class="signin-wrapper">
+   <div class="registration-wrapper">
       <div class="row no-gutters">
-         <div class="col-lg-4"> 
-         </div>
-         <div class="col-lg-5">
-            <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>        
-               <div id="forgot-password">
-                  <div class="title"><%= Spree.t(:forgot_password) %></div>
-                  <div >
-                     <p><%= Spree.t(:instructions_to_reset_password) %></p>
-                     <div class="form-group mb-20">
-                        <p>
-                           <%= f.label :email, Spree.t(:email) %>
-                           <%= f.email_field :email, :class => "form-control username-control" %>
-                        </p>
-                        <p>
-                           <%= f.submit Spree.t(:reset_password), :class => 'btn btn-primary btn-block' %>
-                        </p>
+         <div class="col-lg-6">
+            <div>
+               <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>        
+                  <div id="forgot-password">
+                     <div class="title"><%= Spree.t(:forgot_password) %></div>
+                     <div >
+                        <p><%= Spree.t(:instructions_to_reset_password) %></p>
+                        <div class="form-group mb-20">
+                           <p>
+                              <%= f.label :email, Spree.t(:email) %>
+                              <%= f.email_field :email, :class => "form-control username-control" %>
+                           </p>
+                           <p>
+                              <%= f.submit Spree.t(:reset_password), :class => 'btn btn-primary btn-block' %>
+                           </p>
+                        </div>
                      </div>
                   </div>
-               </div>
-            <% end %>
+               <%end%>
+            </div>
          </div>
-         <div class="col-lg-3"> 
+         <div class="col-lg-6">
+            <div class="latest-deals">
+               <div class="title-wrap d-flex align-items-start justify-content-between margin-0">
+                  <div class="left">
+                     <div class="sm-title">Natures Flavors</div>
+                     <h3 class="title">Latest Deals</h3>
+                  </div>
+                  <div class="right"><a href="#" class="btn btn-primary">All Deals</a></div>
+               </div>
+               <div class="products-wrapper d-sm-flex align-items-start">
+                  <div class="product-wrap">
+                     <a href="#">
+                        <div class="product-img">
+                           <%= image_tag "product-thumb-1" %>
+                           <div class="price"><span>$24.51</span>$13.51</div>
+                        </div>
+                        <div class="product-desc">
+                           <h4>Acorn Flavored Powder, Natural</h4>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="product-wrap">
+                     <a href="#">
+                        <div class="product-img">
+                           <%= image_tag "product-thumb-2" %>
+                           <div class="price"><span>$24.51</span>$13.51</div>
+                        </div>
+                        <div class="product-desc">
+                           <h4>Acai Compound, Natural</h4>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
    </div>
 </main>
-
-
