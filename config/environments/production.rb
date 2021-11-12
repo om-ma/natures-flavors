@@ -102,6 +102,7 @@ Rails.application.configure do
      :user_name            => 'omqa2794@gmail.com',
      :password             => 'PakistaN@123',
      :authentication       => "plain",
+     :enable_starttls_auto => true
    }
 
 end
