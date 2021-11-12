@@ -350,12 +350,16 @@ img {
 
 .form-control.username-control,
 .form-control.password-control {
-	background: #fff url("../images/user-icon-red.svg") no-repeat scroll 17px center;
+	background-color: #fff;
+	background-image: image-url("user-icon-red.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll ;
+	background-position:   17px center;
 	padding-left: 46px;
 }
 
 .form-control.password-control {
-	background-image: url("../images/password-icon.svg");
+	background-image: image-url("password-icon.svg");
 }
 
 .invalid-feedback {
@@ -607,7 +611,10 @@ a.btn.btn-block {
 }
 
 .icon-btn:after {
-	background: url("../images/arrow-right-white-icon.svg") no-repeat scroll center;
+	background-image: image-url("arrow-right-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attachment: scroll ;
 }
 
 .d-flex .custom-checkbox+.custom-checkbox {
@@ -799,8 +806,9 @@ a.btn.btn-block {
 	height: 20px;
 	background-image: image-url("search-icon-red.svg");
 	background-repeat: no-repeat;
-	background-position: center;
 	background-attachment: scroll;
+	background-position:   center;
+
 
 }
 
@@ -865,7 +873,8 @@ a.btn.btn-block {
 }
 
 .nav-profile {
-	background-image: url("../images/user-icon-white.svg");
+	background-image: image-url("user-icon-white.svg");
+	
 }
 
 .mobile-menu-link {
@@ -874,7 +883,7 @@ a.btn.btn-block {
 }
 
 .nav-cart {
-	background-image: url("../images/cart-icon-white.svg");
+	background-image: image-url("cart-icon-white.svg");
 }
 
 .cart-counter {
@@ -2356,20 +2365,21 @@ a.btn.btn-block {
 	display: block;
 }
 
-.social-nav a.facebook-icon {
-	background-image: url("../images/facebook.svg");
-}
+// .social-nav a.facebook-icon {
+// 	background-image: image-url("facebook.svg");
+// }
 
-.social-nav a.instagram-icon {
-	background-image: url("../images/instagram.svg");
-}
+// .social-nav a.instagram-icon {
+// 	background-image: image-url("instagram.svg");
+// }
 
 .social-nav a.pinterest-icon {
-	background-image: url("../images/pinterest.svg");
+	background-image: image-url("pinterest.svg");
+	
 }
 
 .social-nav a.youtube-icon {
-	background-image: url("../images/youtube-hover.svg");
+	background-image: image-url("youtube-hover.svg");
 }
 
 .footer-address p,
@@ -2412,7 +2422,10 @@ a.btn.btn-block {
 }
 
 .footer-phone a:after {
-	background: url("../images/phone-white-icon.svg") no-repeat scroll center;
+	background-image: image-url("phone-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attachment: scroll;
 	z-index: 5;
 }
 
