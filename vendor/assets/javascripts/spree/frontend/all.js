@@ -6,7 +6,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require accounting.min
 //= require spree/frontend
-
 //= require_tree .

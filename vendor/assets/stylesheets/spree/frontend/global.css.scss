@@ -797,7 +797,7 @@ a.btn.btn-block {
 	position: relative;
 }
 
-.header-search:before {
+.search-custom-btn:before {
 	content: '';
 	position: absolute;
 	left: 20px;
@@ -808,8 +808,7 @@ a.btn.btn-block {
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position:   center;
-
-
+	cursor: pointer;
 }
 
 .header-search .form-control {
