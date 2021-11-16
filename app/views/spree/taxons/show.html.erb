@@ -9,8 +9,7 @@
   </div>
 </div>
  -->
-
- <main class="page-contents">
+<main class="page-contents">
   <div class="category-wrapper">
     <div class="row no-gutters">
       <div class="col-xl-2 col-lg-3 phone-hide">
@@ -54,8 +53,14 @@
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Extracts and Flavorings</li>
                   </ol>
-                  <h1 class="title">Extracts and Flavorings</h1>
-                  <div class="category-banner phone-hide"><img src="assets/images/category-banner.jpg" alt=""></div>
+                  <h1 class="title">                    
+                      <%= @taxon.name %>
+                  </h1>
+                  <div class="category-banner phone-hide">
+                    <% if @taxon.icon&.attachment %>
+                       <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
+                    <% end %>
+                  </div>
                   <div class="mobile-categories-wrap phone-visible">
                     <div class="header"><a href="#" class="mobile-category-toggle">Categories</a></div>
                     <ul class="sidebar-sub-categories">
@@ -87,9 +92,11 @@
                 </div>
               </div>
               <div class="col-xl-4">
-                <div class="category-intro more"> <strong>Nature's Flavors</strong> has been producing natural and organic flavorings for over 40 years. We specialize in custom-made, all-natural and organic flavorings for the food and beverage industry. Our CEO and Founder, Bill “The Flavor Guy” Sabo searches the world over to make sure all of our flavors and extracts are made from the finest ingredients available.<br>
+                <div class="category-intro more"> 
+                  <strong>Nature's Flavors</strong> has been producing natural and organic flavorings for over 40 years. We specialize in custom-made, all-natural and organic flavorings for the food and beverage industry. Our CEO and Founder, Bill “The Flavor Guy” Sabo searches the world over to make sure all of our flavors and extracts are made from the finest ingredients available.<br>
                   <br>
-                  <strong>What else makes Nature’s Flavors so special?</strong> </div>
+                  <strong>What else makes Nature’s Flavors so special?</strong>
+                </div>
               </div>
             </div>
           </div>
@@ -181,3 +188,5 @@
     </div>
   </div>
 </main>
+
+
