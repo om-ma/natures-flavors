@@ -35,22 +35,24 @@
   <head data-hook="inside_head">
     <%= render partial: 'spree/shared/head' %>
   </head>
-  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
-    <%#= render partial: 'spree/shared/get_started' %>
-    <%= render partial: 'spree/shared/header' %>
-    <div id="overlay" class="overlay hide-on-esc"></div>
+  <body  id="<%= @body_id || 'default' %>" data-hook="body">
+    <div id="wrapper">
+      <%#= render partial: 'spree/shared/get_started' %>
+      <%= render partial: 'spree/shared/header' %>
+      <div id="overlay" class="overlay hide-on-esc"></div>
 
-    <div data-hook>
-      <%= flash_messages %>
-      <main id="content" data-hook>
-        <%= yield %>
-      </main>
+      <div data-hook>
+        <%= flash_messages %>
+        <main id="content" data-hook>
+          <%= yield %>
+        </main>
 
-      <%= yield :templates %>
+        <%= yield :templates %>
+      </div>
+
+      <%= render partial: 'spree/shared/footer' %>
+      <%= render 'spree/shared/translations' %>
     </div>
-
-    <%= render partial: 'spree/shared/footer' %>
-    <%= render 'spree/shared/translations' %>
   </body>
 </html>
 
