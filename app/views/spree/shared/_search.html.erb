@@ -13,14 +13,13 @@
             height: 27) %>
   </button> -->
 <%# end %>
-<%= form_tag spree.products_path, method: :get , id:'ss' do%>
+<%= form_tag spree.products_path, method: :get , id:'global-search-form' do%>
   <div class="header-search tablet-hide" id="search-dropdown">
     <span class="search-custom-btn"></span>
-    <%= search_field_tag :keywords,
-                        params[:keywords],
-                        placeholder: Spree.t(:search),
-                        title: Spree.t(:search),
-                        class: " form-control" %>
-                
+      <%= search_field_tag :keywords,
+                          params[:keywords],
+                          placeholder: Spree.t(:search),
+                          title: Spree.t(:search),
+                          class: " form-control" %>                
   </div>
 <% end %>

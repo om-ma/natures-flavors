@@ -26,13 +26,7 @@
     </header>
   </div> -->
 <%# end %>
-<% cache spree_menu_cache_key('header') do %>
-  <div id="spree-header">
-    <header id="header" >
-          <div id="top-nav-bar" class="flex-grow-1 header-spree-fluid-secondary-navigation">
-            <%= render partial: 'spree/shared/nav_bar' %>
-          </div>
-          <%= render partial: 'spree/shared/mobile_navigation' %>
-    </header>
-  </div>
+<% cache spree_menu_cache_key('header'), id:'spree-header' do %>
+  <%= render partial: 'spree/shared/nav_bar' %>
+  <%= render partial: 'spree/shared/mobile_navigation' %>
 <% end %>

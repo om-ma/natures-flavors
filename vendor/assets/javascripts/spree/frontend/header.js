@@ -1,7 +1,7 @@
 
 <script>
 $('.search-custom-btn').on('click',function(){
-  $("#ss").submit()
+  $("#global-search-form").submit()
 })
 
 </script>
