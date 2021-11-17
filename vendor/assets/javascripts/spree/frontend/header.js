@@ -1,7 +1,5 @@
-
-<script>
+$( document ).ready(function() {
 $('.search-custom-btn').on('click',function(){
-  $("#global-search-form").submit()
+  $("#global-search-button").submit()
 })
-
-</script>
+});

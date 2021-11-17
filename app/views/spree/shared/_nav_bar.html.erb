@@ -34,15 +34,15 @@
   <%#= render partial: 'spree/shared/internationalization_options' %>
 </ul> -->
 <%# i have missed  id="link-to-account" because of design issue %>
-<nav class="navbar navbar-expand-xl"  id="header">
-  <div class="row no-gutters w-100"  id="top-nav-bar">
+<nav class="navbar navbar-expand-xl"  id="spree-header">
+  <div class="row no-gutters w-100" id="header">
     <div  id="home-link" class="col-xl-2" data-hook data-hook>
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag 'logo.svg', alt: "Nature's Flavors" %>
       <% end %>
     </div>      
-    <div class="col-xl-10 position-static">
-      <div class="navbar-collapse" >
+    <div class="col-xl-10 position-static" id="top-nav-bar">
+      <div class="navbar-collapse" id="nav-bar">
         <ul class="navbar-nav tablet-hide">
           <li class="nav-item"><a class="nav-link" href="#">Extracts &amp; Flavorings</a>
             <div class="dropdown-menu-wrap">
