@@ -49,10 +49,9 @@
             <%= render partial: 'spree/taxons/filters' %>
             <%= render partial: 'spree/taxons/mobile_filters' %> 
             <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }%>
-          </div>
         <!-- /.Best seller products -->
-
       </div>
+      <%= render partial: 'spree/taxons/pagination', products: @products  %> 
     </div>
   </div>
 </main>

@@ -23,12 +23,11 @@
     <%#= last_page_tag unless current_page.last? %>
   </ul>
 <%# end %> -->
-
+<%pagination_class ||= '' %>
 <%= paginator.render do %>
-<div class="pagination-wrap">
   <ul class="pagination d-flex align-items-center justify-content-center">
-    <%= prev_page_tag  %>
-    <%= first_page_tag %>
+    <%= prev_page_tag unless current_page.first?   %>
+    <%= first_page_tag  %>
     <% each_page do |page| %>
       <% unless page.last? %>
       <% unless page.first? %>
@@ -38,12 +37,11 @@
         <%= gap_tag %>
       <% end %>
     <% end %>
-    <%end%>
-    <%end%>
+  <%end%>
+<%end%>
     <li class="page-item"><span>...</span></li>
-    <%= last_page_tag %>
-    <%= next_page_tag  %>
+    <%= last_page_tag   %>
+    <%= next_page_tag  unless current_page.last?  %>
   </ul>
   <div class="pagination-counter d-flex align-items-center">Showing 1 - 24 of 532 products</div>
-</div>
 <% end %>

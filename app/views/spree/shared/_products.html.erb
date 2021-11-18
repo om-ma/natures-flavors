@@ -29,6 +29,7 @@
     </div>
   <%# end %>
 </div> -->
+<# i have shifted pagination to pagination partial because of design issue%>
 <div  class="row row-cols-xl-5 row-cols-lg-4 row-cols-sm-2 no-gutters"  data-hook="homepage_products">
   <% content_for :head do %>
     <% if products.respond_to?(:total_pages) %>
@@ -37,11 +38,10 @@
   <% end %>
   <% cache cache_key_for_products(products) do %>
     <% products.each_with_index do |product, index| %>
-        <%= render 'spree/shared/product', product: product, image_class: 'product-component-plp-image' %>
+      <%= render 'spree/shared/product', product: product, image_class: 'product-component-plp-image' %>
     <% end %>
   <% end %>
-  </div>
-<% if products.respond_to?(:total_pages) %>
-<%= paginate products, window: 2, theme: 'twitter-bootstrap-4' %>
-<% end %>
+</div>
 
+  
+  

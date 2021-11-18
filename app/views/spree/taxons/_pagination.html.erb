@@ -1,3 +1,20 @@
-<% if products.respond_to?(:total_pages) %>
-<%= paginate products, window: 2, theme: 'twitter-bootstrap-4' %>
-<% end %>
+<%# if products.respond_to?(:total_pages) %>
+<!-- <div class="row pl-md-4 pl-sm-4">
+  <div class="col-12">
+    <div class="plp-pagination d-none d-lg-flex">
+      <%#= paginate products, window: 2, theme: 'twitter-bootstrap-4' %>
+    </div>
+
+    <div class="plp-pagination d-lg-none">
+      <%#= paginate products, window: 1, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
+<%# end %>
+</div> -->
+<%# i have moved whole pagination code thats why i have made local variables products %>
+<% if @products.respond_to?(:total_pages) %>
+    <div class="pagination-wrap">
+        <%= paginate @products, window: 2, theme: 'twitter-bootstrap-4' %>
+    </div>
+<%end%>
