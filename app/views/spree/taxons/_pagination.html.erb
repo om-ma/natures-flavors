@@ -12,7 +12,6 @@
 </div>
 <%# end %>
 </div> -->
-<%# i have moved whole pagination code thats why i have made local variables products %>
 <% if @products.respond_to?(:total_pages) %>
     <div class="pagination-wrap">
         <%= paginate @products, window: 2, theme: 'twitter-bootstrap-4' %>
