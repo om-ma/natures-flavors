@@ -20,6 +20,8 @@
                         params[:keywords],
                         placeholder: Spree.t(:search),
                         title: Spree.t(:search),
-                        class: " form-control" %>               
+                        class: " form-control",      
+                        autofocus: true,
+                        'aria-label': Spree.t(:search)%>         
   </div>
 <% end %>
