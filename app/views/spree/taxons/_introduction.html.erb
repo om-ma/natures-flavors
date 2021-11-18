@@ -3,42 +3,37 @@
       <div class="col-xl-8">
          <div class="category-banner-wrap">
             <ol class="breadcrumb">
-               <li class="breadcrumb-item"><a href="#">Home</a></li>
-               <li class="breadcrumb-item active">Extracts and Flavorings</li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Extracts and Flavorings</li>
             </ol>
-            <h1 class="title"><% taxon_cat = Spree::Taxon.find_by_name("Extracts and Flavorings") %>
-               <%= taxon_cat.name %>
+            <h1 class="title">                    
+               <%= @taxon.name %>
             </h1>
             <div class="category-banner phone-hide">
-               <%taxon_ca = Spree::Taxon.find_by_name("Extracts and Flavorings")%>
-               <% if taxon_ca.icon&.attachment %>
-                  <%= image_tag main_app.url_for(taxon_ca.icon.attachment) %> 
-               <% end %>
+            <% if @taxon.icon&.attachment %>
+               <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
+            <% end %>
             </div>
-         </div>
-         <div class="mobile-categories-wrap phone-visible">
+            <div class="mobile-categories-wrap phone-visible">
             <div class="header"><a href="#" class="mobile-category-toggle">Categories</a></div>
             <ul class="sidebar-sub-categories">
-               <li>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Flavor Extracts</a>
+               <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Flavor Extracts</a>
                   <ul class="dropdown-menu">
-                     <li><a href="#">Organic Flavor Emulsions (heat stable)</a></li>
-                     <li><a href="#">Natural Flavor Emulsions (heat stable)</a></li>
+                  <li><a href="#">Organic Flavor Emulsions (heat stable)</a></li>
+                  <li><a href="#">Natural Flavor Emulsions (heat stable)</a></li>
                   </ul>
                </li>
                <li><a href="#">Flavor Concentrate</a></li>
-               <li>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Flavor Compund</a>
+               <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Flavor Compund</a>
                   <ul class="dropdown-menu">
-                     <li><a href="#">Organic Flavor Emulsions (heat stable)</a></li>
-                     <li><a href="#">Natural Flavor Emulsions (heat stable)</a></li>
+                  <li><a href="#">Organic Flavor Emulsions (heat stable)</a></li>
+                  <li><a href="#">Natural Flavor Emulsions (heat stable)</a></li>
                   </ul>
                </li>
-               <li>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Flavor Emulsions</a>
+               <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Flavor Emulsions</a>
                   <ul class="dropdown-menu">
-                     <li><a href="#">Organic Flavor Emulsions (heat stable)</a></li>
-                     <li><a href="#">Natural Flavor Emulsions (heat stable)</a></li>
+                  <li><a href="#">Organic Flavor Emulsions (heat stable)</a></li>
+                  <li><a href="#">Natural Flavor Emulsions (heat stable)</a></li>
                   </ul>
                </li>
                <li><a href="#">Flavor Powders</a></li>
@@ -46,12 +41,14 @@
                <li><a href="#">Vanilla Extracts</a></li>
                <li><a href="#">Flavoring for Ice Cream</a></li>
             </ul>
+            </div>
          </div>
       </div>
       <div class="col-xl-4">
          <div class="category-intro more"> 
-            <% taxon_categr= Spree::Taxon.find_by_name("Extracts and Flavorings") %>
-            <%= taxon_categr.description %>
+            <strong>Nature's Flavors</strong> has been producing natural and organic flavorings for over 40 years. We specialize in custom-made, all-natural and organic flavorings for the food and beverage industry. Our CEO and Founder, Bill “The Flavor Guy” Sabo searches the world over to make sure all of our flavors and extracts are made from the finest ingredients available.<br>
+            <br>
+            <strong>What else makes Nature’s Flavors so special?</strong>
          </div>
       </div>
    </div>

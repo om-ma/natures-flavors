@@ -1,12 +1,3 @@
-<div class="pagination-wrap">
-  <ul class="pagination d-flex align-items-center justify-content-center">
-    <li class="page-item"><a class="btn btn-outline mobile-hide" href="#"><span>Previous Page</span></a></li>
-    <li class="page-item"><a class="page-link active" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><span>...</span></li>
-    <li class="page-item"><a class="page-link" href="#">25</a></li>
-    <li class="page-item"><a class="btn btn-primary" href="#"><span>Next Page</span></a></li>
-  </ul>
-  <div class="pagination-counter d-flex align-items-center">Showing 1 - 24 of 532 products</div>
-</div>
+<% if products.respond_to?(:total_pages) %>
+<%= paginate products, window: 2, theme: 'twitter-bootstrap-4' %>
+<% end %>

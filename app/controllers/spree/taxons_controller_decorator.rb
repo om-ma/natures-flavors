@@ -4,7 +4,7 @@ Spree::TaxonsController.class_eval do
         if params.include?('per_page')
           @per_page = params['per_page'].to_i
         else
-          @per_page = 24
+          @per_page = 10
           params['per_page'] = @per_page
         end if
 
@@ -18,7 +18,7 @@ Spree::TaxonsController.class_eval do
               sorting_scope = :ascend_by_name
           end
 
-        @products = @searcher.retrieve_products.send(sorting_scope).page(params[:page]).per(params[:per_page])
+        @products = @searcher.retrieve_products.send(sorting_scope).page(params[:page]).per('10')
         @taxonomies = Spree::Taxonomy.includes(root: :children).where('name ILIKE ?','%PRODUCTS%')
       end
     end
