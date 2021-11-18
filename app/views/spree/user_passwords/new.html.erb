@@ -45,41 +45,7 @@
                <%end%>
             </div>               
          </div>
-         <div class="col-lg-6">
-            <div class="latest-deals">
-               <div class="title-wrap d-flex align-items-start justify-content-between margin-0">
-                  <div class="left">
-                     <div class="sm-title">Natures Flavors</div>
-                     <h3 class="title">Latest Deals</h3>
-                  </div>
-                  <div class="right"><a href="#" class="btn btn-primary">All Deals</a></div>
-               </div>
-               <div class="products-wrapper d-sm-flex align-items-start">
-                  <div class="product-wrap">
-                     <a href="#">
-                        <div class="product-img">
-                           <%= image_tag "product-thumb-1.jpg" %>
-                           <div class="price"><span>$24.51</span>$13.51</div>
-                        </div>
-                        <div class="product-desc">
-                           <h4>Acorn Flavored Powder, Natural</h4>
-                        </div>
-                     </a>
-                  </div>
-                  <div class="product-wrap">
-                     <a href="#">
-                        <div class="product-img">
-                           <%= image_tag "product-thumb-2.jpg" %>
-                           <div class="price"><span>$24.51</span>$13.51</div>
-                        </div>
-                        <div class="product-desc">
-                           <h4>Acai Compound, Natural</h4>
-                        </div>
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </div>
+         <%= render :partial => 'spree/shared/deals_blog' %> 
       </div>
    </div>
 </main>
