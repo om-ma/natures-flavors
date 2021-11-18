@@ -1,5 +1,6 @@
 Spree::TaxonsController.class_eval do
     def show
+
       if stale? [@taxon, @products, @taxonomies, simple_current_order]
         if params.include?('per_page')
           @per_page = params['per_page'].to_i
@@ -17,8 +18,12 @@ Spree::TaxonsController.class_eval do
           else
               sorting_scope = :ascend_by_name
           end
+        if params[:sorting] == "bestsellers"
 
-        @products = @searcher.retrieve_products.send(sorting_scope).page(params[:page]).per(params[:per_page])
+          @products = @searcher.retrieve_products.send(sorting_scope).best_sellers.page(params[:page]).per(params[:per_page])
+        else  
+          @products = @searcher.retrieve_products.send(sorting_scope).page(params[:page]).per(params[:per_page])
+        end
         @taxonomies = Spree::Taxonomy.includes(root: :children).where('name ILIKE ?','%PRODUCTS%')
       end
     end

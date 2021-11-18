@@ -3,6 +3,7 @@
   <li><%#= link_to "Most Popular", request.parameters.merge(sorting: :descend_by_popularity), id: 'descend_popularity',class: "most-popular" %></li>
   <li><%= link_to "Ascending name", request.parameters.merge(sorting: :ascend_by_name), id: 'ascending_name',class: "assending-filter" %></li>
   <li><%= link_to "Descending name", request.parameters.merge(sorting: :descend_by_name), id: 'descending_name', class: "descending-filter" %></li>
+  <li><%= link_to "bestsellers", request.parameters.merge(sorting: :bestsellers), id: 'bestsellers_filter', class: "bestsellers-filter" %></li>
 </ul>
 
 <div class="sorting-filter d-flex align-items-center justify-content-end" >
@@ -27,7 +28,14 @@
       <button type="button" class=" ">Z to A</button>
     <%end%>
   </div>
-  <button type="button" class="">Best Sellers</button>
+
+  <div class="product-sort-js" data-filter-type="bestsellers-filter" >
+    <% if params[:sorting].present? && params[:sorting] == "bestsellers_filter" %>
+       <button type="button" class="active">Best Sellers</button>
+    <%else%>
+      <button type="button" class="">Best Sellers</button>
+    <%end%>
+  </div>
 </div>
 
 <script>
