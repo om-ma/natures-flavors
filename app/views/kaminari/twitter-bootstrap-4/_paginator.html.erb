@@ -25,37 +25,37 @@
 <%# end %> -->
 
 <%= paginator.render do %>
-<div class="pagination-wrap">
-  <ul class="pagination d-flex align-items-center justify-content-center">
-    <%= prev_page_tag unless current_page.first?  %>
-    <%= first_page_tag %>
-    <% each_page do |page| %>
-      <% unless page.last? %>
-      <% unless page.first? %>
-      <% if page.left_outer? || page.right_outer? || page.inside_window? %>
-        <%= page_tag page %>
-      <% elsif !page.was_truncated? %>
-        <%= gap_tag %>
+  <div class="pagination-wrap">
+    <ul class="pagination d-flex align-items-center justify-content-center">
+      <%= prev_page_tag unless current_page.first?  %>
+      <%= first_page_tag %>
+      <% each_page do |page| %>
+        <% unless page.last? %>
+        <% unless page.first? %>
+        <% if page.left_outer? || page.right_outer? || page.inside_window? %>
+          <%= page_tag page %>
+        <% elsif !page.was_truncated? %>
+          <%= gap_tag %>
+        <% end %>
       <% end %>
-    <% end %>
-    <%end%>
-    <%end%>
-    <li class="page-item"><span>...</span></li>
-    <%= last_page_tag   %>
-    <%= next_page_tag unless current_page.last? %>
-  </ul>
-  <div class="pagination-counter d-flex align-items-center"> 
-    Showing 
-    <% if current_page.number== 1%>
-      <%= current_page.number %>
-    <% else %>
-      <%= current_page.number*per_page - (per_page-1) %>
-    <% end %>
-    -
-    <%=current_page.number*per_page  %> 
-    of 
-    <%=current_store.products.count%> 
-    products
+      <%end%>
+      <%end%>
+      <li class="page-item"><span>...</span></li>
+      <%= last_page_tag   %>
+      <%= next_page_tag unless current_page.last? %>
+    </ul>
+    <div class="pagination-counter d-flex align-items-center"> 
+      Showing 
+      <% if current_page.number== 1%>
+        <%= current_page.number %>
+      <% else %>
+        <%= current_page.number*per_page - (per_page-1) %>
+      <% end %>
+      -
+      <%=current_page.number*per_page  %> 
+      of 
+      <%=current_store.products.count%> 
+      products
     <% end %>
   </div>
 </div>
