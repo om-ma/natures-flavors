@@ -46,12 +46,16 @@
   </ul>
   <div class="pagination-counter d-flex align-items-center"> 
     Showing 
-    <%= current_page.number*per_page-9%>
+    <% if current_page.number== 1%>
+      <%= current_page.number %>
+    <% else %>
+      <%= current_page.number*per_page - (per_page-1) %>
     <% end %>
     -
     <%=current_page.number*per_page  %> 
     of 
     <%=current_store.products.count%> 
     products
+    <% end %>
   </div>
 </div>
