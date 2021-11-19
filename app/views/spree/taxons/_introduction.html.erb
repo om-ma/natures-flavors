@@ -48,23 +48,18 @@
          </div>
       </div>
       <div class="col-xl-4">
-        <div>
+        <div class="category-intro more">
           <% if description == short %>
             <%= description %>
           <% else %>
-            <div class="js-readMore">
               <%= tag.div class: "js-readMore-short" do %>
                 <%= short %>
               <% end %>
               <%= tag.div class: "js-readMore-full d-none" do %>
                 <%= description %>
               <% end %>
-
-              <div class="text-right">
-                <button class="text-primary btn btn-link px-0 js-readMore-showMore">Read More ...</button>
-                <button class="text-primary btn btn-link px-0 js-readMore-showLess d-none">Read Less ...</button>
-              </div>
-            </div>
+                <p class=" js-readMore-showMore"> More ...</p>
+                <p class=" js-readMore-showLess d-none"> Less ...</p>
           <% end %>
         </div>
       </div>
