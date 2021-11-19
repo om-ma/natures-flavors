@@ -1,3 +1,6 @@
+<% description = simple_format(@taxon.description.html_safe, class: 'mb-0') %>
+<% short = truncate(description, separator: ' ', length: 400, escape: false) %>
+
 <div class="category-intro-wrapper">
    <div class="row no-gutters">
       <div class="col-xl-8">
@@ -45,11 +48,25 @@
          </div>
       </div>
       <div class="col-xl-4">
-         <div class="category-intro more"> 
-            <strong>Nature's Flavors</strong> has been producing natural and organic flavorings for over 40 years. We specialize in custom-made, all-natural and organic flavorings for the food and beverage industry. Our CEO and Founder, Bill “The Flavor Guy” Sabo searches the world over to make sure all of our flavors and extracts are made from the finest ingredients available.<br>
-            <br>
-            <strong>What else makes Nature’s Flavors so special?</strong>
-         </div>
+        <div>
+          <% if description == short %>
+            <%= description %>
+          <% else %>
+            <div class="js-readMore">
+              <%= tag.div class: "js-readMore-short" do %>
+                <%= short %>
+              <% end %>
+              <%= tag.div class: "js-readMore-full d-none" do %>
+                <%= description %>
+              <% end %>
+
+              <div class="text-right">
+                <button class="text-primary btn btn-link px-0 js-readMore-showMore">Read More ...</button>
+                <button class="text-primary btn btn-link px-0 js-readMore-showLess d-none">Read Less ...</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
    </div>
 </div>
