@@ -2525,11 +2525,11 @@ a.btn.btn-block {
 }
 
 .social-nav a.facebook-icon {
-	background-image: image-url("facebook_icon.svg");
+	background-image: image-url("facebook_icon1.svg");
 }
 
 .social-nav a.instagram-icon {
-	background-image: image-url("instagram_icon.svg");
+	background-image: image-url("instagram_icon1.svg");
 }
 
 .social-nav a.pinterest-icon {
@@ -3717,7 +3717,10 @@ a.btn.btn-block {
 
 .sidebar-sub-categories .dropdown-toggle:after {
     content: '';
-    background: url("../images/arrow-bottom-icon.svg") no-repeat scroll center;
+	background-image: image-url("arrow-bottom-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
     width: 10px;
     height: 10px;
     position: absolute;
@@ -3812,12 +3815,19 @@ a.btn.btn-block {
 }
 
 .pagination-wrap .btn-primary span {
-	background: url("../images/arrow-right-white-icon.svg") no-repeat scroll right center;
+	background-image: image-url("arrow-right-white-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: right center;
+
 	padding-right: 18px;
 }
 
 .pagination-wrap .btn-outline span {
-	background: url("../images/arrow-left-icon.svg") no-repeat scroll left center;
+	background-image: image-url("arrow-left-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: left center;	
 	padding-left: 18px;
 }
 
