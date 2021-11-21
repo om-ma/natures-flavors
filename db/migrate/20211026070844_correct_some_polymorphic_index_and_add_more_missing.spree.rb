@@ -32,7 +32,7 @@ class CorrectSomePolymorphicIndexAndAddMoreMissing < ActiveRecord::Migration[4.2
     add_index :spree_promotions, :advertise
     add_index :spree_return_authorizations, :number
     add_index :spree_return_authorizations, :order_id
-    add_index :spree_return_authorizations, :stock_location_id
+    # add_index :spree_return_authorizations, :stock_location_id
     add_index :spree_shipments, :address_id
     add_index :spree_shipping_methods, :deleted_at
     add_index :spree_shipping_methods, :tax_category_id
