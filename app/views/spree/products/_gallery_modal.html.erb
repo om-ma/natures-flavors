@@ -1,33 +1,33 @@
-<% if @product_images.size > 0 %>
-  <div class="modal fade" id="picturesModal" tabindex="-1" role="dialog">
+<%# if @product_images.size > 0 %>
+  <!-- <div class="modal fade" id="picturesModal" tabindex="-1" role="dialog">
     <div class="modal-dialog--zoom modal-dialog mw-100 vh-100 mt-0 mb-0" role="document">
       <div class="modal-content h-100">
         <div class="modal-body h-100">
           <button type="button" class="close position-absolute mr-3" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">
-              <%= icon(name: 'close',
+              <%#= icon(name: 'close',
                        classes: 'd-block d-lg-none',
                        width: 16,
                        height: 16) %>
-              <%= icon(name: 'close',
+              <%#= icon(name: 'close',
                        classes: 'd-none d-lg-block',
                        width: 30,
                        height: 30) %>
             </span>
           </button>
           <div class="d-flex justify-content-center align-items-center product-details-images h-100">
-            <% if @product_images.size > 1 %>
+            <%# if @product_images.size > 1 %>
               <div class="h-100 d-none d-sm-block product-details-thumbnails">
-                <%= render 'spree/shared/carousel/thumbnails',
+                <%#= render 'spree/shared/carousel/thumbnails',
                             images: @product_images,
                             group_id: 'main-product-modal-carousel',
                             id: 'productModalThumbnailsCarousel',
                             trigger_id: 'productCarousel',
                             per_page: 4 %>
               </div>
-            <% end %>
+            <% #end %>
             <div class="product-details-single">
-              <%= render 'spree/shared/carousel/single',
+              <%#= render 'spree/shared/carousel/single',
                           images: @product_images,
                           group_id: 'main-product-modal-carousel',
                           id: 'productModalCarousel',
@@ -38,5 +38,20 @@
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  </div> -->
+<%# end %>
+<div class="col-xl-7">
+<div class="product-gallery-wrap">
+  <ul id="product-gallery">
+    <li data-thumb="<%= asset_path 'product-detail-thumb1.jpg' %>">
+      <%= image_tag 'product-detail.jpg', alt:'image' %>
+    </li>
+    <li data-thumb="<%= asset_path 'product-detail-thumb2.jpg' %>">
+      <%= image_tag 'product-detail.jpg', alt:'image' %>
+    </li>
+    <li data-thumb="<%= asset_path 'product-detail-thumb1.jpg' %>">
+      <%= image_tag 'product-detail.jpg', alt:'image' %>
+    </li>
+  </ul>
+</div>
+</div>

@@ -545,7 +545,7 @@ img {
 	-moz-appearance: none;
 	appearance: none;
 	text-overflow: '';
-	background-image: url("../images/arrow-bottom-icon.svg");
+	background-image: image-url("arrow-bottom-icon.svg");
 	background-size: 10px auto;
 	background-position: calc(100% - 20px) center;
 	background-repeat: no-repeat;
@@ -2785,35 +2785,59 @@ a.btn.btn-block {
 }
 
 .product-standards .glutenfree-icon {
-	background: url("../images/glutenfree.svg") no-repeat scroll center;
+	background-image: image-url("glutenfree.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .glutenfree-icon:hover {
-	background: url("../images/glutenfree-hover.svg") no-repeat scroll center;
+	background-image: image-url("glutenfree-hover.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .nongmo-icon {
-	background: url("../images/non-gmo.svg") no-repeat scroll center;
+	background-image: image-url("non-gmo.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .nongmo-icon:hover {
-	background: url("../images/non-gmo-hover.svg") no-repeat scroll center;
+	background-image: image-url("non-gmo-hover.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .u-icon {
-	background: url("../images/u.svg") no-repeat scroll center;
+	background-image: image-url("u.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .u-icon:hover {
-	background: url("../images/u-hover.svg") no-repeat scroll center;
+	background-image: image-url("u-hover.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .vegan-icon {
-	background: url("../images/vegan.svg") no-repeat scroll center;
+	background-image: image-url("vegan.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .vegan-icon:hover {
-	background: url("../images/vegan-hover.svg") no-repeat scroll center;
+	background-image: image-url("vegan-hover.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-ingredients {
@@ -4127,7 +4151,11 @@ a.btn.btn-block {
 	padding: 0;
 	width: 50px;
 	height: 50px;
-	background: url("../images/arrow-bottom-icon.svg") no-repeat scroll center;
+	background-image: image-url("arrow-bottom-icon.png");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
+
 	border: solid 1px #ececec;
 	box-shadow: none !important;
 	border-radius: 21px;

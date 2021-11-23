@@ -1,23 +1,23 @@
-<template class="availability-template availability-template-not-available-in-currency">
-  <%= render 'cart_form_availability_templates', type: 'not-available-in-currency' %>
+<!-- <template class="availability-template availability-template-not-available-in-currency">
+  <%#= render 'cart_form_availability_templates', type: 'not-available-in-currency' %>
 </template>
 
 <template class="availability-template availability-template-in-stock">
-  <%= render 'cart_form_availability_templates', type: 'in-stock' %>
+  <%#= render 'cart_form_availability_templates', type: 'in-stock' %>
 </template>
 
 <template class="availability-template availability-template-backorderable">
-  <%= render 'cart_form_availability_templates', type: 'backorderable' %>
+  <%#= render 'cart_form_availability_templates', type: 'backorderable' %>
 </template>
 
 <template class="availability-template availability-template-out-of-stock">
-  <%= render 'cart_form_availability_templates', type: 'out-of-stock' %>
+  <%#= render 'cart_form_availability_templates', type: 'out-of-stock' %>
 </template>
 
-<% is_product_available_in_currency = product_available_in_currency? %>
-<% default_variant = default_variant(@variants, @product) %>
+<%# is_product_available_in_currency = product_available_in_currency? %>
+<%# default_variant = default_variant(@variants, @product) %>
 
-<%= form_for :order, html: {
+<%#= form_for :order, html: {
     id: 'add-to-cart-form',
     class: 'add-to-cart-form',
     'data-product-summary': @product_summary.to_json,
@@ -25,59 +25,120 @@
     'data-variant-change-trigger-identifier': variant_change_identifier
   } do |f| %>
   <div id="inside-product-cart-form" data-hook="inside_product_cart_form">
-    <% if is_product_available_in_currency %>
+    <%# if is_product_available_in_currency %>
       <div id="product-price" class="mb-2 text-center text-md-left add-to-cart-form-price" data-hook="product_price">
-        <% if should_display_compare_at_price?(default_variant) %>
-          <span class="compare-at-price mr-3"><%= display_compare_at_price(default_variant) %></span>
-        <% end %>
-        <span class="price selling" content="<%= @product_price.to_d %>">
-          <%= display_price(default_variant) %>
+        <%# if should_display_compare_at_price?(default_variant) %>
+          <span class="compare-at-price mr-3"><%#= display_compare_at_price(default_variant) %></span>
+        <%# end %>
+        <span class="price selling" content="<%#= @product_price.to_d %>">
+          <%#= display_price(default_variant) %>
         </span>
-        <span content="<%= current_currency %>"></span>
+        <span content="<%#= current_currency %>"></span>
       </div>
-    <% end %>
+    <%# end %>
 
     <div class="text-center text-md-left add-to-cart-form-general-availability text-uppercase">
-      <%= Spree.t(:availability) %>:
-      <% if !is_product_available_in_currency %>
-        <%= render 'cart_form_availability_templates', type: 'not-available-in-currency' %>
-      <% elsif default_variant.in_stock? %>
-        <%= render 'cart_form_availability_templates', type: 'in-stock' %>
-      <% elsif default_variant.backorderable? %>
-        <%= render 'cart_form_availability_templates', type: 'backorderable' %>
-      <% else %>
-        <%= render 'cart_form_availability_templates', type: 'out-of-stock' %>
-      <% end %>
+      <%#= Spree.t(:availability) %>:
+      <%# if !is_product_available_in_currency %>
+        <%#= render 'cart_form_availability_templates', type: 'not-available-in-currency' %>
+      <%# elsif default_variant.in_stock? %>
+        <%#= render 'cart_form_availability_templates', type: 'in-stock' %>
+      <%# elsif default_variant.backorderable? %>
+        <%#= render 'cart_form_availability_templates', type: 'backorderable' %>
+      <%# else %>
+        <%#= render 'cart_form_availability_templates', type: 'out-of-stock' %>
+      <%# end %>
     </div>
 
-    <% if @product.variants_and_option_values(current_currency).any? %>
+    <%# if @product.variants_and_option_values(current_currency).any? %>
       <hr>
       <ul id="product-variants" class="product-variants">
-        <% used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
+        <%# used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
           <li>
-            <% if color_option_type_name.present? && color_option_type_name == option_type[:name] %>
-              <%= render "color_option_type", option_type: option_type, index: index %>
-            <% else %>
-              <%= render "option_type", option_type: option_type, index: index %>
-            <% end %>
+            <%# if color_option_type_name.present? && color_option_type_name == option_type[:name] %>
+              <%#= render "color_option_type", option_type: option_type, index: index %>
+            <%# else %>
+              <%#= render "option_type", option_type: option_type, index: index %>
+            <%# end %>
           </li>
-        <% end %>
+        <%# end %>
       </ul>
-    <% end %>
+    <%# end %>
 
-    <% if is_product_available_in_currency && @product.can_supply? %>
-      <%= hidden_field_tag "variant_id", default_variant.id %>
+    <%# if is_product_available_in_currency && @product.can_supply? %>
+      <%#= hidden_field_tag "variant_id", default_variant.id %>
 
       <hr>
       <div>
         <div class="mb-5 mt-4 text-center text-md-left">
-          <%= render 'spree/shared/quantity_select', input_name: :quantity %>
+          <%#= render 'spree/shared/quantity_select', input_name: :quantity %>
         </div>
 
-        <%= button_tag class: 'btn btn-primary w-100 text-uppercase font-weight-bold add-to-cart-button', id: 'add-to-cart-button', type: :submit, disabled: true do %>
-          <%= Spree.t(:add_to_cart) %>
-        <% end %>
+        <%#= button_tag class: 'btn btn-primary w-100 text-uppercase font-weight-bold add-to-cart-button', id: 'add-to-cart-button', type: :submit, disabled: true do %>
+          <%#= Spree.t(:add_to_cart) %>
+        <%# end %>
       </div>
-    <% end %>
+    <%# end %>
+  </div> -->
+<%# end %>
+
+<div class="col-xl-3 col-lg-4 phone-hide">
+  <div class="product-side-details d-flex flex-column justify-content-between h-100">
+    <div class="top-detail">
+      <div class="product-options-header d-flex align-items-center justify-content-between">
+        <div class="left">Choose your <strong>option:</strong></div>
+        <div class="right">NF-10032/NAT-2oz</div>
+      </div>
+      <ul class="size-availability">
+        <li class="d-flex flex-wrap align-items-center justify-content-between active">
+          <div class="left">$12.59<span>/ $6.29 per oz.</span></div>
+          <div class="right">2 oz.</div>
+        </li>
+        <li class="d-flex flex-wrap align-items-center justify-content-between">
+          <div class="left">$17.25<span>/ $2.15 per oz.</span></div>
+          <div class="right">8 oz.</div>
+        </li>
+        <li class="d-flex flex-wrap align-items-center justify-content-between">
+          <div class="left">$28.75<span>/ $0.89 per oz.</span></div>
+          <div class="right">32 oz.</div>
+        </li>
+        <li class="d-flex flex-wrap align-items-center justify-content-between">
+          <div class="left">$85.00<span>/ $0.67 per oz.</span></div>
+          <div class="right">1 gal.</div>
+        </li>
+        <li class="d-flex flex-wrap align-items-center justify-content-between">
+          <div class="left">$422.50<span>/ $0.66 per oz.</span></div>
+          <div class="right">5 gal.</div>
+        </li>
+      </ul>
+      <div class="d-flex justify-content-end mb-5">
+        <button type="button" class="btn btn-white expand-list">More Options</button>
+      </div>
+      <div class="add-to-cart-wrap mb-30">
+        <label>Quantity:</label>
+        <div class="d-flex flex-wrap align-items-center">
+          <select class="custom-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10+</option>
+          </select>
+          <button class="btn btn-primary">$12.59 - Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="cart-similar-item">
+      <div class="wrap">
+        <p>You might need this:</p>
+        <div class="similar-item-thumb"><a href="#"><%= image_tag "product-thumb-1.jpg", alt:'image' %> </a></div>
+        <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
+        <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
+    </div>
   </div>
-<% end %>
+</div>
