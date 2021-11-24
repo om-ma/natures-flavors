@@ -624,20 +624,9 @@ a.btn {
 .lSAction > a:not(:disabled):not(.disabled):active {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
-.btn-primary1,
-.btn-primary1:focus {
-	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
-}
 
-.btn-primary1:hover,
-.lSAction > a:hover {
-    background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
-}
 
-.btn-primary1:not(:disabled):not(.disabled):active,
-.lSAction > a:not(:disabled):not(.disabled):active {
-    background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
-}
+
 .btn-secondary,
 .btn-secondary:focus {
     color: #000 !important;
@@ -3835,7 +3824,7 @@ a.btn.btn-block {
 
 	padding-right: 18px;
 }
-.pagination-wrap .btn-primary1 span {	
+.pagination-wrap .prev-page-icon span {	
 	background-image: image-url("arrow-left-white-icon.svg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;
