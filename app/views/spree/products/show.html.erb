@@ -54,12 +54,7 @@
     <div class="col-xl-1 tablet-hide"></div>
     <div class="col-xl-8 col-lg-8">
       <div class="product-detail-wrapper">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Fragrances</a></li>
-          <li class="breadcrumb-item"><a href="#">Fragrance Oils</a></li>
-          <li class="breadcrumb-item active">Oil Soluble</li>
-        </ol>
+          <%= spree_breadcrumbs(@taxon, '', @product) %>
         <div class="title-wrap position-relative">
           <h1 class="title"> <%= @product.name %></h1>
           <div class="ratings">  <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star-off.svg", alt:'star' %><span>5 Reviews</span></div>
@@ -75,6 +70,7 @@
             <%= render partial: 'gallery_modal' %>
             <div class="col-xl-5">
               <%= render partial: 'phone_cart' %>
+              <%= render partial: 'description' %>
           </div>
         </div>
       </div>
@@ -86,13 +82,11 @@
       <div class="col-xl-1 tablet-hide"></div>
       <%= render partial: 'properties' %>
       <%= render partial: 'related_products' %>
-    </div> 
+    </div>
+    <%= render partial: 'customer_reviews' %> 
   </div>
-  <%= render partial: 'customer_reviews' %>
   </div>
 </main>
-
-
 <script>
   AOS.init();
 </script> 

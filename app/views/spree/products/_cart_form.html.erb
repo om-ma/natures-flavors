@@ -81,64 +81,364 @@
     <%# end %>
   </div> -->
 <%# end %>
+<% is_product_available_in_currency = product_available_in_currency? %>
+<% default_variant = default_variant(@variants, @product) %>
 
 <div class="col-xl-3 col-lg-4 phone-hide">
   <div class="product-side-details d-flex flex-column justify-content-between h-100">
+    <%= form_for :order, html: {
+      id: 'add-to-cart-form',
+      class: 'add-to-cart-form',
+      'data-product-summary': @product_summary.to_json,
+      'data-variants': product_variants_matrix(is_product_available_in_currency),
+    } do |f| %>
     <div class="top-detail">
       <div class="product-options-header d-flex align-items-center justify-content-between">
         <div class="left">Choose your <strong>option:</strong></div>
-        <div class="right">NF-10032/NAT-2oz</div>
+        <div class="right">
+          <div class="text-center text-md-left add-to-cart-form-general-availability text-uppercase">
+            <%= Spree.t(:availability) %>:
+            <% if !is_product_available_in_currency %>
+              <%= render 'cart_form_availability_templates', type: 'not-available-in-currency' %>
+            <% elsif default_variant.in_stock? %>
+              <%= render 'cart_form_availability_templates', type: 'in-stock' %>
+            <% elsif default_variant.backorderable? %>
+              <%= render 'cart_form_availability_templates', type: 'backorderable' %>
+            <% else %>
+              <%= render 'cart_form_availability_templates', type: 'out-of-stock' %>
+            <% end %>
+          </div>
+        </div>
       </div>
       <ul class="size-availability">
-        <li class="d-flex flex-wrap align-items-center justify-content-between active">
-          <div class="left">$12.59<span>/ $6.29 per oz.</span></div>
-          <div class="right">2 oz.</div>
-        </li>
-        <li class="d-flex flex-wrap align-items-center justify-content-between">
-          <div class="left">$17.25<span>/ $2.15 per oz.</span></div>
-          <div class="right">8 oz.</div>
-        </li>
-        <li class="d-flex flex-wrap align-items-center justify-content-between">
-          <div class="left">$28.75<span>/ $0.89 per oz.</span></div>
-          <div class="right">32 oz.</div>
-        </li>
-        <li class="d-flex flex-wrap align-items-center justify-content-between">
-          <div class="left">$85.00<span>/ $0.67 per oz.</span></div>
-          <div class="right">1 gal.</div>
-        </li>
-        <li class="d-flex flex-wrap align-items-center justify-content-between">
-          <div class="left">$422.50<span>/ $0.66 per oz.</span></div>
-          <div class="right">5 gal.</div>
+        <% if @product.variants_and_option_values(current_currency).any? %>
+         <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
+        <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? "active" : "" %> data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" id="product-variants" </li> 
+                <% option_value = variant.size_options %>
+                <div class="left"><%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
+                <div class="right"> 
+                        <%= option_value&.presentation %>
+                      </div>
+                  <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
+                         'data-price' => variant.price_in(current_currency).money,
+                         'data-in-stock' => variant.can_supply?,
+                         'data-backordered' => variant.backordered?,
+                     style: "display:none"
+                     %>
+                <% end%>
+           
+            <% else %>
+              <%= hidden_field_tag "variant_id", @product.master.id %>
+            <% end %>
         </li>
       </ul>
       <div class="d-flex justify-content-end mb-5">
         <button type="button" class="btn btn-white expand-list">More Options</button>
       </div>
-      <div class="add-to-cart-wrap mb-30">
-        <label>Quantity:</label>
-        <div class="d-flex flex-wrap align-items-center">
-          <select class="custom-select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10+</option>
-          </select>
-          <button class="btn btn-primary">$12.59 - Add to Cart</button>
+      <div class="add-to-cart-wrap">
+      <%if is_product_available_in_currency && @product.can_supply? %>
+      <%= hidden_field_tag "variant_id", default_variant.id %>
+
+      <hr>
+      <div>
+        <div class="mb-5 mt-4 text-center text-md-left">
+          <%= render 'spree/shared/quantity_select', input_name: :quantity %>
+        </div>
+
+        <%= button_tag class: 'btn btn-primary w-100 text-uppercase font-weight-bold add-to-cart-button', id: 'add-to-cart-button', type: :submit, disabled: true do %>
+          <%= Spree.t(:add_to_cart) %>
+        <% end %>
+        <% end %>
+        
+      </div>
         </div>
       </div>
+    <%end%>
     </div>
     <div class="cart-similar-item">
       <div class="wrap">
         <p>You might need this:</p>
-        <div class="similar-item-thumb"><a href="#"><%= image_tag "product-thumb-1.jpg", alt:'image' %> </a></div>
+        <div class="similar-item-thumb"><a href="#"><img src="assets/images/product-thumb-1.jpg" alt=""></a></div>
         <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
         <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
     </div>
   </div>
 </div>
+
+
+
+<script>
+  AOS.init();
+</script> 
+
+<!-- For mobile menu --> 
+<script>
+  const slinky = $('#menu').slinky({title:true});
+</script> 
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script> 
+<script>
+  $('.close-menu').on('click', function(e) {
+    $('.mobile-menu').toggleClass("show");
+    e.preventDefault();
+  });
+</script> 
+<script>
+  $('.sub-menu > li').click(function(e){
+    e.stopPropagation();
+	$(this).toggleClass('active');
+    $(this).children('div').slideToggle();
+    $(this).closest('.parent').siblings().children('div').slideUp();
+  });
+</script> 
+<script>
+  $(document).ready(function() {
+    $('#videos-slider').lightSlider({
+        item: 2,
+        loop: false,
+        slideMove: 1,
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+        speed: 600,
+		slideMargin: 120,
+		enableTouch: true,
+		pager: false,
+		onSliderLoad: function (el) {
+		  var parent = el.parent();
+		  var action = parent.find('.lSAction');
+		  action.insertBefore(parent);
+	    },
+        responsive : [
+        {
+          breakpoint:1199,
+          settings: {
+            slideMargin: 40,
+          }
+        },
+        {
+          breakpoint:991,
+          settings: {
+            item:2,
+            slideMove:1,
+            slideMargin: 30
+          }
+        },
+        {
+          breakpoint:575,
+          settings: {
+            item:1,
+            slideMargin:20
+          }
+        }
+      ]
+    });
+  });
+</script> 
+<script>
+  $(document).ready(function() {
+    $('#blog-slider').lightSlider({
+        item: 2,
+        loop: false,
+        slideMove: 1,
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+        speed: 600,
+		slideMargin: 120,
+		enableTouch: true,
+		pager: false,
+        onSliderLoad: function (el) {
+		  var parent = el.parent();
+		  var action = parent.find('.lSAction');
+		  action.insertBefore(parent);
+	    },
+        responsive : [
+        {
+          breakpoint:1199,
+          settings: {
+            slideMargin: 40,
+          }
+        },
+        {
+          breakpoint:991,
+          settings: {
+            item: 2,
+            slideMove: 1,
+            slideMargin: 30
+          }
+        },
+        {
+          breakpoint:575,
+          settings: {
+            item: 1,
+            slideMargin: 20
+          }
+        }
+      ]
+    });
+  });  
+</script> 
+<script>
+  $(document).ready(function() {
+    $('#reviews-slider').lightSlider({
+        item: 3,
+        loop: false,
+        slideMove: 1,
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+        speed: 600,
+		slideMargin: 0,
+		enableTouch: true,
+		pager: false,
+        onSliderLoad: function (el) {
+		  var parent = el.parent();
+		  var action = parent.find('.lSAction');
+		  action.insertBefore(parent);
+	    },
+        responsive : [
+        {
+          breakpoint:1199,
+          settings: {
+            item: 2,
+            slideMove: 1,
+          }
+        },
+        {
+          breakpoint:767,
+          settings: {
+            item: 1,
+            slideMove: 1,
+          }
+        }
+      ]
+    });
+  });  
+</script> 
+<script>
+  $('.nav-cart').on('click', function(e) {
+    $('.nav-search').removeClass('active');
+    $('.mobile-search-menu').removeClass('active');
+    $('.mobile-menu').removeClass('show');
+    $('.sidebar-menu-wrapper .overlay').removeClass('active');
+    // actual function
+    $('.mobile-menu-link').addClass('collapsed');
+    $('.cart-sidebar').toggleClass("active");
+    $('.nav-cart').toggleClass("active");
+    $('.cart-sidebar-wrapper .overlay').toggleClass("active");
+    $('body').removeClass("hide-scroll");
+  e.preventDefault();
+  });
+    
+  $('.close-sidebar-btn').on('click', function(e) {
+    $('.nav-cart').toggleClass("active");
+    $('.cart-sidebar').toggleClass("active");
+    $('.cart-sidebar-wrapper .overlay').toggleClass("active");
+    $('body').removeClass("hide-scroll");
+  e.preventDefault();
+  });
+    
+  $('.cart-sidebar-wrapper .overlay').on('click', function(e) {
+    $('.nav-cart').toggleClass("active");
+    $('.cart-sidebar').toggleClass("active");
+    $('.cart-sidebar-wrapper .overlay').toggleClass("active");
+    $('body').removeClass("hide-scroll");
+  e.preventDefault();
+  });
+</script> 
+<script>
+  $('.mobile-menu-link').on('click', function(e) {
+    $('.nav-search').removeClass('active');
+    $('.mobile-search-menu').removeClass('active');
+    $('.nav-cart').removeClass('active');
+    $('.cart-sidebar').removeClass('active');
+    $('.cart-sidebar-wrapper .overlay').removeClass('active');
+    $('body').removeClass("hide-scroll");
+  });
+</script> 
+<script>
+  $('.nav-search').on('click', function(e) {
+    if($('.nav-cart').hasClass('active')){
+      $('.nav-cart').removeClass('active');
+    }
+    if($('.cart-sidebar').hasClass('active')){
+      $('.cart-sidebar').removeClass('active');
+    }
+    if($('.cart-sidebar-wrapper .overlay').hasClass('active')){
+      $('.cart-sidebar-wrapper .overlay').removeClass('active');
+    }
+    if($('.mobile-menu').hasClass('show')){
+      $('.mobile-menu').removeClass('show');
+    }
+    $('.mobile-menu-link').addClass('collapsed');
+    $('.mobile-search-menu').toggleClass("active");
+    $('.nav-search').toggleClass("active");
+  e.preventDefault();
+  });
+</script> 
+<script>
+  $(document).ready(function() {
+    var showChar = 360;
+	var ellipsestext = "...";
+	var moretext = "more";
+	var lesstext = "less";
+	$('.more').each(function() {
+	  var content = $(this).html();
+	  if(content.length > showChar) {
+        var c = content.substr(0, showChar);
+        var h = content.substr(showChar-1, content.length - showChar);
+        var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+        $(this).html(html);
+      }
+    });
+
+	$(".morelink").click(function(){
+      if($(this).hasClass("less")) {
+        $(this).removeClass("less");
+        $(this).html(moretext);
+      } else {
+        $(this).addClass("less");
+        $(this).html(lesstext);
+      }
+      $(this).parent().prev().toggle();
+      $(this).prev().toggle();
+      return false;
+    });
+  });
+</script> 
+<script>
+  $(document).ready(function() {
+    $('#product-gallery').lightSlider({
+		gallery: true,
+        item:1,
+        loop:false,
+		controls: false,
+        slideMove:1,
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+        speed:600,
+		slideMargin:0,
+		enableTouch: true,
+		pager: true,
+		thumbItem: 3,
+        responsive : [
+        {
+          breakpoint:991,
+          settings: {
+            auto: true,
+            loop: true,
+          }
+        },
+      ]
+    });  
+  });
+</script>
+<script>
+  $('.product-ov-js').on('click', function(e) {
+    $('.product-ov-js').removeClass("active");
+    $(this).addClass('active')
+    var variantSku = $(this).attr("data-varient-sku");
+    $("#product_variant_sku").replaceWith(
+      "<strong id = 'product_variant_sku'>" + variantSku + "</strong>"
+   );
+    var variantId = $(this).attr("data-varient-id");
+    $('#variant_id_'+ variantId ).click();
+  });
+</script>
