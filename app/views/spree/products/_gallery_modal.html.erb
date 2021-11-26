@@ -40,24 +40,27 @@
     </div>
   </div> -->
 <%# end %>
+
 <% if (@product.images + @product.variant_images).uniq.size > 1 %>
 <div class="col-xl-7">
-  <div class="product-gallery-wrap">   
-<ul id="product-gallery" data-hook>
+  <div class="product-gallery-wrap">
+  <ul id="product-gallery"  data-hook>
     <% @product.images.each do |i| %>
-    <li  data-thumb=' <%=  image_tag(main_app.url_for(i.url(:mini))) %>'>
-      <%=  image_tag(main_app.url_for(i.url(:product))) %>
-    </li>
+      <li>
+        <%= image_tag(main_app.url_for(i.url(:large))) %>
+      </li>
     <% end %>
-       <% if @product.has_variants? %>
+
+    <% if @product.has_variants? %>
       <% @product.variant_images.each do |i| %>
         <% next if @product.images.include?(i) %>
-        <li  data-thumb=' <%= image_tag(main_app.url_for(i.url(:mini))) %>'>
-          <%= image_tag(main_app.url_for(i.url(:product))) %>
+        <li <%= i.viewable.id %>>
+          <%= link_to(image_tag(main_app.url_for(i.url(:mini)), class: "img-thumbnail"), main_app.url_for(i.url(:product))) %>
         </li>
       <% end %>
     <% end %>
-  </ul> 
+  </ul>
 <% end %>
   </div>
-  </div>
+</div>
+

@@ -2,22 +2,9 @@
   <div class="latest-deals">
     <h3>Related Products</h3>
     <div class="products-wrapper d-lg-flex align-items-start">
-      <div class="product-wrap"> <a href="#">
-        <div class="product-img"> <%= image_tag "product-thumb-1.jpg", alt:'' %>
-          <div class="price"><span>$24.51</span>$13.51</div>
-        </div>
-        <div class="product-desc">
-          <h4>Acorn Flavored Powder, Natural</h4>
-        </div>
-        </a> </div>
-      <div class="product-wrap"> <a href="#">
-        <div class="product-img"> <%= image_tag "product-thumb-2.jpg", alt:'' %>
-          <div class="price"><span>$24.51</span>$13.51</div>
-        </div>
-        <div class="product-desc">
-          <h4>Acai Compound, Natural</h4>
-        </div>
-        </a> </div>
+      <% @related_products.each_with_index do |product, index| %>
+      <%= render 'spree/shared/product', product: product, image_class: 'product-component-plp-image' %>
+      <% end %>
     </div>
   </div>
 </div>
