@@ -66,7 +66,7 @@
             </ul>
           </div>
           <div class="product-desc-wrap" data-hook="product_right_part"> 
-            <div class="row">
+            <div class="row" data-hook="product_show">
               <%= render partial: 'gallery_modal' %>
               <div class="col-xl-5">
                 <%= render partial: 'phone_cart' %>
@@ -82,7 +82,9 @@
       <div class="product-tabs-wrapper">
         <div class="row no-gutters">
           <div class="col-xl-1 tablet-hide"></div>
+          <div class="col-xl-7 col-lg-7" data-hook="product_properties">
           <%= render partial: 'properties' %>
+          </div>
           <%= render partial: 'related_products' %>
         </div>
         <%= render partial: 'customer_reviews' %> 
