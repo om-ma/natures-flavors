@@ -11,7 +11,7 @@
   <%# end %>
 <%# end %>
 <% url = spree.product_path(product, taxon_id: @taxon&.id) %>
-<div class="col col-12">
+<div >
   <div class="product-wrap" id="product_<%= product.id %>">
     <%= link_to url do %>
       <% cache [common_product_cache_keys, product] do %>

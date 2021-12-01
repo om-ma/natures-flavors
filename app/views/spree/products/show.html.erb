@@ -50,43 +50,46 @@
   data-related-products-id="<%= @product.slug %>"
   data-related-products-enabled="<%= @product.respond_to?(:has_related_products?) %>" />
   <main class="page-contents">
-  <div class="row no-gutters">
-    <div class="col-xl-1 tablet-hide"></div>
-    <div class="col-xl-8 col-lg-8">
-      <div class="product-detail-wrapper">
-          <%= spree_breadcrumbs(@taxon, '', @product) %>
-        <div class="title-wrap position-relative">
-          <h1 class="title"> <%= @product.name %></h1>
-          <div class="ratings">  <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star-off.svg", alt:'star' %><span>5 Reviews</span></div>
-          <ul class="product-standards d-flex flex-wrap align-items-center phone-visible">
-            <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
-            <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
-            <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
-            <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
-          </ul>
-        </div>
-        <div class="product-desc-wrap">
-          <div class="row">
-            <%= render partial: 'gallery_modal' %>
-            <div class="col-xl-5">
-              <%= render partial: 'phone_cart' %>
-              <%= render partial: 'description' %>
+    <div class="row no-gutters">
+      <div class="col-xl-1 tablet-hide"></div>
+      <div class="col-xl-8 col-lg-8">
+        <div class="product-detail-wrapper">
+            <%= spree_breadcrumbs(@taxon, '', @product) %>
+          <div class="title-wrap position-relative">
+            <h1 class="title"> <%= @product.name %></h1>
+            <div class="ratings">  <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star-off.svg", alt:'star' %><span>5 Reviews</span></div>
+            <ul class="product-standards d-flex flex-wrap align-items-center phone-visible">
+              <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
+              <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
+              <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
+              <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
+            </ul>
+          </div>
+          <div class="product-desc-wrap" data-hook="product_right_part"> 
+            <div class="row">
+              <%= render partial: 'gallery_modal' %>
+              <div class="col-xl-5">
+                <%= render partial: 'phone_cart' %>
+                <div  id="product-description" data-hook="product_right_part_wrap">
+                  <%= render partial: 'description' %>
+                </div>
+               </div>
+            </div>
           </div>
         </div>
       </div>
+     <%= render partial: 'cart_form' %>
+      <div class="product-tabs-wrapper">
+        <div class="row no-gutters">
+          <div class="col-xl-1 tablet-hide"></div>
+          <%= render partial: 'properties' %>
+          <%= render partial: 'related_products' %>
+        </div>
+        <%= render partial: 'customer_reviews' %> 
+      </div>
     </div>
-  </div>
-  <%= render partial: 'cart_form' %>
-  <div class="product-tabs-wrapper">
-    <div class="row no-gutters">
-      <div class="col-xl-1 tablet-hide"></div>
-      <%= render partial: 'properties' %>
-      <%= render partial: 'related_products' %>
-    </div>
-    <%= render partial: 'customer_reviews' %> 
-  </div>
-  </div>
-</main>
+  </main>
+</div>
 <script>
   AOS.init();
 </script> 
