@@ -4,7 +4,7 @@ Spree::TaxonsController.class_eval do
       if params.include?('per_page')
         @per_page = params['per_page'].to_i
       else
-        @per_page = 25
+        @per_page = 20
         params['per_page'] = @per_page
       end
 
