@@ -3,10 +3,10 @@
     <h3>Related Products</h3>
     <div class="products-wrapper d-lg-flex align-items-start">
         <% @related_products.each_with_index do |product, index| %>
-        <div class="product-wrap">
-          <%= render 'product', product: product, image_class: 'product-component-plp-image' %>
-        </div>
-          <% end %>
+          <div class="product-wrap">
+            <%= render 'product', product: product, image_class: 'product-component-plp-image' %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

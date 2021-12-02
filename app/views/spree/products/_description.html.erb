@@ -21,18 +21,20 @@
   <%# end %>
 <%# end %>
 <% if Spree::Config[:show_raw_product_description] || product_wysiwyg_editor_enabled? %>
+<div data-hook="product_right_part_wrap">  
   <div id="product-description-short"  data-hook="short-description">
-    <%= sanitize product_description(@product).truncate(450) %>
+      <%= sanitize product_description(@product).truncate(450) %>
   </div>
-<% end %>
-<ul class="product-standards d-flex flex-wrap align-items-center phone-hide">
-  <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
-  <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
-  <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
-  <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
-</ul>
-<div class="product-ingredients">
-  <h5>Ingredients</h5>
-  <p>Organic Sunflower Oil and Natural Flavors for Fragrances</p>
+  <% end %>
+  <ul class="product-standards d-flex flex-wrap align-items-center phone-hide">
+    <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
+    <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
+    <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
+    <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
+  </ul>
+  <div class="product-ingredients">
+    <h5>Ingredients</h5>
+    <p>Organic Sunflower Oil and Natural Flavors for Fragrances</p>
+  </div>
+  <div class="product-actions d-flex flex-wrap align-items-center"> <a href="#" class="faq-link">Ask a Question</a> <a href="#" class="add-to-fav">Add to Wishlist</a> </div>
 </div>
-<div class="product-actions d-flex flex-wrap align-items-center"> <a href="#" class="faq-link">Ask a Question</a> <a href="#" class="add-to-fav">Add to Wishlist</a> </div>
