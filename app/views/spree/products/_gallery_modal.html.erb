@@ -46,7 +46,7 @@
   <div class="product-gallery-wrap">
     <ul id="product-gallery"  data-hook>
       <% @product.images.each do |i| %>
-        <li data-thumb= <%= main_app.url_for(i.url(:product)) %>>
+        <li data-thumb= <%= main_app.url_for(i.url(:product)) %> <%= i.viewable.id %> >
           <%= image_tag(main_app.url_for(i.url(:large))) %>
         </li>
       <% end %>
@@ -56,8 +56,8 @@
           <li <%= i.viewable.id %>>
             <%= link_to(image_tag(main_app.url_for(i.url(:mini)), class: "img-thumbnail"), main_app.url_for(i.url(:product))) %>
           </li>
-          <% end %>
-       <% end %>
+        <% end %>
+      <% end %>
     </ul>
   </div>
 </div>

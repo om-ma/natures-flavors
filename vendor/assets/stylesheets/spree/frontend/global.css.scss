@@ -625,20 +625,22 @@ a.btn {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
-.btn-primary1,
-.btn-primary1:focus {
+.prev-page-icon,
+.prev-page-icon:focus {
 	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
 }
 
-.btn-primary1:hover,
+.prev-page-icon:hover,
 .lSAction > a:hover {
     background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
 }
 
-.btn-primary1:focus:not(:disabled):not(.disabled):active,
+.prev-page-icon:not(:disabled):not(.disabled):active,
 .lSAction > a:not(:disabled):not(.disabled):active {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
+
+
 
 
 .btn-secondary,
@@ -710,7 +712,7 @@ a.btn.btn-block {
 	height: 40px;
 	padding: 0 17px;
 	min-width: 160px;
-	background-image: url("../images/arrow-bottom-icon.svg");
+	background-image: image-url("arrow-bottom-icon.svg");
 	background-position: 90% center;
 	background-repeat: no-repeat;
 }
@@ -2785,45 +2787,45 @@ a.btn.btn-block {
 }
 
 .product-standards .glutenfree-icon {
-	background-image: image-url("glutenfree.svg");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center;
-}
-
-.product-standards .glutenfree-icon:hover {
-	background-image: image-url("glutenfree-hover.svg");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center;
-}
-
-.product-standards .nongmo-icon {
-	background-image: image-url("non-gmo.svg");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center;
-}
-
-.product-standards .nongmo-icon:hover {
-	background-image: image-url("non-gmo-hover.svg");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center;
-}
-
-.product-standards .u-icon {
-	background-image: image-url("u.svg");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center;
-}
-
+		background-image: image-url("glutenfree.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	
+	 }
+	 
+	 .product-standards .glutenfree-icon:hover {
+		background-image: image-url("glutenfree-hover.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	 }
+	 
+	 .product-standards .nongmo-icon {
+		background-image: image-url("non-gmo.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	 }
+	 
+	 .product-standards .nongmo-icon:hover {
+		background-image: image-url("non-gmo-hover.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	 }
+	
+	 .product-standards .u-icon {
+		background-image: image-url("u.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	}
 .product-standards .u-icon:hover {
-	background-image: image-url("u-hover.svg");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center;
+		background-image: image-url("u-hover.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
 }
 
 .product-standards .vegan-icon {
@@ -2878,12 +2880,18 @@ a.btn.btn-block {
 }
 
 .product-actions a.faq-link {
-	background: url("../images/qa-icon.svg") no-repeat scroll left center;
+	background-image: image-url("qa-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:  left center;
 	padding-left: 35px;
 }
 
 .product-actions a.add-to-fav {
-	background: url("../images/heart.svg") no-repeat scroll left center;
+	background-image: image-url("heart.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:  left center;
 	padding-left: 25px;
 }
 
@@ -3853,12 +3861,9 @@ a.btn.btn-block {
 .pagination-wrap .btn-primary span {
 	position: relative;
 }
-
-.pagination-wrap .btn-primary1 span {
+.pagination-wrap .prev-page-icon span {
 	position: relative;
 }
-
-
 .pagination-wrap .btn-primary span {
 	background-image: image-url("arrow-right-white-icon.svg");
 	background-repeat: no-repeat;
@@ -3867,16 +3872,17 @@ a.btn.btn-block {
 
 	padding-right: 18px;
 }
-
-.pagination-wrap .btn-outline span {
-	background-image: image-url("arrow-left-icon.svg");
+.pagination-wrap .prev-page-icon span {	
+	background-image: image-url("arrow-left-white-icon.svg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position: left center;	
 	padding-left: 18px;
 }
-.pagination-wrap .btn-primary1 span {
-	background-image: image-url("arrow-left-white-icon.svg");
+
+
+.pagination-wrap .btn-outline span {
+	background-image: image-url("arrow-left-icon.svg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position: left center;	
@@ -4151,11 +4157,10 @@ a.btn.btn-block {
 	padding: 0;
 	width: 50px;
 	height: 50px;
-	background-image: image-url("arrow-bottom-icon.png");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center;
-
+	background-image: image-url("arrow-bottom-icon.svg"); 
+	background-repeat: no-repeat; 
+	background-attachment: scroll; 
+	background-position: center;
 	border: solid 1px #ececec;
 	box-shadow: none !important;
 	border-radius: 21px;
