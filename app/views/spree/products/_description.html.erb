@@ -21,7 +21,7 @@
   <%# end %>
 <%# end %>
 <% if Spree::Config[:show_raw_product_description] || product_wysiwyg_editor_enabled? %>
-<div data-hook="product_right_part_wrap">  
+<div data-hook="product_description">  
   <div id="product-description-short"  data-hook="short-description">
       <%= sanitize product_description(@product).truncate(450) %>
   </div>
@@ -32,15 +32,6 @@
     <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
     <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
   </ul>
-  <div class="product-ingredients" id="product-properties"  data-hook>
-    <h5>Ingredients</h5>
-    <% unless @product_properties.blank? %>
-        <% @product_properties.each do |product_property| %>
-          <% if product_property.show_property? %>
-              <span ><%= product_property.value %></span>
-          <% end %>
-        <%end %>
-    <%end %>
-  </div>
+  <%= render partial: 'properties' %>
   <div class="product-actions d-flex flex-wrap align-items-center"> <a href="#" class="faq-link">Ask a Question</a> <a href="#" class="add-to-fav">Add to Wishlist</a> </div>
 </div>

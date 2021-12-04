@@ -1,131 +1,16 @@
-<%# @body_id = 'product-details' %>
 
-<!-- <div class="container">
-  <%#= spree_breadcrumbs(@taxon, '', @product) %>
-</div>
-
-<%# cache cache_key_for_product do %>
-  <div class="container pt-4 product-details">
-    <div class="row" data-hook="product_show">
-      <%#= render partial: 'gallery' %>
-      <div class="col-12 col-md-5" data-hook="product_right_part">
-        <div id="product-description" data-hook="product_right_part_wrap">
-          <h1 class="mt-3 mt-md-0 text-center text-md-left product-details-title">
-            <%#= @product.name %>
-          </h1>
-          <div id="cart-form" data-hook="cart_form">
-            <%#= render 'cart_form', variant_change_identifier: 'productCarousel' %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pb-4 pt-md-5 row" data-hook="product_description">
-      <div class="col-12 col-md-7 col-lg-6">
-        <%#= render partial: 'description' %>
-      </div>
-      <div class="d-none d-lg-block col-lg-1"></div>
-      <div class="col-12 col-md-5" data-hook="product_properties">
-        <%#= render partial: 'properties' %>
-      </div>
-      <div class="col-12" data-hook="promotions">
-        <%#= render partial: 'promotions' %>
-      </div>
-    </div>
-
-    <div id="no-product-available" class="no-product-available-dropdown">
-      <%#= render partial: 'spree/shared/no_product_available' %>
-    </div>
-
-    <%#= render partial: 'gallery_modal' %>
-  </div>
-  <div id="related-products"></div> -->
-
-  <%#= products_structured_data([@product]) %>
-
-  <%#= render 'spree/shared/product_added_modal' %>
-<%# end %>
-<% @body_id = 'product-details' %>
-<div
-  data-related-products
-  data-related-products-id="<%= @product.slug %>"
-  data-related-products-enabled="<%= @product.respond_to?(:has_related_products?) %>" />
-  <main class="page-contents">
-    <% cache cache_key_for_product do %>
-      <div class="row no-gutters">
-        <div class="col-xl-1 tablet-hide"></div>
-        <div class="col-xl-8 col-lg-8">
-          <div class="product-detail-wrapper">
-              <%= spree_breadcrumbs(@taxon, '', @product) %>
-            <div class="title-wrap position-relative" data-hook="product_show">
-              <h1 class="title"> <%= @product.name %></h1>
-              <div class="ratings">  <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star-off.svg", alt:'star' %><span>5 Reviews</span></div>
-              <ul class="product-standards d-flex flex-wrap align-items-center phone-visible">
-                <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
-                <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
-                <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
-                <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
-              </ul>
-            </div>
-            <div class="product-desc-wrap" > 
-              <div class="row" >
-                <%= render partial: 'gallery' %>
-                <div class="col-xl-5">
-                  <%= render partial: 'phone_cart' %>
-                  <div  id="product-description" >
-                    <%= render partial: 'description' %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart-form" data-hook="product_right_part" data-hook="product_right_part_wrap">
-          <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>   
-        </div>
-        <div class="product-tabs-wrapper">
-          <div class="row no-gutters">
-            <div class="col-xl-1 tablet-hide"></div>
-            <div class="col-xl-7 col-lg-7" >
-            <%= render partial: 'detailed_description' %>
-            </div>
-            <%= render partial: 'related_products' %>
-          </div>
-          <%= render partial: 'customer_reviews' %> 
-        </div>
-      </div>
-    <%end%>
-  </main>
-</div>
-
-
-<script>
-  AOS.init();
-</script> 
-
-<!-- For mobile menu --> 
-<script>
-  const slinky = $('#menu').slinky({title:true});
-</script> 
-<script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-</script> 
-<script>
   $('.close-menu').on('click', function(e) {
     $('.mobile-menu').toggleClass("show");
     e.preventDefault();
   });
-</script> 
-<script>
+
   $('.sub-menu > li').click(function(e){
     e.stopPropagation();
 	$(this).toggleClass('active');
     $(this).children('div').slideToggle();
     $(this).closest('.parent').siblings().children('div').slideUp();
   });
-</script> 
-<script>
+
   $(document).ready(function() {
     $('#videos-slider').lightSlider({
         item: 2,
@@ -166,8 +51,7 @@
       ]
     });
   });
-</script> 
-<script>
+
   $(document).ready(function() {
     $('#blog-slider').lightSlider({
         item: 2,
@@ -208,8 +92,7 @@
       ]
     });
   });  
-</script> 
-<script>
+
   $(document).ready(function() {
     $('#reviews-slider').lightSlider({
         item: 3,
@@ -243,8 +126,7 @@
       ]
     });
   });  
-</script> 
-<script>
+
   $('.nav-cart').on('click', function(e) {
     $('.nav-search').removeClass('active');
     $('.mobile-search-menu').removeClass('active');
@@ -274,8 +156,7 @@
     $('body').removeClass("hide-scroll");
   e.preventDefault();
   });
-</script> 
-<script>
+
   $('.mobile-menu-link').on('click', function(e) {
     $('.nav-search').removeClass('active');
     $('.mobile-search-menu').removeClass('active');
@@ -284,8 +165,6 @@
     $('.cart-sidebar-wrapper .overlay').removeClass('active');
     $('body').removeClass("hide-scroll");
   });
-</script> 
-<script>
   $('.nav-search').on('click', function(e) {
     if($('.nav-cart').hasClass('active')){
       $('.nav-cart').removeClass('active');
@@ -304,8 +183,7 @@
     $('.nav-search').toggleClass("active");
   e.preventDefault();
   });
-</script> 
-<script>
+
   $(document).ready(function() {
     var showChar = 360;
 	var ellipsestext = "...";
@@ -334,8 +212,7 @@
       return false;
     });
   });
-</script> 
-<script>
+
   $(document).ready(function() {
     $('#product-gallery').lightSlider({
 		gallery: true,
@@ -360,4 +237,4 @@
       ]
     });  
   });
-</script>
+
