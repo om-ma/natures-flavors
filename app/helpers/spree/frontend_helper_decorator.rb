@@ -44,6 +44,4 @@ Spree::FrontendHelper.class_eval do
         end
        content_tag(:ol, raw(crumbs.flatten.map(&:mb_chars).join), class: 'breadcrumb', itemscope: 'itemscope', itemtype: 'https://schema.org/BreadcrumbList')
       end
-         
-
 end

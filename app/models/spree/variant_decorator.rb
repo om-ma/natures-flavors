@@ -1,4 +1,3 @@
-
 module Spree
     module VariantDecorator
       def size_options
@@ -7,5 +6,4 @@ module Spree
       end
     end
   end
-  
   ::Spree::Variant.prepend(Spree::VariantDecorator)
