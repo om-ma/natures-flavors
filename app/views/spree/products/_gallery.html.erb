@@ -24,9 +24,9 @@
   <%# end %>
 </div> -->
 <% if (@product.images + @product.variant_images).uniq.size > 1 %>
-<div class="col-xl-7" data-hook="product_show">
-  <div class="product-gallery-wrap">
-    <ul id="product-gallery"  data-hook>
+<div class="col-xl-7" data-hook="product_left_part" data-hook="product_left_part_wrap">
+  <div class="product-gallery-wrap" data-hook="product_thumbnails">
+    <ul id="product-gallery"  data-hook data-hook="product_images">
       <% @product.images.each do |i| %>
         <li data-thumb= <%= main_app.url_for(i.url(:product)) %> <%= i.viewable.id %> >
           <%= image_tag(main_app.url_for(i.url(:large))) %>
