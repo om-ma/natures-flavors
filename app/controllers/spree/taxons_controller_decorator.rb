@@ -5,9 +5,9 @@ Spree::TaxonsController.class_eval do
       if params.include?('per_page')
         @per_page = params['per_page'].to_i
       else
-        @per_page = 24
+        @per_page = 25
         params['per_page'] = @per_page
-      end if
+      end
 
       @taxon = Spree::Taxon.friendly.find(params[:id])
       return unless @taxon
@@ -27,5 +27,5 @@ Spree::TaxonsController.class_eval do
       @taxonomies = Spree::Taxonomy.includes(root: :children).where('name ILIKE ?',"%Category%")
     end
   end
-  
+
 end
