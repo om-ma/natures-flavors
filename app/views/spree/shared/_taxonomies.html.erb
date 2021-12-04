@@ -44,7 +44,7 @@
   <li><a href="#">Flavoring for Ice Cream</a></li>
 </ul>
  -->
-<% max_level = Spree::Config[:max_level_in_taxons_menu] || 3 %>
+<% max_level =  3 %>
 <!-- <nav id="taxonomies"  data-hook> -->
 <h4>Categories:</h4>
 <% if @taxon.present? %>
@@ -56,7 +56,6 @@
     <% end %>
   <% end %>
 <% else %>
-  <% debugger %>
   <% @product_category.children.each do |taxonomy| %>
     <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
       <%= link_to taxonomy.name, seo_url(taxonomy) %>
