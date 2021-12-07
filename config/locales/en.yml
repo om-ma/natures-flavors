@@ -27,7 +27,16 @@
 #   'true': 'foo'
 #
 # To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
+# available at http://guides.rubyonrails.org/i18n.html.
 
 en:
   hello: "Hello world"
+  spree:
+    password: "Password*"
+    email: "Email Address*"
+    forgot_password: "Forgot your password?"
+    login: "Sign In" 
+    confirm_password: "Confirm Password*"
+    search: "Search..."
+    cart_page:
+      title: My Cart
