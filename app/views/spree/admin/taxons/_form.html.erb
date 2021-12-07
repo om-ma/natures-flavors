@@ -49,4 +49,8 @@
     <%= f.label :meta_keywords, Spree.t(:meta_keywords) %>
     <%= f.text_field :meta_keywords, class: 'form-control', rows: 6 %>
   <% end %>
+  <%= f.field_container :users, class: ['form-group'] do %>
+    <%= f.label :user_ids, Spree.t(:users) %>
+    <%= f.select :user_ids, Spree::User.all.map { |n| [n.email, n.id] }, {}, { multiple: true, class: 'select2' } %>                                    
+  <% end %>
 </div>

@@ -1,4 +1,5 @@
 Spree::TaxonsController.class_eval do
+  
   def show
     if stale? [@taxon, @products, @taxonomies, simple_current_order]
       load_products
@@ -27,6 +28,5 @@ Spree::TaxonsController.class_eval do
     else  
       @products =   products_searcher
     end
-
    end
 end
