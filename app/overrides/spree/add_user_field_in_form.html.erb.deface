@@ -1,0 +1,9 @@
+Deface::Override.new(virtual_path: 'spree/admin/taxons/_form',
+  name: 'add_user_field_in_form',
+  insert_after: " f.field_container :meta_keywords",
+  text: "
+    <%= f.field_container :users, class: ['form-group'] do %>
+        <%= f.label :user_ids, Spree.t(:users) %>
+        <%= f.select :user_ids, Spree::User.all.map { |n| [n.email, n.id] }, {}, { multiple: true, class: 'select2' } %>                                    
+    <% end %>
+  ")
