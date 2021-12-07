@@ -47,11 +47,11 @@
         <div class="products-wrapper">
           <div class="category-banner phone-visible"><img src="assets/images/category-banner.jpg" alt=""></div>
           <%= render partial: 'spree/taxons/introduction' %>
-          </div>
-          <%= render partial: 'spree/taxons/filters' %>
-          <%= render partial: 'spree/taxons/mobile_filters' %> 
-          <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }%>
-          <%= render partial: 'spree/taxons/pagination', products: @products  %> 
+        </div>
+        <%= render partial: 'spree/taxons/filters' %>
+        <%= render partial: 'spree/taxons/mobile_filters' %> 
+        <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }%>
+        <%= render partial: 'spree/taxons/pagination', products: @products  %> 
       </div>
     </div>
   </div>
