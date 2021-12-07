@@ -9,11 +9,11 @@
 <div class="sorting-filter d-flex align-items-center justify-content-end" >
   <label>Sort by:</label>
   <div class="product-sort-js" data-filter-type="most-popular">
+    <% active_klass_descending = "" %>
     <% if params[:sorting].present? && params[:sorting] == "descend_by_popularity" %>
-       <button type="button" class="active">Most Popular</button>
-    <%else%>
-      <button type="button">Most Popular</button>
+     <% active_klass_descending = "active" %>
     <%end%>
+    <button type="button" class="#{active_klass_descending}">Most Popular</button>
   </div>
   <% if params[:sorting].present? && params[:sorting] == "ascend_by_name" %>
     <button type="button" class="active">A to Z </button>
@@ -22,19 +22,20 @@
   <%end%>
 
    <div class="product-sort-js" data-filter-type="descending-filter" >
+    <% active_klass_descend_by_name = "" %>
     <% if params[:sorting].present? && params[:sorting] == "descend_by_name" %>
-      <button type="button" class="active">Z to A </button>
-    <% else %>
-      <button type="button" class=" ">Z to A</button>
+      <% active_klass_descend_by_name = "active" %>
+    <% end %>
+      <button type="button" class="#{active_klass_descend_by_name} ">Z to A</button>
     <%end%>
   </div>
 
   <div class="product-sort-js" data-filter-type="bestsellers-filter" >
+    <% active_klass = "" %>
     <% if params[:sorting].present? && params[:sorting] == "bestsellers_filter" %>
-       <button type="button" class="active">Best Sellers</button>
-    <%else%>
-      <button type="button" class="">Best Sellers</button>
+      <% active_klass = "active" %>
     <%end%>
+    <button type="button" class="#{active_klass}">Best Sellers</button>
   </div>
 </div>
 

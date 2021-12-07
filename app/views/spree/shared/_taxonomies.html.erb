@@ -44,32 +44,26 @@
   <li><a href="#">Flavoring for Ice Cream</a></li>
 </ul>
  -->
-<% max_level =  3 %>
-<!-- <nav id="taxonomies"  data-hook> -->
-<h4>Categories:</h4>
-<% if @taxon.present? %>
-  <% cache [I18n.locale, max_level, @taxon] do %>
-    <% @taxon = @taxon.parent if @taxon.leaf? %>
-    <%#= link_to @taxon.name, seo_url(@taxon) %>
-    <% if @taxon.children.any? %>
-      <%= taxons_tree(@taxon, @taxon, max_level) %>
+ <div id="taxonomies" data-hook aria-label="taxonomies">
+  <% max_level =  3 %>
+  <!-- <nav id="taxonomies"  data-hook> -->
+  <h4>Categories:</h4>
+  <% if @taxon.present? %>
+    <% cache [I18n.locale, max_level, @taxon] do %>
+      <% @taxon = @taxon.parent if @taxon.leaf? %>
+      <%#= link_to @taxon.name, seo_url(@taxon) %>
+      <% if @taxon.children.any? %>
+        <%= taxons_tree(@taxon, @taxon, max_level) %>
+      <% end %>
     <% end %>
-  <% end %>
-<% else %>
-  <% @product_category.children.each do |taxonomy| %>
-    <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
-      <%= link_to taxonomy.name, seo_url(taxonomy) %>
-      <% if taxonomy.root.children.any? %>
-        <%= taxons_tree(taxonomy, @taxon, max_level) %>
+  <% else %>
+    <% @product_category.children.each do |taxonomy| %>
+      <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
+        <%= link_to taxonomy.name, seo_url(taxonomy) %>
+        <% if taxonomy.root.children.any? %>
+          <%= taxons_tree(taxonomy, @taxon, max_level) %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
-<script>
-  $('.sub-child-manu-js').click(function (e) {
-     var child_link = $(this).find('a').attr('href');
-     var url = window.location.origin;
-     window.location.href = url + child_link;
-
-    });
-</script>
+</div>
