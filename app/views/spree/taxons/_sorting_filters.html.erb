@@ -1,4 +1,3 @@
-
 <ul class="" style="display:none;">
   <li><%#= link_to "Most Popular", request.parameters.merge(sorting: :descend_by_popularity), id: 'descend_popularity',class: "most-popular" %></li>
   <li><%= link_to "Ascending name", request.parameters.merge(sorting: :ascend_by_name), id: 'ascending_name',class: "assending-filter" %></li>
@@ -38,10 +37,3 @@
     <button type="button" class="#{active_klass}">Best Sellers</button>
   </div>
 </div>
-
-<script>
-  $(".product-sort-js").click(function(){
-      var click_filter = $(this).data("filter-type");
-      $("." + click_filter)[0].click();
-    });
-</script>

@@ -21,3 +21,4 @@ Spree::FrontendHelper.class_eval do
     end
   end
 end
+
