@@ -40,3 +40,5 @@ en:
     search: "Search..."
     cart_page:
       title: My Cart
+      add_promo_code: Promo Code
+      checkout: Check Out
