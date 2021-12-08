@@ -7,7 +7,7 @@
                <%= @taxon.name %>
             </h1>
             <div class="category-banner phone-hide">
-            <% if @taxon.icon&.attachment %>
+            <% if @taxon.icon.present? %>
                <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
             <% else %>
                <%= image_tag "noimage/default-category-image.jpg" %>
