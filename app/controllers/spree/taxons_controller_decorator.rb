@@ -3,7 +3,6 @@ Spree::TaxonsController.class_eval do
   def show
     if stale? [@taxon, @products, @taxonomies, simple_current_order]
       load_products
-      @taxonomies = Spree::Taxonomy.includes(root: :children).where('name ILIKE ?','%PRODUCTS%')
     end
   end
 
