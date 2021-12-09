@@ -134,41 +134,41 @@
                   <ul class="cart-items all-cart">
                     <%= render partial: 'form', locals: { order_form: order_form } %>
                   </ul>
-                      <div class="cart-footer d-flex flex-column ml-auto">
-                        <% if Spree::Frontend::Config[:coupon_codes_enabled] %>
-                          <%= render 'coupon_code',
-                            promotion: @order.valid_coupon_promotions.first,
-                            order_form: order_form,
-                            classes: '' %>
-                        <% end %>
-                        <ul class="cart-totals d-none d-lg-block">
-                          <li>
-                            <label>Subtotal:</label>
-                            <span><%= order_form.object.display_item_total %></span> 
-                          </li>
-                          <li>
-                            <label>Shipping:</label>
-                            <span>Calculated in next step</span>
-                          </li>
-                          <li>
-                            <label>Total:</label>
-                              <strong> <%= order_form.object.display_total %> </strong> 
-                          </li>
-                        </ul>
-                      <ul class="cart-totals  d-lg-none">
-                        <li>
-                          <label>Subtotal:</label>
-                          <span><%= order_form.object.display_item_total %></span> 
-                        </li>
-                        <li>
-                          <label>Shipping:</label>
-                          <span>Calculated in next step</span>
-                        </li>
-                        <li>
-                          <label>Total:</label>
-                          <strong> <%= order_form.object.display_item_total %></strong> 
-                        </li>
-                        <% if !order_form.object.cart_promo_total.zero? %>
+                  <div class="cart-footer d-flex flex-column ml-auto">
+                    <% if Spree::Frontend::Config[:coupon_codes_enabled] %>
+                      <%= render 'coupon_code',
+                        promotion: @order.valid_coupon_promotions.first,
+                        order_form: order_form,
+                        classes: '' %>
+                    <% end %>
+                    <ul class="cart-totals d-none d-lg-block">
+                      <li>
+                        <label>Subtotal:</label>
+                        <span><%= order_form.object.display_item_total %></span> 
+                      </li>
+                      <li>
+                        <label>Shipping:</label>
+                        <span>Calculated in next step</span>
+                      </li>
+                      <li>
+                        <label>Total:</label>
+                          <strong> <%= order_form.object.display_total %> </strong> 
+                      </li>
+                    </ul>
+                    <ul class="cart-totals  d-lg-none">
+                      <li>
+                        <label>Subtotal:</label>
+                        <span><%= order_form.object.display_item_total %></span> 
+                      </li>
+                      <li>
+                        <label>Shipping:</label>
+                        <span>Calculated in next step</span>
+                      </li>
+                      <li>
+                        <label>Total:</label>
+                        <strong> <%= order_form.object.display_item_total %></strong> 
+                      </li>
+                      <% if !order_form.object.cart_promo_total.zero? %>
                         <div class="row no-gutters align-items-center">
                           <div class="text-uppercase shopping-cart-total-text col-8 mr-0">
                             <%= Spree.t(:promotion) %>
@@ -178,12 +178,12 @@
                           </div>
                         </div>
                       <% end %>
-                      </ul>
-                      </div>
-                      <hr>
-                      <div class="text-right" data-hook="cart_buttons">
-                        <%= link_to Spree.t('cart_page.checkout'), spree.checkout_path, class: 'btn btn-primary font-weight-bold cart-checkout-btn shopping-cart-buttons-checkout', id: 'checkout-link', method: :get %>
-                      </div>
+                    </ul>
+                  </div>
+                  <hr>
+                  <div class="text-right" data-hook="cart_buttons">
+                    <%= link_to Spree.t('cart_page.checkout'), spree.checkout_path, class: 'btn btn-primary font-weight-bold cart-checkout-btn shopping-cart-buttons-checkout', id: 'checkout-link', method: :get %>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -206,7 +206,7 @@
   </div>
 </main>
 
-  <script>
+<script>
   AOS.init();
 </script> 
 
