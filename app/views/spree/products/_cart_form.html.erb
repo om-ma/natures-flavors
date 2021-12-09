@@ -80,86 +80,90 @@
       </div>
     <%# end %>
   </div> -->
-<%# end %>
-<% is_product_available_in_currency = product_available_in_currency? %>
-<% default_variant = default_variant(@variants, @product) %>
-<div class="product-side-details d-flex flex-column justify-content-between h-100"  >
-  <div class="top-detail" >
-    <%= form_for :order, html: {
-      id: 'add-to-cart-form',
-      class: 'add-to-cart-form',
-      'data-product-summary': @product_summary.to_json,
-      'data-variants': product_variants_matrix(is_product_available_in_currency),
-      'data-variant-change-trigger-identifier': variant_change_identifier
-      } do |f| %>
-        <div class="product-options-header d-flex align-items-center justify-content-between" id="inside-product-cart-form" data-hook="inside_product_cart_form">
-          <div class="left">Choose your <strong>option:</strong></div>
-          <div class="right">
-            <div class="text-center text-md-left text-uppercase " id="product_variant_sku">
-                <%= default_variant.sku  %>
+  <%# end %>
+  <% is_product_available_in_currency = product_available_in_currency? %>
+  <% default_variant = default_variant(@variants, @product) %>
+  <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
+    <div class="top-detail" >
+      <%= form_for :order, html: {
+        id: 'add-to-cart-form',
+        class: 'add-to-cart-form',
+        'data-product-summary': @product_summary.to_json,
+        'data-variants': product_variants_matrix(is_product_available_in_currency),
+        'data-variant-change-trigger-identifier': variant_change_identifier
+        } do |f| %>
+          <div class="product-options-header d-flex align-items-center justify-content-between" id="inside-product-cart-form" data-hook="inside_product_cart_form">
+            <div class="left">Choose your <strong>option:</strong></div>
+            <div class="right">
+              <div class="text-center text-md-left text-uppercase " id="product_variant_sku">
+                  <%= default_variant.sku  %>
+              </div>
             </div>
           </div>
-        </div>
-        <ul class="size-availability" id="product-variants">
-          <% if @product.variants_and_option_values(current_currency).any? %>
-            <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
-              <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"
-                data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>"> 
-              <% option_value = variant.size_options %>
-                <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
-                <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
-                <div class="right"> 
-                  <%= option_value&.presentation %>
-                  <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
-                          'data-price' => variant.price_in(current_currency).money,
-                          'data-in-stock' => variant.can_supply?,
-                          'data-backordered' => variant.backordered?,
-                          style: "display:none"
-                      %>
-            <% end%>
-              </div>
-          <% else %>
-            <%= hidden_field_tag "variant_id", @product.master.id %>
-              </li>
-          <% end %>
-        </ul>
-        <div class="d-flex justify-content-end mb-5">
-          <button type="button" class="btn btn-white expand-list">More Options</button>
-        </div>
-        <% if is_product_available_in_currency && @product.can_supply? %>
-          <%= hidden_field_tag "variant_id", default_variant.id %>
+          <ul class="size-availability" id="product-variants">
+            <% if @product.variants_and_option_values(current_currency).any? %>
+              <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
+                <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"
+                  data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>"> 
+                  <% option_value = variant.size_options %>
+                  <% if is_product_available_in_currency %>
+                    <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
+                      <%= display_price(default_variant) %><span>/ $6.29 per oz.</span></div>
+                  <% end %>
+                  <div class="right"> 
+                    <%= option_value&.presentation %>
+                    <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
+                            'data-price' => variant.price_in(current_currency).money,
+                            'data-in-stock' => variant.can_supply?,
+                            'data-backordered' => variant.backordered?,
+                            style: "display:none"
+                        %>
+                  </div>
+                </li>
+              <% end%>  
+            <% else %>
+              <%= hidden_field_tag "variant_id", @product.master.id  %>
+            <% end %>
+          </ul>
+          <div class="d-flex justify-content-end mb-5">
+            <button type="button" class="btn btn-white expand-list">More Options</button>
+          </div>
+          <% if is_product_available_in_currency && @product.can_supply? %>
+            <%= hidden_field_tag "variant_id", default_variant.id %>
             <div class="add-to-cart-wrap mb-30">
               <label>Quantity:</label>
               <div class="d-flex flex-wrap align-items-center">
+                <div class=" quantity-select"></div>
+                <% debugger %>
                 <%= render 'spree/shared/quantity_select', input_name: :quantity %>
                   <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
                     <%= Spree.t(:add_to_cart) %>
                   <% end %>
               </div>
             </div>
-        <%end%>
-    <%end%>
+          <%end%>
+      <%end%>
+    </div>
+    <div class="cart-similar-item">
+      <div class="wrap">
+        <p>You might need this:</p>
+        <div class="similar-item-thumb"><a href="#"><%= image_tag "product-thumb-1.jpg" %></a></div>
+        <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
+        <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
+    </div>
   </div>
-  <div class="cart-similar-item">
-    <div class="wrap">
-      <p>You might need this:</p>
-      <div class="similar-item-thumb"><a href="#"><%= image_tag "product-thumb-1.jpg" %></a></div>
-      <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
-      <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
-  </div>
-</div>
-
-
-
-<script>
-  $('.product-ov-js').on('click', function(e) {
-    $('.product-ov-js').removeClass("active");
-    $(this).addClass('active')
-    var variantSku = $(this).attr("data-varient-sku");
-    $("#product_variant_sku").replaceWith(
-      "<div id = 'product_variant_sku'>" + variantSku + "</div>"
-   );
-    var variantId = $(this).attr("data-varient-id");
-    $('#variant_id_'+ variantId ).click();
-  });
-</script>
+  
+  
+  
+  <script>
+    $('.product-ov-js').on('click', function(e) {
+      $('.product-ov-js').removeClass("active");
+      $(this).addClass('active')
+      var variantSku = $(this).attr("data-varient-sku");
+      $("#product_variant_sku").replaceWith(
+        "<div id = 'product_variant_sku'>" + variantSku + "</div>"
+     );
+      var variantId = $(this).attr("data-varient-id");
+      $('#variant_id_'+ variantId ).click();
+    });
+  </script>
