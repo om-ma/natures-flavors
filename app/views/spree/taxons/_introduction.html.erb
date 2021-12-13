@@ -2,16 +2,15 @@
    <div class="row no-gutters">
       <div class="col-xl-8">
          <div class="category-banner-wrap">
-            <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Extracts and Flavorings</li>
-            </ol>
+            <%= spree_breadcrumbs(@taxon) %>
             <h1 class="title">                    
                <%= @taxon.name %>
             </h1>
             <div class="category-banner phone-hide">
-            <% if @taxon.icon&.attachment %>
+            <% if @taxon.icon.present? %>
                <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
+            <% else %>
+               <%= image_tag "noimage/default-category-image.jpg" %>
             <% end %>
             </div>
             <div class="mobile-categories-wrap phone-visible">
@@ -46,7 +45,7 @@
       </div>
       <div class="col-xl-4">
          <div class="category-intro more"> 
-            <%= @taxon.description %>
+            <%= strip_tags(@taxon.description)%>
          </div>
       </div>
    </div>

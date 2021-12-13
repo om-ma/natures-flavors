@@ -11,16 +11,10 @@
     <%#= link_to_unless current_page.first?, inline_svg_tag('pagination-arrow-right.svg', size: '13px*16px', class: 'spree-icon-arrow-left'), url, rel: 'prev', remote: remote, class: 'page-link', 'aria-label': 'Previous page' %>
   </li> -->
 <%# end %>
-<% if current_page.last? %>
-  <li class="page-item">
-  <%= link_to url, remote: remote, class:"btn btn-primary1" do%>
+<% prev_page_klass = current_page.last? ? 'btn btn-primary prev-page-icon' : 'btn btn-outline mobile-hide' %>
+<li  class="page-item">
+  <%= link_to url, remote: remote, class: "#{prev_page_klass}" do %>
     <span>Previous Page</span>
   <%end%>
-  </li>
-<% else %>
-  <li  class="page-item">
-    <%= link_to url, remote: remote, class: "btn btn-outline mobile-hide" do %>
-    <span>Previous Page</span>
-    <%end%>
-  </li>
-<%end%>
+</li>
+
