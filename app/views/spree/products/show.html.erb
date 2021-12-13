@@ -58,7 +58,7 @@
               <%= spree_breadcrumbs(@taxon, '', @product) %>
             <div class="title-wrap position-relative" data-hook="product_show">
               <h1 class="title"> <%= @product.name %></h1>
-              <div class="ratings">  <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star.svg", alt:'star' %> <%= image_tag "star-off.svg", alt:'star' %><span>5 Reviews</span></div>
+              <%= render partial: 'reviews' %>
               <ul class="product-standards d-flex flex-wrap align-items-center phone-visible">
                 <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
                 <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
@@ -70,7 +70,7 @@
               <div class="row" >
                 <%= render partial: 'gallery' %>
                 <div class="col-xl-5">
-                  <%= render partial: 'phone_cart' %>
+                  <%= render 'phone_cart_form', variant_change_identifier: 'productCarousel' %> 
                   <div  id="product-description" >
                     <%= render partial: 'description' %>
                   </div>
@@ -79,14 +79,14 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart-form" data-hook="product_right_part" data-hook="product_right_part_wrap">
+        <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart_form" data-hook="product_right_part" data-hook="product_right_part_wrap">
           <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>   
         </div>
         <div class="product-tabs-wrapper">
           <div class="row no-gutters">
             <div class="col-xl-1 tablet-hide"></div>
             <div class="col-xl-7 col-lg-7" >
-            <%= render partial: 'detailed_description' %>
+            <%= render partial: 'overview_tabs' %>
             </div>
             <%= render partial: 'related_products' %>
           </div>
@@ -96,7 +96,6 @@
     <%end%>
   </main>
 </div>
-
 
 <script>
   // AOS.init();
@@ -112,4 +111,3 @@
     $('[data-toggle="tooltip"]').tooltip()
   });
 </script>
-
