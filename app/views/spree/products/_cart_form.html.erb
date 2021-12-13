@@ -104,7 +104,7 @@
           <% if @product.variants_and_option_values(current_currency).any? %>
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
               <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"
-                data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>"> 
+                data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" > 
               <% option_value = variant.size_options %>
                 <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
                 <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
@@ -133,6 +133,7 @@
               <div class="d-flex flex-wrap align-items-center">
                 <%= render 'spree/shared/quantity_select', input_name: :quantity %>
                   <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
+                    <span id="product_btn_variant_price" > <%= default_variant.price_in(current_currency).money %> </span>
                     <%= Spree.t(:add_to_cart) %>
                   <% end %>
               </div>
@@ -158,7 +159,11 @@
     var variantSku = $(this).attr("data-varient-sku");
     $("#product_variant_sku").replaceWith(
       "<div id = 'product_variant_sku'>" + variantSku + "</div>"
-   );
+    );
+    var variantPrice = $(this).attr("data-btn-varient-price");
+    $("#product_btn_variant_price").replaceWith(
+      "<span id = 'product_btn_variant_price'>" + variantPrice + "</span>"
+    );
     var variantId = $(this).attr("data-varient-id");
     $('#variant_id_'+ variantId ).click();
   });

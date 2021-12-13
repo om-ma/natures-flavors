@@ -1,3 +1,4 @@
+$(document).ready(function() {
 
   $('.close-menu').on('click', function(e) {
     $('.mobile-menu').toggleClass("show");
@@ -6,127 +7,129 @@
 
   $('.sub-menu > li').click(function(e){
     e.stopPropagation();
-	$(this).toggleClass('active');
+  $(this).toggleClass('active');
     $(this).children('div').slideToggle();
     $(this).closest('.parent').siblings().children('div').slideUp();
   });
+});
 
-  $(document).ready(function() {
-    $('#videos-slider').lightSlider({
-        item: 2,
-        loop: false,
-        slideMove: 1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed: 600,
-		slideMargin: 120,
-		enableTouch: true,
-		pager: false,
-		onSliderLoad: function (el) {
-		  var parent = el.parent();
-		  var action = parent.find('.lSAction');
-		  action.insertBefore(parent);
-	    },
-        responsive : [
-        {
-          breakpoint:1199,
-          settings: {
-            slideMargin: 40,
-          }
-        },
-        {
-          breakpoint:991,
-          settings: {
-            item:2,
-            slideMove:1,
-            slideMargin: 30
-          }
-        },
-        {
-          breakpoint:575,
-          settings: {
-            item:1,
-            slideMargin:20
-          }
+$(document).ready(function() {
+  $('#videos-slider').lightSlider({
+      item: 2,
+      loop: false,
+      slideMove: 1,
+      easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+      speed: 600,
+  slideMargin: 120,
+  enableTouch: true,
+  pager: false,
+  onSliderLoad: function (el) {
+    var parent = el.parent();
+    var action = parent.find('.lSAction');
+    action.insertBefore(parent);
+    },
+      responsive : [
+      {
+        breakpoint:1199,
+        settings: {
+          slideMargin: 40,
         }
-      ]
-    });
+      },
+      {
+        breakpoint:991,
+        settings: {
+          item:2,
+          slideMove:1,
+          slideMargin: 30
+        }
+      },
+      {
+        breakpoint:575,
+        settings: {
+          item:1,
+          slideMargin:20
+        }
+      }
+    ]
   });
+});
 
-  $(document).ready(function() {
-    $('#blog-slider').lightSlider({
-        item: 2,
-        loop: false,
-        slideMove: 1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed: 600,
-		slideMargin: 120,
-		enableTouch: true,
-		pager: false,
-        onSliderLoad: function (el) {
-		  var parent = el.parent();
-		  var action = parent.find('.lSAction');
-		  action.insertBefore(parent);
-	    },
-        responsive : [
-        {
-          breakpoint:1199,
-          settings: {
-            slideMargin: 40,
-          }
-        },
-        {
-          breakpoint:991,
-          settings: {
-            item: 2,
-            slideMove: 1,
-            slideMargin: 30
-          }
-        },
-        {
-          breakpoint:575,
-          settings: {
-            item: 1,
-            slideMargin: 20
-          }
+$(document).ready(function() {
+  $('#blog-slider').lightSlider({
+      item: 2,
+      loop: false,
+      slideMove: 1,
+      easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+      speed: 600,
+  slideMargin: 120,
+  enableTouch: true,
+  pager: false,
+      onSliderLoad: function (el) {
+    var parent = el.parent();
+    var action = parent.find('.lSAction');
+    action.insertBefore(parent);
+    },
+      responsive : [
+      {
+        breakpoint:1199,
+        settings: {
+          slideMargin: 40,
         }
-      ]
-    });
-  });  
-
-  $(document).ready(function() {
-    $('#reviews-slider').lightSlider({
-        item: 3,
-        loop: false,
-        slideMove: 1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed: 600,
-		slideMargin: 0,
-		enableTouch: true,
-		pager: false,
-        onSliderLoad: function (el) {
-		  var parent = el.parent();
-		  var action = parent.find('.lSAction');
-		  action.insertBefore(parent);
-	    },
-        responsive : [
-        {
-          breakpoint:1199,
-          settings: {
-            item: 2,
-            slideMove: 1,
-          }
-        },
-        {
-          breakpoint:767,
-          settings: {
-            item: 1,
-            slideMove: 1,
-          }
+      },
+      {
+        breakpoint:991,
+        settings: {
+          item: 2,
+          slideMove: 1,
+          slideMargin: 30
         }
-      ]
-    });
-  });  
+      },
+      {
+        breakpoint:575,
+        settings: {
+          item: 1,
+          slideMargin: 20
+        }
+      }
+    ]
+  });
+});
 
+$(document).ready(function() {
+  $('#reviews-slider').lightSlider({
+      item: 3,
+      loop: false,
+      slideMove: 1,
+      easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+      speed: 600,
+  slideMargin: 0,
+  enableTouch: true,
+  pager: false,
+      onSliderLoad: function (el) {
+    var parent = el.parent();
+    var action = parent.find('.lSAction');
+    action.insertBefore(parent);
+    },
+      responsive : [
+      {
+        breakpoint:1199,
+        settings: {
+          item: 2,
+          slideMove: 1,
+        }
+      },
+      {
+        breakpoint:767,
+        settings: {
+          item: 1,
+          slideMove: 1,
+        }
+      }
+    ]
+  });
+}); 
+
+$(document).ready(function() {
   $('.nav-cart').on('click', function(e) {
     $('.nav-search').removeClass('active');
     $('.mobile-search-menu').removeClass('active');
@@ -165,6 +168,7 @@
     $('.cart-sidebar-wrapper .overlay').removeClass('active');
     $('body').removeClass("hide-scroll");
   });
+
   $('.nav-search').on('click', function(e) {
     if($('.nav-cart').hasClass('active')){
       $('.nav-cart').removeClass('active');
@@ -183,15 +187,15 @@
     $('.nav-search').toggleClass("active");
   e.preventDefault();
   });
-
-  $(document).ready(function() {
-    var showChar = 360;
-	var ellipsestext = "...";
-	var moretext = "more";
-	var lesstext = "less";
-	$('.more').each(function() {
-	  var content = $(this).html();
-	  if(content.length > showChar) {
+});
+$(document).ready(function() {
+  var showChar = 360;
+  var ellipsestext = "...";
+  var moretext = "more";
+  var lesstext = "less";
+  $('.more').each(function() {
+    var content = $(this).html();
+    if(content.length > showChar) {
         var c = content.substr(0, showChar);
         var h = content.substr(showChar-1, content.length - showChar);
         var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
@@ -199,42 +203,41 @@
       }
     });
 
-	$(".morelink").click(function(){
-      if($(this).hasClass("less")) {
-        $(this).removeClass("less");
-        $(this).html(moretext);
-      } else {
-        $(this).addClass("less");
-        $(this).html(lesstext);
-      }
-      $(this).parent().prev().toggle();
-      $(this).prev().toggle();
-      return false;
-    });
+  $(".morelink").click(function(){
+    if($(this).hasClass("less")) {
+      $(this).removeClass("less");
+      $(this).html(moretext);
+    } else {
+      $(this).addClass("less");
+      $(this).html(lesstext);
+    }
+    $(this).parent().prev().toggle();
+    $(this).prev().toggle();
+    return false;
   });
+});
 
-  $(document).ready(function() {
-    $('#product-gallery').lightSlider({
-		gallery: true,
-        item:1,
-        loop:false,
-		controls: false,
-        slideMove:1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed:600,
-		slideMargin:0,
-		enableTouch: true,
-		pager: true,
-		thumbItem: 3,
-        responsive : [
-        {
-          breakpoint:991,
-          settings: {
-            auto: true,
-            loop: true,
-          }
-        },
-      ]
-    });  
-  });
-
+$(document).ready(function() {
+  $('#product-gallery').lightSlider({
+  gallery: true,
+      item:1,
+      loop:false,
+  controls: false,
+      slideMove:1,
+      easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+      speed:600,
+  slideMargin:0,
+  enableTouch: true,
+  pager: true,
+  thumbItem: 3,
+      responsive : [
+      {
+        breakpoint:991,
+        settings: {
+          auto: true,
+          loop: true,
+        }
+      },
+    ]
+  });  
+});

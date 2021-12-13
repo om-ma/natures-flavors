@@ -625,6 +625,22 @@ a.btn {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
+.prev-page-icon,
+.prev-page-icon:focus {
+	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+}
+
+.prev-page-icon:hover,
+.lSAction > a:hover {
+    background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
+}
+
+.prev-page-icon:not(:disabled):not(.disabled):active,
+.lSAction > a:not(:disabled):not(.disabled):active {
+    background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
+}
+
+
 
 .prev-page-icon,
 .prev-page-icon:focus {
@@ -6137,4 +6153,8 @@ a.btn.btn-block {
 	top: 0;
 	width: 100%;
 	height: 100%;
+}
+.quantity-field{
+	width: 80px;
+    margin: 0 10px 0 0;
 }
