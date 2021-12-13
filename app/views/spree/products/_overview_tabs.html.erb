@@ -8,8 +8,10 @@
   <div class="tab-pane fade show active" id="description" role="tabpanel">
     <% if Spree::Config[:show_raw_product_description] || product_wysiwyg_editor_enabled? %>
       <div class="tab-content-wrap" id="product-description-long"  data-hook="description">
-        <%= sanitize product_description(@product) %>
+        <%= raw product_description(@product) %>
       </div>
+    <% else %>
+      <%= sanitize product_description(@product) %>
     <% end %>
   </div>
   <div class="tab-pane fade" id="howtouse" role="tabpanel">

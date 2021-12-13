@@ -107,8 +107,8 @@
                   data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>"> 
                   <% option_value = variant.size_options %>
                   <% if is_product_available_in_currency %>
-                    <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
-                      <%= display_price(default_variant) %><span>/ $6.29 per oz.</span></div>
+                    <span class="left  add-to-cart-form-price price selling" content="<%= @product_price.to_d %>" id="product-price"  data-hook="product_price">
+                      <%= display_price(variant) %><span>/ $6.29 per oz.</span></span>
                   <% end %>
                   <div class="right"> 
                     <%= option_value&.presentation %>
@@ -120,7 +120,7 @@
                         %>
                   </div>
                 </li>
-              <% end%>  
+              <% end %>  
             <% else %>
               <%= hidden_field_tag "variant_id", @product.master.id  %>
             <% end %>
@@ -133,12 +133,10 @@
             <div class="add-to-cart-wrap mb-30">
               <label>Quantity:</label>
               <div class="d-flex flex-wrap align-items-center">
-                <div class=" quantity-select"></div>
-                <% debugger %>
                 <%= render 'spree/shared/quantity_select', input_name: :quantity %>
-                  <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
-                    <%= Spree.t(:add_to_cart) %>
-                  <% end %>
+                <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
+                  <%= Spree.t(:add_to_cart) %>
+                <% end %>
               </div>
             </div>
           <%end%>
@@ -147,7 +145,7 @@
     <div class="cart-similar-item">
       <div class="wrap">
         <p>You might need this:</p>
-        <div class="similar-item-thumb"><a href="#"><%= image_tag "product-thumb-1.jpg" %></a></div>
+        <div class="similar-item-thumb"><a href="#"><%= image_tag("product-thumb-1.jpg") %></a></div>
         <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
         <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
     </div>
