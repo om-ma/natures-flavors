@@ -13,9 +13,7 @@ module Spree
 			  @product_price = @product.price_in(current_currency).amount
 			  load_variants
 			  @product_images = product_images(@product, @variants)
-			  related_products_with_current_product= @taxon&.products&.last(3)
-			  related_products_without_current_product= related_products_with_current_product.present? ? related_products_with_current_product - [@product] : []
-			  @related_products= related_products_without_current_product.present? ? related_products_without_current_product&.last(2) : []	
+			  @related_products = @taxon&.products.where.not(id: @product.id)&.last(2)
 			end
 		  end
 	end
