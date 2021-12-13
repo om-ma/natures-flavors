@@ -104,6 +104,7 @@
     <%# end %>
   })
 </script> -->
+
 <% @body_id = 'cart' %>
 <main class="page-contents">
   <div class="cart-wrapper" data-hook="cart_container" class="container shopping-cart">
@@ -141,11 +142,25 @@
                         order_form: order_form,
                         classes: '' %>
                     <% end %>
-                    <ul class="cart-totals d-none d-lg-block">
+                    <!-- <div class="promo-code-wrap d-flex align-items-center">
+                      <input type="text" class="form-control" placeholder="Promo Code">
+                      <button type="submit" class="btn btn-primary" disabled="">Apply</button>
+                    </div> -->
+                    <ul class="cart-totals">
                       <li>
                         <label>Subtotal:</label>
                         <span><%= order_form.object.display_item_total %></span> 
                       </li>
+                      <% if !order_form.object.cart_promo_total.zero? %>
+                        <li>
+                          <label>
+                            <%= Spree.t(:promotion) %>
+                          </label>
+                          <strong>
+                            <%= order_form.object.display_cart_promo_total %>
+                          </strong>
+                        </li>  
+                      <% end %>
                       <li>
                         <label>Shipping:</label>
                         <span>Calculated in next step</span>
@@ -155,34 +170,15 @@
                           <strong> <%= order_form.object.display_total %> </strong> 
                       </li>
                     </ul>
-                    <ul class="cart-totals  d-lg-none">
-                      <li>
-                        <label>Subtotal:</label>
-                        <span><%= order_form.object.display_item_total %></span> 
-                      </li>
-                      <li>
-                        <label>Shipping:</label>
-                        <span>Calculated in next step</span>
-                      </li>
-                      <li>
-                        <label>Total:</label>
-                        <strong> <%= order_form.object.display_item_total %></strong> 
-                      </li>
-                      <% if !order_form.object.cart_promo_total.zero? %>
-                        <div class="row no-gutters align-items-center">
-                          <div class="text-uppercase shopping-cart-total-text col-8 mr-0">
-                            <%= Spree.t(:promotion) %>
-                          </div>
-                          <div class="shopping-cart-total-amount col align-self-end">
-                            <%= order_form.object.display_cart_promo_total %>
-                          </div>
-                        </div>
-                      <% end %>
-                    </ul>
                   </div>
                   <hr>
                   <div class="text-right" data-hook="cart_buttons">
-                    <%= link_to Spree.t('cart_page.checkout'), spree.checkout_path, class: 'btn btn-primary font-weight-bold cart-checkout-btn shopping-cart-buttons-checkout', id: 'checkout-link', method: :get %>
+                    <%= link_to spree.checkout_path, class: 'btn btn-primary font-weight-bold cart-checkout-btn shopping-cart-buttons-checkout', id: 'checkout-link', method: :get do %>
+                      <div class="mt-1">
+                        <span> <%= order_form.object.display_total %> </span> -
+                        <%= Spree.t('cart_page.checkout') %>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
@@ -205,270 +201,3 @@
     </div>
   </div>
 </main>
-
-<script>
-  AOS.init();
-</script> 
-
-<!-- For mobile menu --> 
-<script>
-  const slinky = $('#menu').slinky({title:true});
-</script> 
-
-<!-- Bootstrap popver --> 
-<script>
-  $(function () {
-    $('[data-toggle="popover"]').popover();
-  })
-</script> 
-
-<script>
-  $('.close-menu').on('click', function(e) {
-    $('.mobile-menu').toggleClass("show");
-    e.preventDefault();
-  });
-</script> 
-<script>
-  $('.sub-menu > li').click(function(e){
-    e.stopPropagation();
-	$(this).toggleClass('active');
-    $(this).children('div').slideToggle();
-    $(this).closest('.parent').siblings().children('div').slideUp();
-  });
-</script> 
-<script>
-  $(document).ready(function() {
-    $('#videos-slider').lightSlider({
-        item: 2,
-        loop: false,
-        slideMove: 1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed: 600,
-		slideMargin: 120,
-		enableTouch: true,
-		pager: false,
-		onSliderLoad: function (el) {
-		  var parent = el.parent();
-		  var action = parent.find('.lSAction');
-		  action.insertBefore(parent);
-	    },
-        responsive : [
-        {
-          breakpoint:1199,
-          settings: {
-            slideMargin: 40,
-          }
-        },
-        {
-          breakpoint:991,
-          settings: {
-            item:2,
-            slideMove:1,
-            slideMargin: 30
-          }
-        },
-        {
-          breakpoint:575,
-          settings: {
-            item:1,
-            slideMargin:20
-          }
-        }
-      ]
-    });
-  });
-</script> 
-<script>
-  $(document).ready(function() {
-    $('#blog-slider').lightSlider({
-        item: 2,
-        loop: false,
-        slideMove: 1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed: 600,
-		slideMargin: 120,
-		enableTouch: true,
-		pager: false,
-        onSliderLoad: function (el) {
-		  var parent = el.parent();
-		  var action = parent.find('.lSAction');
-		  action.insertBefore(parent);
-	    },
-        responsive : [
-        {
-          breakpoint:1199,
-          settings: {
-            slideMargin: 40,
-          }
-        },
-        {
-          breakpoint:991,
-          settings: {
-            item: 2,
-            slideMove: 1,
-            slideMargin: 30
-          }
-        },
-        {
-          breakpoint:575,
-          settings: {
-            item: 1,
-            slideMargin: 20
-          }
-        }
-      ]
-    });
-  });  
-</script> 
-<script>
-  $(document).ready(function() {
-    $('#reviews-slider').lightSlider({
-        item: 3,
-        loop: false,
-        slideMove: 1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed: 600,
-		slideMargin: 0,
-		enableTouch: true,
-		pager: false,
-        onSliderLoad: function (el) {
-		  var parent = el.parent();
-		  var action = parent.find('.lSAction');appen
-		  action.insertBefore(parent);
-	    },
-        responsive : [
-        {
-          breakpoint:1199,
-          settings: {
-            item: 2,
-            slideMove: 1,
-          }
-        },
-        {
-          breakpoint:767,
-          settings: {
-            item: 1,
-            slideMove: 1,
-          }
-        }
-      ]
-    });
-  });  
-</script> 
-<script>
-  $('.nav-cart').on('click', function(e) {
-    $('.nav-search').removeClass('active');
-    $('.mobile-search-menu').removeClass('active');
-    $('.mobile-menu').removeClass('show');
-    $('.sidebar-menu-wrapper .overlay').removeClass('active');
-    // actual function
-    $('.mobile-menu-link').addClass('collapsed');
-    $('.cart-sidebar').toggleClass("active");
-    $('.nav-cart').toggleClass("active");
-    $('.cart-sidebar-wrapper .overlay').toggleClass("active");
-    $('body').removeClass("hide-scroll");
-  e.preventDefault();
-  });
-    
-  $('.close-sidebar-btn').on('click', function(e) {
-    $('.nav-cart').toggleClass("active");
-    $('.cart-sidebar').toggleClass("active");
-    $('.cart-sidebar-wrapper .overlay').toggleClass("active");
-    $('body').removeClass("hide-scroll");
-  e.preventDefault();
-  });
-    
-  $('.cart-sidebar-wrapper .overlay').on('click', function(e) {
-    $('.nav-cart').toggleClass("active");
-    $('.cart-sidebar').toggleClass("active");
-    $('.cart-sidebar-wrapper .overlay').toggleClass("active");
-    $('body').removeClass("hide-scroll");
-  e.preventDefault();
-  });
-</script> 
-<script>
-  $('.mobile-menu-link').on('click', function(e) {
-    $('.nav-search').removeClass('active');
-    $('.mobile-search-menu').removeClass('active');
-    $('.nav-cart').removeClass('active');
-    $('.cart-sidebar').removeClass('active');
-    $('.cart-sidebar-wrapper .overlay').removeClass('active');
-    $('body').removeClass("hide-scroll");
-  });
-</script> 
-<script>
-  $('.nav-search').on('click', function(e) {
-    if($('.nav-cart').hasClass('active')){
-      $('.nav-cart').removeClass('active');
-    }
-    if($('.cart-sidebar').hasClass('active')){
-      $('.cart-sidebar').removeClass('active');
-    }
-    if($('.cart-sidebar-wrapper .overlay').hasClass('active')){
-      $('.cart-sidebar-wrapper .overlay').removeClass('active');
-    }
-    if($('.mobile-menu').hasClass('show')){
-      $('.mobile-menu').removeClass('show');
-    }
-    $('.mobile-menu-link').addClass('collapsed');
-    $('.mobile-search-menu').toggleClass("active");
-    $('.nav-search').toggleClass("active");
-  e.preventDefault();
-  });
-</script> 
-<script>
-  $(document).ready(function() {
-    var showChar = 360;
-	var ellipsestext = "...";
-	var moretext = "more";
-	var lesstext = "less";
-	$('.more').each(function() {
-	  var content = $(this).html();
-	  if(content.length > showChar) {
-        var c = content.substr(0, showChar);
-        var h = content.substr(showChar-1, content.length - showChar);
-        var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-        $(this).html(html);
-      }
-    });
-
-	$(".morelink").click(function(){
-      if($(this).hasClass("less")) {
-        $(this).removeClass("less");
-        $(this).html(moretext);
-      } else {
-        $(this).addClass("less");
-        $(this).html(lesstext);
-      }
-      $(this).parent().prev().toggle();
-      $(this).prev().toggle();
-      return false;
-    });
-  });
-</script> 
-<script>
-  $(document).ready(function() {
-    $('#product-gallery').lightSlider({
-		gallery: true,
-        item:1,
-        loop:false,
-		controls: false,
-        slideMove:1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed:600,
-		slideMargin:0,
-		enableTouch: true,
-		pager: true,
-		thumbItem: 3,
-        responsive : [
-        {
-          breakpoint:991,
-          settings: {
-            auto: true,
-            loop: true,
-          }
-        },
-      ]
-    });  
-  });
-</script>

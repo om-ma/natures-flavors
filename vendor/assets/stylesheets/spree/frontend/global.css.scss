@@ -3331,7 +3331,6 @@ a.btn.btn-block {
 }
 
 .promo-code-wrap .btn {
-	width: 85px;
 	margin: 0 0 0 10px;
 }
 
@@ -6107,3 +6106,6 @@ a.btn.btn-block {
 	top:62px;
 }
 .all-cart .cart-item-details .qty-dropdown-input, .all-cart .cart-item-details .qty-dropdown-button { right: 0; }
+.quantity-box {
+	height: 50px!important;
+}

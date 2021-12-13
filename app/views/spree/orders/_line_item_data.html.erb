@@ -34,8 +34,8 @@
 <% elsif view == "desktop" %>
   <% additional_classes = "d-none d-lg-table-cell" %>
 <% end %>
-<div class="<%= additional_classes %>"  data-hook="cart_item_quantity" data-hook="cart_item_total">
-  <%= item_form.number_field :quantity, min: 0, class: " custom-select qty-dropdown shopping-cart-item-quantity-input", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
+<div class="shopping-cart-item-quantity <%= additional_classes %>"  data-hook="cart_item_quantity" data-hook="cart_item_total">
+  <%= item_form.number_field :quantity, min: 0, class: " custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
 </div>
 <% if view == "desktop" %>
   <div class="price-size text-right <%= additional_classes %>" data-hook="cart_item_price">
