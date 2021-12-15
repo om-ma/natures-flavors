@@ -625,6 +625,8 @@ a.btn {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
+
+
 .prev-page-icon,
 .prev-page-icon:focus {
 	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
@@ -635,12 +637,12 @@ a.btn {
     background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
 }
 
+
 .prev-page-icon:not(:disabled):not(.disabled):active,
+
 .lSAction > a:not(:disabled):not(.disabled):active {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
-
-
 
 
 .btn-secondary,
@@ -3831,6 +3833,7 @@ a.btn.btn-block {
 .pagination-wrap .btn-primary span {
 	position: relative;
 }
+
 .pagination-wrap .prev-page-icon span {
 	position: relative;
 }
@@ -3853,6 +3856,13 @@ a.btn.btn-block {
 
 .pagination-wrap .btn-outline span {
 	background-image: image-url("arrow-left-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: left center;	
+	padding-left: 18px;
+}
+.pagination-wrap .btn-primary1 span {
+	background-image: image-url("arrow-left-white-icon.svg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position: left center;	
