@@ -38,3 +38,8 @@ en:
     login: "Sign In" 
     confirm_password: "Confirm Password*"
     search: "Search..."
+    address2: Address Line 2
+    country: Country*
+    phone: Phone Number
+    zipcode: Zip Code*
+    state: State*

@@ -80,93 +80,31 @@
       <h5>Contact information</h5>
     </div>
     <div class="registered-user d-flex align-items-center justify-content-between mb-45"> 
-      <span>kostarkosta@gmail.com</span> 
-      <a href="#">Log Out</a> 
+      <% if spree_current_user.present? %>
+        <span><%= spree_current_user.email%> </span>
+        <%= link_to  destroy_spree_user_session_path do %>
+          Logout 
+        <% end %>            
+      <% else%>
+      zeeshan 
+      <% end %>
     </div>
-    <div class="cart-header d-flex align-items-center justify-content-between">
+    <div class="cart-header d-flex align-items-center justify-content-between" data-hook="shipping_fieldset_wrapper" id="shipping" data-hook>
       <h5>Shipping Address</h5>
     </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="form-group form-floating mb-20">
-          <select class="custom-select">
-            <option>833 N Elm St, Orange, CA 92867-7909, USA</option>
-          </select>
-          <label>My Addresses</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group form-floating mb-20">
-          <input type="text" class="form-control" placeholder="First Name*">
-          <label>First Name*</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group form-floating mb-20">
-          <input type="text" class="form-control" placeholder="Last Name*">
-          <label>Last Name*</label>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="form-group form-floating mb-20">
-          <input type="text" class="form-control" placeholder="Address*">
-          <label>Address*</label>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="form-group form-floating mb-20">
-          <input type="text" class="form-control" placeholder="Address Line 2">
-          <label>Address Line 2</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group form-floating mb-20">
-          <select class="custom-select">
-            <option>United States</option>
-          </select>
-          <label>Country*</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group form-floating mb-20">
-          <select class="custom-select">
-            <option>California</option>
-          </select>
-          <label>State*</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group form-floating mb-20">
-          <input type="text" class="form-control" placeholder="City*">
-          <label>City*</label>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group form-floating mb-20">
-          <input type="text" class="form-control" placeholder="Zip Code*">
-          <label>Zip Code*</label>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="form-group form-floating mb-10">
-          <input type="text" class="form-control" placeholder="Phone Number*">
-          <label>Phone Number*</label>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center mb-60">
-          <div class="custom-checkbox">
-            <label>
-              <input type="checkbox" class="custom-control-input" checked>
-              <span class="custom-control-label"></span>Save to My Addresses</label>
+    <% ['shipping'].each do |address_type|
+    address_name = "#{address_type[0...4]}_address" %>
+      <%= form.fields_for address_name do |address_form| %>
+          <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>'>
+            <%= render partial: 'spree/addresses/form', locals: {
+              address_name: address_name,
+              address_form: address_form,
+              address_type: address_type,
+              address: Spree::Address.new(country: current_store.default_country),
+              form: form
+            } %>
           </div>
-          <div class="custom-checkbox">
-            <label>
-              <input type="checkbox" class="custom-control-input" checked>
-              <span class="custom-control-label"></span>Save as Default</label>
-          </div>
-        </div>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
     <button type="button" class="btn btn-primary btn-block">Next Step: <strong>Choose Delivery</strong></button>
   </div>

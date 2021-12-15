@@ -1,32 +1,111 @@
-<% address_id = address_type.chars.first %>
+<%# address_id = address_type.chars.first %>
 
-<% Spree::Address::ADDRESS_FIELDS.each do |field| %>
-  <% if field == "country" %>
-    <div class="form-group checkout-content-inner-field" id="<%= "#{address_id}country" %>">
-      <div id="<%= "#{address_id}country-selection" %>" class="d-block position-relative has-float-label">
-        <%= address_form.collection_select :country_id, available_countries, :id, :name,
+<%# Spree::Address::ADDRESS_FIELDS.each do |field| %>
+  <%# if field == "country" %>
+   <!--  <div class="form-group checkout-content-inner-field" id="<%#= "#{address_id}country" %>">
+      <div id="<%#= "#{address_id}country-selection" %>" class="d-block position-relative has-float-label">
+        <%#= address_form.collection_select :country_id, available_countries, :id, :name,
                                            { prompt: Spree.t(:country).upcase },
                                            { class: 'form-control spree-flat-select',
                                              aria: { label: Spree.t(:country) } } %>
-        <%= image_tag 'arrow.svg', class: 'position-absolute spree-flat-select-arrow' %>
-        <%= address_form.label(Spree.t(:country), Spree.t(:country).upcase, class:'text-uppercase') %>
+        <%#= image_tag 'arrow.svg', class: 'position-absolute spree-flat-select-arrow' %>
+        <%#= address_form.label(Spree.t(:country), Spree.t(:country).upcase, class:'text-uppercase') %>
       </div>
+    </div> -->
+  <%# elsif field == "state" %>
+    <!-- <div class="form-group mb-4">
+      <%#= address_field(address_form, :state, address_id) { address_state(address_form, address.country, address_id) } if Spree::Config[:address_requires_state] %>
     </div>
-  <% elsif field == "state" %>
+  <%# elsif field == "zipcode" %>
     <div class="form-group mb-4">
-      <%= address_field(address_form, :state, address_id) { address_state(address_form, address.country, address_id) } if Spree::Config[:address_requires_state] %>
+      <%#= address_field(address_form, :zipcode, address_id) { address_zipcode(address_form, address.country, address_id) } %>
     </div>
-  <% elsif field == "zipcode" %>
+  <%# else %>
+    <%# next if field == "company" && !Spree::Config[:company] %>
+    <%# next if field == "alternative_#{address_id}_phone" && !Spree::Config["alternative_#{address_id}_phone"] %>
     <div class="form-group mb-4">
-      <%= address_field(address_form, :zipcode, address_id) { address_zipcode(address_form, address.country, address_id) } %>
+      <%#= address_field(address_form, field.to_sym, address_id) %>
     </div>
-  <% else %>
-    <% next if field == "company" && !Spree::Config[:company] %>
-    <% next if field == "alternative_#{address_id}_phone" && !Spree::Config["alternative_#{address_id}_phone"] %>
-    <div class="form-group mb-4">
-      <%= address_field(address_form, field.to_sym, address_id) %>
-    </div>
-  <% end %>
-<% end %>
+  <%# end %>
+<%# end %>
 
-<p class="text-right text-uppercase mb-5 checkout-content-inner-field"><span id="required_marker"><%= Spree.t(:required) %></span> <%= Spree.t(:required_fields) %></p>
+<p class="text-right text-uppercase mb-5 checkout-content-inner-field"><span id="required_marker"><%#= Spree.t(:required) %></span> <%#= Spree.t(:required_fields) %></p> -->
+<% address_id = address_type.chars.first %>
+<div class="row">
+  <% checkout_address = %w(firstname lastname company address1 address2 country state city zipcode phone) %>
+  <% checkout_address.each do |field| %>
+    <% if field == "firstname"  %>
+      <div class="col-sm-6">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :firstname, class: 'form-control', placeholder:"First Name*", required: true %>
+          <%= address_form.label :firstname do %>
+            <%= Spree.t(:first_name) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "lastname"  %>
+      <div class="col-sm-6">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :lastname, class: 'form-control', placeholder:"Last Name*", required: true %>
+          <%= address_form.label :lastname do %>
+            <%= Spree.t(:last_name) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "address1"  %>
+      <div class="col-sm-12">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :address1, class: 'form-control', placeholder:"Address*", required: true %>
+          <%= address_form.label :address1 do %>
+            <%= Spree.t(:address1) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "address2"  %>
+      <div class="col-sm-12">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :address2, class: 'form-control', placeholder:"Address Line 2", required: true %>
+          <%= address_form.label :address2 do %>
+            <%= Spree.t(:address2) %>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "country" %>
+      <div class="col-sm-6" id="<%= "#{address_id}country" %>">
+        <div class="form-group form-floating mb-20" id="<%= "#{address_id}country-selection" %>" >
+          <%= address_form.collection_select :country_id, available_countries, :id, :name,
+                                             { prompt: Spree.t(:country).upcase },
+                                             { class: 'custom-select',
+                                               aria: { label: Spree.t(:country) } } %>
+          <%= address_form.label(Spree.t(:country)) %>
+        </div>
+      </div>
+     <%elsif field == "state" %>
+      <div class="col-sm-6" >
+        <%= address_field(address_form, :state, address_id) { address_state(address_form, address.country, address_id) }  %>
+      </div>
+    <%elsif field == "city" %>
+      <div class="col-sm-6">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :city, class: 'form-control', placeholder:"City*", required: true %>
+          <%= address_form.label :city do %>
+            <%= Spree.t(:city) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "zipcode" %>
+       <div class="col-sm-6">
+        <%= address_field(address_form, :zipcode, address_id) { address_zipcode(address_form, address.country, address_id) } %>
+      </div>
+    <%elsif field == "phone" %>
+      <div class="col-sm-12">
+        <div class="form-group form-floating mb-10">
+          <%= address_form.text_field :phone, class: 'form-control', placeholder:"Phone Number*", required: true %>
+          <%= address_form.label :phone do %>
+            <%= Spree.t(:phone) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

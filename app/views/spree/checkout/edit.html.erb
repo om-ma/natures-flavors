@@ -25,16 +25,16 @@ end
 
   <div class="row align-items-center flex-column checkout-header" data-hook="checkout_header">
     <div class="text-uppercase checkout-header-title">
-      <h1 data-hook="checkout_title"><%= Spree.t('checkout_page.header') %></h1>
+      <h1 data-hook="checkout_title"><%#= Spree.t('checkout_page.header') %></h1>
     </div>
-    <div class="checkout-progress" data-hook="checkout_progress" role="navigation" aria-label="<%= Spree.t('checkout_page.checkout_navigation') %>">
+    <div class="checkout-progress" data-hook="checkout_progress" role="navigation" aria-label="<%#= Spree.t('checkout_page.checkout_navigation') %>">
       <%#= checkout_progress %>
     </div>
   </div>
 
   <div class="row checkout-content" data-hook="checkout_content">
     <%#= form_for @order, url: spree.update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}", class: "w-100 d-lg-flex align-items-lg-baseline  flex-wrap position-relative" } do |form| %>
-      <div class="<%= if @order.state != 'confirm' then 'col-lg-6' else 'col-md-12' end %>" data-hook="checkout_form_wrapper">
+      <div class="<%#= if @order.state != 'confirm' then 'col-lg-6' else 'col-md-12' end %>" data-hook="checkout_form_wrapper">
         <%#= form.hidden_field :state_lock_version %>
         <%#= render @order.state, form: form %>
       </div>
