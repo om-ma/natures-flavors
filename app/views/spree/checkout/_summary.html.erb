@@ -1,4 +1,4 @@
-<!--  <div class="checkout-content-summary">
+<!--   <div class="checkout-content-summary">
   <h3 class="text-uppercase text-center checkout-content-summary-header"><%#= Spree.t(:order_summary) %></h3>
   <div class="w-100 text-uppercase checkout-content-summary-table" data-hook="order_summary">
     <div class="d-table-cell"><%#= Spree.t(:subtotal) %>:</div>
@@ -80,7 +80,8 @@
       </div>
     <%# end %>
   </div>
-</div>  -->
+</div>   -->
+<%# some ids and data hook i have missed bacause i havent used it yet %>
 <div class="order-summary mb-60" data-hook="order_summary">
   <ul class="cart-items">
     <% order.line_items.each do|s| %>
@@ -100,7 +101,7 @@
     <button type="submit" class="btn btn-primary" disabled>Apply</button>
   </div>
   <ul class="cart-totals">
-    <li>
+    <li id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>">
       <label><%= Spree.t(:subtotal) %></label>
       <span><%= order.display_item_total.to_html %></span> </li>
     <li>

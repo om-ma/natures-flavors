@@ -1,15 +1,15 @@
 <%# if !try_spree_current_user || try_spree_current_user.email.blank? %>
-  <!-- <div class="row">
+<!--    <div class="row">
     <div class="col-12 mb-4">
       <div class="form-group checkout-content-inner-field has-float-label">
         <%#= form.email_field :email, class: 'required spree-flat-input', required: true, placeholder: Spree.t(:email) %>
         <%#= form.label :email, class: 'text-uppercase' %>
       </div>
     </div>
-  </div> -->
+  </div> 
 <%# end %>
 
-<!-- <div class="row">
+ <div class="row">
   <%# ['billing', 'shipping'].each do |address_type|
     address_name = "#{address_type[0...4]}_address" %>
     <div class="col-12 mb-4" data-hook="<%#= address_type %>_fieldset_wrapper">
@@ -60,7 +60,7 @@
           </div>
         <%# end %>
       </div>
-    </div> -->
+    </div>  -->
   <%# end %>
 
   <%#= hidden_field_tag 'save_user_address', true, data: { hook: "save_user_address" } %>
@@ -82,20 +82,19 @@
     <div class="registered-user d-flex align-items-center justify-content-between mb-45"> 
       <% if spree_current_user.present? %>
         <span><%= spree_current_user.email%> </span>
-        <%= link_to  destroy_spree_user_session_path do %>
-          Logout 
-        <% end %>            
-      <% else%>
-      zeeshan 
       <% end %>
+      <%= link_to  destroy_spree_user_session_path do %>
+        Logout 
+      <% end %>            
     </div>
-    <div class="cart-header d-flex align-items-center justify-content-between" data-hook="shipping_fieldset_wrapper" id="shipping" data-hook>
+    <div class="cart-header d-flex align-items-center justify-content-between">
       <h5>Shipping Address</h5>
     </div>
     <% ['shipping'].each do |address_type|
     address_name = "#{address_type[0...4]}_address" %>
       <%= form.fields_for address_name do |address_form| %>
-          <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>'>
+        <div data-hook="<%= address_type %>_fieldset_wrapper" id="<%= address_type %>" data-hook>
+          <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>' data-hook="use_billing">
             <%= render partial: 'spree/addresses/form', locals: {
               address_name: address_name,
               address_form: address_form,
@@ -104,6 +103,7 @@
               form: form
             } %>
           </div>
+        </div>
       <% end %>
     <% end %>
     <button type="button" class="btn btn-primary btn-block">Next Step: <strong>Choose Delivery</strong></button>

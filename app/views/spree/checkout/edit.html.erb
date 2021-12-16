@@ -5,7 +5,7 @@ content_for :head do
   agent = request.env['HTTP_USER_AGENT']
   if agent =~ /Safari/ && !(agent =~ /Chrome/)
 %>
-  <!-- <script>
+   <script>
     if (!!window.performance && window.performance.navigation.type === 2) {
       window.location.reload();
     }
@@ -80,9 +80,9 @@ content_for :head do
   end
 end
 %>
-<main class="page-contents">
-  <div class="checkout-wrapper">
-    <div class="row flex-row-reverse no-gutters">
+<main class="page-contents" id="checkout" data-hook>
+  <div class="checkout-wrapper" data-hook="checkout_title">
+    <div class="row flex-row-reverse no-gutters" data-hook="checkout_progress" data-hook="checkout_content">
       <%= form_for @order, url: spree.update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}", class: "w-100 d-lg-flex  flex-wrap position-relative" } do |form| %>
       <div class="<%= if @order.state != 'confirm' then 'col-lg-6'  end %>" data-hook="checkout_form_wrapper">
         <%= form.hidden_field :state_lock_version %>
@@ -93,7 +93,7 @@ end
             <h4>My Cart / $52.87</h4>
             <button type="button" class="show-cart-summary"><span>Show</span></button>
           </div>
-          <div class="wrap mobile-cart-summary d-flex flex-column justify-content-between h-100" id="checkout-summary" data-hook="checkout_summary_box">
+          <div class="wrap mobile-cart-summary d-flex flex-column justify-content-between h-100" id="checkout-summary" data-hook="checkout_summary_box" data-hook="buttons">
             <% unless @order.confirm? %>
               <%= render partial: 'summary', locals: { order: @order } %>
             <% end %>
