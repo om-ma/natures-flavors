@@ -69,42 +69,44 @@
 <div id="delete-address-popup" class="delete-address-popup-dropdown hide-on-esc">
   <%#= render 'spree/shared/delete_address_popup' %>
 </div> -->
-  <div class="wrap">
-    <ol class="breadcrumb mb-35">
-      <li class="breadcrumb-item"><a href="#">Cart</a></li>
-      <li class="breadcrumb-item"><a href="#">Information</a></li>
-      <li class="breadcrumb-item"><a href="#" class="disabled">Shipping</a></li>
-      <li class="breadcrumb-item"><a href="#" class="disabled">Payment</a></li>
-    </ol>
-    <div class="cart-header d-flex align-items-center justify-content-between">
-      <h5>Contact information</h5>
-    </div>
-    <div class="registered-user d-flex align-items-center justify-content-between mb-45"> 
-      <% if spree_current_user.present? %>
-        <span><%= spree_current_user.email%> </span>
-      <% end %>
-      <%= link_to  destroy_spree_user_session_path do %>
-        Logout 
-      <% end %>            
-    </div>
-    <div class="cart-header d-flex align-items-center justify-content-between">
-      <h5>Shipping Address</h5>
-    </div>
-    <% ['shipping'].each do |address_type|
-    address_name = "#{address_type[0...4]}_address" %>
-      <%= form.fields_for address_name do |address_form| %>
-        <div data-hook="<%= address_type %>_fieldset_wrapper" id="<%= address_type %>" data-hook>
-          <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>' data-hook="use_billing">
-            <%= render partial: 'spree/addresses/form', locals: {
-              address_name: address_name,
-              address_form: address_form,
-              address_type: address_type,
-              address: Spree::Address.new(country: current_store.default_country),
-              form: form
-            } %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <button type="button" class="btn btn-primary btn-block">Next Step: <strong>Choose Delivery</strong></button>
+<div class="wrap">
+  <%= spree_breadcrumbs(@taxon) %>
+  <div class="cart-header d-flex align-items-center justify-content-between">
+    <h5>Contact information</h5>
   </div>
+  <div class="registered-user d-flex align-items-center justify-content-between mb-45"> 
+    <% if spree_current_user.present? %>
+      <span><%= spree_current_user.email%> </span>
+    <% end %>
+    <%= link_to  destroy_spree_user_session_path do %>
+      Logout 
+    <% end %>            
+  </div>
+  <div class="cart-header d-flex align-items-center justify-content-between">
+    <h5>Shipping Address</h5>
+  </div>
+  <% ['billing', 'shipping'].each do |address_type|
+  address_name = "#{address_type[0...4]}_address" %>
+  <% if address_type == 'shipping' %>
+      <div class="spree-checkbox-container checkout-content-billing-checkbox" data-hook="use_billing">
+        <div class="spree-checkbox">
+          <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'form-check-input d-none'} %>
+        </div>
+      </div>
+    <% end %>
+    <%= form.fields_for address_name do |address_form| %>
+      <div data-hook="<%= address_type %>_fieldset_wrapper" id="<%= address_type %>" data-hook>
+        <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>' data-hook="use_billing">
+          <%= render partial: 'spree/addresses/form', locals: {
+            address_name: address_name,
+            address_form: address_form,
+            address_type: address_type,
+            address: Spree::Address.new(country: current_store.default_country),
+            form: form
+          } %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+

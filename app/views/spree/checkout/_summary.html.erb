@@ -96,10 +96,10 @@
       </li>
     <% end %>
   </ul>
-  <div class="promo-code-wrap d-flex align-items-center">
-    <input type="text" class="form-control" placeholder="Promo Code">
-    <button type="submit" class="btn btn-primary" disabled>Apply</button>
-  </div>
+  <%= render 'coupon_code',
+              promotion: @order.valid_coupon_promotions.first,
+              order_form: order_form,
+              classes: '' %>
   <ul class="cart-totals">
     <li id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>">
       <label><%= Spree.t(:subtotal) %></label>

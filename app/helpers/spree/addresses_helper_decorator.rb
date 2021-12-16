@@ -43,7 +43,7 @@ module Spree
         form.collection_select( :state_id, checkout_zone_applicable_states_for(country).sort_by(&:name),
                               :id, :name,
                                { prompt: Spree.t(:state) },
-                               class: ['form-control'].compact,
+                               class: ['custom-select'].compact,
                                aria: { label: Spree.t(:state) },
                                disabled: !have_states) 
       ].join.tr('"', "'").delete("\n") + form.label(Spree.t(:state))
