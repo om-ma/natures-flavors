@@ -71,17 +71,44 @@
 </div> -->
 <div class="wrap">
   <%= spree_breadcrumbs(@taxon) %>
-  <div class="cart-header d-flex align-items-center justify-content-between">
-    <h5>Contact information</h5>
-  </div>
-  <div class="registered-user d-flex align-items-center justify-content-between mb-45"> 
-    <% if spree_current_user.present? %>
-      <span><%= spree_current_user.email%> </span>
-    <% end %>
-    <%= link_to  destroy_spree_user_session_path do %>
-      Logout 
-    <% end %>            
-  </div>
+  <% if spree_current_user.present? %>
+    <div class="cart-header d-flex align-items-center justify-content-between">
+      <h5>Contact information</h5>
+    </div>
+    <div class="registered-user d-flex align-items-center justify-content-between mb-45"> 
+      <span><%= spree_current_user.email %></span> 
+      <%= link_to  destroy_spree_user_session_path do %>
+        Logout 
+      <% end %>
+    </div>
+  <% else %>
+    <div class="if-registered phone-visible"> <span>Already Registered?</span> 
+        <a href="#" class="btn btn-primary">
+        Log in
+        </a> 
+    </div>
+    <div class="cart-header d-flex align-items-center justify-content-between">
+      <h5>Contact information</h5>
+      <div class="if-registered phone-hide"> <span>Already Registered?</span> 
+        <%= link_to new_spree_user_session_path , :class => 'btn btn-primary' do %>
+          Login   
+        <% end %> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group form-floating mb-10">
+          <%= form.email_field :email, class: 'form-control', required: true, placeholder: Spree.t(:email) %>
+          <%= form.label :email %>
+        </div>
+        <div class="custom-checkbox mb-60">
+          <label>
+            <input type="checkbox" class="custom-control-input" checked>
+            <span class="custom-control-label"></span>Keep me up to date on news and offers</label>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <div class="cart-header d-flex align-items-center justify-content-between">
     <h5>Shipping Address</h5>
   </div>
