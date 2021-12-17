@@ -53,8 +53,8 @@
       -
       <%=current_page.number*per_page  %> 
       of 
-      <%= total_products_count %>
-       products
+      <%=current_store.products.count%> 
+      products
     </div>
   </div>
 <% end %>
