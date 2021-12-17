@@ -15,7 +15,7 @@ module Spree
 			  @product_images = product_images(@product, @variants)
 			  @related_products = @taxon&.products.where.not(id: @product.id)&.last(2)
 			end
-		  end
+		end
 	end
 end
 ::Spree::ProductsController.prepend Spree::ProductsControllerDecorator

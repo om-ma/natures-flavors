@@ -1,4 +1,21 @@
 $(document).ready(function() {
+  $('.product-ov-js').on('click', function(e) {
+    $('.product-ov-js').removeClass("active");
+    $(this).addClass('active')
+    var variantSku = $(this).attr("data-varient-sku");
+    $("#product_variant_sku").replaceWith(
+      "<div id = 'product_variant_sku'>" + variantSku + "</div>"
+    );
+    var variantPrice = $(this).attr("data-btn-varient-price");
+    $("#product_btn_variant_price").replaceWith(
+      "<span id = 'product_btn_variant_price'>" + variantPrice + "</span>"
+    );
+    var variantId = $(this).attr("data-varient-id");
+    $('#variant_id_'+ variantId ).click();
+  });
+});
+
+$(document).ready(function() {
 
   $('.close-menu').on('click', function(e) {
     $('.mobile-menu').toggleClass("show");
@@ -241,3 +258,9 @@ $(document).ready(function() {
     ]
   });  
 });
+$(document).ready(function() {
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
+});
+  
