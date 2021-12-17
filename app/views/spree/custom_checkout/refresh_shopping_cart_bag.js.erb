@@ -1,5 +1,4 @@
-let cart_html = "<%= j render partial: 'spree/shared/shopping_bag', locals: {user_current_order: @order}  %>"
-$('#shopping_cart_bag_area').html(cart_html)
+$('#shopping_cart_bag_area').html("<%= j render partial: 'spree/shared/shopping_bag', locals: {user_current_order: @order}  %>")
 $('.cart-sidebar').toggleClass("active");
 $('.overlay').toggleClass("active");
 $('body').toggleClass("hide-scroll");
