@@ -32,15 +32,6 @@
 <p class="text-right text-uppercase mb-5 checkout-content-inner-field"><span id="required_marker"><%#= Spree.t(:required) %></span> <%#= Spree.t(:required_fields) %></p> -->
 <% address_id = address_type.chars.first %>
 <% if @order.state="address" %>
-  <div class=" row " >
-    <div class="col-sm-12">
-      <div class="form-group form-floating mb-20">
-        <select class="custom-select">
-          <option>833 N Elm St, Orange, CA 92867-7909, USA</option>
-        </select>
-        <label>My Addresses</label>
-      </div>
-    </div>
     <% checkout_address = %w(firstname lastname company address1 address2 country state city zipcode phone) %>
     <% checkout_address.each do |field| %>
       <% if field == "firstname"  %>
@@ -132,5 +123,4 @@
       </div>
     </div>
     <button type="button" class="btn btn-primary btn-block" id="secondaryButton" >Next Step: <strong>Choose Delivery</strong></button>
-  </div>
 <% end %>

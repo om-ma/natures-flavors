@@ -114,23 +114,39 @@
   </div>
   <% ['billing', 'shipping'].each do |address_type|
   address_name = "#{address_type[0...4]}_address" %>
-  <% if address_type == 'shipping' %>
-      <div class="spree-checkbox-container checkout-content-billing-checkbox" data-hook="use_billing">
-        <div class="spree-checkbox">
-          <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'form-check-input d-none'} %>
+    <% if address_type == 'shipping' %>
+        <div class="spree-checkbox-container checkout-content-billing-checkbox" data-hook="use_billing">
+          <div class="spree-checkbox" id= "use_billing">
+            <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'form-check-input d-none'} %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
     <%= form.fields_for address_name do |address_form| %>
       <div data-hook="<%= address_type %>_fieldset_wrapper" id="<%= address_type %>" data-hook>
         <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>' data-hook="use_billing">
-          <%= render partial: 'spree/addresses/form', locals: {
-            address_name: address_name,
-            address_form: address_form,
-            address_type: address_type,
-            address: Spree::Address.new(country: current_store.default_country),
-            form: form
-          } %>
+          <div class="row">
+            <% if user_available_addresses.present? %>
+              <% user_available_addresses.each_with_index do |address, idx| %>
+              <div class="col-sm-12" id="<%= [address_type, dom_id(address)].join('_') %>">
+                <div class="form-group form-floating mb-20">
+                  <select class="custom-select">
+                    <%= render "spree/users/address", address: address %>
+                  </select>
+                  <label>
+                    My Addresses
+                  </label>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+            <%= render partial: 'spree/addresses/form', locals: {
+              address_name: address_name,
+              address_form: address_form,
+              address_type: address_type,
+              address: Spree::Address.new(country: current_store.default_country),
+              form: form
+            } %>
+          </div>
         </div>
       </div>
     <% end %>

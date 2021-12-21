@@ -2,7 +2,7 @@
   <h3 class="text-uppercase text-center checkout-content-summary-header"><%#= Spree.t(:order_summary) %></h3>
   <div class="w-100 text-uppercase checkout-content-summary-table" data-hook="order_summary">
     <div class="d-table-cell"><%#= Spree.t(:subtotal) %>:</div>
-    <div class="d-table-cell text-right"><%= order.display_item_total.to_html %></div>
+    <div class="d-table-cell text-right"><%#= order.display_item_total.to_html %></div>
 
     <%# if order.line_item_adjustments.nonzero.exists? %>
       <%# order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
