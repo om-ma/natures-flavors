@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ducl13/browser.git
+  revision: 5f13125e6b5f9d86edbc1465591cbd081a8937d8
+  branch: master
+  specs:
+    browser (2.5.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -179,11 +186,8 @@ GEM
     kaminari-i18n (0.5.0)
       kaminari
       rails
-    launchy (2.5.0)
-      addressable (~> 2.7)
-    letter_opener (1.7.0)
-      launchy (~> 2.2)
     libv8-node (16.10.0.0-x86_64-darwin-19)
+    libv8-node (16.10.0.0-x86_64-linux)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -207,6 +211,8 @@ GEM
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     paranoia (2.4.3)
@@ -420,15 +426,16 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  browser!
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
-  letter_opener
   listen (>= 3.0.5, < 3.2)
   mini_racer
   pg
@@ -455,4 +462,6 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.19
+   2.3.0
+bundle lock
+--add-platform x86_64-linux
