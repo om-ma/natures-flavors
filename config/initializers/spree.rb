@@ -29,3 +29,6 @@ end
 
 
 Spree.user_class = "Spree::User"
+Spree::PermittedAttributes.taxon_attributes << [user_ids:[]]
+Spree::Auth::Config[:registration_step]= false
+
