@@ -16,7 +16,7 @@
     <% unless @product_properties.blank? %>
         <% @product_properties.each do |product_property| %>
           <% if product_property.show_property? %>
-              <span ><%= product_property.value %></span>
+              <p><%= product_property.value %></p>
           <% end %>
         <%end %>
     <%end %>
