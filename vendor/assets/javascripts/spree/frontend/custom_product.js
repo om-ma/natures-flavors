@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
 
   $('.close-menu').on('click', function(e) {
     $('.mobile-menu').toggleClass("show");
@@ -213,4 +213,4 @@ $(document).ready(function() {
       },
     ]
   });  
-});
+})
