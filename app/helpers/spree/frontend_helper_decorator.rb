@@ -32,6 +32,7 @@ Spree::FrontendHelper.class_eval do
         ) << content_tag(:meta, nil, itemprop: 'position', content: '0'), itemprop: 'url', href: spree.root_path
       ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: spree.root_path), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')]
 
+      
       if taxon
         ancestors = taxon.ancestors.where.not(parent_id: nil)
 
@@ -41,7 +42,7 @@ Spree::FrontendHelper.class_eval do
             :a, content_tag(
               :span, ancestor.name, itemprop: 'name'
             ) << content_tag(:meta, nil, itemprop: 'position', content: index + 1), itemprop: 'url', href: seo_url(ancestor, params: permitted_product_params)
-          ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(ancestor, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')
+          ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(ancestor, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'active breadcrumb-item')
         end
 
         # breadcrumbs for current taxon
@@ -66,10 +67,8 @@ Spree::FrontendHelper.class_eval do
         ) << content_tag(:meta, nil, itemprop: 'position', content: '1'), class: 'active', itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement')
       end
      content_tag(:ol, raw(crumbs.flatten.map(&:mb_chars).join), class: 'breadcrumb', itemscope: 'itemscope', itemtype: 'https://schema.org/BreadcrumbList')
-
     end
-
-  def plp_and_carousel_image(product, image_class = '')
+    def plp_and_carousel_image(product, image_class = '')
     image = default_image_for_product_or_variant(product)
 
     image_url = if image.present?
@@ -88,6 +87,7 @@ Spree::FrontendHelper.class_eval do
       height: image_style&.dig(:height) || 371,
       class: "product-component-image d-block mw-100 #{image_class}"
     )
-  end
+  end   
+
 
 end

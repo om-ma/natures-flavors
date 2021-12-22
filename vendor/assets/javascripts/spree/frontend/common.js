@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
     var showChar = 360;
     var ellipsestext = "...";
     var moretext = "more";
@@ -25,5 +25,4 @@ $(document).ready(function() {
         $(this).prev().toggle();
         return false;
     });
-    });
-    
+    })
