@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function() {
     $(this).children('div').slideToggle();
     $(this).closest('.parent').siblings().children('div').slideUp();
   });
-});
+
 
 $(document).ready(function() {
   $('#videos-slider').lightSlider({
@@ -213,4 +213,5 @@ $(document).ready(function() {
       },
     ]
   });  
+});
 })
