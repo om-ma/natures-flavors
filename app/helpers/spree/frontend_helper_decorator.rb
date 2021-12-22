@@ -47,7 +47,7 @@ Spree::FrontendHelper.class_eval do
 
         # breadcrumbs for current taxon
         crumbs << content_tag(:li, content_tag(
-            :a,content_tag(
+            :div,content_tag(
             :span, taxon.name, itemprop: 'name'
           ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params)
         ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item' )
