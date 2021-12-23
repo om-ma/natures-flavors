@@ -24,13 +24,8 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-5 col-lg-7">
-      <div class="sorting-filter d-flex align-items-center justify-content-end">
-        <label>Sort by:</label>
-        <button type="button" class="active">Popular</button>
-        <button type="button" class="">Alphabetical Order</button>
-        <button type="button" class="">Best Sellers</button>
-      </div>
+    <div class="col-xl-5 col-lg-7" data-hook="taxon_products">
+        <%= render 'sorting_filters', taxon: @taxon %>
     </div>
   </div>
 </div>
