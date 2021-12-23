@@ -21,7 +21,7 @@ Spree::FrontendHelper.class_eval do
       safe_join(taxons, "\n")
     end
   end
-  
+
   def spree_breadcrumbs(taxon, _separator = '', product = nil)
     return ''  if current_page?('/') || taxon.nil?
 
