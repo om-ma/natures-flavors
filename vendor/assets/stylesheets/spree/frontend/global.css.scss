@@ -3796,7 +3796,7 @@ a.btn.btn-block {
 }
 
 .sidebar-sub-categories .show .dropdown-toggle:after {
-    background-image: url("../images/arrow-top-icon.svg");
+	background-image: image-url("arrow-top-icon.svg");
 }
 
 .category-filters-wrap {
@@ -5808,11 +5808,12 @@ a.btn.btn-block {
 }
 	
 .sidebar-sub-categories .dropdown-toggle:after {
-	background-image: url("../images/arrow-bottom-white-icon.svg");
+	background-image: image-url("arrow-bottom-white-icon.svg");
+
 }
 	
 .sidebar-sub-categories .show .dropdown-toggle:after {
-    background-image: url("../images/arrow-top-white-icon.svg");
+    background-image: image-url("arrow-top-white-icon.svg");
 }
 	
 .sidebar-sub-categories .dropdown-menu {
