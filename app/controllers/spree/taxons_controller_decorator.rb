@@ -22,7 +22,6 @@ Spree::TaxonsController.class_eval do
 
     @searcher = build_searcher(search_params)
     products_searcher = @searcher.retrieve_products.send(sorting_scope)
-
     
     if params[:sorting] == "bestsellers"
       @products =  products_searcher.best_sellers
@@ -42,9 +41,6 @@ Spree::TaxonsController.class_eval do
       @products   = @searcher.retrieve_products.send(sorting_scope).page(params[:page]).per(params['per_page'])
       @taxonomies = Spree::Taxonomy.includes(root: :children).where('name ILIKE ?','%PRODUCTS%')
     end
-
   end
-
-  
 
 end

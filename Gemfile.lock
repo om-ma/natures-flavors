@@ -462,4 +462,8 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
+<<<<<<< HEAD
    2.3.0
+=======
+   2.2.19
+>>>>>>> 08f55f434b918ae436419eeb4c36d7e932eabdda
