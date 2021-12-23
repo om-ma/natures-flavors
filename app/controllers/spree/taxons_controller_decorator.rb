@@ -1,7 +1,7 @@
 Spree::TaxonsController.class_eval do
 
   def show
-    if stale? [@taxon, @products, @taxonomies, simple_current_order]
+    if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
       load_products
     end
   end
@@ -22,7 +22,7 @@ Spree::TaxonsController.class_eval do
 
     @searcher = build_searcher(search_params)
     products_searcher = @searcher.retrieve_products.send(sorting_scope)
-    
+
     if params[:sorting] == "bestsellers"
       @products =  products_searcher.best_sellers
     else
