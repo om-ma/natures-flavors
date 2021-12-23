@@ -134,7 +134,7 @@
           <div class="d-flex flex-wrap align-items-center">
             <%= render 'spree/shared/quantity_select', input_name: :quantity %>
             <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
-              <span id="product_btn_variant_price" > <%= default_variant.price_in(current_currency).money %> </span>
+              <span id="product_btn_variant_price" > <%= default_variant.price_in(current_currency).money %> - </span>
               <%= Spree.t(:add_to_cart) %>
             <% end %>
           </div>

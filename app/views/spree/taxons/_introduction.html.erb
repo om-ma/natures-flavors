@@ -45,7 +45,7 @@
       </div>
       <div class="col-xl-4">
          <div class="category-intro more"> 
-            <%= @taxon.description %>
+            <%= strip_tags(@taxon.description)%>
          </div>
       </div>
    </div>

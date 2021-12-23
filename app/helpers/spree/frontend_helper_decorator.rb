@@ -1,7 +1,6 @@
 Spree::FrontendHelper.class_eval do
 
   def taxons_tree(root_taxon, current_taxon, max_level = 3)
-
     return '' if max_level < 1
     selected_parent_taxon_name = params["id"]
     show_klass =  (root_taxon.children.pluck("permalink").include?(selected_parent_taxon_name) && root_taxon.parent.present?) ? 'show' : ''
@@ -45,12 +44,19 @@ Spree::FrontendHelper.class_eval do
       end
 
       # breadcrumbs for current taxon
-      crumbs << content_tag(:li, content_tag(
-        :div,content_tag(
-        :span, taxon.name, itemprop: 'name'
-      ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params)
-      ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
-
+      if product.present?
+        crumbs << content_tag(:li, content_tag(
+          :a,content_tag(
+          :span, taxon.name, itemprop: 'name'
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params)
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
+      else
+        crumbs << content_tag(:li, content_tag(
+          :div,content_tag(
+          :span, taxon.name, itemprop: 'name'
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params)
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
+      end
       # breadcrumbs for product
       if product
         crumbs << content_tag(:li, content_tag(
@@ -66,7 +72,6 @@ Spree::FrontendHelper.class_eval do
       ) << content_tag(:meta, nil, itemprop: 'position', content: '1'), class: 'active', itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement')
     end
     content_tag(:ol, raw(crumbs.flatten.map(&:mb_chars).join), class: 'breadcrumb', itemscope: 'itemscope', itemtype: 'https://schema.org/BreadcrumbList')
-
   end
 
   def plp_and_carousel_image(product, image_class = '')
