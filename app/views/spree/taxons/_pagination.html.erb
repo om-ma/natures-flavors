@@ -14,6 +14,6 @@
 </div> -->
 <% if @products.respond_to?(:total_pages) %>
     <div class="pagination-wrap">
-        <%= paginate @products, window: 2, theme: 'twitter-bootstrap-4', total_products_count: @taxon.products.length  %>
+        <%= paginate @products, window: 2, theme: 'twitter-bootstrap-4' %>
     </div>
 <%end%>

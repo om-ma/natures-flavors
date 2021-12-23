@@ -23,6 +23,7 @@
     <%#= last_page_tag unless current_page.last? %>
   </ul>
 <%# end %> -->
+
 <%= paginator.render do %>
   <div class="pagination-wrap">
     <ul class="pagination d-flex align-items-center justify-content-center">
@@ -53,8 +54,8 @@
       -
       <%=current_page.number*per_page  %> 
       of 
-      <%= total_products_count %>
-       products
+      <%=current_store.products.count%> 
+      products
     </div>
   </div>
 <% end %>

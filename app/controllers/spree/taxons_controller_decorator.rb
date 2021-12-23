@@ -1,5 +1,5 @@
 Spree::TaxonsController.class_eval do
-  
+
   def show
     if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
       load_products
@@ -25,7 +25,7 @@ Spree::TaxonsController.class_eval do
 
     if params[:sorting] == "bestsellers"
       @products =  products_searcher.best_sellers
-    else  
+    else
       @products =   products_searcher
     end
 
