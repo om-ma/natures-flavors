@@ -79,17 +79,18 @@
         </span>
       </div>
     <%# end %>
+
   </div>
 </div>   -->
 <%# some ids and data hook i have missed bacause i havent used it yet %>
-<div class="order-summary mb-60" data-hook="order_summary">
+<div class="order-summary mb-60  empty-cart-area " data-hook="order_summary">
   <ul class="cart-items">
     <% order.line_items.each do|s| %>
       <% variant = s.variant %>
-      <li class="cart-item">
-        <button type="button" class="btn btn-primary remove-btn " >Close</button>
-        <%= link_to product_image(variant), spree.product_path(variant.product),class:'thumbnail' %>
-        <div class="cart-item-details d-flex flex-column justify-content-between">
+      <li class="cart-item line-item empty-cart-area cart-line-item-container-<%= s.id %> shopping-cart-item " data-lineitem-id="<%= s.id %>"  >
+        <button type="button" class="  btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= s.id %>  " data-line-item-id= "<%= s.id %>"  >Close</button>
+        <%= link_to product_image(variant), spree.product_path(variant.product),class:'thumbnail' %> 
+        <div class="cart-item-details d-flex flex-column justify-content-between ">
           <h4><%= link_to s.name, spree.product_path(variant.product) %></h4>
           <div class="price-size text-right"><span><%= s.quantity %>x<%= s.single_money.to_html%></span><%= s.display_amount.to_html unless s.quantity.nil? %> </div>
         </div>
@@ -101,15 +102,15 @@
               order_form: order_form,
               classes: '' %>
   <ul class="cart-totals">
-    <li id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>">
+    <li  id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>">
       <label><%= Spree.t(:subtotal) %></label>
-      <span><%= order.display_item_total.to_html %></span> </li>
+      <span class="js-order-total"><%= order.display_item_total.to_html %></span> </li>
     <li>
       <label>Shipping:</label>
       <span>Calculated in next step</span> </li>
-    <li id='summary-order-total'>
+    <li  id='summary-order-total'>
       <label>Total:</label>
-      <strong><%= order.display_total.to_html %></strong> </li>
+      <strong class="js-product-total"><%= order.display_total.to_html %></strong> </li>
   </ul>
 </div>
 <div class="cart-similar-item phone-hide">
