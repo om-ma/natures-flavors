@@ -11,17 +11,17 @@
         <div class="cart-sidebar-body d-flex flex-column justify-content-between">
           <ul class="cart-items empty-cart-area" data-hook="inside_cart_form">
             <%= render partial: 'spree/shared/cart_box', locals: { order_form: order_form } %>
-            <li class="grand-total d-flex align-items-center justify-content-between">Total:<strong><%= @order.display_total %></strong></li>
+            <li class="grand-total d-flex align-items-center justify-content-between">Total:<strong class="js-product-total"><%= @order.display_total %></strong></li>
           </ul>
           <div class="body-sidebar-footer">
             <div class="cart-similar-item">
               <div class="wrap">
                 <p>You might need this:</p>
-                <div class="similar-item-thumb"><a href="#"><img src="assets/images/product-thumb-1.jpg" alt=""></a></div>
+                <div class="similar-item-thumb"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
                 <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
                 <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
             </div>
-            <button type="button" class="btn btn-primary btn-block"><strong><%= @order.display_total %> - Check Out</strong></button>
+            <button type="button" class="btn btn-primary btn-block"><strong class="js-product-total"><%= @order.display_total %> - Check Out</strong></button>
           </div>
         </div>
       <% end %>  
@@ -42,3 +42,4 @@
     <% end %>  
   </div>
 </aside>
+

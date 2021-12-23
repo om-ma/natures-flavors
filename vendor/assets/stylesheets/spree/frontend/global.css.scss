@@ -3456,7 +3456,10 @@ a.btn.btn-block {
 	font-size: 18px;
 	font-weight: 800;
 	color: #fff;
-	background: url("../images/cart-icon-white.svg") no-repeat scroll left center;
+	background-image: image-url("cart-icon-white.svg");
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-attachment: scroll;
 	padding: 0 0 0 32px;
 }
 
@@ -3508,7 +3511,10 @@ a.btn.btn-block {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url("../images/close-solid.svg") no-repeat scroll center;
+	background-image: image-url("close-solid.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 	z-index: 10;
 }
 
