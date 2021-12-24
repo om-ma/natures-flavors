@@ -30,14 +30,14 @@
         <div class="select_address mb-5">
           <div class="form-group col">
             <%# user_available_addresses.each_with_index do |address, idx| %>
-            <div class="row mb-3" id="<%#= [address_type, dom_id(address)].join('_') %>">
-              <label class="form-check-label spree-radio-label col-8">
-                <%#= form.radio_button "#{address_name}_id", address.id, checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0) %>
-                <span class="spree-radio-label-custom-input"></span>
-                  <%#= render "spree/users/address", address: address %>
-              </label>
-              <%#= render "spree/users/address_controls", address: address %>
-            </div>
+              <div class="row mb-3" id="<%#= [address_type, dom_id(address)].join('_') %>">
+                <label class="form-check-label spree-radio-label col-8">
+                  <%#= form.radio_button "#{address_name}_id", address.id, checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0) %>
+                  <span class="spree-radio-label-custom-input"></span>
+                    <%#= render "spree/users/address", address: address %>
+                </label>
+                <%#= render "spree/users/address_controls", address: address %>
+              </div>
             <%# end %>
             <div class="row mb-3">
               <label class="form-check-label spree-radio-label col">
@@ -126,18 +126,25 @@
         <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>' data-hook="use_billing">
           <div class="row">
             <% if user_available_addresses.present? %>
-              <% user_available_addresses.each_with_index do |address, idx| %>
-              <div class="col-sm-12" id="<%= [address_type, dom_id(address)].join('_') %>">
-                <div class="form-group form-floating mb-20">
-                  <select class="custom-select">
-                    <%= render "spree/users/address", address: address %>
-                  </select>
-                  <label>
-                    My Addresses
-                  </label>
+                <div class="col-sm-12">
+                  <div class="form-group form-floating mb-20">
+                    <select class="custom-select">
+                        <address>
+                          <option value="form">
+                            New Address
+                          </option>
+                          <% user_available_addresses.each_with_index do |address, idx| %>
+                            <div id="<%= [address_type, dom_id(address)].join('_') %>">
+                              <%= render "spree/users/address", address: address %>
+                            </div>
+                          <% end %>
+                        </address>
+                    </select>
+                    <label>
+                      My Addresses
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <% end %>
             <% end %>
             <%= render partial: 'spree/addresses/form', locals: {
               address_name: address_name,
@@ -147,9 +154,35 @@
               form: form
             } %>
           </div>
+          <button type="button" class="btn btn-primary btn-block" id="secondaryButton" >Next Step: <strong>Choose Delivery</strong></button>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
 
+
+<script>
+  $( document ).ready(function() {
+    $('select').on('change', function() {
+      if (this.value=="form"){
+        $('.new-address').show();
+      }
+      else if (this.value == "saved_address")
+      {
+        $('.new-address').hide();
+      }
+    });
+  });
+  </script>
+  <script>
+  $( document ).ready(function() {
+    $('select').on('change', function() {
+      if (this.value=="form"){
+        $(".reset").click(function() {
+          $(this).closest('.form1').find("input[type=text], textarea").val("");
+          });
+      }
+    }); 
+  });
+  </script>
