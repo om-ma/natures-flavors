@@ -92,7 +92,6 @@
         </ul>
         <div class="quick-menu ml-auto" >
           <%= render partial: 'spree/shared/search' %>
-          <!-- <a class="nav-search tablet-visible"   href="#"><span>Find</span></a> -->
           <div id="account-button">
             <% if spree_current_user.present? %>
               <%= link_to  destroy_spree_user_session_path, :class => 'nav-profile tablet-hide' do %>
@@ -104,7 +103,6 @@
               <% end %>
             <% end %>
           </div>
-          <%#= link_to cart_path, :class =>'nav-cart', id: 'link-to-cart'  do %>
           <a id="shopping_cart_bag" class="nav-cart" href="#" >
             <span>cart </span>
             <small class="cart-counter"><%= current_order.line_items.count %></small>
@@ -118,37 +116,3 @@
     </div>
   </div> 
 </nav>
-
-<script>
- 
-
-$(document).on("click" , "#shopping_cart_bag", function(e){
-    var cartBagElement  = $('.cart-nav')
-    $.ajax({
-    type: 'GET',
-    url: '/refresh_cart_bag.js',
-    }).done(function () {
-    }).fail(function (response) {
-    })
-  e.preventDefault();
-});
-
-$(document).ready(function() {
-
-  $(document).on("click" , ".close-sidebar-btn", function(e){
-    $('.cart-sidebar').toggleClass("active");
-    $('.overlay').toggleClass("active");
-    $('body').toggleClass("hide-scroll");
-  e.preventDefault();
-  });
-        
-  $('.cart-sidebar-wrapper .overlay').on('click', function(e) {
-    $('.nav-cart').toggleClass("active");
-    $('.cart-sidebar').toggleClass("active");
-    $('.cart-sidebar-wrapper .overlay').toggleClass("active");
-    $('body').removeClass("hide-scroll");
-    e.preventDefault();
-  });
-});   
-
-</script>

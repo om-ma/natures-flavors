@@ -44,17 +44,17 @@
       <%= next_page_tag unless current_page.last? %>
     </ul>
     <div class="pagination-counter d-flex align-items-center"> 
-      Showing 
-      <% if current_page.number == 1 %>
-        <%= current_page.number %>
-      <% else %>
-        <%= current_page.number*per_page - (per_page-1) %>
-      <% end %>
-      -
-      <%=current_page.number*per_page  %> 
-      of 
-      <%= total_products_count %>
-       products
+    Showing 
+    <% if current_page.number == 1 %>
+      <%= current_page.number %>
+    <% else %>
+      <%= current_page.number*per_page - (per_page-1) %>
+    <% end %>
+    -
+    <%=current_page.number*per_page  %> 
+    of 
+    <%= total_products_count %>
+     products
     </div>
   </div>
 <% end %>
