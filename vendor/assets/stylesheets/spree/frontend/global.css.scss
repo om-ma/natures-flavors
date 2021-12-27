@@ -3438,7 +3438,10 @@ a.btn.btn-block {
 	font-size: 12px;
 	text-transform: uppercase;
 	padding: 0 20px 0 44px;
-	background: url("../images/close-light.svg") no-repeat scroll 22px center;
+	background-image: image-url("close-light.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   22px center;
 	border: rgba(255,255,255,0.1) 1px solid;
 }
 

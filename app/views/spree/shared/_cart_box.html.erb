@@ -1,16 +1,16 @@
 <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
 <% order_form&.object&.line_items.each do |line_item| %>
   <%= order_form&.fields_for :line_items, line_item do |item_form| %>
-    <li class="cart-item line-item cart-line-item-container-<%= line_item.id %> shopping-cart-item" data-lineitem-id= "<%= line_item.id %>">
-      <button type="button" class="btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= line_item.id %>" data-line-item-id="<%= line_item.id %>" >Close</button>
+    <li class="cart-item line-item cart-line-item-container-<%= line_item.id %> shopping-cart-item " data-lineitem-id= "<%= line_item.id %>">
+      <button type="button" class="btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= line_item.id %> " data-line-item-id="<%= line_item.id %>" >Close</button>
       <% if line_item&.variant&.images.length == 0 %>
         <%= link_to small_image(line_item&.variant&.product), line_item&.variant&.product,class: 'thumbnail' %>
       <% else %>
         <%= link_to image_tag(main_app.url_for(line_item&.variant&.images&.first&.url(:small))),line_item&.variant&.product ,class: 'thumbnail' %>
       <% end %>
-      <div class="cart-item-details d-flex flex-column justify-content-between ">
+      <div class="cart-item-details d-flex flex-column justify-content-between">
         <h4><%= link_to line_item&.name, line_item&.variant&.product %></h4>
-          <%= item_form.number_field :quantity, min: 0, class: " quantity-box custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box ", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
+          <%= item_form.number_field :quantity, min: 0, class: " quantity-box custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box jsAddItem jsSubItem ", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
           <div class="price-size text-right" data-hook="cart_item_price">
             <span><%= line_item.quantity %>x<%= line_item.single_money.to_html%></span> <%= line_item.display_amount.to_html unless line_item.quantity.nil?  %> 
           </div>
@@ -54,7 +54,7 @@
             $('.cart-line-item-container-'+lineItemId).remove();
             $('.cart-item-count').html($('.cart-line-item-container').not('.deleted').length);
             if ($('.shopping-cart-item').length == 0){
-              $('.empty-cart-area').html('<div class="d-flex flex-column justify-content-between h-100"><div class="d-flex flex-column align-items-center"><svg xmlns="http://www.w3.org/2000/svg" height="83px" viewBox="0 0 82.644 91.651" width="83px" class="spree-icon shopping-cart-empty-image"><g fill="currentColor"><path d="m150.285 123.23a3.012 3.012 0 0 0 .309.016 2.969 2.969 0 0 0 2.95-2.664l1.369-13.249a2.969 2.969 0 0 0 -5.907-.61l-1.369 13.249a2.969 2.969 0 0 0 2.648 3.258z" transform="translate(-93.687 -62.867)"></path><path d="m82.253 185.088a9.191 9.191 0 1 0 9.19 9.19 9.2 9.2 0 0 0 -9.19-9.19zm0 12.444a3.253 3.253 0 1 1 3.252-3.254 3.257 3.257 0 0 1 -3.252 3.254z" transform="translate(-48.644 -111.819)"></path><path d="m159.693 185.088a9.191 9.191 0 1 0 9.191 9.19 9.2 9.2 0 0 0 -9.191-9.19zm0 12.444a3.253 3.253 0 1 1 3.253-3.254 3.257 3.257 0 0 1 -3.253 3.254z" transform="translate(-95.428 -111.819)"></path><path d="m93.4 59.345a2.969 2.969 0 0 0 -2.349-1.153h-59.179l-2.485-9.556a2.969 2.969 0 0 0 -2.874-2.222h-12.168a2.969 2.969 0 0 0 0 5.938h9.873l2.465 9.479c.012.053.026.106.041.158l9.167 35.25a2.969 2.969 0 0 0 2.874 2.222h43.1a2.969 2.969 0 0 0 2.874-2.222l9.188-35.33a2.97 2.97 0 0 0 -.527-2.564zm-13.833 34.178h-38.507l-7.644-29.393h53.8z" transform="translate(-11.376 -28.041)"></path><path d="m89.978 30.872a2.969 2.969 0 1 0 4.2-4.2l-9.337-9.333a2.969 2.969 0 0 0 -4.2 4.2z" transform="translate(-52.696 -9.95)"></path><path d="m154.643 31.742a2.96 2.96 0 0 0 2.1-.87l9.323-9.332a2.969 2.969 0 0 0 -4.2-4.2l-9.323 9.332a2.969 2.969 0 0 0 2.1 5.067z" transform="translate(-96.136 -9.952)"></path><path d="m130.476 19.124a2.969 2.969 0 0 0 2.969-2.968v-13.186a2.969 2.969 0 0 0 -2.964-2.97 2.969 2.969 0 0 0 -2.969 2.968v13.186a2.969 2.969 0 0 0 2.964 2.97z" transform="translate(-81.536)"></path></g></svg><p class="text-center shopping-cart-empty-info">Your cart is empty.</p></div><a class="btn btn-primary text-uppercase font-weight-bold shopping-cart-empty-continue-link btn-color" href="/products">Continue shopping</a></div>');
+              $('.empty-cart-area').html('<div class="cart-sidebar-body d-flex flex-column justify-content-between"><div class="text-center"><%= image_tag "empty_cart.svg", alt:"Empty Cart" %><h3>Your cart is empty</h3><p>Looks like you haven&lsquo;t made your choice yet...</p><%= link_to  spree.products_path do %><button type="button" class="btn btn-primary"><strong>Shop Now</strong></button><% end %></div></div>');
               $('.cart-summary').html('') 
               //window.location = '/cart' 
             }

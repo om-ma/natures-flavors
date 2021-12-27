@@ -107,7 +107,7 @@
           <%#= link_to cart_path, :class =>'nav-cart', id: 'link-to-cart'  do %>
           <a id="shopping_cart_bag" class="nav-cart" href="#" >
             <span>cart </span>
-            <small class="cart-counter">4</small>
+            <small class="cart-counter"><%= current_order.line_items.count %></small>
           </a>
           <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
         </div>
