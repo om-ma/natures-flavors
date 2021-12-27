@@ -135,6 +135,7 @@
                           </option>
                           <% user_available_addresses.each_with_index do |address, idx| %>
                             <div id="<%= [address_type, dom_id(address)].join('_') %>">
+                              <%= form.radio_button "#{address_name}_id", address.id,  checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0) %>
                               <%= render "spree/users/address", address: address %>
                             </div>
                           <% end %>
@@ -145,6 +146,7 @@
                     </label>
                   </div>
                 </div>
+                <%= form.radio_button "#{address_name}_id", 0, class: 'check', checked:'checked' %> 
             <% end %>
             <%= render partial: 'spree/addresses/form', locals: {
               address_name: address_name,
@@ -186,3 +188,19 @@
     }); 
   });
   </script>
+  <script>
+    $( document ).ready(function() {
+    $('select').on('change', function() {
+      if (this.value=="form"){
+        $('.new-address').show();
+
+      }
+      else if (this.value == "saved_address")
+      {
+        $('.new-address').hide();
+      }
+    });
+  });
+  </script>
+
+  

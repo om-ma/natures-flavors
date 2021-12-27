@@ -923,7 +923,11 @@ a.btn.btn-block {
 	color: #fff;
     text-transform: uppercase;
     padding: 0 20px 0 44px;
-    background: url("../images/arrow-left-white-icon.svg") no-repeat scroll 22px center;
+	background-image: image-url("arrow-left-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: scroll ;
+	background-position: 22px ;
     border: rgba(255,255,255,0.1) 1px solid;
 	position: absolute;
 	left: 20px;
