@@ -545,7 +545,7 @@ img {
 	-moz-appearance: none;
 	appearance: none;
 	text-overflow: '';
-	background-image: url("../images/arrow-bottom-icon.svg");
+	background-image: image-url("arrow-bottom-icon.svg");
 	background-size: 10px auto;
 	background-position: calc(100% - 20px) center;
 	background-repeat: no-repeat;
@@ -625,6 +625,38 @@ a.btn {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
+.prev-page-icon,
+.prev-page-icon:focus {
+	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+}
+
+.prev-page-icon:hover,
+.lSAction > a:hover {
+    background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
+}
+
+.prev-page-icon:not(:disabled):not(.disabled):active,
+.lSAction > a:not(:disabled):not(.disabled):active {
+    background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
+}
+
+
+
+.prev-page-icon,
+.prev-page-icon:focus {
+	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+}
+
+.prev-page-icon:hover,
+.lSAction > a:hover {
+    background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
+}
+
+.prev-page-icon:not(:disabled):not(.disabled):active,
+.lSAction > a:not(:disabled):not(.disabled):active {
+    background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
+}
+
 
 
 .btn-secondary,
@@ -696,7 +728,7 @@ a.btn.btn-block {
 	height: 40px;
 	padding: 0 17px;
 	min-width: 160px;
-	background-image: url("../images/arrow-bottom-icon.svg");
+	background-image: image-url("arrow-bottom-icon.svg");
 	background-position: 90% center;
 	background-repeat: no-repeat;
 }
@@ -2771,35 +2803,59 @@ a.btn.btn-block {
 }
 
 .product-standards .glutenfree-icon {
-	background: url("../images/glutenfree.svg") no-repeat scroll center;
-}
-
-.product-standards .glutenfree-icon:hover {
-	background: url("../images/glutenfree-hover.svg") no-repeat scroll center;
-}
-
-.product-standards .nongmo-icon {
-	background: url("../images/non-gmo.svg") no-repeat scroll center;
-}
-
-.product-standards .nongmo-icon:hover {
-	background: url("../images/non-gmo-hover.svg") no-repeat scroll center;
-}
-
-.product-standards .u-icon {
-	background: url("../images/u.svg") no-repeat scroll center;
-}
-
+		background-image: image-url("glutenfree.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	
+	 }
+	 
+	 .product-standards .glutenfree-icon:hover {
+		background-image: image-url("glutenfree-hover.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	 }
+	 
+	 .product-standards .nongmo-icon {
+		background-image: image-url("non-gmo.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	 }
+	 
+	 .product-standards .nongmo-icon:hover {
+		background-image: image-url("non-gmo-hover.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	 }
+	
+	 .product-standards .u-icon {
+		background-image: image-url("u.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
+	}
 .product-standards .u-icon:hover {
-	background: url("../images/u-hover.svg") no-repeat scroll center;
+		background-image: image-url("u-hover.svg");
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position:   center;
 }
 
 .product-standards .vegan-icon {
-	background: url("../images/vegan.svg") no-repeat scroll center;
+	background-image: image-url("vegan.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-standards .vegan-icon:hover {
-	background: url("../images/vegan-hover.svg") no-repeat scroll center;
+	background-image: image-url("vegan-hover.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
 }
 
 .product-ingredients {
@@ -2840,12 +2896,18 @@ a.btn.btn-block {
 }
 
 .product-actions a.faq-link {
-	background: url("../images/qa-icon.svg") no-repeat scroll left center;
+	background-image: image-url("qa-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:  left center;
 	padding-left: 35px;
 }
 
 .product-actions a.add-to-fav {
-	background: url("../images/heart.svg") no-repeat scroll left center;
+	background-image: image-url("heart.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:  left center;
 	padding-left: 25px;
 }
 
@@ -3740,7 +3802,7 @@ a.btn.btn-block {
 }
 
 .sidebar-sub-categories .show .dropdown-toggle:after {
-    background-image: url("../images/arrow-top-icon.svg");
+	background-image: image-url("arrow-top-icon.svg");
 }
 
 .category-filters-wrap {
@@ -3821,7 +3883,9 @@ a.btn.btn-block {
 .pagination-wrap .btn-primary span {
 	position: relative;
 }
-
+.pagination-wrap .prev-page-icon span {
+	position: relative;
+}
 .pagination-wrap .btn-primary span {
 	background-image: image-url("arrow-right-white-icon.svg");
 	background-repeat: no-repeat;
@@ -4115,7 +4179,10 @@ a.btn.btn-block {
 	padding: 0;
 	width: 50px;
 	height: 50px;
-	background: url("../images/arrow-bottom-icon.svg") no-repeat scroll center;
+	background-image: image-url("arrow-bottom-icon.svg"); 
+	background-repeat: no-repeat; 
+	background-attachment: scroll; 
+	background-position: center;
 	border: solid 1px #ececec;
 	box-shadow: none !important;
 	border-radius: 21px;
@@ -5747,11 +5814,12 @@ a.btn.btn-block {
 }
 	
 .sidebar-sub-categories .dropdown-toggle:after {
-	background-image: url("../images/arrow-bottom-white-icon.svg");
+	background-image: image-url("arrow-bottom-white-icon.svg");
+
 }
 	
 .sidebar-sub-categories .show .dropdown-toggle:after {
-    background-image: url("../images/arrow-top-white-icon.svg");
+    background-image: image-url("arrow-top-white-icon.svg");
 }
 	
 .sidebar-sub-categories .dropdown-menu {
@@ -6095,4 +6163,8 @@ a.btn.btn-block {
 }
 .quantity-box {
 	height: 50px!important;
+}
+.quantity-field{
+	width: 80px;
+    margin: 0 10px 0 0;
 }
