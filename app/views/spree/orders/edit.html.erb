@@ -115,19 +115,8 @@
           <%= render 'spree/shared/breadcrumbs', current_page_name: Spree.t('cart_page.title') %>
           <h1 class="title mb-20">My Cart</h1>
           <% if @order.line_items.empty? %>
-            <div data-hook="empty_cart" >
-              <div class="d-flex flex-column justify-content-between h-100">
-                <div class="d-flex flex-column align-items-center">
-                  <%= icon(name: 'empty-cart',
-                          classes: 'shopping-cart-empty-image',
-                          width: 83,
-                          height: 83) %>
-
-                  <p class="text-center shopping-cart-empty-info"><%= Spree.t('cart_page.empty_info').html_safe %></p>
-                </div>
-                <%= link_to Spree.t(:continue_shopping), spree.products_path, class: 'btn btn-primary text-uppercase font-weight-bold shopping-cart-empty-continue-link' %>
-              </div>
-            </div>
+            <hr>
+            <%= render 'spree/shared/empty_cart' %>
           <% else %>
             <div  data-hook="outside_cart_form">
               <%= form_for @order, url: spree.update_cart_path, html: { id: 'update-cart' } do |order_form| %>
@@ -142,10 +131,6 @@
                         order_form: order_form,
                         classes: '' %>
                     <% end %>
-                    <!-- <div class="promo-code-wrap d-flex align-items-center">
-                      <input type="text" class="form-control" placeholder="Promo Code">
-                      <button type="submit" class="btn btn-primary" disabled="">Apply</button>
-                    </div> -->
                     <ul class="cart-totals">
                       <li>
                         <label>Subtotal:</label>
