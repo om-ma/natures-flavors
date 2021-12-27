@@ -145,7 +145,6 @@ function cartForm(orderNumber, token) {
   };
 
   this.removeItemFromPopup = function(e){
-    debugger
     e.preventDefault();
 
     const lineItemId = $(this).data('line-item-id');
