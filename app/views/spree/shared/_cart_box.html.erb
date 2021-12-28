@@ -3,17 +3,13 @@
   <%= order_form&.fields_for :line_items, line_item do |item_form| %>
     <li class="cart-item line-item cart-line-item-container-<%= line_item.id %> shopping-cart-item " data-lineitem-id= "<%= line_item.id %>">
       <button type="button" class="btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= line_item.id %> " data-line-item-id="<%= line_item.id %>" >Close</button>
-      <% if line_item&.variant&.images.length == 0 %>
-        <%= link_to small_image(line_item&.variant&.product), line_item&.variant&.product,class: 'thumbnail' %>
-      <% else %>
-        <%= link_to image_tag(main_app.url_for(line_item&.variant&.images&.first&.url(:small))),line_item&.variant&.product ,class: 'thumbnail' %>
-      <% end %>
+      <%= link_to product_image(line_item.variant), spree.product_path(line_item.variant.product), class:'thumbnail' %>
       <div class="cart-item-details d-flex flex-column justify-content-between">
         <h4><%= link_to line_item&.name, line_item&.variant&.product %></h4>
-          <%= item_form.number_field :quantity, min: 0, class: " quantity-box custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box jsAddItem jsSubItem ", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
-          <div class="price-size text-right" data-hook="cart_item_price">
-            <span><%= line_item.quantity %>x<%= line_item.single_money.to_html%></span> <%= line_item.display_amount.to_html unless line_item.quantity.nil?  %> 
-          </div>
+        <%= item_form.number_field :quantity, min: 0, class: " quantity-box custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box jsAddItem jsSubItem ", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
+        <div class="price-size text-right" data-hook="cart_item_price">
+          <span><%= line_item.quantity %>x<%= line_item.single_money.to_html%></span> <%= line_item.display_amount.to_html unless line_item.quantity.nil? %> 
+        </div>
       </div>
     </li>
   <% end %>
