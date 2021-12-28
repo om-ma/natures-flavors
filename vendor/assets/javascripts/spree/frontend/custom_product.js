@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-
   $(document).ready(function() {
     $('.product-ov-js').on('click', function(e) {
       $('.product-ov-js').removeClass("active");
@@ -238,5 +237,32 @@ $(document).ready(function() {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
+});
+
+$(document).ready(function() {
+  $(".js-qty-select").change(function() {
+    let selectedQty = $(this).val()
+    if (selectedQty == 10) {
+      $('.js-qty-field').show();
+      $(".js-qty-select").hide();
+    } else {
+      $(".js-qty-select").show();
+      $('.js-qty-field').hide();
+    }
+  });
+
+  $(".js-qty-field").on("keyup", function(){
+    let selectedQty = $(this).val()
+    let fieldValue  = Math.abs(selectedQty - 1)
+      if (selectedQty < 10) {
+        $('.js-qty-field').hide();
+        $(".js-qty-select").show();
+        $('.js-qty-select>option:eq(fieldValue)').prop('selected', true)
+      } else {
+        $(".js-qty-select").hide();
+        $('.js-qty-field').show();
+      }
+  });
+
 });
 
