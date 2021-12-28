@@ -116,7 +116,9 @@
           <h1 class="title mb-20">My Cart</h1>
           <% if @order.line_items.empty? %>
             <hr>
-            <%= render 'spree/shared/empty_cart' %>
+            <div data-hook="empty_cart">
+              <%= render 'spree/shared/empty_cart' %>
+            </div>
           <% else %>
             <div  data-hook="outside_cart_form">
               <%= form_for @order, url: spree.update_cart_path, html: { id: 'update-cart' } do |order_form| %>
