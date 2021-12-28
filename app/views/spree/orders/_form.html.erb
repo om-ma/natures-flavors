@@ -25,14 +25,11 @@
     })
   </script> -->
 <%# end %>
-
 <div id="cart-detail" data-hook="cart_items_headers" data-hook  >
   <div id="line_items" data-hook>
-  <%= render partial: 'spree/orders/line_item', collection: order_form.object.line_items, locals: { order_form: order_form } %>
+    <%= render partial: 'spree/orders/line_item', collection: order_form.object.line_items, locals: { order_form: order_form } %>
   </div>
 </div>
-
-
 <% if @order&.errors&.any? %>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
