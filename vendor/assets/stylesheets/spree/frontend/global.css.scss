@@ -3503,7 +3503,10 @@ a.btn.btn-block {
 	font-size: 12px;
 	text-transform: uppercase;
 	padding: 0 20px 0 44px;
-	background: url("../images/close-light.svg") no-repeat scroll 22px center;
+	background-image: image-url("close-light.svg");
+	background-repeat: no-repeat;
+	background-position: 22px center;
+	background-attachment: scroll;
 	border: rgba(255,255,255,0.1) 1px solid;
 }
 
@@ -3521,7 +3524,10 @@ a.btn.btn-block {
 	font-size: 18px;
 	font-weight: 800;
 	color: #fff;
-	background: url("../images/cart-icon-white.svg") no-repeat scroll left center;
+	background-image: image-url("cart-icon-white.svg");
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-attachment: scroll;
 	padding: 0 0 0 32px;
 }
 
@@ -3575,8 +3581,8 @@ a.btn.btn-block {
 	bottom: 0;
 	background-image: image-url("close-solid.svg");
 	background-repeat: no-repeat;
-	background-position:   center;
 	background-attachment: scroll;
+	background-position:   center;
 	z-index: 10;
 }
 
@@ -6162,6 +6168,7 @@ a.btn.btn-block {
 	width: 100%;
 	height: 100%;
 }
+
 .qty-dropdown-input {
 	width: 80px;
 	position: absolute;

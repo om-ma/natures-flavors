@@ -1,0 +1,16 @@
+<div class="cart-sidebar">
+    <div class="cart-sidebar-header">
+        <div class="cart-sidebar-title">My Cart</div>
+        <button type="button" class="btn close-sidebar-btn">Close</button>
+    </div>
+    <div class="cart-sidebar-body d-flex flex-column justify-content-between">
+        <div class="text-center">
+            <%= image_tag "empty_cart.svg", alt:"Empty Cart" %>
+            <h3>Your cart is empty</h3>
+            <p>Looks like you haven't made your choice yet...</p>
+            <%= link_to  spree.products_path do %>
+                <button type="button" class="btn btn-primary"><strong>Shop Now</strong></button>
+            <% end %>
+        </div>
+    </div>
+</div>
