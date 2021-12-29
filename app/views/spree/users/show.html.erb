@@ -1,51 +1,51 @@
-<div class="container account-page">
+<!-- <div class="container account-page">
   <h3 class="text-uppercase spree-mb-large spree-mt-large spree-header"><%= accurate_title %></h3>
 
   <div class="row">
     <div class="col-xs-12 col-lg-4">
       <dt class="text-uppercase account-page-user-info-item-title">
-        <%= Spree.t(:account_info) %>
-          <%= link_to spree.edit_user_path(@user), class: "account-page-user-info-item-title-edit" do %>
-          <%= inline_svg_tag('edit.svg', width: 27.6, height: 24) %>
-        <% end %>
+        <%#= Spree.t(:account_info) %>
+          <%#= link_to spree.edit_user_path(@user), class: "account-page-user-info-item-title-edit" do %>
+          <%#= inline_svg_tag('edit.svg', width: 27.6, height: 24) %>
+        <%# end %>
       </dt>
       <dd class="account-page-user-info-item-definition"><%= @user.email %></dd>
 
       <div class="d-lg-inline-block account-page-user-info-item-store-credits">
         <p class="my-0 text-uppercase text-center">
-          <%= Spree.t(:store_credit_name) %>
-          <% @user.available_store_credits(current_store).each do |value| %>
-            <br><b class="account-page-user-info-item-store-credits-amount"><%= value %></b>
-          <% end %>
+          <%#= Spree.t(:store_credit_name) %>
+          <%# @user.available_store_credits(current_store).each do |value| %>
+            <br><b class="account-page-user-info-item-store-credits-amount"><%#= value %></b>
+          <%# end %>
         </p>
       </div>
     </div>
     <div class="col-xs-12 col-lg-8 mt-sm-5 mt-lg-0">
       <h4 class="mb-3"><%= link_to Spree.t(:add_new_address), spree.new_address_path, method: :get %></h4>
       <div class="row">
-        <% @user.addresses.each_with_index do |address, index| %>
+        <%# @user.addresses.each_with_index do |address, index| %>
           <div class="col-12 col-sm-6 mb-3">
-            <% index += 1 %>
-            <% if index % 3 == 0 %>
+            <%# index += 1 %>
+            <%# if index % 3 == 0 %>
               <div class="account-page-user-info-item my-4"></div>
-            <% end %>
+            <%# end %>
             <div class="row">
               <div class="col-8 col-lg-6">
-                <%= render "spree/users/address", address: address %>
+                <%#= render "spree/users/address", address: address %>
               </div>
               <div class="col">
-                <%= render "spree/users/address_controls", address: address %>
+                <%#= render "spree/users/address_controls", address: address %>
               </div>
             </div>
           </div>
-        <% end %>
+        <%# end %>
       </div>
     </div>
   </div>
 
   <div data-hook="account_my_orders" class="account-page-orders" id="account-my-orders">
     <h3 class="text-uppercase spree-mb-medium spree-mt-medium spree-header"><%= Spree.t(:my_orders) %></h3>
-    <% if @orders.present? %>
+    <%# if @orders.present? %>
       <table>
         <thead class="active">
           <tr>
@@ -58,27 +58,1075 @@
           </tr>
         </thead>
         <tbody>
-          <% @orders.each do |order| %>
+          <%# @orders.each do |order| %>
             <tr>
-              <td class="account-page-order-number"><%= link_to order.number, spree.order_path(order), class: "text-primary" %></td>
-              <td class="account-page-order-date"><%= l order.completed_at.to_date %></td>
-              <td class="account-page-order-status"><%= Spree.t("order_state.#{order.state}").titleize %></td>
-              <td class="account-page-order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
-              <td class="account-page-order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
-              <td class="account-page-text-primary account-page-order-total account-page-lead"><%= order.display_total %></td>
-              <td class="account-page-arrow-container" data-order-path="<%= spree.order_path(order) %>">
-                <%= link_to '', spree.order_path(order), { class: "account-page-order-arrow" } %>
+              <td class="account-page-order-number"><%#= link_to order.number, spree.order_path(order), class: "text-primary" %></td>
+              <td class="account-page-order-date"><%#= l order.completed_at.to_date %></td>
+              <td class="account-page-order-status"><%#= Spree.t("order_state.#{order.state}").titleize %></td>
+              <td class="account-page-order-payment-state"><%#= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+              <td class="account-page-order-shipment-state"><%#= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+              <td class="account-page-text-primary account-page-order-total account-page-lead"><%#= order.display_total %></td>
+              <td class="account-page-arrow-container" data-order-path="<%#= spree.order_path(order) %>">
+                <%#= link_to '', spree.order_path(order), { class: "account-page-order-arrow" } %>
               </td>
             </tr>
-          <% end %>
+          <%# end %>
         </tbody>
       </table>
-    <% else %>
-      <p class="text-center"><%= Spree.t(:you_have_no_orders_yet) %></p>
-    <% end %>
+    <%# else %>
+      <p class="text-center"><%#= Spree.t(:you_have_no_orders_yet) %></p>
+    <%# end %>
     <br>
   </div>
   <div id="delete-address-popup" class="delete-address-popup-dropdown hide-on-esc">
-    <%= render 'spree/shared/delete_address_popup' %>
+    <%#= render 'spree/shared/delete_address_popup' %>
   </div>
-</div>
+</div> -->
+<main class="page-contents">
+  <div class="account-wrapper">
+    <div class="row no-gutters">
+      <div class="col-xl-2 tablet-hide"></div>
+      <div class="col-xl-7 col-lg-8">
+        <div class="wrap">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">My Account</li>
+          </ol>
+          <div class="title-wrap mb-60">
+            <h1 class="title"><%= accurate_title %> <a href="#" class="btn btn-primary">Log Out</a></h1>
+            <div class="sm-title">Welcome to your account. Here you can manage all of your personal information and orders.</div>
+          </div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#orderHistory">Order History</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#personalInformation">Personal Information</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#myAddresses">My Addresses</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#myCards">My Cards</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="orderHistory" role="tabpanel">
+              <div class="my-orders-wrapper">
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-info">In Labels</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-row-wrap">
+                  <div class="cart-icon tablet-hide"></div>
+                  <div class="order-wrap d-flex flex-wrap align-items-center">
+                    <div class="order-col flex-fill">
+                      <label>Date:</label>
+                      <h5>01/04/2021</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Order #:</label>
+                      <h5>R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Shipment #:</label>
+                      <h5 class="shipment-text">R940873599</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Status:</label>
+                      <h5 class="text-success">Shipped</h5>
+                    </div>
+                    <div class="order-col flex-fill">
+                      <label>Total:</label>
+                      <h5><strong>$37.95</strong></h5>
+                    </div>
+                    <div class="order-action">
+                      <button type="button" class="btn show-order-details">Action</button>
+                    </div>
+                  </div>
+                  <div class="order-details-wrap">
+                    <div class="wrap">
+                      <div class="profile-order-summary-wrap">
+                        <div class="profile-order-summary">
+                          <h6>Shipping Address:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Billing Details:</h6>
+                          <p>Penelope Martines<br>
+                            22246 Perth Way, Lake Forest<br>
+                            California, United States<br>
+                            92630</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Payment Method:</h6>
+                          <p>4242 Exp 2/2023</p>
+                        </div>
+                        <div class="profile-order-summary">
+                          <h6>Shipping Method:</h6>
+                          <p>FedEx Priority Overnight</p>
+                        </div>
+                      </div>
+                      <div class="order-summary">
+                        <ul class="cart-items">
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                          <li class="cart-item">
+                            <a href="#" class="thumbnail"><img src="assets/images/product-thumb-1.jpg" alt="product thumbnail"></a>
+                            <div class="cart-item-details d-flex flex-column justify-content-between">
+                              <h4><a href="#">Sample Pack of Flavor Powder</a></h4>
+                              <div class="price-size text-right"><span>2 x $17.24</span>$34.48</div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="cart-totals">
+                          <li>
+                            <label>Shipping:</label>
+                            <span>$12.50</span> </li>
+                          <li>
+                            <label>Total:</label>
+                            <strong>$65.37</strong> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="personalInformation" role="tabpanel">
+              <div class="personal-info">
+                <div class="form-group form-floating mb-20">
+                  <input type="text" class="form-control" placeholder="Email*">
+                  <label>Email *</label>
+                </div>
+                <div class="form-group form-floating mb-20">
+                  <input type="password" class="form-control" placeholder="Password">
+                  <label>Enter New Password *</label>
+                </div>
+                <div class="form-group form-floating mb-20">
+                  <input type="password" class="form-control" placeholder="Password">
+                  <label>Confirm Password *</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="myAddresses" role="tabpanel">
+              <div class="addresses-wrapper">
+                <div class="row narrow-row">
+                  <div class="col-md-6">
+                    <div class="address-wrap default">
+                      <h5>Default</h5>
+                      <p>Penelope Martines<br>
+                        22246 Perth Way, Lake Forest<br>
+                        California, United States<br>
+                        92630</p>
+                       <div onclick=""><strong>Edit</strong></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="address-wrap"> <a href="#" class="btn btn-text">Make Default</a>
+                      <p>Penelope Martines<br>
+                        22246 Perth Way, Lake Forest<br>
+                        California, United States<br>
+                        92630</p>
+                      <div onclick=""><strong>Edit</strong></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-edit-form">
+                  <h5>Add/Edit New Address</h5>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="First Name*">
+                        <label>First Name*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Last Name*">
+                        <label>Last Name*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Address*">
+                        <label>Address*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Address Line 2">
+                        <label>Address Line 2</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-floating mb-20">
+                        <select class="custom-select">
+                          <option>United States</option>
+                        </select>
+                        <label>Country*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-floating mb-20">
+                        <select class="custom-select">
+                          <option>California</option>
+                        </select>
+                        <label>State*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="City*">
+                        <label>City*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Zip Code*">
+                        <label>Zip Code*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Phone Number*">
+                        <label>Phone Number*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="custom-checkbox mb-30">
+                        <label>
+                          <input type="checkbox" class="custom-control-input" checked>
+                          <span class="custom-control-label"></span>Save as Default</label>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary">Add Address</button>
+                  <button type="button" class="btn btn-text">Delete This Address</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="myCards" role="tabpanel">
+              <div class="cards-wrapper">
+                <div class="row narrow-row">
+                  <div class="col-md-6">
+                    <div class="card-wrap default">
+                      <h5>Default</h5>
+                      <p>Penelope Martines<br>
+                        4345 **** **** 3243</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card-wrap"> <a href="#" class="btn btn-text">Make Default</a>
+                      <p>Penelope Martines<br>
+                        4345 **** **** 3243</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-edit-form">
+                  <h5>Add New Card</h5>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Name on card*">
+                        <label>Name on card*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Card number*">
+                        <label>Card number*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Expiration*">
+                        <label>Expiration*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-floating mb-20">
+                        <input type="text" class="form-control" placeholder="Security Code (CVV)*">
+                        <label>Security Code (CVV)*</label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="custom-checkbox mb-15">
+                        <label>
+                          <input type="checkbox" class="custom-control-input" checked>
+                          <span class="custom-control-label"></span>Save Card as Default</label>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary">Add Card</button>
+                  <button type="button" class="btn btn-text">Delete This Card</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-4">
+        <div class="wishlist">
+          <h3>Wishlist</h3>
+          <div class="cart-similar-item mb-20">
+            <div class="wrap">
+              <p>You might need this:</p>
+              <div class="similar-item-thumb"><a href="#"><img src="assets/images/product-thumb-1.jpg" alt=""></a></div>
+              <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
+              <a href="#" class="btn btn-primary">$14.70 - Add to Cart</a> <a href="#"><img src="assets/images/heart.svg" alt="favorite"></a> </div>
+          </div>
+          <div class="cart-similar-item mb-20">
+            <div class="wrap">
+              <p>You might need this:</p>
+              <div class="similar-item-thumb"><a href="#"><img src="assets/images/product-thumb-1.jpg" alt=""></a></div>
+              <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
+              <a href="#" class="btn btn-primary">$14.70 - Add to Cart</a> <a href="#"><img src="assets/images/heart.svg" alt="favorite"></a> </div>
+          </div>
+          <div class="cart-similar-item mb-20">
+            <div class="wrap">
+              <p>You might need this:</p>
+              <div class="similar-item-thumb"><a href="#"><img src="assets/images/product-thumb-1.jpg" alt=""></a></div>
+              <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
+              <a href="#" class="btn btn-primary">$14.70 - Add to Cart</a> <a href="#"><img src="assets/images/heart.svg" alt="favorite"></a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
