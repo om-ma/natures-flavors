@@ -1,7 +1,7 @@
 <!-- <ul id="nav-bar" class="nav align-items-center d-flex flex-nowrap justify-content-end navbar-right" data-turbo-permanent data-turbolinks-permanent>
   <li>
     <div class="navbar-right-search-menu">
-      <button type="button" class="navbar-right-dropdown-toggle search-icons" aria-label="<%= Spree.t('nav_bar.show_search') %>">
+      <button type="button" class="navbar-right-dropdown-toggle search-icons" aria-label="<%#= Spree.t('nav_bar.show_search') %>">
         <%#= icon(name: 'magnifying-glass',
                  classes: 'd-inline-block',
                  width: 36,
@@ -16,7 +16,7 @@
   <%# if defined?(spree.account_link_path) %>
     <li>
       <div class="dropdown navbar-right-dropdown">
-        <button id="account-button" type="button" data-toggle="dropdown" class="navbar-right-dropdown-toggle account-icon" aria-label="<%= Spree.t('nav_bar.show_user_menu') %>">
+        <button id="account-button" type="button" data-toggle="dropdown" class="navbar-right-dropdown-toggle account-icon" aria-label="<%#= Spree.t('nav_bar.show_user_menu') %>">
           <%#= icon(name: 'person',
                   classes: 'd-inline-block',
                   width: 41.4,
@@ -92,7 +92,6 @@
         </ul>
         <div class="quick-menu ml-auto" >
           <%= render partial: 'spree/shared/search' %>
-          <!-- <a class="nav-search tablet-visible"   href="#"><span>Find</span></a> -->
           <div id="account-button">
             <% if spree_current_user.present? %>
               <%= link_to  destroy_spree_user_session_path, :class => 'nav-profile tablet-hide' do %>
@@ -104,11 +103,14 @@
               <% end %>
             <% end %>
           </div>
-          <%= link_to cart_path, :class =>'nav-cart', id: 'link-to-cart'  do%>
-            <span id="cart">cart </span>
-            <small class="cart-counter">4</small>     
-          <% end %>
+          <a id="shopping_cart_bag" class="nav-cart" href="#" >
+            <span>cart </span>
+            <small class="cart-counter"><%=current_order.try(:item_count) %></small>
+          </a>
           <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
+        </div>
+        <div id='shopping_cart_bag_area'>
+          <%= render partial: 'spree/shared/shopping_bag', locals: {user_current_order: current_order} %>
         </div>
       </div>
     </div>

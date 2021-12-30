@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 end
 Spree::Core::Engine.routes.draw do
   get '/not-found', to: 'page_not_found#index', as: "page_not_found"
+  get 'refresh_cart_bag', to: 'custom_checkout#refresh_shopping_cart_bag'
 end

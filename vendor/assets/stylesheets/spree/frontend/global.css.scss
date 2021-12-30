@@ -3349,12 +3349,8 @@ a.btn.btn-block {
 	padding: 243px 45px 49px;
 	border-radius: 21px;
 	box-shadow: 0 12px 14px 0 rgba(37, 137, 18, 0.07);
-	border: solid 1px #d6efd4;	
-	background-image: image-url("success-icon.svg");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position:   center 60px;		
-	background-color: #e3f2e2;
+	border: solid 1px #d6efd4;
+	background: #e3f2e2 url("../images/success-icon.svg") no-repeat scroll center 60px;
 	margin: 100px 0 20px;
 }
 
