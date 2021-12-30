@@ -1,3 +1,4 @@
+<%= render partial: 'spree/shared/error_messages', locals: { target: @user } %>
 <div class="tab-pane fade" id="personalInformation" role="tabpanel">
   <div class="personal-info">
     <%= form_for Spree.user_class.new, as: @user, url: spree.user_path(@user), method: :put do |f| %>
