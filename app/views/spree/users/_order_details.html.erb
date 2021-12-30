@@ -7,7 +7,7 @@
 						<div class="order-wrap d-flex flex-wrap align-items-center">
 							<div class="order-col flex-fill">
 								<label><%= Spree.t(:date) %></label>
-								<h5><%=  order.completed_at.to_date.strftime("%d/%m/%Y") %></h5>
+								<h5><%=  order.completed_at.strftime("%d/%m/%Y") %></h5>
 							</div>
 							<div class="order-col flex-fill">
 								<label>Order #:</label>
