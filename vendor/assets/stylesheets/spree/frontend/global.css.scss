@@ -3345,9 +3345,16 @@ a.btn.btn-block {
 	padding: 243px 45px 49px;
 	border-radius: 21px;
 	box-shadow: 0 12px 14px 0 rgba(37, 137, 18, 0.07);
-	border: solid 1px #d6efd4;
-	background: #e3f2e2 url("../images/success-icon.svg") no-repeat scroll center 60px;
+	border: solid 1px #d6efd4;	
+	background-image: image-url("success-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center 60px;
+		
+	background-color: #e3f2e2;
 	margin: 100px 0 20px;
+
+
 }
 
 .checkout-confirmation .title {
@@ -3360,6 +3367,7 @@ a.btn.btn-block {
 	color: #000;
 	line-height: 1.38;
 	margin: 0;
+    
 }
 
 .discounted-product {
@@ -3430,7 +3438,11 @@ a.btn.btn-block {
 .cart-icon {
 	border-radius: 27px;
 	border: solid 1px #f0f0f0;
-	background: #fff url("../images/cart-icon-red.svg") no-repeat scroll center;
+	background-image: image-url("cart-icon-red.svg");
+	background-repeat: no-repeat;
+	background-attachement:scroll;
+	background-position:   center;
+	background-color: #fff;
 	width: 60px;
 	height: 60px;
 	position: absolute;
@@ -4010,7 +4022,12 @@ a.btn.btn-block {
 	border: solid 1px #f0f0f0;
 	border-radius: 27px;
 	padding: 23px 23px 20px 60px;
-	background: #fff url("../images/address.svg") no-repeat scroll 20px 30px;
+	background-image: image-url("address.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position-x: 20px;
+	background-position-y: 30px;
+	background-color: #fff;
 	position: relative;
 	margin: 0 0 60px;
 }
@@ -4022,8 +4039,16 @@ a.btn.btn-block {
 }
 
 .card-wrap {
-	background-image: url("../images/card.svg");
-	background-position: 24px 25px;
+    border: solid 1px #f0f0f0;
+	border-radius: 27px;
+	padding: 23px 23px 20px 60px;
+	background-image: image-url("card.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position-x: 24px;
+	background-position-y: 25px;
+	background-color: #fff;
+
 }
 
 .address-wrap h5,
@@ -4159,8 +4184,12 @@ a.btn.btn-block {
 	color: #07619c;
 }
 
-.order-col .text-success {
-	background: url("../images/delivered-icon.svg") no-repeat scroll left center;
+.order-col .text-success {	
+	background-image: image-url("delivered-icon.svg");	
+	background-repeat: no-repeat;
+	background-attachement:scroll;
+	background-position:   left center;
+	background-color: #0000;
 	padding: 0 0 0 18px;
 }
 
