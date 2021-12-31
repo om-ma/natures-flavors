@@ -4378,11 +4378,11 @@ a.btn.btn-block {
 }
 
 .nflavors-faqs-wrapper #faqaccordion .card-header .btn:after {
-    background-image: url(../images/arrow-bottom-icon.svg);
+	background-image: image-url("arrow-bottom-icon.svg");
 }
 
 .nflavors-faqs-wrapper #faqaccordion .card-header .btn:not(.collapsed):after {
-    background-image: url(../images/arrow-top-icon.svg);
+    background-image: image-url("arrow-top-icon.svg");
 }
 
 .nflavors-faqs-wrapper #faqaccordion .card-body {
