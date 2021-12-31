@@ -91,20 +91,18 @@
               <div class="row no-gutters">
                 <% if has_dropdown %>
                   <% parent.children.each do |child| %>
-                    <% if child.container? && child.code?('category') %>
-                      <div class="col">
-                        <ul class="dropdown-menu d-flex flex-column">
-                            <li>
-                              <a href="#"><%= child.name %></a>
-                            </li>
-                        </ul>
-                        <% if child.children.present? %>
-                          <%child.children.each do |category_link| %>
-                            <li><%= spree_nav_link_tag(category_link, { class: "text-uppercase main-nav-bar-category-links dropdown-item truncate" }) %></li>
-                          <% end %>
+                    <div class="col">
+                      <ul class="dropdown-menu d-flex flex-column">
+                          <li>
+                            <a href="#"><%= child.name %></a>
+                          </li>
+                      </ul>
+                      <% if child.children.present? %>
+                        <%child.children.each do |category_link| %>
+                          <li><%= spree_nav_link_tag(category_link, { class: "text-uppercase main-nav-bar-category-links dropdown-item truncate" }) %></li>
                         <% end %>
-                      </div>
-                    <% end %>
+                      <% end %>
+                    </div>
                   <% end %>
                 <% end %>
               </div>
