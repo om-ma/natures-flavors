@@ -32,4 +32,18 @@
   <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
 </ul>
 <%= render partial: 'properties' %>
-<div class="product-actions d-flex flex-wrap align-items-center"> <a href="#" class="faq-link">Ask a Question</a> <a href="#" class="add-to-fav">Add to Wishlist</a> </div>
+<div class="product-actions d-flex flex-wrap align-items-center"> <a href="#" class="faq-link">Ask a Question</a> 
+  <% if spree_user_signed_in? && spree_current_user.has_favorite_product?(@product.id) %>
+    <div class="product-favorite-icon add-to-fav">
+      <%= link_to favorite_product_path(id: @product.id, type: 'Spree::Product'), method: :delete, remote: true, class: 'favorite_link pull-right', id: 'unmark-as-favorite' do %>
+        Remove from wish List
+      <% end %>
+    </div>
+  <% else %>
+    <div class="product-favorite-icon add-to-fav">
+      <%= link_to favorite_products_path(id: @product.id, type: 'Spree::Product'), method: :post, remote: spree_user_signed_in?, class: 'favorite_link pull-right ', id: 'mark-as-favorite' do %>
+        Add to Wish List
+      <% end %>
+    </div>
+<% end %>  
+ </div>
