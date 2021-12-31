@@ -8,13 +8,6 @@
          </div>
          <ul class="footer-nav">
             <li class="header">Information</li>
-            <% if spree_menu('footer').present? %>
-               <% spree_menu('footer').children.each do |parent| %>
-               <% parent.children.each do |child| %>
-                  <li><%= spree_nav_link_tag(child) %></li>
-               <% end %>
-               <% end %>
-            <% end %>
          </ul>
       </div>
       <div class="col-xl-2 col-lg-4">
@@ -37,6 +30,13 @@
          <div class="footer-spacer"></div>
          <ul class="footer-nav">
          <li class="header">Product Info</li>
+         <% if spree_menu('footer').present? %>
+            <% spree_menu('footer').children.each do |parent| %>
+               <% parent.children.each do |child| %>
+                  <li><%= spree_nav_link_tag(child) %></li>
+               <% end %>
+            <% end %>
+         <% end %>
          </ul>
       </div>
       <div class="col-xl-2 col-lg-12">
