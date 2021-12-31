@@ -46,8 +46,16 @@
 											<% order.payments.valid.each do |payment| %>
 												<% source = payment.source %>
 												<% if source.is_a?(Spree::CreditCard) %>
-												<% end %>
-											<p> <%= content_tag(:span, payment.payment_method.name) %></p>
+                          <span class="cc-type">
+                            <% if source.last_digits %>
+                              <%= Spree.t(:ending_in) %> <%= source.last_digits %>
+                            <% end %>
+                          </span>
+                            <br>
+                          <span class="full-name"><%= source.name %></span>
+												<% else %>
+											    <p> <%= content_tag(:span, payment.payment_method.name) %></p>
+                        <% end %>
 											<% end %>
 										<% end %>
 									</div>
