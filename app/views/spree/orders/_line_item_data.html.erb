@@ -35,7 +35,10 @@
   <% additional_classes = "d-none d-lg-table-cell" %>
 <% end %>
 <div class="shopping-cart-item-quantity <%= additional_classes %>"  data-hook="cart_item_quantity" data-hook="cart_item_total">
-  <%= item_form.number_field :quantity, min: 0, class: " custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
+   <% activeKlass = line_item.quantity <= 10 ? "d-none" : "" %>
+   <%= item_form.number_field :quantity, min: 0, class: "js-qty-field custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box cart-line-item-#{line_item.id} #{activeKlass}", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
+   <% activeKlassSelect = line_item.quantity > 10 ? "d-none" : "" %>
+    <%= select_tag 'quantity', options_for_select([[1, 1], [2, 2], [3, 3],[4, 4],[5, 5],[6, 6],[7, 7],[8, 8], [9, 9], [10, 10], ['10+', 11]],line_item.quantity), class: "js-qty-select custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box #{activeKlassSelect}",data: { id: line_item.id }, aria: { label: Spree.t('cart_page.change_quantity') }  %>
 </div>
 <% if view == "desktop" %>
   <div class="price-size text-right <%= additional_classes %>" data-hook="cart_item_price">
