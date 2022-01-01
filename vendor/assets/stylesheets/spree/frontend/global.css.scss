@@ -3433,7 +3433,11 @@ a.btn.btn-block {
 .cart-icon {
 	border-radius: 27px;
 	border: solid 1px #f0f0f0;
-	background: #fff url("../images/cart-icon-red.svg") no-repeat scroll center;
+	background-image: image-url("cart-icon-red.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center;
+	background-color: #fff;
 	width: 60px;
 	height: 60px;
 	position: absolute;
