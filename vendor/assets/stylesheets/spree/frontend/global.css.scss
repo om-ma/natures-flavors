@@ -1676,7 +1676,7 @@ a.btn.btn-block {
 }
 
 .icon-wrap.delivery-icon {
-	background-image: url("../images/delivery-icon.svg");
+	background-image: image-url("delivery-icon.svg");
 }
 
 .icon-wrap.quality-icon {
@@ -3433,7 +3433,11 @@ a.btn.btn-block {
 .cart-icon {
 	border-radius: 27px;
 	border: solid 1px #f0f0f0;
-	background: #fff url("../images/cart-icon-red.svg") no-repeat scroll center;
+	background-image: image-url("cart-icon-red.svg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attachement: scroll;
+	background-color: #fff;
 	width: 60px;
 	height: 60px;
 	position: absolute;
@@ -4022,13 +4026,16 @@ a.btn.btn-block {
 	border: solid 1px #f0f0f0;
 	border-radius: 27px;
 	padding: 23px 23px 20px 60px;
-	background: #fff url("../images/address.svg") no-repeat scroll 20px 30px;
+	background-image: image-url("address.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll ;
+	background-position: 20px 30px;
 	position: relative;
 	margin: 0 0 60px;
 }
 
 .shipping-wrap {
-	background-image: url("../images/delivery-icon.svg");
+	background-image: image-url("delivery-icon.svg");
 	background-size: 28px auto;
 	background-position: 17px 25px;
 }
