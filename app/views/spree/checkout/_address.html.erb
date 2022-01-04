@@ -44,6 +44,7 @@
                 <%#= form.radio_button "#{address_name}_id", 0, class: 'form-check-input' %> <h4><%#= Spree.t('address_book.other_address') %></h4>
                 <span class="spree-radio-label-custom-input"></span>
               </label>
+              <%= render "spree/addresses", address: address %>
             </div>
           </div>
         </div>

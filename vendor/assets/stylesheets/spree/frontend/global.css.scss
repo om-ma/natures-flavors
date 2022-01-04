@@ -3350,7 +3350,11 @@ a.btn.btn-block {
 	border-radius: 21px;
 	box-shadow: 0 12px 14px 0 rgba(37, 137, 18, 0.07);
 	border: solid 1px #d6efd4;
-	background: #e3f2e2 url("../images/success-icon.svg") no-repeat scroll center 60px;
+	background-image: image-url("success-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:   center 60px;
+	background-color: #e3f2e2;
 	margin: 100px 0 20px;
 }
 
@@ -3435,8 +3439,8 @@ a.btn.btn-block {
 	border: solid 1px #f0f0f0;
 	background-image: image-url("cart-icon-red.svg");
 	background-repeat: no-repeat;
+	background-attachment: scroll;
 	background-position:   center;
-	background-attachement: scroll;
 	background-color: #fff;
 	width: 60px;
 	height: 60px;
@@ -4041,7 +4045,7 @@ a.btn.btn-block {
 }
 
 .card-wrap {
-	background-image: url("../images/card.svg");
+	background-image: image-url("card.svg");
 	background-position: 24px 25px;
 }
 
@@ -4179,7 +4183,10 @@ a.btn.btn-block {
 }
 
 .order-col .text-success {
-	background: url("../images/delivered-icon.svg") no-repeat scroll left center;
+	background-image: image-url("delivered-icon.svg");
+	background-repeat: no-repeat;
+	background-attachement:scroll;
+	background-position:   left center;
 	padding: 0 0 0 18px;
 }
 

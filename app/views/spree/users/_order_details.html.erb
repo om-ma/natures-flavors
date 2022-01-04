@@ -1,0 +1,109 @@
+<% if @orders.present? %>
+	<div class="tab-pane fade show active" id="orderHistory" role="tabpanel">
+		<div class="my-orders-wrapper">
+			<% @orders.each do |order| %>
+				<div class="order-row-wrap">
+						<div class="cart-icon tablet-hide"></div>
+						<div class="order-wrap d-flex flex-wrap align-items-center">
+							<div class="order-col flex-fill">
+								<label><%= Spree.t(:date) %></label>
+								<h5><%=  order.completed_at.strftime("%d/%m/%Y") %></h5>
+							</div>
+							<div class="order-col flex-fill">
+								<label>Order #:</label>
+								<h5><%= order.number %></h5>
+							</div>
+							<div class="order-col flex-fill">
+								<label>Shipment #:</label>
+								<h5 class="shipment-text"><%#= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></h5>
+							</div>
+							<div class="order-col flex-fill">
+								<label><%= Spree.t(:status) %></label>
+								<h5 class="text-info"><%= Spree.t("order_state.#{order.state}").titleize %></h5>
+							</div>
+							<div class="order-col flex-fill">
+								<label><%= Spree.t(:total) %></label>
+								<h5><strong><%= order.display_total %></strong></h5>
+							</div>
+							<div class="order-action">
+								<button type="button" class="btn show-order-details">Action</button>
+							</div>
+						</div>
+						<div class="order-details-wrap">
+							<div class="wrap">
+								<div class="profile-order-summary-wrap">
+									<div class="profile-order-summary">
+										<h6>Shipping Details:</h6>
+                    <p><%= render "spree/users/account_address", address: order.ship_address %> </p>
+									</div>
+									<div class="profile-order-summary">
+										<h6>Billing Details:</h6>
+                    <p><%= render "spree/users/account_address", address: order.bill_address %> </p>
+									</div>
+									<div class="profile-order-summary">
+										<h6>Payment Method:</h6>
+										<% if order.has_step?("payment") %>
+											<% order.payments.valid.each do |payment| %>
+												<% source = payment.source %>
+												<% if source.is_a?(Spree::CreditCard) %>
+                          <span class="cc-type">
+                            <% if source.last_digits %>
+                              <%= Spree.t(:ending_in) %> <%= source.last_digits %>
+                            <% end %>
+                          </span>
+                            <br>
+                          <span class="full-name"><%= source.name %></span>
+												<% else %>
+											    <p> <%= content_tag(:span, payment.payment_method.name) %></p>
+                        <% end %>
+											<% end %>
+										<% end %>
+									</div>
+									<div class="profile-order-summary">
+										<h6>Shipping Method:</h6>
+										<p>
+											<% if order.has_step?("delivery") %>
+												<% order.shipments.valid.each do |shipment| %>
+													<%= shipment.shipping_method&.name %>
+												<% end %>
+											<% end %>
+										</p>
+									</div>
+								</div>
+								<div class="order-summary">
+									<% order.line_items.each do|s| %>
+										<% variant = s.variant %>
+											<ul class="cart-items">
+												<li class="cart-item">
+													<%= link_to product_image(variant), spree.product_path(variant.product),class:'thumbnail' %> 
+													<div class="cart-item-details d-flex flex-column justify-content-between">
+														<h4><%= link_to s.name, spree.product_path(variant.product) %></h4>
+														<div class="price-size text-right"><span><%= s.quantity %>x<%= s.single_money.to_html%></span><%= s.display_amount.to_html unless s.quantity.nil? %> </div>
+													</div>
+												</li>
+											</ul>
+									<% end %>
+									<ul class="cart-totals">
+										<li>
+											<label>Shipping:</label>
+											<% shipping_total = Spree::Money.new(order.shipments.to_a.sum(&:cost), currency: order.currency) %>
+											<span><%= shipping_total.to_html %></span> </li>
+										<li>
+											<label>Total:</label>
+											<strong><%= order.display_total.to_html %></strong> </li>
+									</ul>
+								</div>
+							</div>
+						</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% else %>
+	<div class="tab-pane fade show active" id="orderHistory" role="tabpanel">
+		<div class="my-orders-wrapper">
+			<p class="text-center"><%= Spree.t(:you_have_no_orders_yet) %></p>
+		</div>
+	</div>
+<% end %>
+

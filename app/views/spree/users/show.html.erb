@@ -1,84 +1,120 @@
-<div class="container account-page">
+<!-- <div class="container account-page">
   <h3 class="text-uppercase spree-mb-large spree-mt-large spree-header"><%= accurate_title %></h3>
 
   <div class="row">
     <div class="col-xs-12 col-lg-4">
       <dt class="text-uppercase account-page-user-info-item-title">
-        <%= Spree.t(:account_info) %>
-          <%= link_to spree.edit_user_path(@user), class: "account-page-user-info-item-title-edit" do %>
-          <%= inline_svg_tag('edit.svg', width: 27.6, height: 24) %>
-        <% end %>
+        <%#= Spree.t(:account_info) %>
+          <%#= link_to spree.edit_user_path(@user), class: "account-page-user-info-item-title-edit" do %>
+          <%#= inline_svg_tag('edit.svg', width: 27.6, height: 24) %>
+        <%# end %>
       </dt>
       <dd class="account-page-user-info-item-definition"><%= @user.email %></dd>
 
       <div class="d-lg-inline-block account-page-user-info-item-store-credits">
         <p class="my-0 text-uppercase text-center">
-          <%= Spree.t(:store_credit_name) %>
-          <% @user.available_store_credits(current_store).each do |value| %>
-            <br><b class="account-page-user-info-item-store-credits-amount"><%= value %></b>
-          <% end %>
+          <%#= Spree.t(:store_credit_name) %>
+          <%# @user.available_store_credits(current_store).each do |value| %>
+            <br><b class="account-page-user-info-item-store-credits-amount"><%#= value %></b>
+          <%# end %>
         </p>
       </div>
     </div>
     <div class="col-xs-12 col-lg-8 mt-sm-5 mt-lg-0">
       <h4 class="mb-3"><%= link_to Spree.t(:add_new_address), spree.new_address_path, method: :get %></h4>
       <div class="row">
-        <% @user.addresses.each_with_index do |address, index| %>
+        <%# @user.addresses.each_with_index do |address, index| %>
           <div class="col-12 col-sm-6 mb-3">
-            <% index += 1 %>
-            <% if index % 3 == 0 %>
+            <%# index += 1 %>
+            <%# if index % 3 == 0 %>
               <div class="account-page-user-info-item my-4"></div>
-            <% end %>
+            <%# end %>
             <div class="row">
               <div class="col-8 col-lg-6">
-                <%= render "spree/users/address", address: address %>
+                <%#= render "spree/users/address", address: address %>
               </div>
               <div class="col">
-                <%= render "spree/users/address_controls", address: address %>
+                <%#= render "spree/users/address_controls", address: address %>
               </div>
             </div>
           </div>
-        <% end %>
+        <%# end %>
       </div>
     </div>
   </div>
 
   <div data-hook="account_my_orders" class="account-page-orders" id="account-my-orders">
     <h3 class="text-uppercase spree-mb-medium spree-mt-medium spree-header"><%= Spree.t(:my_orders) %></h3>
-    <% if @orders.present? %>
+    <%# if @orders.present? %>
       <table>
         <thead class="active">
           <tr>
-            <th class="text-uppercase text-secondary account-page-order-number"><%= Spree::Order.human_attribute_name(:number) %></th>
-            <th class="text-uppercase text-secondary account-page-order-date"><%= Spree.t(:date) %></th>
-            <th class="text-uppercase text-secondary account-page-order-status"><%= Spree.t(:status) %></th>
-            <th class="text-uppercase text-secondary account-page-order-payment-state"><%= Spree.t(:payment_state) %></th>
-            <th class="text-uppercase text-secondary account-page-order-shipment-state"><%= Spree.t(:shipment_state) %></th>
-            <th class="text-uppercase text-secondary account-page-order-total"><%= Spree.t(:total) %></th>
+            <th class="text-uppercase text-secondary account-page-order-number"><%#= Spree::Order.human_attribute_name(:number) %></th>
+            <th class="text-uppercase text-secondary account-page-order-date"><%#= Spree.t(:date) %></th>
+            <th class="text-uppercase text-secondary account-page-order-status"><%#= Spree.t(:status) %></th>
+            <th class="text-uppercase text-secondary account-page-order-payment-state"><%#= Spree.t(:payment_state) %></th>
+            <th class="text-uppercase text-secondary account-page-order-shipment-state"><%#= Spree.t(:shipment_state) %></th>
+            <th class="text-uppercase text-secondary account-page-order-total"><%#= Spree.t(:total) %></th>
           </tr>
         </thead>
         <tbody>
-          <% @orders.each do |order| %>
+          <%# @orders.each do |order| %>
             <tr>
-              <td class="account-page-order-number"><%= link_to order.number, spree.order_path(order), class: "text-primary" %></td>
-              <td class="account-page-order-date"><%= l order.completed_at.to_date %></td>
-              <td class="account-page-order-status"><%= Spree.t("order_state.#{order.state}").titleize %></td>
-              <td class="account-page-order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
-              <td class="account-page-order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
-              <td class="account-page-text-primary account-page-order-total account-page-lead"><%= order.display_total %></td>
-              <td class="account-page-arrow-container" data-order-path="<%= spree.order_path(order) %>">
-                <%= link_to '', spree.order_path(order), { class: "account-page-order-arrow" } %>
+              <td class="account-page-order-number"><%#= link_to order.number, spree.order_path(order), class: "text-primary" %></td>
+              <td class="account-page-order-date"><%#= l order.completed_at.to_date %></td>
+              <td class="account-page-order-status"><%#= Spree.t("order_state.#{order.state}").titleize %></td>
+              <td class="account-page-order-payment-state"><%#= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+              <td class="account-page-order-shipment-state"><%#= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+              <td class="account-page-text-primary account-page-order-total account-page-lead"><%#= order.display_total %></td>
+              <td class="account-page-arrow-container" data-order-path="<%#= spree.order_path(order) %>">
+                <%#= link_to '', spree.order_path(order), { class: "account-page-order-arrow" } %>
               </td>
             </tr>
-          <% end %>
+          <%# end %>
         </tbody>
       </table>
-    <% else %>
-      <p class="text-center"><%= Spree.t(:you_have_no_orders_yet) %></p>
-    <% end %>
+    <%# else %>
+      <p class="text-center"><%#= Spree.t(:you_have_no_orders_yet) %></p>
+    <%# end %>
     <br>
   </div>
   <div id="delete-address-popup" class="delete-address-popup-dropdown hide-on-esc">
-    <%= render 'spree/shared/delete_address_popup' %>
+    <%#= render 'spree/shared/delete_address_popup' %>
   </div>
-</div>
+</div> -->
+<main class="page-contents">
+  <div class="account-wrapper">
+    <div class="row no-gutters">
+      <div class="col-xl-2 tablet-hide"></div>
+      <div class="col-xl-7 col-lg-8">
+        <div class="wrap">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">My Account</li>
+          </ol>
+          <div class="title-wrap mb-60">
+            <h1 class="title"><%= accurate_title %> 
+              <%= link_to  destroy_spree_user_session_path, :class => 'btn btn-primary' do %>
+                LogOut 
+              <% end %> 
+            </h1>
+            <div class="sm-title">Welcome to your account. Here you can manage all of your personal information and orders.</div>
+          </div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#orderHistory">Order History</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#personalInformation">Personal Information</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#myAddresses">My Addresses</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#myCards">My Cards</a></li>
+          </ul>
+          <div class="tab-content" id="account-my-orders" data-hook="account_my_orders">
+            <%= render partial: 'order_details' %>
+            <%= render partial: 'personal_information' %>
+            <%= render partial: 'addresses' %>
+            <%= render partial: 'credit_cards' %>
+          </div>
+        </div>
+      </div>
+      <%= render partial: 'wishlists' %>
+    </div>
+  </div>
+</main>
