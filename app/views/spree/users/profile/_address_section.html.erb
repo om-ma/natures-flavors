@@ -1,0 +1,18 @@
+<h5> Add/Edit New Address </h5>
+<div class="profile-address-wrap">
+  <%= render 'spree/shared/error_messages', target: address %>
+  <%= form_for address, html: { id: 'checkout_form_address', remote: true } do |f| %>
+    <fieldset>
+      <div class=" row inner">
+        <%= render 'spree/addresses/form',
+                   address_name: 'address',
+                   address_form: f,
+                   address_type: 'shipping',
+                   address: address
+        %>
+      </div>
+      <%= f.submit "#{btn_title}", class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-text">Delete This Address</button>
+    </fieldset>
+  <% end %>
+</div>

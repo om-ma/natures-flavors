@@ -1,0 +1,66 @@
+<%= render 'spree/shared/error_messages', target: @user_cc %>
+<div class="add-edit-form" id="user-credit-card-errors">
+	<h5> Add New Card </h5>
+  <%= form_for(@new_cc, url: user_credit_cards_path, method: 'POST', remote: true) do |f| %>
+    <div class="row narrow-row">
+      <div class="col-md-12">
+        <div class="form-group form-floating mb-20">
+          <% param_prefix = 'payment_source' %>
+          <%= text_field_tag "#{param_prefix}[name]", "", { id: "name_on_card_#{payment_method&.id}", class: 'form-control',placeholder:'Name on Card*'} %>
+          <%= label_tag "name_on_card#{payment_method&.id}" do %>
+            <%= Spree.t(:name_on_card) %><abbr>*</abbr>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+    <div class="row narrow-row">
+      <div class="col-12">
+        <div class="form-group" data-hook="card_number">
+          <%= label_tag "card_number", class: "control-label" do %>
+            <%= Spree.t(:card_number) %><abbr>**</abbr>
+          <% end %>
+          <% options_hash = Rails.env.production? ? {autocomplete: 'off'} : {} %>
+          <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(id: 'card_number', class: 'form-control cardNumber', size: 19, maxlength: 19, autocomplete: "off") %>
+          <span id="card_type" style="display:none;">
+      ( <span id="looks_like" ><%= Spree.t(:card_type_is) %> <span id="type"></span></span>
+        <span id="unrecognized"><%= Spree.t(:unrecognized_card_type) %></span>
+      )
+     </span>
+        </div>
+      </div>
+    </div>
+    <div class="row narrow-row">
+      <div class="col-6">
+        <div class="form-group" data-hook="card_expiration">
+          <%= label_tag "card_expiry", class: "control-label" do %>
+            <%= Spree.t(:expiration) %><abbr>*</abbr>
+          <% end %>
+          <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: "form-control required cardExpiry", placeholder: "MM / YY" %>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group" data-hook="card_code">
+          <%= label_tag "Security Code (CVV)", class: "control-label" do %>
+            Security Code (CVV)<abbr>*</abbr>
+          <% end %>
+          <div class="cvv-form-group position-relative">
+            <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', class: 'form-control required cardCode', size: 5 , placeholder: "123") %>
+
+            <%= link_to Spree.t(:help), spree.cvv_path, target: :blank, "data-hook" => "cvv_link", id: "cvv_link",class: "help-btn" %>
+          </div>
+        </div>
+      </div>
+      <%= hidden_field_tag "#{param_prefix}[cc_type]", '', id: "cc_type", class: 'ccType' %>
+    </div>
+    <% if current_spree_user.present? %>
+      <div class="custom-checkbox mb-10">
+        <label>
+          <%= check_box_tag "#{param_prefix}[default]", true, true, class: 'custom-control-input'%>
+          <span class="custom-control-label"></span>Save Card as Default
+        </label>
+      </div>
+    <% end %>
+    <%= f.submit 'Add New Credit Card', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+<%= render partial: 'spree/shared/credit_card_format' %>

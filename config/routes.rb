@@ -14,3 +14,11 @@ Spree::Core::Engine.routes.draw do
   get '/not-found', to: 'page_not_found#index', as: "page_not_found"
   get 'refresh_cart_bag', to: 'custom_checkout#refresh_shopping_cart_bag'
 end
+Spree::Core::Engine.add_routes do
+    get 'new_checkout_address', to: 'addresses#new_checkout_address'
+    put '/set_address_as_default', to: 'addresses#set_as_default'
+    put '/set_cc_as_default', to: 'user_credit_cards#set_as_default'
+    get 'load_existing_ccs', to: 'checkout#load_existing_ccs'
+    get 'load_new_cc', to: 'checkout#load_new_cc'
+    resources :user_credit_cards
+  end
