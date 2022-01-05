@@ -1,2 +1,1 @@
-let new_profile_address_html = "<%= j render partial: 'spree/users/profile/address_section' , locals: {address: @address, btn_title: 'New Address',heading: 'Add New' }  %>"
-$('.js-profile-address-area').html(new_profile_address_html)
+$('.js-profile-address-area').html("<%= j render partial: 'spree/users/profile/address_section' , locals: {address: @address, btn_title: 'New Address',heading: 'Add New' }  %>")

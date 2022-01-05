@@ -3,6 +3,16 @@ Spree::AddressesController.class_eval do
 
   def create
     @address = spree_current_user.addresses.build(address_params)
+
+    if @address.is_default
+      user_addresses            = spree_current_user.addresses
+
+      if user_addresses.present?
+        user_addresses.update_all(is_default: false)
+      end
+        
+    end
+
     if @address.save
       # flash[:notice] = I18n.t(:successfully_created, scope: :address_book)
       respond_to do |format|
@@ -19,7 +29,7 @@ Spree::AddressesController.class_eval do
 
   def update
     if @address.editable?
-      if @address.update_attributes(address_params)
+      if @address.update(address_params)
         # flash[:notice] = I18n.t(:successfully_updated, scope: :address_book)
         respond_to do |format|
           format.html { redirect_back_or_default(account_path) }

@@ -22,7 +22,7 @@ $(document).ready(function(){
   $(document).on('click', '.js-set-address-as-default', function(){
     let address_id = $(this).data('address-id')
     $.ajax({
-      type: 'PUT',
+      type: 'GET',
       url: '/set_address_as_default.js',
       data: {id: address_id}
     }).done(function () {
@@ -35,7 +35,7 @@ $(document).ready(function(){
   $(document).on('click', '.js-set-cc-as-default', function(){
     let currentCC = $(this).data('cc-id')
     $.ajax({
-      type: 'PUT',
+      type: 'GET',
       url: '/set_cc_as_default.js',
       data: {id: currentCC}
     }).done(function () {

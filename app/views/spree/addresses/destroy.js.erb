@@ -1,2 +1,3 @@
-$("#billing_address_<%= @address.id %>").fadeOut();
-$("#shipping_address_<%= @address.id %>").fadeOut();
+let user_addresses = "<%= j render partial: 'spree/users/profile/user_addresses', locals: {user_addresses: spree_current_user.addresses}  %>"
+  $('.js-user-profile-addresses').html(user_addresses)
+$('.js-profile-address-area').html("<%= j render partial: 'spree/users/profile/address_section' , locals: {address: Spree::Address.new, btn_title: 'New Address',heading: 'Add New' }  %>")

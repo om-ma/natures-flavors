@@ -16,8 +16,8 @@ Spree::Core::Engine.routes.draw do
 end
 Spree::Core::Engine.add_routes do
     get 'new_checkout_address', to: 'addresses#new_checkout_address'
-    put '/set_address_as_default', to: 'addresses#set_as_default'
-    put '/set_cc_as_default', to: 'user_credit_cards#set_as_default'
+    get '/set_address_as_default', to: 'addresses#set_as_default'
+    get '/set_cc_as_default', to: 'user_credit_cards#set_as_default'
     get 'load_existing_ccs', to: 'checkout#load_existing_ccs'
     get 'load_new_cc', to: 'checkout#load_new_cc'
     resources :user_credit_cards

@@ -4,6 +4,6 @@
 <% else %>
   let user_ccs = "<%= j render partial: 'spree/users/profile/user_ccs', locals: {credit_cards: @user_ccs} %>"
   $('.js-user-profile-credit-cards').html(user_ccs)
-  $(".tabs .content.visible").removeClass("visible");
-  $('.js-user-profile-ccs-section').addClass('visible');
+  let new_profile_cc_html = "<%= j render partial: 'spree/users/profile/user_new_cc', locals: {payment_method: @default_payment_method} %>"
+	$('.js-profile-new-cc-area').html(new_profile_cc_html)
 <% end %>
