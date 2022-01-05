@@ -1,15 +1,13 @@
 <% if credit_cards.present? %>
-  <% credit_cards.each do |card| %>
-    <% is_default = card.default %>
-    <div class="row-narrow-row">
-      <div class=" card-wrap col-md-6 js-ccs-select <%=  is_default ? 'default' : '' %>" data-cc-id="<%= card.id %>">
-        <%= render partial: 'spree/shared/print_cc', locals: { payment_source: card, is_default: is_default, remote_option: true } %>
-        <div class="is-default text-right text-of-card-<%= card.id %> js-set-cc-as-default" data-cc-id="<%= card.id %>">
-          <%=  is_default ? 'Default' : 'Set as Default' %>
+  <div class="row-narrow-row">
+    <% credit_cards.each do |card| %>
+      <% is_default = card.default %>
+        <div class=" col-md-6 js-ccs-select <%=  is_default ? 'default' : '' %>" data-cc-id="<%= card.id %>">
+          <%= render partial: 'spree/shared/print_cc', locals: { payment_source: card, is_default: is_default, remote_option: true ,card:card} %>
         </div>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% else %>
   <p>Oooppsss! No existing Credit Card Found. You can Add by Clicking  </p>&nbsp;<strong> Add New</strong>
 <% end %>
+

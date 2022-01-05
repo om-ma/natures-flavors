@@ -1,8 +1,6 @@
 <h5> Add/Edit New Address </h5>
-<div class="profile-address-wrap">
   <%= render 'spree/shared/error_messages', target: address %>
   <%= form_for address, html: { id: 'checkout_form_address', remote: true } do |f| %>
-    <fieldset>
       <div class=" row inner">
         <%= render 'spree/addresses/form',
                    address_name: 'address',
@@ -11,10 +9,9 @@
                    address: address
         %>
       </div>
-      <%= f.submit "#{btn_title}", class: 'btn btn-primary' %>
+      <%= f.submit "Add Address", class: 'btn btn-primary' %>
       <% if address.persisted? %>
         <%= link_to "Delete This Address", spree.address_path(address), :method => :delete, :confirm => "Are you sure?", :remote => true, class: "btn btn-text" %>
       <% end %>
-    </fieldset>
   <% end %>
-</div>
+
