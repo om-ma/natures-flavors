@@ -1,9 +1,11 @@
 <div class="address-wrap  <%=  is_default ? 'default' : '' %>">
-  <div class="is-default d-flex align-items-center justify-content-between">
-    <h5 data-address-id="<%= address.id %>" class="default-address-txt text-right text-of-address-<%= address.id %> js-set-address-as-default">
-      <%=  is_default ? 'Default' : 'Set as Default' %>
-    </h5>
-  </div>
+  	<% if is_default %>
+  		<h5>Default</h5>
+  	<% else %>
+	    <div data-address-id="<%= address.id %>" class="linke_to_wrap text-of-address-<%= address.id %> js-set-address-as-default">
+	      Mark Default
+	    </div>
+	  <% end %>
   <p><%= address.to_s.html_safe %></p>
   <strong class="text-link js-edit-address-from-profile" data-address-id="<%= address.id %>">Edit</strong>
 </div>

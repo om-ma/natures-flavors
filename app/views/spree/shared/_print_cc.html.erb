@@ -1,23 +1,21 @@
 <div class="card-wrap <%=  is_default ? 'default' : '' %>">
-	<div class="is-default text-right text-of-card-<%= card.id %> js-set-cc-as-default" data-cc-id="<%= card.id %>">
-		<%=  is_default ? 'Default' : 'Set as Default' %>
-	</div>
+	<% if is_default %>
+		<h5>Default</h5>
+	<% else %>
+		<div class="is-default linke_to_wrap btn btn-text text-of-card-<%= card.id %> js-set-cc-as-default " data-cc-id="<%= card.id %>">
+			Make Default
+		</div>
+	<% end %>
 	<p>
 		<%= payment_source.name %><br />
 		<% if payment_source.last_digits %>
 		<span>**** **** ****</span><span><%= payment_source.last_digits %></span><br />
 		<% end %>
 		<%= Spree.t(:exp) %>: <%= payment_source.month %> / <%= payment_source.year %>
+		<% if !is_default %>
+			<%= link_to user_credit_card_path(payment_source), method: :delete, confirm: Spree.t(:are_you_sure), :remote => remote_option, class: "linke_to_delete_wrap" do %>
+				Delete This Card
+			<% end %>
+		<% end  %>
 	</p>
-	<% if !is_default %>
-		<%= link_to user_credit_card_path(payment_source), method: :delete, confirm: Spree.t(:are_you_sure), :remote => remote_option   do %>
-			<button type="button" class="btn btn-text">Delete This Card</button>
-		<% end %>
-	<% end  %>
 </div>
-
-
-
-
-
-
