@@ -128,9 +128,9 @@
         <% end %>
       <li> 
       <label><%= Spree.t(:shipping) %>:</label>
-      <% if order.state == "address" %>
-        <span>Calculated in next step</span>
-      <% else %>                 
+      <%# if order.state == "address" %>
+        <!-- <span>Calculated in next step</span> -->
+      <%# else %>                 
         <span><% if order.passed_checkout_step?("address") && order.shipments.any? %>
           <% if order.has_free_shipping? %>                      
             <div class="d-table-cell text-right" data-hook="is-free-shipping"><%= Spree.t(:free) %></div>
@@ -154,18 +154,20 @@
             <% end %>
           <% end %>
         <% end %></span></li>
+      <%# end %>
+      <% if order.adjustments.nonzero.eligible.exists? %>
+        <% order.adjustments.nonzero.eligible.each do |adjustment| %>
+          <li>
+            <label><%= adjustment.label %></label>
+            <span>
+              <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount.zero?) %>
+                <div class="d-table-cell total text-right">
+                  <%= adjustment.display_amount.to_html %>
+                </div>
+              </span>
+          </li> 
+        <% end %>                  
       <% end %>
-        <% if order.adjustments.nonzero.eligible.exists? %>
-         <li>
-        <label><%= adjustment.label %></label>
-        <span><% order.adjustments.nonzero.eligible.each do |adjustment| %>
-          <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount.zero?) %>
-            <div class="d-table-cell total text-right">
-              <%= adjustment.display_amount.to_html %>
-            </div>
-          <% end %></span>
-          </li>                   
-        <% end %>
       <li> 
         <label><%= Spree.t(:total) %>:</label>                
         <strong><div class="checkout-content-summary-table-order-total">                     
