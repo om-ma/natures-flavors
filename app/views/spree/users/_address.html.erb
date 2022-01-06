@@ -16,10 +16,8 @@
   </div>
 </address>
  -->
-<option value ="saved_address" >
-  <%= address.full_name %>
-  <%= "#{address.address1} #{address.address2}" %>,
-  <%= "#{address.city}, #{address.state_text} #{address.zipcode}" %>,
-  <%= address.country.name %>
-</option>
+<%= address.full_name %>
+<%= "#{address.address1} #{address.address2}" %>,
+<%= "#{address.city}, #{address.state_text} #{address.zipcode}" %>,
+<%= address.country.name %>
 

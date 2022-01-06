@@ -44,6 +44,7 @@
                 <%#= form.radio_button "#{address_name}_id", 0, class: 'form-check-input' %> <h4><%#= Spree.t('address_book.other_address') %></h4>
                 <span class="spree-radio-label-custom-input"></span>
               </label>
+              <%#= render "spree/addresses", address: address %>
             </div>
           </div>
         </div>
@@ -69,8 +70,13 @@
 <div id="delete-address-popup" class="delete-address-popup-dropdown hide-on-esc">
   <%#= render 'spree/shared/delete_address_popup' %>
 </div> -->
-<div class="wrap">
-  <%= spree_breadcrumbs(@taxon) %>
+
+  <ol class="breadcrumb mb-35">
+    <li class="breadcrumb-item"><a href="#">Cart</a></li>
+    <li class="breadcrumb-item"><a href="#">Information</a></li>
+    <li class="breadcrumb-item"><a href="#" class="disabled">Shipping</a></li>
+    <li class="breadcrumb-item"><a href="#" class="disabled">Payment</a></li>
+  </ol>
   <% if spree_current_user.present? %>
     <div class="cart-header d-flex align-items-center justify-content-between">
       <h5>Contact information</h5>
@@ -112,61 +118,70 @@
   <div class="cart-header d-flex align-items-center justify-content-between">
     <h5>Shipping Address</h5>
   </div>
-  <% ['shipping', 'billing'].each do |address_type|
-    address_name = "#{address_type[0...4]}_address" %>
-    <div id="<%= address_type %>" data-hook="<%= address_type %>_fieldset_wrapper" data-hook >
-      <% if user_available_addresses.present? %>
-        <div class="select_address">
-          <div class="">
-            <% user_available_addresses.each_with_index do |address, idx| %>
-              <div class="" id="<%= [address_type, dom_id(address)].join('_') %>">
-                  <%= form.radio_button "#{address_name}_id", address.id,class:'', checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0) %>
-                  <%= render "spree/users/address", address: address %>
-              </div>
-            <% end %>
-            <%= form.radio_button "#{address_name}_id", 0, class: "#{address_type}_new_address " , checked:'checked' %> <h4><%#= Spree.t('address_book.other_address') %></h4>
+  <select class="custom-select address-select-change-js mb-1">
+    <address>
+      <% user_available_addresses.each_with_index do |address, idx| %>
+        <option value= "billing_address__<%=address.id%>" >
+          <%= render "spree/users/address", address: address %>
+        </option>
+      <% end %>
+    </address>
+    <option value= "new_address_selected">
+      New Address
+    </option>
+  </select>
+  <% ['billing', 'shipping'].each do |address_type|
+  address_name = "#{address_type[0...4]}_address" %>
+  <div  data-hook="<%= address_type %>_fieldset_wrapper">
+    <div id="<%= address_type %>" data-hook>
+      <h5 class="text-uppercase checkout-content-header">
+      </h5>
+      <% if address_type == 'shipping' %>
+        <div class="spree-cspree-radio-label-custom-inputheckbox-container checkout-content-billing-checkbox" data-hook="use_billing">
+          <div class="spree-checkbox d-none">
+            <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'form-check-input'} %>
+            <%= label_tag :order_use_billing, nil, id: 'use_billing' %>
           </div>
+          <%#= label_tag :order_use_billing, Spree.t(:use_billing_address), class: 'spree-checkbox-label d-nonehtm' %>
         </div>
       <% end %>
-      <% if address_type  == 'shipping' %>
-        <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'form-check-input'} %>
-        <div class="row" data-hook='<%= "#{address_type}_inner" %>'>
-          <div class="col-sm-12 ">
-            <div class="form-group form-floating mb-20">
-              <select class="custom-select">
-                <address>
-                  <% user_available_addresses.each_with_index do |address, idx| %>
-                    <option value= "order_ship_address_id_<%=address.id%>" >
-                      <%= render "spree/users/address", address: address %>
-                    </option>
-                  <% end %>
-                </address>
-                <option value="new-address">
-                  New Address
-                </option>
-              </select>
-              <label>
-                My Addresses
+      <% if user_available_addresses.present? %>
+        <div class="select_address mb-5">
+          <div class="form-group col">
+            <% user_available_addresses.each_with_index do |address, idx| %>
+              <div class="row mb-1" id="<%= [address_type, dom_id(address)].join('_') %>">
+                <label class="form-check-label spree-radio-label col-8 d-none">
+                  <%= form.radio_button "#{address_name}_id", address.id, checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0), class: "billing_address__#{address.id} d-none" %>
+                  <span class="spree-radio-label-custom-input"></span>
+                    <%= render "spree/users/address", address: address %>
+                </label>
+                <%#= render "spree/users/address_controls", address: address %>
+              </div>
+            <% end %>
+            <div class="row mb-1">
+              <label class="form-check-label spree-radio-label col">
+                <%= form.radio_button "#{address_name}_id", 0, class: 'form-check-input d-none' %> <h4><%#= Spree.t('address_book.other_address') %></h4>
+                <span class="spree-radio-label-custom-input"></span>
               </label>
             </div>
           </div>
-          <span class="inner" data-hook='<%= "#{address_type}_inner" %>'>
-            <%= form.fields_for address_name do |address_form| %>
-                <%= render partial: 'spree/addresses/form', locals: {
-                  address_name: address_name,
-                  address_form: address_form,
-                  address_type: address_type,
-                  address: Spree::Address.new(country: current_store.default_country),
-                  form: form
-                } %>
-          </span>
-          <% end %>
         </div>
-        <button type="button" class="btn btn-primary btn-block" id="secondaryButton" >Next Step: <strong>Choose Delivery</strong></button>
       <% end %>
-    </div> 
-  <% end %>
-</div>
+      <%= form.fields_for address_name do |address_form| %>
+        <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>'>
+          <div class="row">
+            <%= render partial: 'spree/addresses/form', locals: {
+              address_name: address_name,
+              address_form: address_form,
+              address_type: address_type,
+              address: Spree::Address.new(country: current_store.default_country),
+              form: form
+            } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>  
+<% end %>
 
 <%= hidden_field_tag 'save_user_address', true, data: { hook: "save_user_address" } %>
-

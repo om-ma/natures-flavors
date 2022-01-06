@@ -50,29 +50,6 @@ module Spree
 
       
       state_elements.html_safe
-      
-      
-    end
-
-    def user_available_addresses
-      @user_available_addresses ||= begin
-        return [] unless try_spree_current_user
-
-        states = current_store.countries_available_for_checkout.each_with_object([]) do |country, memo|
-          memo << current_store.states_available_for_checkout(country)
-        end.flatten
-
-        try_spree_current_user.addresses.
-          where(country_id: states.pluck(:country_id).uniq)
-      end
-    end
-
-    def checkout_zone_applicable_states_for(country)
-      current_store.states_available_for_checkout(country)
-    end
-
-    def address_default_country
-      @address_default_country ||= current_store.default_country
     end
   end
 end
