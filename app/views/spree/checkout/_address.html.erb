@@ -70,11 +70,10 @@
 <div id="delete-address-popup" class="delete-address-popup-dropdown hide-on-esc">
   <%#= render 'spree/shared/delete_address_popup' %>
 </div> -->
-
   <ol class="breadcrumb mb-35">
     <li class="breadcrumb-item"><a href="#">Cart</a></li>
     <li class="breadcrumb-item"><a href="#">Information</a></li>
-    <li class="breadcrumb-item"><a href="#" class="disabled">Shipping</a></li>
+    <li class="breadcrumb-item"><a href="#" class="disabled" >Shipping</a></li>
     <li class="breadcrumb-item"><a href="#" class="disabled">Payment</a></li>
   </ol>
   <% if spree_current_user.present? %>
@@ -84,28 +83,26 @@
     <div class="registered-user d-flex align-items-center justify-content-between mb-45"> 
       <span><%= spree_current_user.email %></span> 
       <%= link_to  destroy_spree_user_session_path do %>
-        Logout 
+        Log Out 
       <% end %>
     </div>
   <% else %>
     <div class="if-registered phone-visible"> <span>Already Registered?</span> 
-      <a href="#" class="btn btn-primary">
-        Log in
-      </a> 
+      <a href="#" class="btn btn-primary">Log  in</a> 
     </div>
     <div class="cart-header d-flex align-items-center justify-content-between">
       <h5>Contact information</h5>
       <div class="if-registered phone-hide"> <span>Already Registered?</span> 
         <%= link_to new_spree_user_session_path , :class => 'btn btn-primary' do %>
-          Login   
+          Log in   
         <% end %> 
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12">
         <div class="form-group form-floating mb-10">
-          <%= form.email_field :email, class: 'form-control', required: true, placeholder: Spree.t(:email) %>
-          <%= form.label :email %>
+          <%= form.email_field :email, class: 'form-control', required: true, placeholder: 'E-mail*' %>
+          <%= form.label :email, "E-mail*" %>
         </div>
         <div class="custom-checkbox mb-60">
           <label>
@@ -118,18 +115,25 @@
   <div class="cart-header d-flex align-items-center justify-content-between">
     <h5>Shipping Address</h5>
   </div>
-  <select class="custom-select address-select-change-js mb-1">
-    <address>
-      <% user_available_addresses.each_with_index do |address, idx| %>
-        <option value= "billing_address__<%=address.id%>" >
-          <%= render "spree/users/address", address: address %>
+  <% if spree_current_user.present? %>
+    <div class="form-group form-floating mb-5">
+      <select class="custom-select address-select-change-js ">
+        <address>
+          <% user_available_addresses.each_with_index do |address, idx| %>
+            <option value= "billing_address__<%=address.id%>" >
+              <%= render "spree/users/address", address: address %>
+            </option>
+          <% end %>
+        </address>
+        <option value= "new_address_selected">
+          New Address
         </option>
-      <% end %>
-    </address>
-    <option value= "new_address_selected">
-      New Address
-    </option>
-  </select>
+      </select>
+      <label>
+        My Addresses
+      </label>
+    </div>
+  <% end %>
   <% ['billing', 'shipping'].each do |address_type|
   address_name = "#{address_type[0...4]}_address" %>
   <div  data-hook="<%= address_type %>_fieldset_wrapper">
@@ -149,7 +153,7 @@
         <div class="select_address mb-5">
           <div class="form-group col">
             <% user_available_addresses.each_with_index do |address, idx| %>
-              <div class="row mb-1" id="<%= [address_type, dom_id(address)].join('_') %>">
+              <div class="row" id="<%= [address_type, dom_id(address)].join('_') %>">
                 <label class="form-check-label spree-radio-label col-8 d-none">
                   <%= form.radio_button "#{address_name}_id", address.id, checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0), class: "billing_address__#{address.id} d-none" %>
                   <span class="spree-radio-label-custom-input"></span>
@@ -158,7 +162,7 @@
                 <%#= render "spree/users/address_controls", address: address %>
               </div>
             <% end %>
-            <div class="row mb-1">
+            <div class="row">
               <label class="form-check-label spree-radio-label col">
                 <%= form.radio_button "#{address_name}_id", 0, class: 'form-check-input d-none' %> <h4><%#= Spree.t('address_book.other_address') %></h4>
                 <span class="spree-radio-label-custom-input"></span>
@@ -183,5 +187,5 @@
     </div>
   </div>  
 <% end %>
-
+<button type="button" class="btn btn-primary btn-block" id="design-submit-next-step">Next Step: <strong>Choose Delivery</strong></button>
 <%= hidden_field_tag 'save_user_address', true, data: { hook: "save_user_address" } %>
