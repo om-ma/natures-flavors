@@ -85,6 +85,9 @@
 <% default_variant = default_variant(@variants, @product) %>
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
   <div class="top-detail" >
+    <% if @product.on_sale? %>
+      <div class="deal-expiry-wrap"><strong>Deal Expiers in:</strong> <span><strong><%#= @product.sale_price.start_at %></strong> day</span><span><strong><%#= sale_price.start_at.to_date %> </strong> hours</span><span><strong>42</strong> seconds</span></div>
+    <% end %>
     <%= form_for :order, html: {
       id: 'add-to-cart-form',
       class: 'add-to-cart-form',
