@@ -85,14 +85,10 @@
 <% default_variant = default_variant(@variants, @product) %>
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
   <div class="top-detail" >
-    <% s_hours=  Time.now.strftime("%H").to_i  %>
-    <% e_hours= @product.master.sale_prices.active.last.end_at.strftime("%H").to_i %>
-    <% s_seconds=  Time.now.strftime("%S").to_i %>
-    <% e_seconds= @product.master.sale_prices.active.last.end_at.strftime("%S").to_i %>
-    <% c_date=  Date.today.strftime("%d").to_i %>
-    <% e_date=  @product.master.sale_prices.active.last.end_at.strftime("%d").to_i %>
     <% if @product.on_sale? %>
-      <div class="deal-expiry-wrap"><strong>Deal Expiers in:</strong> <span><strong><%= e_date - c_date %></strong> day</span><span><strong><%= s_hours - e_hours %> </strong> hours</span><span><strong><%= s_seconds - e_seconds %></strong> seconds</span></div>
+    <%= render partial: 'spree/shared/sale_time_calculator', locals: { variant: @product.master} %>
+    <%# debugger %>
+      <div class="deal-expiry-wrap"><strong>Deal Expiers in:</strong> <span><strong><%= @time_left_in_days %></strong> day</span><span><strong><%= @time_left_in_hours %> </strong> hours</span><span><strong><%= @time_left_in_seconds %></strong> seconds</span></div>
     <% end %>
     <%= form_for :order, html: {
       id: 'add-to-cart-form',
@@ -105,7 +101,7 @@
         <div class="left">Choose your <strong>option:</strong></div>
         <div class="right">
           <div class="text-center text-md-left text-uppercase " id="product_variant_sku">
-            <%= default_variant.sku  %>
+            <%= default_variant.sku %>
           </div>
         </div>
       </div>
@@ -116,16 +112,20 @@
               data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" > 
             <% option_value = variant.size_options %>
               <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
-              <span content="<%= current_currency %>"></span>  
-              <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
-              <div class="right"> 
-                <%= option_value&.presentation %>
-                <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
-                        'data-price' => variant.price_in(current_currency).money,
-                        'data-in-stock' => variant.can_supply?,
-                        'data-backordered' => variant.backordered?,
-                        style: "display:none"
-                    %>
+              <span content="<%= current_currency %>"></span> 
+              <% if @product.on_sale? %> 
+                <del><%= variant.price_in(current_currency).money %></del><%= display_price(@product) %><span>/ $6.29 per oz.</span>
+              <% else %>
+                <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
+                <div class="right"> 
+                  <%= option_value&.presentation %>
+                  <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
+                          'data-price' => variant.price_in(current_currency).money,
+                          'data-in-stock' => variant.can_supply?,
+                          'data-backordered' => variant.backordered?,
+                          style: "display:none"
+                      %>
+              <% end %>
           <% end%>
             </div>
         <% else %>
