@@ -87,7 +87,6 @@
   <div class="top-detail" >
     <% if @product.on_sale? %>
     <%= render partial: 'spree/shared/sale_time_calculator', locals: { variant: @product.master} %>
-    <%# debugger %>
       <div class="deal-expiry-wrap"><strong>Deal Expiers in:</strong> <span><strong><%= @time_left_in_days %></strong> day</span><span><strong><%= @time_left_in_hours %> </strong> hours</span><span><strong><%= @time_left_in_seconds %></strong> seconds</span></div>
     <% end %>
     <%= form_for :order, html: {
