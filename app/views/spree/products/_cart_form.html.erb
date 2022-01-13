@@ -85,8 +85,14 @@
 <% default_variant = default_variant(@variants, @product) %>
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
   <div class="top-detail" >
+    <% s_hours=  @product.master.sale_prices.active.last.start_at.strftime("%H").to_i %>
+    <% e_hours= @product.master.sale_prices.active.last.end_at.strftime("%H").to_i %>
+    <% s_seconds=  @product.master.sale_prices.active.last.start_at.strftime("%S").to_i %>
+    <% e_seconds= @product.master.sale_prices.active.last.end_at.strftime("%S").to_i %>
+    <% s_date=  @product.master.sale_prices.active.last.start_at.strftime("%d").to_i %>
+    <% e_date=  @product.master.sale_prices.active.last.end_at.strftime("%d").to_i %>
     <% if @product.on_sale? %>
-      <div class="deal-expiry-wrap"><strong>Deal Expiers in:</strong> <span><strong><%#= @product.sale_price.start_at %></strong> day</span><span><strong><%#= sale_price.start_at.to_date %> </strong> hours</span><span><strong>42</strong> seconds</span></div>
+      <div class="deal-expiry-wrap"><strong>Deal Expiers in:</strong> <span><strong><%= e_date - s_date %></strong> day</span><span><strong><%= s_hours - e_hours %> </strong> hours</span><span><strong><%= s_seconds - e_seconds %></strong> seconds</span></div>
     <% end %>
     <%= form_for :order, html: {
       id: 'add-to-cart-form',
