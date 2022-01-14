@@ -86,8 +86,7 @@
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
   <div class="top-detail" >
     <% if @product.on_sale? %>
-    <%= render partial: 'spree/shared/sale_time_calculator', locals: { variant: @product.master} %>
-      <div class="deal-expiry-wrap"><strong>Deal Expiers in:</strong> <span><strong><%= @time_left_in_days %></strong> day</span><span><strong><%= @time_left_in_hours %> </strong> hours</span><span><strong><%= @time_left_in_seconds %></strong> seconds</span></div>
+      <div class="deal-expiry-wrap" id="demo" data-SalesExpiryDate="<%= @product.master.sale_prices.active.last.end_at.strftime('%b %d, %Y %H:%M:%S')%>"></div>
     <% end %>
     <%= form_for :order, html: {
       id: 'add-to-cart-form',
@@ -158,3 +157,4 @@
       <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
   </div>
 </div>
+
