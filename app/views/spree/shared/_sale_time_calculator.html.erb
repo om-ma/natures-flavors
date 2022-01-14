@@ -1,5 +1,0 @@
-<% @time_left= variant.sale_prices.active.last.end_at-Time.now %>
-<% @seconds= @time_left*60 %>
-<% @time_left_in_days= Time.at(@seconds).utc.strftime("%d") %>
-<% @time_left_in_hours= Time.at(@seconds).utc.strftime("%H") %>
-<% @time_left_in_seconds= Time.at(@seconds).utc.strftime("%S") %>
