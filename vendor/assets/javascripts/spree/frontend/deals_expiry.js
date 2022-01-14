@@ -1,6 +1,7 @@
+$(document).on('turbolinks:load', function() {
 $(document).ready(function() {
 // Set the date we're counting down to
-var SalesExpiryDate= document.getElementById("demo").getAttribute("data-SalesExpiryDate");
+var SalesExpiryDate= $('#DealsExpiry').attr("data-SalesExpiryDate");
 var countDownDate = new Date(SalesExpiryDate).getTime();
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -16,15 +17,17 @@ var x = setInterval(function() {
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML ="<strong>Deal Expiers in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
+  // Output the result in an element with id="dealsexpiry"
+  $('#DealsExpiry').innerHTML ="<strong>Deal Expiers in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
   + seconds + "</strong> seconds </span> ";
     
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    $('#DealsExpiry').innerHTML = "";
   }
 }, 1000);
 
 });
+});
+
