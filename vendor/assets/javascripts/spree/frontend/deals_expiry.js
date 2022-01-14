@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 // Set the date we're counting down to
 var SalesExpiryDate= document.getElementById("demo").getAttribute("data-SalesExpiryDate");
 var countDownDate = new Date(SalesExpiryDate).getTime();
@@ -27,4 +27,4 @@ var x = setInterval(function() {
   }
 }, 1000);
 
-
+});
