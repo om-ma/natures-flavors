@@ -13,6 +13,6 @@ var x = setInterval(function() {
      
   if (distance < 0) {
     clearInterval(x);
-    $('#DealsExpiryPhone').innerHTML = "EXPIRED";
+    $('#DealsExpiryPhone').html(" Expired ")
   }
 }, 1000);
