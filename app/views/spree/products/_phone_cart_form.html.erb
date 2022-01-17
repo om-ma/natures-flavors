@@ -1,9 +1,9 @@
-
+<% if (browser.device.mobile?) %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
     <% if @product.on_sale? %>
-    <div class="deal-expiry-wrap" id="DealsExpiryPhone" data-SalesExpiryDatePhone="<%= ending_time(@product.master.sale_prices) %>"></div>
+    <div class="deal-expiry-wrap" id="DealsExpiryPhone" data-SalesExpiryDatePhone="<%= ending_time(@product.master.sale) %>"></div>
     <% end %>
       <%= form_for :order, html: {
           id: 'add-to-cart-form',
@@ -55,3 +55,4 @@
           </div>
       <% end %>
   </div>
+<% end %>
