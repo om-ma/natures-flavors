@@ -3,7 +3,8 @@
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
     <% if @product.on_sale? %>
-    <div class="deal-expiry-wrap" id="DealsExpiryPhone" data-SalesExpiryDatePhone="<%= @product.master.sale_prices.active.last.end_at.strftime('%b %d, %Y %H:%M:%S')%>"></div>
+    
+    <div class="deal-expiry-wrap" id="DealsExpiryPhone" data-SalesExpiryDatePhone="<%= ending_time(@product.master.sale_prices.active.last.end_at) %>"></div>
     <% end %>
       <%= form_for :order, html: {
           id: 'add-to-cart-form',

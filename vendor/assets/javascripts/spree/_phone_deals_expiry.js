@@ -7,9 +7,9 @@ var x = setInterval(function() {
   var hoursPhone = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutesPhone = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var secondsPhone = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  $('#DealsExpiryPhone').innerHTML ="<strong>Deal Expiers in: <span>" + daysPhone + "</strong> day </span><span><strong>" + hoursPhone + "</strong> hours </span><strong><span>"
-  + secondsPhone + "</strong> seconds </span> ";
+
+  $('#DealsExpiryPhone').html("<strong>Deal Expiers in: <span>" + daysPhone + "</strong> day </span><span><strong>" + hoursPhone + "</strong> hours </span><strong><span>"
+  + secondsPhone + "</strong> seconds </span> ")
      
   if (distance < 0) {
     clearInterval(x);

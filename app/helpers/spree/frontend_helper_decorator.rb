@@ -94,4 +94,9 @@ Spree::FrontendHelper.class_eval do
       class: "product-component-image d-block mw-100 #{image_class}"
     )
   end
+  
+  def ending_time(date)
+    date.strftime('%b %d, %Y %H:%M:%S')
+  end
+
 end
