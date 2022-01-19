@@ -5791,7 +5791,10 @@ a.btn.btn-block {
 	right: 20px;
 	top: 0;
 	bottom: 0;
-	background: url("../images/arrow-bottom-white-icon.svg") no-repeat scroll right center;
+	background-image: image-url("arrow-bottom-white-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: right center;
 	width: 40px;
 }
 	
@@ -5890,7 +5893,10 @@ a.btn.btn-block {
 	font-size: 13px;
 	font-weight: bold;
 	letter-spacing: -0.2px;
-	background: url("../images/filter-icon.svg") no-repeat scroll 20px center;
+	background-image: image-url("filter-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: 20px center;
 	padding: 0 20px 0 45px;
 	line-height: 50px;
 	display: block;
