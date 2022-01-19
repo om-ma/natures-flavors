@@ -85,8 +85,11 @@ end
     <div class="row flex-row-reverse no-gutters" data-hook="checkout_progress" data-hook="checkout_content">
       <%= form_for @order, url: spree.update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}", class: "w-100 d-lg-flex " } do |form| %>
       <div class="<%= if @order.state != 'confirm' then 'col-lg-6'  end %>" data-hook="checkout_form_wrapper">
-        <%= form.hidden_field :state_lock_version %>
-        <%= render @order.state, form: form %>
+        <div class="wrap">
+          <%= form.hidden_field :state_lock_version %>
+          <%= render @order.state, form: form %>
+          <button type="button" class="btn btn-primary btn-block" id="design-submit-next-step">Next Step: <strong>Checkout</strong></button>
+        </div>  
       </div>
         <div class="col-lg-6">
           <div class="mobile-cart-summary-header phone-visible">
@@ -98,7 +101,7 @@ end
               <%= render partial: 'summary', locals: { order: @order, order_form: form } %>
                 <div data-hook="buttons">
                   <% submit_label_key = @order.confirm? ? :place_order : :save_and_continue %>
-                  <%= submit_tag Spree.t(submit_label_key), class: 'btn btn-primary btn-block checkout-content-save-continue-button d-none', id:'primaryButton' %>
+                  <%= submit_tag Spree.t(submit_label_key), class: 'btn btn-primary btn-block checkout-content-save-continue-button d-none', id:'checkout-submit-to-next-step' %>
                 </div>
             <% end %>
           </div>
@@ -108,11 +111,10 @@ end
     <div class="cart-icon phone-hide"></div>
   </div>
 </main>
-
+<%= render partial: 'spree/shared/my_cart' %>
 <script>
   cartForm("<%= current_order.try(:number) %>", "<%= current_order.try(:token) %>");
 </script>
-
 <script>
   window.addEventListener('DOMContentLoaded', function() {
     Spree.current_order_id = "<%= @order.number %>"

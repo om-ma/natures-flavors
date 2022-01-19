@@ -44,7 +44,7 @@
                 <%#= form.radio_button "#{address_name}_id", 0, class: 'form-check-input' %> <h4><%#= Spree.t('address_book.other_address') %></h4>
                 <span class="spree-radio-label-custom-input"></span>
               </label>
-              <%= render "spree/addresses", address: address %>
+              <%#= render "spree/addresses", address: address %>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
 <div id="delete-address-popup" class="delete-address-popup-dropdown hide-on-esc">
   <%#= render 'spree/shared/delete_address_popup' %>
 </div> -->
-<div class="wrap">
+
   <ol class="breadcrumb mb-35">
     <li class="breadcrumb-item"><a href="#">Cart</a></li>
     <li class="breadcrumb-item"><a href="#">Information</a></li>
@@ -183,7 +183,5 @@
     </div>
   </div>  
 <% end %>
-<button type="button" class="btn btn-primary btn-block" id="secondaryButton">Next Step: <strong>Choose Delivery</strong></button>
-</div>
 
 <%= hidden_field_tag 'save_user_address', true, data: { hook: "save_user_address" } %>

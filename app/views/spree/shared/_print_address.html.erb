@@ -1,14 +1,11 @@
-<div class="address-wrap  <%=  is_default ? 'active' : '' %>">
-  <% if is_address_should_be_deleted %>
-    <%= link_to address_path(address), method: :delete, confirm: Spree.t(:are_you_sure), :remote => remote_option  do %>
-      <button type="button" class="btn close-btn">Close</button>
-    <% end %>
-  <% end %>
+<div class="address-wrap  <%=  is_default ? 'default' : '' %>">
+  	<% if is_default %>
+  		<h5>Default</h5>
+  	<% else %>
+	    <div data-address-id="<%= address.id %>" class="linke_to_wrap text-of-address-<%= address.id %> js-set-address-as-default">
+	      Mark Default
+	    </div>
+	  <% end %>
   <p><%= address.to_s.html_safe %></p>
-  <div class="is-default d-flex align-items-center justify-content-between">
-    <a href="#" class="text-link js-edit-address-from-profile" data-address-id="<%= address.id %>">Edit</a>
-    <span data-address-id="<%= address.id %>" class="default-address-txt text-right text-of-address-<%= address.id %> js-set-address-as-default">
-      <%=  is_default ? 'Default' : 'Set as Default' %>
-    </span>
-  </div>
+  <strong class="text-link js-edit-address-from-profile" data-address-id="<%= address.id %>">Edit</strong>
 </div>

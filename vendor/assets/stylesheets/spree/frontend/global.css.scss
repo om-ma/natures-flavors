@@ -928,6 +928,10 @@ a.btn.btn-block {
     text-transform: uppercase;
     padding: 0 20px 0 44px;
     background: url("../images/arrow-left-white-icon.svg") no-repeat scroll 22px center;
+	background-image: image-url("arrow-left-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   22px center;
+	background-attachment: scroll;
     border: rgba(255,255,255,0.1) 1px solid;
 	position: absolute;
 	left: 20px;
@@ -3439,8 +3443,8 @@ a.btn.btn-block {
 	border: solid 1px #f0f0f0;
 	background-image: image-url("cart-icon-red.svg");
 	background-repeat: no-repeat;
-	background-attachment: scroll;
 	background-position:   center;
+	background-attachment: scroll;
 	background-color: #fff;
 	width: 60px;
 	height: 60px;
@@ -6202,4 +6206,17 @@ a.btn.btn-block {
 .all-cart .cart-item-details .qty-dropdown-input, .all-cart .cart-item-details .qty-dropdown-button { right: 0; }
 .quantity-box {
 	height: 50px!important;
+}
+.linke_to_wrap {
+	font-size: 12px;
+    color: #a71e22;
+    font-weight: 700;
+    line-height: normal;
+    position: absolute;
+    right: 28px;
+    top: 22px;
+}
+.linke_to_delete_wrap {
+	position: initial!important;
+	float: right;
 }
