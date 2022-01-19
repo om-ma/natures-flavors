@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', function() {
 
-  $(document).ready(function() {
-    $('.product-ov-js').on('click', function(e) {
+      $('.product-ov-js').on('click', function(e) {
       $('.product-ov-js').removeClass("active");
       $(this).addClass('active')
       var variantSku = $(this).attr("data-varient-sku");
@@ -13,9 +12,10 @@ $(document).on('turbolinks:load', function() {
         "<span id = 'product_btn_variant_price'>" + variantPrice + "</span>"
       );
       var variantId = $(this).attr("data-varient-id");
-      $('#variant_id_'+ variantId ).click();
+      $('#variant_id_'+ variantId )[0].click();
     });
-  });
+
+
 
   $(document).ready(function() {
     $('.close-menu').on('click', function(e) {

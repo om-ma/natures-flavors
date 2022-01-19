@@ -15,7 +15,7 @@
 							</div>
 							<div class="order-col flex-fill">
 								<label>Shipment #:</label>
-								<h5 class="shipment-text"><%#= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></h5>
+								<h5 class="shipment-text"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></h5>
 							</div>
 							<div class="order-col flex-fill">
 								<label><%= Spree.t(:status) %></label>

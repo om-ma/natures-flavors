@@ -8,7 +8,7 @@
     <%= render partial: 'spree/shared/head' %>
   </head>
   <body  id="<%= @body_id || 'default' %>" data-hook="body">
-    <div id="wrapper">
+    <div id="wrapper" class="main-layout-section" data-current-order-number="<%= current_order.try(:number) %>" data-current-order-token="<%=  current_order.try(:token) %>" >
       <%#= render partial: 'spree/shared/get_started' %>
       <%= render partial: 'spree/shared/header' %>
       <div id="overlay" class="overlay hide-on-esc"></div>

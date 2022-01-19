@@ -1,23 +1,23 @@
-<div id="shipping-method" data-hook>
+<!-- <div id="shipping-method" data-hook>
   <div data-hook="shipping_method_inner">
     <div id="methods">
-      <%= form.fields_for :shipments do |ship_form| %>
+      <%#= form.fields_for :shipments do |ship_form| %>
         <div class="shipment">
           <h4 class="text-uppercase checkout-content-header checkout-content-shipping-methods-header mb-1">
-            <%= Spree.t('checkout_page.delivery_method') %>
+            <%#= Spree.t('checkout_page.delivery_method') %>
           </h4>
           <div id="shipToLocation" class="mb-4 text-uppercase">
-            <%= Spree.t(:ship_to) %>
-            <span class="text-muted"><%= @order.shipping_address.address1 %></span> -
-              <% if @order.shipping_address.zipcode.present? %> <span class="text-muted"><%= @order.shipping_address.zipcode %></span> - <% end %>
-            <span class="text-muted"><%= @order.shipping_address.country_iso %></span>
+            <%#= Spree.t(:ship_to) %>
+            <span class="text-muted"><%#= @order.shipping_address.address1 %></span> -
+              <%# if @order.shipping_address.zipcode.present? %> <span class="text-muted"><%#= @order.shipping_address.zipcode %></span> - <%# end %>
+            <span class="text-muted"><%#= @order.shipping_address.country_iso %></span>
           </div>
 
           <ul class="checkout-content-shipping-methods-list">
-            <% ship_form.object.shipping_rates.each do |rate| %>
+            <%# ship_form.object.shipping_rates.each do |rate| %>
               <li class="shipping-method">
                 <label class="spree-radio-label">
-                  <%= ship_form.radio_button :selected_shipping_rate_id,
+                  <%#= ship_form.radio_button :selected_shipping_rate_id,
                     rate.id,
                     data: {
                       behavior: 'shipping-method-selector',
@@ -25,23 +25,64 @@
                       tax: rate.display_tax_amount
                     } %>
                   <span class="spree-radio-label-custom-input"></span>
-                  <span class="rate-name"><%= rate.name %></span>
-                  <p class="rate-cost"><%= rate.display_cost %></p>
+                  <span class="rate-name"><%#= rate.name %></span>
+                  <p class="rate-cost"><%#= rate.display_cost %></p>
                 </label>
               </li>
-            <% end %>
+            <%# end %>
           </ul>
         </div>
-      <% end %>
+      <%# end %>
     </div>
 
-    <% if Spree::Config[:shipping_instructions] %>
+    <% #if Spree::Config[:shipping_instructions] %>
       <div id="minstrs" data-hook>
         <h4 class="h5">
-          <%= Spree.t(:shipping_instructions) %>
+          <%#= Spree.t(:shipping_instructions) %>
         </h4>
-        <%= form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %>
+        <%#= form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %>
       </div>
+    <%# end %>
+  </div>
+</div> -->
+<div id="shipping-method" data-hook>
+  <ol class="breadcrumb mb-20">
+    <li class="breadcrumb-item"><a href="#">Cart</a></li>
+    <li class="breadcrumb-item"><a href="#">Information</a></li>
+    <li class="breadcrumb-item"><a href="#">Shipping</a></li>
+    <li class="breadcrumb-item"><a href="#" class="disabled">Payment</a></li>
+  </ol>
+  <div id="methods"> 
+    <%= form.fields_for :shipments do |ship_form| %>
+      <div class="address-shipping-wrap" data-hook="shipping_method_inner" >
+        <div class="address-wrap" id="shipToLocation">
+          <%= checkout_edit_link %>
+          <h5>Address</h5>
+          <p><%= @order.shipping_address.full_name %><%= @order.shipping_address.address1 %> <%= @order.shipping_address.address2 %> <%=@order.shipping_address.city %> <%=@order.shipping_address.state_text %> <%=@order.shipping_address.zipcode %>,<%=@order.shipping_address.country.name %> </p>
+        </div>
+      </div>
+      <div class="cart-header d-flex align-items-center justify-content-between mb-0">
+        <h5>Shipping</h5>
+      </div>
+      <ul class="shipping-options">
+        <% ship_form.object.shipping_rates.each do |rate| %>
+          <li>
+            <div class="custom-radio">
+              <label>
+                <%= ship_form.radio_button :selected_shipping_rate_id,
+                rate.id,
+                data: {
+                  behavior: 'shipping-method-selector',
+                  cost: rate.display_cost,
+                  tax: rate.display_tax_amount
+                }, class: 'custom-control-input' %>
+                <span class="custom-control-label"></span><%= rate.name %></label>
+            </div>
+            <div class="shipping-price"><%= rate.display_cost %></div>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
 </div>
+<button type="button" class="btn btn-primary btn-block" id="design-submit-next-step">Next Step: <strong>Payment</strong></button>
