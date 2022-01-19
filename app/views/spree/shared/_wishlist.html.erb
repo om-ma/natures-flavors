@@ -1,0 +1,36 @@
+<div class="col-xl-3 col-lg-4">
+  <div class="wishlist">
+    <h3>Wishlist</h3>
+    <% if @favorite_products.present?%>
+    <% @favorite_products.each do |object| %>
+      <% object_type  = object.class.name %>
+      <% product      = object_type == 'Spree::Variant' ? object.product : object  %>
+      <div class="cart-similar-item mb-20">
+        <div class="wrap">
+          <p>You might need this:</p>
+          <div class="similar-item-thumb">
+            <%= link_to large_image(product), product_path(product) %>
+          </div>
+            <%= link_to product_path(product) do %>
+              <h4><%= product.name %></h4>
+            <% end %>
+            <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
+              <div class="price"><%= display_price(object) %>- Add to Cart</div>
+            <% end %>
+              <% favorite_item_present = spree_current_user.has_favorite_product?(object.id) || spree_current_user.has_favorite_variant?(object.id) %>
+              <div id="js-wishproduct-action-button">
+                <% if spree_user_signed_in? && favorite_item_present %>
+                  <%= link_to Spree.t(:unmark_as_favorite), favorite_product_path(id: object.id, type: object_type), method: :delete, remote: true, class: 'favorite_link pull-right product-favorite-icon remove-to-fav', id: 'unmark-as-favorite' %>
+                <% else %>
+                  <%= link_to Spree.t(:mark_as_favorite) , favorite_products_path(id: object.id, type: object_type ), method: :post, remote: spree_user_signed_in?, class: 'favorite_link pull-right product-favorite-icon add-to-fav ', id: 'mark-as-favorite' %>
+                <% end %>
+              </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    Oooppps! No Wished Product(s) found.  
+  <% end %>
+  </div>
+</div>
+
