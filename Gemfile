@@ -45,6 +45,7 @@ gem 'spree_sample' # dummy data like products, taxons, etc
 gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
 gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
 gem 'spree_i18n', '~> 5.0' # translation files (optional) 
+gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', branch: 'natures'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

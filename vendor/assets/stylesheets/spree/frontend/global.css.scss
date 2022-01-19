@@ -2908,6 +2908,15 @@ a.btn.btn-block {
 }
 
 .product-actions a.add-to-fav {
+	background-image: image-url("wish-selected.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:  left center;
+	padding-left: 25px;
+	background-size: 16px 15px;
+}
+
+.product-actions a.remove-to-fav {
 	background-image: image-url("heart.svg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;

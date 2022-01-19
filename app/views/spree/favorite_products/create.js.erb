@@ -1,0 +1,6 @@
+<% if @success %>
+  $('#js-wishproduct-action-button').html("<%= j render partial: 'spree/shared/wishlist_action_buttons', locals: {product: @favourite_product }  %>")
+<% else %>
+  $('.product-favorite-icon').addClass('add-to-fav')
+  $('.product-favorite-icon').removeClass('remove-to-fav')
+<% end %>
