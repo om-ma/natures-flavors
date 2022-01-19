@@ -1,9 +1,12 @@
 <% if @cms_page %>
   <% if simple_page?(@cms_page) %>
-    <div>
-      <%= @cms_page.content.html_safe %>
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-12">
+        <%= @cms_page.content.html_safe %>
+      </div>
     </div>
-
+  </div>
   <% else %>
       <% @cms_page.cms_sections.each do |section| %>
         <%= build_section(section) %>
