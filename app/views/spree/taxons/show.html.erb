@@ -19,7 +19,13 @@
       </div>
       <div class="col-xl-10 col-lg-9">
         <div class="products-wrapper">
-          <div class="category-banner phone-visible"><img src="assets/images/category-banner.jpg" alt=""></div>
+          <div class="category-banner phone-visible"><div class="category-banner phone-visible">
+            <% if @taxon.icon.present? %>
+               <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
+            <% else %>
+               <%= image_tag "noimage/default-category-image.jpg" %>
+            <% end %>
+          </div></div>
           <%= render partial: 'spree/taxons/introduction' %>
           <%= render partial: 'spree/taxons/filters' %>
           <%= render partial: 'spree/taxons/mobile_filters' %> 
