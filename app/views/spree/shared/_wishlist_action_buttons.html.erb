@@ -1,7 +1,5 @@
-<div class="product-actions d-flex flex-wrap align-items-center"> <a href="#" class="faq-link">Ask a Question</a> 
-  <% if spree_user_signed_in? && spree_current_user.has_favorite_product?(product.id) %>
-    <%= link_to Spree.t(:remove_favorite), favorite_product_path(id: product.id, type: 'Spree::Product'), method: :delete, remote: true, class: 'favorite_link pull-right remove-to-fav product-favorite-icon', id: 'unmark-as-favorite' %>
-  <% else %>
-    <%= link_to Spree.t(:mark_as_favorite) , favorite_products_path(id: product.id, type: 'Spree::Product'), method: :post, remote: spree_user_signed_in?, class: 'favorite_link pull-right add-to-fav product-favorite-icon', id: 'mark-as-favorite' %>
-  <% end %>
-</div>
+<% if spree_user_signed_in? && spree_current_user.has_favorite_product?(product.id) %>
+  <%= link_to Spree.t(:remove_favorite), favorite_product_path(id: product.id, type: 'Spree::Product'), method: :delete, remote: true, class: 'favorite_link pull-right remove-to-fav product-favorite-icon', id: 'unmark-as-favorite' %>
+<% else %>
+  <%= link_to Spree.t(:mark_as_favorite) , favorite_products_path(id: product.id, type: 'Spree::Product'), method: :post, remote: spree_user_signed_in?, class: 'favorite_link pull-right add-to-fav product-favorite-icon', id: 'mark-as-favorite' %>
+<% end %>
