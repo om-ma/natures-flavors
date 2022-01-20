@@ -18,11 +18,11 @@
               <div class="price"><%= display_price(object) %>- Add to Cart</div>
             <% end %>
             <% favorite_item_present = spree_current_user.has_favorite_product?(object.id) || spree_current_user.has_favorite_variant?(object.id) %>
-              <% if spree_user_signed_in? && favorite_item_present %>
-                <%= link_to favorite_product_path(id: product.id, type: 'Spree::Product'), method: :delete, class: 'favorite_link pull-right remove-to-fav product-favorite-icon', id: 'unmark-as-favorite' do %>
-                  <%= image_tag "heart.svg" %>
-                <% end %>
+            <% if spree_user_signed_in? && favorite_item_present %>
+              <%= link_to favorite_product_path(id: product.id, type: 'Spree::Product'), method: :delete, class: 'favorite_link pull-right remove-to-fav product-favorite-icon', id: 'unmark-as-favorite' do %>
+                <%= image_tag "heart.svg" %>
               <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>
