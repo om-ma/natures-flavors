@@ -1,0 +1,34 @@
+<div class="col-xl-3 col-lg-4">
+  <div class="wishlist">
+    <h3>Wishlist</h3>
+    <% if @favorite_products.present?%>
+      <% @favorite_products.each do |object| %>
+        <% object_type  = object.class.name %>
+        <% product      = object_type == 'Spree::Variant' ? object.product : object  %>
+        <div class="cart-similar-item mb-20">
+          <div class="wrap">
+            <p>You might need this:</p>
+            <div class="similar-item-thumb">
+              <%= link_to large_image(product), product_path(product) %>
+            </div>
+            <%= link_to product_path(product) do %>
+              <h4><%= product.name %></h4>
+            <% end %>
+            <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
+              <div class="price"><%= display_price(object) %>- Add to Cart</div>
+            <% end %>
+            <% favorite_item_present = spree_current_user.has_favorite_product?(object.id) || spree_current_user.has_favorite_variant?(object.id) %>
+              <% if spree_user_signed_in? && favorite_item_present %>
+                <%= link_to favorite_product_path(id: product.id, type: 'Spree::Product'), method: :delete, class: 'favorite_link pull-right remove-to-fav product-favorite-icon', id: 'unmark-as-favorite' do %>
+                  <%= image_tag "heart.svg" %>
+                <% end %>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      Oooppps! No Wished Product(s) found.  
+    <% end %>
+  </div>
+</div>
+
