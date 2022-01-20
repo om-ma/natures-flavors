@@ -1,12 +1,7 @@
-$(document).ready(function() {
-
+$(document).on('ready page:load', function () {
   var SalesExpiryDate= $('#deals-expiry').attr("data-SalesExpiryDate");
   var countDownDate = new Date(SalesExpiryDate).getTime();
-  
-
   var x = setInterval(function() {
-  
-
     var now = new Date().getTime();
     var distance = countDownDate - now;
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
