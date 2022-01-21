@@ -114,25 +114,18 @@
   <% if spree_current_user.present? %>
     <div class="col-sm-12">
       <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center mb-60">
-        <!-- <div class="custom-checkbox">
-          <label>
-            <input type="checkbox" class="custom-control-input" checked>
-            <span class="custom-control-label"></span>Save to My Addresses</label>
-        </div> -->
-        <%# is_user_first_address = current_spree_user.addresses.present? ? true : false %>
-
         <% is_user_first_address = current_spree_user.addresses.present? ? true : false %>
-        <div class="custom-checkbox <%#= is_user_first_address ? "" : "d-none "%>" >
-          <label>
-            <input type="checkbox" class="custom-control-input" checked>
-            <span class="custom-control-label"></span>Save to My Addresses
-          <label>
-        </div>
+        <%if( request.fullpath.include? "/checkout")%>
+          <div class="custom-checkbox <%#= is_user_first_address ? '' : 'd-none'%>" >
+            <label>
+              <input type="checkbox" class="custom-control-input" checked>
+              <span class="custom-control-label"></span>Save to My Addresses</label>
+            <label>
+          </div>
+        <% end %>
         <div class="custom-checkbox">
           <label>
             <%= address_form.check_box :is_default, class: 'custom-control-input', checked: is_user_first_address ? "" : "checked" %>
-            
-            <!-- <input type="checkbox" class="custom-control-input" checked> -->
             <span class="custom-control-label">Save as Default</span>
           </label>
         </div>
