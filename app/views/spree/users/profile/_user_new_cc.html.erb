@@ -1,5 +1,5 @@
 <%= render 'spree/shared/error_messages', target: @user_cc %>
-<div class="add-edit-form" id="user-credit-card-errors">
+<div class="add-edit-form" >
 	<h5> Add New Card </h5>
   <%= form_for(@new_cc, url: user_credit_cards_path, method: 'POST', remote: true) do |f| %>
     <div class="row">
