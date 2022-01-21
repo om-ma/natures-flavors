@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function () {
+document.addEventListener('turbolinks:before-render', () => {
     var SalesExpiryDatePhone= $('#DealsExpiryPhone').attr("data-SalesExpiryDatePhone");
     var countDownDatePhone = new Date(SalesExpiryDatePhone).getTime();
     var x = setInterval(function() {
