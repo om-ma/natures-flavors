@@ -44,45 +44,34 @@
     <div class="col-xl-10 position-static" id="top-nav-bar">
       <div class="navbar-collapse" id="nav-bar">
         <ul class="navbar-nav tablet-hide">
-          <li class="nav-item"><a class="nav-link" href="#">Extracts &amp; Flavorings</a>
-            <div class="dropdown-menu-wrap">
-              <div class="row no-gutters">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-7 has-gridlines">
+          <li class="nav-item">
+            <% if @main_category.present? %>
+              <%= link_to @main_category.name, seo_url(@main_category), class: "nav-link" %>
+              <% user_taxons = spree_current_user.present? ? spree_current_user.taxons : [] %>
+              <% if user_taxons.present? %>
+                <div class="dropdown-menu-wrap">
                   <div class="row no-gutters">
-                    <div class="col">
-                      <ul class="dropdown-menu d-flex flex-column">
-                        <li><a href="#">Flavor Extracts<span class="badge popular-badge">Popular</span></a></li>
-                        <li><a href="#">Flavor Concentrate</a></li>
-                        <li><a href="#">Flavor Compounds</a></li>
-                        <li><a href="#">Flavor Emulsions</a></li>
-                        <li><a href="#">Flavor Powsers<span class="badge popular-badge">Popular</span></a></li>
-                        <li><a href="#">Flavor Oils OILS</a></li>
-                      </ul>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-7 has-gridlines">
+                      <div class="row no-gutters">
+                        <% user_taxons.in_groups_of(3) do |categories|%>
+                          <div class="col">
+                            <ul class="dropdown-menu d-flex flex-column">
+                              <% categories.compact.each do |category| %>
+                              <li>
+                                <%= link_to category.name, seo_url(category) %>
+                              </li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        <% end %>
+                      </div>
                     </div>
-                    <div class="col">
-                      <ul class="dropdown-menu d-flex flex-column">
-                        <li><a href="#">Vanilla Extracts</a></li>
-                        <li><a href="#">Flavoring for Ice Cream</a></li>
-                        <li><a href="#">Flavoring for Water</a></li>
-                        <li><a href="#">Flavoring for Coffee &amp; Tea</a></li>
-                        <li><a href="#">Flavoring for Lip Balm</a></li>
-                        <li><a href="#">Flavoring for Chocolate</a></li>
-                      </ul>
-                    </div>
-                    <div class="col">
-                      <ul class="dropdown-menu d-flex flex-column">
-                        <li><a href="#">Keto Friendly Flavors</a></li>
-                        <li><a href="#">TTB Approved Flavors</a></li>
-                        <li><a href="#">Flavors without Diacetyl</a></li>
-                        <li><a href="#">Flavors sample packs</a></li>
-                      </ul>
-                    </div>
+                    <div class="col-lg-3"></div>
                   </div>
                 </div>
-                <div class="col-lg-3"></div>
-              </div>
-            </div>
+              <% end %>
+            <% end %>
           </li>
           <li class="nav-item"><a class="nav-link" href="#">Fragrances</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Syrups</a></li>
