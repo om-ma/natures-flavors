@@ -46,7 +46,7 @@
       <div class="col-sm-6 ">
         <div class="form-group form-floating mb-20">
           <%= address_form.text_field :lastname, class: 'form-control', placeholder:"Last Name", required: true %>
-          <%= address_form.label :lastname do %>
+          <%= address_form.label :firstname do %>
             Last Name<abbr>*</abbr>
           <% end %>
         </div>
@@ -124,9 +124,9 @@
           </div>
         <% end %>
         <div class="custom-checkbox">
-          <label>
             <%= address_form.check_box :is_default, class: 'custom-control-input', checked: is_user_first_address ? "" : "checked" %>
-            <span class="custom-control-label">Save as Default</span>
+            <input type="checkbox" class="custom-control-input" checked>
+            <span class="custom-control-label"></span>Save as Default
           </label>
         </div>
       </div>
