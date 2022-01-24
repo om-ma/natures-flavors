@@ -31,24 +31,23 @@
 
 <p class="text-right text-uppercase mb-5 checkout-content-inner-field"><span id="required_marker"><%#= Spree.t(:required) %></span> <%#= Spree.t(:required_fields) %></p> -->
 <% address_id = address_type.chars.first %>
-<% if @order.state="address" %>
-  <% checkout_address = %w(firstname lastname company address1 address2 country state city zipcode phone) %>
+  <% checkout_address = %w(firstname lastname address1 address2 country state city zipcode phone) %>
   <% checkout_address.each do |field| %>
     <% if field == "firstname"  %>
       <div class="col-sm-6 ">
         <div class="form-group form-floating mb-20">
-          <%= address_form.text_field :firstname, class: 'form-control', placeholder:"First Name*", required: true %>
+          <%= address_form.text_field :firstname, class: 'form-control', placeholder:"First Name", required: true %>
           <%= address_form.label :firstname do %>
-            <%= Spree.t(:first_name) %><abbr>*</abbr>
+            First Name<abbr>*</abbr>
           <% end %>
         </div>
       </div>
     <%elsif field == "lastname"  %>
       <div class="col-sm-6 ">
         <div class="form-group form-floating mb-20">
-          <%= address_form.text_field :lastname, class: 'form-control', placeholder:"Last Name*", required: true %>
-          <%= address_form.label :lastname do %>
-            <%= Spree.t(:last_name) %><abbr>*</abbr>
+          <%= address_form.text_field :lastname, class: 'form-control', placeholder:"Last Name", required: true %>
+          <%= address_form.label :firstname do %>
+            Last Name<abbr>*</abbr>
           <% end %>
         </div>
       </div>
@@ -106,22 +105,36 @@
           <% end %>
         </div>
       </div>
+    <% else %>
+      <div class="col-sm-6 ">
+        <%= address_field(address_form, field.to_sym, address_id) %>
+      </div>  
     <% end %>
   <% end %>
-  <div class="col-sm-12">
-    <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center mb-60">
-      <div class="custom-checkbox">
-        <label>
-          <input type="checkbox" class="custom-control-input" checked>
-          <span class="custom-control-label"></span>Save to My Addresses</label>
-      </div>
-      <%# is_user_first_address = current_spree_user.addresses.present? ? true : false %>
-      <div class="custom-checkbox <%#= is_user_first_address ? "" : "d-none "%>" >
-        <label>
-          <%#= address_form.check_box :is_default, class: 'custom-control-input', checked: is_user_first_address ? "" : "checked" %>
-          <span class="custom-control-label"></span>Save as Default
-        </label>
+  <% if spree_current_user.present? %>
+    <div class="col-sm-12">
+      <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center mb-60">
+        <!-- <div class="custom-checkbox">
+          <label>
+            <input type="checkbox" class="custom-control-input" checked>
+            <span class="custom-control-label"></span>Save to My Addresses</label>
+        </div> -->
+        <%# is_user_first_address = current_spree_user.addresses.present? ? true : false %>
+
+        <% is_user_first_address = current_spree_user.addresses.present? ? true : false %>
+        <div class="custom-checkbox <%#= is_user_first_address ? "" : "d-none "%>" >
+          <label>
+            <input type="checkbox" class="custom-control-input" checked>
+            <span class="custom-control-label"></span>Save to My Addresses</label>
+          <label>
+        </div>
+        <div class="custom-checkbox">
+            <%= address_form.check_box :is_default, class: 'custom-control-input', checked: is_user_first_address ? "" : "checked" %>
+            <input type="checkbox" class="custom-control-input" checked>
+            <span class="custom-control-label"></span>Save as Default
+          </label>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  
