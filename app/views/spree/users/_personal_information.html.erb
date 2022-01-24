@@ -1,7 +1,9 @@
-<%= render partial: 'spree/shared/error_messages', locals: { target: @user } %>
+<div id="user_error_messages">
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @user } %>
+</div>
 <div class="tab-pane fade" id="personalInformation" role="tabpanel">
   <div class="personal-info">
-    <%= form_for Spree.user_class.new, as: @user, url: spree.user_path(@user), method: :put do |f| %>
+    <%= form_for Spree.user_class.new, as: @user, url: spree.user_path(@user), method: :put, remote:true do |f| %>
       <div class="form-group form-floating mb-20">
           <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email) %>
           <label>Email *</label>
