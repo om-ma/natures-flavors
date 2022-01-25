@@ -1,97 +1,75 @@
 <div class="footer-links-wrap">
-  <div class="row no-gutters">
-     <div class="col-xl-2 tablet-hide"></div>
-     <div class="col-xl-2 col-lg-4">
-        <div class="footer-logo-wrap">
-           <figure>  <%= image_tag 'footer-logo.svg', alt: "Nature's Flavors" %></figure>
-           <p>Family owned and run for over 40 years. It is our mission to spread the Natural and Organic bounty of nature through our products.</p>
-        </div>
-        <ul class="footer-nav">
-           <li class="header">Information</li>
-           <li><a href="#">About Us</a></li>
-           <li><a href="#">Blog</a></li>
-           <li><a href="#">Best Sellers</a></li>
-           <li><a href="#">Contact Us</a></li>
-           <li><a href="#">New Products</a></li>
-           <li><a href="#">Shipping</a></li>
-           <li><a href="#">Support</a></li>
-           <li><a href="#">Terms and Conditions</a></li>
-           <li><a href="#">Privacy</a></li>
-           <li><a href="#">Returns &amp; Replacements</a></li>
-           <li><a href="#">*Site Map*</a></li>
-        </ul>
-     </div>
-     <div class="col-xl-2 col-lg-4">
-        <div class="footer-newsletter">
-           <h4>Sign up for updates</h4>
-           <form>
-              <input type="text" class="form-control" placeholder="Enter your email">
-              <button type="submit" class="icon-btn">Submit</button>
-           </form>
-           <div class="newsletter-msg">Be the first to learn about promotions special events, new arrivals and more.</div>
-        </div>
-        <ul class="footer-nav">
-           <li class="header">My Account</li>
-           <li><a href="#">My Account</a></li>
-           <li><a href="#">My Orders</a></li>
-           <li><a href="#">My Credits</a></li>
-           <li><a href="#">My Address</a></li>
-           <li><a href="#">My Info</a></li>
-           <li><a href="#">My Wish List</a></li>
-        </ul>
-        <ul class="footer-nav">
-           <li class="header">Our Brands</li>
-           <li><a href="#">Naturlax</a></li>
-           <li><a href="#">Yum Matcha</a></li>
-           <li><a href="#">Seelect Tea</a></li>
-        </ul>
-     </div>
-     <div class="col-xl-2 col-lg-4">
-        <div class="footer-spacer"></div>
-        <ul class="footer-nav">
-           <li class="header">Product Info</li>
-           <li><a href="#">Flavor Powders</a></li>
-           <li><a href="#">Flavor Emulsions</a></li>
-           <li><a href="#">Flavor Concentrates</a></li>
-           <li><a href="#">Flavor Extracts</a></li>
-           <li><a href="#">Flavor Oils</a></li>
-           <li><a href="#">The Flavor Guy Videos</a></li>
-           <li><a href="#">Reviews</a></li>
-           <li><a href="#">FAQs</a></li>
-        </ul>
-     </div>
-     <div class="col-xl-2 col-lg-12">
-        <div class="row-tablet-only">
-           <div class="col-md-4 col-12">
-              <h4>Follow us</h4>
-              <ul class="social-nav d-flex flex-wrap align-items-center">
-                 <li><a href="#" class="facebook-icon">Facebook</a></li>
-                 <li><a href="#" class="instagram-icon">Intagram</a></li>
-                 <li><a href="#" class="pinterest-icon">Pinterest</a></li>
-                 <li><a href="#" class="youtube-icon">Youtube</a></li>
-              </ul>
-           </div>
-           <div class="col-lg-4 mobile-hide">
-              <div class="footer-address">
-                 <h5>Address</h5>
-                 <p>833 N. Elm Street, Orange,<br>
-                    California 92867
-                 </p>
-              </div>
-              <div class="footer-phone mobile-hide"><a href="tel:1-714-744-3700">1-714-744-3700</a></div>
-           </div>
-           <div class="col-lg-4 mobile-hide">
-              <div class="footere-business-hours">
-                 <h5>Business hours</h5>
-                 <p>8:00 am - 5:00 pm,<br>
-                    Monday - Friday, Pacific Time
-                 </p>
-              </div>
-           </div>
-        </div>
-     </div>
-     <div class="col-xl-2 tablet-hide"></div>
-     <!-- end col --> 
-  </div>
-  <div class="banner-grid-wrap"></div>
+   <div class="row no-gutters">
+      <div class="col-xl-2 tablet-hide"></div>
+      <div class="col-xl-2 col-lg-4">
+         <div class="footer-logo-wrap">
+            <figure>  <%= image_tag 'footer-logo.svg', alt: "Nature's Flavors" %></figure>
+            <p>Family owned and run for over 40 years. It is our mission to spread the Natural and Organic bounty of nature through our products.</p>
+         </div>
+         <ul class="footer-nav">
+            <li class="header">Information</li>
+         </ul>
+      </div>
+      <div class="col-xl-2 col-lg-4">
+         <div class="footer-newsletter">
+            <h4>Sign up for updates</h4>
+            <form>
+               <input type="text" class="form-control" placeholder="Enter your email">
+               <button type="submit" class="icon-btn">Submit</button>
+            </form>
+            <div class="newsletter-msg">Be the first to learn about promotions special events, new arrivals and more.</div>
+         </div>
+         <ul class="footer-nav">
+         <li class="header">My Account</li>
+         </ul>
+         <ul class="footer-nav">
+         <li class="header"></li>
+         </ul>
+      </div>
+      <div class="col-xl-2 col-lg-4">
+         <div class="footer-spacer"></div>
+         <ul class="footer-nav">
+         <li class="header">Product Info</li>
+         <% if spree_menu('footer').present? %>
+            <% spree_menu('footer').children.each do |parent| %>
+               <% parent.children.each do |child| %>
+                  <li><%= spree_nav_link_tag(child) %></li>
+               <% end %>
+            <% end %>
+         <% end %>
+         </ul>
+      </div>
+      <div class="col-xl-2 col-lg-12">
+         <div class="row-tablet-only">
+            <div class="col-md-4 col-12">
+               <h4>Follow us</h4>
+               <ul class="social-nav d-flex flex-wrap align-items-center">
+                  <li><a href="#" class="facebook-icon">Facebook</a></li>
+                  <li><a href="#" class="instagram-icon">Intagram</a></li>
+                  <li><a href="#" class="pinterest-icon">Pinterest</a></li>
+                  <li><a href="#" class="youtube-icon">Youtube</a></li>
+               </ul>
+            </div>
+            <div class="col-lg-4 mobile-hide">
+               <div class="footer-address">
+                  <h5>Address</h5>
+                  <p>833 N. Elm Street, Orange,<br>
+                     California 92867
+                  </p>
+               </div>
+               <div class="footer-phone mobile-hide"><a href="tel:1-714-744-3700">1-714-744-3700</a></div>
+            </div>
+            <div class="col-lg-4 mobile-hide">
+               <div class="footere-business-hours">
+                  <h5>Business hours</h5>
+                  <p>8:00 am - 5:00 pm,<br>
+                     Monday - Friday, Pacific Time
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-xl-2 tablet-hide"></div> 
+   </div>
+   <div class="banner-grid-wrap"></div>
 </div>

@@ -1,5 +1,13 @@
 Spree::FrontendHelper.class_eval do
+  def checkout_edit_link(step = 'address', order = @order)
+    return if order.uneditable?
 
+    classes = ''
+
+    link_to spree.checkout_state_path(step), class: classes, method: :get do
+      "Edit"
+    end
+  end
   def taxons_tree(root_taxon, current_taxon, max_level = 3)
     return '' if max_level < 1
     selected_parent_taxon_name = params["id"]
@@ -96,5 +104,8 @@ Spree::FrontendHelper.class_eval do
       height: image_style&.dig(:height) || 371,
       class: "product-component-image d-block mw-100 #{image_class}"
     )
+  end
+  def sale_date_time_counter(date)
+    date.strftime('%b %d, %Y %H:%M:%S')
   end
 end
