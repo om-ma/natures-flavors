@@ -1,0 +1,29 @@
+<!-- <h1 class="taxon-title">Sale</h1>
+
+<%# content_for :sidebar do %>
+  <div data-hook="taxon_sidebar_navigation">
+    <%#= render :partial => 'spree/shared/taxonomies' %>
+  </div>
+<%# end %>
+
+<div data-hook="taxon_products">
+  <%#= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+</div> -->
+<main class="page-contents">
+  <div class="deals-wrapper">
+    <div class="title-wrap text-center">
+      <div class="sm-title">Don’t miss out our lates offers</div>
+      <h1 class="title"><span>Deals</span> by Natures Flavors</h1>
+    </div>
+    <div class="products-wrapper">
+      <%= render partial: 'filters' %>
+      <div class="row no-gutters" data-hook="taxon_products">
+        <%= render partial: 'spree/shared/sale_products', locals: { products: @products, taxon: @taxon }%>
+      </div> 
+    </div>
+    <div class="title-wrap text-center">
+      <div class="sm-title">Don’t miss out our lates offers</div>
+      <h1 class="title"><span>Every week</span> new deals</h1>
+    </div>
+  </div>
+</main>

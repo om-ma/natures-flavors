@@ -1,0 +1,1 @@
+ALLOWED_CC_TYPES_FOR_CHECKOUT =['spree-gateway-authorizenetcim', 'spree-gateway-bogus']

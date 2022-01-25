@@ -160,11 +160,11 @@
                   </div>
                   <hr>
                   <div class="text-right" data-hook="cart_buttons">
-                    <%= link_to spree.checkout_path, class: 'btn btn-primary font-weight-bold cart-checkout-btn shopping-cart-buttons-checkout', id: 'checkout-link', method: :get do %>
-                      <div class="mt-1">
-                        <span> <%= order_form.object.display_total %> </span> -
-                        <%= Spree.t('cart_page.checkout') %>
-                      </div>
+                    <%= link_to spree.checkout_path, id: 'checkout-link', method: :get do %>
+                    <button class="btn btn-primary">
+                      <strong>  <%= order_form.object.display_total %>  -
+                        <%= Spree.t('cart_page.checkout') %> </strong>
+                    </button>
                     <% end %>
                   </div>
                 </div>
