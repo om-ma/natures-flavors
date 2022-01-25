@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="20px" viewBox="0 0 24 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Combined Shape</title>
+    <defs>
+        <linearGradient x1="27.8761605%" y1="15.2800547%" x2="72.3937529%" y2="69.7988695%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F1F1F1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0.Elements" transform="translate(-194.000000, -425.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M205,441 C206.103,441 207,441.897 207,443 C207,444.103 206.103,445 205,445 C203.897,445 203,444.103 203,443 C203,441.897 203.897,441 205,441 Z M212,441 C213.103,441 214,441.897 214,443 C214,444.103 213.103,445 212,445 C210.897,445 210,444.103 210,443 C210,441.897 210.897,441 212,441 Z M197.382,425 C198.679,425 199.828,425.851 200.179,427.07 L200.748,429 L216.043,429 C216.667,429 217.259,429.297 217.626,429.795 C217.99,430.289 218.095,430.907 217.914,431.491 L215.851,438.039 C215.447,439.221 214.34,440 213.091,440 L204.097,440 C202.8,440 201.65,439.149 201.299,437.93 L198.259,427.629 C198.151,427.256 197.792,427 197.382,427 L195,427 C194.447,427 194,426.552 194,426 C194,425.448 194.447,425 195,425 L197.382,425 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

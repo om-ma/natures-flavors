@@ -10,7 +10,7 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -37,9 +37,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 #Spree
-gem 'spree', '~> 3.7', '>= 3.7.0'
-gem 'spree_auth_devise', '~> 3.3'
-gem 'spree_gateway', '~> 3.3'
+gem 'spree', '>= 4.3'
+gem 'spree_frontend', '>= 4.3'
+gem 'spree_backend', '>= 4.3'
+gem 'spree_emails', '>= 4.3'
+gem 'spree_sample' # dummy data like products, taxons, etc
+gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
+gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
+gem 'spree_i18n', '~> 5.0' # translation files (optional) 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,6 +58,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener", group: :development
 end
 
 group :test do
@@ -65,3 +71,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
