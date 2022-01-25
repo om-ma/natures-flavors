@@ -1,5 +1,5 @@
 <%# if spree_menu.present? %>
-  <!-- <div class="h-100" role="navigation" aria-label="<%= Spree.t('nav_bar.desktop') %>">
+  <!-- <div class="h-100" role="navigation" aria-label="<%#= Spree.t('nav_bar.desktop') %>">
     <ul class="nav h-100 main-nav-bar">
       <%# spree_menu.children.each do |parent| %>
           <li class="p-0 nav-item main-nav-bar-category">
@@ -73,44 +73,4 @@
   </div> -->
 <%# end %>
 
-<% if spree_menu.present? %>
-  <% spree_menu.children.each do |parent| %>
-    <% has_dropdown = parent.children.present? %>
-    <% dropdown_toggle_class = has_dropdown ? "dropdown-toggle" : "" %>
-    <% data_attr = has_dropdown ? { toggle: "dropdown" } : {} %>
-    <% aria_attr = has_dropdown ? { haspopup: true, expanded: false } : {} %>
-    <% if parent.container? %>
-      <%= content_tag :li, parent.name, class: " nav-link", data: data_attr, aria: aria_attr %>
-    <% else %>
-      <li class= nav-item>
-        <%= spree_nav_link_tag(parent, { class: " nav-link ", data: data_attr, aria: aria_attr }) %>
-        <div class="dropdown-menu-wrap">
-          <div class="row no-gutters">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-7 has-gridlines">
-              <div class="row no-gutters">
-                <% if has_dropdown %>
-                  <% parent.children.each do |child| %>
-                    <div class="col">
-                      <ul class="dropdown-menu d-flex flex-column">
-                          <li>
-                            <a href="#"><%= child.name %></a>
-                          </li>
-                      </ul>
-                      <% if child.children.present? %>
-                        <%child.children.each do |category_link| %>
-                          <li><%= spree_nav_link_tag(category_link, { class: "text-uppercase main-nav-bar-category-links dropdown-item truncate" }) %></li>
-                        <% end %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-            <div class="col-lg-3"></div>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  <% end %>
-<% end %>
+

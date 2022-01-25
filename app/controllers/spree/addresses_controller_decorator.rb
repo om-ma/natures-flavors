@@ -2,76 +2,54 @@ Spree::AddressesController.class_eval do
 
 
   def create
-    @address = spree_current_user.addresses.build(address_params)
 
-    if @address.is_default
-      user_addresses            = spree_current_user.addresses
+    @address = try_spree_current_user.addresses.build(address_params)
 
-      if user_addresses.present?
-        user_addresses.update_all(is_default: false)
-      end
-        
-    end
+    ActiveRecord::Base.transaction do
 
-    if @address.save
-      # flash[:notice] = I18n.t(:successfully_created, scope: :address_book)
-      respond_to do |format|
-        format.html { redirect_to account_path }
-        format.js
+      if @address.is_default
+        user_addresses            = spree_current_user.addresses
+
+        if user_addresses.present?
+          user_addresses.update_all(is_default: false)
+        end
+          
       end
-    else
-      respond_to do |format|
-        format.html { render :action => 'new' }
-        format.js
+      if create_service.call(user: try_spree_current_user, address_params: @address.attributes).success?
+        respond_to do |format|
+          format.html { redirect_to account_path }
+          format.js
+        end
+      else
+        respond_to do |format|
+          format.html { render :action => 'new' }
+          format.js
+        end
       end
-    end
+
+    end  
   end
 
   def update
-    if @address.editable?
-      if @address.update(address_params)
-        # flash[:notice] = I18n.t(:successfully_updated, scope: :address_book)
-        respond_to do |format|
-          format.html { redirect_back_or_default(account_path) }
-          format.js
-        end
-      else
-        respond_to do |format|
-          format.html { render :action => 'edit' }
-          format.js
-        end
+    if update_service.call(address: @address, address_params: address_params).success?
+      respond_to do |format|
+        format.html { redirect_back_or_default(account_path) }
+        format.js
       end
     else
-      new_address = @address.clone
-      new_address.attributes = address_params
-      @address.update_attribute(:deleted_at, Time.now)
-      if new_address.save
-        # flash[:notice] = I18n.t(:successfully_updated, scope: :address_book)
-        respond_to do |format|
-          format.html { redirect_back_or_default(account_path) }
-          format.js
-        end
-      else
-        respond_to do |format|
-          format.html { render :action => 'edit' }
-          format.js
-        end
+      respond_to do |format|
+        format.html { render :action => 'edit' }
+        format.js
       end
     end
   end
 
   def destroy
     @address.destroy
-    # flash[:notice] = I18n.t(:successfully_removed, scope: :address_book)
     respond_to do |format|
       format.html { redirect_to(request.env['HTTP_REFERER'] || account_path) unless request.xhr? }
       format.js
     end
-  end
-
-  def new_checkout_address
-    @order = current_order
-    @address_type = params[:address_type]
   end
 
   def set_as_default

@@ -9,7 +9,7 @@
 	<p>
 		<%= payment_source.name %><br />
 		<% if payment_source.last_digits %>
-		<span>**** **** ****</span><span><%= payment_source.last_digits %></span><br />
+			<span>**** **** ****</span><span><%= payment_source.last_digits %></span><br />
 		<% end %>
 		<%= Spree.t(:exp) %>: <%= payment_source.month %> / <%= payment_source.year %>
 		<% if !is_default %>

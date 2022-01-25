@@ -2,12 +2,10 @@
   <div class="latest-deals">
     <h3>Related Products</h3>
     <div class="products-wrapper d-lg-flex align-items-start">
-      <% if @related_products.present? %>
-        <% @related_products.each do |product| %>
-          <div class="product-wrap">
-            <%= render 'product', product: product, image_class: 'product-component-plp-image' %>
-          </div>
-        <% end %>
+      <% @related_products.each do |product| %>
+        <div class="product-wrap">
+          <%= render 'product', product: product, image_class: 'product-component-plp-image' %>
+        </div>
       <% end %>
     </div>
   </div>
