@@ -129,24 +129,6 @@
       $('.js-product-total').html(order.display_item_total)
     }
 
-    this.addItem = function (e) {
-      e.preventDefault();
-      $qtyEl = $(this).siblings('.line_item_quantity').first();
-      let currentCount = parseInt($qtyEl.val());
-      let newCount = currentCount + 1;
-      $qtyEl.val(newCount);
-      that.updateItem(this, 'add', newCount);
-    };
-
-    this.subItem = function (e) {
-      e.preventDefault();
-      $qtyEl = $(this).siblings('.line_item_quantity').first();
-      let currentCount = parseInt($qtyEl.val());
-      let newCount = currentCount - 1;
-      $qtyEl.val(newCount);
-      that.updateItem(this, 'sub', newCount);
-    };
-
     this.removeItemFromPopup = function(e){
       e.preventDefault();
 
@@ -161,4 +143,52 @@
     $('body').on('click', '.jsAddItem', this.addItem);
     $('body').on('click', '.jsSubItem', this.subItem);
   }
+
+  $(".quantity-change-select").change(function(){
+    let item_quantity = this.value;
+    that = this.parentElement
+    updateItem(that,'add',item_quantity);
+    if(this.value > 10){
+      let last_class = (this.classList.length ) - 1
+      let classname = (this.classList[last_class]).split("$")[1]
+      let inputclassname = "input-$" + classname
+      let btnclassname = "button-$" + classname
+      $(this).hide();
+      let inputfield = document.getElementsByClassName(inputclassname)[0]
+      let updatebtn = document.getElementsByClassName(btnclassname)[0]
+      $(inputfield).removeClass("d-none")
+      $(inputfield).show()
+      $(updatebtn).removeClass("d-none")
+      $(updatebtn).show()
+      inputfield.value = this.value;
+    }
+  });
+  $(".quantity-change-input").change(function(){
+    let item_quantity = this.value;
+      that = this.parentElement
+      updateItem(that,'add',item_quantity);
+    if(this.value <= 10){
+      let last_class = (this.classList.length ) - 1
+      let classname = (this.classList[last_class]).split("$")[1]
+      let inputclassname = "select-$" + classname
+      let btnclassname = "button-$" + classname
+      $(this).hide();
+      let selectfield = document.getElementsByClassName(inputclassname)[0]
+      let updatebtn = document.getElementsByClassName(btnclassname)[0]
+      $(selectfield).removeClass("d-none")
+      $(selectfield).show()
+      $(updatebtn).addClass("d-none")
+      $(updatebtn).hide()
+      selectfield.value = this.value;
+      let item_quantity = this.value;
+      that = this.parentElement
+      updateItem(that,'add',item_quantity);
+    }
+  });
+  $(".updateprice").click(function(){
+    let cart_item = event.target.nextElementSibling
+    let item_quantity = cart_item.value
+    that = this.parentElement
+    updateItem(that,'add',item_quantity);
+  });
 </script>  
