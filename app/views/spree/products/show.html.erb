@@ -68,7 +68,9 @@
             </div>
             <div class="product-desc-wrap" > 
               <div class="row" >
-                <%= render partial: 'gallery' %>
+                <div class="col-xl-7">
+                  <%= render partial: 'gallery' %>
+                </div>
                 <div class="col-xl-5">
                   <%= render 'phone_cart_form', variant_change_identifier: 'productCarousel' %> 
                   <div  id="product-description" >
