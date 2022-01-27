@@ -5,4 +5,10 @@ $( document ).ready(function() {
      window.location.href = url + child_link;
 
     });
+    $(".product-sort-js").click(function(){
+      var click_filter = $(this).data("filter-type");
+      $("." + click_filter)[0].click();
+    });
 });
+
+ 
