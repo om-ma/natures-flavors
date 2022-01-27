@@ -16,7 +16,7 @@
       <h1 class="title"><span>Deals</span> by Natures Flavors</h1>
     </div>
     <div class="products-wrapper">
-      <%= render partial: 'filters' %>
+      <%= render partial: 'spree/taxons/filters' %>
       <div class="row no-gutters" data-hook="taxon_products">
         <%= render partial: 'spree/shared/sale_products', locals: { products: @products, taxon: @taxon }%>
       </div> 

@@ -2,17 +2,16 @@
   <li><%#= link_to "Most Popular", request.parameters.merge(sorting: :descend_by_popularity), id: 'descend_popularity',class: "most-popular" %></li>
   <li><%= link_to "Ascending name", request.parameters.merge(sorting: :ascend_by_name), id: 'ascending_name',class: "assending-filter" %></li>
   <li><%= link_to "Descending name", request.parameters.merge(sorting: :descend_by_name), id: 'descending_name', class: "descending-filter" %></li>
+  <li><%= link_to "bestsellers", request.parameters.merge(sorting: :bestsellers), id: 'bestsellers_filter', class: "bestsellers-filter" %></li>
 </ul>
 
 <div class="sorting-filter d-flex align-items-center justify-content-end" >
   <label>Sort by:</label>
   <div class="product-sort-js" data-filter-type="most-popular">
-    <% if params[:sorting].present? && params[:sorting] == "descend_by_popularity" %>
-       <button type="button" class="active">Most Popular</button>
-    <%else%>
-      <button type="button">Most Popular</button>
-    <%end%>
+    <% active_klass_descending = params[:sorting].present? && params[:sorting] == "descend_by_popularity" ? 'active' : '' %>
+    <button type="button" class="#{active_klass_descending}">Most Popular</button>
   </div>
+
   <% if params[:sorting].present? && params[:sorting] == "ascend_by_name" %>
     <button type="button" class="active">A to Z </button>
   <%else%>
@@ -20,18 +19,12 @@
   <%end%>
 
    <div class="product-sort-js" data-filter-type="descending-filter" >
-    <% if params[:sorting].present? && params[:sorting] == "descend_by_name" %>
-      <button type="button" class="active">Z to A </button>
-    <% else %>
-      <button type="button" class=" ">Z to A</button>
-    <%end%>
+    <% active_klass_descend_by_name = params[:sorting].present? && params[:sorting] == "descend_by_name" ? 'active' : '' %>
+      <button type="button" class="#{active_klass_descend_by_name} ">Z to A</button>
   </div>
-  <button type="button" class="">Best Sellers</button>
-</div>
 
-<script>
-  $(".product-sort-js").click(function(){
-      var click_filter = $(this).data("filter-type");
-      $("." + click_filter)[0].click();
-    });
-</script> 
+  <div class="product-sort-js" data-filter-type="bestsellers-filter" >
+    <% active_klass = params[:sorting].present? && params[:sorting] == "bestsellers_filter" ? 'active' : '' %>
+    <button type="button" class="#{active_klass}">Best Sellers</button>
+  </div>
+</div>
