@@ -90,18 +90,20 @@
       <div class="cart-header d-flex align-items-center justify-content-between">
         <h5>Card Information</h5>
       </div>
+      <div class="row">
         <div class="col-sm-12">
           <%= render partial: 'payment_sources' if @payment_sources.present? %>
         </div>
-        <div id="payment-methods" data-hook>
-          <% checkout_available_payment_methods.each do |method| %>
-            <div id="payment_method_<%= method.id %>" class="<%= 'last' if method == checkout_available_payment_methods.last %>" data-hook>
-              <fieldset>
-                <%= render partial: "spree/checkout/payment/#{method.method_type}", locals: { payment_method: method } %>
-              </fieldset>  
-            </div>
-          <% end %>
-        </div>
+      </div>
+      <div id="payment-methods" data-hook>
+        <% checkout_available_payment_methods.each do |method| %>
+          <div id="payment_method_<%= method.id %>" class="<%= 'last' if method == checkout_available_payment_methods.last %>" data-hook>
+            <fieldset>
+              <%= render partial: "spree/checkout/payment/#{method.method_type}", locals: { payment_method: method } %>
+            </fieldset>  
+          </div>
+        <% end %>
+      </div>
     </div>  
   </div>  
   <div class="cart-header d-flex align-items-center justify-content-between mb-0">
@@ -138,3 +140,4 @@
     <% end %>
   </div>
   <button type="button" class="btn btn-primary btn-block" id="design-submit-next-step">Next Step: <strong>Checkout</strong></button>
+  
