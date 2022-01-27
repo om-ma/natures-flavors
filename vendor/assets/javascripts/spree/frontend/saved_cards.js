@@ -4,7 +4,6 @@
         $("#use_existing_card_no").click();
       }
       else{
-        debugger
          let selectedCard_id = this.value
           $("#" + selectedCard_id)[0].click();
       }
