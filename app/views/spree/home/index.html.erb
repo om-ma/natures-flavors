@@ -1,21 +1,705 @@
-<% if @homepage %>
-<% @homepage.cms_sections.each do |section| %>
-  <%= build_section(section) %>
-<% end %>
-<% else %>
-<div id="missingHomepage" class="container my-5">
+<%# if @homepage %>
+<%# @homepage.cms_sections.each do |section| %>
+  <%#= build_section(section) %>
+<%# end %>
+<%# else %>
+<!-- <div id="missingHomepage" class="container my-5">
 <div class="row my-5">
   <div class="col-12">
     <figure class="logo mx-auto missing-homepage-logo-container">
-      <%= logo %>
+      <%#= logo %>
     </figure>
   </div>
   <div class="col-12 mb-5 text-center">
-    <h1 class="mb-3"><%= Spree.t('we_will_be_back') %></h1>
-    <h4 class="text-dark"><%= Spree.t('we_are_busy_updating', store_name: current_store.name) %></h4>
-    <h4 class="text-dark"><%= Spree.t('please_check_back_soon') %></h4>
+    <h1 class="mb-3"><%#= Spree.t('we_will_be_back') %></h1>
+    <h4 class="text-dark"><%#= Spree.t('we_are_busy_updating', store_name: current_store.name) %></h4>
+    <h4 class="text-dark"><%#= Spree.t('please_check_back_soon') %></h4>
   </div>
 </div>
-</div>
-<% end %>
-<%= render "spree/shared/cms/pages/edit_mode", edit_mode: @edit_mode %>
+</div> -->
+<%# end %>
+<%#= render "spree/shared/cms/pages/edit_mode", edit_mode: @edit_mode %>
+<div class="hero-banner">
+    <picture>
+      <source media="(max-width:991px)" srcset="assets/images/hero-banner-mobile.jpg">
+      <%= image_tag "hero-banner.jpg", alt:"Flowers",class:'d-block w-100' %></picture>
+      
+    <div class="banner-grid-wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="search-wrapper">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-xl-2 tablet-hide"></div>
+        <div class="col-xl-6 col-lg-8">
+          <div class="search-wrap">
+            <input type="text" class="form-control" placeholder="Search for flavors and more…">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <div class="search-tags d-flex align-items-start">
+              <label>Top Searches:</label>
+              <div class="flex-fill"> <a href="#">Organic Tapioca Syrup</a><a href="#">Blue Raspberry Extract</a><a href="#">Vanilla Flavor Powder</a><a href="#">Coconut Extract</a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 phone-hide">
+          <div class="search-tagline">Enjoy flavoring and fragrances the way nature intended!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-intro-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-2 tablet-hide"></div>
+        <div class="col-xl-6 col-lg-8">
+          <div class="intro-wrap">
+            <div class="gmp-certificate"></div>
+            <h1>Natural and Organic Flavorings, Extracts, Syrups, and Fragrances</h1>
+            <p><strong>Nature’s Flavors</strong> is where Mother Nature meets your kitchen. Our natural and organic flavorings are derived from the most remarkable fruits, vegetables, and herbs the earth has to offer. All of our products are made-to-order and delivered to your doorstep.</p>
+            <a href="#" class="btn btn-primary"><span>Read More</span></a> </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+          <div class="company-highlights-wrapper">
+            <div class="company-highlights d-flex align-items-start mb-60"  data-aos="fade-up" data-aos-once="true" data-aos-duration="700">
+              <div class="icon-wrap delivery-icon"></div>
+              <div class="flex-fill">
+                <h4>FAST SHIPPING IN THE U.S.</h4>
+                <p>1 to 3 days processing time for all non-commercial orders</p>
+                <p><small>Nature’s Flavors defines commercial based on order over 1 gallon. Pending availability.</small></p>
+              </div>
+            </div>
+            <div class="company-highlights d-flex align-items-start mb-60" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
+              <div class="icon-wrap quality-icon"></div>
+              <div class="flex-fill">
+                <h4>HIGH QUALITY PRODUCTS</h4>
+                <p>Ingredients sourced from the best producers</p>
+              </div>
+            </div>
+            <div class="company-highlights d-flex align-items-start mb-60" data-aos="fade-up" data-aos-once="true" data-aos-duration="1300">
+              <div class="icon-wrap customer-support-icon"></div>
+              <div class="flex-fill">
+                <h4>PROMPT CUSTOMER SUPPORT</h4>
+                <p>A Professional, Knowledgeable Team</p>
+                <p><a href="tel:(714) 744-3700">(714) 744-3700</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="products-wrapper home-products-wrapper">
+    <div class="row no-gutters">
+      <div class="col-xl-2 tablet-hide"></div>
+      <div class="col-xl-6 col-lg-8">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#bestSellers">Best Sellers</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#deals">Deals</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularExtracts">Popular Extracts</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularPowders">Popular Powders</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularOils">Popular Oils</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="bestSellers" role="tabpanel">
+        <div class="row no-gutters">
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap" data-aos="fade-in" data-aos-once="true" data-aos-duration="500"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-1.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Amaretto Cappuccino Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-2.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap" data-aos="fade-in" data-aos-once="true" data-aos-duration="1000"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-3.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap" data-aos="fade-in" data-aos-once="true" data-aos-duration="1300"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-4.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acerola Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap" data-aos="fade-in" data-aos-once="true" data-aos-duration="1700"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-5.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acorn Flavored Powder, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap" data-aos="fade-in" data-aos-once="true" data-aos-duration="2000"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-6.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Alfredo Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="deals" role="tabpanel">
+        <div class="row no-gutters">
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-1.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Amaretto Cappuccino Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-2.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-3.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-4.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acerola Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-5.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acorn Flavored Powder, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-6.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Alfredo Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="popularExtracts" role="tabpanel">
+        <div class="row no-gutters">
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-1.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Amaretto Cappuccino Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-2.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-3.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-4.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acerola Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-5.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acorn Flavored Powder, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-6.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Alfredo Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="popularPowders" role="tabpanel">
+        <div class="row no-gutters">
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-1.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Amaretto Cappuccino Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-2.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-3.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-4.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acerola Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-5.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acorn Flavored Powder, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-6.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Alfredo Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="popularOils" role="tabpanel">
+        <div class="row no-gutters">
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-1.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Amaretto Cappuccino Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-2.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-3.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acai Compound, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-4.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acerola Compound, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-5.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Acorn Flavored Powder, Natural</h4>
+              </div>
+              </a> </div>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-6">
+            <div class="product-wrap"> <a href="#">
+              <div class="product-img"> <img src="assets/images/product-thumb-6.jpg" alt="">
+                <div class="price">$53.95</div>
+              </div>
+              <div class="product-desc">
+                <h4>Alfredo Flavor Concentrate, Organic</h4>
+              </div>
+              </a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-videos-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <div class="wrap">
+            <div class="title-wrap d-xl-flex flex-row-reverse align-items-center justify-content-between">
+              <div class="right"> <a href="#" class="youtube-link">More than 20k followers</a></div>
+              <div class="left d-flex align-items-start">
+                <div class="title-img"><%= image_tag "flavor-guy.jpg", alt:"" %></div>
+                <div class="title-info">
+                  <h3 class="title">The Flavor Guy Videos</h3>
+                  <div class="sm-title">He goes on adventures around the world in search of new flavors</div>
+                </div>
+              </div>
+            </div>
+            <div class="slider-wrapper position-relative">
+              <ul id="videos-slider" class="ontent-slider">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap" data-toggle="modal" data-target=".video-modal">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
+                  <h4>Difference between a flavor concentrate and a flavor extract</h4>
+                  </a></li>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
+                  <h4>How To Make Alcohol Free Vanilla Extract</h4>
+                  </a></li>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
+                  <h4>Difference between a flavor concentrate and a flavor extract</h4>
+                  </a></li>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
+                  <h4>How To Make Alcohol Free Vanilla Extract</h4>
+                  </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="site-reviews-wrapper">
+    <div class="title-wrap text-center">
+      <div class="reviews-title-icon"></div>
+      <div class="title">Nature's Flavors Reviews and Testimonials</div>
+      <div class="sm-title">Real Reviews From Real Customers</div>
+    </div>
+    <div class="slider-wrapper reviews-wrap position-relative">
+      <ul id="reviews-slider" class="ontent-slider">
+        <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700">
+          <div class="review-wrap">
+            <div class="wrap">
+              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
+            </div>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
+          <div class="review-wrap">
+            <div class="wrap">
+              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
+            </div>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-once="true" data-aos-duration="1300">
+          <div class="review-wrap">
+            <div class="wrap">
+              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
+            </div>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-once="true" data-aos-duration="1600">
+          <div class="review-wrap">
+            <div class="wrap">
+              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
+            </div>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-once="true" data-aos-duration="1900">
+          <div class="review-wrap">
+            <div class="wrap">
+              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
+            </div>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-once="true" data-aos-duration="2200">
+          <div class="review-wrap">
+            <div class="wrap">
+              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="reviews-btn"> <a href="#" class="btn btn-primary"><span>More then 1400</span>Read All Reviews</a> </div>
+    </div>
+  </div>
+  <div class="media-partners-wrapper phone-hide">
+    <div class="container">
+      <div class="sm-title text-center">You can find products made with our flavors at:</div>
+      <ul class="media-list d-flex flex-wrap align-items-center justify-content-center">
+        <li><%= image_tag "media-partner1.png", alt:"" %></li>
+        <li><%= image_tag "media-partner2.png", alt:"" %></li>
+        <li><%= image_tag "media-partner3.png", alt:"" %></li>
+        <li><%= image_tag "media-partner4.png", alt:"" %></li>
+        <li><%= image_tag "media-partner5.png", alt:"" %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="instagram-wrapper">
+    <div class="container">
+      <div class="instagram-btn"><a href="#" target="_blank">Follow us<span>natures_flavors</span></a></div>
+      <div class="row narrow-row">
+        <div class="col-lg-2 col-md-4 col-6">
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6">
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6">
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"<%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6">
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6">
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6">
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="faqs-wrapper">
+    <div class="row no-gutters">
+      <div class="col-lg-4">
+        <div class="faqs-title-wrap d-lg-flex flex-column align-items-end">
+          <div class="title">FAQ</div>
+          <div class="sm-title">All your questions about Flavorings, Extracts, Syrups and Fragrances answered.</div>
+          <a href="#" class="btn"><span>Visit our FAQ Center</span></a> </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="accordion" id="faqaccordion">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Are your products certified organic?</button>
+              </h2>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo">What are Natural Extracts?</button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree">What are Flavor Concentrates?</button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour">What are Flavor Oils?</button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive">What are Flavor Powders?</button>
+              </h2>
+            </div>
+            <div id="collapseFive" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSix">What are Flavor Emulsions?</button>
+              </h2>
+            </div>
+            <div id="collapseSix" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-blog-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <div class="wrap">
+            <div class="title-wrap d-xl-flex flex-row-reverse align-items-center justify-content-between">
+              <div class="right"> <a href="#" class="blog-link">More from our blog</a></div>
+              <div class="left d-flex flex- align-items-start">
+                <div class="title-img"><%= image_tag "blog-icon", alt:"" %></div>
+                <div class="title-info">
+                  <h3 class="title">Flavorful Bites<span class="blog-badge">Blog</span></h3>
+                  <div class="sm-title text-uppercase">RECIPES | TIPS AND TRICKS | helpful information</div>
+                </div>
+              </div>
+            </div>
+            <div class="slider-wrapper position-relative">
+              <ul id="blog-slider" class="ontent-slider">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>Ice Cream Cone Bath Bombs</h4>
+                  </a></li>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>DIY Watermelon Lip Scrub</h4>
+                  </a></li>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>Ice Cream Cone Bath Bombs</h4>
+                  </a></li>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>DIY Watermelon Lip Scrub</h4>
+                  </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </div>

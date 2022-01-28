@@ -8,10 +8,9 @@
       <%= button_tag Spree.t('store_credit.remove'), name: 'remove_store_credit', class: 'store-credit-button continue btn btn-lg btn-primary font-weight-bold text-uppercase align-self-start' %>
     <% end %>
   </div>
-
 <% elsif @order.could_use_store_credit? %>
   <div class="d-flex align-items-center justify-content-between mb-5" data-hook="checkout_payment_store_credit_available">
-    <h2 class="store-credit-title"><%= Spree.t('store_credit.available_amount', amount: @order.display_total_available_store_credit).html_safe %></h2>
-    <%= button_tag Spree.t('store_credit.apply'), name: 'apply_store_credit', class: 'store-credit-button continue btn btn-lg btn-primary font-weight-bold text-uppercase' %>
+    <h6 class="store-credit-title"><%= Spree.t('store_credit.available_amount', amount: @order.display_total_available_store_credit).html_safe %></h6>
+    <%= button_tag Spree.t('store_credit.apply'), name: 'apply_store_credit', class: ' store-credit-button continue btn btn-lg btn-primary font-weight-bold text-uppercase' %>
   </div>
 <% end %>
