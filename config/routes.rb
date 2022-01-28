@@ -10,3 +10,7 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+Spree::Core::Engine.routes.draw do
+  get '/not-found', to: 'page_not_found#index', as: "page_not_found"
+  get 'refresh_cart_bag', to: 'custom_checkout#refresh_shopping_cart_bag'
+end

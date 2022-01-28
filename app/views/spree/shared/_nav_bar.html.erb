@@ -1,7 +1,118 @@
-<nav class="navbar col-md-8 col-sm-9" id="top-nav-bar">
-  <ul id="nav-bar" class="nav navbar-nav navbar-right" data-hook>
-    <li id="search-bar" data-hook>
-      <%= render partial: 'spree/shared/search' %>
+<!-- <ul id="nav-bar" class="nav align-items-center d-flex flex-nowrap justify-content-end navbar-right" data-turbo-permanent data-turbolinks-permanent>
+  <li>
+    <div class="navbar-right-search-menu">
+      <button type="button" class="navbar-right-dropdown-toggle search-icons" aria-label="<%#= Spree.t('nav_bar.show_search') %>">
+        <%#= icon(name: 'magnifying-glass',
+                 classes: 'd-inline-block',
+                 width: 36,
+                 height: 36) %>
+      </button>
+
+      <div id="search-dropdown" class="p-0 px-md-4 py-md-2 w-100 shadow navbar-right-search-menu-dropdown hide-on-esc">
+        <%#= render partial: 'spree/shared/search' %>
+      </div>
+    </div>
+  </li>
+  <%# if defined?(spree.account_link_path) %>
+    <li>
+      <div class="dropdown navbar-right-dropdown">
+        <button id="account-button" type="button" data-toggle="dropdown" class="navbar-right-dropdown-toggle account-icon" aria-label="<%#= Spree.t('nav_bar.show_user_menu') %>">
+          <%#= icon(name: 'person',
+                  classes: 'd-inline-block',
+                  width: 41.4,
+                  height: 36) %>
+        </button>
+
+        <div id="link-to-account" class="dropdown-menu dropdown-menu-right text-right">
+        </div>
+      </div>
     </li>
-  </ul>
+  <%# end %>
+  <li id="link-to-cart">
+    <%#= render 'spree/shared/cart', class: 'd-inline-block cart-icon', size: 36, item_count: 0 %>
+  </li>
+  <%#= render partial: 'spree/shared/internationalization_options' %>
+</ul> -->
+<%# i have missed  id="link-to-account" because of design issue %>
+<nav class="navbar navbar-expand-xl"  id="spree-header">
+  <div class="row no-gutters w-100" id="header">
+    <div  id="home-link" class="col-xl-2" data-hook data-hook>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag 'theme_logo.svg', alt: "Nature's Flavors" %>
+      <% end %>
+    </div>      
+    <div class="col-xl-10 position-static" id="top-nav-bar">
+      <div class="navbar-collapse" id="nav-bar">
+        <ul class="navbar-nav tablet-hide">
+          <li class="nav-item"><a class="nav-link" href="#">Extracts &amp; Flavorings</a>
+            <div class="dropdown-menu-wrap">
+              <div class="row no-gutters">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-7 has-gridlines">
+                  <div class="row no-gutters">
+                    <div class="col">
+                      <ul class="dropdown-menu d-flex flex-column">
+                        <li><a href="#">Flavor Extracts<span class="badge popular-badge">Popular</span></a></li>
+                        <li><a href="#">Flavor Concentrate</a></li>
+                        <li><a href="#">Flavor Compounds</a></li>
+                        <li><a href="#">Flavor Emulsions</a></li>
+                        <li><a href="#">Flavor Powsers<span class="badge popular-badge">Popular</span></a></li>
+                        <li><a href="#">Flavor Oils OILS</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="dropdown-menu d-flex flex-column">
+                        <li><a href="#">Vanilla Extracts</a></li>
+                        <li><a href="#">Flavoring for Ice Cream</a></li>
+                        <li><a href="#">Flavoring for Water</a></li>
+                        <li><a href="#">Flavoring for Coffee &amp; Tea</a></li>
+                        <li><a href="#">Flavoring for Lip Balm</a></li>
+                        <li><a href="#">Flavoring for Chocolate</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="dropdown-menu d-flex flex-column">
+                        <li><a href="#">Keto Friendly Flavors</a></li>
+                        <li><a href="#">TTB Approved Flavors</a></li>
+                        <li><a href="#">Flavors without Diacetyl</a></li>
+                        <li><a href="#">Flavors sample packs</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3"></div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Fragrances</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Syrups</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Baking Ingredients</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">More</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><strong>Deals</strong></a></li>
+        </ul>
+        <div class="quick-menu ml-auto" >
+          <%= render partial: 'spree/shared/search' %>
+          <div id="account-button">
+            <% if spree_current_user.present? %>
+              <%= link_to  destroy_spree_user_session_path, :class => 'nav-profile tablet-hide' do %>
+                <span id="span">Logout </span>
+              <% end %>            
+            <% else %>
+              <%= link_to new_spree_user_session_path , :class => 'nav-profile tablet-hide' do %>
+                <span id="span">Login </span>    
+              <% end %>
+            <% end %>
+          </div>
+          <a id="shopping_cart_bag" class="nav-cart" href="#" >
+            <span>cart </span>
+            <small class="cart-counter"><%=current_order.try(:item_count) %></small>
+          </a>
+          <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
+        </div>
+        <div id='shopping_cart_bag_area'>
+          <%= render partial: 'spree/shared/shopping_bag', locals: {user_current_order: current_order} %>
+        </div>
+      </div>
+    </div>
+  </div> 
 </nav>
