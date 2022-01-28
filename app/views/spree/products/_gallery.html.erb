@@ -23,9 +23,8 @@
     </div>
   <%# end %>
 </div> -->
-
 <% if @product_images.size > 0 %>
-  <div class="col-xl-7" data-hook="product_left_part" data-hook="product_left_part_wrap">
+  <div data-hook="product_left_part" data-hook="product_left_part_wrap">
     <div class="product-gallery-wrap" data-hook="product_thumbnails">
       <ul id="product-gallery"  data-hook data-hook="product_images">
         <% @product_images.each do |i| %>
@@ -37,3 +36,4 @@
     </div>
   </div>
 <%end%>
+
