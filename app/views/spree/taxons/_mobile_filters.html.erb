@@ -9,7 +9,7 @@
         <%end%>
         <div class="product-sort-js" data-filter-type="descending-filter" >
           <% active_klass_descend_by_name = params[:sorting].present? && params[:sorting] == "descend_by_name" ? 'active' : '' %>
-          <span class="#{active_klass_descend_by_name}">Z to A</span>
+          <span class="<%=active_klass_descend_by_name %>">Z to A</span>
         </div>
       </div>
     </div>
