@@ -1,19 +1,17 @@
 <div class="category-mobile-filter phone-visible">
   <div class="d-flex align-items-center">
     <div class="sort-by-title flex-fill">
-      <p>Sort by: <strong>
+      <div class="sortby-custom">Sort by: 
         <% if params[:sorting].present? && params[:sorting] == "ascend_by_name" %>
-          <span class="active">A to Z </span>
+          <span class="active">A to Z</span>
         <%else%>
-          <p type="button" class="product-sort-js" data-filter-type="assending-filter">A to Z</p>
+          <span class="product-sort-js" data-filter-type="assending-filter">A to Z</span>
         <%end%>
-      </strong> &nbsp &nbsp &nbsp
-      <strong>
         <div class="product-sort-js" data-filter-type="descending-filter" >
           <% active_klass_descend_by_name = params[:sorting].present? && params[:sorting] == "descend_by_name" ? 'active' : '' %>
-          <span class="#{active_klass_descend_by_name} ">Z to A</span>
+          <span class="#{active_klass_descend_by_name}">Z to A</span>
         </div>
-      </strong></p>
+      </div>
     </div>
     <div class="filter-btn-wrap"> <a href="#" class="filter-btn">Filters</a> </div>
   </div>
@@ -42,4 +40,4 @@
     </div>
     <button type="button" class="btn btn-primary btn-block">Apply</button>
   </div>
-</div>     
+</div>    
