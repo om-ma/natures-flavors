@@ -83,6 +83,14 @@
         <% end %>
       </ul>
     <% end %>
+    <% if Spree::Config[:shipping_instructions] %>
+      <div id="minstrs" data-hook>
+        <h4 class="h5">
+          <%= Spree.t(:shipping_instructions) %>
+        </h4>
+        <%= form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %>
+      </div>
+    <% end %>
   </div>
 </div>
 <button type="button" class="btn btn-primary btn-block" id="design-submit-next-step">Next Step: <strong>Payment</strong></button>

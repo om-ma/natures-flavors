@@ -149,11 +149,5 @@
       <%end%>
     <%end%>
   </div>
-  <div class="cart-similar-item">
-    <div class="wrap">
-      <p>You might need this:</p>
-      <div class="similar-item-thumb"><a href="#"><%= image_tag("product-thumb-1.jpg") %></a></div>
-      <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
-      <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
-  </div>
+  <%= render partial: 'spree/shared/cart_similar_products' %>
 </div>

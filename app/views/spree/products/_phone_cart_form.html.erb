@@ -3,7 +3,7 @@
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
     <% if @product.on_sale? %>
-    <div class="deal-expiry-wrap" id="DealsExpiryPhone" data-SalesExpiryDatePhone="<%= ending_time(@product.master.sale) %>"></div>
+      <div class="deal-expiry-wrap" id="DealsExpiryPhone" data-SalesExpiryDatePhone="<%= sale_date_time_counter(@product.master&.sale_prices&.active&.last&.end_at) %>"></div>
     <% end %>
       <%= form_for :order, html: {
           id: 'add-to-cart-form',
@@ -49,10 +49,11 @@
             <div class="d-flex flex-wrap align-items-center">
               <%= render 'spree/shared/quantity_select', input_name: :quantity %>
               <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
-                <%= Spree.t(:add_to_cart) %>
+                <%= default_variant.price_in(current_currency).money %> -  <%= Spree.t(:add_to_cart) %>
               <% end %>
             </div>
           </div>
       <% end %>
   </div>
 <% end %>
+
