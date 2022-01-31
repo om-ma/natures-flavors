@@ -98,20 +98,20 @@
       <div class="col-xl-2 tablet-hide"></div>
       <div class="col-xl-6 col-lg-8">
         <ul class="nav nav-tabs" role="tablist">
-          <% if @best_sellers_category.present? %>
-            <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#bestSellers"><%=@best_sellers_category.name %></a></li>
+          <% if @best_sellers_products.present? %>
+            <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#bestSellers"> BestSellers</a></li>
           <% end %>
-          <% if @Deals.present? %>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#deals"><%= @Deals.name %></a></li>
+          <% if @deals_products.present? %>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#deals">Deals</a></li>
           <% end %>
-          <% if @Popular_extracts.present? %>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularExtracts"><%=@Popular_extracts.name %> </a></li>
+          <% if @popular_extracts_products.present? %>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularExtracts">Popular Extracts </a></li>
           <% end %>
-          <% if @Popular_Powders.present? %>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularPowders"><%=@Popular_Powders.name %></a></li>
+          <% if @popular_Powders_products.present? %>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularPowders">Popular Powders</a></li>
           <% end %>
-          <% if @Popular_oils.present? %>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularOils"><%=@Popular_oils.name %></a></li>
+          <% if @popular_oils_products.present? %>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularOils">Popular Oils</a></li>
           <% end %>
         </ul>
       </div>
@@ -126,28 +126,28 @@
       </div>
       <div class="tab-pane fade" id="deals" role="tabpanel">
         <div class="row no-gutters">
-          <% @Deals_products.each do |product| %>
+          <% @deals_products.each do |product| %>
             <%= render 'spree/products/product', product: product, image_class: 'product-component-plp-image' %>
           <% end %>
         </div>
       </div>
       <div class="tab-pane fade" id="popularExtracts" role="tabpanel">
         <div class="row no-gutters">
-          <% @Popular_extracts_products.each do |product| %>
+          <% @popular_extracts_products.each do |product| %>
             <%= render 'spree/products/product', product: product, image_class: 'product-component-plp-image' %>
           <% end %>
         </div>
       </div>
       <div class="tab-pane fade" id="popularPowders" role="tabpanel">
         <div class="row no-gutters">
-          <% @Popular_Powders_products.each do |product| %>
+          <% @popular_Powders_products.each do |product| %>
             <%= render 'spree/products/product', product: product, image_class: 'product-component-plp-image' %>
           <% end %>
         </div>
       </div>
       <div class="tab-pane fade" id="popularOils" role="tabpanel">
         <div class="row no-gutters">
-          <% @Popular_oils_products.each do |product| %>
+          <% @popular_oils_products.each do |product| %>
             <%= render 'spree/products/product', product: product, image_class: 'product-component-plp-image' %>
           <% end %>
         </div>
