@@ -7,10 +7,10 @@
 
 <div class="sorting-filter d-flex align-items-center justify-content-end" >
   <label>Sort by:</label>
-  <div class="product-sort-js" data-filter-type="most-popular">
-    <% active_klass_descending = params[:sorting].present? && params[:sorting] == "descend_by_popularity" ? 'active' : '' %>
+  <!-- <div class="product-sort-js" data-filter-type="most-popular">
+    <%# active_klass_descending = params[:sorting].present? && params[:sorting] == "descend_by_popularity" ? 'active' : '' %>
     <button type="button" class="#{active_klass_descending}">Most Popular</button>
-  </div>
+  </div> -->
 
   <% if params[:sorting].present? && params[:sorting] == "ascend_by_name" %>
     <button type="button" class="active">A to Z </button>
