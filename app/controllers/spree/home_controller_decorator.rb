@@ -1,11 +1,6 @@
 Spree::HomeController.class_eval do
   include Spree::CacheHelper
   helper 'spree/products'
-
-  before_action :load_homepage, only: [:index]
-
-  respond_to :html
-
   def index
     if @cms_home_page&.visible?
       @homepage = @cms_home_page
