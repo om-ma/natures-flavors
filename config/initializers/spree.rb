@@ -32,3 +32,4 @@ Spree.user_class = "Spree::User"
 Spree::PermittedAttributes.taxon_attributes << [user_ids:[]]
 Spree::PermittedAttributes.address_attributes << :is_default
 Spree::Auth::Config[:registration_step]= false
+Spree::PermittedAttributes.payment_attributes << :check_no

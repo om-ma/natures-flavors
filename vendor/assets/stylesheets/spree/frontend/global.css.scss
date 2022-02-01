@@ -927,7 +927,6 @@ a.btn.btn-block {
 	color: #fff;
     text-transform: uppercase;
     padding: 0 20px 0 44px;
-    background: url("../images/arrow-left-white-icon.svg") no-repeat scroll 22px center;
 	background-image: image-url("arrow-left-white-icon.svg");
 	background-repeat: no-repeat;
 	background-position:   22px center;
@@ -1079,7 +1078,7 @@ a.btn.btn-block {
 }
 
 .mobile-menu-link {
-	background-image: url("../images/menu-icon.svg");
+	background-image: image-url("menu-icon.svg");
 	background-size: 18px auto;
 }
 
@@ -1329,7 +1328,10 @@ a.btn.btn-block {
     outline: none !important;
     flex: 1;
     position: relative;
-	background: url(../images/arrow-right-white-icon.svg) no-repeat scroll calc(100% - 20px) center;
+	background-image: image-url("arrow-right-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 20px)  center;
+	background-attacehemnt: scroll;
 }
 
 .product-menu a:not(.back):active,
@@ -1527,7 +1529,10 @@ a.btn.btn-block {
 	right: 10px;
 	z-index: 5;
 	padding: 0;
-	background: url("../images/search-icon-white.svg") no-repeat scroll center;
+	background-image: image-url("search-icon-white.svg");
+	background-repeat: no-repeat;
+	background-attacehemnt: scroll;
+	background-position:   center;
 	background: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
 	border-radius: 23px;
 	width: 50px;
@@ -1542,7 +1547,10 @@ a.btn.btn-block {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url("../images/search-icon-white.svg") no-repeat scroll center;
+	background-image: image-url("search-icon-white");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 }
 
 .search-tags {
@@ -1602,7 +1610,10 @@ a.btn.btn-block {
 }
 
 .search-tagline:after {
-	background: url("../images/cherry-icon.svg") no-repeat scroll center;
+	background-image: image-url("cherry-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 }
 
 .home-intro-wrapper {
@@ -1633,7 +1644,11 @@ a.btn.btn-block {
 }
 
 .gmp-certificate {
-	background: url("../images/gmp-certificate.jpg") no-repeat scroll center;
+	background-image: image-url("gmp-certificate.jpg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
+
 	background-size: 117px auto;
 	width: 117px;
 	height: 117px;
@@ -1684,11 +1699,11 @@ a.btn.btn-block {
 }
 
 .icon-wrap.quality-icon {
-	background-image: url("../images/quality-icon.svg");
+	background-image: image-url("quality-icon.svg");
 }
 
 .icon-wrap.customer-support-icon {
-	background-image: url("../images/customer-support-icon.svg");
+	background-image: image-url("customer-support-icon.svg");
 }
 
 .company-highlights h4 {
@@ -2021,7 +2036,10 @@ a.btn.btn-block {
 	border: solid 1px #f0f0f0;
 	background-color: #fff;
 	padding: 0 21px 0 54px;
-	background: url("../images/youtube-icon.svg") no-repeat scroll 21px center;
+	background-image: image-url("youtube-icon.svg");
+	background-repeat: no-repeat;
+	background-position:  21px center;
+	background-attacehemnt: scroll ;
 }
 
 .blog-link {
@@ -2109,7 +2127,10 @@ a.btn.btn-block {
 }
 
 .reviews-title-icon {
-	background: url("../images/review-section.png") no-repeat scroll center;
+	background-image: image-url("review-section.png");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 	background-size: auto 33px;
 	width: 135px;
 	height: 33px;
@@ -2154,11 +2175,11 @@ a.btn.btn-block {
 }
 
 .reviews-wrap .lSAction > .lSPrev:after {
-	background-image: url("../images/arrow-left-icon.svg");
+	background-image: image-url("arrow-left-icon.svg");
 }
 
 .reviews-wrap .lSAction > .lSNext:after {
-    background-image: url("../images/arrow-right-icon.svg");
+	background-image: image-url("arrow-right-icon.svg");
 }
 
 .site-reviews-wrapper {
@@ -2306,7 +2327,10 @@ a.btn.btn-block {
     border: solid 1px #f0f0f0;
     background-color: #fff;
     padding: 0 22px 0 58px;
-    background: url(../images/instagram.svg) no-repeat scroll 22px center;
+    background-image: image-url("instagram_icon1.svg");
+	background-repeat: no-repeat;
+	background-position:  22px center;
+	background-attacehemnt: scroll;
 	display: inline-flex;
 	align-items: center;
 	margin: 0 0 30px;
@@ -2366,7 +2390,11 @@ a.btn.btn-block {
 	color: #a71e22;
 	letter-spacing: -0.59px;
 	border-radius: 21px;
-	background: #fff url("../images/qa-icon.svg") no-repeat scroll 21px center;
+	background-image: image-url("qa-icon");
+	background-repeat: no-repeat;
+	background-position:  21px center;
+	background-attacehemnt: scroll;
+	background-color:#fff;
 	padding: 0 23px 0 62px;
 }
 
@@ -2415,13 +2443,16 @@ a.btn.btn-block {
 	position: absolute;
 	right: 0;
 	top: 17px;
-	background: url("../images/arrow-bottom-white-icon.svg") no-repeat scroll center;
+	background-image: image-url("arrow-bottom-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 	width: 10px;
 	height: 6px;
 }
 
 #faqaccordion .card-header .btn:not(.collapsed):after {
-	background-image: url("../images/arrow-top-white-icon.svg");
+		background-image: image-url("arrow-top-white-icon.svg");
 }
 
 #faqaccordion .card-body {
@@ -2581,6 +2612,7 @@ a.btn.btn-block {
 
 .social-nav a.youtube-icon {
 	background-image: image-url("youtube-hover.svg");
+
 }
 
 .footer-address p,

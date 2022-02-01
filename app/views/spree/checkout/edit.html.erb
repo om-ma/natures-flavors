@@ -98,7 +98,7 @@ end
               <%= render partial: 'summary', locals: { order: @order, order_form: form } %>
                 <div data-hook="buttons">
                   <% submit_label_key = @order.confirm? ? :place_order : :save_and_continue %>
-                  <%= submit_tag Spree.t(submit_label_key), class: 'btn btn-primary btn-block checkout-content-save-continue-button d-none', id:'checkout-submit-to-next-step' %>
+                  <%= submit_tag Spree.t(submit_label_key), class: 'btn btn-primary btn-block checkout-content-save-continue-button', id:'checkout-submit-to-next-step' %>
                 </div>
             <% end %>
           </div>
