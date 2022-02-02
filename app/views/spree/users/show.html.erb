@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-lg-8 mt-sm-5 mt-lg-0">
-      <h4 class="mb-3"><%= link_to Spree.t(:add_new_address), spree.new_address_path, method: :get %></h4>
+      <h4 class="mb-3"><%#= link_to Spree.t(:add_new_address), spree.new_address_path, method: :get %></h4>
       <div class="row">
         <%# @user.addresses.each_with_index do |address, index| %>
           <div class="col-12 col-sm-6 mb-3">
@@ -44,7 +44,7 @@
   </div>
 
   <div data-hook="account_my_orders" class="account-page-orders" id="account-my-orders">
-    <h3 class="text-uppercase spree-mb-medium spree-mt-medium spree-header"><%= Spree.t(:my_orders) %></h3>
+    <h3 class="text-uppercase spree-mb-medium spree-mt-medium spree-header"><%#= Spree.t(:my_orders) %></h3>
     <%# if @orders.present? %>
       <table>
         <thead class="active">
@@ -95,7 +95,7 @@
           <div class="title-wrap mb-60">
             <h1 class="title"><%= accurate_title %> 
               <%= link_to  destroy_spree_user_session_path, :class => 'btn btn-primary' do %>
-                LogOut 
+                Log Out 
               <% end %> 
             </h1>
             <div class="sm-title">Welcome to your account. Here you can manage all of your personal information and orders.</div>
@@ -103,14 +103,14 @@
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#orderHistory">Order History</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#personalInformation">Personal Information</a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#myAddresses">My Addresses</a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#myCards">My Cards</a></li>
+            <li class="nav-item" role="presentation" id="account-address-tab"><a class="nav-link" data-toggle="tab" href="#myAddresses">My Addresses</a></li>
+            <li class="nav-item" role="presentation" id="account-cedit-card-tab"><a class="nav-link" data-toggle="tab" href="#myCards">My Cards</a></li>
           </ul>
           <div class="tab-content" id="account-my-orders" data-hook="account_my_orders">
             <%= render partial: 'order_details' %>
             <%= render partial: 'personal_information' %>
-            <%= render partial: 'addresses' %>
-            <%= render partial: 'credit_cards' %>
+            <%= render partial: 'my_addresses' %>
+            <%= render partial: 'profile_cards'%>
           </div>
         </div>
       </div>

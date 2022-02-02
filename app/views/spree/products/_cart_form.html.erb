@@ -85,6 +85,9 @@
 <% default_variant = default_variant(@variants, @product) %>
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
   <div class="top-detail" >
+    <% if @product.on_sale? %>
+      <div class="deal-expiry-wrap" id="deals-expiry" data-SalesExpiryDate="<%=  sale_date_time_counter(@product.master&.sale_prices&.active&.last&.end_at)%>"></div>
+    <% end %>
     <%= form_for :order, html: {
       id: 'add-to-cart-form',
       class: 'add-to-cart-form',
@@ -96,7 +99,7 @@
         <div class="left">Choose your <strong>option:</strong></div>
         <div class="right">
           <div class="text-center text-md-left text-uppercase " id="product_variant_sku">
-            <%= default_variant.sku  %>
+            <%= default_variant.sku %>
           </div>
         </div>
       </div>
@@ -107,16 +110,20 @@
               data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" > 
             <% option_value = variant.size_options %>
               <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
-              <span content="<%= current_currency %>"></span>  
-              <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
-              <div class="right"> 
-                <%= option_value&.presentation %>
-                <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
-                        'data-price' => variant.price_in(current_currency).money,
-                        'data-in-stock' => variant.can_supply?,
-                        'data-backordered' => variant.backordered?,
-                        style: "display:none"
-                    %>
+              <span content="<%= current_currency %>"></span> 
+              <% if @product.on_sale? %> 
+                <del><%= variant.price_in(current_currency).money %></del><%= display_price(@product) %><span>/ $6.29 per oz.</span>
+              <% else %>
+                <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
+                <div class="right"> 
+                  <%= option_value&.presentation %>
+                  <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
+                          'data-price' => variant.price_in(current_currency).money,
+                          'data-in-stock' => variant.can_supply?,
+                          'data-backordered' => variant.backordered?,
+                          style: "display:none"
+                      %>
+              <% end %>
           <% end%>
             </div>
         <% else %>
@@ -142,11 +149,5 @@
       <%end%>
     <%end%>
   </div>
-  <div class="cart-similar-item">
-    <div class="wrap">
-      <p>You might need this:</p>
-      <div class="similar-item-thumb"><a href="#"><%= image_tag("product-thumb-1.jpg") %></a></div>
-      <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
-      <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
-  </div>
+  <%= render partial: 'spree/shared/cart_similar_products' %>
 </div>

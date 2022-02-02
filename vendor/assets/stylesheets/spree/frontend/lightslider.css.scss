@@ -207,11 +207,18 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url("../images/arrow-left-white-icon.svg") no-repeat scroll center;
+    background-image: image-url("arrow-left-white-icon.svg");
+    background-repeat: no-repeat;
+     background-attachment:  scroll;
+    background-position:   center;
+   
 }
 
 .lSAction > .lSNext:after {
-    background-image: url("../images/arrow-right-white-icon.svg");
+    background-image: image-url("arrow-right-white-icon.svg");
+    background-repeat: no-repeat;
+    background-attachment:  scroll;
+    background-position:   center;
 }
 
 .lSAction > a.disabled {

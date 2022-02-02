@@ -742,7 +742,7 @@ a.btn.btn-block {
 	display: block;
 	width: 100%;
 	height: 50px;
-	background-image: url("../images/arrow-bottom-white-icon.svg");
+	background-image: image-url("arrow-bottom-white-icon.svg");
 	background-position: 95% center;
 	background-color: #000;
 	margin: 0 0 25px;
@@ -927,7 +927,10 @@ a.btn.btn-block {
 	color: #fff;
     text-transform: uppercase;
     padding: 0 20px 0 44px;
-    background: url("../images/arrow-left-white-icon.svg") no-repeat scroll 22px center;
+	background-image: image-url("arrow-left-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   22px center;
+	background-attachment: scroll;
     border: rgba(255,255,255,0.1) 1px solid;
 	position: absolute;
 	left: 20px;
@@ -1075,7 +1078,7 @@ a.btn.btn-block {
 }
 
 .mobile-menu-link {
-	background-image: url("../images/menu-icon.svg");
+	background-image: image-url("menu-icon.svg");
 	background-size: 18px auto;
 }
 
@@ -1116,7 +1119,7 @@ a.btn.btn-block {
     position: absolute;
     left: 0;
     top: 100%;
-    z-index: 90;
+    z-index: 100;
 	transition: opacity .1s ease-in-out, transform .1s ease-in-out;
     transform: translateY(20px);
 	border-top: rgba(255,255,255,0.1) 1px solid;
@@ -1325,7 +1328,10 @@ a.btn.btn-block {
     outline: none !important;
     flex: 1;
     position: relative;
-	background: url(../images/arrow-right-white-icon.svg) no-repeat scroll calc(100% - 20px) center;
+	background-image: image-url("arrow-right-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 20px)  center;
+	background-attacehemnt: scroll;
 }
 
 .product-menu a:not(.back):active,
@@ -1523,7 +1529,10 @@ a.btn.btn-block {
 	right: 10px;
 	z-index: 5;
 	padding: 0;
-	background: url("../images/search-icon-white.svg") no-repeat scroll center;
+	background-image: image-url("search-icon-white.svg");
+	background-repeat: no-repeat;
+	background-attacehemnt: scroll;
+	background-position:   center;
 	background: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
 	border-radius: 23px;
 	width: 50px;
@@ -1538,7 +1547,10 @@ a.btn.btn-block {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url("../images/search-icon-white.svg") no-repeat scroll center;
+	background-image: image-url("search-icon-white");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 }
 
 .search-tags {
@@ -1598,7 +1610,10 @@ a.btn.btn-block {
 }
 
 .search-tagline:after {
-	background: url("../images/cherry-icon.svg") no-repeat scroll center;
+	background-image: image-url("cherry-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 }
 
 .home-intro-wrapper {
@@ -1629,7 +1644,11 @@ a.btn.btn-block {
 }
 
 .gmp-certificate {
-	background: url("../images/gmp-certificate.jpg") no-repeat scroll center;
+	background-image: image-url("gmp-certificate.jpg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
+
 	background-size: 117px auto;
 	width: 117px;
 	height: 117px;
@@ -1676,15 +1695,15 @@ a.btn.btn-block {
 }
 
 .icon-wrap.delivery-icon {
-	background-image: url("../images/delivery-icon.svg");
+	background-image: image-url("delivery-icon.svg");
 }
 
 .icon-wrap.quality-icon {
-	background-image: url("../images/quality-icon.svg");
+	background-image: image-url("quality-icon.svg");
 }
 
 .icon-wrap.customer-support-icon {
-	background-image: url("../images/customer-support-icon.svg");
+	background-image: image-url("customer-support-icon.svg");
 }
 
 .company-highlights h4 {
@@ -2017,7 +2036,10 @@ a.btn.btn-block {
 	border: solid 1px #f0f0f0;
 	background-color: #fff;
 	padding: 0 21px 0 54px;
-	background: url("../images/youtube-icon.svg") no-repeat scroll 21px center;
+	background-image: image-url("youtube-icon.svg");
+	background-repeat: no-repeat;
+	background-position:  21px center;
+	background-attacehemnt: scroll ;
 }
 
 .blog-link {
@@ -2105,7 +2127,10 @@ a.btn.btn-block {
 }
 
 .reviews-title-icon {
-	background: url("../images/review-section.png") no-repeat scroll center;
+	background-image: image-url("review-section.png");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 	background-size: auto 33px;
 	width: 135px;
 	height: 33px;
@@ -2150,11 +2175,11 @@ a.btn.btn-block {
 }
 
 .reviews-wrap .lSAction > .lSPrev:after {
-	background-image: url("../images/arrow-left-icon.svg");
+	background-image: image-url("arrow-left-icon.svg");
 }
 
 .reviews-wrap .lSAction > .lSNext:after {
-    background-image: url("../images/arrow-right-icon.svg");
+	background-image: image-url("arrow-right-icon.svg");
 }
 
 .site-reviews-wrapper {
@@ -2302,7 +2327,10 @@ a.btn.btn-block {
     border: solid 1px #f0f0f0;
     background-color: #fff;
     padding: 0 22px 0 58px;
-    background: url(../images/instagram.svg) no-repeat scroll 22px center;
+    background-image: image-url("instagram_icon1.svg");
+	background-repeat: no-repeat;
+	background-position:  22px center;
+	background-attacehemnt: scroll;
 	display: inline-flex;
 	align-items: center;
 	margin: 0 0 30px;
@@ -2362,7 +2390,11 @@ a.btn.btn-block {
 	color: #a71e22;
 	letter-spacing: -0.59px;
 	border-radius: 21px;
-	background: #fff url("../images/qa-icon.svg") no-repeat scroll 21px center;
+	background-image: image-url("qa-icon");
+	background-repeat: no-repeat;
+	background-position:  21px center;
+	background-attacehemnt: scroll;
+	background-color:#fff;
 	padding: 0 23px 0 62px;
 }
 
@@ -2411,13 +2443,16 @@ a.btn.btn-block {
 	position: absolute;
 	right: 0;
 	top: 17px;
-	background: url("../images/arrow-bottom-white-icon.svg") no-repeat scroll center;
+	background-image: image-url("arrow-bottom-white-icon.svg");
+	background-repeat: no-repeat;
+	background-position:   center;
+	background-attacehemnt: scroll;
 	width: 10px;
 	height: 6px;
 }
 
 #faqaccordion .card-header .btn:not(.collapsed):after {
-	background-image: url("../images/arrow-top-white-icon.svg");
+		background-image: image-url("arrow-top-white-icon.svg");
 }
 
 #faqaccordion .card-body {
@@ -2577,6 +2612,7 @@ a.btn.btn-block {
 
 .social-nav a.youtube-icon {
 	background-image: image-url("youtube-hover.svg");
+
 }
 
 .footer-address p,
@@ -3403,6 +3439,7 @@ a.btn.btn-block {
 	padding: 20px 0;
 	border-bottom: #f0f0f0 1px solid;
 	border-top: #f0f0f0 1px solid;
+	flex-wrap: wrap;
 }
 
 .promo-code-wrap .form-control {
@@ -3448,8 +3485,8 @@ a.btn.btn-block {
 	border: solid 1px #f0f0f0;
 	background-image: image-url("cart-icon-red.svg");
 	background-repeat: no-repeat;
-	background-attachment: scroll;
 	background-position:   center;
+	background-attachment: scroll;
 	background-color: #fff;
 	width: 60px;
 	height: 60px;
@@ -4041,16 +4078,14 @@ a.btn.btn-block {
 	padding: 23px 23px 20px 60px;
 	background-image: image-url("address.svg");
 	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-position-x: 20px;
-	background-position-y: 30px;
-	background-color: #fff;
+	background-attachment: scroll ;
+	background-position: 20px 30px;
 	position: relative;
 	margin: 0 0 60px;
 }
 
 .shipping-wrap {
-	background-image: url("../images/delivery-icon.svg");
+	background-image: image-url("delivery-icon.svg");
 	background-size: 28px auto;
 	background-position: 17px 25px;
 }
@@ -4392,7 +4427,10 @@ a.btn.btn-block {
 
 .nflavors-faqs-wrapper #faqaccordion .card-header .btn:not(.collapsed):after {
     background-image: image-url("arrow-top-icon.svg");
+    background-image: image-url("arrow-bottom-icon.svg");
 }
+
+
 
 .nflavors-faqs-wrapper #faqaccordion .card-body {
     font-size: 17px;
@@ -5800,7 +5838,10 @@ a.btn.btn-block {
 	right: 20px;
 	top: 0;
 	bottom: 0;
-	background: url("../images/arrow-bottom-white-icon.svg") no-repeat scroll right center;
+	background-image: image-url("arrow-bottom-white-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: right center;
 	width: 40px;
 }
 	
@@ -5899,7 +5940,10 @@ a.btn.btn-block {
 	font-size: 13px;
 	font-weight: bold;
 	letter-spacing: -0.2px;
-	background: url("../images/filter-icon.svg") no-repeat scroll 20px center;
+	background-image: image-url("filter-icon.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: 20px center;
 	padding: 0 20px 0 45px;
 	line-height: 50px;
 	display: block;
@@ -6213,4 +6257,17 @@ a.btn.btn-block {
 .all-cart .cart-item-details .qty-dropdown-input, .all-cart .cart-item-details .qty-dropdown-button { right: 0; }
 .quantity-box {
 	height: 50px!important;
+}
+.linke_to_wrap {
+	font-size: 12px;
+    color: #a71e22;
+    font-weight: 700;
+    line-height: normal;
+    position: absolute;
+    right: 28px;
+    top: 22px;
+}
+.linke_to_delete_wrap {
+	position: initial!important;
+	float: right;
 }

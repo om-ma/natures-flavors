@@ -1,0 +1,11 @@
+<div class="address-wrap  <%=  is_default ? 'default' : '' %>">
+  	<% if is_default %>
+  		<h5>Default</h5>
+  	<% else %>
+	    <div data-address-id="<%= address.id %>" class="linke_to_wrap text-of-address-<%= address.id %> js-set-address-as-default">
+	      Mark Default
+	    </div>
+	  <% end %>
+  <p><%= address.to_s.html_safe %></p>
+  <strong class="text-link js-edit-address-from-profile" data-address-id="<%= address.id %>">Edit</strong>
+</div>

@@ -5,6 +5,16 @@ GIT
   specs:
     browser (2.5.3)
 
+GIT
+  remote: https://github.com/ducl13/spree_sales.git
+  revision: ded5c5ba5671681984b0735a9e6e1e9dfb17b463
+  branch: master
+  specs:
+    spree_sales (3.1.0)
+      date_validator
+      spree_core (>= 3.1.0, < 5.0.0)
+      spree_extension
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -130,6 +140,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    date_validator (0.12.0)
+      activemodel (>= 3)
+      activesupport (>= 3)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -186,10 +199,6 @@ GEM
     kaminari-i18n (0.5.0)
       kaminari
       rails
-    launchy (2.5.0)
-      addressable (~> 2.7)
-    letter_opener (1.7.0)
-      launchy (~> 2.2)
     libv8-node (16.10.0.0-x86_64-darwin-19)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -436,7 +445,6 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
-  letter_opener
   listen (>= 3.0.5, < 3.2)
   mini_racer
   pg
@@ -451,6 +459,7 @@ DEPENDENCIES
   spree_frontend (>= 4.3)
   spree_gateway (~> 3.9)
   spree_i18n (~> 5.0)
+  spree_sales!
   spree_sample
   spring
   spring-watcher-listen (~> 2.0.0)

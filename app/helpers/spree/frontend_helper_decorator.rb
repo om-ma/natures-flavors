@@ -1,10 +1,19 @@
 Spree::FrontendHelper.class_eval do
+  def checkout_edit_link(step = 'address', order = @order)
+    return if order.uneditable?
 
+    classes = ''
+
+    link_to spree.checkout_state_path(step), class: classes, method: :get do
+      "Edit"
+    end
+  end
   def taxons_tree(root_taxon, current_taxon, max_level = 3)
     return '' if max_level < 1
     selected_parent_taxon_name = params["id"]
     show_klass =  (root_taxon.children.pluck("permalink").include?(selected_parent_taxon_name) && root_taxon.parent.present?) ? 'show' : ''
     parent_klass = (root_taxon.children.present? && ((root_taxon&.parent&.name == "Categories") || (root_taxon == current_taxon ))) ? 'sidebar-sub-categories' : "dropdown-menu sub-child-manu-js #{show_klass}"
+    
     content_tag :ul, class: parent_klass   do
 
       taxons = root_taxon.children.map do |taxon|
@@ -13,7 +22,9 @@ Spree::FrontendHelper.class_eval do
           selected_taxon_klass = selected_parent_taxon_name == taxon_permalink ? 'active-tab' : ''
           content_tag :li do
             css_class = taxon.children.present?  ? 'dropdown-toggle tab-width' : ''
-            link_to(taxon.name,seo_url(taxon), class: "#{selected_taxon_klass} #{css_class}", data: {toggle: 'dropdown'})+ taxons_tree(taxon, current_taxon, max_level - 1)
+            if taxon.users.include?(spree_current_user)
+              link_to(taxon.name,seo_url(taxon), class: "#{selected_taxon_klass} #{css_class}", data: {toggle: 'dropdown'})+ taxons_tree(taxon, current_taxon, max_level - 1)
+            end
           end
         end
       end
@@ -93,5 +104,8 @@ Spree::FrontendHelper.class_eval do
       height: image_style&.dig(:height) || 371,
       class: "product-component-image d-block mw-100 #{image_class}"
     )
+  end
+  def sale_date_time_counter(date)
+    date.strftime('%b %d, %Y %H:%M:%S')
   end
 end
