@@ -2944,6 +2944,15 @@ a.btn.btn-block {
 }
 
 .product-actions a.add-to-fav {
+	background-image: image-url("wish-selected.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:  left center;
+	padding-left: 25px;
+	background-size: 16px 15px;
+}
+
+.product-actions a.remove-to-fav {
 	background-image: image-url("heart.svg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;
@@ -4413,12 +4422,15 @@ a.btn.btn-block {
 }
 
 .nflavors-faqs-wrapper #faqaccordion .card-header .btn:after {
-    background-image: image-url("arrow-bottom-icon.svg");
+	background-image: image-url("arrow-bottom-icon.svg");
 }
 
 .nflavors-faqs-wrapper #faqaccordion .card-header .btn:not(.collapsed):after {
-	background-image: image-url("arrow-top-icon.svg");
+    background-image: image-url("arrow-top-icon.svg");
+    background-image: image-url("arrow-bottom-icon.svg");
 }
+
+
 
 .nflavors-faqs-wrapper #faqaccordion .card-body {
     font-size: 17px;
