@@ -6,8 +6,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require accounting.min
 //= require spree/frontend
-
 //= require_tree .
-//= require spree/frontend/spree_auth
+//= require store/spree_favorite_products
+
+//= require spree/frontend/spree_favorite_products
+
+AOS.init();

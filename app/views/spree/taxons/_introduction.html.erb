@@ -1,0 +1,28 @@
+<div class="category-intro-wrapper">
+   <div class="row no-gutters">
+      <div class="col-xl-8">
+         <div class="category-banner-wrap">
+            <%= spree_breadcrumbs(@taxon) %>
+            <h1 class="title">                    
+               <%= @taxon.name %>
+            </h1>
+            <div class="category-banner phone-hide">
+            <% if @taxon.icon.present? %>
+               <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
+            <% else %>
+               <%= image_tag "noimage/default-category-image.jpg" %>
+            <% end %>
+            </div>
+            <div class="mobile-categories-wrap phone-visible">
+            <div class="header"><a href="#" class="mobile-category-toggle">Categories</a></div>
+               <%= render partial: 'spree/shared/taxonomies'%>
+            </div>
+         </div>
+      </div>
+      <div class="col-xl-4">
+         <div class="category-intro more"> 
+            <%= strip_tags(@taxon.description)%>
+         </div>
+      </div>
+   </div>
+</div>

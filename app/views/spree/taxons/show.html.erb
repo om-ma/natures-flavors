@@ -1,20 +1,39 @@
-<h1 class="taxon-title"><%= @taxon.name %></h1>
-
-<% content_for :sidebar do %>
-  <div data-hook="taxon_sidebar_navigation">
-    <%= render partial: 'spree/shared/taxonomies' %>
-    <%= render partial: 'spree/shared/filters' if @taxon.leaf? %>
+<!-- <div class="taxon">
+  <div class="container">
+    <%= spree_breadcrumbs(@taxon) %>
+    <%#= render 'header', taxon: @taxon %>
   </div>
-<% end %>
-
-<div data-hook="taxon_products">
-  <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
+  <%#= render 'subcategories', taxon: @taxon %>
+  <div data-hook="taxon_products">
+    <%#= render template: 'spree/products/index', colors: @colors, sizes: @sizes %>
+  </div>
 </div>
-
-<% unless params[:keywords].present? %>
-  <div data-hook="taxon_children">
-    <% cache [I18n.locale, @taxon] do %>
-      <%= render partial: 'taxon', collection: @taxon.children %>
-    <% end %>
+ -->
+<main class="page-contents">
+  <div class="category-wrapper">
+    <div class="row no-gutters">
+      <div class="col-xl-2 col-lg-3 phone-hide">
+        <div class="sidebar-categories">
+          <h4>Categories:</h4>
+          <%= render partial: 'spree/shared/taxonomies'%>
+        </div>
+      </div>
+      <div class="col-xl-10 col-lg-9">
+        <div class="products-wrapper">
+          <div class="category-banner phone-visible"><div class="category-banner phone-visible">
+            <% if @taxon.icon.present? %>
+               <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
+            <% else %>
+               <%= image_tag "noimage/default-category-image.jpg" %>
+            <% end %>
+          </div></div>
+          <%= render partial: 'spree/taxons/introduction' %>
+          <%= render partial: 'spree/taxons/filters' %>
+          <%= render partial: 'spree/taxons/mobile_filters' %> 
+          <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }%>
+        </div>
+        <%= render partial: 'spree/taxons/pagination', products: @products  %>
+      </div>
+    </div>
   </div>
-<% end %>
+</main>
