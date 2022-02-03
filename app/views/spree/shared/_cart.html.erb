@@ -1,9 +1,13 @@
-<%= link_to spree.cart_path,
+<%#= link_to spree.cart_path,
   class: "cart-icon cart-icon--visible-count #{local_assigns[:class]}",
   'aria-label': Spree.t(:cart) do %>
-  <%= icon(name: 'cart',
+  <%#= icon(name: 'cart',
            width: size,
            height: size) %>
 
-  <span class="font-weight-medium cart-icon-count"><%= item_count %></span>
-<% end %>
+<!--   <span class="font-weight-medium cart-icon-count"><%= item_count %></span> -->
+<%# end %>
+<a id="shopping_cart_bag" class="nav-cart cart-icon--visible-count #{local_assigns[:class]}" href="#" >	
+	<span>cart </span>
+	<small class="cart-counter "><%= item_count %></small>
+</a>
