@@ -6,6 +6,16 @@ GIT
     browser (2.5.3)
 
 GIT
+  remote: https://github.com/ducl13/spree_sales.git
+  revision: 2be56d96fb324ae336f0a51663415d60bba157e6
+  branch: master
+  specs:
+    spree_sales (3.1.0)
+      date_validator
+      spree_core (>= 3.1.0, < 5.0.0)
+      spree_extension
+
+GIT
   remote: https://github.com/umairrazam/spree_favorite_products.git
   revision: 41bac948bea738fd166539ddca360db0fa113647
   branch: natures
@@ -139,6 +149,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    date_validator (0.12.0)
+      activemodel (>= 3)
+      activesupport (>= 3)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -460,6 +473,7 @@ DEPENDENCIES
   spree_frontend (>= 4.3)
   spree_gateway (~> 3.9)
   spree_i18n (~> 5.0)
+  spree_sales!
   spree_sample
   spring
   spring-watcher-listen (~> 2.0.0)

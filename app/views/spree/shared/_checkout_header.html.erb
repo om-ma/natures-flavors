@@ -29,10 +29,6 @@
 <header class="simple-header position-relative" id="spree-header"> 
   <a href="#" class="navbar-brand" id="header"><%= image_tag "logo.svg", alt:"Natures's Flavors" %></a>
   <%= link_to spree.cart_path,  method: :get do %>
-    <% if spree_current_user.present? %>
-      <button type="button" class="btn">Back</button>
-    <% else %>
-      <button type="button" class="btn">Continue Shopping</button>
-    <% end %>
+    <button type="button" class="btn"> <%= spree_current_user.present? ? "Back" : "Continue Shopping" %></button>
   <% end %>
 </header>
