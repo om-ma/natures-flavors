@@ -6,14 +6,13 @@ GIT
     browser (2.5.3)
 
 GIT
-  remote: https://github.com/ducl13/spree_sales.git
-  revision: ded5c5ba5671681984b0735a9e6e1e9dfb17b463
-  branch: master
+  remote: https://github.com/umairrazam/spree_favorite_products.git
+  revision: 41bac948bea738fd166539ddca360db0fa113647
+  branch: natures
   specs:
-    spree_sales (3.1.0)
-      date_validator
-      spree_core (>= 3.1.0, < 5.0.0)
-      spree_extension
+    spree_favorite_products (3.3.0)
+      spree_core (>= 3.2.0, <= 4.5.0)
+      spree_extension (~> 0.0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -140,9 +139,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
-    date_validator (0.12.0)
-      activemodel (>= 3)
-      activesupport (>= 3)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -200,6 +196,7 @@ GEM
       kaminari
       rails
     libv8-node (16.10.0.0-x86_64-darwin-19)
+    libv8-node (16.10.0.0-x86_64-linux)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -223,6 +220,8 @@ GEM
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     paranoia (2.4.3)
@@ -436,6 +435,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
@@ -456,10 +456,10 @@ DEPENDENCIES
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
   spree_emails (>= 4.3)
+  spree_favorite_products!
   spree_frontend (>= 4.3)
   spree_gateway (~> 3.9)
   spree_i18n (~> 5.0)
-  spree_sales!
   spree_sample
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -472,4 +472,4 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.19
+   2.3.1

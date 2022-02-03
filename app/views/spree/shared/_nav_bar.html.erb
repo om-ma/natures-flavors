@@ -92,10 +92,9 @@
               <% end %>
             <% end %>
           </div>
-          <a id="shopping_cart_bag" class="nav-cart" href="#" >
-            <span>cart </span>
-            <small class="cart-counter"><%=current_order.try(:item_count) %></small>
-          </a>
+          <div id="link-to-cart">
+            <%= render 'spree/shared/cart', item_count: 0 %>
+          </div>
           <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
         </div>
         <div id='shopping_cart_bag_area'>
