@@ -4,7 +4,7 @@
     <div class="products-wrapper d-lg-flex align-items-start">
       <% @related_products.each do |product| %>
         <div class="product-wrap">
-          <%= render 'product', product: product, image_class: 'product-component-plp-image' %>
+          <%= render 'related_product', product: product, image_class: 'product-component-plp-image' %>
         </div>
       <% end %>
     </div>
