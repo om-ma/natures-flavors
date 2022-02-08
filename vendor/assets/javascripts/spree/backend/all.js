@@ -11,3 +11,4 @@
 //= require_tree .
 
 //= require admin/spree_favorite_products
+//= require spree/backend/spree_events_tracker
