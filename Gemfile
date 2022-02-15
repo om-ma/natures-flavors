@@ -47,7 +47,6 @@ gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional
 gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', branch: 'natures'
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
-gem 'spree_events_tracker',github:'umairrazam/spree_events_tracker', branch:'natures'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
