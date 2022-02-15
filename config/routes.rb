@@ -21,6 +21,7 @@ Spree::Core::Engine.add_routes do
     get '/set_cc_as_default', to: 'user_credit_cards#set_as_default'
     get 'load_existing_ccs', to: 'checkout#load_existing_ccs'
     get 'load_new_cc', to: 'checkout#load_new_cc'
+    resources 'add_to_cart' ,to:'add_to_cart#create'
 
     resources :user_credit_cards
   end
