@@ -16,15 +16,6 @@ GIT
       spree_extension
 
 GIT
-  remote: https://github.com/umairrazam/spree_events_tracker.git
-  revision: fc51fba9f107407f9f950403ce9f78b1aa97fa60
-  branch: natures
-  specs:
-    spree_events_tracker (3.3.2)
-      spree_core (>= 3.2.0)
-      spree_extension (~> 0.0.5)
-
-GIT
   remote: https://github.com/umairrazam/spree_favorite_products.git
   revision: 41bac948bea738fd166539ddca360db0fa113647
   branch: natures
@@ -478,7 +469,6 @@ DEPENDENCIES
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
   spree_emails (>= 4.3)
-  spree_events_tracker!
   spree_favorite_products!
   spree_frontend (>= 4.3)
   spree_gateway (~> 3.9)

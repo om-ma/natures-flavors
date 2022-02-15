@@ -13,4 +13,3 @@
 //= require spree/frontend/spree_favorite_products
 
 AOS.init();
-//= require spree/frontend/spree_events_tracker
