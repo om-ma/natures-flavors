@@ -14,7 +14,7 @@
             <%= link_to product_path(product) do %>
               <h4><%= product.name %></h4>
             <% end %>
-            <%= link_to product_path(product),class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
+            <%= link_to add_to_cart_path(product.id), class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button',method: :post  do %>
               <div class="price"><%= display_price(object) %>- Add to Cart</div>
             <% end %>
             <% favorite_item_present = spree_current_user.has_favorite_product?(object.id) || spree_current_user.has_favorite_variant?(object.id) %>
@@ -31,3 +31,4 @@
     <% end %>
   </div>
 </div>
+
