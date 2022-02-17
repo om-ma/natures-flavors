@@ -6,6 +6,15 @@ GIT
     browser (2.5.3)
 
 GIT
+  remote: https://github.com/ducl13/spree_events_tracker.git
+  revision: 811faa89bb72e08ae87815c8b06708ebc6431a6e
+  branch: naturesflavors
+  specs:
+    spree_events_tracker (3.3.2)
+      spree_core (>= 3.2.0)
+      spree_extension (~> 0.0.5)
+
+GIT
   remote: https://github.com/ducl13/spree_sales.git
   revision: 2be56d96fb324ae336f0a51663415d60bba157e6
   branch: master
@@ -14,15 +23,6 @@ GIT
       date_validator
       spree_core (>= 3.1.0, < 5.0.0)
       spree_extension
-
-GIT
-  remote: https://github.com/umairrazam/spree_events_tracker.git
-  revision: ce94dc037591c3a05e65b246f694f0d887d2b421
-  branch: natures
-  specs:
-    spree_events_tracker (3.3.2)
-      spree_core (>= 3.2.0)
-      spree_extension (~> 0.0.5)
 
 GIT
   remote: https://github.com/umairrazam/spree_favorite_products.git
