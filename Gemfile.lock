@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_sales.git
-  revision: ded5c5ba5671681984b0735a9e6e1e9dfb17b463
+  revision: 2be56d96fb324ae336f0a51663415d60bba157e6
   branch: master
   specs:
     spree_sales (3.1.0)
