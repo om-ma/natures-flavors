@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_17_110305) do
+ActiveRecord::Schema.define(version: 2022_01_27_201028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_12_17_110305) do
     t.bigint "user_id"
     t.datetime "deleted_at"
     t.string "label"
+    t.boolean "is_default", default: false
     t.index ["country_id"], name: "index_spree_addresses_on_country_id"
     t.index ["deleted_at"], name: "index_spree_addresses_on_deleted_at"
     t.index ["firstname"], name: "index_addresses_on_firstname"
@@ -539,6 +540,7 @@ ActiveRecord::Schema.define(version: 2021_12_17_110305) do
     t.string "cvv_response_code"
     t.string "cvv_response_message"
     t.string "intent_client_key"
+    t.string "check_no"
     t.index ["number"], name: "index_spree_payments_on_number", unique: true
     t.index ["order_id"], name: "index_spree_payments_on_order_id"
     t.index ["payment_method_id"], name: "index_spree_payments_on_payment_method_id"
@@ -901,6 +903,19 @@ ActiveRecord::Schema.define(version: 2021_12_17_110305) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index "lower((name)::text)", name: "index_spree_roles_on_lower_name", unique: true
+  end
+
+  create_table "spree_sale_prices", id: :serial, force: :cascade do |t|
+    t.integer "price_id"
+    t.float "value"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["price_id", "start_at", "end_at", "enabled"], name: "index_active_sale_prices_for_price"
+    t.index ["price_id"], name: "index_sale_prices_for_price"
+    t.index ["start_at", "end_at", "enabled"], name: "index_active_sale_prices_for_all_variants"
   end
 
   create_table "spree_shipments", id: :serial, force: :cascade do |t|
