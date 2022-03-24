@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get '*path' => redirect('/not-found')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+Spree::Core::Engine.add_routes do
+  get '/category/*id', :to => 'taxons#show', :as => :categories
+end
+
 Spree::Core::Engine.routes.draw do
   get '/not-found', to: 'page_not_found#index', as: "page_not_found"
   get 'refresh_cart_bag', to: 'custom_checkout#refresh_shopping_cart_bag'
