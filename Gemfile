@@ -73,3 +73,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'browser', github: 'ducl13/browser', branch: 'master'
 
+# For data migration
+gem 'erubis', '~> 2.7'
+gem 'datashift', github: 'ducl13/datashift', branch: 'naturesflavors'
+gem 'datashift_spree', github: 'ducl13/datashift_spree', branch: 'naturesflavors'

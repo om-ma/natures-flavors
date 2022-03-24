@@ -6,6 +6,30 @@ GIT
     browser (2.5.3)
 
 GIT
+  remote: https://github.com/ducl13/datashift.git
+  revision: be7c4b9398211a932bc2479f4c93c66068175fac
+  branch: naturesflavors
+  specs:
+    datashift (0.40.4)
+      activestorage (>= 6.1.4.1)
+      paperclip (>= 4.3, <= 6.1.0)
+      rails (>= 4.2)
+      rubyzip (>= 1.3.0)
+      spreadsheet (~> 1.1)
+      thor (>= 0.19.0, <= 1.1.0)
+      thread_safe (~> 0.3, >= 0.3)
+
+GIT
+  remote: https://github.com/ducl13/datashift_spree.git
+  revision: da252dc93f47315ef7fd98233e14bde5436a9e91
+  branch: naturesflavors
+  specs:
+    datashift_spree (0.40.5)
+      datashift
+      mechanize (~> 2.6, >= 2.6.0)
+      spree (>= 2)
+
+GIT
   remote: https://github.com/ducl13/spree_sales.git
   revision: 2be56d96fb324ae336f0a51663415d60bba157e6
   branch: master
@@ -131,6 +155,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    climate_control (0.2.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -139,6 +164,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     crass (1.0.6)
     date_validator (0.12.0)
       activemodel (>= 3)
@@ -151,9 +177,12 @@ GEM
       warden (~> 1.2.3)
     devise-encryptable (0.2.0)
       devise (>= 2.1.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     doorkeeper (5.5.4)
       railties (>= 5)
     erubi (1.10.0)
+    erubis (2.7.0)
     execjs (2.8.1)
     ffaker (2.20.0)
     ffi (1.15.4)
@@ -164,6 +193,8 @@ GEM
       activesupport (>= 5.0)
     glyphicons (1.0.2)
     highline (2.0.3)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     i18n_data (0.13.1)
@@ -210,7 +241,24 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
     matrix (0.4.2)
+    mechanize (2.8.4)
+      addressable (~> 2.8)
+      domain_name (~> 0.5, >= 0.5.20190701)
+      http-cookie (~> 1.0, >= 1.0.3)
+      mime-types (~> 3.0)
+      net-http-digest_auth (~> 1.4, >= 1.4.1)
+      net-http-persistent (>= 2.5.2, < 5.0.dev)
+      nokogiri (~> 1.11, >= 1.11.2)
+      rubyntlm (~> 0.6, >= 0.6.3)
+      webrick (~> 1.7)
+      webrobots (~> 0.1.2)
     method_source (1.0.0)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2022.0105)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_racer (0.5.0)
@@ -221,10 +269,19 @@ GEM
     money (6.16.0)
       i18n (>= 0.6.4, <= 2)
     msgpack (1.4.2)
+    net-http-digest_auth (1.4.1)
+    net-http-persistent (4.0.1)
+      connection_pool (~> 2.2)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    paperclip (6.1.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     paranoia (2.4.3)
       activerecord (>= 4.0, < 6.2)
     pg (1.2.3)
@@ -279,8 +336,10 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    ruby-ole (1.2.12.2)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    rubyntlm (0.6.3)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -297,6 +356,8 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    spreadsheet (1.3.0)
+      ruby-ole
     spree (4.3.0)
       spree_api (= 4.3.0)
       spree_core (= 4.3.0)
@@ -407,7 +468,10 @@ GEM
       activerecord (>= 5.1)
       state_machines-activemodel (>= 0.8.0)
     stringex (2.8.5)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
+    thread_safe (0.3.6)
     tilt (2.0.10)
     tinymce-rails (5.10.2)
       railties (>= 3.1.1)
@@ -418,6 +482,9 @@ GEM
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.1)
     validates_zipcode (0.5.0)
       activemodel (>= 4.2.0)
     warden (1.2.9)
@@ -427,6 +494,8 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webrick (1.7.0)
+    webrobots (0.1.2)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -444,6 +513,9 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  datashift!
+  datashift_spree!
+  erubis (~> 2.7)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mini_racer
