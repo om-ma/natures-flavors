@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 	private
 
 	def set_categories
-		@main_category	= Spree::Taxon.first
+		product_category	= Spree::Taxon.find_by_name("PRODUCTS")
+		@all_categories   = product_category.present? ? product_category&.children : []
 	end
 end
