@@ -44,40 +44,36 @@
     <div class="col-xl-10 position-static" id="top-nav-bar">
       <div class="navbar-collapse" id="nav-bar">
         <ul class="navbar-nav tablet-hide">
-          <li class="nav-item">
-            <% if @main_category.present? %>
-              <%= link_to @main_category.name, seo_url(@main_category), class: "nav-link" %>
-              <% user_taxons = spree_current_user.present? ? spree_current_user.taxons : [] %>
-              <% if user_taxons.present? %>
-                <div class="dropdown-menu-wrap">
-                  <div class="row no-gutters">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-7 has-gridlines">
+          <% user_taxons = spree_current_user.present? ? spree_current_user.taxons : [] %>
+          <% if user_taxons.present? %>
+            <% user_taxons.in_groups_of(3) do |categories|%>
+              <% categories.compact.each do |category| %>
+                <li class="nav-item"><%= link_to category.name, seo_url(category), class: "nav-link" %>
+                  <% if category.children.present? %>
+                    <div class="dropdown-menu-wrap">
                       <div class="row no-gutters">
-                        <% user_taxons.in_groups_of(3) do |categories|%>
-                          <div class="col">
-                            <ul class="dropdown-menu d-flex flex-column">
-                              <% categories.compact.each do |category| %>
-                              <li>
-                                <%= link_to category.name, seo_url(category) %>
-                              </li>
-                              <% end %>
-                            </ul>
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-7 has-gridlines">
+                          <div class="row no-gutters">
+                            <div class="col">
+                              <ul class="dropdown-menu d-flex flex-column">
+                                <% category.children.each do |children| %>
+                                  <li>
+                                    <%= link_to children.name, seo_url(children) %>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            </div>
                           </div>
-                        <% end %>
+                        </div>
+                        <div class="col-lg-3"></div>
                       </div>
                     </div>
-                    <div class="col-lg-3"></div>
-                  </div>
-                </div>
+                  <% end %>
+                </li>
               <% end %>
             <% end %>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#">Fragrances</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Syrups</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Baking Ingredients</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">More</a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><strong>Deals</strong></a></li>
+          <% end %>
         </ul>
         <div class="quick-menu ml-auto" >
           <%= render partial: 'spree/shared/search' %>

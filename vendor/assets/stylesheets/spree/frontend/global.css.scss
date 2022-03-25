@@ -1320,7 +1320,7 @@ a.btn.btn-block {
 .product-menu a:not(.back) {
 	font-size: 18px;
 	font-weight: 700;
-    color: #fff;
+    color: #fff !important;
     padding: 0 20px;
     height: 52px;
     line-height: 52px;
@@ -1376,12 +1376,15 @@ a.btn.btn-block {
 	display: block;
 	height: 58px;
     line-height: 58px;
-	background: url("../images/arrow-bottom-white-icon.svg") no-repeat scroll calc(100% - 20px) center;
+	background-image: image-url("arrow-bottom-white-icon.svg");
+	background-repeat: no-repeat;
+	background-attacehemnt: scroll;
+	background-position:  calc(100% - 20px) center;
 	border-bottom: rgba(255,255,255,0.1) 1px solid;
 }
 
 .sub-menu > li.active > a {
-	background-image: url("../images/arrow-top-white-icon.svg");
+	background-image: image-url("arrow-top-white-icon.svg");
 }
 
 .sub-menu-lists {

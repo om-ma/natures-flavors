@@ -62,72 +62,26 @@
       <div class="left d-flex align-items-center flex-fill text-uppercase">Home</div>
       <div class="right d-flex align-items-center flex-fill"><a href="#">Log in</a><a href="#" class="btn">or <em class="text-uppercase">Register</em></a></div>
     </div>
-    <div id="mobile-navigation-back-button">
-      <ul class="product-menu">
-        <li><a href="#">Extracts &amp; Flavorings</a>
-          <ul>
-            <li><a href="#">Extracts &amp; Flavorings</a></li>
-            <li><a href="#">Gluten Free Baking</a></li>
-            <li><a href="#">Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking Mix</a></li>
-            <li><a href="#">Organic Gluten Free Baking</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Fragrances</a>
-          <ul>
-            <li><a href="#">See All Fragrances</a></li>
-            <li><a href="#">Gluten Free Baking</a></li>
-            <li><a href="#">Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking Mix</a></li>
-            <li><a href="#">Organic Gluten Free Baking</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Syrups</a>
-          <ul>
-            <li><a href="#">See All Syrups</a></li>
-            <li><a href="#">Gluten Free Baking</a></li>
-            <li><a href="#">Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking Mix</a></li>
-            <li><a href="#">Organic Gluten Free Baking</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Baking Ingredients</a>
-          <ul>
-            <li><a href="#">See All Baking Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking</a></li>
-            <li><a href="#">Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking Mix</a></li>
-            <li><a href="#">Organic Gluten Free Baking</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Drinks</a>
-          <ul>
-            <li><a href="#">See All Drinks</a></li>
-            <li><a href="#">Gluten Free Baking</a></li>
-            <li><a href="#">Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking Mix</a></li>
-            <li><a href="#">Organic Gluten Free Baking</a></li>
-          </ul>
-        </li>
-        <li><a href="#">More</a>
-          <ul>
-            <li><a href="#">See All More</a></li>
-            <li><a href="#">Gluten Free Baking</a></li>
-            <li><a href="#">Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking Mix</a></li>
-            <li><a href="#">Organic Gluten Free Baking</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Deals</a>
-          <ul>
-            <li><a href="#">See All Deals</a></li>
-            <li><a href="#">Gluten Free Baking</a></li>
-            <li><a href="#">Ingredients</a></li>
-            <li><a href="#">Gluten Free Baking Mix</a></li>
-            <li><a href="#">Organic Gluten Free Baking</a></li>
-          </ul>
-        </li>
-      </ul>
+    <div id="menu">
+      <% user_taxons = spree_current_user.present? ? spree_current_user.taxons : [] %>
+      <% if user_taxons.present? %>
+        <ul class="product-menu">
+          <% user_taxons.in_groups_of(3) do |categories|%>
+            <% categories.compact.each do |category| %>
+              <li>
+                <%= link_to category.name, seo_url(category) %>
+                <% if category.children.present? %>
+                  <% category.children.each do |children| %>
+                    <ul>
+                      <li><%= link_to children.name, seo_url(children) %></li>
+                    </ul>
+                  <% end %>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
     <div class="sub-menu-wrap">
       <ul class="sub-menu">
@@ -177,4 +131,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
+
