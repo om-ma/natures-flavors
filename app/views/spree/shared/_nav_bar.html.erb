@@ -44,36 +44,42 @@
     <div class="col-xl-10 position-static" id="top-nav-bar">
       <div class="navbar-collapse" id="nav-bar">
         <ul class="navbar-nav tablet-hide">
-          <% user_taxons = spree_current_user.present? ? spree_current_user.taxons : [] %>
-          <% if user_taxons.present? %>
-            <% user_taxons.in_groups_of(3) do |categories|%>
-              <% categories.compact.each do |category| %>
-                <li class="nav-item"><%= link_to category.name, seo_url(category), class: "nav-link" %>
-                  <% if category.children.present? %>
-                    <div class="dropdown-menu-wrap">
-                      <div class="row no-gutters">
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-7 has-gridlines">
-                          <div class="row no-gutters">
-                            <div class="col">
-                              <ul class="dropdown-menu d-flex flex-column">
-                                <% category.children.each do |children| %>
-                                  <li>
-                                    <%= link_to children.name, seo_url(children) %>
-                                  </li>
-                                <% end %>
-                              </ul>
+          
+            <% if @main_category.present? %>
+              <% @main_category.children.each do |header_category| %>
+                <% if spree_current_user.present? ? header_category.users.include?(spree_current_user) : header_category.users.present? %>
+                  <li class="nav-item">
+                    <%= link_to header_category.name, seo_url(header_category), class: "nav-link" %>
+                    <% if header_category.children.present? %>
+                      <div class="dropdown-menu-wrap">
+                        <div class="row no-gutters">
+                          <div class="col-lg-2"></div>
+                          <div class="col-lg-7 has-gridlines">
+                            <div class="row no-gutters">
+                              <% header_category.children.in_groups_of(3) do |categories|%>
+                                <div class="col">
+                                  <ul class="dropdown-menu d-flex flex-column">
+                                    <% categories.compact.each do |category| %>
+                                      <% if spree_current_user.present? ? category.users.include?(spree_current_user) : category.users.present? %>
+                                        <li>
+                                          <%= link_to category.name, seo_url(category) %>
+                                        </li>
+                                      <% end %>  
+                                    <% end %>
+                                  </ul>
+                                </div>
+                              <% end %>
                             </div>
                           </div>
+                          <div class="col-lg-3"></div>
                         </div>
-                        <div class="col-lg-3"></div>
                       </div>
-                    </div>
-                  <% end %>
-                </li>
+                    <% end %>
+                  </li>
+                <% end %>  
               <% end %>
             <% end %>
-          <% end %>
+          <li class="nav-item"><a class="nav-link" href="#"><strong>Deals</strong></a></li>
         </ul>
         <div class="quick-menu ml-auto" >
           <%= render partial: 'spree/shared/search' %>
