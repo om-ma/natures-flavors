@@ -13,10 +13,12 @@
                <%= image_tag "noimage/default-category-image.jpg" %>
             <% end %>
             </div>
-            <div class="mobile-categories-wrap phone-visible">
-            <div class="header"><a href="#" class="mobile-category-toggle">Categories</a></div>
-               <%= render partial: 'spree/shared/taxonomies'%>
-            </div>
+            <% if (browser.device.mobile?) %>
+               <div class="mobile-categories-wrap phone-visible">
+               <div class="header"><a href="#" class="mobile-category-toggle">Categories</a></div>
+                  <%= render partial: 'spree/shared/taxonomies', locals: {taxon: @taxon }%>
+               </div>
+            <% end %>   
          </div>
       </div>
       <div class="col-xl-4">
