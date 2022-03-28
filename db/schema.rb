@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_30_151110) do
+ActiveRecord::Schema.define(version: 2022_02_17_083904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,40 @@ ActiveRecord::Schema.define(version: 2021_12_30_151110) do
     t.index ["calculable_id", "calculable_type"], name: "index_spree_calculators_on_calculable_id_and_calculable_type"
     t.index ["deleted_at"], name: "index_spree_calculators_on_deleted_at"
     t.index ["id", "type"], name: "index_spree_calculators_on_id_and_type"
+  end
+
+  create_table "spree_cart_events", id: :serial, force: :cascade do |t|
+    t.string "actor_type"
+    t.integer "actor_id"
+    t.string "target_type"
+    t.integer "target_id"
+    t.string "activity"
+    t.text "referrer"
+    t.integer "quantity"
+    t.decimal "total", precision: 16, scale: 4
+    t.string "session_id"
+    t.integer "variant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_type", "actor_id"], name: "index_spree_cart_events_on_actor"
+    t.index ["target_type", "target_id"], name: "index_spree_cart_events_on_target"
+    t.index ["variant_id"], name: "index_spree_cart_events_on_variant_id"
+  end
+
+  create_table "spree_checkout_events", id: :serial, force: :cascade do |t|
+    t.string "actor_type"
+    t.integer "actor_id"
+    t.string "target_type"
+    t.integer "target_id"
+    t.string "activity"
+    t.text "referrer"
+    t.string "previous_state"
+    t.string "next_state"
+    t.string "session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_type", "actor_id"], name: "index_spree_checkout_events_on_actor"
+    t.index ["target_type", "target_id"], name: "index_spree_checkout_events_on_target"
   end
 
   create_table "spree_checks", force: :cascade do |t|
@@ -503,6 +537,22 @@ ActiveRecord::Schema.define(version: 2021_12_30_151110) do
     t.index ["user_id", "created_by_id"], name: "index_spree_orders_on_user_id_and_created_by_id"
   end
 
+  create_table "spree_page_events", id: :serial, force: :cascade do |t|
+    t.string "actor_type"
+    t.integer "actor_id"
+    t.string "target_type"
+    t.integer "target_id"
+    t.string "activity"
+    t.text "referrer"
+    t.string "search_keywords"
+    t.string "session_id"
+    t.text "query_string"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_type", "actor_id"], name: "index_spree_page_events_on_actor"
+    t.index ["target_type", "target_id"], name: "index_spree_page_events_on_target"
+  end
+
   create_table "spree_payment_capture_events", id: :serial, force: :cascade do |t|
     t.decimal "amount", precision: 10, scale: 2, default: "0.0"
     t.bigint "payment_id"
@@ -630,6 +680,7 @@ ActiveRecord::Schema.define(version: 2021_12_30_151110) do
     t.string "meta_title"
     t.datetime "discontinue_on"
     t.integer "favorite_users_count", default: 0
+    t.integer "popularity", default: 0
     t.index ["available_on"], name: "index_spree_products_on_available_on"
     t.index ["deleted_at"], name: "index_spree_products_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_products_on_discontinue_on"
