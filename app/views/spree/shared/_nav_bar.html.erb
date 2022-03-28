@@ -46,7 +46,7 @@
         <ul class="navbar-nav tablet-hide">
           <% if @all_categories.present? %>
             <% @all_categories.each do |menu_category| %>
-              <% if spree_current_user.present? ? menu_category.users.include?(spree_current_user) : menu_category.users.present? %>
+              <% if menu_category.users.present? ? (spree_current_user.present? ? menu_category.users.include?(spree_current_user) : false) : true %>
                 <li class="nav-item">
                   <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link" %>
                   <div class="dropdown-menu-wrap">
@@ -58,7 +58,7 @@
                             <div class="col">
                               <ul class="dropdown-menu d-flex flex-column">
                                 <% categories.compact.each do |category| %>
-                                  <% if spree_current_user.present? ? category.users.include?(spree_current_user) : category.users.present? %>
+                                  <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
                                     <li>
                                       <%= link_to category.name, seo_url(category) %>
                                     </li>
