@@ -1,24 +1,23 @@
-# README
+# Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* To setup database
+rake db:create (might not need this)
+rake db:schema:load
+rake db:migrate
+rake db:seed
+#rake spree_roles:permissions:populate
+#rake spree_roles:permissions:populate_permission_sets
 
-Things you may want to cover:
 
-* Ruby version
+# Migration
+Users:
+bin/rails r "migration/users.rb"
 
-* System dependencies
+Products/Categories:
+gem install thor -v 0.20.3
+bundle exec thor datashift_spree:load:products -i "migration/Natures Flavors Data Export - Export1.csv"
+bundle exec thor datashift_spree:load:products -i "migration/Natures Flavors Data Export - Export2.csv"
+...
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run:
+migration/sql/update_taxon.sql
