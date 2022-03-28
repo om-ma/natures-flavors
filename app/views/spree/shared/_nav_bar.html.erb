@@ -57,14 +57,14 @@
                           <div class="col">
                             <ul class="dropdown-menu d-flex flex-column">
                               <% categories.compact.each do |category| %>
-                              <li>
-                                <%= link_to category.name, seo_url(category) %>
-                              </li>
+                                <li>
+                                  <%= link_to category.name, seo_url(category) %>
+                                </li>
                               <% end %>
-                            </div>
+                            </ul>
                           </div>
                           <div class="col-lg-3"></div>
-                        </div>
+                        <% end %>
                       </div>
                     </div>
                     <div class="col-lg-3"></div>
