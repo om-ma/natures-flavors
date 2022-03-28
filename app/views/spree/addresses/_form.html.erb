@@ -63,7 +63,7 @@
     <%elsif field == "address2"  %>
       <div class="col-sm-12 ">
         <div class="form-group form-floating mb-20">
-          <%= address_form.text_field :address2, class: 'form-control', placeholder:"Address Line 2", required: true %>
+          <%= address_form.text_field :address2, class: 'form-control', placeholder:"Address Line 2", required: false %>
           <%= address_form.label :address2 do %>
             <%= Spree.t(:address2) %>
           <% end %>
