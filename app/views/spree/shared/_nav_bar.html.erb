@@ -46,31 +46,35 @@
         <ul class="navbar-nav tablet-hide">
           <% if @all_categories.present? %>
             <% @all_categories.each do |menu_category| %>
-              <li class="nav-item">
-                <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link" %>
-                <div class="dropdown-menu-wrap">
-                  <div class="row no-gutters">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-7 has-gridlines">
-                      <div class="row no-gutters">
-                        <% menu_category.children.in_groups_of(3) do |categories|%>
-                          <div class="col">
-                            <ul class="dropdown-menu d-flex flex-column">
-                              <% categories.compact.each do |category| %>
-                                <li>
-                                  <%= link_to category.name, seo_url(category) %>
-                                </li>
-                              <% end %>
-                            </ul>
-                          </div>
-                          <div class="col-lg-3"></div>
-                        <% end %>
+              <% if spree_current_user.present? ? menu_category.users.include?(spree_current_user) : menu_category.users.present? %>
+                <li class="nav-item">
+                  <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link" %>
+                  <div class="dropdown-menu-wrap">
+                    <div class="row no-gutters">
+                      <div class="col-lg-2"></div>
+                      <div class="col-lg-7 has-gridlines">
+                        <div class="row no-gutters">
+                          <% menu_category.children.in_groups_of(3) do |categories|%>
+                            <div class="col">
+                              <ul class="dropdown-menu d-flex flex-column">
+                                <% categories.compact.each do |category| %>
+                                  <% if spree_current_user.present? ? category.users.include?(spree_current_user) : category.users.present? %>
+                                    <li>
+                                      <%= link_to category.name, seo_url(category) %>
+                                    </li>
+                                  <% end %>  
+                                <% end %>
+                              </ul>
+                            </div>
+                            <div class="col-lg-3"></div>
+                          <% end %>
+                        </div>
                       </div>
+                      <div class="col-lg-3"></div>
                     </div>
-                    <div class="col-lg-3"></div>
                   </div>
-                </div>
-              </li>
+                </li>
+              <% end %>  
             <% end %>
           <% end %>
           <!--<li class="nav-item"><a class="nav-link" href="#"><strong>Deals</strong></a></li>-->

@@ -19,11 +19,11 @@
   <% max_level =  3 %>
   <!-- <nav id="taxonomies"  data-hook> -->
   <% if @taxon.present? %>
-    <% cache [I18n.locale, max_level, @taxon] do %>
-      <%# @taxon = @taxon.parent if @taxon.leaf? %>
+    <% cache [I18n.locale, max_level, taxon] do %>
+      <% taxon = taxon.parent if taxon.leaf? %>
       <%#= link_to @taxon.name, seo_url(@taxon) %>
-      <% if @taxon.children.any? %>
-        <%= taxons_tree(@main_category, @taxon, max_level) %>
+      <% if taxon.children.any? %>
+        <%= taxons_tree(taxon, taxon, max_level) %>
       <% end %>
     <% end %>
   <% else %>
