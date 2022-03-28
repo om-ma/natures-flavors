@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:before-render', () => {
+$( document ).on('turbolinks:load', function() {
   var SalesExpiryDate= $('#deals-expiry').attr("data-SalesExpiryDate");
     var countDownDate = new Date(SalesExpiryDate).getTime();
     var x = setInterval(function() {

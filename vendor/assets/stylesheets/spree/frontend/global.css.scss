@@ -1078,7 +1078,7 @@ a.btn.btn-block {
 }
 
 .mobile-menu-link {
-	background-image: url("../images/menu-icon.svg");
+	background-image: image-url("menu-icon.svg");
 	background-size: 18px auto;
 }
 
@@ -1320,7 +1320,7 @@ a.btn.btn-block {
 .product-menu a:not(.back) {
 	font-size: 18px;
 	font-weight: 700;
-    color: #fff;
+    color: #fff !important;
     padding: 0 20px;
     height: 52px;
     line-height: 52px;
@@ -1376,12 +1376,15 @@ a.btn.btn-block {
 	display: block;
 	height: 58px;
     line-height: 58px;
-	background: url("../images/arrow-bottom-white-icon.svg") no-repeat scroll calc(100% - 20px) center;
+	background-image: image-url("arrow-bottom-white-icon.svg");
+	background-repeat: no-repeat;
+	background-attacehemnt: scroll;
+	background-position:  calc(100% - 20px) center;
 	border-bottom: rgba(255,255,255,0.1) 1px solid;
 }
 
 .sub-menu > li.active > a {
-	background-image: url("../images/arrow-top-white-icon.svg");
+	background-image: image-url("arrow-top-white-icon.svg");
 }
 
 .sub-menu-lists {
@@ -2944,6 +2947,15 @@ a.btn.btn-block {
 }
 
 .product-actions a.add-to-fav {
+	background-image: image-url("wish-selected.svg");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position:  left center;
+	padding-left: 25px;
+	background-size: 16px 15px;
+}
+
+.product-actions a.remove-to-fav {
 	background-image: image-url("heart.svg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;
@@ -4413,12 +4425,15 @@ a.btn.btn-block {
 }
 
 .nflavors-faqs-wrapper #faqaccordion .card-header .btn:after {
-    background-image: image-url("arrow-bottom-icon.svg");
+	background-image: image-url("arrow-bottom-icon.svg");
 }
 
 .nflavors-faqs-wrapper #faqaccordion .card-header .btn:not(.collapsed):after {
-	background-image: image-url("arrow-top-icon.svg");
+    background-image: image-url("arrow-top-icon.svg");
+    background-image: image-url("arrow-bottom-icon.svg");
 }
+
+
 
 .nflavors-faqs-wrapper #faqaccordion .card-body {
     font-size: 17px;

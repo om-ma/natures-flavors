@@ -6,6 +6,13 @@ GIT
     browser (2.5.3)
 
 GIT
+  remote: https://github.com/ducl13/spree_events_tracker.git
+  revision: 811faa89bb72e08ae87815c8b06708ebc6431a6e
+  branch: naturesflavors
+  specs:
+    spree_events_tracker (3.3.2)
+      spree_core (>= 3.2.0)
+      spree_extension (~> 0.0.5)
   remote: https://github.com/ducl13/datashift.git
   revision: be7c4b9398211a932bc2479f4c93c66068175fac
   branch: naturesflavors
@@ -38,6 +45,15 @@ GIT
       date_validator
       spree_core (>= 3.1.0, < 5.0.0)
       spree_extension
+
+GIT
+  remote: https://github.com/umairrazam/spree_favorite_products.git
+  revision: 41bac948bea738fd166539ddca360db0fa113647
+  branch: natures
+  specs:
+    spree_favorite_products (3.3.0)
+      spree_core (>= 3.2.0, <= 4.5.0)
+      spree_extension (~> 0.0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -231,6 +247,7 @@ GEM
       kaminari
       rails
     libv8-node (16.10.0.0-x86_64-darwin-19)
+    libv8-node (16.10.0.0-x86_64-linux)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -274,6 +291,8 @@ GEM
       connection_pool (~> 2.2)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     paperclip (6.1.0)
@@ -505,6 +524,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
@@ -528,6 +548,8 @@ DEPENDENCIES
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
   spree_emails (>= 4.3)
+  spree_events_tracker!
+  spree_favorite_products!
   spree_frontend (>= 4.3)
   spree_gateway (~> 3.9)
   spree_i18n (~> 5.0)
@@ -544,4 +566,4 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.19
+   2.3.1

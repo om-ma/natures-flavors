@@ -1,3 +1,4 @@
+
 <!-- <div id="existing_cards" class="payment-sources-existing-cards" style="display:none;">
   <%#= radio_button_tag 'use_existing_card', 'yes', true, class: 'd-none' %>
   <div class="form-group" data-hook="existing_cards">
@@ -16,7 +17,7 @@
   </div>
 </div>
  -->
-<div class="form-group form-floating mb-20">
+<div class="form-group form-floating mb-20" class="payment-sources-existing-cards " id="existing_cards" style="display:none;">
   <select class="custom-select cards-select-change-js">
     <% @payment_sources.each do |card| %>
       <option value="order_existing_card_<%=card.id%>">
@@ -29,7 +30,7 @@
   </select>
   <label>My Cards</label>
 </div>
-<div id="existing_cards" class="payment-sources-existing-cards d-none" style="display:none;">
+<div class="d-none"  >
   <%= radio_button_tag 'use_existing_card', 'yes', true, class: 'd-none' %>
   <div class="form-group" data-hook="existing_cards">
     <div class="d-flex flex-column payment-sources-list">

@@ -42,7 +42,6 @@
 
   <%#= products_structured_data([@product]) %>
 
-  <%#= render 'spree/shared/product_added_modal' %>
 <%# end %>
 <% @body_id = 'product-details' %>
 <div
@@ -96,5 +95,6 @@
         </div>
           <%= render partial: 'customer_reviews' %> 
     <%end%>
+    <%= render 'spree/shared/product_added_modal' %>
   </main>
 </div>
