@@ -14,11 +14,11 @@ Spree::HomeController.class_eval do
     end
     @best_sellers_products = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
     @deals_products= Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
-    popular_extracts = Spree::Taxon.find_by_name("Popular Extracts").present? ? Spree::Taxon.find_by_name("Popular Extracts") : ''
+    popular_extracts = Spree::Taxon.find_by_name("Popular Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''
     @popular_extracts_products= popular_extracts.present? ?  popular_extracts.products.reorder(popularity: :desc).first(6) : [] 
-    popular_Powders = Spree::Taxon.find_by_name("Popular Powders").present? ? Spree::Taxon.find_by_name("Popular_Powders") : ''
+    popular_Powders = Spree::Taxon.find_by_name("Popular Powders").present? ? Spree::Taxon.find_by_name("Flavor Powders") : ''
     @popular_Powders_products= popular_Powders.present? ? popular_Powders.products.reorder(popularity: :desc).first(6) : [] 
-    popular_oils = Spree::Taxon.find_by_name("Popular Oils").present? ? Spree::Taxon.find_by_name("Popular Oils") : ''
+    popular_oils = Spree::Taxon.find_by_name("Popular Oils").present? ? Spree::Taxon.find_by_name("Flavor Oils") : ''
     @popular_oils_products= popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : [] 
   end
 
