@@ -96,7 +96,7 @@ end
           <div class="wrap mobile-cart-summary d-flex flex-column justify-content-between h-100" id="checkout-summary" data-hook="checkout_summary_box" >
             <% unless @order.confirm? %>
               <%= render partial: 'summary', locals: { order: @order, order_form: form } %>
-                <div data-hook="buttons">
+                <div data-hook="buttons" class="d-none">
                   <% submit_label_key = @order.confirm? ? :place_order : :save_and_continue %>
                   <%= submit_tag Spree.t(submit_label_key), class: 'btn btn-primary btn-block checkout-content-save-continue-button', id:'checkout-submit-to-next-step' %>
                 </div>

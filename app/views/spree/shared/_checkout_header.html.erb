@@ -1,6 +1,6 @@
 <!-- <div id="spree-header">
   <header id="header" class="d-flex align-items-center header-spree border-bottom">
-    <div class="container" role="navigation" aria-label="<%= Spree.t('checkout_page.main_navigation') %>">
+    <div class="container" role="navigation" aria-label="<%#= Spree.t('checkout_page.main_navigation') %>">
       <div class="row">
 
         <div class="col d-flex align-items-center truncate pr-0">
@@ -29,6 +29,6 @@
 <header class="simple-header position-relative" id="spree-header"> 
   <a href="#" class="navbar-brand" id="header"><%= image_tag "logo.svg", alt:"Natures's Flavors" %></a>
   <%= link_to spree.cart_path,  method: :get do %>
-    <button type="button" class="btn">Back</button>
+    <button type="button" class="btn"> <%= spree_current_user.present? ? "Back" : "Continue Shopping" %></button>
   <% end %>
 </header>

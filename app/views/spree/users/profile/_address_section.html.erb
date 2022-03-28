@@ -11,7 +11,9 @@
       </div>
       <%= f.submit "Add Address", class: 'btn btn-primary' %>
       <% if address.persisted? %>
-        <%= link_to "Delete This Address", spree.address_path(address), :method => :delete, :confirm => "Are you sure?", :remote => true, class: "btn btn-text" %>
+        <%= link_to spree.address_path(address), :method => :delete, :confirm => "Are you sure?", :remote => true do %>
+          <button type="button" class="btn btn-text">Delete This Address</button>
+        <% end %>
       <% end %>
   <% end %>
 

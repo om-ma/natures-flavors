@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_201028) do
+ActiveRecord::Schema.define(version: 2021_12_30_151110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -242,6 +242,16 @@ ActiveRecord::Schema.define(version: 2022_01_27_201028) do
     t.index ["number"], name: "index_spree_customer_returns_on_number", unique: true
     t.index ["stock_location_id"], name: "index_spree_customer_returns_on_stock_location_id"
     t.index ["store_id"], name: "index_spree_customer_returns_on_store_id"
+  end
+
+  create_table "spree_favorites", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "favoritable_type"
+    t.bigint "favoritable_id"
+    t.index ["favoritable_type", "favoritable_id"], name: "index_spree_favorites_on_favoritable_type_and_favoritable_id"
+    t.index ["user_id"], name: "index_spree_favorites_on_user_id"
   end
 
   create_table "spree_gateways", id: :serial, force: :cascade do |t|
@@ -619,9 +629,11 @@ ActiveRecord::Schema.define(version: 2022_01_27_201028) do
     t.boolean "promotionable", default: true
     t.string "meta_title"
     t.datetime "discontinue_on"
+    t.integer "favorite_users_count", default: 0
     t.index ["available_on"], name: "index_spree_products_on_available_on"
     t.index ["deleted_at"], name: "index_spree_products_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_products_on_discontinue_on"
+    t.index ["favorite_users_count"], name: "index_spree_products_on_favorite_users_count"
     t.index ["name"], name: "index_spree_products_on_name"
     t.index ["shipping_category_id"], name: "index_spree_products_on_shipping_category_id"
     t.index ["slug"], name: "index_spree_products_on_slug", unique: true
@@ -1326,8 +1338,10 @@ ActiveRecord::Schema.define(version: 2022_01_27_201028) do
     t.datetime "updated_at", null: false
     t.datetime "discontinue_on"
     t.datetime "created_at", null: false
+    t.integer "favorite_users_count", default: 0
     t.index ["deleted_at"], name: "index_spree_variants_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_variants_on_discontinue_on"
+    t.index ["favorite_users_count"], name: "index_spree_variants_on_favorite_users_count"
     t.index ["is_master"], name: "index_spree_variants_on_is_master"
     t.index ["position"], name: "index_spree_variants_on_position"
     t.index ["product_id"], name: "index_spree_variants_on_product_id"
