@@ -1,5 +1,8 @@
 Spree::TaxonsController.class_eval do
   def show
+    @per_page = 24
+    params['per_page'] = @per_page
+
     if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
       load_products
     end
