@@ -233,7 +233,7 @@ p {
 }
 
 a {
-	color: #bb1e5a;
+	color: #A71E22;
 	text-decoration: none;
 	cursor: pointer;
 	outline: none;
@@ -247,7 +247,7 @@ a.text-link {
 a:hover {
 	-webkit-transition: all 0.2s ease-out 0s;
 	transition: color 0.2s, background-color 0.2s ease-out 0s;
-    color: #b20d4c;
+    color: #A71E22;
     text-decoration: none;
 }
 
@@ -1331,7 +1331,7 @@ a.btn.btn-block {
 	background-image: image-url("arrow-right-white-icon.svg");
 	background-repeat: no-repeat;
 	background-position: calc(100% - 20px)  center;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 }
 
 .product-menu a:not(.back):active,
@@ -1378,7 +1378,7 @@ a.btn.btn-block {
     line-height: 58px;
 	background-image: image-url("arrow-bottom-white-icon.svg");
 	background-repeat: no-repeat;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 	background-position:  calc(100% - 20px) center;
 	border-bottom: rgba(255,255,255,0.1) 1px solid;
 }
@@ -1593,7 +1593,7 @@ a.btn.btn-block {
 	padding: 0;
 	background-image: image-url("search-icon-white.svg");
 	background-repeat: no-repeat;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 	background-position:   center;
 	background: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
 	border-radius: 23px;
@@ -1612,7 +1612,7 @@ a.btn.btn-block {
 	background-image: image-url("search-icon-white");
 	background-repeat: no-repeat;
 	background-position:   center;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 }
 
 .search-tags {
@@ -1675,7 +1675,7 @@ a.btn.btn-block {
 	background-image: image-url("cherry-icon.svg");
 	background-repeat: no-repeat;
 	background-position:   center;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 }
 
 .home-intro-wrapper {
@@ -1709,8 +1709,7 @@ a.btn.btn-block {
 	background-image: image-url("gmp-certificate.jpg");
 	background-repeat: no-repeat;
 	background-position:   center;
-	background-attacehemnt: scroll;
-
+	background-attachment: scroll;
 	background-size: 117px auto;
 	width: 117px;
 	height: 117px;
@@ -1805,7 +1804,9 @@ a.btn.btn-block {
 	line-height: 1.28;
 	letter-spacing: -1.3px;
 }
-
+h3 a{
+	color: #000;
+}
 .sm-title {
     font-size: 15px;
     line-height: 22px;
@@ -2091,7 +2092,7 @@ a.btn.btn-block {
 	letter-spacing: -0.49px;
 	color: #000;
 	display: inline-block;
-	width: 222px;
+	width: 230px;
 	height: 50px;
 	line-height: 50px;
 	border-radius: 21px;
@@ -2101,7 +2102,7 @@ a.btn.btn-block {
 	background-image: image-url("youtube-icon.svg");
 	background-repeat: no-repeat;
 	background-position:  21px center;
-	background-attacehemnt: scroll ;
+	background-attachment: scroll;
 }
 
 .blog-link {
@@ -2144,7 +2145,7 @@ a.btn.btn-block {
 	width: 48px;
 	height: 36px;
 	display: block;
-	background: url("../images/youtube.svg") no-repeat scroll center;
+	background: url("youtube.svg") no-repeat scroll center;
 	background-size: 48px auto;
 	position: absolute;
 	left: 50%;
@@ -2163,7 +2164,7 @@ a.btn.btn-block {
 }
 
 .video-thumb-wrap:hover .video-btn {
-	background-image: url("../images/youtube-hover.svg");
+	background-image: url("youtube-h.svg");
 }
 
 .site-reviews-wrapper .title-wrap {
@@ -2192,7 +2193,7 @@ a.btn.btn-block {
 	background-image: image-url("review-section.png");
 	background-repeat: no-repeat;
 	background-position:   center;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 	background-size: auto 33px;
 	width: 135px;
 	height: 33px;
@@ -2292,7 +2293,7 @@ a.btn.btn-block {
 .is-verified {
 	font-size: 11px;
 	letter-spacing: -0.39px;
-	background: url("../images/verified-icon.svg") no-repeat scroll left center;
+	background: url("verified-icon.svg") no-repeat scroll left center;
 	padding-left: 19px;
 	min-height: 16px;
 }
@@ -2392,7 +2393,7 @@ a.btn.btn-block {
     background-image: image-url("instagram_icon1.svg");
 	background-repeat: no-repeat;
 	background-position:  22px center;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 	display: inline-flex;
 	align-items: center;
 	margin: 0 0 30px;
@@ -2455,7 +2456,7 @@ a.btn.btn-block {
 	background-image: image-url("qa-icon");
 	background-repeat: no-repeat;
 	background-position:  21px center;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 	background-color:#fff;
 	padding: 0 23px 0 62px;
 }
@@ -2464,10 +2465,19 @@ a.btn.btn-block {
 	text-decoration: underline;
 }
 
+.faq-learn-more {
+	color: #fff;
+	text-decoration: underline;
+	font-weight: bold;
+	padding-left: 5px;
+}
+.faq-learn-more:hover {
+	color: #fff;
+}
 #faqaccordion {
 	padding: 110px 0 90px;
 	background-color: rgba(0,0,0,0.05);
-	border-left: rgba(240,240,240,0.07) 1px solid;
+	border-left: 1px solid #C43A3E;
 }
 
 #faqaccordion .card,
@@ -2508,7 +2518,7 @@ a.btn.btn-block {
 	background-image: image-url("arrow-bottom-white-icon.svg");
 	background-repeat: no-repeat;
 	background-position:   center;
-	background-attacehemnt: scroll;
+	background-attachment: scroll;
 	width: 10px;
 	height: 6px;
 }
@@ -2519,9 +2529,9 @@ a.btn.btn-block {
 
 #faqaccordion .card-body {
 	font-size: 16px;
-	color: rgba(255,255,255,0.7);
+	color: rgba(255,255,255,0.9);
 	letter-spacing: -0.56px;
-	padding: 4px 0 10px;
+	padding: 4px 20px 10px 0;
 }
 
 .footer-links-wrap {
@@ -2673,7 +2683,7 @@ a.btn.btn-block {
 }
 
 .social-nav a.youtube-icon {
-	background-image: image-url("youtube-hover.svg");
+	background-image: image-url("youtube-h.svg");
 
 }
 
@@ -3676,7 +3686,7 @@ a.btn.btn-block {
 .cart-item .remove-btn {
 	width: 34px;
 	height: 34px;
-	border: #fff 4px solid !important;
+	/* border: #fff 4px solid !important; */
 	padding: 0;
     position: absolute;
     left: 4px;
@@ -3738,7 +3748,7 @@ a.btn.btn-block {
 }
 
 .cart-item-details h4 a:hover {
-	color: #bb1e5a;
+	color: #A71E22;
 }
 
 .price-size {
@@ -3822,7 +3832,7 @@ a.btn.btn-block {
 }
 
 .cart-similar-item h4 a:hover {
-	color: #bb1e5a;
+	color: #A71E22;
 }
 
 .cart-similar-item .btn {
@@ -4057,7 +4067,7 @@ a.btn.btn-block {
 }
 
 .page-link:hover {
-	color: #bb1e5a;
+	color: #A71E22;
 	background-color: #fff;
 }
 
@@ -4293,7 +4303,7 @@ a.btn.btn-block {
 .order-col .text-success {
 	background-image: image-url("delivered-icon.svg");
 	background-repeat: no-repeat;
-	background-attachement:scroll;
+	background-attachment: scroll;
 	background-position:   left center;
 	padding: 0 0 0 18px;
 }
@@ -6352,3 +6362,5 @@ a.btn.btn-block {
 	position: initial!important;
 	float: right;
 }
+
+

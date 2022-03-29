@@ -84,11 +84,11 @@
           <div id="account-button">
             <% if spree_current_user.present? %>
               <%= link_to  destroy_spree_user_session_path, :class => 'nav-profile tablet-hide' do %>
-                <span id="span">Logout </span>
+                <span id="span">Profile</span>
               <% end %>            
             <% else %>
               <%= link_to new_spree_user_session_path , :class => 'nav-profile tablet-hide' do %>
-                <span id="span">Login </span>    
+                <span id="span">Login</span>    
               <% end %>
             <% end %>
           </div>
