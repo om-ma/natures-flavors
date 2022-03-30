@@ -29,14 +29,15 @@
       <div class="col-xl-2 col-lg-4">
          <div class="footer-spacer"></div>
          <ul class="footer-nav">
-         <li class="header">Product Info</li>
-         <% if spree_menu('footer').present? %>
-            <% spree_menu('footer').children.each do |parent| %>
-               <% parent.children.each do |child| %>
-                  <li><%= spree_nav_link_tag(child) %></li>
-               <% end %>
-            <% end %>
-         <% end %>
+            <li class="header">Product Info</li>
+            <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
+            <li><a href="#">Flavor Emulsions</a></li>
+            <li><a href="#">Flavor Concentrates</a></li>
+            <li><a href="#">Flavor Extracts</a></li>
+            <li><a href="#">Flavor Oils</a></li>
+            <li><a href="#">The Flavor Guy Videos</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">FAQs</a></li>
          </ul>
       </div>
       <div class="col-xl-2 col-lg-12">

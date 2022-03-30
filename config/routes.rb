@@ -27,3 +27,7 @@ Spree::Core::Engine.add_routes do
 
   resources :user_credit_cards
 end
+
+Spree::Core::Engine.routes.draw  do
+  get '/articles/flavor-powders',  action: :show, controller: 'pages', p: 'flavor_powders', :as => :flavor_powders
+end
