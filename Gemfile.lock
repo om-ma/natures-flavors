@@ -57,6 +57,15 @@ GIT
       spree_core (>= 3.2.0, <= 4.5.0)
       spree_extension (~> 0.0.5)
 
+GIT
+  remote: https://gitlab.com/duc.lam/spree_common.git
+  revision: 6ff2758ecb2d06a302ff96796e357dc34db7ac88
+  branch: master
+  specs:
+    spree_common (0.0.1)
+      spree (>= 4.3)
+      spree_extension
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -551,6 +560,7 @@ DEPENDENCIES
   spree (>= 4.3)
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
+  spree_common!
   spree_emails (>= 4.3)
   spree_events_tracker!
   spree_favorite_products!

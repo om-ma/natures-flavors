@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 #Spree
 gem 'spree', '>= 4.3'
+gem 'spree_common', git: 'https://gitlab.com/duc.lam/spree_common.git', branch: 'master'
 gem 'spree_frontend', '>= 4.3'
 gem 'spree_backend', '>= 4.3'
 gem 'spree_emails', '>= 4.3'
