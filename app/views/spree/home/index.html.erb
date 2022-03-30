@@ -334,7 +334,9 @@
         <div class="faqs-title-wrap d-lg-flex flex-column align-items-end">
           <div class="title">FAQ</div>
           <div class="sm-title">All your questions about Flavorings, Extracts, Syrups and Fragrances answered.</div>
-          <a href="/faq" class="btn"><span>Visit our FAQ Center</span></a>
+          <%= link_to faq_path, :class => "btn" do %>
+            <span>Visit our FAQ Center</span>
+          <% end %>
           </div>
       </div>
       <div class="col-lg-8">
@@ -346,7 +348,7 @@
               </h2>
             </div>
             <div id="collapseOne" class="collapse show" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Extracts can be used in baking and clear beverages. Natural flavors and extracts come in many styles, colors, forms, and concentrations. Our Extracts are water soluble flavors made in a base of Natural Ethyl Alcohol. These all natural flavor extracts and organic flavor extracts are food grade, Kosher, vegan, gluten Free.  <a href="/articles/flavor-extracts" class="faq-learn-more">Learn More</a></div>
+              <div class="card-body">Flavor Extracts can be used in baking and clear beverages. Natural flavors and extracts come in many styles, colors, forms, and concentrations. Our Extracts are water soluble flavors made in a base of Natural Ethyl Alcohol. These all natural flavor extracts and organic flavor extracts are food grade, Kosher, vegan, gluten Free. <%= link_to 'Learn More', flavor_extracts_path, :class => 'faq-learn-more' %></div>
             </div>
           </div>
           <div class="card">
@@ -356,7 +358,7 @@
               </h2>
             </div>
             <div id="collapseTwo" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor concentrates are ideal for use in syrups, ice cream, baked goods, yogurt, beverages, and more. <a href="/articles/flavor-concentrates" class="faq-learn-more">Learn More</a></div>
+              <div class="card-body">Flavor concentrates are ideal for use in syrups, ice cream, baked goods, yogurt, beverages, and more. <%= link_to 'Learn More', flavor_concentrates_path, :class => 'faq-learn-more' %> </div>
             </div>
           </div>
           <div class="card">
@@ -366,7 +368,7 @@
               </h2>
             </div>
             <div id="collapseThree" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Oils are used in oil-based products, such as chocolate oil and lip balm oil. <a href="/articles/flavor-oils" class="faq-learn-more">Learn More</a></div>
+              <div class="card-body">Flavor Oils are used in oil-based products, such as chocolate oil and lip balm oil. <%= link_to 'Learn More', flavor_oils_path, :class => 'faq-learn-more' %></div>
             </div>
           </div>
           <div class="card">
@@ -376,7 +378,7 @@
               </h2>
             </div>
             <div id="collapseFour" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Powders can be used in smoothies, baked goods, and dry mixes. <a href="/articles/flavor-powders" class="faq-learn-more">Learn More</a></div>
+              <div class="card-body">Flavor Powders can be used in smoothies, baked goods, and dry mixes. <%= link_to 'Learn More', flavor_powders_path, :class => 'faq-learn-more' %> </div>
             </div>
           </div>
           <div class="card">
@@ -386,7 +388,7 @@
               </h2>
             </div>
             <div id="collapseFive" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Emulsions can be used in soft and hard candy. <a href="/articles/flavor-emulsions" class="faq-learn-more">Learn More</a></div>
+              <div class="card-body">Flavor Emulsions can be used in soft and hard candy. <%= link_to 'Learn More', flavor_emulsions_path, :class => 'faq-learn-more' %> </div>
             </div>
           </div>
          </div>
