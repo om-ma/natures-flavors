@@ -31,5 +31,8 @@ module NaturesFlavors
     # the framework and any gems in your application.
 
     config.time_zone = "Pacific Time (US & Canada)"
+    
+    # Custom error pages
+    config.exceptions_app = self.routes
   end
 end

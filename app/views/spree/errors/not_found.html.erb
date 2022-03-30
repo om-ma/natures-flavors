@@ -1,7 +1,8 @@
-<div class="container">
-  <div class="not-found-page text-center pt-5">
-    <h1 class="display-1 text-primary">404</h1>
-    <p><strong><%= Spree.t(:page_not_found) %></strong></p>
-    <p><%= Spree.t(:get_back_to_the) %> <%= link_to Spree.t(:home_page), spree.root_url %></p>
+<main class="main-contents error_page">
+  <div class="container">
+      <%= image_tag 'errors/404.jpg', class: "img-responsive" %>
+      <h1><strong>Hmm…something went wrong.</strong></h1>
+      <p>It seems you stumbled on a page that does not exist. No need to worry. Simply, head over to our menu bar above.</p>
+      <p>If you need assitance, please email us at <a href="mailto:customerservice@seelecttea.com">customerservice@seelecttea.com</a></p>
   </div>
-</div>
+</main>

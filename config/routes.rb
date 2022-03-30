@@ -13,8 +13,13 @@ Rails.application.routes.draw do
 end
 
 Spree::Core::Engine.routes.draw do
-  get '/not-found', to: 'page_not_found#index', as: "page_not_found"
+  get '/not-found', to: 'errors#not_found', as: "page_not_found"
   get 'refresh_cart_bag', to: 'custom_checkout#refresh_shopping_cart_bag'
+
+  # Custom error pages
+  match "/404", to: "errors#not_found", via: :all
+  match "/422", to: "errors#rejected", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
 end
 
 Spree::Core::Engine.add_routes do
