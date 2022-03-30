@@ -9,6 +9,10 @@ rake db:seed
 #rake spree_roles:permissions:populate_permission_sets
 
 
+* To recreate thumbnails
+Spree::Image.all.each do |image| image.create_sizes end
+
+
 # Migration
 Users:
 bin/rails r "migration/users.rb"
