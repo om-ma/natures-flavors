@@ -3,7 +3,7 @@
       <div class="col-xl-2 tablet-hide"></div>
       <div class="col-xl-2 col-lg-4">
          <div class="footer-logo-wrap">
-            <figure>  <%= image_tag 'footer-logo.svg', alt: "Nature's Flavors" %></figure>
+            <figure>  <%= image_tag 'footer_logo.svg', alt: "Nature's Flavors" %></figure>
             <p>Family owned and run for over 40 years. It is our mission to spread the Natural and Organic bounty of nature through our products.</p>
          </div>
          <ul class="footer-nav">
@@ -31,13 +31,13 @@
          <ul class="footer-nav">
             <li class="header">Product Info</li>
             <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
-            <li><a href="#">Flavor Emulsions</a></li>
-            <li><a href="#">Flavor Concentrates</a></li>
-            <li><a href="#">Flavor Extracts</a></li>
-            <li><a href="#">Flavor Oils</a></li>
-            <li><a href="#">The Flavor Guy Videos</a></li>
+            <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
+            <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
+            <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
+            <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+            <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
             <li><a href="#">Reviews</a></li>
-            <li><a href="#">FAQs</a></li>
+            <li><%= link_to('FAQs', faq_path) %></li>
          </ul>
       </div>
       <div class="col-xl-2 col-lg-12">
@@ -70,5 +70,12 @@
       </div>
       <div class="col-xl-2 tablet-hide"></div> 
    </div>
-   <div class="banner-grid-wrap"></div>
+   <div class="banner-grid-wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+   </div>
 </div>

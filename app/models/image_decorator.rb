@@ -4,12 +4,7 @@ Spree::Image.class_eval do
 
   def self.styles
     {
-      mini: '110x110', # thumbs under image
-      slider_preview: '247x247', # thumbnails in product page
-      small: '110x110', # side cart images
-      product: '360x360', # full product image
-      large: '380x380', # product page images
-      overview_slider: '380x380' # quickview imagess
+      large: '1000x1000', # product page images
     }
   end
 

@@ -3012,7 +3012,7 @@ h3 a{
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position:  left center;
-	padding-left: 35px;
+	padding: 3px 0 3px 35px;
 }
 
 .product-actions a.add-to-fav {
@@ -3937,6 +3937,10 @@ h3 a{
 	background-image: image-url("arrow-top-icon.svg");
 }
 
+.sidebar-sub-categories .active a{
+	color: #d24047 !important;
+}
+
 .category-filters-wrap {
 	padding: 0 30px;
 	border-left: #f0f0f0 1px solid;
@@ -4634,7 +4638,7 @@ h3 a{
 	position: absolute;
 	left: 60px;
 	top: 60px;
-	background: url("../images/attention.svg") no-repeat scroll center;
+	background: url("attention.svg") no-repeat scroll center;
 	width: 122px;
 	height: 122px;
 }
@@ -6164,6 +6168,10 @@ h3 a{
 .banner-caption-wrap .wrap,
 .article-wrapper .block {
     margin: 0 0 40px;
+}
+
+#reviews-slider {
+	height: 390px !important;
 }
 }
 

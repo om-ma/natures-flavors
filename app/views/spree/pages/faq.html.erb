@@ -1,0 +1,113 @@
+<% self.title = "Frequently Asked Questions" %>
+<% meta_tag :description, "Have some questions regarding our natural and organic products? We've got answers. If have a specific question, feel free to contact us." %>
+<main class="page-contents">
+   <div class="category-wrapper">
+      <div class="row no-gutters">
+         <div class="col-xl-2 col-lg-3 phone-hide">
+            <div class="sidebar-categories">
+               <h4>More Information:</h4>
+               <ul class="sidebar-sub-categories">
+                  <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
+                  <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
+                  <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
+                  <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
+                  <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+                  <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
+                  <li><a href="#">Reviews</a></li>
+                  <li class="active"><%= link_to('FAQs', faq_path) %></li>
+               </ul>
+            </div>
+         </div>
+         <div class="col-xl-7 col-lg-9">
+            <div class="nflavors-faqs-wrapper">
+               <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Nature's Flavors FAQs</li>
+               </ol>
+               <h1 class="title">Nature's Flavors FAQs</h1>
+               <div class="mobile-categories-wrap phone-visible">
+                  <div class="header"><a href="#" class="mobile-category-toggle">More Information</a></div>
+                  <ul class="sidebar-sub-categories">
+                     <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
+                     <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
+                     <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
+                     <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
+                     <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+                     <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
+                     <li><a href="#">Reviews</a></li>
+                     <li><%= link_to('FAQs', faq_path) %></li>
+                  </ul>
+               </div>
+               <div class="accordion" id="faqaccordion">
+                  <div class="card">
+                     <div class="card-header">
+                        <h2 class="mb-0">
+                           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What is a natural flavor?</button>
+                        </h2>
+                     </div>
+                     <div id="collapseOne" class="collapse" data-parent="#faqaccordion">
+                        <div class="card-body">A natural flavor is derived from plant, vegetable or fruit material. It does not contain any artificial or synthetic additives.</div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header">
+                        <h2 class="mb-0">
+                           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">Are any of your products artificial?</button>
+                        </h2>
+                     </div>
+                     <div id="collapseTwo" class="collapse" data-parent="#faqaccordion">
+                        <div class="card-body">No! All of our products are natural and derived from plant and vegetable extracts.</div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header">
+                        <h2 class="mb-0">
+                           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">Are your products certified organic? Who certifies you?</button>
+                        </h2>
+                     </div>
+                     <div id="collapseThree" class="collapse" data-parent="#faqaccordion">
+                        <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header">
+                        <h2 class="mb-0">
+                           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour">How do you know that your ingredients are actually natural and organic?</button>
+                        </h2>
+                     </div>
+                     <div id="collapseFour" class="collapse" data-parent="#faqaccordion">
+                        <div class="card-body">Our quality control department is staffed by microbiologists and chemists that utilize modern gas chromatography mass spectrometry (GCMS), mass spectrometry (MS), as well as high performance liquid chromatography (HPLC) tactics to get insight into the chemicals in the ingredients we receive and export.</div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header">
+                        <h2 class="mb-0">
+                           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive">Which type of flavoring should I use?</button>
+                        </h2>
+                     </div>
+                     <div id="collapseFive" class="collapse" data-parent="#faqaccordion">
+                        <div class="card-body">The type of flavoring depends heavily on what your end goal is. We have information based on every flavor type on the bottom of our home page. Concentrates are the most versatile and can be used for a majority of applications if you’re just starting out.</div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header">
+                        <h2 class="mb-0">
+                           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix">I used your flavors and they taste medicinal, metallic, soapy, artificial, and tastes like pure chemicals, why is that? Am I using your flavors right? How much flavor should I use in my application?</button>
+                        </h2>
+                     </div>
+                     <div id="collapseSix" class="collapse" data-parent="#faqaccordion">
+                        <div class="card-body">That's probably because you've over flavored your application. Our flavors are pure, concentrated flavors. You won’t get any watered down flavors from us. Most applications should start with .25% to 1% usage, and up to a maximum of 4% of flavor by total weight. For example, The Flavor Guy used 10g of our alcohol-free extract into a 1000g of water & sugar to make a flavored syrup. That’s 1% of flavor into the total application, and it came out delicious and ready to use for a variety of things from coffee, to snow cones, teas, and more. The most common reason that people over-flavor their applications is because there is no potentiator. Just as you would add cream & sugar to your coffee, or honey to your teas; you must be sure to add something that would drive the flavor. Without sugar and acidity, an orange wouldn’t taste good, so be sure to add potentiators such as sugar, citric acid for fruit flavors (.15% is usually a good starting point), or add some fat content. For more in-depth flavoring guides, see our product info pages in the footer of our homepage.</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="contact-wrap">
+                  <h3>Have Any More Questions?</h3>
+                  <p>Feel free to contact us via email at <a href="mailto:customerservice@naturesflavors.com">customerservice@naturesflavors.com</a> or call us at <a href="tel:(714)744-3700">(714)744-3700</a>.</p>
+               </div>
+            </div>
+            <!-- /.Faqs --> 
+         </div>
+         <div class="col-xl-3 tablet-hide"></div>
+      </div>
+   </div>
+</main>
