@@ -225,6 +225,7 @@ $(document).on('turbolinks:load', function() {
         {
           breakpoint:991,
           settings: {
+            slideMove:1,
             auto: true,
             loop: true,
           }

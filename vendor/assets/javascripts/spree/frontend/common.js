@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
-    var showChar = 360;
+    var showChar = 260;
     var ellipsestext = "...";
-    var moretext = "more";
+    var moretext = "Read More";
     var lesstext = "less";
     $('.more').each(function() {
         var content = $(this).html();
@@ -26,6 +26,7 @@ $(document).on('turbolinks:load', function() {
         return false;
     });
     })
+
 $(document).ready(function() {
 
   $(".js-qty-select").change(function() {
