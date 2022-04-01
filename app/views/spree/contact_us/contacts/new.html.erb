@@ -11,7 +11,7 @@
  <h3>714-771-2212</h3>
  </div>
  <div class="col-md-6">
-    <%= form_for @contact, :html => {:class => "contact-form"}, :url => contacts_path do |f| %>
+    <%= form_for @contact, :html => {:class => "contact-form"}, :url => contact_us_path do |f| %>
       <%= flash_messages %>
       <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @contact } %>
       <div class="row narrow-row-md">
@@ -54,7 +54,7 @@
       This site is protected by reCAPTCHA and the Google
       <a href="/privacy-policy">Privacy Policy</a> and
       <a href="/terms-and-conditions">Terms of Service</a> apply.
-      <%= f.submit t('.send_message'), :class => 'btn btn-primary btn-block mt-25', tabindex: 5, :alt => t('.send_message'), :id => 'contact_us_contact_submit', :title => "Send Message" %>
+      <%= f.submit Spree.t('spree_contact_us.send_message'), :class => 'btn btn-primary btn-block mt-25', tabindex: 5, :alt => Spree.t('spree_contact_us.send_messages'), :id => 'contact_us_contact_submit', :title => "Send Message" %>
     <% end %>
     </div>
   </div>
