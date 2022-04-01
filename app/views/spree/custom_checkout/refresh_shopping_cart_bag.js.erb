@@ -2,3 +2,4 @@ $('#shopping_cart_bag_area').html("<%= j render partial: 'spree/shared/shopping_
 $('.cart-sidebar').toggleClass("active");
 $('.overlay').toggleClass("active");
 $('body').toggleClass("hide-scroll");
+$(".cart-counter").html("<%= @order.item_count %>")

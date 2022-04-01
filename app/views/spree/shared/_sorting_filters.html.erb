@@ -2,7 +2,7 @@
   <li><%= link_to "Most Popular", request.parameters.merge(sort_by: :descend_by_popularity), id: 'descend_popularity',class: "most-popular" %></li>
   <li><%= link_to "Ascending name", request.parameters.merge(sort_by: 'name-a-z'), id: 'ascending_name',class: "assending-filter" %></li>
   <li><%= link_to "Descending name", request.parameters.merge(sort_by: 'name-z-a'), id: 'descending_name', class: "descending-filter" %></li>
-  <li><%= link_to "bestsellers", request.parameters.merge(sorting: :bestsellers), id: 'bestsellers_filter', class: "bestsellers-filter" %></li>
+  <li><%= link_to "bestsellers", request.parameters.merge(sort_by: :bestsellers), id: 'bestsellers_filter', class: "bestsellers-filter" %></li>
 </ul>
 
 <div class="sorting-filter d-flex align-items-center justify-content-end" >
