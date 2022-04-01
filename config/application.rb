@@ -32,6 +32,9 @@ module NaturesFlavors
 
     config.time_zone = "Pacific Time (US & Canada)"
     
+    # SMTP header and bcc for https://www.engage.so
+    config.action_mailer.default_options = { bcc: "mails@ses.engage.so", "X-SES-CONFIGURATION-SET" => "engage_so", "ConfigurationSetName" => "engage_so" }
+    
     # Custom error pages
     config.exceptions_app = self.routes
   end
