@@ -63,7 +63,6 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "natures-flavors_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -89,20 +88,21 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  # Do not dump schema after migrations.
- 
   config.assets.raise_runtime_errors = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => 'http://natural-flavors.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'https://www.naturesflavors.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-     :address              => "smtp.gmail.com",
+     :address              => "email-smtp.us-east-1.amazonaws.com",
      :port                 =>  587,
-     :user_name            => 'omqa2794@gmail.com',
-     :password             => 'PakistaN@123',
+     :domain               => "us-east-1.amazonaws.com",
+     :user_name            => ENV['ACTION_MAILER_USER_NAME'],
+     :password             => ENV['ACTION_MAILER_PASSWORD'],
      :authentication       => "plain",
      :enable_starttls_auto => true
    }
-
+   config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
+   #config.action_mailer.deliver_later_queue_name = "mail_queue"
 end
