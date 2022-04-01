@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'dotenv-rails'
+gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
+
 #Spree
 gem 'spree', '>= 4.3'
 gem 'spree_common', git: 'https://gitlab.com/duc.lam/spree_common.git', branch: 'master'
@@ -44,6 +47,7 @@ gem 'spree_backend', '>= 4.3'
 gem 'spree_emails', '>= 4.3'
 gem 'spree_sample' # dummy data like products, taxons, etc
 gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
+gem 'spree_contact_us', github: 'ducl13/spree_contact_us', branch: 'recaptcha'
 gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
 gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', branch: 'natures'
