@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_contact_us.git
-  revision: 4f021f466f979a5d11513a62c9480fff10c58f44
+  revision: 748e7f52fa9010454b6e9b544497bdb05295573f
   branch: naturesflavors
   specs:
     spree_contact_us (4.0.0.alpha2)
