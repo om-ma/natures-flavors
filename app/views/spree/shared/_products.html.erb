@@ -35,7 +35,7 @@
       <%= rel_next_prev_link_tags products %>
     <% end %>
   <% end %>
-  <% cache_products = (params[:sorting] == "bestsellers") ? cache_key_for_best_sellers(products) : cache_key_for_products(products) %>
+  <% cache_products = (params[:sort_by] == "bestsellers") ? cache_key_for_best_sellers(products) : cache_key_for_products(products) %>
   <% cache cache_products do %>
     <% products.each_with_index do |product, index| %>
       <%= render 'spree/shared/product', product: product, image_class: 'product-component-plp-image' %>
