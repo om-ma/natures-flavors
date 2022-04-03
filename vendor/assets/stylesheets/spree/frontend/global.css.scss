@@ -2372,7 +2372,7 @@ h3 a{
 }
 
 .media-list li {
-	margin: 0 45px 45px;
+	margin: 0 25px 25px;
 }
 
 .instagram-wrapper {
@@ -2887,7 +2887,7 @@ h3 a{
 .category-intro-footer p {
 	line-height: normal;
 }
-.category-intro-footer .more {
+.category-intro-footer .more{
 	font-size: 12px;
 	padding: 3px 10px;
 	text-align: center;
@@ -6408,3 +6408,127 @@ h3 a{
 }
 
 
+.about_us_hero_image img{ 
+	width: 100%;
+}
+.about_us_section, .contact_us_section {
+  background-color: #fcfcfc;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.about_us_section:before,
+.about_us_section:after{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background-color: rgba(0,0,0,0.02);
+	z-index: 5;
+}
+
+.contact_us_section:before,
+.contact_us_section:after {
+	content: '';
+	position: absolute;
+	left: 33.33%;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background-color: rgba(0,0,0,0.02);
+	z-index: 5;
+}
+.about_us_section .col-lg-6 {
+	padding: 10%;
+}
+.contact_us_section .col-md-4, .contact_us_section .col-md-6, .contact_us_section .col-md-8 {
+	padding: 5%;
+}
+.grey_back{
+	background-color: #F9F9F9;
+}
+.about_us_section h2 {
+	padding-bottom: 20px;
+}
+.about_us_section p {
+	font-size: 22px;
+	line-height: 40px;
+}
+.about_us_section img {
+	border-radius: 50px;
+	width: 90%;
+}
+@media (max-width: 1000px) {
+	.about_us_section:before,
+	.about_us_section:after,
+	.contact_us_section:before,
+	.contact_us_section:after {
+		width: 0px;
+	}
+	.about_us_section p {
+		font-size: 18px;
+		line-height: 30px;
+	}
+}
+
+.about_us_history {
+	background-image: image-url("about-us/history.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #fff;
+	padding: 5%;
+	text-align: center;
+	justify-content: center;
+	margin-bottom: 1px;
+}
+.about_us_history img{
+	border-radius: 30px;
+	height: 300px;
+	margin-bottom: 15px;
+}
+.our-brands, .contact_us_section{
+	border-top: 1px solid rgba(0,0,0,0.05);
+}
+.about_us-slider {
+	padding-bottom: 10% !important;
+}
+.contact_us_section .more {
+	font-size: 12px;
+	padding: 3px 10px;
+	text-align: center;
+	border-radius: 11px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
+	background: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
+	margin-bottom:20px;
+	font-weight: bold;
+}
+.contact_us_section h4 {
+	padding: 10px;
+}
+
+.history_element {
+	background-color: rgba(0, 0, 0, 0.05);
+	padding: 10px 15px;
+	text-align: center;
+	border-radius: 11px;
+	margin-bottom: 50px;
+	display: inline-block;
+}
+.since {
+	font-size: 11px;
+	padding: 3px 10px;
+	border-radius: 11px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
+	background: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
+	font-weight: bold;
+	color: #A71E22;
+	display: inline-table;
+}
+.about_us_history .lSAction {
+	top: -30% !important;
+}
+.about_us_history p{
+	padding: 0 5%;
+}

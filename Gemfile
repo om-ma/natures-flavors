@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 6.1.5'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -36,6 +36,11 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem "bugsnag", "~> 6.24", groups: [:staging, :production]
+gem 'canonical-rails', github: 'ducl13/canonical-rails'
+gem 'dotenv-rails'
+gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
+
 #Spree
 gem 'spree', '>= 4.3'
 gem 'spree_common', git: 'https://gitlab.com/duc.lam/spree_common.git', branch: 'master'
@@ -44,9 +49,10 @@ gem 'spree_backend', '>= 4.3'
 gem 'spree_emails', '>= 4.3'
 gem 'spree_sample' # dummy data like products, taxons, etc
 gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
+gem 'spree_contact_us', github: 'ducl13/spree_contact_us', branch: 'naturesflavors'
 gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
-gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', branch: 'natures'
+gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_events_tracker', github: 'ducl13/spree_events_tracker', branch: 'naturesflavors'
 
