@@ -19,34 +19,20 @@
 </div> -->
 <%# end %>
 <%#= render "spree/shared/cms/pages/edit_mode", edit_mode: @edit_mode %>
-  <div id="hero-carousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#hero-carousel" data-slide-to="0" class="active"></li>
-      <li data-target="#hero-carousel" data-slide-to="1"></li>
-      <li data-target="#hero-carousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <picture>
-          <source media="(max-width:991px)" srcset="<%= image_path "hero-banner-mobile.jpg" %>">
-          <%= image_tag "hero-banner.jpg", class:'d-block w-100', alt:"Flowers" %>
-        </picture>
-      </div>
-      <div class="carousel-item">
-        <picture>
-          <source media="(max-width:991px)" srcset="<%= image_path "hero-banner-mobile.jpg" %>">
-          <%= image_tag "hero-banner.jpg", class:'d-block w-100', alt:"Flowers" %>
-        </picture>
-      </div>
-      <div class="carousel-item">
-        <picture>
-          <source media="(max-width:991px)" srcset="<%= image_path "hero-banner-mobile.jpg" %>">
-          <%= image_tag "hero-banner.jpg", class:'d-block w-100', alt:"Flowers" %>
-        </picture>
-      </div>
+<div class="hero-banner">
+    <picture>
+      <source media="(max-width:991px)" srcset="assets/images/hero-banner-mobile.jpg">
+      <%#= image_tag "hero-banner.jpg", alt:"Flowers",class:'d-block w-100' %>
+        <%= render partial: 'spree/shared/slider', locals: { slider: Spree::Slide.published, cid: 'home', interval: 3500 } %>
+    </picture>
+    <div class="banner-grid-wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-    <button class="carousel-control-prev" type="button" data-target="#hero-carousel" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </button>
-    <button class="carousel-control-next" type="button" data-target="#hero-carousel" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </button>
   </div>
   <div class="search-wrapper">
     <div class="container-fluid">
@@ -77,7 +63,7 @@
             <div class="gmp-certificate"></div>
             <h1>Natural and Organic Flavorings, Extracts, Syrups, and Fragrances</h1>
             <p><strong>Nature’s Flavors</strong> is where Mother Nature meets your kitchen. Our natural and organic flavorings are derived from the most remarkable fruits, vegetables, and herbs the earth has to offer. All of our products are made-to-order and delivered to your doorstep.</p>
-            <a href="#" class="btn btn-primary"><span>More About Us</span></a> </div>
+            <a href="#" class="btn btn-primary"><span>Read More</span></a> </div>
         </div>
         <div class="col-xl-4 col-lg-4">
           <div class="company-highlights-wrapper">
@@ -92,7 +78,7 @@
             <div class="company-highlights d-flex align-items-start mb-60" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
               <div class="icon-wrap quality-icon"></div>
               <div class="flex-fill">
-                <h4>PURE ORGANIC & NATURAL</h4>
+                <h4>HIGH QUALITY PRODUCTS</h4>
                 <p>Ingredients sourced from the best producers</p>
               </div>
             </div>
@@ -115,13 +101,13 @@
       <div class="col-xl-6 col-lg-8">
         <ul class="nav nav-tabs" role="tablist">
           <% if @best_sellers_products.present? %>
-            <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#bestSellers">Best Sellers</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#bestSellers"> BestSellers</a></li>
           <% end %>
           <% if @deals_products.present? %>
             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#deals">Deals</a></li>
           <% end %>
           <% if @popular_extracts_products.present? %>
-            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularExtracts">Popular Extracts</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularExtracts">Popular Extracts </a></li>
           <% end %>
           <% if @popular_Powders_products.present? %>
             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularPowders">Popular Powders</a></li>
@@ -177,31 +163,31 @@
         <div class="col-lg-8">
           <div class="wrap">
             <div class="title-wrap d-xl-flex flex-row-reverse align-items-center justify-content-between">
-              <div class="right"> <a href="https://www.youtube.com/c/NaturesFlavors" class="youtube-link" target="_blank">More than 4k subscribers</a></div>
+              <div class="right"> <a href="#" class="youtube-link">More than 20k followers</a></div>
               <div class="left d-flex align-items-start">
                 <div class="title-img"><%= image_tag "flavor-guy.jpg", alt:"" %></div>
                 <div class="title-info">
-                  <h3 class="title"><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></h3>
+                  <h3 class="title">The Flavor Guy Videos</h3>
                   <div class="sm-title">He goes on adventures around the world in search of new flavors</div>
                 </div>
               </div>
             </div>
             <div class="slider-wrapper position-relative">
               <ul id="videos-slider" class="ontent-slider">
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/the-difference-between-a-flavor-concentrate-and-a-flavor-extract/" class="video-thumb-wrap" target="_blank" data-target=".video-modal">
-                  <div class="video-thumb mb-10"><%= image_tag "videos/flavor-concentrate-extracs.jpg", alt:"The Difference Between a Flavor Concentrate and a Flavor Extract" %><span class="video-btn"></span></div>
-                  <h4>The Difference Between a Flavor Concentrate and a Flavor Extract</h4>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap" data-toggle="modal" data-target=".video-modal">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
+                  <h4>Difference between a flavor concentrate and a flavor extract</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/watch-a-giant-bee-removal-with-the-flavor-guy/" target="_blank" class="video-thumb-wrap">
-                  <div class="video-thumb mb-10"><%= image_tag "videos/giant-bee-removal.jpg", alt:"Giant Bee Removal" %><span class="video-btn"></span></div>
-                  <h4>Watch a Giant Bee Removal with The Flavor Guy</h4>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
+                  <h4>How To Make Alcohol Free Vanilla Extract</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/whats-the-difference-between-organic-and-natural/" target="_blank" class="video-thumb-wrap">
-                  <div class="video-thumb mb-10"><%= image_tag "videos/difference-organic-natural.jpg", alt:"Difference Between Organic and Natural" %><span class="video-btn"></span></div>
-                  <h4>What’s the Difference Between Organic and Natural</h4>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
+                  <h4>Difference between a flavor concentrate and a flavor extract</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/homemade-alchohol-free-vanilla-extract-recipe/" target="_blank" class="video-thumb-wrap">
-                  <div class="video-thumb mb-10"><%= image_tag "videos/how-to-vanilla-extract.jpg", alt:"How To Make Alcohol Free Vanilla Extract" %><span class="video-btn"></span></div>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %><span class="video-btn">Play</span></div>
                   <h4>How To Make Alcohol Free Vanilla Extract</h4>
                   </a></li>
               </ul>
@@ -215,7 +201,7 @@
   <div class="site-reviews-wrapper">
     <div class="title-wrap text-center">
       <div class="reviews-title-icon"></div>
-      <div class="title">Nature&apos;s Flavors Reviews and Testimonials</div>
+      <div class="title">Nature's Flavors Reviews and Testimonials</div>
       <div class="sm-title">Real Reviews From Real Customers</div>
     </div>
     <div class="slider-wrapper reviews-wrap position-relative">
@@ -224,10 +210,10 @@
           <div class="review-wrap">
             <div class="wrap">
               <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
-              <p>All flavors are accurate and intense - great for my milk frother or directly into coffee!</p>
-              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Phillip A.</strong><span class="is-verified">Verified Purchase</span></div>
-              <div class="review-img"><a href="https://www.naturesflavors.com/organic-flavor-extracts/57742-hazelnut-extract-organic.html"><%= image_tag "reviews/hazelnut.jpg", alt:"" %></a></div>
-              <div class="review-wrap-footer">Hazelnut Flavor Extract, Organic</div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
             </div>
           </div>
         </li>
@@ -235,10 +221,10 @@
           <div class="review-wrap">
             <div class="wrap">
               <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
-              <p>Great quality product, fast turn around time and arrived in good condition. We use to flavor truffles and they’re a great natural flavor oil. Thanks!</p>
-              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Mandi D.</strong><span class="is-verified">Verified Purchase</span></div>
-              <div class="review-img"><a href="https://www.naturesflavors.com/natural-flavor-oil-for-chocolate/116758-blackberry-flavor-oil-for-chocolate-oil-soluble.html"><%= image_tag "reviews/blackberry.jpg", alt:"" %></a></div>
-              <div class="review-wrap-footer">Blackberry Flavor Oil for Chocolate</div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
             </div>
           </div>
         </li>
@@ -246,10 +232,10 @@
           <div class="review-wrap">
             <div class="wrap">
               <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
-              <p><strong>Cleanest/Highest Quality Tapioca Syrup we could find.</strong> We use it in Confectionery Manufacturing. The consistency and quality are always top notch. Highly Highly recommend and amazing customer service.</p>
-              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Joel A.</strong><span class="is-verified">Verified Purchase</span></div>
-              <div class="review-img"><a href="https://www.naturesflavors.com/organic-ingredients/63869-organic-tapioca-syrup-vegan.html"><%= image_tag "reviews/tapioca.jpg", alt:"" %></a></div>
-              <div class="review-wrap-footer">Organic Tapioca Syrup</div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
             </div>
           </div>
         </li>
@@ -257,10 +243,10 @@
           <div class="review-wrap">
             <div class="wrap">
               <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
-              <p>Wow! Love this the Jalapeño Cotton Candy. It has become a fan favorite for our customers. Sweet with a little heat!</p>
-              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Bonnie G.</strong><span class="is-verified">Verified Purchase</span></div>
-              <div class="review-img"><a href="https://www.naturesflavors.com/all-natural-cotton-candy-sugar/142616-jalapeno-flavor-cotton-candy-base-natural.html"><%= image_tag "reviews/jalapeno.jpg", alt:"" %></a></div>
-              <div class="review-wrap-footer">Jalapeno Cotton Candy Floss Sugar</div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
             </div>
           </div>
         </li>
@@ -268,64 +254,62 @@
           <div class="review-wrap">
             <div class="wrap">
               <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
-              <p>This is a must-have in our house, worth the shipping costs to us in Canada! Great cherry cola flavor, organic, and way lower in sugar than the commercial brand-name products from the store.</p>
-              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Keri P.</strong><span class="is-verified">Verified Purchase</span></div>
-              <div class="review-img"><a href="https://www.naturesflavors.com/flavored-syrups-organic/64276-cherry-cola-syrup-organic.html"><%= image_tag "reviews/cherrycola.jpg", alt:"" %></a></div>
-              <div class="review-wrap-footer">Cherry Cola Syrup, Organic</div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
             </div>
           </div>
         </li>
         <li data-aos="fade-up" data-aos-once="true" data-aos-duration="2200">
           <div class="review-wrap">
             <div class="wrap">
-              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star-off.svg", alt:"" %><%= image_tag "star-off.svg", alt:"" %></div>
-              <p>A very bright cherry flavor, more akin to maraschino cherry. I was hoping for a deeper true cherry flavor, so maybe your dark cherry flavor is a better option. Overall I enjoy how concentrated these flavor emulsions are...</p>
-              <div class="review-verification d-flex flex-wrap align-items-center"><strong>OC</strong><span class="is-verified">Verified Purchase</span></div>
-              <div class="review-img"><a href="https://www.naturesflavors.com/natural-flavor-emulsions-heat-stable/62260-cherry-flavor-emulsion.html"><%= image_tag "reviews/cherry-emulsion.jpg", alt:"" %></a></div>
-              <div class="review-wrap-footer">Cherry Flavor Emulsion</div>
+              <div class="ratings"><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %><%= image_tag "star.svg", alt:"" %></div>
+              <p>I purchased the Vanilla flavoring to enhance a tea blend I am developing. The smell and taste was just what it needed to complete my blend.</p>
+              <div class="review-verification d-flex flex-wrap align-items-center"><strong>Karen R.</strong><span class="is-verified">Verified Purchase</span></div>
+              <div class="review-img"><img src="assets/images/product-thumb-1.jpg" alt=""></div>
+              <div class="review-wrap-footer">Organic Vanilla Coffee and Tea Flavoring</div>
             </div>
           </div>
         </li>
       </ul>
-      <div class="reviews-btn"> <a href="#" class="btn btn-primary"><span>More then 1900</span>Read All Reviews</a> </div>
+      <div class="reviews-btn"> <a href="#" class="btn btn-primary"><span>More then 1400</span>Read All Reviews</a> </div>
     </div>
   </div>
-
-  <div class="media-partners-wrapper">
+  <div class="media-partners-wrapper phone-hide">
     <div class="container">
-    <div class="sm-title text-center">Our Brands:</div>
+      <div class="sm-title text-center">You can find products made with our flavors at:</div>
       <ul class="media-list d-flex flex-wrap align-items-center justify-content-center">
-          <li><a href="https://naturesflavors.com"><%= image_tag "brand-natures-flavors.svg", alt:"Nature's Flavors" %></a></li>
-          <li><a href="https://www.seelecttea.com/" target="_blank"><%= image_tag "brand-seelect-tea.svg", alt:"Seelect Tea" %></a></li>
-          <li><a href="https://www.naturlax.com/" target="_blank"><%= image_tag "brand-naturlax.svg", alt:"Naturlax" %></a></li>
-          <li><a href="https://www.yummatchatea.com/" target="_blank"><%= image_tag "brand-yum-matcha.svg", alt:"Yum Matcha Tea" %></a></li>
+        <li><%= image_tag "media-partner1.png", alt:"" %></li>
+        <li><%= image_tag "media-partner2.png", alt:"" %></li>
+        <li><%= image_tag "media-partner3.png", alt:"" %></li>
+        <li><%= image_tag "media-partner4.png", alt:"" %></li>
+        <li><%= image_tag "media-partner5.png", alt:"" %></li>
       </ul>
     </div>
   </div>
-
   <div class="instagram-wrapper">
     <div class="container">
-      <div class="instagram-btn"><a href="https://www.instagram.com/natures_flavors/" target="_blank">Follow us<span>natures_flavors</span></a></div>
+      <div class="instagram-btn"><a href="#" target="_blank">Follow us<span>natures_flavors</span></a></div>
       <div class="row narrow-row">
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CbYHhCSB4sB/" target="_blank"><%= image_tag "instagram/happy-spring.jpg", alt:"Happy Spring" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CW33aRMhzIm/" target="_blank"><%= image_tag "instagram/orange-county-client-spotlight.jpg", alt:"Orange County Client Spotlight" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CZvJQl9Jog_/" target="_blank"><%= image_tag "instagram/organics-strawberry-flavor-extract.jpg", alt:"Organics Strawberry Flavor Extract" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CY2XMz7h5A7/" target="_blank"><%= image_tag "instagram/sugar-free-sweetener.jpg", alt:"Sugar-Free Sweetener" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/Ca2wAbYhzaQ/" target="_blank"><%= image_tag "instagram/go-green.jpg", alt:"Go green" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CZ9yDFlBwcE/" target="_blank"><%= image_tag "instagram/organic-vanilla.jpg", alt:"Organic Vanilla" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
         </div>
-
       </div>
     </div>
   </div>
@@ -335,64 +319,71 @@
         <div class="faqs-title-wrap d-lg-flex flex-column align-items-end">
           <div class="title">FAQ</div>
           <div class="sm-title">All your questions about Flavorings, Extracts, Syrups and Fragrances answered.</div>
-          <%= link_to faq_path, :class => "btn" do %>
-            <span>Visit our FAQ Center</span>
-          <% end %>
-          </div>
+          <a href="#" class="btn"><span>Visit our FAQ Center</span></a> </div>
       </div>
       <div class="col-lg-8">
         <div class="accordion" id="faqaccordion">
           <div class="card">
             <div class="card-header">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What are Flavor Extracts?</button>
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Are your products certified organic?</button>
               </h2>
             </div>
             <div id="collapseOne" class="collapse show" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Extracts can be used in baking and clear beverages. Natural flavors and extracts come in many styles, colors, forms, and concentrations. Our Extracts are water soluble flavors made in a base of Natural Ethyl Alcohol. These all natural flavor extracts and organic flavor extracts are food grade, Kosher, vegan, gluten Free. <%= link_to 'Learn More', flavor_extracts_path, :class => 'faq-learn-more' %></div>
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
             </div>
           </div>
           <div class="card">
             <div class="card-header">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">What are Flavor Concentrates?</button>
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo">What are Natural Extracts?</button>
               </h2>
             </div>
-            <div id="collapseTwo" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor concentrates are ideal for use in syrups, ice cream, baked goods, yogurt, beverages, and more. <%= link_to 'Learn More', flavor_concentrates_path, :class => 'faq-learn-more' %> </div>
+            <div id="collapseTwo" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
             </div>
           </div>
           <div class="card">
             <div class="card-header">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">What are Flavor Oils?</button>
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree">What are Flavor Concentrates?</button>
               </h2>
             </div>
-            <div id="collapseThree" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Oils are used in oil-based products, such as chocolate oil and lip balm oil. <%= link_to 'Learn More', flavor_oils_path, :class => 'faq-learn-more' %></div>
+            <div id="collapseThree" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
             </div>
           </div>
           <div class="card">
             <div class="card-header">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour">What are Flavor Powders?</button>
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour">What are Flavor Oils?</button>
               </h2>
             </div>
-            <div id="collapseFour" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Powders can be used in smoothies, baked goods, and dry mixes. <%= link_to 'Learn More', flavor_powders_path, :class => 'faq-learn-more' %> </div>
+            <div id="collapseFour" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
             </div>
           </div>
           <div class="card">
             <div class="card-header">
               <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive">What are Flavor Emulsions?</button>
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive">What are Flavor Powders?</button>
               </h2>
             </div>
-            <div id="collapseFive" class="collapse" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Emulsions can be used in soft and hard candy. <%= link_to 'Learn More', flavor_emulsions_path, :class => 'faq-learn-more' %> </div>
+            <div id="collapseFive" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
             </div>
           </div>
-         </div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSix">What are Flavor Emulsions?</button>
+              </h2>
+            </div>
+            <div id="collapseSix" class="collapse show" data-parent="#faqaccordion">
+              <div class="card-body">We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -403,32 +394,32 @@
         <div class="col-lg-8">
           <div class="wrap">
             <div class="title-wrap d-xl-flex flex-row-reverse align-items-center justify-content-between">
-              <div class="right"> <a href="https://blog.naturesflavors.com" target="_blank" class="blog-link">More from our blog</a></div>
+              <div class="right"> <a href="#" class="blog-link">More from our blog</a></div>
               <div class="left d-flex flex- align-items-start">
                 <div class="title-img"><%= image_tag "blog-icon", alt:"" %></div>
                 <div class="title-info">
-                  <h3 class="title"><a href="https://blog.naturesflavors.com/" target="_blank">Flavorful Bites</a><span class="blog-badge">Blog</span></h3>
+                  <h3 class="title">Flavorful Bites<span class="blog-badge">Blog</span></h3>
                   <div class="sm-title text-uppercase">RECIPES | TIPS AND TRICKS | helpful information</div>
                 </div>
               </div>
             </div>
             <div class="slider-wrapper position-relative">
               <ul id="blog-slider" class="ontent-slider">
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/how-to-make-a-homemade-soda/" target="_blank" class="video-thumb-wrap">
-                  <div class="video-thumb mb-10"><%= image_tag "blog/home-made-soda.jpg", alt:"How to Make Homemade Sodas" %></div>
-                  <h4>How to Make Homemade Sodas</h4>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>Ice Cream Cone Bath Bombs</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/add-citric-acid-powder-to-your-kitchen-recipe/" target="_blank" class="video-thumb-wrap">
-                  <div class="video-thumb mb-10"><%= image_tag "blog/citric-acid-powder.jpg", alt:"Citric Acid Powder" %></div>
-                  <h4>Add Citric Acid Powder to Your Kitchen (Recipe)</h4>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>DIY Watermelon Lip Scrub</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/why-you-need-essential-oils-for-better-sleep/" target="_blank" class="video-thumb-wrap">
-                  <div class="video-thumb mb-10"><%= image_tag "blog/better-sleep.jpg", alt:"Why You Need Essential Oils For Better Sleep" %></div>
-                  <h4>Why You Need Essential Oils For Better Sleep</h4>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>Ice Cream Cone Bath Bombs</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/how-to-use-natural-food-colorings/" target="_blank" class="video-thumb-wrap">
-                  <div class="video-thumb mb-10"><%= image_tag "blog/food-colorings.jpg", alt:"How to Use Natural Food Colorings to Get the Best Results" %></div>
-                  <h4>How to Use Natural Food Colorings to Get the Best Results</h4>
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="#" class="video-thumb-wrap">
+                  <div class="video-thumb mb-10"><%= image_tag "video-thumb-1.jpg", alt:"" %></div>
+                  <h4>DIY Watermelon Lip Scrub</h4>
                   </a></li>
               </ul>
             </div>
