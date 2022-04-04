@@ -50,7 +50,7 @@ gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', bra
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_events_tracker', github: 'ducl13/spree_events_tracker', branch: 'naturesflavors'
 #gem 'spree_slider', github: 'ducl13/spree_slider', branch: 'master'
-gem 'spree_slider', github: 'spree-contrib/spree_slider'
+gem 'spree_slider', github: 'ducl13/spree_slider', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
