@@ -88,3 +88,5 @@ Rails.application.configure do
   config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
   #config.action_mailer.deliver_later_queue_name = "mail_queue"
 end
+
+Rails.application.default_url_options = { host: "http://naturesflavors.localhost:3000" }
