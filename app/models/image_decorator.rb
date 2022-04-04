@@ -5,6 +5,7 @@ Spree::Image.class_eval do
   def self.styles
     {
       small: '180x180',
+      product: '1000x1000',
       large: '1000x1000', # product page images
     }
   end
