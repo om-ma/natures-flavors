@@ -1,6 +1,6 @@
 Spree::Image.class_eval do
 
-  after_save :create_sizes
+  #after_save :create_sizes
 
   def self.styles
     {
