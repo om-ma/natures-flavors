@@ -108,4 +108,13 @@ Spree::FrontendHelper.class_eval do
   def sale_date_time_counter(date)
     date.strftime('%b %d, %Y %H:%M:%S')
   end
+
+  def shop_now_url()
+    products_category	= Spree::Taxon.find_by_name("PRODUCTS")
+		if products_category.present?
+      seo_url(products_category&.children.first)
+    else
+      "/"
+    end
+  end
 end

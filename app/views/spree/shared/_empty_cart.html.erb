@@ -2,7 +2,7 @@
     <%= image_tag "empty_cart.svg", alt:"Empty Cart" %>
     <h3>Your cart is empty</h3>
     <p ><%= Spree.t('cart_page.empty_info').html_safe %></p>
-    <%= link_to  spree.products_path do %>
+    <%= link_to shop_now_url do %>
         <button type="button" class="btn btn-primary"><strong>Shop Now</strong></button>
     <% end %>
 </div>
