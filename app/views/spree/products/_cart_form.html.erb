@@ -86,7 +86,8 @@
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
   <div class="top-detail" >
     <% if @product.on_sale? %>
-      <div class="deal-expiry-wrap" id="deals-expiry" data-SalesExpiryDate="<%=  sale_date_time_counter(@product.master&.sale_prices&.active&.last&.end_at)%>"></div>
+      <div class="deal-expiry-wrap" id="deals-expiry" data-SalesExpiryDate="<%=  sale_date_time_counter(@product.master&.sale_prices&.active&.last&.end_at)%>">
+      </div>
     <% end %>
     <%= form_for :order, html: {
       id: 'add-to-cart-form',
@@ -108,27 +109,29 @@
           <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
             <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"
               data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" > 
-            <% option_value = variant.size_options %>
+              <% option_value = variant.size_options %>
               <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
-              <span content="<%= current_currency %>"></span> 
-              <% if @product.on_sale? %> 
-                <del><%= variant.price_in(current_currency).money %></del><%= display_price(@product) %><span>/ $6.29 per oz.</span>
-              <% else %>
-                <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span></div>
-                <div class="right"> 
-                  <%= option_value&.presentation %>
-                  <%= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
+                <span content="<%= current_currency %>"></span> 
+                <% if @product.on_sale? %> 
+                  <del><%= variant.price_in(current_currency).money %></del><%= display_price(@product) %><span>/ $6.29 per oz.</span>  
+                <% else %>
+                  <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span>
+                <% end %>
+              </div>   
+              <div class="right"> 
+                <%= option_value&.presentation %>
+                <%#= radio_button_tag "variant_id",  variant.id, index == 0 ? true : false,
                           'data-price' => variant.price_in(current_currency).money,
                           'data-in-stock' => variant.can_supply?,
                           'data-backordered' => variant.backordered?,
                           style: "display:none"
                       %>
-              <% end %>
-          <% end%>
-            </div>
+                  <%= hidden_field_tag "variant_id", @product.master.id, id: "selected_variant" %>  
+              </div>
+            </li>
+          <% end %>    
         <% else %>
           <%= hidden_field_tag "variant_id", @product.master.id %>
-            </li>
         <% end %>
       </ul>
       <div class="d-flex justify-content-end mb-5">

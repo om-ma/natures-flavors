@@ -33,3 +33,6 @@ Spree::PermittedAttributes.taxon_attributes << [user_ids:[]]
 Spree::PermittedAttributes.address_attributes << :is_default
 Spree::Auth::Config[:registration_step]= false
 Spree::PermittedAttributes.payment_attributes << :check_no
+Spree::SalesConfiguration::Config = Spree::SalesConfiguration.new
+Spree::SalesConfiguration::Config.calculators << Spree::Calculator::AmountSalePriceCalculator
+Spree::SalesConfiguration::Config.calculators << Spree::Calculator::PercentOffSalePriceCalculator

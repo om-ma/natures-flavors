@@ -1,39 +1,4 @@
-<!-- <ul id="nav-bar" class="nav align-items-center d-flex flex-nowrap justify-content-end navbar-right" data-turbo-permanent data-turbolinks-permanent>
-  <li>
-    <div class="navbar-right-search-menu">
-      <button type="button" class="navbar-right-dropdown-toggle search-icons" aria-label="<%#= Spree.t('nav_bar.show_search') %>">
-        <%#= icon(name: 'magnifying-glass',
-                 classes: 'd-inline-block',
-                 width: 36,
-                 height: 36) %>
-      </button>
 
-      <div id="search-dropdown" class="p-0 px-md-4 py-md-2 w-100 shadow navbar-right-search-menu-dropdown hide-on-esc">
-        <%#= render partial: 'spree/shared/search' %>
-      </div>
-    </div>
-  </li>
-  <%# if defined?(spree.account_link_path) %>
-    <li>
-      <div class="dropdown navbar-right-dropdown">
-        <button id="account-button" type="button" data-toggle="dropdown" class="navbar-right-dropdown-toggle account-icon" aria-label="<%#= Spree.t('nav_bar.show_user_menu') %>">
-          <%#= icon(name: 'person',
-                  classes: 'd-inline-block',
-                  width: 41.4,
-                  height: 36) %>
-        </button>
-
-        <div id="link-to-account" class="dropdown-menu dropdown-menu-right text-right">
-        </div>
-      </div>
-    </li>
-  <%# end %>
-  <li id="link-to-cart">
-    <%#= render 'spree/shared/cart', class: 'd-inline-block cart-icon', size: 36, item_count: 0 %>
-  </li>
-  <%#= render partial: 'spree/shared/internationalization_options' %>
-</ul> -->
-<%# i have missed  id="link-to-account" because of design issue %>
 <nav class="navbar navbar-expand-xl"  id="spree-header">
   <div class="row no-gutters w-100" id="header">
     <div  id="home-link" class="col-xl-2" data-hook data-hook>
@@ -54,7 +19,7 @@
                       <div class="col-lg-2"></div>
                       <div class="col-lg-7 has-gridlines">
                         <div class="row no-gutters">
-                          <% menu_category.children.in_groups_of(3) do |categories|%>
+                          <% menu_category.children.in_groups_of(6) do |categories|%>
                             <div class="col">
                               <ul class="dropdown-menu d-flex flex-column">
                                 <% categories.compact.each do |category| %>
@@ -66,7 +31,6 @@
                                 <% end %>
                               </ul>
                             </div>
-                            <div class="col-lg-3"></div>
                           <% end %>
                         </div>
                       </div>
@@ -79,7 +43,7 @@
           <% end %>
           <!--<li class="nav-item"><a class="nav-link" href="#"><strong>Deals</strong></a></li>-->
         </ul>
-        <div class="quick-menu ml-auto" >
+        <div class=" quick-menu ml-auto" >
           <%= render partial: 'spree/shared/search' %>
           <div id="account-button">
             <% if spree_current_user.present? %>

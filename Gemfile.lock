@@ -73,6 +73,17 @@ GIT
       spree_extension
 
 GIT
+  remote: https://github.com/ducl13/spree_slider.git
+  revision: 8e9382981d46ee702f92adeddfd56cfb7cc87feb
+  branch: master
+  specs:
+    spree_slider (4.0.0)
+      active_storage_validations (~> 0.9.0)
+      spree_backend (>= 3.7.0, < 5.0)
+      spree_core (>= 3.7.0, < 5.0)
+      spree_extension
+
+GIT
   remote: https://github.com/umairrazam/spree_favorite_products.git
   revision: 41bac948bea738fd166539ddca360db0fa113647
   branch: natures
@@ -611,6 +622,7 @@ DEPENDENCIES
   spree_i18n (~> 5.0)
   spree_sales!
   spree_sample
+  spree_slider!
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

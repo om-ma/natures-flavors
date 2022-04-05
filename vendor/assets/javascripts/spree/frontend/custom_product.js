@@ -12,7 +12,9 @@ $(document).on('turbolinks:load', function() {
         "<span id = 'product_btn_variant_price'>" + variantPrice + "</span>"
       );
       var variantId = $(this).attr("data-varient-id");
-      $('#variant_id_'+ variantId )[0].click();
+
+      $('#selected_variant').val(variantId);
+      $("#add-to-cart-button").removeAttr("disabled");
     });
 
 

@@ -33,7 +33,51 @@
 <div class="emptyCartPageSection" style="display:none" >
   <div class="cart-sidebar-body d-flex flex-column justify-content-between"><div class="text-center"><%= image_tag "empty_cart.svg", alt:"Empty Cart" %><h3>Your cart is empty</h3><p>Looks like you haven&lsquo;t made your choice yet...</p><%= link_to  spree.products_path do %><button type="button" class="btn btn-primary"><strong>Shop Now</strong></button><% end %></div></div>
 </div>
-<%= render partial: 'spree/shared/my_cart'%>
 <script>
-  cartForm("<%= current_order.try(:number) %>", "<%= current_order.try(:token) %>");
+  $(document).ready(function(){
+
+  $(".quantity-change-select").change(function(){
+    
+    let item_quantity = this.value;
+    that = this.parentElement
+    updateItem(that,'add',item_quantity);
+    if(this.value > 10){
+      let classname = this.getAttribute("data-id")
+      let inputclassname = "input-" + classname
+      let btnclassname = "button-" + classname
+      $(this).hide();
+      let inputfield = document.getElementsByClassName(inputclassname)[0]
+      let updatebtn = document.getElementsByClassName(btnclassname)[0]
+      $(inputfield).removeClass("d-none")
+      $(inputfield).show()
+      $(updatebtn).removeClass("d-none")
+      $(updatebtn).show()
+      inputfield.value = this.value;
+    }
+  });
+  $(".quantity-change-input").change(function(){
+    if(this.value <= 10){
+      let classname = this.getAttribute("data-id").split("item_")[1]
+      let inputclassname = "select-" + classname
+      let btnclassname = "button-" + classname
+      $(this).hide();
+      let selectfield = document.getElementsByClassName(inputclassname)[0]
+      let updatebtn = document.getElementsByClassName(btnclassname)[0]
+      $(selectfield).removeClass("d-none")
+      $(selectfield).show()
+      $(updatebtn).addClass("d-none")
+      selectfield.value = this.value;
+      let item_quantity = this.value;
+      that = this.parentElement
+      updateItem(that,'add',item_quantity);
+    }
+  });
+  $(".updateprice").click(function(){
+    let cart_item = event.target.nextElementSibling
+    let item_quantity = parseInt(cart_item.value)
+    that = this.parentElement
+    updateItem(that,'add',item_quantity)
+  });
+
+});  
 </script>

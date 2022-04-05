@@ -108,13 +108,3 @@ end
     <div class="cart-icon phone-hide"></div>
   </div>
 </main>
-<%= render partial: 'spree/shared/my_cart' %>
-<script>
-  cartForm("<%= current_order.try(:number) %>", "<%= current_order.try(:token) %>");
-</script>
-<script>
-  window.addEventListener('DOMContentLoaded', function() {
-    Spree.current_order_id = "<%= @order.number %>"
-    Spree.current_order_token = "<%= @order.token %>"
-  })
-</script>
