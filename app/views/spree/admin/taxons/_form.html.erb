@@ -33,6 +33,10 @@
         method: :delete %>
     <% end %>
   <% end %>
+  <%= f.field_container :short_description, class: ['form-group'] do %>
+    <%= f.label :short_description, Spree.t(:short_description) %>
+    <%= f.text_area :short_description, class: "form-control #{'spree-rte' if taxon_wysiwyg_editor_enabled? }", rows: 10 %>
+  <% end %>
   <%= f.field_container :description, class: ['form-group'] do %>
     <%= f.label :description, Spree.t(:description) %>
     <%= f.text_area :description, class: "form-control #{'spree-rte' if taxon_wysiwyg_editor_enabled? }", rows: 20 %>

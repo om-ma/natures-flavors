@@ -38,6 +38,6 @@
   </div>
   <div class="category-intro-footer" id="footer-text">
       <span class="more">More about <%= @taxon.name %></span><br><br>
-      <%= @taxon.description.html_safe %>
+      <%= taxon_description(@taxon) %>
   </div>
   </main>
