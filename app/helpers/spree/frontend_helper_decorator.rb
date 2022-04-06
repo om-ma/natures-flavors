@@ -119,35 +119,43 @@ Spree::FrontendHelper.class_eval do
   end
 
   def taxon_short_description(taxon)
-    if taxon.short_description.empty?
-      sentences = strip_tags(@taxon.description).split('.')
-      short_description = ''
-      sentences.each do |sentence|
-        if (short_description + ". " + sentence).length > 260
-          return short_description
-        else
-          short_description = short_description + sentence + ". "
-        end
-      end
+    if taxon.short_description.present?
+      strip_tags(taxon.short_description)
     else
-     strip_tags(taxon.short_description)
+      if @taxon.description.present?
+        sentences = strip_tags(@taxon.description).split('.')
+        short_description = ''
+        sentences.each do |sentence|
+          if (short_description + ". " + sentence).length > 260
+            return short_description
+          else
+            short_description = short_description + sentence + ". "
+          end
+        end
+      else
+        ""
+      end
     end
   end
 
   def taxon_description(taxon)
-    if taxon.short_description.empty?
-      sentences = strip_tags(@taxon.description).split('.')
-      short_description = ''
-      start_index = 0
-      sentences.each_with_index do |sentence, i|
-        if (short_description + ". " + sentence).length > 260
-          return sentences.drop(i).join(". ")
-        else
-          short_description = short_description + sentence + ". "
-        end
-      end
-    else
+    if taxon.short_description.present?
       taxon.description.html_safe
+    else
+      if @taxon.description.present?
+        sentences = strip_tags(@taxon.description).split('.')
+        short_description = ''
+        start_index = 0
+        sentences.each_with_index do |sentence, i|
+          if (short_description + ". " + sentence).length > 260
+            return sentences.drop(i).join(". ")
+          else
+            short_description = short_description + sentence + ". "
+          end
+        end
+      else
+        ""
+      end
     end
   end
 end
