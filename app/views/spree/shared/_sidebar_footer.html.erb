@@ -7,6 +7,6 @@
         <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
     </div>
     <%= link_to spree.checkout_path do %>
-        <button type="button" class="btn btn-primary btn-block"><strong class="js-product-total"><%= @order.display_total %> - Check Out</strong></button>
+        <button type="button" class="btn btn-primary btn-block"><strong class="js-order-total"><%= @order.display_total %> - Check Out</strong></button>
     <% end %>
 </div>
