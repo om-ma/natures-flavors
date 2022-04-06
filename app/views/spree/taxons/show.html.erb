@@ -9,6 +9,7 @@
   </div>
 </div>
  -->
+<% desc = taxon_description(@taxon) %>
 <main class="page-contents">
   <div class="category-wrapper">
     <div class="row no-gutters">
@@ -37,7 +38,9 @@
     </div>
   </div>
   <div class="category-intro-footer" id="footer-text">
+    <% if desc.present? %>
       <span class="more">More about <%= @taxon.name %></span><br><br>
-      <%= taxon_description(@taxon) %>
+      <%= desc %>
+    <% end %>
   </div>
   </main>
