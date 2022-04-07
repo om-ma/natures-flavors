@@ -4,6 +4,7 @@ module Spree
       redirect_to page_not_found_path
     end
     def show
+      @best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : []
       redirect_if_legacy_path
 
       @taxon = params[:taxon_id].present? ? taxons_scope.find_by(id: params[:taxon_id]) : nil

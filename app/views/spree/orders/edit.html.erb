@@ -173,20 +173,8 @@
           <% end %>
         </div>
       </div>
-      <% @best_sellers_products = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : [] %>
       <div class="col-xl-3 col-lg-4 phone-hide">
-        <div class="cart-similar-item">
-          <div class="wrap">
-            <p>You might need this:</p>
-            <div class="similar-item-thumb"><a href="#">
-              <%= plp_and_carousel_image( @best_sellers_products) %></a>
-            </div>
-            <h4><a href="#"><%= @best_sellers_products.name %></a></h4>
-            <%= link_to add_to_cart_path(@best_sellers_products.id), class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button',method: :post  do %>
-                <%= @best_sellers_products.price %> - Add to Cart
-            <% end %>
-          </div>
-        </div>
+        <%= render partial: 'spree/shared/cart_similar_products' %>
       </div> 
     </div>
   </div>
