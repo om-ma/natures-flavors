@@ -12,14 +12,15 @@ Spree::HomeController.class_eval do
     if http_cache_enabled?
       fresh_when etag: store_etag, last_modified: last_modified_index, public: true
     end
-    @best_sellers_products = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
-    @deals_products= Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
-    popular_extracts = Spree::Taxon.find_by_name("Popular Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''
-    @popular_extracts_products= popular_extracts.present? ?  popular_extracts.products.reorder(popularity: :desc).first(6) : [] 
-    popular_Powders = Spree::Taxon.find_by_name("Popular Powders").present? ? Spree::Taxon.find_by_name("Flavor Powders") : ''
-    @popular_Powders_products= popular_Powders.present? ? popular_Powders.products.reorder(popularity: :desc).first(6) : [] 
-    popular_oils = Spree::Taxon.find_by_name("Popular Oils").present? ? Spree::Taxon.find_by_name("Flavor Oils") : ''
-    @popular_oils_products= popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : [] 
+    @best_sellers_products     = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
+    @deals_products            = Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
+    popular_extracts           = Spree::Taxon.find_by_name("Flavor Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''
+    @popular_extracts_products = popular_extracts.present? ?  popular_extracts.products.reorder(popularity: :desc).first(6) : [] 
+    popular_powders            = Spree::Taxon.find_by_name("Flavor Powders").present? ? Spree::Taxon.find_by_name("Flavor Powders") : ''
+    @popular_powders_products  = popular_powders.present? ? popular_powders.products.reorder(popularity: :desc).first(6) : [] 
+    popular_oils               = Spree::Taxon.find_by_name("Flavor Oils").present? ? Spree::Taxon.find_by_name("Flavor Oils") : ''
+    @popular_oils_products     = popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : []
+    @active_home_tab           = [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
   end
 
 def sale

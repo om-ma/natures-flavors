@@ -89,7 +89,12 @@
       <% variant = s.variant %>
       <li class="cart-item line-item empty-cart-area cart-line-item-container-<%= s.id %> shopping-cart-item " data-lineitem-id="<%= s.id %>"  >
         <button type="button" class="  btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= s.id %>  " data-line-item-id= "<%= s.id %>"  >Close</button>
-        <%= link_to product_image(variant), spree.product_path(variant.product),class:'thumbnail' %> 
+        <% if variant.images.length == 0 %>
+          <% product_or_variant_first_img = image_tag(variant.product.images.first.my_cf_image_url(:small)) %>
+        <% else %>
+          <% product_or_variant_first_img = image_tag(variant.images.first.my_cf_image_url(:small)) %>
+        <% end %>
+        <%= link_to product_or_variant_first_img, spree.product_path(variant.product), class:'thumbnail' %>
         <div class="cart-item-details d-flex flex-column justify-content-between ">
           <h4><%= link_to s.name, spree.product_path(variant.product) %></h4>
           <div class="price-size text-right"><span><%= s.quantity %>x<%= s.single_money.to_html%></span><%= s.display_amount.to_html unless s.quantity.nil? %> </div>

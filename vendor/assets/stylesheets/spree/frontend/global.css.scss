@@ -2373,6 +2373,10 @@ h3 a{
 
 .media-list li {
 	margin: 0 25px 25px;
+	transition: all .2s ease-in-out;
+}
+.media-list li:hover{
+	transform: scale(1.05);
 }
 
 .instagram-wrapper {
@@ -2881,7 +2885,7 @@ h3 a{
 	letter-spacing: -0.17px;
 	padding: 80px 17%;
 	background-color: #ffffff;
-	text-align: center;
+	text-align: left;
 	border-top: #f0f0f0 1px solid;
 }
 .category-intro-footer p {
@@ -6429,6 +6433,7 @@ h3 a{
 	z-index: 5;
 }
 
+
 .contact_us_section:before,
 .contact_us_section:after {
 	content: '';
@@ -6488,6 +6493,15 @@ h3 a{
 	height: 300px;
 	margin-bottom: 15px;
 }
+.about_us_history p{
+	padding: 0 10%;
+}
+.about_us_history .lSAction {
+	left: auto;
+	margin: 0;
+	width: 100%;
+	top: 30% !important;
+}
 .our-brands, .contact_us_section{
 	border-top: 1px solid rgba(0,0,0,0.05);
 }
@@ -6525,10 +6539,4 @@ h3 a{
 	font-weight: bold;
 	color: #A71E22;
 	display: inline-table;
-}
-.about_us_history .lSAction {
-	top: -30% !important;
-}
-.about_us_history p{
-	padding: 0 5%;
 }

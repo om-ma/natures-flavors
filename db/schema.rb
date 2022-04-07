@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_083904) do
+ActiveRecord::Schema.define(version: 2022_04_06_201012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1060,6 +1060,35 @@ ActiveRecord::Schema.define(version: 2022_02_17_083904) do
     t.index ["tax_rate_id"], name: "index_spree_shipping_rates_on_tax_rate_id"
   end
 
+  create_table "spree_slide_locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spree_slide_slide_locations", force: :cascade do |t|
+    t.bigint "slide_id"
+    t.bigint "slide_location_id"
+    t.index ["slide_id"], name: "index_spree_slide_slide_locations_on_slide_id"
+    t.index ["slide_location_id"], name: "index_spree_slide_slide_locations_on_slide_location_id"
+  end
+
+  create_table "spree_slides", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.string "link_url"
+    t.boolean "published"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "position", default: 0, null: false
+    t.integer "product_id"
+    t.string "mobile_body"
+  end
+
   create_table "spree_state_changes", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "previous_state"
@@ -1308,6 +1337,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_083904) do
     t.string "meta_keywords"
     t.integer "depth"
     t.boolean "hide_from_nav", default: false
+    t.text "short_description"
     t.index ["lft"], name: "index_spree_taxons_on_lft"
     t.index ["name", "parent_id", "taxonomy_id"], name: "index_spree_taxons_on_name_and_parent_id_and_taxonomy_id", unique: true
     t.index ["name"], name: "index_spree_taxons_on_name"

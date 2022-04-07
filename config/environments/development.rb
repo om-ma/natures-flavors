@@ -72,17 +72,21 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => 'http://naturesflavors.localhost' }
+  config.action_mailer.default_url_options = { host: "naturesflavors.localhos:3000" }
+  config.action_mailer.asset_host = "http://naturesflavors.localhost:3000"
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-     :address              => "email-smtp.us-east-1.amazonaws.com",
-     :port                 =>  587,
-     :domain               => "us-east-1.amazonaws.com",
-     :user_name            => ENV['ACTION_MAILER_USER_NAME'],
-     :password             => ENV['ACTION_MAILER_PASSWORD'],
-     :authentication       => "plain",
-     :enable_starttls_auto => true
-   }
-   config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
-   #config.action_mailer.deliver_later_queue_name = "mail_queue"
+    :address              => "email-smtp.us-east-1.amazonaws.com",
+    :port                 =>  587,
+    :domain               => "us-east-1.amazonaws.com",
+    :user_name            => ENV['ACTION_MAILER_USER_NAME'],
+    :password             => ENV['ACTION_MAILER_PASSWORD'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+  
+  config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
+  #config.action_mailer.deliver_later_queue_name = "mail_queue"
 end
+
+Rails.application.default_url_options = { host: "http://naturesflavors.localhost:3000" }
