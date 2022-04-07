@@ -68,7 +68,7 @@
 
 .slinky-theme-default .back:before {
   content: '';
-  background-image: image-url("arrow-left-white-icon.svg") !important;
+  background-image: image-url("arrow-left-white-icon.svg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position:  center;

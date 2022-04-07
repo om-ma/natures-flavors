@@ -13,7 +13,9 @@
             <%= render partial: 'spree/shared/cart_box', locals: { order_form: order_form } %>
             <li class="grand-total d-flex align-items-center justify-content-between">Total:<strong class="js-product-total"><%= @order.display_total %></strong></li>
           </ul>
-          <%= render partial: 'spree/shared/sidebar_footer' %>
+          <div class="body-sidebar-footer">
+            <%= render partial: 'spree/shared/sidebar_footer' %>
+          </div>
         <% end %> 
       </div> 
     <% else %>

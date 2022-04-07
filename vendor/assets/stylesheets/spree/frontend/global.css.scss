@@ -1106,7 +1106,7 @@ a.btn.btn-block {
 .nav-cart.active,
 .nav-search.active,
 .quick-menu .mobile-menu-link:not(.collapsed) {
-	background-image: url("../images/close-light.svg");
+	background-image: image-url("close-light.svg");
 	background-position: center 14px !important;
 }
 
@@ -3777,7 +3777,7 @@ h3 a{
     font-size: 16px;
     font-weight: 700;
 	line-height: 1.44;
-    margin: 0 100px 10px 0;
+    margin: 0 5px 10px 0;
 }
 
 .cart-item-details h4 a {

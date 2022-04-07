@@ -1,33 +1,15 @@
-<%# max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
-
-<!-- <nav id="taxonomies" class="sidebar-item" data-hook aria-label="taxonomies">
-  <%# @taxonomies.each do |taxonomy| %>
-    <%# cache [I18n.locale, taxonomy, max_level, @taxon] do %>
-      <%# if taxonomy.root.children.any? %>
-        <div class="mt-4">
-          <h4 class='taxonomy-root h5'>
-            <%#= Spree.t(:shop_by_taxonomy, taxonomy: taxonomy.name) %>
-          </h4>
-          <%#= taxons_tree(taxonomy.root, @taxon, max_level) %>
-        </div>
-      <%# end %>
-    <%# end %>
-  <%# end %>
-</nav> -->
-
- <div id="taxonomies" data-hook aria-label="taxonomies">
-  <% max_level =  3 %>
-  <!-- <nav id="taxonomies"  data-hook> -->
-  <% if @taxon.present? %>
-    <% cache [I18n.locale, max_level, taxon] do %>
-      <% taxon = taxon.parent if taxon.leaf? %>
-      <%#= link_to @taxon.name, seo_url(@taxon) %>
-      <% if taxon.children.any? %>
-        <%= taxons_tree(taxon, taxon, max_level) %>
-      <% end %>
+<% max_level = 3 %>
+<% if taxon.present? %>
+  <% cache [I18n.locale, max_level, taxon] do %>
+    <% taxon = taxon.parent if taxon.leaf? %>
+    <% if taxon.children.any? %>
+      <%= taxons_tree(taxon, taxon, max_level) %>
     <% end %>
-  <% else %>
-    <% @main_category&.children.each do |taxonomy| %>
+  <% end %>
+<% else %>
+  <% all_categories = Spree::Taxonomy.all %>
+  <% if all_categories.present? %>
+    <% all_categories.each do |taxonomy| %>
       <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
         <%= link_to taxonomy.name, seo_url(taxonomy) %>
         <% if taxonomy.root.children.any? %>
@@ -35,5 +17,5 @@
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  <% end %>  
+<% end %>

@@ -1,24 +1,24 @@
-<% if !(browser.device.mobile?) %> 
-  <div class="mobile-menu">
-    <div class="menu-scroll">
-      <div class="sub-menu-header d-flex align-items-center">
-        <div class="left d-flex align-items-center flex-fill text-uppercase">Home</div>
-        <div class="right d-flex align-items-center flex-fill">
-          <% if spree_current_user.present? %>
-            <%= link_to destroy_spree_user_session_path do %>
-              <em class="text-uppercase">Log out</em>
-            <% end %>
-          <% else %>
-            <%= link_to "Log in", new_spree_user_session_path %>
-             
-            <%= link_to new_spree_user_registration_path, class: "btn" do %>
-             or <em class="text-uppercase">Register</em>
-            <% end %>
+ <div class="mobile-menu">
+  <div class="menu-scroll">
+    <div class="sub-menu-header d-flex align-items-center">
+      <div class="left d-flex align-items-center flex-fill text-uppercase"><%= link_to "Home", root_path %></div>
+      <div class="right d-flex align-items-center flex-fill">
+        <% if spree_current_user.present? %>
+          <%= link_to destroy_spree_user_session_path do %>
+            <em class="text-uppercase">Log out</em>
           <% end %>
-        </div>
+        <% else %>
+          <%= link_to "Log in", new_spree_user_session_path %>
+           
+          <%= link_to new_spree_user_registration_path, class: "btn" do %>
+           or <em class="text-uppercase">Register</em>
+          <% end %>
+        <% end %>
       </div>
-      <div id="menu">
-        <ul class="product-menu">
+    </div>
+    <div id="menu">
+      <ul class="product-menu">
+        <% if !(browser.device.mobile?) %> 
           <% if @main_category.present? %>
             <% main_tabs = @main_category.children.present? ? @main_category.children : [] %>
             <% if main_tabs.present? %>
@@ -41,7 +41,7 @@
                 <% end %>
               <% end %>
             <% end %>  
-          <% end %>    
+          <% end %>      
           <li><a href="#">Deals</a>
             <ul>
               <li><a href="#">See All Deals</a></li>
@@ -51,55 +51,56 @@
               <li><a href="#">Organic Gluten Free Baking</a></li>
             </ul>
           </li>
-        </ul>
-      </div>
-      <div class="sub-menu-wrap">
-        <ul class="sub-menu">
-          <li><a href="#" class="menuLink">Information</a>
-            <div  class="sub-menu-lists">
-              <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">New Products</a></li>
-              </ul>
-              <ul>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Support</a></li>
-                <li><a href="#">Terms And Conditions</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Returns &amp; Replacements</a></li>
-              </ul>
-            </div>
-          </li>
-          <li><a href="#" class="menuLink">Product Info</a>
-            <div  class="sub-menu-lists">
-              <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">New Products</a></li>
-              </ul>
-              <ul>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Support</a></li>
-                <li><a href="#">Terms And Conditions</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Returns &amp; Replacements</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="sub-menu-footer d-flex align-items-center">
-        <div class="footer-phone"><a href="tel:1-714-744-3700">1-714-744-3700</a></div>
-        <div class="footere-business-hours">
-          <p>8:00 am - 5:00 pm,<br>
-            Monday - Friday, Pacific Time</p>
-        </div>
+        <% end %>
+      </ul>
+    </div>
+    <div class="sub-menu-wrap">
+      <ul class="sub-menu">
+        <li><a href="#" class="menuLink">Information</a>
+          <div  class="sub-menu-lists">
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">New Products</a></li>
+            </ul>
+            <ul>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Terms And Conditions</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Returns &amp; Replacements</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#" class="menuLink">Product Info</a>
+          <div  class="sub-menu-lists">
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">New Products</a></li>
+            </ul>
+            <ul>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Terms And Conditions</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Returns &amp; Replacements</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="sub-menu-footer d-flex align-items-center">
+      <div class="footer-phone"><a href="tel:1-714-744-3700">1-714-744-3700</a></div>
+      <div class="footere-business-hours">
+        <p>8:00 am - 5:00 pm,<br>
+          Monday - Friday, Pacific Time</p>
       </div>
     </div>
   </div>
-<% end %>  
+</div>
+

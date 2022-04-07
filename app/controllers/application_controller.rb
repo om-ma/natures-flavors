@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 	private
 
 	def set_categories
-		product_category	= Spree::Taxon.find_by_name("PRODUCTS")
-		@all_categories   = product_category.present? ? product_category&.children : []
+		@product_category	= Spree::Taxon.find_by_name("PRODUCTS")
+		@all_categories   = @product_category.present? ? @product_category&.children : []
 	end
 
 	def default_url_options
