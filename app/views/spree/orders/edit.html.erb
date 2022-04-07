@@ -174,7 +174,9 @@
         </div>
       </div>
       <div class="col-xl-3 col-lg-4 phone-hide">
-        <%= render partial: 'spree/shared/cart_similar_products' %>
+        <% if @best_sellers_product.present? %>
+          <%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: @best_sellers_product }  %>
+        <% end %>
       </div> 
     </div>
   </div>
