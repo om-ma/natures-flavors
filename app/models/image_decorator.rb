@@ -16,7 +16,7 @@ Spree::Image.class_eval do
       large: '1000x1000>',
       plp: '278x371>',
       zoomed: '650x870>',
-      large: '1000x1000' # product page images
+      large: '1000x1000'
     }
   end
 

@@ -152,5 +152,7 @@
       <%end%>
     <%end%>
   </div>
-  <%= render partial: 'spree/shared/cart_similar_products' %>
+  <% if @best_sellers_product.present? %>
+    <%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: @best_sellers_product }  %>
+  <% end %>  
 </div>

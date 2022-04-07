@@ -12,7 +12,7 @@ Spree::FrontendHelper.class_eval do
     return '' if max_level < 1
     selected_parent_taxon_name = params["id"]
     show_klass =  (root_taxon.children.pluck("permalink").include?(selected_parent_taxon_name) && root_taxon.parent.present?) ? 'show' : ''
-    parent_klass = (root_taxon.children.present? && ((root_taxon&.parent&.name == "Categories") || (root_taxon == current_taxon ))) ? 'sidebar-sub-categories' : "dropdown-menu sub-child-manu-js #{show_klass}"
+    parent_klass = (root_taxon.children.present? && ((root_taxon&.parent&.name == "PRODUCTS") || (root_taxon == current_taxon ))) ? 'sidebar-sub-categories' : "dropdown-menu sub-child-manu-js #{show_klass}"
     
     content_tag :ul, class: parent_klass   do
 
@@ -22,7 +22,7 @@ Spree::FrontendHelper.class_eval do
           selected_taxon_klass = selected_parent_taxon_name == taxon_permalink ? 'active-tab' : ''
           content_tag :li do
             css_class = taxon.children.present?  ? 'dropdown-toggle tab-width' : ''
-            if spree_current_user.present? ? taxon.users.include?(spree_current_user) : taxon.users.present?
+            if taxon.users.present? ? (spree_current_user.present? ? taxon.users.include?(spree_current_user) : false) : true
               link_to(taxon.name,seo_url(taxon), class: "#{selected_taxon_klass} #{css_class}", data: {toggle: 'dropdown'})+ taxons_tree(taxon, current_taxon, max_level - 1)
             end
           end

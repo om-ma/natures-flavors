@@ -47,7 +47,7 @@
           <%= render partial: 'spree/shared/search' %>
           <div id="account-button">
             <% if spree_current_user.present? %>
-              <%= link_to  destroy_spree_user_session_path, :class => 'nav-profile tablet-hide' do %>
+              <%= link_to account_path, :class => 'nav-profile tablet-hide' do %>
                 <span id="span">Profile</span>
               <% end %>            
             <% else %>
