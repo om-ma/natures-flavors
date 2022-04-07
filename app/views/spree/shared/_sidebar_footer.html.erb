@@ -1,4 +1,3 @@
-<% @best_sellers_products = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : [] %>
 <%= render partial: 'spree/shared/cart_similar_products' %>
 <%= link_to spree.checkout_path do %>
     <button type="button" class="btn btn-primary btn-block"><strong class="js-product-total"><%= @order.display_total %> - Check Out</strong></button>

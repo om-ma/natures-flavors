@@ -1,3 +1,4 @@
+<% @best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : [] %>
 <div class="cart-similar-item">
     <div class="wrap">
       <p>You might need this:</p>
