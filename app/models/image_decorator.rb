@@ -15,8 +15,7 @@ Spree::Image.class_eval do
       plp_and_carousel_lg: '278x371>',
       large: '1000x1000>',
       plp: '278x371>',
-      zoomed: '650x870>',
-      large: '1000x1000'
+      zoomed: '650x870>'
     }
   end
 
