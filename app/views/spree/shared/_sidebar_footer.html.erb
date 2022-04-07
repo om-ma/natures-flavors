@@ -1,10 +1,13 @@
+<% @best_sellers_products = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : [] %>
 <div class="body-sidebar-footer">
     <div class="cart-similar-item">
     <div class="wrap">
         <p>You might need this:</p>
-        <div class="similar-item-thumb"><%= image_tag "product-thumb-1.jpg", alt:"" %></div>
-        <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
-        <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
+        <div class="similar-item-thumb"><%= plp_and_carousel_image( @best_sellers_products) %></div>
+        <h4><%= @best_sellers_products.name %> </h4>
+        <%= link_to add_to_cart_path(@best_sellers_products.id), class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button',method: :post  do %>
+            <%= @best_sellers_products.price %> - Add to Cart</a> </div>
+        <% end %>
     </div>
     <%= link_to spree.checkout_path do %>
         <button type="button" class="btn btn-primary btn-block"><strong class="js-product-total"><%= @order.display_total %> - Check Out</strong></button>

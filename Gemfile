@@ -55,6 +55,7 @@ gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', bra
 gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_events_tracker', github: 'ducl13/spree_events_tracker', branch: 'naturesflavors'
+gem 'spree_slider', github: 'ducl13/spree_slider', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -87,4 +88,4 @@ gem 'browser', github: 'ducl13/browser', branch: 'master'
 gem 'erubis', '~> 2.7'
 gem 'datashift', github: 'ducl13/datashift', branch: 'naturesflavors'
 gem 'datashift_spree', github: 'ducl13/datashift_spree', branch: 'naturesflavors'
-gem 'spree_slider', github: 'ducl13/spree_slider', branch: 'master'
+
