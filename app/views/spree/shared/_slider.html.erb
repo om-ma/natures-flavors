@@ -1,25 +1,25 @@
 <% if slider.size > 0 %>
   <%# generate a random number for the carousel id - in case you want multiple per page %>
-  <% cid ||= Random.rand(20000) %>
+  <% cid ||= Random.rand(1000) %>
 
-  <div id="carousel-slider-<%= cid %>" class="carousel slide" data-ride="carousel" <%= (defined? interval) != nil ? "data-interval=#{interval.to_s}" : "" %>>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" <%= (defined? interval) != nil ? "data-interval=#{interval.to_s}" : "" %>>
     <%# Indicators %>
     <ol class="carousel-indicators">
       <% slider.each_with_index do |slide, index| %>
-        <li data-target="#carousel-prod-<%= cid %>" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
       <% end %>
     </ol>
 
     <%# Wrapper for slider %>
-    <div class="carousel-inner ">
+    <div class="carousel-inner">
       <% slider.each_with_index do |slide, index| %>
         <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
           <% image_url = slide.slide_image ?  main_app.url_for(slide.slide_image) : "noimage/large"%>
-          <%= link_to image_tag(image_url, alt: slide.slide_name), url_for(slide.slide_link) %>
+          <%= link_to image_tag(image_url, alt: slide.slide_name,class:'w-100'), url_for(slide.slide_link)  %>
           <div class="carousel-caption">
-            <h3><%= slide.slide_name %></h3>
+            <h3><%#= slide.slide_name %></h3>
             <% unless slide.body.blank? %>
-              <p><%= slide.body %>
+              <p><%#= slide.body %>
                 <p>
                 <% end %>
               </div>
@@ -28,13 +28,13 @@
         </div>
 
         <%# Controls %>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only"><%= t(:previous) %></span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only"><%= t(:next) %></span>
-        </a>
-    </div>
+       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
 <% end %>
