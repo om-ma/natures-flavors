@@ -95,7 +95,7 @@
           <% if @popular_extracts_products.present? %>
             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularExtracts">Popular Extracts</a></li>
           <% end %>
-          <% if @popular_Powders_products.present? %>
+          <% if @popular_powders_products.present? %>
             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#popularPowders">Popular Powders</a></li>
           <% end %>
           <% if @popular_oils_products.present? %>
@@ -128,7 +128,7 @@
       </div>
       <div class="tab-pane fade" id="popularPowders" role="tabpanel">
         <div class="row no-gutters">
-          <% @popular_Powders_products.each do |product| %>
+          <% @popular_powders_products.each do |product| %>
             <%= render 'spree/products/product', product: product, image_class: 'product-component-plp-image' %>
           <% end %>
         </div>
