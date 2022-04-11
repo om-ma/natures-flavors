@@ -10,7 +10,15 @@
       <% end %>
       <%= link_to product_or_variant_first_img, spree.product_path(line_item.variant.product), class:'thumbnail' %>
       <div class="cart-item-details d-flex flex-column justify-content-between jsAddItem jsSubItem">
-        <h4><%= link_to line_item&.name, line_item&.variant&.product %></h4>
+        <div class="d-flex">
+          <h4><%= link_to line_item&.name, line_item&.variant&.product %></h4>
+            <% if line_item.variant.option_values.present? %>
+              -
+              <div class="op-color">
+                <%= line_item.variant.option_values.pluck(:presentation).join(",") %>
+              </div>
+            <% end %>
+        </div>
           <% activeKlasSelectButton = line_item.quantity > 10 ? "btn btn-primary qty-dropdown-button " : "d-none" %>
             <%= button_tag :class => "#{activeKlasSelectButton} btn btn-primary qty-dropdown-button button-#{line_item.id} mt-10 updateprice" ,type:'button' do %>
             Update

@@ -117,8 +117,9 @@ function cartForm(orderNumber, token) {
   }
 
   this.updateSummaryGeneral = function (order) {
-    $('.js-order-total').html(order.display_total);
+    $('.js-order-total').html(order.display_total + " - Check Out");
     $('.js-product-total').html(order.display_item_total)
+    $("#shopping_cart_counter").html(order.line_items[0]["quantity"])
   }
 
   this.removeItemFromPopup = function(e){
