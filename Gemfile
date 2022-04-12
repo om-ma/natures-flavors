@@ -55,6 +55,8 @@ gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', bra
 gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_events_tracker', github: 'ducl13/spree_events_tracker', branch: 'naturesflavors'
+gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3'
+gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -65,7 +65,7 @@
         <h5>Shipping</h5>
       </div>
       <ul class="shipping-options">
-        <% ship_form.object.shipping_rates.each do |rate| %>
+        <% sort_shipping_rates_local_pickup_last(ship_form.object.shipping_rates).each do |rate| %>
           <li>
             <div class="custom-radio">
               <label>
