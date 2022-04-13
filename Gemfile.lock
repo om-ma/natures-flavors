@@ -66,15 +66,6 @@ GIT
       spree_extension
 
 GIT
-  remote: https://github.com/ducl13/spree_admin_roles_and_access.git
-  revision: 6b4d9a30514251dc6d386b36437002e2f9114003
-  branch: master
-  specs:
-    spree_admin_roles_and_access (3.pre.0.pre.stable)
-      spree_auth_devise
-      spree_core (>= 3.2.0, < 5.0.0)
-
-GIT
   remote: https://github.com/ducl13/spree_contact_us.git
   revision: 748e7f52fa9010454b6e9b544497bdb05295573f
   branch: naturesflavors
@@ -647,7 +638,6 @@ DEPENDENCIES
   selenium-webdriver
   spree (>= 4.3)
   spree_active_shipping!
-  spree_admin_roles_and_access!
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
   spree_common!
