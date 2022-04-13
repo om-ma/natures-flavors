@@ -12,3 +12,4 @@
 
 //= require admin/spree_favorite_products
 
+//= require spree/backend/spree_admin_roles_and_access

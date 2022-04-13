@@ -14,3 +14,4 @@
 
 AOS.init();
 
+//= require spree/frontend/spree_admin_roles_and_access
