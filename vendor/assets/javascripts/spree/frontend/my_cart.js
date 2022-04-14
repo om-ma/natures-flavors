@@ -119,7 +119,8 @@ function cartForm(orderNumber, token) {
   this.updateSummaryGeneral = function (order) {
     $('.js-order-total').html(order.display_total + " - Check Out");
     $('.js-product-total').html(order.display_item_total)
-    $("#shopping_cart_counter").html(order.line_items[0]["quantity"])
+    $("#shopping_cart_counter").html(order.total_quantity)
+
   }
 
   this.removeItemFromPopup = function(e){
@@ -150,8 +151,7 @@ function cartForm(orderNumber, token) {
 
 
 
-$( document ).ready(function() {
-  
+$(document).on('turbolinks:load', function() {
   let mainLayoutDiv       = $('.main-layout-section')
   let currentOrderNumber  = mainLayoutDiv.data('current-order-number')
   let currentOrderToken   = mainLayoutDiv.data('current-order-token')

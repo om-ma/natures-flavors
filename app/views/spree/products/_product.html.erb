@@ -4,7 +4,14 @@
     <%= link_to url do %>
       <div class="product-img">
         <%= plp_and_carousel_image(product, image_class) %>
-        <div class="price"><%= display_price(product) %></div>
+        <div class="price">
+        
+          <% if product.on_sale? %>
+            <%= product.price_in(current_currency).money %>
+          <% else %>
+            <%= display_price(product) %>
+          <% end %>  
+        </div>
       </div>
       <div class="product-desc">
         <h4> <%= product.name %></h4>
