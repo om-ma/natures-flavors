@@ -5,8 +5,8 @@ rake db:create (might not need this)
 rake db:schema:load
 rake db:migrate
 rake db:seed
-#rake spree_roles:permissions:populate
-#rake spree_roles:permissions:populate_permission_sets
+rake spree_roles:permissions:populate
+rake spree_roles:permissions:populate_permission_sets
 
 
 * To recreate thumbnails
