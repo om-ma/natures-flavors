@@ -18,29 +18,27 @@
     </div>
     <div id="menu">
       <ul class="product-menu">
-        <% if !(browser.device.mobile?) %> 
-          <% if @main_category.present? %>
-            <% main_tabs = @main_category.children.present? ? @main_category.children : [] %>
-            <% if main_tabs.present? %>
-              <% main_tabs.each do |header_category| %>
-                <% if spree_current_user.present? ? header_category.users.include?(spree_current_user) : header_category.users.present? %>
-                  <li>
-                     <%= link_to header_category.name, seo_url(header_category) %>
-                     <% if header_category.children.present? %>
-                      <ul>
-                        <% header_category.children.each do |category| %>
-                          <% if spree_current_user.present? ? category.users.include?(spree_current_user) : category.users.present? %>
-                            <li>
-                              <%= link_to category.name, seo_url(category) %>
-                            </li>
-                          <% end %> 
-                        <% end %>
-                      </ul>
-                    <% end %>  
-                  </li>
-                <% end %>
+        <% if (browser.device.mobile?) %> 
+          <% if @all_categories.present? %>
+            <% @all_categories.each do |menu_category| %>
+
+              <% if menu_category.users.present? ? (spree_current_user.present? ? menu_category.users.include?(spree_current_user) : false) : true %>
+                <li>
+                   <%= link_to menu_category.name, seo_url(menu_category) %>
+                   <% if menu_category.children.present? %>
+                    <ul>
+                      <% menu_category.children.each do |category| %>
+                        <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
+                          <li>
+                            <%= link_to category.name, seo_url(category) %>
+                          </li>
+                        <% end %> 
+                      <% end %>
+                    </ul>
+                  <% end %>  
+                </li>
               <% end %>
-            <% end %>  
+            <% end %>
           <% end %>      
           <li><a href="#">Deals</a>
             <ul>

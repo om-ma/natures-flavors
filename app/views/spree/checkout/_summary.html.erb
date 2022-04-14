@@ -107,7 +107,7 @@
     <ul class="cart-totals">
       <li>
         <label><%= Spree.t(:subtotal) %>:</label>
-        <span><div class="d-table-cell text-right"><%= order.display_item_total.to_html %></div></span> </li>
+        <span><div class="d-table-cell text-right js-product-total"><%= order.display_item_total.to_html %></div></span> </li>
         <% if order.line_item_adjustments.nonzero.exists? %>
           <li> 
           <label><%= label %></label>                   
@@ -179,7 +179,7 @@
         <label><%= Spree.t(:total) %>:</label>                
         <strong><div class="checkout-content-summary-table-order-total">                     
           <div class="d-table-cell text-right">
-            <span id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>">
+            <span id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>" class= "js-order-total" >
               <%= order.display_total.to_html %>
             </span>
           </div>
