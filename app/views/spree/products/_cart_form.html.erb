@@ -112,8 +112,8 @@
               <% option_value = variant.size_options %>
               <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
                 <span content="<%= current_currency %>"></span> 
-                <% if @product.on_sale? %> 
-                  <del><%= variant.price_in(current_currency).money %></del><%= display_price(@product) %><span>/ $6.29 per oz.</span>  
+                <% if variant.on_sale? %> 
+                  <del><%= display_price(@product) %></del><%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span>  
                 <% else %>
                   <%= variant.price_in(current_currency).money %><span>/ $6.29 per oz.</span>
                 <% end %>
