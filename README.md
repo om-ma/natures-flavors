@@ -1,3 +1,12 @@
+# Integrate extensions
+spree_events_tracker (DONE)
+spree_admin_roles_and_access (ISSUES)
+spree_analytics_trackers (ISSUES)
+spree_admin_insights
+spree_customer_segmentation
+spree-html-invoice
+spree_sitemap
+
 # Setup
 
 * To setup database
