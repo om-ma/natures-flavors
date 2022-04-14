@@ -13,10 +13,7 @@
         <div class="d-flex cart-item-description">
           <h4 ><%= link_to line_item&.name, line_item&.variant&.product %>
             <% if line_item.variant.option_values.present? %>
-              -
-              <span class="op-color">
-                <%= line_item.variant.option_values.pluck(:presentation).join(",") %>
-              </span>
+              - <%= line_item.variant.option_values.pluck(:presentation).join(",") %>
             <% end %>
           </h4>  
         </div>
