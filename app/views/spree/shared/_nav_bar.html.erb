@@ -41,7 +41,9 @@
               <% end %>  
             <% end %>
           <% end %>
-          <!--<li class="nav-item"><a class="nav-link" href="#"><strong>Deals</strong></a></li>-->
+          <% if Spree::Product.in_sale.present? %>
+            <li class="nav-item"><a class="nav-link" href="/sale"><strong>Deals</strong></a></li>
+          <% end %>  
         </ul>
         <div id="search-dropdown" class=" quick-menu ml-auto header-spree" >
           <%= render partial: 'spree/shared/search' %>
@@ -57,7 +59,7 @@
             <% end %>
           </div>
           <div id="link-to-cart">
-            <% item_count = defined?(current_order) ? current_order.item_count : 0 %>
+            <% item_count = current_order.present? ? current_order.item_count : 0 %>
             <%= render 'spree/shared/cart', item_count: item_count %>
           </div>
           <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>

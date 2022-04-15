@@ -17,16 +17,17 @@ Spree::FrontendHelper.class_eval do
     content_tag :ul, class: parent_klass   do
 
       taxons = root_taxon.children.map do |taxon|
-        if taxon.products.present?
+        # if taxon.products.present?
           taxon_permalink = taxon.permalink
           selected_taxon_klass = selected_parent_taxon_name == taxon_permalink ? 'active-tab' : ''
           content_tag :li do
             css_class = taxon.children.present?  ? 'dropdown-toggle tab-width' : ''
             if taxon.users.present? ? (spree_current_user.present? ? taxon.users.include?(spree_current_user) : false) : true
-              link_to(taxon.name,seo_url(taxon), class: "#{selected_taxon_klass} #{css_class}", data: {toggle: 'dropdown'})+ taxons_tree(taxon, current_taxon, max_level - 1)
+              is_last_category = taxon.leaf? ? "" : 'dropdown'
+              link_to(taxon.name,seo_url(taxon), class: "#{selected_taxon_klass} #{css_class}", data: {toggle: is_last_category })+ taxons_tree(taxon, current_taxon, max_level - 1)
             end
           end
-        end
+        # end
       end
       safe_join(taxons, "\n")
     end
