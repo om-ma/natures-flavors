@@ -57,7 +57,8 @@
             <% end %>
           </div>
           <div id="link-to-cart">
-            <%= render 'spree/shared/cart', item_count: 0 %>
+            <% item_count = defined?(current_order) ? current_order.item_count : 0 %>
+            <%= render 'spree/shared/cart', item_count: item_count %>
           </div>
           <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
         </div>

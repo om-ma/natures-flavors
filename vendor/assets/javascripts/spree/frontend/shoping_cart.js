@@ -11,8 +11,9 @@
 
 $(document).ready(function() {
   $(document).on("click" , ".close-sidebar-btn", function(e){  
-    $('.cart-sidebar').toggleClass("active");
+    $("#js-drawer").toggleClass("active")
     $('.overlay').toggleClass("active");
+    $(".add-to-cart-button").removeAttr("disabled");
     $('body').toggleClass("hide-scroll");
   e.preventDefault();
   });
@@ -32,6 +33,8 @@ $(document).on("click",function() {
     if($("#js-drawer").hasClass("active")){
       $("#js-drawer").toggleClass("active")
       $('.overlay').toggleClass("active");
+      $(".add-to-cart-button").removeAttr("disabled");
+      $('body').toggleClass("hide-scroll");
     }
   }
 });

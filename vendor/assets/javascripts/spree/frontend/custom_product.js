@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
 
-      $('.product-ov-js').on('click', function(e) {
+    $('.product-ov-js').on('click', function(e) {
       $('.product-ov-js').removeClass("active");
       $(this).addClass('active')
       var variantSku = $(this).attr("data-varient-sku");
@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function() {
       var variantId = $(this).attr("data-varient-id");
 
       $('#selected_variant').val(variantId);
-      $("#add-to-cart-button").removeAttr("disabled");
+      $(".add-to-cart-button").removeAttr("disabled");
     });
 
 
@@ -159,14 +159,6 @@ $(document).on('turbolinks:load', function() {
       $('.mobile-menu-link').addClass('collapsed');
       $('.cart-sidebar').toggleClass("active");
       $('.nav-cart').toggleClass("active");
-      $('.cart-sidebar-wrapper .overlay').toggleClass("active");
-      $('body').removeClass("hide-scroll");
-    e.preventDefault();
-    });
-
-    $('.close-sidebar-btn').on('click', function(e) {
-      $('.nav-cart').toggleClass("active");
-      $('.cart-sidebar').toggleClass("active");
       $('.cart-sidebar-wrapper .overlay').toggleClass("active");
       $('body').removeClass("hide-scroll");
     e.preventDefault();

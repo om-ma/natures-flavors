@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
     $('.address-select-change-js').on('change', function() {
       if (this.value == "new_address_selected"){
         $("#order_bill_address_id_0").click();

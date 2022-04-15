@@ -8,6 +8,9 @@ module Spree
 		        where("spree_orders.state = 'complete'").
 		        group("spree_line_items.variant_id, spree_products.id").order("total_qty DESC").uniq }
     end
+    def lowest_sale_price
+		sale_prices.active.sort_by(&:value).first.display_price
+    end
   end  
 end
 
