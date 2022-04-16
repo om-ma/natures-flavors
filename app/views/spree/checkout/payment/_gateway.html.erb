@@ -10,7 +10,7 @@
   <div class="col-md-12">
     <div class="form-group form-floating mb-20">
       <% param_prefix = "payment_source[#{payment_method.id}]" %>
-      <%= text_field_tag "#{param_prefix}[name]", "", { id: "name_on_card_#{payment_method.id}", class: 'form-control',placeholder:'Name on card*'} %>
+      <%= text_field_tag "#{param_prefix}[name]", "#{@order.bill_address_firstname} #{@order.bill_address_lastname}", { id: "name_on_card", class: 'form-control', placeholder: Spree.t(:name_on_card)} %>
       <%= label_tag "name_on_card#{payment_method.id}" do %>
         <%= Spree.t(:name_on_card) %><abbr>*</abbr>
       <% end %>
@@ -21,7 +21,7 @@
   <div class="col-12">
     <div class="form-group form-floating mb-20" data-hook="card_number">
      <% options_hash = Rails.env.production? ? {autocomplete: 'off'} : {} %>
-     <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(id: 'card_number', class: 'form-control',placeholder:'Card number*', size: 19, maxlength: 19, autocomplete: "off") %>
+     <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(id: 'card_number', class: 'form-control cardNumber', size: 19, maxlength: 19, autocomplete: "off", placeholder: Spree.t(:card_number)) %>
           <%= label_tag "card_number" do %>
             Card number<abbr>*</abbr>
           <% end %>
@@ -36,7 +36,7 @@
 <div class="row narrow-row">
   <div class="col-6">
     <div class="form-group form-floating mb-20" data-hook="card_expiration">
-      <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: "form-control", placeholder: "23/2021" %>
+      <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: 'form-control cardExpiry', placeholder: "MM/YYYY" %>
       <%= label_tag "card_expiry", class: "control-label" do %>
         Expiration<abbr>*</abbr>
       <% end %>
@@ -44,12 +44,13 @@
   </div>
   <div class="col-6">
     <div class="form-group form-floating mb-30" data-hook="card_code">
-      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', class: 'form-control required cardCode', size: 5 , placeholder: "Security Code (CVV)*") %>
+      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', class: 'form-control cardCode', size: 5, placeholder: Spree.t(:cvv)) %>
       <label>Security Code (CVV)*</label>
     </div>
   </div>
   <%= hidden_field_tag "#{param_prefix}[cc_type]", '', id: "cc_type", class: 'ccType' %>
 </div>
+<%= hidden_field_tag "#{param_prefix}[temporary_credit_card]", true, data: { hook: "save_user_address" } %>
 <% if current_spree_user.present? %>
   <div class="custom-checkbox mb-10">
     <label>
@@ -63,4 +64,3 @@
                     <span class="custom-control-label"></span>Save Card in My Cards</label>
                 </div>
 <% end %>
-<%= render partial: 'spree/shared/credit_card_format' %>

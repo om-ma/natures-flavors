@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function(){
   canvas = document.getElementById("canvas");
   if(canvas != null){
     ctx = canvas.getContext("2d");

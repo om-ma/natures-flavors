@@ -1,3 +1,4 @@
+$(document).ready(function(){
   $(document).on("click" , "#shopping_cart_bag", function(e){
     var cartBagElement  = $('.cart-nav')
     $.ajax({
@@ -6,8 +7,9 @@
     }).done(function () {
     }).fail(function (response) {
     })
-  e.preventDefault();
-});
+    e.preventDefault();
+  });
+});  
 
 $(document).ready(function() {
   $(document).on("click" , ".close-sidebar-btn", function(e){

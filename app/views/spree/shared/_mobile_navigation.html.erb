@@ -44,6 +44,8 @@
             <ul>
               <% if Spree::Product.in_sale.present? %>
                 <li><a href="/sale">See All Deals</a></li>
+              <% else %>
+                <li><a href="/">See All Deals</a></li>  
               <% end %>
               <li><a href="#">Gluten Free Baking</a></li>
               <li><a href="#">Ingredients</a></li>

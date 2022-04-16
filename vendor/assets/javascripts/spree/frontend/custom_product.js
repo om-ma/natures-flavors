@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function(){
 
     $('.product-ov-js').on('click', function(e) {
       $('.product-ov-js').removeClass("active");
