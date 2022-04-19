@@ -32,7 +32,6 @@
 
       <div class="col-md-8">
           <%= form_for @contact, :html => {:class => "contact-form"}, :url => contact_us_path do |f| %>
-            <%= flash_messages %>
             <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @contact } %>
             <div class="row narrow-row-md">
               <div class="col-sm-12">
