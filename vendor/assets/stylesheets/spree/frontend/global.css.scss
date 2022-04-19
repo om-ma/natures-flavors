@@ -240,7 +240,7 @@ a {
 }
 
 a.text-link {
-	background: url("../images/arrow-green-right.svg") no-repeat scroll left 6px;
+	background: image-url("arrow-green-right.svg") no-repeat scroll left 6px;
 	padding: 0 0 0 9px;
 }
 
@@ -615,17 +615,20 @@ a.btn {
 }
 
 .btn-primary,
-.btn-primary:focus {
+.btn-primary:focus,
+.cart-similar-item .dropdown .btn:focus {
 	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
 }
 
 .btn-primary:hover,
-.lSAction > a:hover {
+.lSAction > a:hover,
+.cart-similar-item .dropdown .btn:hover {
     background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
-.lSAction > a:not(:disabled):not(.disabled):active {
+.lSAction > a:not(:disabled):not(.disabled):active,
+.cart-similar-item .dropdown .btn:not(:disabled):not(.disabled):active {
     background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
@@ -768,7 +771,7 @@ a.btn.btn-block {
 .close-btn {
     width: 18px;
     height: 18px;
-    background: url("../images/close-dark.svg") no-repeat scroll center;
+    background: image-url("close-dark.svg") no-repeat scroll center;
     border: 0 none;
     box-shadow: none !important;
 	outline: none !important;
@@ -1069,7 +1072,7 @@ a.btn.btn-block {
 }
 
 .nav-search {
-	background-image: url("../images/search-icon-white.svg");
+	background-image: image-url("search-icon-white.svg");
 }
 
 .nav-profile {
@@ -1227,7 +1230,7 @@ a.btn.btn-block {
     padding: 0 20px 0 51px;
     height: 50px;
 	border-radius: 21px;
-	background: #fff url("../images/search-icon-red.svg") no-repeat scroll 20px center;
+	background: #fff image-url("search-icon-red.svg") no-repeat scroll 20px center;
 }
 
 .mobile-search-menu .form-control::-moz-placeholder {
@@ -1889,7 +1892,7 @@ h3 a{
 	text-indent: -9999px;
 	width: 30px;
 	height: 30px;
-	background: url("../images/video-icon.svg") no-repeat scroll center;
+	background: image-url("video-icon.svg") no-repeat scroll center;
 }
 
 .product-img .price {
@@ -1978,7 +1981,7 @@ h3 a{
 	right: 0;
 	bottom: 10px;
 	text-indent: -9999px;
-	background: url("../images/trash.svg") no-repeat scroll center;
+	background: image-url("trash.svg") no-repeat scroll center;
 	width: 16px;
 	height: 16px;
 	opacity: 0.5;
@@ -1989,7 +1992,7 @@ h3 a{
 }
 
 .product-wrap > a:hover .del-btn {
-	background-image: url("../images/trash-inverse.svg");
+	background-image: image-url("trash-inverse.svg");
 }
 
 .home-videos-wrapper,
@@ -3165,6 +3168,55 @@ h3 a{
 	color: rgba(255,255,255,0.5);
 }
 
+.product-options-filter {
+	margin: 0 0 27px;
+}
+
+.product-options-filter label {
+	font-size: 12px;
+    color: #070707;
+    line-height: 20px;
+    margin: 0 0 10px;
+	display: block;
+}
+
+.product-options-filter .dropdown .btn {
+	font-size: 20px;
+    font-weight: 700;
+	color: #fff;
+    text-align: left;
+    height: 52px;
+    padding: 0 20px;
+    background-image: image-url("arrow-bottom-white-icon.svg");
+	background-color: #000;
+	display: block;
+	width: 100%;
+	box-shadow: none !important;
+}
+
+.product-options-filter .dropdown.show .btn {
+    background-image: image-url("arrow-top-white-icon.svg");
+}
+
+.product-options-filter .dropdown-menu {
+	width: 100%;
+}
+
+.product-options-filter .dropdown-menu li {
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+    padding: 0 15px;
+    height: 39px;
+    line-height: 39px;
+    position: relative;
+    cursor: pointer;
+}
+
+.product-options-filter .dropdown-menu li:hover {
+    background-color: #f9f9f9;
+}
+
 .product-side-details .btn-white {
 	font-size: 12px;
 	height: 22px;
@@ -3398,7 +3450,7 @@ h3 a{
 	color: #fff;
 	margin: 0;
 	padding: 0 0 0 32px;
-	background: url("../images/cart-icon-white.svg") no-repeat scroll left center;
+	background: image-url("cart-icon-white.svg") no-repeat scroll left center;
 }
 
 .show-cart-summary {
@@ -3409,13 +3461,13 @@ h3 a{
 	padding: 0 15px 0 0;
 	border: 0 none;
 	outline: none !important;
-	background: url("../images/arrow-bottom-white-icon.svg") no-repeat scroll right center;
+	background: image-url("arrow-bottom-white-icon.svg") no-repeat scroll right center;
 	position: relative;
 	width: 55px;
 }
 
 .show-cart-summary.clicked {
-	background-image: url("../images/arrow-top-white-icon.svg");
+	background-image: image-url("arrow-top-white-icon.svg");
 }
 
 .show-cart-summary.clicked span {
@@ -3872,13 +3924,63 @@ h3 a{
 	color: #A71E22;
 }
 
-.cart-similar-item .btn {
+.cart-similar-item a.btn,
+.cart-similar-item .dropdown .btn {
 	font-size: 12px;
 	font-weight: 700;
 	padding: 0 16px;
 	height: 30px;
 	line-height: 30px;
 	border-radius: 11px;
+	width: 145px;
+}
+
+.cart-similar-item .dropdown .btn {
+	color: #fff !important;
+	min-width: 1px;
+	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+	position: relative;
+}
+
+.cart-similar-item .btn.dropdown-toggle:after {
+	content: '';
+	background: image-url("arrow-bottom-white-icon.svg") no-repeat scroll center;
+	width: 10px;
+	height: 6px;
+	position: absolute;
+	left: calc(100% - 22px);
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+	vertical-align: middle;
+    border: 0 none;
+}
+
+.cart-similar-item .show .btn.dropdown-toggle:after {
+	background: image-url("arrow-top-white-icon.svg") no-repeat scroll center;
+}
+
+.cart-similar-item .dropdown-menu li {
+	font-size: 15px;
+	font-weight: 700;
+	display: block;
+	padding: 0 15px;
+	height: 29px;
+	line-height: 29px;
+	position: relative;
+	cursor: pointer;
+}
+
+.cart-similar-item .dropdown-menu li:hover {
+	background-color: #f9f9f9;
+}
+
+.cart-similar-item .dropdown-menu li span {
+	font-weight: 400;
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .sidebar-categories {
@@ -5192,12 +5294,13 @@ h3 a{
 }
 	
 .product-gallery-wrap .lSSlideOuter .lSPager.lSGallery {
-    left: 50%;
-    width: 330px !important;
-    top: auto;
-    bottom: 40px;
-    flex-direction: row;
-    transform: translateX(-50%) !important;
+	left: 0;
+	width: 100% !important;
+	top: auto;
+	bottom: 40px;
+display: flex;
+	justify-content: center;
+	flex-direction: row;
 }
 	
 .product-gallery-wrap .lSSlideOuter .lSPager.lSGallery li {
@@ -5692,7 +5795,6 @@ h3 a{
 }
 	
 .product-gallery-wrap .lSSlideOuter .lSPager.lSGallery {
-    width: 234px !important;
     bottom: 50px;
 }
 	
