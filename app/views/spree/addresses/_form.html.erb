@@ -1,35 +1,3 @@
-<%# address_id = address_type.chars.first %>
-
-<%# Spree::Address::ADDRESS_FIELDS.each do |field| %>
-  <%# if field == "country" %>
-   <!--  <div class="form-group checkout-content-inner-field" id="<%#= "#{address_id}country" %>">
-      <div id="<%#= "#{address_id}country-selection" %>" class="d-block position-relative has-float-label">
-        <%#= address_form.collection_select :country_id, available_countries, :id, :name,
-                                           { prompt: Spree.t(:country).upcase },
-                                           { class: 'form-control spree-flat-select',
-                                             aria: { label: Spree.t(:country) } } %>
-        <%#= image_tag 'arrow.svg', class: 'position-absolute spree-flat-select-arrow' %>
-        <%#= address_form.label(Spree.t(:country), Spree.t(:country).upcase, class:'text-uppercase') %>
-      </div>
-    </div> -->
-  <%# elsif field == "state" %>
-    <!-- <div class="form-group mb-4">
-      <%#= address_field(address_form, :state, address_id) { address_state(address_form, address.country, address_id) } if Spree::Config[:address_requires_state] %>
-    </div>
-  <%# elsif field == "zipcode" %>
-    <div class="form-group mb-4">
-      <%#= address_field(address_form, :zipcode, address_id) { address_zipcode(address_form, address.country, address_id) } %>
-    </div>
-  <%# else %>
-    <%# next if field == "company" && !Spree::Config[:company] %>
-    <%# next if field == "alternative_#{address_id}_phone" && !Spree::Config["alternative_#{address_id}_phone"] %>
-    <div class="form-group mb-4">
-      <%#= address_field(address_form, field.to_sym, address_id) %>
-    </div>
-  <%# end %>
-<%# end %>
-
-<p class="text-right text-uppercase mb-5 checkout-content-inner-field"><span id="required_marker"><%#= Spree.t(:required) %></span> <%#= Spree.t(:required_fields) %></p> -->
 <% address_id = address_type.chars.first %>
   <% checkout_address = %w(firstname lastname address1 address2 country state city zipcode phone) %>
   <% checkout_address.each do |field| %>
@@ -118,8 +86,8 @@
         <% if( request.fullpath.include? "/checkout") %>
           <div class="custom-checkbox" >
             <label>
-              <%= address_form.check_box :is_address_save, class: 'custom-control-input' %>
-              <!-- <input type="checkbox" class="custom-control-input" checked> -->
+              
+              <input type="checkbox" class="custom-control-input" id="is_user_address_saved" checked>
               <span class="custom-control-label"></span>Save to My Addresses
             </label>
           </div>
@@ -127,7 +95,6 @@
         <div class="custom-checkbox">
           <label>
             <%= address_form.check_box :is_default, class: 'custom-control-input', checked: is_use_addresses_present ? "" : "checked" %>
-            <!-- <input type="checkbox" class="custom-control-input" checked> -->
             <span class="custom-control-label"></span>Save as Default
           </label>
         </div>

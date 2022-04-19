@@ -1,4 +1,4 @@
- $( document ).ready(function() {
+$(document).ready(function(){
     $(".payment-change-billing-address").on('click',function(){
       $("#payment-billing-address").removeClass("d-none");
     })

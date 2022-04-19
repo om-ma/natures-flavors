@@ -24,7 +24,7 @@
           <% activeKlas = line_item.quantity <= 10 ? "d-none" : "" %>
           <%= item_form.number_field :quantity, min: 0, class: "quantity-box  line_item_quantity  js-qty-field custom-select quantity-change-input qty-dropdown shopping-cart-item-quantity-input quantity-box cart-line-item-#{line_item.id} #{activeKlas} input-#{line_item.id}", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
           <% activeKlasSelect = line_item.quantity > 10 ? "d-none" : "" %>
-          <%= select_tag 'quantity', options_for_select([[1, 1], [2, 2], [3, 3],[4, 4],[5, 5],[6, 6],[7, 7],[8, 8], [9, 9], [10, 10], ['10+', 11]],line_item.quantity), class: "js-qty-select custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box quantity-change-select #{activeKlasSelect} select-#{line_item.id}",data: { id: line_item.id }, aria: { label: Spree.t('cart_page.change_quantity') }  %>
+          <%= select_tag 'quantity', options_for_select([[1, 1], [2, 2], [3, 3],[4, 4],[5, 5],[6, 6],[7, 7],[8, 8], [9, 9], [10, 10], ['10+', 11]],line_item.quantity), id: "line_item_quantity-#{line_item.id}", class: "js-qty-select custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box quantity-change-select #{activeKlasSelect} select-#{line_item.id}",data: { id: line_item.id }, aria: { label: Spree.t('cart_page.change_quantity') }  %>
         <div class="price-size text-right" data-hook="cart_item_price" id=<%= line_item.single_money%> >
           <div class="price-size text-right js-lineitem-total-<%= line_item.id%> " data-hook="cart_item_price" >
             <span><%= line_item.quantity %>x<%= line_item.single_money.to_html%></span> <%= line_item.display_amount.to_html unless line_item.quantity.nil? %> 

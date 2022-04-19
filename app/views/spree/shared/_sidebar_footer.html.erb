@@ -3,5 +3,5 @@
     <%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: best_sellers_product }  %>
  <% end %> 
 <%= link_to spree.checkout_path do %>
-    <button type="button" class="btn btn-primary btn-block"><strong class="js-order-total"><%= @order.display_total %> - Check Out</strong></button>
+    <button type="button" class="btn btn-primary btn-block"><strong class="js-order-total"><%= @order.display_total %></strong><strong> - Check Out</strong></button>
 <% end %>
