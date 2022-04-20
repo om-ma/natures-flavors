@@ -1,11 +1,15 @@
 # Integrate extensions
+spree_contact_us (DONE)
 spree_events_tracker (DONE)
 spree_admin_roles_and_access (ISSUES)
 spree_analytics_trackers (ISSUES)
-spree_admin_insights
-spree_customer_segmentation
+spree_admin_insights (ISSUES)
+spree_comments
 spree-html-invoice
 spree_sitemap
+spree_shipstation
+spree_mailchimp_ecommerce
+scout_apm
 
 # Setup
 
