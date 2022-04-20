@@ -56,6 +56,17 @@ GIT
       json
 
 GIT
+  remote: https://github.com/ducl13/spree-admin-insights.git
+  revision: c33f2a68e7102854c1858632e44ed3b054733928
+  branch: master
+  specs:
+    spree_admin_insights (3.2.0.alpha)
+      spree_core (>= 3.1.0, < 5.0.0)
+      spree_extension
+      wicked_pdf
+      wkhtmltopdf-binary
+
+GIT
   remote: https://github.com/ducl13/spree_active_shipping.git
   revision: 19c336c79f47628c6c73412980173d6bb80f84cb
   branch: 4-3
@@ -604,6 +615,9 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    wicked_pdf (2.1.0)
+      activesupport
+    wkhtmltopdf-binary (0.12.6.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.5.4)
@@ -638,6 +652,7 @@ DEPENDENCIES
   selenium-webdriver
   spree (>= 4.3)
   spree_active_shipping!
+  spree_admin_insights!
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
   spree_common!

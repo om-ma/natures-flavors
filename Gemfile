@@ -48,6 +48,7 @@ gem 'spree_frontend', '>= 4.3'
 gem 'spree_backend', '>= 4.3'
 gem 'spree_emails', '>= 4.3'
 gem 'spree_sample' # dummy data like products, taxons, etc
+gem 'spree_admin_insights', github: 'ducl13/spree-admin-insights', branch: 'master'
 #gem 'spree_admin_roles_and_access', github: 'ducl13/spree_admin_roles_and_access', branch: 'master'
 #gem 'spree_analytics_trackers', github: 'ducl13/spree_analytics_trackers', branch: 'master'
 gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
