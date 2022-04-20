@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ducl13/active_shipping.git
-  revision: a29a489837c750ec8adc18f3a41cb7b4e1cb500e
+  revision: 4e4ddc767768b2947b328a164bcd0818b6c96d21
   branch: 4-3
   specs:
     active_shipping (2.2.0)
