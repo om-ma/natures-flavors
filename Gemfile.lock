@@ -66,6 +66,17 @@ GIT
       spree_extension
 
 GIT
+  remote: https://github.com/ducl13/spree_analytics_trackers.git
+  revision: bd4c5cf5306852d7d1cbf7d103fb053c950c7d7f
+  branch: master
+  specs:
+    spree_analytics_trackers (2.1.1)
+      deface (~> 1.0)
+      spree_backend (>= 4.1.0, < 5.0)
+      spree_core (>= 4.1.0, < 5.0)
+      spree_extension
+
+GIT
   remote: https://github.com/ducl13/spree_contact_us.git
   revision: 748e7f52fa9010454b6e9b544497bdb05295573f
   branch: naturesflavors
@@ -638,6 +649,7 @@ DEPENDENCIES
   selenium-webdriver
   spree (>= 4.3)
   spree_active_shipping!
+  spree_analytics_trackers!
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
   spree_common!

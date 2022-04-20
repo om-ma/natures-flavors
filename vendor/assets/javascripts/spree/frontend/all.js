@@ -13,3 +13,5 @@
 //= require spree/frontend/spree_favorite_products
 
 AOS.init();
+//= require spree/frontend/add_to_cart_analytics
+//= require spree/frontend/remove_from_cart_analytics
