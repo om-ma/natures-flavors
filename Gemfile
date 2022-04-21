@@ -52,7 +52,7 @@ gem 'spree_admin_insights', github: 'ducl13/spree-admin-insights', branch: 'mast
 #gem 'spree_admin_roles_and_access', github: 'ducl13/spree_admin_roles_and_access', branch: 'master'
 #gem 'spree_analytics_trackers', github: 'ducl13/spree_analytics_trackers', branch: 'master'
 gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
-gem 'spree_comments', github: 'ducl13/spree_comments', branch: 'master'
+#gem 'spree_comments', github: 'ducl13/spree_comments', branch: 'master'
 gem 'spree_contact_us', github: 'ducl13/spree_contact_us', branch: 'naturesflavors'
 gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
 gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', branch: 'natures'
