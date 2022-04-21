@@ -40,6 +40,7 @@ gem "bugsnag", "~> 6.24", groups: [:staging, :production]
 gem 'canonical-rails', github: 'ducl13/canonical-rails'
 gem 'dotenv-rails'
 gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
+gem 'scout_apm'
 
 #Spree
 gem 'spree', '>= 4.3'

@@ -225,6 +225,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
+    ast (2.4.2)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
     autoprefixer-rails (10.3.3.0)
@@ -409,6 +410,8 @@ GEM
       terrapin (~> 0.6.0)
     paranoia (2.4.3)
       activerecord (>= 4.0, < 6.2)
+    parser (3.1.2.0)
+      ast (~> 2.4.1)
     pg (1.2.3)
     polyglot (0.3.5)
     popper_js (1.16.0)
@@ -478,6 +481,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (5.1.1)
+      parser
     select2-rails (4.0.13)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
@@ -660,6 +665,7 @@ DEPENDENCIES
   rails (~> 6.1.5)
   recaptcha!
   sass-rails
+  scout_apm
   selenium-webdriver
   spree (>= 4.3)
   spree_active_shipping!
