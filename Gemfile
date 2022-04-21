@@ -61,6 +61,7 @@ gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_events_tracker', github: 'ducl13/spree_events_tracker', branch: 'naturesflavors'
 gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3'
 gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
+gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

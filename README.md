@@ -4,10 +4,10 @@ spree_events_tracker (DONE)
 spree_admin_roles_and_access (ISSUES)
 spree_analytics_trackers (ISSUES)
 spree_admin_insights (ISSUES)
-spree_comments
+spree_comments (ISSUES)
 spree-html-invoice
 spree_sitemap
-spree_shipstation
+spree_shipstation (NEED TEST)
 spree_mailchimp_ecommerce
 scout_apm
 
