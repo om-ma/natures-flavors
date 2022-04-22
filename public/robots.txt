@@ -7,3 +7,7 @@ Disallow: /user
 Disallow: /account
 Disallow: /api
 Disallow: /password
+Disallow: /admin
+Disallow: /favorite_products
+
+Sitemap: https://www.naturesflavors.com/sitemap

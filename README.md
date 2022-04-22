@@ -7,9 +7,10 @@ spree_admin_insights (ISSUES)
 spree_comments (ISSUES)
 spree-html-invoice
 spree_sitemap
-spree_shipstation (NEED TEST)
 spree_mailchimp_ecommerce
-scout_apm
+bugsnag (NEED TESTING)
+scout_apm (NEED TEST)
+spree_shipstation (NEED TEST)
 
 # Setup
 
@@ -21,10 +22,11 @@ rake db:seed
 rake spree_roles:permissions:populate
 rake spree_roles:permissions:populate_permission_sets
 
-
 * To recreate thumbnails
 Spree::Image.all.each do |image| image.create_sizes end
 
+* To generate sitemap manually
+- rake sitemap:refresh
 
 # Migration
 Users:

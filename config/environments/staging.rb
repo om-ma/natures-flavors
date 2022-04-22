@@ -20,10 +20,10 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -39,7 +39,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -58,12 +58,18 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-
+  config.cache_store = :redis_store, "#{ENV['CACHE_URL']}/#{ENV['CACHE_DB_NUM']}"
+  
   # Use a real queuing backend for Active Job (and separate queues per environment)
-  # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "natures-flavors_#{Rails.env}"
+  config.active_job.queue_adapter     = :sidekiq
+  #config.active_job.queue_name_prefix = "bestflavors_sidekiq_#{Rails.env}"
 
-
+  config.action_mailer.perform_caching = false
+  config.action_mailer.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
+  config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
+  config.assets.digest = true
+  config.assets.enabled = true
+  config.assets.prefix = '/assets/v1'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -88,33 +94,39 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.assets.raise_runtime_errors = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_caching = false
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: "www.naturesflavors.com" }
-  config.action_mailer.asset_host = "https://www.naturesflavors.com"
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "email-smtp.us-east-1.amazonaws.com",
-    :port                 =>  587,
-    :domain               => "us-east-1.amazonaws.com",
-    :user_name            => ENV['ACTION_MAILER_USER_NAME'],
-    :password             => ENV['ACTION_MAILER_PASSWORD'],
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
+
+  # Email address for sending back office invoice and packaging list for an order to be printed automatically
+  config.x.backoffice.print_invoice_packaging_list = true
+  config.x.backoffice.to_address = 'it-group@naturesflavors.com'
+
+  # paperclip with S3. for spree_slider images, etc.
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :preserve_files => true,
+    :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :s3_region => ENV['S3_ASSET_REGION']
+    },
+    :bucket => ENV['S3_ASSET_BUCKET']
   }
-  config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
-  #config.action_mailer.deliver_later_queue_name = "mail_queue"
+  
+  # YotPo - Staging keys
+  config.x.yotpo.app_key = '<TODO>'
+  config.x.yotpo.secret_key = '<TODO>'
+  config.x.yotpo.rich_snippets_refresh_time = 1.minutes
 end
 
-## spree_sitemap config
+# spree_sitemap config
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(aws_access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
                                                                     aws_secret_access_key: ENV['AWS_SECRET_KEY'],
                                                                     fog_provider:          'AWS',
                                                                     fog_directory:         ENV['S3_SITEMAPS_BUCKET'])
-SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-production-sitemaps.s3.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-staging-sitemaps.s3.amazonaws.com/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
-Rails.application.default_url_options = { host: "https://www.naturesflavors.com" }
+Rails.application.default_url_options = {host:'https://naturesflavors.naturlax.org'}
+Spree::Core::Engine.routes.default_url_options[:host] = 'naturesflavors.naturlax.org'

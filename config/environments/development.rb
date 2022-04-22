@@ -89,4 +89,13 @@ Rails.application.configure do
   #config.action_mailer.deliver_later_queue_name = "mail_queue"
 end
 
+# spree_sitemap config
+SitemapGenerator::Sitemap.public_path = 'tmp/'
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(aws_access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+                                                                    aws_secret_access_key: ENV['AWS_SECRET_KEY'],
+                                                                    fog_provider:          'AWS',
+                                                                    fog_directory:         ENV['S3_SITEMAPS_BUCKET'])
+SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-development-sitemaps.s3.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+
 Rails.application.default_url_options = { host: "http://naturesflavors.localhost:3000" }

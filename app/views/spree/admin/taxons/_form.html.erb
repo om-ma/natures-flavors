@@ -23,6 +23,14 @@
       <small><%= Spree.t(:say_yes) %></small>
     <% end %>
   <% end %>
+    <%= f.field_container :noindex, class: ['form-group'] do %>
+    <%= f.label :noindex do %>
+      <%= Spree.t(:no_index_in_sitemap) %>
+      <br>
+      <%= f.check_box :noindex, { checked: @taxon.noindex } %>
+      <small><%= Spree.t(:say_yes) %></small>
+    <% end %>
+  <% end %>
   <%= f.field_container :icon, class: ['form-group'] do %>
     <%= f.label :icon, Spree.t(:header_banner) %>
     <%= image_tag(main_app.url_for(@taxon.icon.try(:attachment)), class: 'w-100') if @taxon.icon %>

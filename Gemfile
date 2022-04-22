@@ -36,9 +36,12 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'aws-sdk', '~> 3'
 gem "bugsnag", "~> 6.24", groups: [:staging, :production]
 gem 'canonical-rails', github: 'ducl13/canonical-rails'
 gem 'dotenv-rails'
+gem 'fog', '~> 2.0.0'
+gem "fog-aws"
 gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
 gem 'scout_apm'
 
@@ -63,6 +66,7 @@ gem 'spree_events_tracker', github: 'ducl13/spree_events_tracker', branch: 'natu
 gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3'
 gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
 gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'master'
+gem 'spree_sitemap', github: 'ducl13/spree_sitemap', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

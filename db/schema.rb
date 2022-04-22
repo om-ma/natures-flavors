@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_163446) do
+ActiveRecord::Schema.define(version: 2022_04_22_173917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1411,6 +1411,7 @@ ActiveRecord::Schema.define(version: 2022_04_14_163446) do
     t.integer "depth"
     t.boolean "hide_from_nav", default: false
     t.text "short_description"
+    t.boolean "noindex", default: false
     t.index ["lft"], name: "index_spree_taxons_on_lft"
     t.index ["name", "parent_id", "taxonomy_id"], name: "index_spree_taxons_on_name_and_parent_id_and_taxonomy_id", unique: true
     t.index ["name"], name: "index_spree_taxons_on_name"
