@@ -1,12 +1,12 @@
 # Integrate extensions
 spree_contact_us (DONE)
 spree_events_tracker (DONE)
+spree_sitemap (DONE)
 spree_admin_roles_and_access (ISSUES)
 spree_analytics_trackers (ISSUES)
 spree_admin_insights (ISSUES)
 spree_comments (ISSUES)
 spree-html-invoice
-spree_sitemap
 spree_mailchimp_ecommerce
 bugsnag (NEED TESTING)
 scout_apm (NEED TEST)
