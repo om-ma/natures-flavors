@@ -27,7 +27,7 @@ $(document).ready(function(){
     });
     })
 
-$(document).ready(function(){
+$( document ).on('turbolinks:load', function() {
 
   $(".js-qty-select").change(function() {
     let selectedQty = $(this).val()

@@ -201,8 +201,14 @@ $(document).ready(function(){
     });
   });
 
-
-  $(document).ready(function() {
+  });
+});
+$(document).ready(function() {
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
+});
+$( document ).on('turbolinks:load', function() {
     $('#product-gallery').lightSlider({
     gallery: true,
         item:1,
@@ -227,11 +233,3 @@ $(document).ready(function(){
       ]
     });
   })
-  });
-});
-$(document).ready(function() {
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  });
-});
-

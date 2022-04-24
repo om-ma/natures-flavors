@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-xl"  id="spree-header">
   <div class="row no-gutters w-100" id="header">
     <div  id="home-link" class="col-xl-2" data-hook data-hook>
-      <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= link_to root_path, class: 'navbar-brand', data: { turbolinks: false } do %>
         <%= image_tag 'theme_logo.svg', alt: "Nature's Flavors" %>
       <% end %>
     </div>      
@@ -62,7 +62,7 @@
           </div>
           <div id="link-to-cart">
             <% item_count = current_order.present? ? current_order.item_count : 0 %>
-            <%= render 'spree/shared/cart', item_count: item_count %>
+            <%= render 'spree/shared/cart', item_count: item_count, size: 36 %>
           </div>
           <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
         </div>
