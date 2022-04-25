@@ -1,9 +1,15 @@
 <% max_level = 3 %>
+
 <% if taxon.present? %>
   <% cache [I18n.locale, max_level, taxon] do %>
-    <% taxon = taxon.parent if taxon.leaf? %>
     <% if taxon.children.any? %>
       <%= taxons_tree(taxon, taxon, max_level) %>
+    <% else %>
+      <ul class="sidebar-sub-categories">
+        <li>
+          <%= link_to taxon.name, seo_url(taxon) %>
+        </li>  
+      </ul>  
     <% end %>
   <% end %>
 <% else %>

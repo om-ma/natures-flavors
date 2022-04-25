@@ -16,6 +16,7 @@ $(document).ready(function() {
     $("#js-drawer").toggleClass("active")
     $('.main-layout-section .overlay').removeClass("active");
     $('.cart-sidebar-wrapper .overlay').removeClass("active");
+    $(".cart-sidebar").removeClass("active")
     $(".add-to-cart-button").removeAttr("disabled");
     $('body').toggleClass("hide-scroll");
   e.preventDefault();
@@ -37,6 +38,7 @@ $(document).on("click",function() {
       $("#js-drawer").toggleClass("active")
       $('.main-layout-section .overlay').removeClass("active");
       $('.cart-sidebar-wrapper .overlay').removeClass("active");
+      $(".cart-sidebar").removeClass("active")
       $(".add-to-cart-button").removeAttr("disabled");
       $('body').toggleClass("hide-scroll");
     }

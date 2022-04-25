@@ -110,7 +110,7 @@
         <span><div class="d-table-cell text-right js-product-total"><%= order.display_item_total.to_html %></div></span> </li>
         <% if order.line_item_adjustments.nonzero.exists? %>
           <li> 
-          <label><%= label %></label>                   
+          <label><%#= label %></label>
           <span><% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
           <div class="d-table-cell text-right"><%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>                      
           </div>
@@ -197,10 +197,16 @@
       </span><% end %></li>      
     </ul>
 </div>
-<div class="cart-similar-item phone-hide">
-  <div class="wrap">
-    <p>You might need this:</p>
-    <div class="similar-item-thumb"><a href="#"><%= image_tag "product-thumb-1.jpg", alt:"product thumbnail" %></a></div>
-    <h4><a href="#">Acorn Flavored Powder, Natural (8 oz.)</a></h4>
-    <a href="#" class="btn btn-primary">$14.70  - Add to Cart</a> </div>
+<% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
+<% if best_sellers_product.present? %>
+  <div class="cart-similar-item">
+    <div class="wrap">
+      <p>You might need this:</p>
+      <div class="similar-item-thumb"><a href="#"><%= plp_and_carousel_image( best_sellers_product) %></a></div>
+      <h4><a href="#"><%= best_sellers_product.name %></a></h4>
+      <%= link_to add_to_cart_path(best_sellers_product.id), class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button',method: :post do %>
+            <%= best_sellers_product.price %> - Add to Cart
+       <% end %>
+   </div>
 </div>
+ <% end %> 

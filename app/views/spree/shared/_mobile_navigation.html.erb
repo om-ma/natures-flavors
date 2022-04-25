@@ -40,18 +40,22 @@
               <% end %>
             <% end %>
           <% end %>      
-          <li><a href="#">Deals</a>
-            <ul>
-              <% if Spree::Product.in_sale.present? %>
-                <li><a href="/sale">See All Deals</a></li>
-              <% else %>
-                <li><a href="/">See All Deals</a></li>  
-              <% end %>
-              <li><a href="#">Gluten Free Baking</a></li>
-              <li><a href="#">Ingredients</a></li>
-              <li><a href="#">Gluten Free Baking Mix</a></li>
-              <li><a href="#">Organic Gluten Free Baking</a></li>
-            </ul>
+          <li>
+            <% sales_present = Spree::Product.in_sale.present? ? true : false %>
+            <% sale_link = sales_present ? sale_path : root_path %>
+            <%= link_to "Deals", sale_link %>
+            <% if sales_present %>
+              <ul>
+                <li>
+                  <% all_sales_link = sale_link.present? ? sale_path : root_path %>
+                  <%= link_to "See All Deals", all_sales_link %>
+                </li>
+                <li><a href="#">Gluten Free Baking</a></li>
+                <li><a href="#">Ingredients</a></li>
+                <li><a href="#">Gluten Free Baking Mix</a></li>
+                <li><a href="#">Organic Gluten Free Baking</a></li>
+              </ul>
+            <% end %>  
           </li>
         <% end %>
       </ul>

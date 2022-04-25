@@ -10,6 +10,10 @@ module Spree
       else
         flash[:error] = line_item.errors.full_messages.join(",")
       end
+      respond_to do |format|
+        format.html { redirect_to request.referer }
+        format.js
+      end
     end
   end
 end
