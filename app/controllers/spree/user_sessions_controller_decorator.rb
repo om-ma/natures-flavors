@@ -5,10 +5,12 @@ module Spree
     end
 
     def is_redirect_to_checkout
-      if request.referer.include?("checkout")
+      if request.referer.nil?
+        session["spree_user_return_to"] = spree.root_path
+      elsif request.referer.include?("checkout")
         session["spree_user_return_to"] = spree.checkout_state_path("address")
       else
-         session["spree_user_return_to"] = request.referer
+        session["spree_user_return_to"] = request.referer
       end
     end
   end
