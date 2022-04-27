@@ -82,7 +82,7 @@
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
           
-        $('#deals-expiry').html("<strong>Deal Expiers in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
+        $('#deals-expiry').html("<strong>Deal Expires in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
         + seconds + "</strong> seconds </span> ")
           
         if (distance < 0) {
