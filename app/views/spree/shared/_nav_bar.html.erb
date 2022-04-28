@@ -41,11 +41,7 @@
               <% end %>  
             <% end %>
           <% end %>
-          <% if Spree::Product.in_sale.present? %>
-            <li class="nav-item"><a class="nav-link" href="/sale"><strong>Deals</strong></a></li>
-          <% else %>
-            <li class="nav-item"><a class="nav-link" href="/"><strong>Deals</strong></a></li>  
-          <% end %>  
+          <li class="nav-item"><a class="nav-link" href="/sale"><strong>Deals</strong></a></li>
         </ul>
         <div id="search-dropdown" class=" quick-menu ml-auto header-spree" >
           <%= render partial: 'spree/shared/search' %>

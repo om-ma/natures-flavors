@@ -15,3 +15,6 @@
 AOS.init();
 //= require spree/frontend/add_to_cart_analytics
 //= require spree/frontend/remove_from_cart_analytics
+
+//= require spree/frontend/spree_admin_roles_and_access
+//= require spree/frontend/spree_admin_insights

@@ -7,6 +7,7 @@ module Spree
 		        joins(:line_items).joins("INNER JOIN spree_orders ON spree_orders.id = spree_line_items.order_id").
 		        where("spree_orders.state = 'complete'").
 		        group("spree_line_items.variant_id, spree_products.id").order("total_qty DESC").uniq }
+      base.scope :with_variant_sales, -> { joins(variants: :sale_prices).active.uniq }      
     end
 
     def lowest_sale_price

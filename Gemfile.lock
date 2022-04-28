@@ -77,6 +77,26 @@ GIT
       spree_extension
 
 GIT
+  remote: https://github.com/ducl13/spree_admin_roles_and_access.git
+  revision: 6b4d9a30514251dc6d386b36437002e2f9114003
+  branch: master
+  specs:
+    spree_admin_roles_and_access (3.pre.0.pre.stable)
+      spree_auth_devise
+      spree_core (>= 3.2.0, < 5.0.0)
+
+GIT
+  remote: https://github.com/ducl13/spree_analytics_trackers.git
+  revision: 6583ff6f90650d08dfd2ed2e07ca10da31b7487a
+  branch: master
+  specs:
+    spree_analytics_trackers (2.1.1)
+      deface (~> 1.0)
+      spree_backend (>= 4.1.0, < 5.0)
+      spree_core (>= 4.1.0, < 5.0)
+      spree_extension
+
+GIT
   remote: https://github.com/ducl13/spree_contact_us.git
   revision: 748e7f52fa9010454b6e9b544497bdb05295573f
   branch: naturesflavors
@@ -2051,7 +2071,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wicked_pdf (2.1.0)
+    wicked_pdf (2.6.0)
       activesupport
     wkhtmltopdf-binary (0.12.6.5)
     xml-simple (1.1.9)
@@ -2097,6 +2117,8 @@ DEPENDENCIES
   spree (>= 4.3)
   spree_active_shipping!
   spree_admin_insights!
+  spree_admin_roles_and_access!
+  spree_analytics_trackers!
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
   spree_common!

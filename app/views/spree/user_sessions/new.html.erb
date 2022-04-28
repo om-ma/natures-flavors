@@ -19,14 +19,15 @@
  </div>
 </div>   -->
 <% @body_id = 'login' %>
+<%= render partial: 'spree/shared/error_messages', locals: { target: @user } %>
+<% if flash.present? %>
+  <%= flash_messages %>
+<% end %>
 <main class="page-contents">
   <div class="signin-wrapper">
      <div class="row no-gutters">
         <div class="col-lg-6">
            <div id="existing-customer"  data-hook="login">
-              <%if flash[:alert] %>
-                 <%= flash[:alert] %>
-              <% end %>
               <%= render :partial => 'spree/shared/login' %> 
            </div>
            <div data-hook="login_extras"></div>
