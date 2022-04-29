@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$( document ).on('turbolinks:load', function() {
 
   $(".product-sort-js").on('click', function(e){
     var click_filter = $(this).data("filter-type");
