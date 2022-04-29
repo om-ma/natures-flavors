@@ -1,0 +1,5 @@
+<ul data-hook="admin_configurations_sidebar_menu" class="border-top bg-white collapse nav nav-pills nav-stacked" id="sidebar-insights" data-hook="admin_insights_sub_tabs">
+    <% Spree::ReportGenerationService.reports.each do |_key, _value| %>
+        <%= tab Spree.t(_key), url: spree.admin_insight_path(report_category: _key, id: _value.first), match_path: '/return_authorizations'  %>
+    <% end %>
+</ul>

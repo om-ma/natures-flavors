@@ -7,14 +7,14 @@
 						<div class="order-wrap d-flex flex-wrap align-items-center">
 							<div class="order-col flex-fill">
 								<label><%= Spree.t(:date) %></label>
-								<h5><%=  order.completed_at.strftime("%d/%m/%Y") %></h5>
+								<h5><%=  order.completed_at.strftime("%m/%d/%Y") %></h5>
 							</div>
 							<div class="order-col flex-fill">
 								<label>Order #:</label>
 								<h5><%= order.number %></h5>
 							</div>
 							<div class="order-col flex-fill">
-								<label>Shipment #:</label>
+								<label>Shipment Status #:</label>
 								<h5 class="shipment-text"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></h5>
 							</div>
 							<div class="order-col flex-fill">
