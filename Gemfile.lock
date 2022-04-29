@@ -67,6 +67,17 @@ GIT
       wkhtmltopdf-binary
 
 GIT
+  remote: https://github.com/ducl13/spree-html-invoice.git
+  revision: 809f5f73cac3007985c8034f92b006f2a924c62c
+  branch: master
+  specs:
+    spree_html_invoice (3.4.0)
+      barby
+      spree_core (>= 3.2.0, < 5.0)
+      wicked_pdf
+      wkhtmltopdf-binary
+
+GIT
   remote: https://github.com/ducl13/spree_active_shipping.git
   revision: 19c336c79f47628c6c73412980173d6bb80f84cb
   branch: 4-3
@@ -1496,6 +1507,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    barby (0.6.8)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.3)
@@ -2128,6 +2140,7 @@ DEPENDENCIES
   spree_favorite_products!
   spree_frontend (>= 4.3)
   spree_gateway (~> 3.9)
+  spree_html_invoice!
   spree_i18n (~> 5.0)
   spree_sales!
   spree_sample

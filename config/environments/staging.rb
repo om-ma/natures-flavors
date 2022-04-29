@@ -98,7 +98,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Email address for sending back office invoice and packaging list for an order to be printed automatically
-  config.x.backoffice.print_invoice_packaging_list = true
+  config.x.backoffice.print_docs = true
   config.x.backoffice.to_address = 'it-group@naturesflavors.com'
 
   # paperclip with S3. for spree_slider images, etc.

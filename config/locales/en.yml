@@ -56,8 +56,11 @@ en:
     sent_by_name: "Sent by %{name} from %{email}"
     subject: "Contact Us message from %{email}"
     submit: "Submit"
-
     spree_contact_us:
       send_message: Send Message
       notices:
         success: "Contact email was successfully sent."
+
+    # spree_html_invoice
+    footer_right: "Company<br/>Phone<br/>Website"
+    footer_right2: "Nature's Flavors<br/>(714) 744-3700<br/> https://www.naturesflavors.com"
