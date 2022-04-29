@@ -21,6 +21,4 @@
   <%#= configurations_sidebar_menu_item(
     Spree.t(:analytics), spree.admin_trackers_path
   ) if can? :manage, Spree::Config %>
-  <%= configurations_sidebar_menu_item(Spree.t(:permission_sets), spree.admin_permission_sets_path) if can? :manage, Spree::PermissionSet %>  
-  <%= configurations_sidebar_menu_item(Spree.t(:permissions), spree.admin_permissions_path) if can? :manage, Spree::Permission %>
 </ul>
