@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree-admin-insights.git
-  revision: c33f2a68e7102854c1858632e44ed3b054733928
+  revision: 884a5375ba35cc6089766ada1640d3c305076d6b
   branch: master
   specs:
     spree_admin_insights (3.2.0.alpha)

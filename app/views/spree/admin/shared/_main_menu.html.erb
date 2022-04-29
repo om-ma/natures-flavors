@@ -67,9 +67,9 @@
     </ul>
   <% end %>
   
-   <% if can? :admin, Spree::Admin::InsightsController %>
-      <ul class="nav nav-sidebar border-bottom">
-        <%= main_menu_tree "Insights", icon: "stats", sub_menu: "insights", url: "#sidebar-insights" %>
-      </ul>
-    <% end %>
+  <% if can? :admin, Spree::Admin::InsightsController %>
+    <ul class="nav nav-sidebar border-bottom" id="sidebarInsights">
+      <%= main_menu_tree "Insights", icon: "report.svg", sub_menu: "insights", url: "#sidebar-insights" %>
+    </ul>
+  <% end %>
 </nav>
