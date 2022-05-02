@@ -89,7 +89,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_admin_roles_and_access.git
-  revision: 6b4d9a30514251dc6d386b36437002e2f9114003
+  revision: a86e906eb6f1994edefa113afdf3081fed7026ff
   branch: master
   specs:
     spree_admin_roles_and_access (3.pre.0.pre.stable)
