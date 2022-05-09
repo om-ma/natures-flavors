@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$( document ).on('turbolinks:load', function() {
     $(".payment-change-billing-address").on('click',function(){
       $("#payment-billing-address").removeClass("d-none");
     })

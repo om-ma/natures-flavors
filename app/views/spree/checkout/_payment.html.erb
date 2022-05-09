@@ -59,14 +59,15 @@
   <div data-hook="checkout_payment_step">
     <ul id="payment-method-fields" class="payment-options" data-hook>
       <% checkout_available_payment_methods.each do |method| %>
-        <li>
+      <% is_non_cim = method.type.parameterize == "spree-gateway-authorizenet" ? "d-none" : "" %>
+        <li class="<%= is_non_cim %> <%= method.type.parameterize %>"  >
           <div class="custom-radio">
             <%= label_tag '', class: "", data: { type: method.id == @payment_sources&.first&.payment_method_id ? 'card' : nil } do %>
               <%= radio_button_tag "order[payments_attributes][][payment_method_id]",
                                    method.id,
-                                   method.id == @order.payments.checkout.last&.payment_method_id || method == checkout_available_payment_methods.first, class: "custom-control-input" %>
+                                   method.id == @order.payments.checkout.last&.payment_method_id || method == checkout_available_payment_methods.first, class: "custom-control-input #{method.type.parameterize}" %>
               <span class="custom-control-label"></span>
-              <%= Spree.t(method.name, scope: :payment_methods, default: method.name) %>
+              <span class="<%= method.type.parameterize %>-name"><%= Spree.t(method.name, scope: :payment_methods, default: method.name) %></span>
             <% end %>
           </div>
           <% if ALLOWED_CC_TYPES_FOR_CHECKOUT.include?(method.type.parameterize) %>
@@ -99,6 +100,7 @@
     <li>
       <div class="custom-radio">
         <label>
+          <%#= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'custom-control-input payment-change-shipping-address'} %>
           <input type="radio" name="radio" class="custom-control-input payment-change-shipping-address" checked="">
           <span class="custom-control-label"></span>Same as shipping address</label>
       </div>

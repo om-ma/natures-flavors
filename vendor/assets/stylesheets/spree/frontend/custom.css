@@ -17,3 +17,10 @@
   line-height: 1.44;
   margin: 0 100px 10px 0;
 }
+.tab-width{
+  width: 205px;
+}
+.mobile-sidebar-category{
+  background-image: none !important;
+  flex: none !important;
+}

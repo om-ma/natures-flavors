@@ -24,13 +24,15 @@
 
               <% if menu_category.users.present? ? (spree_current_user.present? ? menu_category.users.include?(spree_current_user) : false) : true %>
                 <li>
-                   <%= link_to menu_category.name, seo_url(menu_category) %>
+                   <%= link_to menu_category.name, seo_url(menu_category), class: "mobile-sidebar-category" %>
+                   <%= link_to "", "" %>
                    <% if menu_category.children.present? %>
                     <ul>
                       <% menu_category.children.each do |category| %>
                         <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
                           <li>
-                            <%= link_to category.name, seo_url(category) %>
+                            <%= link_to category.name, seo_url(category), class: "mobile-sidebar-category" %>
+                            <%= link_to "", "" %>
                           </li>
                         <% end %> 
                       <% end %>
@@ -43,8 +45,8 @@
           <li>
             <% sales_present = Spree::Product.in_sale.present? ? true : false %>
             <% sale_link = sales_present ? sale_path : root_path %>
-            <%= link_to "Deals", sale_link %>
             <% if sales_present %>
+              <%= link_to "Deals", sale_link %>
               <ul>
                 <li>
                   <% all_sales_link = sale_link.present? ? sale_path : root_path %>
