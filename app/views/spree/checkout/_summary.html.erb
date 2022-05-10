@@ -199,7 +199,7 @@
 </div>
 <% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
 <% if best_sellers_product.present? %>
-  <div class="cart-similar-item">
+  <div class="cart-similar-item phone-hide">
     <div class="wrap">
       <p>You might need this:</p>
       <div class="similar-item-thumb"><a href="#"><%= plp_and_carousel_image( best_sellers_product) %></a></div>
