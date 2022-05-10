@@ -21,7 +21,7 @@
   <div class="col-12">
     <div class="form-group form-floating mb-20" data-hook="card_number">
      <% options_hash = Rails.env.production? ? {autocomplete: 'off'} : {} %>
-     <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(id: 'card_number', class: 'form-control cardNumber', size: 19, maxlength: 19, autocomplete: "off", placeholder: Spree.t(:card_number)) %>
+     <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(id: 'card_number', class: "form-control cardNumber #{payment_method.type.parameterize}-card-num ", size: 19, maxlength: 19, autocomplete: "off", placeholder: Spree.t(:card_number)) %>
           <%= label_tag "card_number" do %>
             Card number<abbr>*</abbr>
           <% end %>
@@ -36,7 +36,7 @@
 <div class="row narrow-row">
   <div class="col-6">
     <div class="form-group form-floating mb-20" data-hook="card_expiration">
-      <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: 'form-control cardExpiry', placeholder: "MM/YYYY" %>
+      <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: "form-control cardExpiry #{payment_method.type.parameterize}-card-expiry ", placeholder: "MM/YYYY" %>
       <%= label_tag "card_expiry", class: "control-label" do %>
         Expiration<abbr>*</abbr>
       <% end %>
@@ -44,7 +44,7 @@
   </div>
   <div class="col-6">
     <div class="form-group form-floating mb-30" data-hook="card_code">
-      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', class: 'form-control cardCode', size: 5, placeholder: Spree.t(:cvv)) %>
+      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', class: "form-control cardCode #{payment_method.type.parameterize}-card-code ", size: 5, placeholder: Spree.t(:cvv)) %>
       <label>Security Code (CVV)*</label>
     </div>
   </div>
@@ -52,15 +52,16 @@
 </div>
 <%= hidden_field_tag "#{param_prefix}[temporary_credit_card]", true, data: { hook: "save_user_address" } %>
 <% if current_spree_user.present? %>
-  <div class="custom-checkbox mb-10">
+  <div class="custom-checkbox mb-10 save_user_card">
     <label>
       <%= check_box_tag "#{param_prefix}[default]", true, true, class: 'custom-control-input'%>
       <span class="custom-control-label"></span>Save Card as Default
     </label>
   </div>
    <div class="custom-checkbox mb-60">
-                  <label>
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-label"></span>Save Card in My Cards</label>
-                </div>
+      <label>
+        <%= check_box_tag "is_save_card", true, true, class: 'custom-control-input js_user_credit_card_save'%>
+        <span class="custom-control-label"></span>Save Card in My Cards
+      </label>
+    </div>
 <% end %>

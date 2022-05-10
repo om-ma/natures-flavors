@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 });
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
   $('#videos-slider').lightSlider({
       item: 2,
       loop: false,
@@ -73,7 +73,7 @@ $(document).ready(function() {
   });
 });
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
   $('#blog-slider').lightSlider({
       item: 2,
       loop: false,
@@ -114,7 +114,7 @@ $(document).ready(function() {
   });
 });
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
   $('#reviews-slider').lightSlider({
       item: 3,
       loop: false,
@@ -148,7 +148,7 @@ $(document).ready(function() {
   });
 });
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
   $('.nav-cart').on('click', function(e) {
     $('.nav-search').removeClass('active');
     $('.mobile-search-menu').removeClass('active');
@@ -200,7 +200,7 @@ $(document).ready(function() {
   });
 });
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });

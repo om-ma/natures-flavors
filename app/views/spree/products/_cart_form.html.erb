@@ -27,7 +27,7 @@
             <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"
               data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
               <% option_value = variant.option_values.first %>
-              <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price">
+              <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
                 <span content="<%= current_currency %>"></span> 
                 <% if variant.on_sale? %>
                   <del><%= display_original_price(variant) %></del><%= variant.active_sale_in(current_currency).display_price %><span>/ $6.29 per oz.</span>  
