@@ -230,3 +230,11 @@ $( document ).on('turbolinks:load', function() {
       ]
     });
   })
+$( document ).on('turbolinks:load', function() {
+  $(document).on("click" , ".js-select-variant", function(e){
+    var variantId  = $(this).data("variant-id")
+    $("#similar-add-to-cart-button").attr('href', "/add_to_cart/" + variantId);
+    $("#similar-add-to-cart-button")[0].click()
+    e.preventDefault();
+  });
+}); 

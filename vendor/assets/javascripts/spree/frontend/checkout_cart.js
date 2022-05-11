@@ -1,5 +1,5 @@
 $( document ).on('turbolinks:load', function() {
-  $("#shopping-cart-coupon-code-button").on("click", function(event) {
+  $("#shopping-cart-coupon-code-button-checkout").on("click", function(event) {
 
      var input = {
        couponCodeField: $('#order_coupon_code'),
@@ -19,7 +19,7 @@ $( document ).on('turbolinks:load', function() {
      }
 
    });
-  $("button#shopping-cart-remove-coupon-code-button").on("click", function(event) {
+  $("button#shopping-cart-remove-coupon-code-button-checkout").on("click", function(event) {
      var input = {
        appliedCouponCodeField: $('#order_applied_coupon_code'),
        couponCodeField: $('#order_coupon_code'),

@@ -1,9 +1,15 @@
 <% if @user_cc.errors.any? %>
 	$("#user-credit-card-errors").html("<%= j render partial: 'spree/shared/error_messages', locals: {target: @user_cc} %>")
 	$('.js-profile-new-cc-area').html("<%= j render partial: 'spree/users/profile/user_new_cc', locals: {payment_method: @default_payment_method} %>")
+	$('.cardNumber').payment('formatCardNumber')
+	$('.cardExpiry').payment('formatCardExpiry')
+	$('.cardCode').payment('formatCardCVC')
 <% else %>
 	let user_ccs = "<%= j render partial: 'spree/users/profile/user_ccs', locals: {credit_cards: @user_ccs} %>"
 	$('.js-user-profile-credit-cards').html(user_ccs)
 	let new_profile_cc_html = "<%= j render partial: 'spree/users/profile/user_new_cc', locals: {payment_method: @default_payment_method} %>"
 	$('.js-profile-new-cc-area').html(new_profile_cc_html)
+	$('.cardNumber').payment('formatCardNumber')
+	$('.cardExpiry').payment('formatCardExpiry')
+	$('.cardCode').payment('formatCardCVC')
 <% end %>
