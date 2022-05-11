@@ -14,8 +14,25 @@
             <%= link_to product_path(product) do %>
               <h4><%= product.name %></h4>
             <% end %>
-            <%= link_to add_to_cart_path(product.id), class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button',method: :post, remote: true  do %>
-              <div class="price"><%= display_price(object) %>- Add to Cart</div>
+            <% if product.variants.present? %>
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Add to Cart </button>
+                <ul class="dropdown-menu">
+                  <% product.variants.each do |variant| %>
+                    <li class="js-select-variant" data-variant-id= "<%= variant.id%>" >
+                      <%= variant.price_in(current_currency).money %>
+                      <span>
+                        <%= variant.option_values.first&.presentation %>    
+                      </span>
+                    </li>
+                  <% end %> 
+                </ul>
+                <%= link_to "", add_to_cart_path(product.master.id), id: 'similar-add-to-cart-button',method: :post, remote: true, class: "d-none" %>
+              </div>
+            <% else %>
+              <%= link_to add_to_cart_path(product.master.id), class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button',method: :post, remote: true  do %>
+                  <div class="price"><%= display_price(object) %>- Add to Cart</div>
+              <% end %>
             <% end %>
             <% favorite_item_present = spree_current_user.has_favorite_product?(object.id) || spree_current_user.has_favorite_variant?(object.id) %>
             <% if spree_user_signed_in? && favorite_item_present %>
