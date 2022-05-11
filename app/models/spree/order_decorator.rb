@@ -40,6 +40,10 @@ module Spree
       consider_risk
     end
 
+    def confirmation_required?
+      Spree::Config[:always_include_confirm_step]
+    end
+
     private
 
     def deliver_backoffice_invoice_email

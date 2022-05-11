@@ -14,6 +14,7 @@ Spree.config do |config|
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
   config.products_per_page = 20
+  confirmation_required = false
 end
 
 # Configure Spree Dependencies
