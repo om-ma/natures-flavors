@@ -10,6 +10,16 @@ GIT
       nokogiri (>= 1.6)
 
 GIT
+  remote: https://github.com/ducl13/better_spree_paypal_express.git
+  revision: c4bacfb8cd4bd2d7fc3fdc14e7f25a7a67e48437
+  specs:
+    spree_paypal_express (3.3.0)
+      paypal-sdk-merchant
+      spree_auth_devise (>= 3.1.0, < 5.0)
+      spree_core (>= 3.1.0, < 5.0)
+      spree_extension
+
+GIT
   remote: https://github.com/ducl13/browser.git
   revision: 5f13125e6b5f9d86edbc1465591cbd081a8937d8
   branch: master
@@ -105,6 +115,18 @@ GIT
       deface (~> 1.0)
       spree_backend (>= 4.1.0, < 5.0)
       spree_core (>= 4.1.0, < 5.0)
+      spree_extension
+
+GIT
+  remote: https://github.com/ducl13/spree_comments.git
+  revision: 340cda07bb4a7860d5e81b718f02fd99373bc915
+  branch: master
+  specs:
+    spree_comments (3.3.0)
+      acts_as_commentable
+      spree_api (>= 3.1.0, < 5.0)
+      spree_backend (>= 3.1.0, < 5.0)
+      spree_core (>= 3.1.0, < 5.0)
       spree_extension
 
 GIT
@@ -261,6 +283,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts_as_commentable (4.0.2)
     acts_as_list (1.0.4)
       activerecord (>= 4.2)
     addressable (2.8.0)
@@ -1852,6 +1875,11 @@ GEM
       activerecord (>= 4.0, < 6.2)
     parser (3.1.2.0)
       ast (~> 2.4.1)
+    paypal-sdk-core (0.3.4)
+      multi_json (~> 1.0)
+      xml-simple
+    paypal-sdk-merchant (1.117.2)
+      paypal-sdk-core (~> 0.3.0)
     pg (1.2.3)
     polyglot (0.3.5)
     popper_js (1.16.0)
@@ -2133,6 +2161,7 @@ DEPENDENCIES
   spree_analytics_trackers!
   spree_auth_devise (~> 4.3)
   spree_backend (>= 4.3)
+  spree_comments!
   spree_common!
   spree_contact_us!
   spree_emails (>= 4.3)
@@ -2142,6 +2171,7 @@ DEPENDENCIES
   spree_gateway (~> 3.9)
   spree_html_invoice!
   spree_i18n (~> 5.0)
+  spree_paypal_express!
   spree_sales!
   spree_sample
   spree_shipstation!

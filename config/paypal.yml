@@ -1,0 +1,12 @@
+# To fix certificate issue
+# https://stackoverflow.com/questions/63221087/opensslsslsslerror-ssl-connect-returned-1-errno-0-state-error-certificate
+# https://www.paypal.com/va/smarthelp/article/discontinue-use-of-verisign-g5-root-certificates-ts2240
+default: &default
+   ssl_options:
+    ca_file: null
+development:
+   <<: *default
+staging:
+   <<: *default
+production:
+   <<: *default
