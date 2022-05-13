@@ -47,6 +47,33 @@
           <% end %>  
         </div>
       </div>
+    <% else %>
+      <div class="row no-gutters">
+        <div class="col-lg-6 position-relative overflow-hidden">
+          <div class="wrap">
+            <div class="checkout-confirmation">
+              <h1 class="title">You’re all set!</h1>
+              <p>Order #: <%= @order.number %></p>
+            </div>
+          </div>
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="col-lg-6">
+          <% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
+          <% if best_sellers_product.present? %>
+            <div class="wrap">
+              <div class="discounted-product">
+                <div class="product-img mb-10">
+                  <%= plp_and_carousel_image( best_sellers_product) %>    
+                </div>
+                <%= link_to add_to_cart_path(best_sellers_product.id), class: 'btn btn-primary btn-block', id: 'add-to-cart-button',method: :post do %>
+                  <%= best_sellers_product.price %> - Add to Cart
+                <% end %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+      </div>
     <% end %>
   </div>
 </main>
