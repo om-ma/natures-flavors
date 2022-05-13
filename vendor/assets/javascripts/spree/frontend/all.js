@@ -10,7 +10,7 @@
 //= require_tree .
 //= require store/spree_favorite_products
 
-//= require spree/frontend/spree_favorite_products
+// require spree/frontend/spree_favorite_products
 
 AOS.init();
 //= require spree/frontend/add_to_cart_analytics
@@ -18,3 +18,4 @@ AOS.init();
 
 //= require spree/frontend/spree_admin_roles_and_access
 //= require spree/frontend/spree_admin_insights
+//= require spree/frontend/spree_paypal_express

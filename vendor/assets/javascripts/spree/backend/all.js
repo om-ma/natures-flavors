@@ -14,3 +14,4 @@
 
 //= require spree/backend/spree_admin_roles_and_access
 //= require spree/backend/spree_admin_insights
+//= require spree/backend/spree_paypal_express

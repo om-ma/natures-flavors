@@ -37,6 +37,10 @@ $( document ).on('turbolinks:load', function() {
 			$('.spree-gateway-authorizenet-card-code').payment('formatCardCVC')
 		}
 	});
+
+	$("#spree-gateway-paypalexpress-new").on('click',function(){
+		$("#paypal_button")[0].click();
+	});
 	
 	
 });

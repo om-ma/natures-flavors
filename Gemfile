@@ -56,7 +56,7 @@ gem 'spree_admin_insights', github: 'ducl13/spree-admin-insights', branch: 'mast
 gem 'spree_admin_roles_and_access', github: 'ducl13/spree_admin_roles_and_access', branch: 'master'
 gem 'spree_analytics_trackers', github: 'ducl13/spree_analytics_trackers', branch: 'master'
 gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
-#gem 'spree_comments', github: 'ducl13/spree_comments', branch: 'master'
+gem "spree_comments", github: 'ducl13/spree_comments', branch: 'master'
 gem 'spree_contact_us', github: 'ducl13/spree_contact_us', branch: 'naturesflavors'
 gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
 gem 'spree_favorite_products', github: 'umairrazam/spree_favorite_products', branch: 'natures'
@@ -68,6 +68,7 @@ gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-
 gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
 gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'master'
 gem 'spree_sitemap', github: 'ducl13/spree_sitemap', branch: 'master'
+gem 'spree_paypal_express', github: 'ducl13/better_spree_paypal_express'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
