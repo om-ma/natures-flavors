@@ -13,7 +13,11 @@ $( document ).on('turbolinks:load', function() {
     var variantId = $(this).attr("data-varient-id");
 
     $('#selected_variant').val(variantId);
+    $('#variant_id').val(variantId);
     $(".add-to-cart-button").removeAttr("disabled");
+    if($("#js-select-display-price").length) {
+      $("#js-select-display-price").html(variantPrice)
+    }
   });
 });
 
