@@ -62,7 +62,7 @@ Rails.application.configure do
   
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter     = :sidekiq
-  #config.active_job.queue_name_prefix = "bestflavors_sidekiq_#{Rails.env}"
+  #config.active_job.queue_name_prefix = "naturesflavors_#{Rails.env}"
 
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
