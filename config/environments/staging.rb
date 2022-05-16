@@ -64,8 +64,6 @@ Rails.application.configure do
   config.active_job.queue_adapter     = :sidekiq
   #config.active_job.queue_name_prefix = "bestflavors_sidekiq_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
-  config.action_mailer.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
@@ -93,6 +91,24 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: "naturesflavors.naturlax.org" }
+  config.action_mailer.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "email-smtp.us-east-1.amazonaws.com",
+    :port                 =>  587,
+    :domain               => "us-east-1.amazonaws.com",
+    :user_name            => ENV['ACTION_MAILER_USER_NAME'],
+    :password             => ENV['ACTION_MAILER_PASSWORD'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
+  #config.action_mailer.deliver_later_queue_name = "mail_queue"
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false

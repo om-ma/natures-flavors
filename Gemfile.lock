@@ -58,12 +58,42 @@ GIT
       spree (>= 2)
 
 GIT
+  remote: https://github.com/ducl13/libxml-ruby.git
+  revision: c64aff25653502b9877860cc94aead5f4a593d55
+  specs:
+    libxml-ruby (3.2.3.pre.dev)
+
+GIT
   remote: https://github.com/ducl13/recaptcha.git
   revision: 2fb1c3f9ad08887d9e8beed5f3cde4984fd95d07
   branch: master
   specs:
     recaptcha (5.1.0)
       json
+
+GIT
+  remote: https://github.com/ducl13/redis-rb.git
+  revision: 59a2102993c32228ce46425a019a2f6e362d9abf
+  specs:
+    redis (4.6.0)
+
+GIT
+  remote: https://github.com/ducl13/sidekiq-cron.git
+  revision: c91d0f22f95cb3a297c06e2c15494d95c8085f28
+  specs:
+    sidekiq-cron (1.4.0)
+      fugit (~> 1)
+      sidekiq (>= 4.2.1)
+
+GIT
+  remote: https://github.com/ducl13/sidekiq.git
+  revision: f38cf3050cf62e34a38ef47cd5d812108e7308cf
+  branch: naturesflavors
+  specs:
+    sidekiq (6.5.0)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
 
 GIT
   remote: https://github.com/ducl13/spree-admin-insights.git
@@ -146,6 +176,18 @@ GIT
     spree_events_tracker (3.3.2)
       spree_core (>= 3.2.0)
       spree_extension (~> 0.0.5)
+
+GIT
+  remote: https://github.com/ducl13/spree_product_feed.git
+  revision: db09101abe89d29a473c42044eaf33b3346ff44d
+  branch: 3-7-caching
+  specs:
+    spree_product_feed (0.0.1.alpha)
+      deface (~> 1.0)
+      spree_api (> 3.7, < 5.0)
+      spree_backend (> 3.7, < 5.0)
+      spree_core (> 3.7, < 5.0)
+      spree_extension
 
 GIT
   remote: https://github.com/ducl13/spree_sales.git
@@ -1598,6 +1640,8 @@ GEM
     dry-inflector (0.2.1)
     erubi (1.10.0)
     erubis (2.7.0)
+    et-orbi (1.2.7)
+      tzinfo
     excon (0.92.2)
     execjs (2.8.1)
     ffaker (2.20.0)
@@ -1763,6 +1807,9 @@ GEM
     formatador (0.3.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
+    fugit (1.5.3)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
     glyphicons (1.0.2)
@@ -1885,6 +1932,7 @@ GEM
     popper_js (1.16.0)
     public_suffix (4.0.6)
     puma (3.12.6)
+    raabro (1.4.0)
     rabl (0.14.5)
       activesupport (>= 2.3.14)
     racc (1.6.0)
@@ -2145,15 +2193,19 @@ DEPENDENCIES
   fog (~> 2.0.0)
   fog-aws
   jbuilder (~> 2.5)
+  libxml-ruby!
   listen (>= 3.0.5, < 3.2)
   mini_racer
   pg
   puma (~> 3.11)
   rails (~> 6.1.5)
   recaptcha!
+  redis!
   sass-rails
   scout_apm
   selenium-webdriver
+  sidekiq!
+  sidekiq-cron!
   spree (= 4.3)
   spree_active_shipping!
   spree_admin_insights!
@@ -2172,6 +2224,7 @@ DEPENDENCIES
   spree_html_invoice!
   spree_i18n (~> 5.0)
   spree_paypal_express!
+  spree_product_feed!
   spree_sales!
   spree_sample
   spree_shipstation!

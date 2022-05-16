@@ -157,3 +157,67 @@ Spree::FrontendHelper.class_eval do
     end
   end
 end
+
+def google_product_type(product)
+  ignore_list = []
+  
+  if product.taxons.length == 0
+    return ''
+  elsif product.taxons.length > 1
+    product_taxons = product.taxons.select{ |x| !ignore_list.include?(x.name.downcase) }
+  else
+    product_taxons = product.taxons
+  end
+  
+  product_types = product_taxons.map { |taxon|
+    crumbs = ""
+    crumbs = taxon.ancestors.drop(1).collect.with_index{ |ancestor, index| ancestor.name + ' > ' } unless taxon.ancestors.empty?
+    crumbs << taxon.name
+
+    if crumbs.kind_of?(Array)
+      crumb_list = crumbs.flatten.map(&:mb_chars).join
+    else
+      crumb_list = crumbs
+    end
+  }
+
+  first_deepest_taxon = product_types.max_by { |x| x.count('>') }
+  max_deep = first_deepest_taxon.nil? ? 0 : first_deepest_taxon.count('>')
+  result = product_types.select { |x| x.count('>') == max_deep }
+  
+  if result.kind_of?(Array)
+    result.join(', ')
+  else
+    result
+  end
+end
+
+def doofinder_categories(product)
+  ignore_list = []
+
+  if product.taxons.length == 0
+    return ''
+  elsif product.taxons.length > 1
+    product_taxons = product.taxons.select{ |x| !ignore_list.include?(x.name.downcase) }
+  else
+    product_taxons = product.taxons
+  end
+  
+  product_types = product_taxons.map { |taxon|
+    crumbs = ""
+    crumbs = taxon.ancestors.collect.with_index{ |ancestor, index| ancestor.name + ' > ' } unless taxon.ancestors.empty?
+    crumbs << taxon.name
+
+    if crumbs.kind_of?(Array)
+      crumb_list = crumbs.flatten.map(&:mb_chars).join
+    else
+      crumb_list = crumbs
+    end
+  }
+
+  if product_types.kind_of?(Array)
+    product_types.join(', ')
+  else
+    product_types
+  end
+end

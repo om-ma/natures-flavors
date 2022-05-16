@@ -69,6 +69,13 @@ gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
 gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'master'
 gem 'spree_sitemap', github: 'ducl13/spree_sitemap', branch: 'master'
 gem 'spree_paypal_express', github: 'ducl13/better_spree_paypal_express'
+gem 'spree_product_feed', github: 'ducl13/spree_product_feed', branch: '3-7-caching'
+
+# Use Redis & Sidekiq
+gem 'redis', github: 'ducl13/redis-rb'
+gem 'sidekiq', github: 'ducl13/sidekiq', branch: 'naturesflavors'
+gem "sidekiq-cron", github: 'ducl13/sidekiq-cron'
+gem "libxml-ruby", github: 'ducl13/libxml-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

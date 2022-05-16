@@ -31,6 +31,35 @@ Spree::Image.all.each do |image| image.create_sizes end
 * To generate sitemap manually
 - rake sitemap:refresh
 
+* Google Product Feed
+update spree_variants set unique_identifier = sku, unique_identifier_type = 'mpn' where is_master = false;
+update spree_products set unique_identifier = (select sku from spree_variants where spree_products.id = spree_variants.product_id and spree_variants.is_master = true), unique_identifier_type = 'mpn';
+update spree_products set feed_active = true where deleted_at is null;
+
+
+* Redis
+redis-cli (command line)
+  Commands:
+  - select index (select database)
+  - keys * (list all keys)
+  - get key (get value)
+
+redis-cli INFO | grep ^db (list databases)
+
+
+# Generate Doofinder data feed manually
+# Can run these locally by setting RAILS_ENV first
+export RAILS_ENV=staging
+bin/rails r "lib/tasks/doofinder_feed.rb" > "lib/tasks/doofinder_feed_staging.csv"
+
+export RAILS_ENV=production
+bin/rails r "lib/tasks/doofinder_feed.rb" > "lib/tasks/doofinder_feed_production.csv"
+
+
+* Start sidekiq
+bundle exec sidekiq -q default -q mailers
+
+
 # Migration
 Users:
 bin/rails r "migration/users.rb"

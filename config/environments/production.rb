@@ -39,7 +39,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -58,12 +58,16 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.cache_store = :redis_store, "#{ENV['CACHE_URL']}/#{ENV['CACHE_DB_NUM']}"
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter     = :sidekiq
   # config.active_job.queue_name_prefix = "natures-flavors_#{Rails.env}"
 
-
+  config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
+  config.assets.digest = true
+  config.assets.enabled = true
+  config.assets.prefix = '/assets/v1'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -110,6 +114,23 @@ Rails.application.configure do
   # Email address for sending back office invoice and packaging list for an order to be printed automatically
   config.x.backoffice.print_docs = true
   config.x.backoffice.to_address = 'weborders@sfgorders.com'
+
+  # paperclip with S3. for spree_slider images, etc.
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :preserve_files => true,
+    :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :s3_region => ENV['S3_ASSET_REGION']
+    },
+    :bucket => ENV['S3_ASSET_BUCKET']
+  }
+  
+  # YotPo - Staging keys
+  config.x.yotpo.app_key = '<TODO>'
+  config.x.yotpo.secret_key = '<TODO>'
+  config.x.yotpo.rich_snippets_refresh_time = 1.minutes
 end
 
 ## spree_sitemap config

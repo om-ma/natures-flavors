@@ -15,6 +15,10 @@ Spree.config do |config|
   # config.track_inventory_levels = false
   config.products_per_page = 20
   confirmation_required = false
+
+  # Site title
+  config.always_put_site_name_in_title = true
+  config.title_site_name_separator = "|"
 end
 
 # Configure Spree Dependencies

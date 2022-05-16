@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_22_173917) do
+ActiveRecord::Schema.define(version: 2022_05_12_211928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -735,6 +735,9 @@ ActiveRecord::Schema.define(version: 2022_04_22_173917) do
     t.datetime "discontinue_on"
     t.integer "favorite_users_count", default: 0
     t.integer "popularity", default: 0
+    t.string "unique_identifier"
+    t.string "unique_identifier_type", default: "gtin"
+    t.boolean "feed_active", default: false
     t.index ["available_on"], name: "index_spree_products_on_available_on"
     t.index ["deleted_at"], name: "index_spree_products_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_products_on_discontinue_on"
@@ -1496,6 +1499,9 @@ ActiveRecord::Schema.define(version: 2022_04_22_173917) do
     t.datetime "discontinue_on"
     t.datetime "created_at", null: false
     t.integer "favorite_users_count", default: 0
+    t.string "unique_identifier"
+    t.string "unique_identifier_type", default: "gtin"
+    t.boolean "show_in_product_feed", default: true
     t.index ["deleted_at"], name: "index_spree_variants_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_variants_on_discontinue_on"
     t.index ["favorite_users_count"], name: "index_spree_variants_on_favorite_users_count"
