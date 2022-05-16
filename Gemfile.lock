@@ -2154,20 +2154,20 @@ DEPENDENCIES
   sass-rails
   scout_apm
   selenium-webdriver
-  spree (>= 4.3)
+  spree (= 4.3)
   spree_active_shipping!
   spree_admin_insights!
   spree_admin_roles_and_access!
   spree_analytics_trackers!
   spree_auth_devise (~> 4.3)
-  spree_backend (>= 4.3)
+  spree_backend (= 4.3)
   spree_comments!
   spree_common!
   spree_contact_us!
-  spree_emails (>= 4.3)
+  spree_emails (= 4.3)
   spree_events_tracker!
   spree_favorite_products!
-  spree_frontend (>= 4.3)
+  spree_frontend (= 4.3)
   spree_gateway (~> 3.9)
   spree_html_invoice!
   spree_i18n (~> 5.0)

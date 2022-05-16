@@ -46,11 +46,11 @@ gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
 gem 'scout_apm'
 
 #Spree
-gem 'spree', '>= 4.3'
+gem 'spree', '= 4.3'
 gem 'spree_common', git: 'https://gitlab.com/duc.lam/spree_common.git', branch: 'master'
-gem 'spree_frontend', '>= 4.3'
-gem 'spree_backend', '>= 4.3'
-gem 'spree_emails', '>= 4.3'
+gem 'spree_frontend', '= 4.3'
+gem 'spree_backend', '= 4.3'
+gem 'spree_emails', '= 4.3'
 gem 'spree_sample' # dummy data like products, taxons, etc
 gem 'spree_admin_insights', github: 'ducl13/spree-admin-insights', branch: 'master'
 gem 'spree_admin_roles_and_access', github: 'ducl13/spree_admin_roles_and_access', branch: 'master'
