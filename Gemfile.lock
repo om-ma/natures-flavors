@@ -335,6 +335,11 @@ GEM
       rest-client (~> 2.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
+    asset_sync (2.15.1)
+      activemodel (>= 4.1.0)
+      fog-core
+      mime-types (>= 2.99)
+      unf
     ast (2.4.2)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
@@ -2177,6 +2182,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_shipping!
+  asset_sync
   aws-sdk (~> 3)
   bootsnap (>= 1.1.0)
   browser!
