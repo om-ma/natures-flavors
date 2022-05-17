@@ -76,11 +76,11 @@
 											<ul class="cart-items">
 												<li class="cart-item">
 													<% if variant.images.length == 0 %>
-														<%# product_or_variant_first_img = image_tag(variant.product.images.first.my_cf_image_url(:small)) %>
+														<% product_or_variant_first_img = image_tag(variant.product.images.first.my_cf_image_url(:small)) %>
 													<% else %>
-														<%# product_or_variant_first_img = image_tag(variant.images.first.my_cf_image_url(:small)) %>
+														<% product_or_variant_first_img = image_tag(variant.images.first.my_cf_image_url(:small)) %>
 													<% end %>
-													<%#= link_to product_or_variant_first_img, spree.product_path(variant.product), class:'thumbnail' %>
+													<%= link_to product_or_variant_first_img, spree.product_path(variant.product), class:'thumbnail' %>
 													<div class="cart-item-details d-flex flex-column justify-content-between">
 														<h4>
 															<%= link_to spree.product_path(variant.product) do %>
