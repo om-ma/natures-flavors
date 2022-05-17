@@ -108,7 +108,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
   config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
-  #config.action_mailer.deliver_later_queue_name = "mail_queue"
+  config.action_mailer.deliver_later_queue_name = "mailers"
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false

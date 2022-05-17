@@ -92,7 +92,7 @@ Rails.application.configure do
   }
   
   config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
-  #config.action_mailer.deliver_later_queue_name = "mail_queue"
+  config.action_mailer.deliver_later_queue_name = "mailers"
 
   # Email address for sending back office invoice and packaging list for an order to be printed automatically
   config.x.backoffice.print_docs = true
