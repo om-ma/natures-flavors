@@ -9,8 +9,7 @@
 //= require spree/backend
 
 //= require_tree .
-
-//= require admin/spree_favorite_products
+// require admin/spree_favorite_products
 
 //= require spree/backend/spree_admin_roles_and_access
 //= require spree/backend/spree_admin_insights

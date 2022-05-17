@@ -88,7 +88,9 @@
     </div>
   <% else %>
     <div class="if-registered phone-visible"> <span>Already Registered?</span> 
-      <a href="#" class="btn btn-primary">Log  in</a> 
+      <%= link_to new_spree_user_session_path , :class => 'btn btn-primary' do %>
+        Log in   
+      <% end %>
     </div>
     <div class="cart-header d-flex align-items-center justify-content-between">
       <h5>Contact information</h5>
