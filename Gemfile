@@ -42,6 +42,7 @@ gem 'canonical-rails', github: 'ducl13/canonical-rails'
 gem 'dotenv-rails'
 gem 'fog', '~> 2.0.0'
 gem "fog-aws"
+gem "paperclip", "~> 6.1.0"
 gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
 gem 'scout_apm'
 
