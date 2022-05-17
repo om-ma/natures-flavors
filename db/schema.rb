@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_12_211928) do
+ActiveRecord::Schema.define(version: 2022_05_13_120147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -247,6 +247,27 @@ ActiveRecord::Schema.define(version: 2022_05_12_211928) do
     t.index ["linked_resource_type", "linked_resource_id"], name: "index_spree_cms_sections_on_linked_resource"
     t.index ["position"], name: "index_spree_cms_sections_on_position"
     t.index ["type"], name: "index_spree_cms_sections_on_type"
+  end
+
+  create_table "spree_comment_types", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "applies_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_comments", id: :serial, force: :cascade do |t|
+    t.string "title", limit: 50
+    t.text "comment"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "comment_type_id"
+    t.index ["commentable_id"], name: "index_spree_comments_on_commentable_id"
+    t.index ["commentable_type"], name: "index_spree_comments_on_commentable_type"
+    t.index ["user_id"], name: "index_spree_comments_on_user_id"
   end
 
   create_table "spree_countries", id: :serial, force: :cascade do |t|
@@ -624,6 +645,18 @@ ActiveRecord::Schema.define(version: 2022_05_12_211928) do
     t.index ["order_id"], name: "index_spree_payments_on_order_id"
     t.index ["payment_method_id"], name: "index_spree_payments_on_payment_method_id"
     t.index ["source_id", "source_type"], name: "index_spree_payments_on_source_id_and_source_type"
+  end
+
+  create_table "spree_paypal_express_checkouts", id: :serial, force: :cascade do |t|
+    t.string "token"
+    t.string "payer_id"
+    t.string "transaction_id"
+    t.string "state", default: "complete"
+    t.string "refund_transaction_id"
+    t.datetime "refunded_at"
+    t.string "refund_type"
+    t.datetime "created_at"
+    t.index ["transaction_id"], name: "index_spree_paypal_express_checkouts_on_transaction_id"
   end
 
   create_table "spree_permission_sets", id: :serial, force: :cascade do |t|
