@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/datashift.git
-  revision: be7c4b9398211a932bc2479f4c93c66068175fac
+  revision: d052b539a96d1aa2030dea43fd3382ae63c36712
   branch: naturesflavors
   specs:
     datashift (0.40.4)
