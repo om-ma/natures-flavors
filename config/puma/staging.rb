@@ -13,7 +13,7 @@ port    ENV.fetch("PORT") { 3000 }
 #
 # Ultimately you'll want to tweak this number for your instance size and web
 # application's needs.
-workers Integer(ENV['WEB_CONCURRENCY'] || 5)
+workers Integer(ENV['WEB_CONCURRENCY'] || 1)
 
 # Puma supports threading. Requests are served through an internal thread pool.
 # Even on MRI, it is beneficial to leverage multiple threads because I/O operations
