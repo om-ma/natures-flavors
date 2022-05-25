@@ -17,7 +17,7 @@
               <div class="right" id="product_variant_sku"><%= default_variant.sku %></div>
           </div>
           <div class="dropdown size-availability-dropdown">
-              <button type="button" class="btn btn-secondary" data-toggle="dropdown">
+              <button type="button" class="btn btn-secondary js_drop_down" data-toggle="dropdown">
                 <span id="js-select-display-price"><%= display_price(default_variant)%></span>
                 <span>/ $6.29 per oz.</span></button>
               <ul class="dropdown-menu size-availability" id="product-variants">
@@ -57,7 +57,11 @@
   </div>
 <% end %>
 <script type="text/javascript">
+
   $( document ).on('turbolinks:load', function() {
+    $(".js_drop_down").click();
+    $('body').click()
+
     var SalesExpiryDatePhone= $('#DealsExpiryPhone').attr("data-SalesExpiryDatePhone");
     var countDownDatePhone = new Date(SalesExpiryDatePhone).getTime();
     var x = setInterval(function() {

@@ -26,7 +26,7 @@ module Spree
       method_name = Spree.t(:zipcode)
       required = Spree.t(:required)
       form.text_field(:zipcode,
-                      class: ['form-control'].compact,
+                      class: ['form-control js-address-fields'].compact,
                       required: is_required,
                       placeholder: is_required ? "#{method_name} #{required}" : method_name,
                       aria: { label: Spree.t(:zipcode) }) +

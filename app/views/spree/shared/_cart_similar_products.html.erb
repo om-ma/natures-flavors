@@ -4,7 +4,7 @@
   <h4><a href="#"><%= best_sellers_product.name %></a></h4>
   <% if best_sellers_product.variants.present? %>
        <div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Add to Cart </button>
+			<button class="btn btn-primary dropdown-toggle js_drop_down" type="button" data-toggle="dropdown"> Add to Cart</button>
 			<ul class="dropdown-menu">
 				<% best_sellers_product.variants.each do |variant| %>
 					<li class="js-select-variant" data-variant-id= "<%= variant.id%>" >
@@ -23,3 +23,9 @@
        <% end %>
 	<% end %>
 </div>
+<script type="text/javascript">
+	$( document ).on('turbolinks:load', function() {
+		$(".js_drop_down").click();
+		$('body').click()
+	});
+</script>

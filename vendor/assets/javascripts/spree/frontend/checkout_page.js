@@ -19,14 +19,18 @@ $( document ).on('turbolinks:load', function() {
 
 	$(".js_user_credit_card_save").on('click',function(){
 		if (this.checked){
+			$(".cards-select-change-js").show()
 			$(".spree-gateway-authorizenetcim").removeClass("d-none")
 			$(".spree-gateway-authorizenet").addClass("d-none")
 			$(".spree-gateway-authorizenetcim").click();
 			$(".save_user_card").removeClass("d-none")
 			$(".spree-gateway-authorizenetcim").click();
 			$(".js_user_credit_card_save").prop("checked", true);
+			let first_card = $(".cards-select-change-js").children()[0]
+			$(".cards-select-change-js").val($(first_card).val())
 
 		}else{
+			$(".cards-select-change-js").hide()
 			$(".spree-gateway-authorizenetcim").addClass("d-none")
 			$(".spree-gateway-authorizenet").removeClass("d-none")
 			$(".spree-gateway-authorizenet").click();
