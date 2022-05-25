@@ -42,3 +42,4 @@ Spree::PermittedAttributes.source_attributes << :check_no
 Spree::SalesConfiguration::Config = Spree::SalesConfiguration.new
 Spree::SalesConfiguration::Config.calculators << Spree::Calculator::AmountSalePriceCalculator
 Spree::SalesConfiguration::Config.calculators << Spree::Calculator::PercentOffSalePriceCalculator
+Spree::PermittedAttributes.payment_attributes << :check_no
