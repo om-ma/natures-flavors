@@ -120,13 +120,11 @@
   <% if spree_current_user.present? %>
     <div class="form-group form-floating mb-5">
       <select class="custom-select address-select-change-js ">
-        <address>
-          <% user_available_addresses.each_with_index do |address, idx| %>
-            <option value= "billing_address__<%=address.id%>" >
-              <%= render "spree/users/address", address: address %>
-            </option>
-          <% end %>
-        </address>
+        <% user_available_addresses.each_with_index do |address, idx| %>
+          <option value= "billing_address__<%=address.id%>" >
+            <%= render "spree/users/address", address: address %>
+          </option>
+        <% end %>
         <option value= "new_address_selected">
           New Address
         </option>
