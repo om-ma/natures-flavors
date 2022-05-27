@@ -52,16 +52,16 @@
 </div>
 <%= hidden_field_tag "#{param_prefix}[temporary_credit_card]", true, data: { hook: "save_user_address" } %>
 <% if current_spree_user.present? %>
-  <div class="custom-checkbox mb-10 save_user_card">
+  <div class="custom-checkbox mb-10">
+      <label>
+        <%= check_box_tag "is_save_card", true, true, class: 'custom-control-input js_user_credit_card_save'%>
+        <span class="custom-control-label"></span>Save Card in My Cards
+      </label>
+  </div>
+  <div class="custom-checkbox mb-60 save_user_card">
     <label>
       <%= check_box_tag "#{param_prefix}[default]", true, true, class: 'custom-control-input'%>
       <span class="custom-control-label"></span>Save Card as Default
     </label>
   </div>
-   <div class="custom-checkbox mb-60">
-      <label>
-        <%= check_box_tag "is_save_card", true, true, class: 'custom-control-input js_user_credit_card_save'%>
-        <span class="custom-control-label"></span>Save Card in My Cards
-      </label>
-    </div>
 <% end %>
