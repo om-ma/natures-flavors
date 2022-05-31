@@ -98,9 +98,34 @@
 											<label>Shipping:</label>
 											<% shipping_total = Spree::Money.new(order.shipments.to_a.sum(&:cost), currency: order.currency) %>
 											<span><%= shipping_total.to_html %></span> </li>
+				            <% if order.shipment_adjustments.nonzero.exists? %>
+        			      	<% order.shipment_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+										<li>
+											<label><%= label %>:</label>
+											<span><%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %></span> </li>
+											<% end %>
+										<% end %>
+										<% if order.adjustments.nonzero.eligible.exists? %>
+											<% order.adjustments.nonzero.eligible.each do |adjustment| %>
+											<% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount.zero?) %>
+										<li>
+											<label><%= adjustment.label %>:</label>
+											<span><%= adjustment.display_amount.to_html %> </li>
+											<% end %>                  
+										<% end %>
+                    <% if order.using_store_credit? %>
+										<li>
+											<label><%= Spree.t(:store_credit_name) %>:</label>
+											<span><%= order.display_total_applied_store_credit.to_html %></span> </li>
+                    <% end %>
 										<li>
 											<label>Total:</label>
 											<strong><%= order.display_total.to_html %></strong> </li>
+										<% if order.using_store_credit? %>
+										<li>
+											<label>Amount Charged:</label>
+											<strong><%= Spree::Money.new(order.order_total_after_store_credit, currency: order.currency) %></strong> </li>
+										<% end %>
 									</ul>
 								</div>
 							</div>

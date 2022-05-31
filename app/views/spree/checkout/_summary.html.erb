@@ -168,16 +168,28 @@
       </li>
       <% if order.adjustments.nonzero.eligible.exists? %>
         <% order.adjustments.nonzero.eligible.each do |adjustment| %>
+          <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount.zero?) %>
           <li>
             <label><%= adjustment.label %></label>
             <span>
-              <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount.zero?) %>
                 <div class="d-table-cell total text-right">
                   <%= adjustment.display_amount.to_html %>
                 </div>
               </span>
           </li> 
         <% end %>                  
+      <% end %>
+      <% if order.using_store_credit? %>
+      <li>
+        <label><%= Spree.t(:store_credit_name) %></label>
+        <span>
+          <div class="d-table-cell text-right">
+            <span id='summary-store-credit'>
+              <%= order.display_total_applied_store_credit.to_html %>
+            </span>
+          </div>
+        </span>
+      </li>  
       <% end %>
       <li> 
         <label><%= Spree.t(:total) %>:</label>                
@@ -189,16 +201,18 @@
           </div>
         </div></strong>                    
       </li>
-      <li>
-        <% if order.using_store_credit? %>
-      <label><%= Spree.t(:store_credit_name) %></label>
-      <span> <div class="d-table-cell"><%= Spree.t(:store_credit_name) %>:</div>
-        <div class="d-table-cell text-right">
-          <span id='summary-store-credit'>
-            <%= order.display_total_applied_store_credit.to_html %>
-          </span>
-        </div>
-      </span><% end %></li>      
+      <% if order.using_store_credit? %>
+      <li> 
+        <label>Amount to be Charged:</label>                
+        <strong><div class="checkout-content-summary-table-order-total">                     
+          <div class="d-table-cell text-right">
+            <span>
+              <%= Spree::Money.new(order.order_total_after_store_credit, currency: order.currency) %>
+            </span>
+          </div>
+        </div></strong>                    
+      </li>
+      <% end %>
     </ul>
 </div>
 <% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 

@@ -60,5 +60,11 @@
     <% next if (adjustment.source_type == 'Spree::TaxRate') || (adjustment.amount == 0) %>
     <%= render 'spree/shared/purchased_items_table/adjustment', adjustment: adjustment, order: order %>
   <% end %>
+  <% if order.using_store_credit? %>
+  <%= render 'spree/shared/purchased_items_table/store_credit_used', order: order %>
+  <% end %>
   <%= render 'spree/shared/purchased_items_table/total', order: order %>
+  <% if order.using_store_credit? %>
+  <%= render 'spree/shared/purchased_items_table/amount_charged', order: order %>
+  <% end %>
 </table>
