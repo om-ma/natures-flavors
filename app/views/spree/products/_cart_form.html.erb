@@ -30,9 +30,9 @@
               <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
                 <span content="<%= current_currency %>"></span> 
                 <% if variant.on_sale? %>
-                  <del><%= display_original_price(variant) %></del><%= variant.active_sale_in(current_currency).display_price %><span>/ $6.29 per oz.</span>  
+                  <del><%= display_original_price(variant) %></del><%= variant.active_sale_in(current_currency).display_price %>
                 <% else %>
-                  <%= display_price(variant) %><span>/ $6.29 per oz.</span>
+                  <%= display_price(variant) %>
                 <% end %>
               </div>   
               <div class="right"> 

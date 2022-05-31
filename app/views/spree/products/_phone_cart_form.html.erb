@@ -18,8 +18,7 @@
           </div>
           <div class="dropdown size-availability-dropdown">
               <button type="button" class="btn btn-secondary js_drop_down" data-toggle="dropdown">
-                <span id="js-select-display-price"><%= display_price(default_variant)%></span>
-                <span>/ $6.29 per oz.</span></button>
+                <span id="js-select-display-price"><%= display_price(default_variant)%></span></button>
               <ul class="dropdown-menu size-availability" id="product-variants">
                 <% if @product.variants_and_option_values(current_currency).any? %>
                   <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %> 
@@ -28,9 +27,9 @@
                         <% option_value = variant.option_values.first %>
                         <span class="left  add-to-cart-form-price price selling" content="<%= @product_price.to_d %>"  id="product-price"  data-hook="product_price">
                           <% if variant.on_sale? %>
-                            <del><%= display_original_price(variant) %></del><%= variant.active_sale_in(current_currency).display_price %><span>/ $6.29 per oz.</span>  
+                            <del><%= display_original_price(variant) %></del><%= variant.active_sale_in(current_currency).display_price %>
                           <% else %>
-                            <%= display_price(variant) %><span>/ $6.29 per oz.</span>
+                            <%= display_price(variant) %>
                           <% end %>
                         </span>
                         <div class="right"> 
