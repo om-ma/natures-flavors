@@ -1,9 +1,12 @@
 <div class="product-variants-variant product-variants-variant--color" data-option-type-id="<%= option_type[:id] %>">
-  <span class="d-block mb-2 text-center text-md-left product-variants-variant-title">
+  <% klass =  browser.device.mobile? ? "phone_label" : "" %>
+  <span class="d-block mb-2 text-center text-md-left product-variants-variant-title phone_label <%= klass %>">
     <%= option_type[:presentation] %>
   </span>
   <div class="dropdown">
-    <button class="btn option-values-dropdown dropdown-toggle" type="button" data-toggle="dropdown">Choose Color</button>
+    <button class="btn option-values-dropdown dropdown-toggle js_color_value" type="button" data-toggle="dropdown">
+      <%=option_type[:option_values].first[:name]%>
+    </button>
     <ol class="dropdown-menu w-100 product-variants-variant-values">
       <% option_type[:option_values].each do |option_value| %>
           <li class="dropdown-item js_label_color" data-option-value-id= "variant_option_value_id_<%= option_type[:id]%>_<%= option_value[:id]%>">
@@ -28,7 +31,7 @@
                 color: option_value[:presentation],
                 selected: false,
               } %>
-              <label for="variant_option_value_id_<%= option_type[:id]%>_<%= option_value[:id]%>"class= "label-width" ><b><%= option_value[:name]&.humanize %></b></label>
+              <label class="js-selected-label-color font-weight-bold" for="variant_option_value_id_<%= option_type[:id]%>_<%= option_value[:id]%>"class= "label-width" ><%= option_value[:name]&.humanize %></label>
             <% end %>
           </li>
         <% end %>

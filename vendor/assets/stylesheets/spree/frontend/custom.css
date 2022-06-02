@@ -46,3 +46,10 @@
 .label-width{
   width: 100%;
 }
+.phone_dropdown{
+  padding-left: 0px !important;
+}
+.phone_label{
+  float: left;
+  margin-left: 2%;
+}
