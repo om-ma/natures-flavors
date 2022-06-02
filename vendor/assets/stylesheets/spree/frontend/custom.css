@@ -43,3 +43,6 @@
 .js-disable{
   color: lightgray !important;
 }
+.label-width{
+  width: 100%;
+}

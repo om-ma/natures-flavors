@@ -6,16 +6,16 @@
     <button class="btn option-values-dropdown dropdown-toggle" type="button" data-toggle="dropdown">Choose Color</button>
     <ol class="dropdown-menu w-100 product-variants-variant-values">
       <% option_type[:option_values].each do |option_value| %>
-          <li class="dropdown-item">
+          <li class="dropdown-item js_label_color" data-option-value-id= "variant_option_value_id_<%= option_type[:id]%>_<%= option_value[:id]%>">
             <%= label_tag "variant_option_value_id_#{option_type[:id]}_#{option_value[:id]}",
-              class: "m-1 m-sm-2 m-md-1 color-select-label",
+              class: "m-1 m-sm-2 m-md-1 color-select-label label-width",
               title: option_value[:name]&.humanize,
-              data: { toggle: "tooltip", placement: "bottom" } do %>
+              data: { toggle: "tooltips", placement: "bottom" } do %>
 
               <%= radio_button_tag "variant_option_value_id_#{option_type[:id]}",
                 option_value[:id],
                 option_value[:is_default] && index == 0,
-                class: "product-variants-variant-values-radio",
+                class: "d-none product-variants-variant-values-radio",
                 aria: { label: option_value[:name] },
                 data: {
                   "option-type-index" => index,
@@ -26,8 +26,9 @@
 
               <%= render partial: "spree/shared/color_select", locals: {
                 color: option_value[:presentation],
-                selected: false
+                selected: false,
               } %>
+              <label for="variant_option_value_id_<%= option_type[:id]%>_<%= option_value[:id]%>"class= "label-width" ><b><%= option_value[:name]&.humanize %></b></label>
             <% end %>
           </li>
         <% end %>

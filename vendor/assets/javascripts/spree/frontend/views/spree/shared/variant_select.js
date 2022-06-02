@@ -87,7 +87,7 @@ this.updateStructuredData = function() {
 
 this.initializeColorVarianTooltip = function() {
   var colorVariants = $('.color-select-label[data-toggle="tooltip"]')
-  colorVariants.tooltip({
-    placement: 'bottom'
-  })
+  // colorVariants.tooltip({
+  //   placement: 'bottom'
+  // })
 }
