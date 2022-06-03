@@ -35,6 +35,14 @@
                 </li>
               <% end %>
             </ul>
+            <div class=" add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
+                  <span content="<%= current_currency %>"></span>
+                  <% if default_variant.on_sale? %>
+                    <del><%= display_original_price(default_variant) %></del><%= default_variant.active_sale_in(current_currency).display_price %>
+                  <% else %>
+                    <%= display_price(default_variant) %>
+                  <% end %>
+                </div>
           <% else %>
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
               <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"

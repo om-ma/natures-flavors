@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <ul class="" id="product-variants">
+      <div class="" id="product-variants">
         <% if @product.variants_and_option_values(current_currency).any? %>
           <% if @product.option_types.count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
@@ -36,6 +36,14 @@
                 </li>
               <% end %>
             </ul>
+            <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
+              <span content="<%= current_currency %>"></span>
+              <% if default_variant.on_sale? %>
+                <del><%= display_original_price(default_variant) %></del><%= default_variant.active_sale_in(current_currency).display_price %>
+              <% else %>
+                <%= display_price(default_variant) %>
+              <% end %>
+            </div>
           <% else %>
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
               <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"
@@ -60,7 +68,7 @@
         <% else %>
           <%= hidden_field_tag "variant_id", @product.master.id %>
         <% end %>
-      </ul>
+      </div>
       <div class="d-flex justify-content-end mb-5">
         <button type="button" class="btn btn-white expand-list">More Options</button>
       </div>
