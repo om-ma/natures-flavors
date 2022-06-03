@@ -44,3 +44,9 @@ Spree::SalesConfiguration::Config = Spree::SalesConfiguration.new
 Spree::SalesConfiguration::Config.calculators << Spree::Calculator::AmountSalePriceCalculator
 Spree::SalesConfiguration::Config.calculators << Spree::Calculator::PercentOffSalePriceCalculator
 Spree::PermittedAttributes.payment_attributes << :check_no
+
+# PrestaShop data migration fields
+Spree::PermittedAttributes.product_attributes << [:old_product_id, :old_product_url]
+Spree::PermittedAttributes.taxon_attributes << [:old_category_id, :old_category_url]
+Spree::PermittedAttributes.taxonomy_attributes << [:old_category_id]
+Spree::PermittedAttributes.variant_attributes << :old_product_id
