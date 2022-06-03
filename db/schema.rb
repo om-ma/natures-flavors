@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_201623) do
+ActiveRecord::Schema.define(version: 2022_06_03_212939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -772,6 +772,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_201623) do
     t.string "unique_identifier_type", default: "gtin"
     t.boolean "feed_active", default: false
     t.text "short_description"
+    t.integer "old_product_id"
+    t.string "old_product_url"
     t.index ["available_on"], name: "index_spree_products_on_available_on"
     t.index ["deleted_at"], name: "index_spree_products_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_products_on_discontinue_on"
@@ -1426,6 +1428,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_201623) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position", default: 0
     t.bigint "store_id"
+    t.integer "old_category_id"
     t.index ["name", "store_id"], name: "index_spree_taxonomies_on_name_and_store_id", unique: true
     t.index ["position"], name: "index_spree_taxonomies_on_position"
     t.index ["store_id"], name: "index_spree_taxonomies_on_store_id"
@@ -1449,6 +1452,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_201623) do
     t.boolean "hide_from_nav", default: false
     t.text "short_description"
     t.boolean "noindex", default: false
+    t.integer "old_category_id"
+    t.string "old_category_url"
     t.index ["lft"], name: "index_spree_taxons_on_lft"
     t.index ["name", "parent_id", "taxonomy_id"], name: "index_spree_taxons_on_name_and_parent_id_and_taxonomy_id", unique: true
     t.index ["name"], name: "index_spree_taxons_on_name"
@@ -1536,6 +1541,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_201623) do
     t.string "unique_identifier"
     t.string "unique_identifier_type", default: "gtin"
     t.boolean "show_in_product_feed", default: true
+    t.integer "old_product_id"
     t.index ["deleted_at"], name: "index_spree_variants_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_variants_on_discontinue_on"
     t.index ["favorite_users_count"], name: "index_spree_variants_on_favorite_users_count"
