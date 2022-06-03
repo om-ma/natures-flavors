@@ -22,7 +22,7 @@
 <%# end %>
 <div data-hook="product_description">  
   <div id="product-description-short"  data-hook="short-description">
-      <%= sanitize product_description(@product).truncate(450) %>
+      <%= sanitize product_short_description(@product) %>
   </div>
 </div>
 <ul class="product-standards d-flex flex-wrap align-items-center phone-hide">

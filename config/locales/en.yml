@@ -54,6 +54,7 @@ en:
     send: Send
     sent_by_contact_form: "Sent by contact form from %{email}"
     sent_by_name: "Sent by %{name} from %{email}"
+    short_description: "Short Description"
     subject: "Contact Us message from %{email}"
     submit: "Submit"
     spree_contact_us:

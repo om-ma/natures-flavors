@@ -34,6 +34,7 @@ end
 
 
 Spree.user_class = "Spree::User"
+Spree::PermittedAttributes.product_attributes << :short_description
 Spree::PermittedAttributes.taxon_attributes << [user_ids:[]]
 Spree::PermittedAttributes.taxon_attributes << [:short_description, :noindex]
 Spree::PermittedAttributes.address_attributes << :is_default
