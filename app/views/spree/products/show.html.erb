@@ -82,9 +82,11 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart_form" data-hook="product_right_part" data-hook="product_right_part_wrap">
-          <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>   
-        </div>
+        <%unless browser.device.mobile? %>
+          <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart_form" data-hook="product_right_part" data-hook="product_right_part_wrap">
+            <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>   
+          </div>
+        <% end %>  
       </div>
         <div class="product-tabs-wrapper">
           <div class="row no-gutters">
