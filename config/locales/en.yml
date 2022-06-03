@@ -54,7 +54,6 @@ en:
     send: Send
     sent_by_contact_form: "Sent by contact form from %{email}"
     sent_by_name: "Sent by %{name} from %{email}"
-    short_description: "Short Description"
     subject: "Contact Us message from %{email}"
     submit: "Submit"
     spree_contact_us:
@@ -65,3 +64,5 @@ en:
     # spree_html_invoice
     footer_right: "Company<br/>Phone<br/>Website"
     footer_right2: "Nature's Flavors<br/>(714) 744-3700<br/> https://www.naturesflavors.com"
+
+    short_description: "Short Description"
