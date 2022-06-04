@@ -151,14 +151,13 @@ function cartForm(orderNumber, token) {
 
 
 
-$(document).on('turbolinks:load', function() {
+$(function() {
   let mainLayoutDiv       = $('.main-layout-section')
   let currentOrderNumber  = mainLayoutDiv.data('current-order-number')
   let currentOrderToken   = mainLayoutDiv.data('current-order-token')
   if(currentOrderNumber && currentOrderToken) {
     cartForm(currentOrderNumber, currentOrderToken );
   }
-
 });
 
 

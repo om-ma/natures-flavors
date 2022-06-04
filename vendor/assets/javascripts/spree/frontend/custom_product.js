@@ -1,4 +1,4 @@
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $('.product-ov-js').on('click', function(e) {
     $('.product-ov-js').removeClass("active");
     $(this).addClass('active')
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 });
 
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $('#videos-slider').lightSlider({
       item: 2,
       loop: false,
@@ -77,7 +77,7 @@ $( document ).on('turbolinks:load', function() {
   });
 });
 
-$( document ).on('turbolinks:load', function() {
+$(function() {
   $('#blog-slider').lightSlider({
       item: 2,
       loop: false,
@@ -118,7 +118,7 @@ $( document ).on('turbolinks:load', function() {
   });
 });
 
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $('#reviews-slider').lightSlider({
       item: 3,
       loop: false,
@@ -152,7 +152,7 @@ $( document ).on('turbolinks:load', function() {
   });
 });
 
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $('.nav-cart').on('click', function(e) {
     $('.nav-search').removeClass('active');
     $('.mobile-search-menu').removeClass('active');
@@ -204,12 +204,12 @@ $( document ).on('turbolinks:load', function() {
   });
 });
 
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
 });
-$( document ).on('turbolinks:load', function() {
+$( function() {
     $('#product-gallery').lightSlider({
     gallery: true,
         item:1,
@@ -234,7 +234,7 @@ $( document ).on('turbolinks:load', function() {
       ]
     });
   })
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $(document).on("click" , ".js-select-variant", function(e){
     var variantId  = $(this).data("variant-id")
     $("#similar-add-to-cart-button").attr('href', "/add_to_cart/" + variantId);

@@ -1,4 +1,4 @@
-$( document ).on('turbolinks:load', function() {
+$( function() {
     $('.cards-select-change-js').on('change', function() {
       if (this.value == "new_card_selected"){
         $("#use_existing_card_no").click();
