@@ -378,6 +378,6 @@ class Slinky {
     return menu
   }
 })(jQuery)
-$(document).on('turbolinks:load', function() {
+$(function() {
   const slinky = $('#menu').slinky({title:true});
 });

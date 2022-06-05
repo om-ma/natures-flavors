@@ -1,4 +1,4 @@
-$( document ).on('turbolinks:load', function() {
+$( function() {
 	$(".design-submit-next-step").on('click',function(){
 		$("#checkout-submit-to-next-step").click();
 	});

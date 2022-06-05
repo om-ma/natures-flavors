@@ -1,4 +1,4 @@
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $("#shopping-cart-coupon-code-button-checkout").on("click", function(event) {
 
      var input = {

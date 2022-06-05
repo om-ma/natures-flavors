@@ -1,4 +1,4 @@
-$( document ).on('turbolinks:load', function() {
+$( function() {
   $('.search-custom-btn').on('click',function(){
     $("#global-search-button").submit()
   })
