@@ -151,7 +151,7 @@ function cartForm(orderNumber, token) {
 
 
 
-$(function() {
+$( document ).on('turbolinks:load', function() {
   let mainLayoutDiv       = $('.main-layout-section')
   let currentOrderNumber  = mainLayoutDiv.data('current-order-number')
   let currentOrderToken   = mainLayoutDiv.data('current-order-token')

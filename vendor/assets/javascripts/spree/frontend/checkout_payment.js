@@ -1,5 +1,5 @@
 var shipping_address_data = 0
-$( function() {
+$( document ).on('turbolinks:load', function() {
 
     $(".payment-change-billing-address").on('click',function(){
       shipping_address_data = $("#payment-billing-address").html()

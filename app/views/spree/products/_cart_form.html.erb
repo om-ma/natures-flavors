@@ -94,7 +94,7 @@
   <% end %>  
 </div>
 <script type="text/javascript">
-  $( function() {
+ $( document ).on('turbolinks:load', function() {
     var SalesExpiryDate= $('#deals-expiry').attr("data-SalesExpiryDate");
       
       var countDownDate = new Date(SalesExpiryDate).getTime();

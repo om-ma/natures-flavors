@@ -1,4 +1,4 @@
-$(function() {
+$( document ).on('turbolinks:load', function() {
   $(".js-selected-label-color").click(function() {
     let value = $(this).html()
     $(".js_color_value").html(value)

@@ -1,4 +1,4 @@
-$( function() {
+$( document ).on('turbolinks:load', function() {
   $(document).on("click" , "#shopping_cart_bag", function(e){
     var cartBagElement  = $('.cart-nav')
     $.ajax({
@@ -11,7 +11,7 @@ $( function() {
   });
 });  
 
-$( function() {
+$( document ).on('turbolinks:load', function() {
   $(document).on("click" , ".close-sidebar-btn", function(e){
     $("#js-drawer").toggleClass("active")
     $('.main-layout-section .overlay').removeClass("active");

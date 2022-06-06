@@ -1,4 +1,4 @@
-$( function() {
+$( document ).on('turbolinks:load', function() {
   $(document).on('click', '#account-address-tab', function(){
 
     $.ajax({

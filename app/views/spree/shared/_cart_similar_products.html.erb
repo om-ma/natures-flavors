@@ -24,7 +24,7 @@
 	<% end %>
 </div>
 <script type="text/javascript">
-	$(function() {
+  $( document ).on('turbolinks:load', function() {
 		$(".js_drop_down").click();
 		$('body').click()
 	});

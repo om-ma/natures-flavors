@@ -1,4 +1,4 @@
-$( function() {
+$( document ).on('turbolinks:load', function() {
     var showChar = 260;
     var ellipsestext = "...";
     var moretext = "Read More";
@@ -27,7 +27,7 @@ $( function() {
     });
     })
 
-$( function() {
+$( document ).on('turbolinks:load', function() {
 
   $(".js-qty-select").change(function() {
     let selectedQty = $(this).val()
