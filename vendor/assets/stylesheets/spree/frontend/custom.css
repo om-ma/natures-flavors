@@ -53,3 +53,10 @@
   float: left;
   margin-left: 2%;
 }
+.font_small{
+  font-size: 12px;
+}
+.cart_variant{
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+}

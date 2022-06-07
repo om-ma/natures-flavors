@@ -1,8 +1,13 @@
 <div class="product-variants-variant product-variants-variant--color" data-option-type-id="<%= option_type[:id] %>">
   <% klass =  browser.device.mobile? ? "phone_label" : "" %>
-  <span class="d-block mb-2 text-center text-md-left product-variants-variant-title phone_label <%= klass %>">
-    <%= option_type[:presentation] %>
-  </span>
+  <div class="d-flex">
+    <span class="d-block mb-2 text-center text-md-left product-variants-variant-title <%= klass %> left mr-5 font_small">
+      Choose Your <%= option_type[:presentation] %>
+    </span>
+    <span class="right cart_variant ml-2">
+      <%= default_variant.truncate(22)%>
+    </span>
+  </div>
   <div class="dropdown">
     <button class="btn option-values-dropdown dropdown-toggle js_color_value" type="button" data-toggle="dropdown">
       <%=option_type[:option_values].first[:name]%>
