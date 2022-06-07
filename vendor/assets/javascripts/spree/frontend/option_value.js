@@ -7,6 +7,7 @@ $( document ).on('turbolinks:load', function() {
     let value = $(this).html()
     let data_id = $(this).data("dropdown-value-id")
     $(".js_option_value_"+ data_id).html(value)
-
   });
+  $(".option-values-dropdown").click()
+  $('body').click()
 });

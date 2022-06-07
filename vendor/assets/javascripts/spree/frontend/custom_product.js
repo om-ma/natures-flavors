@@ -3,7 +3,7 @@ $( document ).on('turbolinks:load', function() {
     $('.product-ov-js').removeClass("active");
     $(this).addClass('active')
     var variantSku = $(this).attr("data-varient-sku");
-    $("#product_variant_sku").replaceWith(
+    $("#js-product_variant_sku").replaceWith(
       "<div id = 'product_variant_sku'>" + variantSku + "</div>"
     );
     var variantPrice = $(this).attr("data-btn-varient-price");
