@@ -14,7 +14,6 @@
       'data-variant-change-trigger-identifier': variant_change_identifier
       } do |f| %>
       <div class="product-options-header d-flex align-items-center justify-content-between" id="inside-product-cart-form" data-hook="inside_product_cart_form">
-        <!-- <div class="left">Choose your <strong>option:</strong></div> -->
         <div class="right">
           <div class="text-center text-md-left" id="product_variant_sku">
             <%#= default_variant.sku %>
@@ -22,9 +21,9 @@
         </div>
       </div>
 
-      <div class="" id="product-variants">
+      <ul class="" id="product-variants">
         <% if @product.variants_and_option_values(current_currency).any? %>
-          <% if @product.option_types.count > 1 %>
+          <% if @product.variants.joins(:option_values).count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
               <% used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
                 <li>
@@ -68,7 +67,7 @@
         <% else %>
           <%= hidden_field_tag "variant_id", @product.master.id %>
         <% end %>
-      </div>
+      </ul>
       <!-- <div class="d-flex justify-content-end mb-5">
         <button type="button" class="btn btn-white expand-list">More Options</button>
       </div> -->
