@@ -13,17 +13,23 @@
       'data-variant-change-trigger-identifier': variant_change_identifier
       } do |f| %>
       <div class="product-options-header d-flex align-items-center justify-content-between" id="inside-product-cart-form" data-hook="inside_product_cart_form">
-        <div class="left">Choose your <strong>option:</strong></div>
-        <div class="right">
+        <!-- <div class="left">Choose your <strong>option:</strong></div> -->
+        <!-- <div class="right"> -->
           <div class="text-center text-md-left" id="product_variant_sku">
-            <%= default_variant.sku %>
+            <%#= default_variant.sku %>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
-
-      <ul class="phone_dropdown" id="product-variants">
+      <% if @product.variants_and_option_values(current_currency).any? %>
+        <% if @product.variants.joins(:option_values).count > 1 %>
+        <% kllas = ""%>
+        <% else %>
+        <% kllas = "size-availability"%>
+        <% end %>
+      <% end %>
+      <ul class="phone_dropdown <%= kllas%>" id="product-variants">
         <% if @product.variants_and_option_values(current_currency).any? %>
-          <% if @product.option_types.count > 1 %>
+          <% if @product.variants.joins(:option_values).count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
               <% used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
                 <li>
@@ -44,8 +50,10 @@
                   <% end %>
                 </div>
           <% else %>
-            <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
-              <li class="d-flex flex-wrap align-items-center justify-content-between  product-ov-js <%= index == 0 ? 'active' : '' %>"
+            <span class=""><%= default_variant.sku%></span>
+            <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
+              <!-- removed from mobile cart product-ov-js -->
+              <li class="d-flex flex-wrap align-items-center justify-content-between <%= index == 0 ? 'active' : '' %>"
                 data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
                 <% option_value = variant.option_values.first %>
                 <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
