@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/datashift.git
-  revision: d052b539a96d1aa2030dea43fd3382ae63c36712
+  revision: f54f3680a33350e74cc147dca0a814cba0fc9a7f
   branch: naturesflavors
   specs:
     datashift (0.40.4)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/datashift_spree.git
-  revision: da252dc93f47315ef7fd98233e14bde5436a9e91
+  revision: 2667571bc2ead433aa8a366878ec2dfa48d160e3
   branch: naturesflavors
   specs:
     datashift_spree (0.40.5)
