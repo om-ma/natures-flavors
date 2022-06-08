@@ -21,20 +21,21 @@
         <!-- </div> -->
       </div>
       <% if @product.variants_and_option_values(current_currency).any? %>
-        <% if @product.variants.joins(:option_values).count > 1 %>
-        <% kllas = ""%>
+        <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
+          <% kllas = ""%>
         <% else %>
-        <% kllas = "size-availability"%>
+          <% kllas = "size-availability"%>
         <% end %>
       <% end %>
       <ul class="phone_dropdown <%= kllas%>" id="product-variants">
         <% if @product.variants_and_option_values(current_currency).any? %>
-          <% if @product.variants.joins(:option_values).count > 1 %>
+          <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
+          <%# if @product.variants.joins(:option_values).count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
               <% used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
                 <li>
                   <% if color_option_type_name.present? && color_option_type_name == option_type[:name] %>
-                    <%= render "color_option_type", option_type: option_type, index: index %>
+                    <%= render "color_option_type", option_type: option_type, index: index, default_variant: default_variant.sku %>
                   <% else %>
                     <%= render "option_type", option_type: option_type, index: index %>
                   <% end %>
@@ -53,7 +54,7 @@
             <span class=""><%= default_variant.sku%></span>
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
               <!-- removed from mobile cart product-ov-js -->
-              <li class="d-flex flex-wrap align-items-center justify-content-between <%= index == 0 ? 'active' : '' %>"
+              <li class="d-flex flex-wrap align-items-center justify-content-between "
                 data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
                 <% option_value = variant.option_values.first %>
                 <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">

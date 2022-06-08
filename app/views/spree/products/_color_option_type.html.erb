@@ -10,7 +10,7 @@
   </div>
   <div class="dropdown">
     <button class="btn option-values-dropdown dropdown-toggle js_color_value" type="button" data-toggle="dropdown">
-      <%=option_type[:option_values].first[:name]%>
+      <%=option_type[:option_values].first[:name]&.humanize %>
     </button>
     <ol class="dropdown-menu w-100 product-variants-variant-values">
       <% option_type[:option_values].each do |option_value| %>
