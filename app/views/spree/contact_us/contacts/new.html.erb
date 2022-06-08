@@ -33,11 +33,12 @@
       <div class="col-md-8">
           <%= form_for @contact, :html => {:class => "contact-form"}, :url => contact_us_path do |f| %>
             <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @contact } %>
+            <p>Fields marked with an asterisk (*) are required.</p>
             <div class="row narrow-row-md">
               <div class="col-sm-12">
                 <div class="form-group">
                   <label class="control-label">Name<span class="required">*</span></label>
-                <%= f.text_field :name, :class => 'form-control', tabindex: 1, :placeholder => "Name" %>
+                <%= f.text_field :name, :class => 'form-control', tabindex: 1, :placeholder => "Name", required:  true %>
                 </div>
               </div>
             </div>
@@ -45,7 +46,7 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label class="control-label">Email Address<span class="required">*</span></label>
-                <%= f.text_field :email, :class => 'form-control', tabindex: 2, :placeholder => "Email Address" %>
+                <%= f.text_field :email, :class => 'form-control', tabindex: 2, :placeholder => "Email Address", required:  true %>
                 </div>
               </div>
             </div>
@@ -61,7 +62,7 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label class="control-label">Message<span class="required">*</span></label>
-                  <%= f.text_area :message, :class => 'form-control', tabindex: 4, :placeholder => "Message" %>
+                  <%= f.text_area :message, :class => 'form-control', tabindex: 4, :placeholder => "Message", required:  true %>
                 </div>
               </div>
             </div>
