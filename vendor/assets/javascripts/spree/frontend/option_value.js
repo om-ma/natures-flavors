@@ -13,6 +13,7 @@ $( document ).on('turbolinks:load', function() {
   $(".js-variant-list").click(function(){
     let selected_variant_sku = $(this).data("varient-sku")
     $("#js_selected_variantt_sku").html(selected_variant_sku)
+    $("#js_product_variant_sku").html(selected_variant_sku)
   })
 
   $(".option-values-dropdown").click()
