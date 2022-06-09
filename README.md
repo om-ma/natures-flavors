@@ -83,11 +83,11 @@ bundle exec sidekiq -q default -q mailers
 
 
 # Migration
-Users:
+USERS:
 bin/rails r "migration/users_test.rb"
 bin/rails r "migration/users.rb"
 
-Products/Categories:
+PRODUCTS/TAXONS:
 gem install thor -v 0.20.3
 
 bundle exec thor datashift_spree:load:products -i "migration/exports/test.csv"
@@ -103,14 +103,16 @@ bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Fla
 bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export9.csv"
 bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export10.csv"
 
-Run SQLs:
+RUN SQLs:
 migration/sql/delete_all_taxons_from_old_product_id_57612.sql
 migration/sql/update_taxons.sql
 migration/sql/update_meta_data.sql
 
+TERMINAL:
 bin/rails r migration/upload_category_images.rb
 bin/rails r migration/delete_inactive_taxon.rb
 
+BACKEND:
 Reorder taxons in backend
 Rename taxon "More Products" to "More"
 
