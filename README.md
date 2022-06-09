@@ -25,6 +25,9 @@ rake db:seed
 rake spree_roles:permissions:populate
 rake spree_roles:permissions:populate_permission_sets
 
+STORE CREDIT ISSUE:
+rake db:migrate:down VERSION=20211026070924
+rake db:migrate:up VERSION=20211026070924
 
 # Backend Configuration
 
