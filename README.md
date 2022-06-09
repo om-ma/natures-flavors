@@ -25,6 +25,28 @@ rake db:seed
 rake spree_roles:permissions:populate
 rake spree_roles:permissions:populate_permission_sets
 
+
+# Backend Configuration
+
+* Configure Store:
+- name = Nature's Flavors (used in migration to look up store)
+
+* Create:
+- Option Types: Choose your option, Coffee options, Designs, Subscription, Choose First Extract, Choose Second Extract, Choose Your Food Coloring
+- Property: Ingredient Statement
+- Shipping Category; Default
+- Taxonomy: PRODUCTS (set old_cateogry_id = -1 in db after creation)
+- Taxon: set old_cateogry_id = -1 in db for PRODUCTS taxon
+
+* Setup:
+- Payment Methods
+- Shipping Methods
+- Store Credit Categories
+- Analytics Trackers
+- Comment Types
+- Active Shipping Settings
+- Stock Locations
+
 * To recreate thumbnails
 Spree::Image.all.each do |image| image.create_sizes end
 
@@ -62,13 +84,33 @@ bundle exec sidekiq -q default -q mailers
 
 # Migration
 Users:
+bin/rails r "migration/users_test.rb"
 bin/rails r "migration/users.rb"
 
 Products/Categories:
 gem install thor -v 0.20.3
-bundle exec thor datashift_spree:load:products -i "migration/Natures Flavors Data Export - Export1.csv"
-bundle exec thor datashift_spree:load:products -i "migration/Natures Flavors Data Export - Export2.csv"
-...
 
-Run:
-migration/sql/update_taxon.sql
+bundle exec thor datashift_spree:load:products -i "migration/exports/test.csv"
+
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export1.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export2.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export3.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export4.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export5.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export6.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export7.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export8.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export9.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export10.csv"
+
+Run SQLs:
+migration/sql/delete_all_taxons_from_old_product_id_57612.sql
+migration/sql/update_taxons.sql
+migration/sql/update_meta_data.sql
+
+bin/rails r migration/upload_category_images.rb
+bin/rails r migration/delete_inactive_taxon.rb
+
+Reorder taxons in backend
+Rename taxon "More Products" to "More"
+
