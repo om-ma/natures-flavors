@@ -21,15 +21,16 @@
         </div>
       </div>
       <% if @product.variants_and_option_values(current_currency).any? %>
-        <% if @product.variants.joins(:option_values).count > 1 %>
+        <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
         <% kllas = ""%>
         <% else %>
         <% kllas = "size-availability"%>
         <% end %>
       <% end %>
+
       <ul class="<%= kllas%>" id="product-variants">
         <% if @product.variants_and_option_values(current_currency).any? %>
-          <% if @product.variants.joins(:option_values).count > 1 %>
+          <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
               <% used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
                 <li>
