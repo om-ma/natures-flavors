@@ -109,7 +109,7 @@ Spree::FrontendHelper.class_eval do
 
   def shop_now_url()
     products_category	= Spree::Taxon.find_by_name("PRODUCTS")
-		if products_category.present?
+		if products_category.present? && products_category&.children.present?
       seo_url(products_category&.children.sample)
     else
       "/"
