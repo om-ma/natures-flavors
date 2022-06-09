@@ -27,7 +27,6 @@
         <% kllas = "size-availability"%>
         <% end %>
       <% end %>
-
       <ul class="<%= kllas%>" id="product-variants">
         <% if @product.variants_and_option_values(current_currency).any? %>
           <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>

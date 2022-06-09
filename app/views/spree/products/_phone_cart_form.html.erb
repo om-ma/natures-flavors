@@ -97,7 +97,6 @@
   $( document ).on('turbolinks:load', function() {
     $(".js_drop_down").click();
     $('body').click()
-
     var SalesExpiryDatePhone= $('#DealsExpiryPhone').attr("data-SalesExpiryDatePhone");
     var countDownDatePhone = new Date(SalesExpiryDatePhone).getTime();
     var x = setInterval(function() {

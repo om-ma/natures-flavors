@@ -27,7 +27,6 @@ $( document ).on('turbolinks:load', function() {
   let selected_value_presentation = $(selected_option_value).data("presentation")
 
   $(selected_option_value).click()
-
   let option_type_id = "." + $(selected_option_value).data("option-type-id")
   $(option_type_id).html(selected_value_presentation)
 });
