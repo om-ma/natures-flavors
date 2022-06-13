@@ -87,8 +87,8 @@ bundle exec sidekiq -q default -q mailers
 
 # Migration
 USERS:
-bin/rails r "migration/users_test.rb"
-bin/rails r "migration/users.rb"
+./bin/rails r "migration/users_test.rb"
+./bin/rails r "migration/users.rb"
 
 PRODUCTS/TAXONS:
 gem install thor -v 0.20.3
