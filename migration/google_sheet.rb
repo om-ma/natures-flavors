@@ -11,3 +11,6 @@
 
 # Upload taxon images
 =CONCATENATE("owner = Spree::Taxon.where(old_category_id: ",C2,").first; attachment_file = File.new('",F2,"', 'rb'); filename = '",O2,"'; Spree::TaxonImage.create!(attachment: { io: attachment_file, filename: filename }, viewable: owner);")
+
+# Update product short descriptions
+=CONCATENATE("UPDATE spree_products SET short_description='",SUBSTITUTE(E2,"'","''"), "' WHERE old_product_id=",D2,";")

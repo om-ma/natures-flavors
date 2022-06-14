@@ -110,6 +110,7 @@ RUN SQLs:
 migration/sql/delete_all_taxons_from_old_product_id_57612.sql
 migration/sql/update_taxons.sql
 migration/sql/update_meta_data.sql
+migration/sql/update_products_short_descriptions.sql
 
 TERMINAL:
 bin/rails r migration/upload_category_images.rb
