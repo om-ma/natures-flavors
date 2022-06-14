@@ -21,10 +21,10 @@
               "variant-id" => option_value[:variant_id]
             } %>
           <%= label_tag "variant_option_value_id_#{option_type[:id]}_#{option_value[:id]}",
-            class: "m-1 select-label label-width variant_option_value_id_#{option_type[:id]}_#{option_value[:id]}",
-            "aria-label" => option_value[:presentation] do %>
+            class: "js_select_option_value m-1 select-label label-width variant_option_value_id_#{option_type[:id]}_#{option_value[:id]}",
+            "aria-label" => option_value[:presentation],data:{dropdown_value_id:"#{option_type[:id]}"} do %>
 
-            <span for="variant_option_value_id_<%=option_type[:id]%>_<%=option_value[:id]%>" class="variant_option_value_id_<%= option_type[:id]%>_<%=option_value[:id]%> js_select_option_value" data-dropdown-value-id="<%=option_type[:id]%>">
+            <span for="variant_option_value_id_<%=option_type[:id]%>_<%=option_value[:id]%>" class="label-width variant_option_value_id_<%= option_type[:id]%>_<%=option_value[:id]%>" data-dropdown-value-id="<%=option_type[:id]%>">
               <%= option_value[:presentation] %>
             </span>
           <% end %>

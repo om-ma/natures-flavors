@@ -36,7 +36,7 @@
                 color: option_value[:presentation],
                 selected: false,
               } %>
-              <label class="js-selected-label-color font-weight-bold" for="variant_option_value_id_<%= option_type[:id]%>_<%= option_value[:id]%>"class= "label-width" ><%= option_value[:name]&.humanize %></label>
+              <label class="js-selected-label-color label-width font-weight-bold" for="variant_option_value_id_<%= option_type[:id]%>_<%= option_value[:id]%>"><%= option_value[:name]&.humanize %></label>
             <% end %>
           </li>
         <% end %>
