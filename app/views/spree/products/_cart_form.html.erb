@@ -21,7 +21,7 @@
         </div>
       </div>
       <% if @product.variants_and_option_values(current_currency).any? %>
-        <% if @product.variants.joins(:option_values).count > 1 %>
+        <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
         <% kllas = ""%>
         <% else %>
         <% kllas = "size-availability"%>
@@ -29,7 +29,7 @@
       <% end %>
       <ul class="<%= kllas%>" id="product-variants">
         <% if @product.variants_and_option_values(current_currency).any? %>
-          <% if @product.variants.joins(:option_values).count > 1 %>
+          <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
               <% used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
                 <li>
@@ -52,11 +52,11 @@
           <% else %>
             <div class="d-flex">
               <span> Choose your option</span>
-              <span class="text-center text-md-left" id="js-product_variant_sku">
+              <span class="text-center text-md-left" id="js_product_variant_sku">
               </span>
             </div>
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
-              <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js <%= index == 0 ? 'active' : '' %>"
+              <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js js-variant-list <%= index == 0 ? 'active' : '' %>"
                 data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
                 <% option_value = variant.option_values.first %>
                 <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
@@ -89,7 +89,7 @@
           <div class="d-flex flex-wrap align-items-center">
             <%= render 'spree/shared/quantity_select', input_name: :quantity %>
             <%= button_tag class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button', type: :submit do %>
-              <span id="product_btn_variant_price" > <%= default_variant.price_in(current_currency).money %></span> -
+              <span id="product_btn_variant_price" class="add-to-cart-variant"> <%= default_variant.price_in(current_currency).money %></span> -
               <%= Spree.t(:add_to_cart) %>
             <% end %>
           </div>
