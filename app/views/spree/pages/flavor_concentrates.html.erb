@@ -1,5 +1,5 @@
 <% self.title = "What Are Flavor Concentrates?" %>
-<% meta_tag :description, "Everything you ever wanted to know about flavor concentrates and their best uses, usage guidelines, and ways to avoid over flavoring your masterpiece!" %>
+<% meta_tag :description, "See what the usage guidelines are for flavor concentrates & how to avoid over-flavoring your masterpiece. Learn what the best uses for flavor concentrates are." %>
 <main class="page-contents">
    <div class="category-wrapper">
       <div class="row no-gutters">
@@ -21,12 +21,12 @@
          <div class="col-xl-7 col-lg-9">
             <div class="article-wrapper">
                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">What Are Flavor Concentrates?</li>
+                  <li class="breadcrumb-item"><%= link_to "Home", root_url %></li>
+                  <li class="breadcrumb-item active">Flavor Concentrates</li>
                </ol>
                <h1 class="title mb-25">What Are Flavor Concentrates?</h1>
                <div class="mobile-categories-wrap phone-visible">
-                  <div class="header"><a href="#" class="mobile-category-toggle">More Information</a></div>
+                  <div class="header"><a class="mobile-category-toggle">More Information</a></div>
                   <ul class="sidebar-sub-categories">
                      <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
                      <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
@@ -47,45 +47,47 @@
                <div class="banner-caption-wrap">
                   <div class="row">
                      <div class="col-md-7">
-                        <p>Natures Flavors' Flavor Concentrates are our most widely-used flavors and are best used in any water-based situation.</p>
+                        <p>Nature’s Flavors' <%= link_to "flavor concentrates", (Spree::Taxon.find_by_name("Flavor Concentrates").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Concentrates")): '/')  %> are our most widely-used flavors and are best used in any water-based application. We’ve crafted these natural concentrated flavorings for over 40 years and have perfected the science behind the sophisticated flavor profiles our customers have come to love.</p>
                      </div>
                      <div class="col-md-5">
                         <div class="wrap">
                            <h5>Video Content</h5>
-                           <p>A quick breakdown of the differences between concentrates & extracts.</p>
+                           <p>Here’s a quick breakdown of the differences between flavor concentrates & extracts.</p>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="block d-flex flex-wrap">
                   <div class="flex-fill">
-                     <h2>PREMIUM CONCENTRATES</h2>
-                     <p>Add a few drops to your ice cream to create a truly mouth-watering treat. You could also add a few drops to your cooking or to any beverage to enhance its flavor! If you're only getting one type of product, this is the one to get.</p>
+                     <h2>PREMIUM FLAVOR CONCENTRATES</h2>
+                     <p>Our high-quality concentrated flavorings boost the flavor of any culinary creation you are making. Simply add a few drops of our natural flavor concentrates to your creamy homemade ice cream to create a truly mouth-watering treat. You could also add a few drops to your culinary cuisine or to any beverage to enhance its flavor!</p>
+                     <p>Use our concentrated flavorings to make delicious desserts, like cookies, cake, pie, and frostings. The savory flavor concentrates could be used to cook your favorite meal, side dish, or sauce. If you're only purchasing one type of product from Nature’s Flavors, this versatile, natural flavor concentrate is the one to get.</p>
                   </div>
                </div>
                <div class="block d-flex flex-wrap">
                   <div class="flex-fill">
-                     <h2>USAGE GUIDELINES</h2>
-                     <p>Starting usages are about 0.25% to 3% by weight in recipes. Flavors are affected by fat, sugar, and bulking agent content, so a little experimentation may be needed to get the perfect flavor for you!</p>
+                     <h2>USAGE GUIDELINES FOR CONCENTRATED FLAVORINGS</h2>
+                     <p>For our natural flavor concentrates, we recommend that our customers follow these guidelines to get the most from our premium line of concentrated flavors. Our recommended starting usage amount for flavor concentrates is about 0.25% to 3% by weight in recipes. These concentrated flavorings are affected by fat, sugar, and bulking agent content, so a little experimentation may be needed to get the perfect flavor for your taste!</p>
                   </div>
                </div>
                <div class="block d-flex flex-wrap">
                   <div class="flex-fill">
-                     <h2>NEW TO CUSTOM FLAVORING?</h2>
-                     <p><strong>You may find the following recipe useful:</strong><br>Begin with 8 ounces of water, add 4 to 8 drops of 50% Citric Acid Solution. Taste for proper acidity (orange or apple = more acidic; pear or banana = less acidic). Next add 4 to 8 drops of flavor concentrate and sweeten to taste with Stevia Drops, Sweet Drops (AceK), sugar, or your preferred sweetener.</p>
+                     <h2>NEW TO CUSTOM FLAVORING CONCENTRATES?</h2>
+                     <p><strong>You may find the following recipe for tailoring your flavor concentrates useful:</strong><br>Begin with 8 ounces of water, and add 4 to 8 drops of 50% citric acid solution. Taste for proper acidity (orange or apple = more acidic; pear or banana = less acidic). Next, add 4 to 8 drops of our flavor concentrate, and sweeten to taste with Stevia Drops, Sweet Drops (AceK), sugar, or your preferred sweetener. Our flavoring concentrates are significantly more concentrated than our <%= link_to "natural flavor extracts", (Spree::Taxon.find_by_name("Natural Extracts").present? ? seo_url(Spree::Taxon.find_by_name("Natural Extracts")): '/')  %>.</p>
+                     <p>At Nature’s Flavors, our delectable, natural flavor concentrates are made with only natural plant and animal-derived ingredients and never include any artificial ingredients, colorings, or unnecessary added sugar. Enjoy our flavored concentrates the way nature intended.</p>
                   </div>
                </div>
                <div class="block d-flex flex-wrap">
                   <div class="flex-fill">
                      <h2>BEST USES FOR FLAVOR CONCENTRATES</h2>
-                     <p><strong>Flavor concentrates are the most versatile of flavors. They're good for:</strong></p>
+                     <p>Natural flavor concentrates are the most versatile of flavors. They're good to add to water-based applications like:</p>
                      <ul>
                         <li>Syrups</li>
                         <li>Ice Cream</li>
                         <li>Baked goods</li>
                         <li>Yogurt</li>
                         <li>Beverages</li>
-                        <li>Much, much, more!</li>
+                        <li>& Much, much, more!</li>
                      </ul>
                   </div>
                </div>
@@ -93,29 +95,33 @@
                   <div class="flex-fill">
                      <div class="row">
                         <div class="col-md-6">
-                           <h2>ADDITIONAL INFORMATION ON CONCENTRATES</h2>
+                           <h2>ADDITIONAL INFORMATION ON FLAVOR CONCENTRATES</h2>
+                           <p>Our carefully concocted flavoring concentrates are highly concentrated, so never eat them directly. Mix the flavor concentrates properly with the baking or cooking application, following the usage guidelines above. You should achieve desired results when using our natural flavor concentrates to enhance the flavors.</p>
                            <ul>
-                              <li>Highly concentrated</li>
-                              <li>Have a similar concentration to Extracts</li>
+                              <li>Have a similar concentration to <%= link_to "flavor extracts", (Spree::Taxon.find_by_name("Flavor Extracts").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Extracts")): '/')  %></li>
                               <li>Liquid</li>
                               <li>Contain no added sweetener</li>
                               <li>Water-based</li>
                               <li>High heat stable</li>
-                              <li>Look slightly cloudy (when used at small ratios, shouldn't change color)</li>
+                              <li>Look slightly cloudy (when used at small ratios, flavor concentrates shouldn't change color)</li>
                               <li>Ingredients - gum acacia/arabic, citric acid, natural or organic flavors</li>
-                              <li>Refrigerate Upon Receipt</li>
-                              <li>Store in tightly sealed container at temperatures not exceeding 35⁰ - 40⁰ Fahrenheit. Stable for 2 years if stored properly</li>
+                              <li>Refrigerate upon receipt</li>
+                              <li>Store in a tightly sealed container at temperatures not exceeding 35⁰ - 40⁰ Fahrenheit. The concentrated flavorings are stable for two years if stored properly in a cool environment.</li>
                            </ul>
                         </div>
                         <div class="col-md-6">
+                           <h2>More Videos on Natural Flavor Concentrates</h2>
                            <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JtYtSVH6fTM?rel=0" allowfullscreen></iframe></div>
+                           <p>Flavor Concentrates are also <%= link_to "flavor emulsions", (Spree::Taxon.find_by_name("Emulsions (For High Heat Applications)").present? ? seo_url(Spree::Taxon.find_by_name("Emulsions (For High Heat Applications)")): '/')  %>! See the differences between all types of flavors available at Nature's Flavors.</p>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="attention-note">
-                  <h2>OVERFLAVORING YOUR PRODUCT</h2>
-                  <p>If at any time you notice a minty taste on your palate or a medicinal taste, you have over-flavored your product. If you are burping the flavor up an hour or more after you have eaten the finished product, than you have probably over flavored the product. If the beverage has a strong smell, or if it leaves a taste of wax in your mouth, you've over-flavored! The trick to making a product taste good is to give just enough flavor to tease the taste buds, without overdoing it. Reduce all quantities by half (except water) and start over. This is only a starting point. Food flavoring is an art and requires experimentation and practice to achieve results. Nature's Flavors is committed to helping everyone achieve great results with our products, so if you have questions about using our products, please let us know. We will make every effort to get you the information you need.</p>
+                  <h2>OVER FLAVORING YOUR PRODUCT WITH FLAVOR CONCENTRATES</h2>
+                  <p>There are many signs that you can look out for to tell if you’ve over-flavored your creation with our flavor concentrates. If, while using concentrated flavorings, you notice a minty taste on your palate or a medicinal taste, you have over-flavored your product. You may have over-flavored your baked good or culinary cuisine if you are burping the flavor up an hour or more after you have eaten the finished product. If the beverage has a strong smell, or if it leaves a taste of wax in your mouth, you've over-flavored it!</p>
+                  <p>The trick to making a product taste good is to give just enough flavor to tease the taste buds without overdoing it. Reduce all quantities of the flavor concentrate of your choice by half (except water), and start over. This is only a starting point. Food flavoring is not only an art but also a science and requires experimentation and practice to achieve the results you are envisioning.</p>
+                  <p>Nature’s Flavors is committed to helping everyone achieve great end results with all of our products, including our concentrated flavorings. If you have questions about using our natural flavor concentrates, please let us know. We will make every effort to get you the information and advice you need.</p>
                </div>
             </div>
             <!-- /.Article --> 
