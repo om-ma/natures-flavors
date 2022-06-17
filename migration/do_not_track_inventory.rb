@@ -1,0 +1,1 @@
+update spree_variants set track_inventory = false where is_master <> true and track_inventory = true;
