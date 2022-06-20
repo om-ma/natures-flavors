@@ -2,7 +2,7 @@
 
 <% if taxon.present? %>
   <% cache [I18n.locale, max_level, taxon] do %>
-    <% if taxon.children.any? %>
+    <% if taxon.children.where(hide_from_nav: false).any? %>
       <%= taxons_tree(taxon, taxon, max_level) %>
     <% else %>
       <ul class="sidebar-sub-categories">
