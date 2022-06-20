@@ -43,14 +43,4 @@ $( document ).on('turbolinks:load', function() {
     })
   });
 
-  $(document).on('click', '#account-cedit-card-tab', function(){
-
-    $.ajax({
-      type: 'GET',
-      url: '/user_credit_cards/new.js',
-    }).done(function () {
-    }).fail(function (response) {
-    })
-  });
-
 });
