@@ -67,36 +67,22 @@
         <li><a href="#" class="menuLink">Information</a>
           <div  class="sub-menu-lists">
             <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Best Sellers</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">New Products</a></li>
-            </ul>
-            <ul>
-              <li><a href="#">Shipping</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Terms And Conditions</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Returns &amp; Replacements</a></li>
+              <li><%= link_to('About Us', about_us_path) %></li>
+              <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">Flavorful Bites Blog</a></li>
+              <li><%= link_to "Contact Us", contact_us_path %></li>
             </ul>
           </div>
         </li>
         <li><a href="#" class="menuLink">Product Info</a>
           <div  class="sub-menu-lists">
             <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Best Sellers</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">New Products</a></li>
-            </ul>
-            <ul>
-              <li><a href="#">Shipping</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Terms And Conditions</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Returns &amp; Replacements</a></li>
+              <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
+              <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
+              <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
+              <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
+              <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+              <li><a href="#">Reviews</a></li>
+              <li><%= link_to('FAQs', faq_path) %></li>
             </ul>
           </div>
         </li>
