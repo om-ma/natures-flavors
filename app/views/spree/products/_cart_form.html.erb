@@ -50,9 +50,11 @@
               <% end %>
             </div>
           <% else %>
-            <div class="d-flex">
+            <div class="d-flex justify-content-between">
               <span> Choose your option</span>
               <span class="text-center text-md-left" id="js_product_variant_sku">
+                <% default_sku = @product.variants.present? ? @product.variants.first.sku : @product.master.sku %>
+                <%= default_sku%>
               </span>
             </div>
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
