@@ -54,6 +54,8 @@ Spree::Core::Engine.routes.draw  do
   get '/articles/flavor-oils',  action: :show, controller: 'pages', p: 'flavor_oils', :as => :flavor_oils
   get '/faq',  action: :show, controller: 'pages', p: 'faq', :as => :faq
   get '/about-us',  action: :show, controller: 'pages', p: 'about_us', :as => :about_us
+  get '/shipments-delivery',  action: :show, controller: 'pages', p: 'shipments_delivery', :as => :shipments_delivery
+  get '/returns',  action: :show, controller: 'pages', p: 'returns', :as => :returns
 end
 
 Spree::Core::Engine.add_routes do
