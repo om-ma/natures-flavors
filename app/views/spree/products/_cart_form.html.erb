@@ -50,13 +50,15 @@
               <% end %>
             </div>
           <% else %>
-            <div class="d-flex justify-content-between">
-              <span> Choose your option</span>
-              <span class="text-center text-md-left" id="js_product_variant_sku">
+          
+            <div class="product-options-header d-flex align-items-center justify-content-between">
+              <div class="left">Choose your option:</div>
+              <div class="right" id="js_product_variant_sku">
                 <% default_sku = @product.variants.present? ? @product.variants.first.sku : @product.master.sku %>
                 <%= default_sku%>
-              </span>
+              </div>
             </div>
+
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>  
               <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js js-variant-list <%= index == 0 ? 'active' : '' %>"
                 data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
