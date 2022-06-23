@@ -87,7 +87,6 @@ bundle exec sidekiq -q default -q mailers
 
 # Migration
 USERS:
-./bin/rails r "migration/users_test.rb"
 ./bin/rails r "migration/users.rb"
 
 PRODUCTS/TAXONS:
@@ -108,13 +107,17 @@ bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Fla
 
 RUN SQLs:
 migration/sql/delete_all_taxons_from_old_product_id_57612.sql
-migration/sql/update_taxons.sql
+migration/sql/do_not_track_inventory
 migration/sql/update_meta_data.sql
 migration/sql/update_products_short_descriptions.sql
+migration/sql/update_taxons.sql
 
 TERMINAL:
 bin/rails r migration/upload_category_images.rb
 bin/rails r migration/delete_inactive_taxon.rb
+bin/rails r migration/fix_variant_master_price.rb
+bin/rails r migration/reorder_variants_by_price.rb
+
 
 BACKEND:
 Reorder taxons in backend
