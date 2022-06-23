@@ -21,22 +21,22 @@
   <%# end %>
 <%# end %>
 <div data-hook="product_description">  
-  <div id="product-description-short"  data-hook="short-description">
-      <%= sanitize product_short_description(@product) %>
+  <div id="product-description-short" data-hook="short-description">
+      <p><%= sanitize product_short_description(@product) %></p>
   </div>
 </div>
-<ul class="product-standards d-flex flex-wrap align-items-center phone-hide">
 <%#
+<ul class="product-standards d-flex flex-wrap align-items-center phone-hide">
   <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
   <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
   <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
   <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
-%>
 </ul>
+%>
 <%= render partial: 'properties' %>
 <div class="product-actions d-flex flex-wrap align-items-center"> 
   <div>
-    <a href="#" class="faq-link">Ask a Question</a>
+    <a href="#ask-question" data-turbolinks="false" class="faq-link">Ask a Question</a>
   </div> 
   <div id="js-wishproduct-action-button">
     <%= render partial: 'spree/shared/wishlist_action_buttons', locals: { product: @product} %>

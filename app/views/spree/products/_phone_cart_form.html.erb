@@ -50,6 +50,10 @@
               <% end %>
             </div>
           <% else %>
+          
+            
+
+
             <span id="js_selected_variantt_sku"><%= default_variant.sku%></span>
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
               <!-- removed from mobile cart product-ov-js -->
@@ -93,7 +97,6 @@
   </div>
 <% end %>
 <script type="text/javascript">
-
   $( document ).on('turbolinks:load', function() {
     $(".js_drop_down").click();
     $('body').click()
