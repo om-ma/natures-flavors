@@ -109,6 +109,7 @@ RUN SQLs:
 migration/sql/delete_all_taxons_from_old_product_id_57612.sql
 migration/sql/do_not_track_inventory
 migration/sql/update_meta_data.sql
+migration/sql/update_products_properties.sql
 migration/sql/update_products_short_descriptions.sql
 migration/sql/update_taxons.sql
 

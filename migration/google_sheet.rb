@@ -14,3 +14,6 @@
 
 # Update product short descriptions
 =CONCATENATE("UPDATE spree_products SET short_description='",SUBSTITUTE(E2,"'","''"), "' WHERE old_product_id=",D2,";")
+
+# Update product properties
+=CONCATENATE("UPDATE spree_product_properties SET value = '",,SUBSTITUTE(F2,"'","''"),"' WHERE product_id in (SELECT id FROM spree_products WHERE old_product_id = ",D2,");")
