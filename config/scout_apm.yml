@@ -26,7 +26,7 @@ production:
 
 development:
   <<: *defaults
-  monitor: false
+  name: Nature's Flavors (local)
 
 test:
   <<: *defaults
