@@ -3248,6 +3248,28 @@ h3 a{
 	margin: 0 0 7px;
 }
 
+.add-to-cart-wrap .d-flex,
+.add-to-cart-wrap .d-flex label {
+	margin: 0 0 5px;
+}
+
+.add-to-cart-wrap .price {
+	font-size: 18px;
+    font-weight: bold;
+	line-height: 18px;
+}
+
+.add-to-cart-wrap .price {
+	font-size: 20px;
+    font-weight: bold;
+}
+
+.add-to-cart-wrap .price del {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0 4px 0 0;
+}
+
 .add-to-cart-wrap .custom-select {
 	width: 80px;
 	margin: 0 10px 0 0;
