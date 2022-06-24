@@ -123,4 +123,5 @@ bin/rails r migration/reorder_variants_by_price.rb
 BACKEND:
 Reorder taxons in backend
 Rename taxon "More Products" to "More"
+Delete "Deals" taxon (do not need it statically created)
 
