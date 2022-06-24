@@ -29,7 +29,7 @@
     </div>
   <%# end %>
 </div> -->
-<div  class="row row-cols-xl-5 row-cols-lg-4 row-cols-sm-2 no-gutters"  data-hook="homepage_products">
+<div  class="row row-cols-xl-4 row-cols-lg-4 row-cols-sm-2 no-gutters"  data-hook="homepage_products">
   <% content_for :head do %>
     <% if products.respond_to?(:total_pages) %>
       <%= rel_next_prev_link_tags products %>
