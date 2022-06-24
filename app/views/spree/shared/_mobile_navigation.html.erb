@@ -18,23 +18,33 @@
     </div>
     <div id="menu">
       <ul class="product-menu">
+        <%# TODO: Optimize code. Make recursive using a frontend helper (taxon_tree) like for desktop. %>
         <% if (browser.device.mobile?) %> 
           <% if @all_categories.present? %>
             <% @all_categories.each do |menu_category| %>
 
               <% if menu_category.hide_from_nav == false && menu_category.users.present? ? (spree_current_user.present? ? menu_category.users.include?(spree_current_user) : false) : true %>
                 <li>
-                   <%= link_to menu_category.name, seo_url(menu_category), class: "mobile-sidebar-category" %>
-                   <%= link_to "", "" %>
+                   <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(menu_category) %>'"><%= menu_category.name %></span><a href="#" data-turbolinks="false" class="hidden-title"><%= menu_category.name %></a>
                    <% if menu_category.children.present? %>
                     <ul>
                       <% menu_category.children.where(hide_from_nav: false).each do |category| %>
                         <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
                           <li>
-                            <%= link_to category.name, seo_url(category), class: "mobile-sidebar-category" %>
-                            <%= link_to "", "" %>
+                            <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(category) %>'"><%= category.name %></span><% if category.children.any? %><a href="#" data-turbolinks="false" class="hidden-title">category.name</a><% end %>
+                            <% if category.children.present? %>
+                              <ul>
+                                <% category.children.where(hide_from_nav: false).each do |sub_category| %>
+                                  <% if sub_category.users.present? ? (spree_current_user.present? ? sub_category.users.include?(spree_current_user) : false) : true %>
+                                    <li>
+                                      <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(sub_category) %>'"><%= sub_category.name %></span>
+                                    </li>
+                                  <% end %>
+                                <% end %>
+                              </ul>
+                            <% end %>
                           </li>
-                        <% end %> 
+                        <% end %>
                       <% end %>
                     </ul>
                   <% end %>  
@@ -44,9 +54,8 @@
           <% end %>
           <% sales_present = Spree::Product.in_sale.present? %>
           <% if sales_present %>
-            <%= link_to sale_path, class: "mobile-sidebar-category" do %>
-              <li>Deals</li>
-            <% end %>
+            <span data-turbolinks="false" class="link" onclick="location='<%= sale_path %>'">Deals</span>
+            <a href="#" data-turbolinks="false" class="hidden-title">Deals</a>
           <% end %>  
             <!-- <ul>
               <li>

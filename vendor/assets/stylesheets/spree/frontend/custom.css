@@ -20,10 +20,6 @@
 .tab-width{
   width: 205px;
 }
-.mobile-sidebar-category{
-  background-image: none !important;
-  flex: none !important;
-}
 .option-values-dropdown{
   display: flex;
   justify-content: space-between;
