@@ -34,6 +34,7 @@ en:
     models:
     attributes:
       spree/order:
+        customer_name: "Customer Name"
         production_state: "Production State"
   hello: "Hello world"
   spree:
