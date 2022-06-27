@@ -5148,6 +5148,10 @@ h3 a{
 	padding: 0 !important;
 }
 
+.carousel-inner {
+	margin-bottom:  1px;
+}
+
 /* responsive code */
 @media (min-width: 768px) {
 .mobile-show,
@@ -6307,7 +6311,10 @@ display: flex;
 .nav-tabs .nav-item:not(:last-child) {
     margin: 0 25px 0 0;
 }
-	
+.nav-tabs .nav-item {
+    margin-bottom: 1px !important;
+}
+
 .btn-block-wrap .btn,
 .cart-wrapper .text-right .btn {
 	display: block;

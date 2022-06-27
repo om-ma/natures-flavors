@@ -4,17 +4,22 @@
 
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" <%= (defined? interval) != nil ? "data-interval=#{interval.to_s}" : "" %>>
     <%# Indicators %>
-    <ol class="carousel-indicators">
+    <!-- <ol class="carousel-indicators">
       <% slider.each_with_index do |slide, index| %>
         <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
       <% end %>
-    </ol>
+    </ol> -->
 
     <%# Wrapper for slider %>
     <div class="carousel-inner">
       <% slider.each_with_index do |slide, index| %>
         <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-          <% image_url = slide.slide_image ?  main_app.url_for(slide.slide_image) : "noimage/large"%>
+          <%
+            if (browser.device.mobile?)
+              image_url = slide.slide_mobile_image ?  main_app.url_for(slide.slide_mobile_image) : "noimage/large"
+            else
+              image_url = slide.slide_image ?  main_app.url_for(slide.slide_image) : "noimage/large"
+          end %>
           <%= link_to image_tag(image_url, alt: slide.slide_name,class:'w-100'), url_for(slide.slide_link)  %>
           <div class="carousel-caption">
             <h3><%#= slide.slide_name %></h3>
@@ -27,7 +32,7 @@
           <% end %>
         </div>
 
-        <%# Controls %>
+      <%# Controls %>
        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
