@@ -177,6 +177,7 @@
           <th><%= sort_link @search, :considered_risky, I18n.t(:considered_risky, scope: 'activerecord.attributes.spree/order') %></th>
           <th><%= sort_link @search, :state,            I18n.t(:state, scope: 'activerecord.attributes.spree/order') %></th>
           <th><%= sort_link @search, :payment_state,    I18n.t(:payment_state, scope: 'activerecord.attributes.spree/order') %></th>
+          <th><%= sort_link @search, :production_state, I18n.t(:production_state, scope: 'activerecord.attributes.spree/order') %></th>
            <% if Spree::Order.checkout_step_names.include?(:delivery) %>
             <th><%= sort_link @search, :shipment_state, I18n.t(:shipment_state, scope: 'activerecord.attributes.spree/order') %></th>
            <% end %>
@@ -214,6 +215,12 @@
                 data-ransack-value="<%= order.payment_state %>">
                 <%= svg_icon name: "filter.svg", width: '14', height: '14' %>
               </span>
+            <% end %>
+          </td>
+          <td>
+            <% if order.production_state %>
+              <span class="badge badge-<%= order.production_state %>"><%= Spree.t("production_states.#{order.production_state}") %></span>
+              <span class="filterable js-add-filter" data-ransack-field="q_production_state_eq" data-ransack-value="<%= order.production_state %>"></span>
             <% end %>
           </td>
           <% if Spree::Order.checkout_step_names.include?(:delivery) %>

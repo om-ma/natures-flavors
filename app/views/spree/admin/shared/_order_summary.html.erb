@@ -83,6 +83,18 @@
             </td>
           </tr>
         <% end %>
+        <% if @order.production_state.present? %>
+          <tr>
+            <td>
+              <strong><%= Spree.t(:production) %>:</strong>
+            </td>
+            <td id='production_status'>
+              <span class="state badge badge-<%= @order.production_state %>">
+                <%= Spree.t(@order.production_state, scope: :production_states, default: [:missing, "none"]) %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
         <% if @order.payment_state.present? %>
           <tr>
             <td>

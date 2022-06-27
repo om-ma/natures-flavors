@@ -1,5 +1,17 @@
-module Spree
-  module OrderDecorator
+Spree::Order.class_eval do
+
+    # Set by admin/order_controller to be used to log state change for production state
+    attr_accessor :current_user
+
+    # Update production state
+    PRODUCTION_STATES = %w(ready processing follow_up_requested production_room in_labels complete canceled)
+
+    validates :production_state,       inclusion:    { in: PRODUCTION_STATES, allow_blank: true }
+
+    # Hack to get constant
+    def self.get_production_states
+      const_get("PRODUCTION_STATES")
+    end
 
     # Finalizes an in progress order after checkout is complete.
     # Called after transition to complete state when payments will have been processed
@@ -19,6 +31,10 @@ module Spree
       end
 
       updater.update_shipment_state
+
+      # update production state
+      updater.update_production_state
+
       save!
       updater.run_hooks
 
@@ -43,9 +59,7 @@ module Spree
     def confirmation_required?
       Spree::Config[:always_include_confirm_step]
     end
-
-    private
-
+    
     def deliver_backoffice_invoice_email
       Spree::InvoiceMailer.invoice_email(self).deliver_later
     end
@@ -58,7 +72,25 @@ module Spree
       Spree::InvoiceMailer.packing_list_email(self).deliver_later
     end
 
-  end
-end
+    def state_changed(name)
+      changed_by_user_id = user_id
+      if name == 'production' && !current_user.nil?
+        changed_by_user_id = current_user.id
+      end
 
-::Spree::Order.prepend(Spree::OrderDecorator)
+      state = "#{name}_state"
+      if persisted?
+        old_state = send("#{state}_was")
+        new_state = send(state)
+        unless old_state == new_state
+          state_changes.create(
+            previous_state: old_state,
+            next_state:     new_state,
+            name:           name,
+            user_id:        changed_by_user_id
+          )
+        end
+      end
+    end
+
+end

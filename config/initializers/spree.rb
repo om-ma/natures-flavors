@@ -50,3 +50,6 @@ Spree::PermittedAttributes.product_attributes << [:old_product_id, :old_product_
 Spree::PermittedAttributes.taxon_attributes << [:old_category_id, :old_category_url]
 Spree::PermittedAttributes.taxonomy_attributes << [:old_category_id]
 Spree::PermittedAttributes.variant_attributes << :old_product_id
+
+# Add production_state field to spree_orders table
+Spree::PermittedAttributes.checkout_attributes << :production_state

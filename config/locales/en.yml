@@ -30,6 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    models:
+    attributes:
+      spree/order:
+        production_state: "Production State"
   hello: "Hello world"
   spree:
     password: "Password*"
@@ -67,3 +72,16 @@ en:
 
     h1_title: H1 Title
     short_description: "Short Description"
+
+    # production states
+    production: Production
+    production_state: Production State
+    production_states:
+      ready: ready
+      processing: processing
+      follow_up_requested: follow up requested
+      production_room: production room
+      in_labels: in labels
+      complete: complete
+      canceled: canceled
+    production_state_selected_same_as_previous: The selected value is the same as the current value.

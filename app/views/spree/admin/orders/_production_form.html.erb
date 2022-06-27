@@ -1,0 +1,18 @@
+<div data-hook="store-form-container">
+  <%= form_for [:admin, order], method: :put, url: set_production_admin_order_url do |f| %>
+    <fieldset>
+    <div data-hook="admin_order_production_state_field">
+      <%= f.field_container :production_state, class: ['form-group'] do %>
+        <%= f.label :production_state, Spree.t(:production_state) %>
+        <%= f.select :production_state, Spree::Order.get_production_states().map {|s| [Spree.t("production_states.#{s}"), s]}, { include_blank: false }, class: 'select2' %>
+        <%= f.error_message_on :production_state %>
+      <% end %>
+    </div>
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success', data: { disable_with: "#{ Spree.t(:saving) }..." }} %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= button_link_to Spree.t('actions.cancel'), edit_admin_order_url(order), icon: 'delete' %>
+    </div>
+    <fieldset>
+  <% end %>
+</div>

@@ -62,3 +62,13 @@ Spree::Core::Engine.add_routes do
   resources :doofinder, :controller => 'doofinder/doofinder', :only => [:feed]
   get 'doofinder-feed' => 'doofinder/doofinder#feed', :as => :doofinder_feed
 end
+
+Spree::Core::Engine.routes.draw do
+  # Override for Production state
+  namespace :admin, path: Spree.admin_path do
+    resources :orders, except: [:show] do
+      get :production, on: :member
+      put :set_production, on: :member
+    end
+  end
+end
