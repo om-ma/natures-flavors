@@ -31,7 +31,7 @@
                       <% menu_category.children.where(hide_from_nav: false).each do |category| %>
                         <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
                           <li>
-                            <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(category) %>'"><%= category.name %></span><% if category.children.any? %><a href="#" data-turbolinks="false" class="hidden-title">category.name</a><% end %>
+                            <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(category) %>'"><%= category.name %></span><% if category.children.any? %><a href="#" data-turbolinks="false" class="hidden-title"><%= category.name %></a><% end %>
                             <% if category.children.present? %>
                               <ul>
                                 <% category.children.where(hide_from_nav: false).each do |sub_category| %>
