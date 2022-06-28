@@ -22,7 +22,7 @@ Spree::FrontendHelper.class_eval do
           selected_taxon_klass = selected_parent_taxon_name == taxon_permalink ? 'active-tab' : ''
           content_tag :li do
             css_class = taxon.children.present?  ? 'dropdown-toggle tab-width border-0 p-0' : 'border-0 p-0'
-            link_to(taxon.name, seo_url(taxon),class: selected_taxon_klass) + (taxon.children.any? ? '<button type="button" class="dropdown-toggle" data-toggle="dropdown">Toggle me</button>'.html_safe : '') + taxons_tree(taxon, current_taxon, max_level - 1)
+            link_to(taxon.name, seo_url(taxon),class: selected_taxon_klass) + (taxon.children.any? ? '<button type="button" class="dropdown-toggle js_drop_down" data-toggle="dropdown">Toggle me</button>'.html_safe : '') + taxons_tree(taxon, current_taxon, max_level - 1)
           end
         # end
       end
