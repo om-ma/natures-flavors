@@ -242,7 +242,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/duc.lam/spree_common.git
-  revision: b938d22a595e2776789d234a027e8eee91cbcada
+  revision: 4dd6a07d3fa18246d609030c75efd2426b4664fb
   branch: master
   specs:
     spree_common (0.0.1)
@@ -1845,18 +1845,18 @@ GEM
     json (2.6.1)
     jsonapi-serializer (2.2.0)
       activesupport (>= 4.2)
-    kaminari (1.2.1)
+    kaminari (1.2.2)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.1)
-      kaminari-activerecord (= 1.2.1)
-      kaminari-core (= 1.2.1)
-    kaminari-actionview (1.2.1)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
       actionview
-      kaminari-core (= 1.2.1)
-    kaminari-activerecord (1.2.1)
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
       activerecord
-      kaminari-core (= 1.2.1)
-    kaminari-core (1.2.1)
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     kaminari-i18n (0.5.0)
       kaminari
       rails
