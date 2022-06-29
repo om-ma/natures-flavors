@@ -15,6 +15,9 @@
             <li><%= link_to "Contact Us", contact_us_path %></li>
             <li><a href="https://app.termly.io/notify/dbb05b70-45e7-458a-a7d5-fc3491d4c67a" target="_blank">DSAR Form</a></li>
          </ul>
+         <div class="cookie-pref">
+            <button class="termly-cookie-preference-button" type="button" style="background: white; width: 165px; height: 30px; border-radius: 3px; border: 1px solid #5f7d9c; font-family: Roboto, Arial; font-size: 10px; color: #5f7d9c; font-weight: 600; box-sizing: border-box; cursor: pointer; padding: 0; outline: none;" onclick="displayPreferenceModal()">Manage Cookie Preferences</button>
+         </div>
       </div>
       <div class="col-xl-2 col-lg-4">
          <%= render partial: 'spree/shared/mailchimp_subscribe_form' %>
