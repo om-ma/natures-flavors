@@ -5,6 +5,7 @@
 <!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
 <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
   <head data-hook="inside_head">
+    <%= render 'spree/shared/cookie_consent_banner' %>
     <%= render partial: 'spree/shared/head' %>
   </head>
   <body  id="<%= @body_id || 'default' %>" data-hook="body">
