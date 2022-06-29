@@ -1,5 +1,5 @@
 <!-- <div class='order-show container d-flex flex-column align-items-center flex-lg-wrap flex-lg-row justify-content-center' id="order_summary" data-hook>
-  <%# if order_just_completed?(@order) %>
+<%# if order_just_completed?(@order) %>
 <%#= icon(name: 'check-mark-circle',
              classes: 'd-block d-lg-none mx-auto order-show-check-mark',
              width: 56,
@@ -18,62 +18,31 @@
   <%#= render partial: 'spree/shared/order_details', locals: { order: @order } %>
 </div>  -->
 
+
 <main class="page-contents">
   <div class="checkout-wrapper">
-    <% if order_just_completed?(@order) %>
       <div class="row no-gutters">
         <div class="col-lg-6 position-relative overflow-hidden">
           <div class="wrap">
             <div class="checkout-confirmation">
               <h1 class="title">You’re all set!</h1>
-              <p>Your order <%= @order.number %> will ship shortly. We’ll email you as soon as we have a tracking number at <%= @order.email %></p>
+              <% if order_just_completed?(@order) %>
+                <p>Your order <%= @order.number %> will ship shortly. We’ll email you as soon as we have a tracking number at <%= @order.email %></p>
+              <% else %>
+                <p>Order #: <%= @order.number %></p>
+              <% end %> 
             </div>
           </div>
           <canvas id="canvas"></canvas>
         </div>
         <div class="col-lg-6">
-          <% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
-          <% if best_sellers_product.present? %>
             <div class="wrap">
               <div class="discounted-product">
-                <div class="product-img mb-10">
-                  <%= plp_and_carousel_image( best_sellers_product) %>    
-                </div>
-                <%= link_to add_to_cart_path(best_sellers_product.id), class: 'btn btn-primary btn-block', id: 'add-to-cart-button',method: :post do %>
-                  <%= best_sellers_product.price %> - Add to Cart
-                <% end %>
+                <div class="product-img mb-10"><a href="https://www.yummatchatea.com/"><%= image_tag 'yum-matcha-tea.jpg', alt: 'Yum Matcha Tea' %></a></div>
+                <a href="https://www.yummatchatea.com/" class="btn btn-primary btn-block">Try our Pineapple Yum Matcha Tea</a></div>
               </div>
-            </div>
-          <% end %>  
-        </div>
-      </div>
-    <% else %>
-      <div class="row no-gutters">
-        <div class="col-lg-6 position-relative overflow-hidden">
-          <div class="wrap">
-            <div class="checkout-confirmation">
-              <h1 class="title">You’re all set!</h1>
-              <p>Order #: <%= @order.number %></p>
             </div>
           </div>
-          <canvas id="canvas"></canvas>
-        </div>
-        <div class="col-lg-6">
-          <% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
-          <% if best_sellers_product.present? %>
-            <div class="wrap">
-              <div class="discounted-product">
-                <div class="product-img mb-10">
-                  <%= plp_and_carousel_image( best_sellers_product) %>    
-                </div>
-                <%= link_to add_to_cart_path(best_sellers_product.id), class: 'btn btn-primary btn-block', id: 'add-to-cart-button',method: :post do %>
-                  <%= best_sellers_product.price %> - Add to Cart
-                <% end %>
-              </div>
-            </div>
-          <% end %>  
-        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
 </main>
