@@ -17,14 +17,7 @@
          </ul>
       </div>
       <div class="col-xl-2 col-lg-4">
-         <div class="footer-newsletter">
-            <h4>Sign up for updates</h4>
-            <form>
-               <input type="text" class="form-control" placeholder="Enter your email">
-               <button type="submit" class="icon-btn">Submit</button>
-            </form>
-            <div class="newsletter-msg">Be the first to learn about promotions special events, new arrivals and more.</div>
-         </div>
+         <%= render partial: 'spree/shared/mailchimp_subscribe_form' %>
          <ul class="footer-nav">
             <li class="header">Our Brands</li>
             <li><a href="https://www.naturesflavors.com/" target="_blank">Nature's Flavors</a></li>
