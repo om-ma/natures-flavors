@@ -1,6 +1,6 @@
 <div class="category-mobile-filter phone-visible">
   <div class="d-flex align-items-center">
-    <div class="sort-by-title flex-fill sorting-filter">
+    <div class="sort-by-title flex-fill sorting-filter sort-by-title-mobile">
       <label>Sort by:</label>
       <% active_klass_descending = (params[:sort_by].present? && (params[:sort_by] == "descend_by_popularity")) ? 'active' : '' %>
       <button type="button" class="product-sort-js <%= active_klass_descending %>" data-filter-type="most-popular">Popular</button>
