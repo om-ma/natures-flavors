@@ -28,7 +28,7 @@
                <%= image_tag "noimage/default-category-image.jpg" %>
             <% end %>
           </div></div>
-          <%= render partial: 'spree/taxons/introduction' %>
+          <%= render partial: 'spree/taxons/introduction', locals: { has_description: (desc.length > 0) } %>
           <%= render partial: 'spree/taxons/filters' %>
           <%= render partial: 'spree/taxons/mobile_filters' %> 
           <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }%>
@@ -39,7 +39,7 @@
   </div>
   <div class="category-intro-footer" id="footer-text">
     <% if desc.present? %>
-      <span class="more">More about <%= @taxon.name %></span><br><br>
+      <span id="more-category-description" class="more">More about <%= @taxon.name %></span><br><br>
       <%= desc %>
     <% end %>
   </div>
