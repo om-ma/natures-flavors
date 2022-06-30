@@ -6208,7 +6208,7 @@ display: flex;
 	width: 100%;
 }
 	
-.sort-by-title p {
+.sort-by-title-mobile {
 	font-size: 13px;
 	line-height: 50px;
 	background-color: #f9f9f9;
@@ -6217,10 +6217,16 @@ display: flex;
 	border-bottom: 1px solid transparent;
 }
 	
-.open .sort-by-title p {
+.open .sort-by-title-mobile {
 	border-bottom-color: #f0f0f0;
 }
-	
+
+
+.sorting-filter button {
+	margin: 0 5px 0 10px;
+	padding: 0px 0;
+}
+
 .filter-btn {
 	font-size: 13px;
 	font-weight: bold;
@@ -6279,7 +6285,7 @@ display: flex;
 }
 	
 .deals-wrapper .title-wrap {
-    padding: 25px 0;
+    padding: 25px;
 }
 }
 
