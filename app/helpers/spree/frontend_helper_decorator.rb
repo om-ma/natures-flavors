@@ -103,6 +103,20 @@ Spree::FrontendHelper.class_eval do
       class: "product-component-image d-block mw-100 #{image_class}"
     )
   end
+
+  def carousel_image_source_set(image)
+    return '' unless image
+
+    widths = { lg: 1200, md: 992, sm: 768, xs: 576 }
+    set = []
+    widths.each do |key, value|
+      file = image.my_cf_image_url("plp_and_carousel_#{key}")
+
+      set << "#{file} #{value}w"
+    end
+    set.join(', ')
+  end
+
   def sale_date_time_counter(date)
     date.strftime('%b %d, %Y %H:%M:%S')
   end
