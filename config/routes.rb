@@ -56,6 +56,8 @@ Spree::Core::Engine.routes.draw  do
   get '/about-us',  action: :show, controller: 'pages', p: 'about_us', :as => :about_us
   get '/shipments-delivery',  action: :show, controller: 'pages', p: 'shipments_delivery', :as => :shipments_delivery
   get '/returns',  action: :show, controller: 'pages', p: 'returns', :as => :returns
+  get '/terms-and-conditions-of-use',  action: :show, controller: 'pages', p: 'terms_and_conditions', :as => :terms_and_conditions
+  get '/privacy',  action: :show, controller: 'pages', p: 'privacy', :as => :privacy
 end
 
 Spree::Core::Engine.add_routes do
