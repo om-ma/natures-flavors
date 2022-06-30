@@ -19,7 +19,7 @@
 </div> -->
 <%# end %>
 <%#= render "spree/shared/cms/pages/edit_mode", edit_mode: @edit_mode %>
-<%= render partial: 'spree/shared/slider', locals: { slider: Spree::Slide.published, cid: 'home', interval: "3500" } %>
+<%= render partial: 'spree/shared/slider', locals: { slider: @home_slides, cid: 'home', interval: "3500" } %>
   <div class="search-wrapper">
     <div class="container-fluid">
       <div class="row align-items-center">

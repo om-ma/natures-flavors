@@ -12,6 +12,7 @@ Spree::HomeController.class_eval do
     if http_cache_enabled?
       fresh_when etag: store_etag, last_modified: last_modified_index, public: true
     end
+    @home_slides 		           = Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
     @best_sellers_products     = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
     @deals_products            = Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
     popular_extracts           = Spree::Taxon.find_by_name("Flavor Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''

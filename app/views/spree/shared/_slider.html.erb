@@ -16,10 +16,11 @@
         <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
           <%
             if (browser.device.mobile?)
-              image_url = slide.slide_mobile_image ?  main_app.url_for(slide.slide_mobile_image) : "noimage/large"
+              image_url = slide.slide_mobile_image ? slide.my_cf_mobile_image_url : "noimage/large"
             else
-              image_url = slide.slide_image ?  main_app.url_for(slide.slide_image) : "noimage/large"
-          end %>
+              image_url = slide.slide_image ? slide.my_cf_desktop_image_url : "noimage/large"
+            end
+          %>
           <%= link_to image_tag(image_url, alt: slide.slide_name,class:'w-100'), url_for(slide.slide_link)  %>
           <div class="carousel-caption">
             <h3><%#= slide.slide_name %></h3>
