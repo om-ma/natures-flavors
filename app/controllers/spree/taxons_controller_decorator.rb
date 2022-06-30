@@ -8,7 +8,10 @@ Spree::TaxonsController.class_eval do
     end
   end
 
-  def load_products
+  def load_products    
+    if params[:sort_by].blank?
+      params[:sort_by] = "name-a-z"
+    end
 
     search_params = params.merge(
       current_store: current_store,
