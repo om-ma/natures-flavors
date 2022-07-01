@@ -87,7 +87,7 @@ Spree::FrontendHelper.class_eval do
     image = default_image_for_product_or_variant(product)
 
     image_url = if image.present?
-                  main_app.url_for(image.url('plp'))
+                  image.my_cf_image_url('plp')
                 else
                   asset_path('noimage/default-product-image.jpg')
                 end
