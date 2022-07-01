@@ -16,15 +16,15 @@ module Spree
             @styles ||= {
               mini: '48x48>',
               small: '180x180>',
-              product: '240x240>',
+              product: '480x480>',
               pdp_thumbnail: '180x180>',
               plp_and_carousel: '448x600>',
-              plp_and_carousel_xs: '180x180>',
-              plp_and_carousel_sm: '180x180>',
-              plp_and_carousel_md: '180x180>',
-              plp_and_carousel_lg: '240x240>',
+              plp_and_carousel_xs: '240x240>',
+              plp_and_carousel_sm: '240x240>',
+              plp_and_carousel_md: '480x480>',
+              plp_and_carousel_lg: '480x480>',
               large: '1000x1000>',
-              plp: '240x240>',
+              plp: '480x480>',
               zoomed: '1000x1000>'
             }
           end
