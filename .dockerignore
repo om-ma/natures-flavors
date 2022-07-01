@@ -1,0 +1,7 @@
+/log/*
+/storage/*
+/tmp/*
+/public/assets
+/public/sitemaps/sitemap.*
+/public/spree/slides
+.byebug_history
