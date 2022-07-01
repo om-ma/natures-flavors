@@ -16,8 +16,6 @@ COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 # Adding project files
 COPY . .
-RUN rm ./log/*.log
-RUN rm -r ./tmp/*
 RUN gem install bundler --version=2.3.1
 RUN bundle install --binstubs --jobs 20 --retry 5 --without development test
 RUN bundle exec rake assets:precompile
