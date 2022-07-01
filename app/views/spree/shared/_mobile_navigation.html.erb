@@ -19,7 +19,6 @@
     <div id="menu">
       <ul class="product-menu">
         <%# TODO: Optimize code. Make recursive using a frontend helper (taxon_tree) like for desktop. %>
-        <% if (browser.device.mobile?) %> 
           <% if @all_categories.present? %>
             <% @all_categories.each do |menu_category| %>
 
@@ -68,7 +67,6 @@
               <li><a href="#">Organic Gluten Free Baking</a></li>
             </ul> -->
           <%# end %>
-        <% end %>
       </ul>
     </div>
     <div class="sub-menu-wrap">
