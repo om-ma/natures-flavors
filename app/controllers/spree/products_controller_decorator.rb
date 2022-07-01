@@ -6,7 +6,6 @@ module Spree
     def show
       @best_sellers = Spree::Product.best_sellers
       if @best_sellers.present?
-        byebug
         loop do
           @best_sellers_product = @best_sellers.sample
           break if @best_sellers_product.option_types.count == 1
