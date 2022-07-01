@@ -23,9 +23,9 @@
         <div class="products-wrapper">
           <div class="category-banner phone-visible"><div class="category-banner phone-visible">
             <% if @taxon.icon.present? %>
-               <%= image_tag main_app.url_for(@taxon.icon.attachment) %> 
+               <%= image_tag @taxon.icon.my_cf_image_url, alt:"#{@taxon.name}" %> 
             <% else %>
-               <%= image_tag "noimage/default-category-image.jpg" %>
+               <%= image_tag "noimage/default-category-image.jpg", alt:"#{@taxon.name}" %>
             <% end %>
           </div></div>
           <%= render partial: 'spree/taxons/introduction', locals: { has_description: (desc.length > 0) } %>
