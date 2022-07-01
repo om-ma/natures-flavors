@@ -215,39 +215,3 @@
       <% end %>
     </ul>
 </div>
-<% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
-<% if best_sellers_product.present? %>
-  <div class="cart-similar-item phone-hide">
-    <div class="wrap">
-      <p>You might need this:</p>
-      <div class="similar-item-thumb"><a href="#"><%= plp_and_carousel_image( best_sellers_product) %></a></div>
-      <h4><a href="#"><%= best_sellers_product.name %></a></h4>
-      <% if best_sellers_product.variants.present? %>
-         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle js_drop_down" type="button" data-toggle="dropdown"> Add to Cart </button>
-          <ul class="dropdown-menu">
-            <% best_sellers_product.variants.each do |variant| %>
-              <li class="js-select-variant" data-variant-id= "<%= variant.id%>" >
-                <%= variant.price_in(current_currency).money %>
-                <span>
-                  <%= variant.option_values.first&.presentation %>    
-                </span>
-              </li>
-            <% end %> 
-          </ul>
-          <%= link_to "", add_to_cart_path(best_sellers_product.id), id: 'similar-add-to-cart-button',method: :post, remote: true, class: "d-none" %>
-        </div>
-      <% else %>
-        <%= link_to add_to_cart_path(best_sellers_product.id), class: 'btn btn-primary add-to-cart-button', id: 'add-to-cart-button',method: :post, remote: true  do %>
-          <%= best_sellers_product.price %> - Add to Cart
-        <% end %>
-      <% end %>
-   </div>
-</div>
- <% end %>
- <script type="text/javascript">
- $( document ).on('turbolinks:load', function() {
-    $(".js_drop_down").click();
-    $('body').click()
-  });
-</script>
