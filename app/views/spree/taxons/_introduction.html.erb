@@ -8,7 +8,7 @@
             </h1>
             <div class="category-banner phone-hide">
             <% if @taxon.icon.present? %>
-               <%= image_tag main_app.url_for(@taxon.icon.attachment), alt:"#{@taxon.name}" %> 
+               <%= image_tag @taxon.icon.my_cf_image_url, alt:"#{@taxon.name}" %> 
             <% else %>
                <%= image_tag "noimage/default-category-image.jpg", alt:"#{@taxon.name}" %>
             <% end %>
