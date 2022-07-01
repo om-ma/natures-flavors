@@ -1,5 +1,7 @@
-<!-- <div class="col-12 col-md-7 col-lg-7" data-hook="product_left_part">
-  <%# if @product_images.size > 0 %>
+<% 
+=begin %>
+<div class="col-12 col-md-7 col-lg-7" data-hook="product_left_part">
+  <% if @product_images.size > 0 %>
     <div class="w-100 d-flex align-self-start justify-content-between product-details-images" data-hook="product_left_part_wrap">
       <div class="d-none d-md-block product-details-thumbnails" data-hook="product_thumbnails">
         <%#= render 'spree/shared/carousel/thumbnails',
@@ -18,22 +20,26 @@
                   zoomed: false %>
       </div>
     </div>
-  <%# end %>
-</div> -->
+  <% end %>
+</div>
+<% 
+=end %>
 <% if @product_images.size > 1 %>
   <div data-hook="product_left_part" data-hook="product_left_part_wrap">
     <div class="product-gallery-wrap" data-hook="product_thumbnails">
       <ul id="product-gallery" data-hook="product_images">
         <% @product_images.each do |i| %>
-          <li data-thumb= "<%= asset_path main_app.url_for(i.url(:product)) %>" >
-            <%= image_tag(main_app.url_for(i.url(:large))) %>
+          <li data-thumb= "<%= i.my_cf_image_url(:pdp_thumbnail) %>" >
+            <%= image_tag(i.my_cf_image_url(:large)) %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
+<% elsif @product_images.size == 0 %>
+  <%= image_tag(asset_path('noimage/default-product-image.jpg')) %>
 <% else %>
-    <% @product_images.each do |i| %>
-        <%= image_tag(main_app.url_for(i.url(:large))) %>
-    <% end %>
+  <% @product_images.each do |i| %>
+    <%= image_tag(i.my_cf_image_url(:large)) %>
+  <% end %>
 <% end %>
