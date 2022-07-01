@@ -4,7 +4,17 @@ module Spree
       redirect_to page_not_found_path
     end
     def show
-      @best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : ""
+      @best_sellers = Spree::Product.best_sellers
+      if @best_sellers.present?
+        byebug
+        loop do
+          @best_sellers_product = @best_sellers.sample
+          break if @best_sellers_product.option_types.count == 1
+        end
+      else
+        ""
+      end
+
       redirect_if_legacy_path
 
       @taxon = params[:taxon_id].present? ? taxons_scope.find_by(id: params[:taxon_id]) : nil
