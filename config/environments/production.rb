@@ -142,3 +142,4 @@ SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-production-site
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 Rails.application.default_url_options = { host: "https://www.naturesflavors.com" }
+Spree::Core::Engine.routes.default_url_options[:host] = 'www.naturesflavors.com'
