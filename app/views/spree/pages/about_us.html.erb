@@ -18,9 +18,9 @@
           <div class="row">
             <div class="col-lg-6 grey_back">
                <h2>What We Do at Nature's Flavors</h2>
-               <p>For over 40 years, we have been developing and producing custom flavors and <%= link_to "fragrances", (Spree::Taxon.find_by_name("Natural Fragrances and Essential Oils").present? ? seo_url(Spree::Taxon.find_by_name("Natural Fragrances and Essential Oils")): '/')  %> for both consumers and businesses.</p>
-               <p>Our skilled flavorists at Nature's Flavors use only the highest quality natural ingredients, sourced from around the world, to construct our <%= link_to "extracts & flavorings", (Spree::Taxon.find_by_name("Flavorings and Extracts").present? ? seo_url(Spree::Taxon.find_by_name("Flavorings and Extracts")): '/')  %>, flavor oils, <%= link_to "syrups", (Spree::Taxon.find_by_name("Flavored Syrups").present? ? seo_url(Spree::Taxon.find_by_name("Flavored Syrups")): '/')  %>, and fragrances.</p>
-               <p>All of our <%= link_to "natural flavorings oils", (Spree::Taxon.find_by_name("Natural Flavor Oils").present? ? seo_url(Spree::Taxon.find_by_name("Natural Flavor Oils")): '/')  %>, <%= link_to "flavor concentrates", (Spree::Taxon.find_by_name("Flavor Concentrates").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Concentrates")): '/')  %>, extracts, citric acids, and fragrances are used to enhance, maintain, or improve the taste, aroma, color, and flavor of goods.</p>
+               <p>For over 40 years, we have been developing and producing custom flavors and <%= link_to "fragrances", (Spree::Taxon.find_by_name("Fragrances").present? ? seo_url(Spree::Taxon.find_by_name("Fragrances")): '/')  %> for both consumers and businesses.</p>
+               <p>Our skilled flavorists at Nature's Flavors use only the highest quality natural ingredients, sourced from around the world, to construct our <%= link_to "extracts & flavorings", (Spree::Taxon.find_by_name("Extracts & Flavorings").present? ? seo_url(Spree::Taxon.find_by_name("Extracts & Flavorings")): '/')  %>, flavor oils, <%= link_to "syrups", (Spree::Taxon.find_by_name("Syrups").present? ? seo_url(Spree::Taxon.find_by_name("Syrups")): '/')  %>, and fragrances.</p>
+               <p>All of our <%= link_to "natural flavorings oils", (Spree::Taxon.find_by_name("Natural Flavor Oil").present? ? seo_url(Spree::Taxon.find_by_name("Natural Flavor Oil")): '/')  %>, <%= link_to "flavor concentrates", (Spree::Taxon.find_by_name("Flavor Concentrates").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Concentrates")): '/')  %>, extracts, citric acids, and fragrances are used to enhance, maintain, or improve the taste, aroma, color, and flavor of goods.</p>
             </div>
             <div class="col-lg-6 mobile-hide"><%= image_tag "about-us/lemonade.jpg", alt:"Natural Lemonade Syrup" %></div>
           </div>
@@ -63,7 +63,7 @@
              <div class="col-lg-6 grey_back">
                <h2>Why Nature's Flavors</h2>
                <p>We are a family-owned business. At Nature's Flavors, our customer base ranges from individual buyers to small and medium-sized businesses, to Fortune 500 companies. But we still provide the expertise, flexibility, and personal attention of a family business.</p>
-               <p>All our work is done in-house at Nature's Flavors in Orange, CA. We manage everything internally from the development of new flavors through research & development, to the management of accounts, and through the entire sales process.</p>
+               <p>All our work is done in-house at Nature's Flavors in Orange, CA. We manage everything internally from the development of new flavors through <%= link_to "research & development", (Spree::Taxon.find_by_name("Research & Development").present? ? seo_url(Spree::Taxon.find_by_name("Research & Development")): '/')  %>, to the management of accounts, and through the entire sales process.</p>
                <p>Every product created by flavor chemists at Nature's Flavors is backed by an experienced customer support team that assists with recipes, provides customer service, and makes certain our products are the freshest. At Nature's Flavors, extracts, flavorings, and fragrances are made with only the finest natural and organic ingredients - the way that nature intended.</p>
             </div>
          </div>

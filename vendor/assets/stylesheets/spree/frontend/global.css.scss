@@ -1428,7 +1428,7 @@ a.btn.btn-block {
 	float: left;
 }
 
-.sub-menu-lists a {
+.sub-menu-lists a, .sub-menu-lists span {
 	font-size: 16px;
 	color: #fff;
 	line-height: 34px;
@@ -5153,6 +5153,11 @@ h3 a{
 	margin-bottom:  1px;
 }
 
+.article-video {
+	width: 640px;
+	height: 360px;
+}
+
 /* responsive code */
 @media (min-width: 768px) {
 .mobile-show,
@@ -5535,7 +5540,10 @@ display: flex;
 .home-videos-wrapper .lSSlideOuter, .home-blog-wrapper .lSSlideOuter{
     padding: 0 10% !important;
 }
-
+.article-video {
+	width: 320px;
+	height: 180px;
+}
 .home-blog-wrapper .lSAction,
 .home-videos-wrapper .lSAction {
     top: auto;
