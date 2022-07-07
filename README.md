@@ -1,3 +1,8 @@
+# Postgres
+psql postgres
+postgres=# \du
+CREATE USER postgres WITH SUPERUSER PASSWORD 'password';
+
 # Integrate extensions
 spree_admin_roles_and_access (DONE)
 spree_analytics_trackers (DONE)
