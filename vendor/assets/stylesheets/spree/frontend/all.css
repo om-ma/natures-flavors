@@ -8,8 +8,8 @@
  *= require_self
  *= require_tree .
  *= require spree/frontend/spree_contact_us
- *= require store/spree_favorite_products
+ * require store/spree_favorite_products
  * require spree/frontend/spree_admin_roles_and_access
  *= require spree/frontend/spree_admin_insights
- *= require spree/frontend/spree_paypal_express
+ * require spree/frontend/spree_paypal_express
 */
