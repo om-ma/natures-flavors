@@ -58,6 +58,7 @@ Spree::Core::Engine.routes.draw  do
   get '/returns',  action: :show, controller: 'pages', p: 'returns', :as => :returns
   get '/terms-and-conditions-of-use',  action: :show, controller: 'pages', p: 'terms_and_conditions', :as => :terms_and_conditions
   get '/privacy',  action: :show, controller: 'pages', p: 'privacy', :as => :privacy
+  get '/beverage-formulation-development',  action: :show, controller: 'pages', p: 'beverage_development', :as => :beverage_development
 end
 
 Spree::Core::Engine.add_routes do
