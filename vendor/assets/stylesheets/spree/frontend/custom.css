@@ -54,3 +54,19 @@
   border-radius: 11px;
   width: 100%;
 }
+
+.fprod-wrap .ratings {
+  padding: 10px 0 5px 10px;
+}
+
+.fprod-wrap .yotpo a {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 15px;
+  color: #2f84ed !important;
+  margin: 0 0 0 5px;
+  line-height: 20px;
+}
+
+.fprod-wrap .yotpo.bottomLine .yotpo-icon-star {
+  margin-right: 4px;
+}

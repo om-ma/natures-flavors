@@ -249,6 +249,19 @@ GIT
       spree (>= 4.3)
       spree_extension
 
+GIT
+  remote: https://gitlab.com/duc.lam/spree_yotpo.git
+  revision: 3d2dafe6406b5afe0fc5b6a01bb1fd6982316fe0
+  branch: naturesflavors
+  specs:
+    spree_yotpo (1.0.0)
+      faraday
+      oj
+      spree_backend (>= 3.2.0, < 5.0)
+      spree_core (>= 3.2.0, < 5.0)
+      spree_extension
+      spree_frontend (>= 3.2.0, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -1677,6 +1690,10 @@ GEM
       tzinfo
     excon (0.92.3)
     execjs (2.8.1)
+    faraday (2.3.0)
+      faraday-net_http (~> 2.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (2.0.3)
     ffaker (2.21.0)
     ffi (1.15.5)
     fission (0.5.0)
@@ -1941,6 +1958,7 @@ GEM
     nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    oj (3.13.16)
     optimist (3.0.1)
     orm_adapter (0.5.0)
     ovirt-engine-sdk (4.4.1)
@@ -2028,6 +2046,7 @@ GEM
     ruby-ole (1.2.12.2)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    ruby2_keywords (0.0.5)
     rubyntlm (0.6.3)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
@@ -2266,6 +2285,7 @@ DEPENDENCIES
   spree_shipstation!
   spree_sitemap!
   spree_slider!
+  spree_yotpo!
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

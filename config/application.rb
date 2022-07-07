@@ -37,5 +37,10 @@ module NaturesFlavors
     
     # Custom error pages
     config.exceptions_app = self.routes
+
+    # For schema.org structure data
+    config.organization = "Nature's Flavors"
+    config.brand = "Nature's Flavors"
+    config.price_valid_until = "2100-01-01"
   end
 end

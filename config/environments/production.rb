@@ -126,10 +126,11 @@ Rails.application.configure do
     :bucket => ENV['S3_ASSET_BUCKET']
   }
   
-  # YotPo - Staging keys
-  config.x.yotpo.app_key = '<TODO>'
-  config.x.yotpo.secret_key = '<TODO>'
+  # YotPo
+  config.x.yotpo.app_key = 'QtBlle6stNSGfvAinupFBB1fYpwkVCWH35MBh8LO'
+  config.x.yotpo.secret_key = 'y6m3AE0vSKKzZDRjP253weTFmn5O0o6RlMeL2mwe'
   config.x.yotpo.rich_snippets_refresh_time = 1.minutes
+  config.x.yotpo.reviews_refresh_time = 1.minutes
 end
 
 ## spree_sitemap config

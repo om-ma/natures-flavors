@@ -11,8 +11,12 @@
   <%# end %>
 <%# end %>
 <% url = spree.product_path(product, taxon_id: @taxon&.id) %>
+<% 
+  # For spree_yotpo override
+  @product = product
+%>
 <div class="col col-12">
-  <div class="product-wrap" id="product_<%= product.id %>">
+  <div class="product-wrap" id="product_<%= product.id %>" data-hook="products_list_item">
     <%= link_to url do %>
       <% cache [common_product_cache_keys, product] do %>
         <div class="product-img">

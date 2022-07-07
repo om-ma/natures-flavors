@@ -19,3 +19,4 @@ AOS.init();
 //= require spree/frontend/spree_admin_roles_and_access
 //= require spree/frontend/spree_admin_insights
 //= require spree/frontend/spree_paypal_express
+//= require spree/frontend/spree_yotpo

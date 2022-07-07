@@ -130,9 +130,10 @@ Rails.application.configure do
   }
   
   # YotPo - Staging keys
-  config.x.yotpo.app_key = '<TODO>'
-  config.x.yotpo.secret_key = '<TODO>'
+  config.x.yotpo.app_key = 'j7hsvZFhxG8jUooYglRviEapbHJAmxE7hCrOhHmH'
+  config.x.yotpo.secret_key = 'g6mJW31KvNIVFBNRU8pYrVGaY9kwPyAPZ76WZ6Zs'
   config.x.yotpo.rich_snippets_refresh_time = 1.minutes
+  config.x.yotpo.reviews_refresh_time = 1.minutes
 end
 
 # spree_sitemap config
