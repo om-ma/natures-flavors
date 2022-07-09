@@ -17,7 +17,8 @@ COPY Gemfile.lock Gemfile.lock
 # Adding project files
 COPY . .
 RUN gem install bundler --version=2.3.1
-RUN bundle install --binstubs --jobs 20 --retry 5 --without development test 
+RUN bundle config set --local without 'development test' 
+RUN bundle install --binstubs --jobs 20
 RUN cp ./public/robots.txt-staging-temp ./public/robots.txt
 RUN bundle exec rake assets:precompile
 EXPOSE 3000
