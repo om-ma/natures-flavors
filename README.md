@@ -130,3 +130,5 @@ Reorder taxons in backend
 Rename taxon "More Products" to "More"
 Delete "Deals" taxon (do not need it statically created)
 
+# Create YotPo products feed. Run in rails console.
+YotpoFeedCreator.call(Rails.application.default_url_options)
