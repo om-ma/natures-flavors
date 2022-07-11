@@ -356,7 +356,7 @@ GEM
     ast (2.4.2)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
-    autoprefixer-rails (10.4.7.0)
+    autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     awesome_nested_set (3.5.0)
       activerecord (>= 4.0.0, < 7.1)
@@ -451,7 +451,7 @@ GEM
     aws-sdk-autoscalingplans (1.40.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-backup (1.44.0)
+    aws-sdk-backup (1.45.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-backupgateway (1.4.0)
@@ -478,7 +478,7 @@ GEM
     aws-sdk-chimesdkmediapipelines (1.0.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-chimesdkmeetings (1.12.0)
+    aws-sdk-chimesdkmeetings (1.13.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-chimesdkmessaging (1.11.0)
@@ -609,7 +609,7 @@ GEM
     aws-sdk-customerprofiles (1.21.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-databasemigrationservice (1.69.0)
+    aws-sdk-databasemigrationservice (1.70.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-dataexchange (1.26.0)
@@ -795,7 +795,7 @@ GEM
     aws-sdk-inspector2 (1.4.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-iot (1.91.0)
+    aws-sdk-iot (1.92.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-iot1clickdevicesservice (1.37.0)
@@ -837,7 +837,7 @@ GEM
     aws-sdk-iottwinmaker (1.5.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-iotwireless (1.23.0)
+    aws-sdk-iotwireless (1.24.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-ivs (1.20.0)
@@ -1458,7 +1458,7 @@ GEM
     aws-sdk-s3outposts (1.13.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-sagemaker (1.129.0)
+    aws-sdk-sagemaker (1.130.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-sagemakeredgemanager (1.11.0)
@@ -1908,6 +1908,7 @@ GEM
       kaminari
       rails
     libv8-node (16.10.0.0)
+    libv8-node (16.10.0.0-x86_64-linux)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -1957,6 +1958,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     oj (3.13.16)
     optimist (3.0.1)
@@ -2184,6 +2187,8 @@ GEM
     stringex (2.8.5)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
+    terser (1.1.11)
+      execjs (>= 0.3.0, < 3)
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -2194,8 +2199,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -2226,8 +2229,8 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  x86_64-linux
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   active_shipping!
@@ -2289,9 +2292,9 @@ DEPENDENCIES
   spree_yotpo!
   spring
   spring-watcher-listen (~> 2.0.0)
+  terser (~> 1.1, >= 1.1.1)
   turbolinks (~> 5)
   tzinfo-data
-  uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
 
 RUBY VERSION
