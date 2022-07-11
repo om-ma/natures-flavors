@@ -8,7 +8,7 @@ services:
     volumes:      
       - postgres_data:/var/lib/postgresql/data  
   app: 
-
+    platform: linux/amd64
     image: 284976415069.dkr.ecr.us-east-1.amazonaws.com/naturesflavors-sidekiq-staging:${BUILD_COMMIT_HASH}
     build:      
       context: .
