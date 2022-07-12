@@ -56,6 +56,8 @@ Spree::Order.class_eval do
       consider_risk
     end
 
+    # This does not work. Conflicts with ApplePayOrderDecorator in spree_gateway. 
+    # See app/models/spree_gateway/apple_pay_order_decorator.rb for override to spree_gateway
     def confirmation_required?
       Spree::Config[:always_include_confirm_step]
     end
