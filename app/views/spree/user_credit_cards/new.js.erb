@@ -1,0 +1,5 @@
+let new_profile_cc_html = "<%= j render partial: 'spree/users/profile/user_new_cc', locals: {payment_method: @default_payment_method} %>"
+$('.js-profile-new-cc-area').html(new_profile_cc_html)
+$('.cardNumber').payment('formatCardNumber')
+$('.cardExpiry').payment('formatCardExpiry')
+$('.cardCode').payment('formatCardCVC')

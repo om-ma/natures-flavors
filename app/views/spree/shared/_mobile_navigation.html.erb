@@ -1,0 +1,114 @@
+ <div class="mobile-menu">
+  <div class="menu-scroll">
+    <div class="sub-menu-header d-flex align-items-center">
+      <div class="left d-flex align-items-center flex-fill text-uppercase"><%= link_to "Home", root_path %></div>
+      <div class="right d-flex align-items-center flex-fill">
+        <% if spree_current_user.present? %>
+          <%= link_to destroy_spree_user_session_path do %>
+            <em class="text-uppercase">Log out</em>
+          <% end %>
+        <% else %>
+          <%= link_to "Log in", new_spree_user_session_path %>
+           
+          <%= link_to new_spree_user_registration_path, class: "btn" do %>
+           or <em class="text-uppercase">Register</em>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div id="menu">
+      <ul class="product-menu">
+        <%# TODO: Optimize code. Make recursive using a frontend helper (taxon_tree) like for desktop. %>
+          <% if @all_categories.present? %>
+            <% @all_categories.each do |menu_category| %>
+
+              <% if menu_category.hide_from_nav == false && menu_category.users.present? ? (spree_current_user.present? ? menu_category.users.include?(spree_current_user) : false) : true %>
+                <li>
+                   <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(menu_category) %>'"><%= menu_category.name %></span><a href="#" data-turbolinks="false" class="hidden-title"><%= menu_category.name %></a>
+                   <% if menu_category.children.present? %>
+                    <ul>
+                      <% menu_category.children.where(hide_from_nav: false).each do |category| %>
+                        <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
+                          <li>
+                            <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(category) %>'"><%= category.name %></span><% if category.children.any? %><a href="#" data-turbolinks="false" class="hidden-title"><%= category.name %></a><% end %>
+                            <% if category.children.present? %>
+                              <ul>
+                                <% category.children.where(hide_from_nav: false).each do |sub_category| %>
+                                  <% if sub_category.users.present? ? (spree_current_user.present? ? sub_category.users.include?(spree_current_user) : false) : true %>
+                                    <li>
+                                      <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(sub_category) %>'"><%= sub_category.name %></span>
+                                    </li>
+                                  <% end %>
+                                <% end %>
+                              </ul>
+                            <% end %>
+                          </li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  <% end %>  
+                </li>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% sales_present = Spree::Product.in_sale.present? %>
+          <% if sales_present %>
+            <span data-turbolinks="false" class="link" onclick="location='<%= sale_path %>'">Deals</span>
+            <a href="#" data-turbolinks="false" class="hidden-title">Deals</a>
+          <% end %>  
+            <!-- <ul>
+              <li>
+                <%# all_sales_link = sale_link.present? ? sale_path : root_path %>
+                <%#= link_to "See All Deals", all_sales_link %>
+              </li>
+              <li><a href="#">Gluten Free Baking</a></li>
+              <li><a href="#">Ingredients</a></li>
+              <li><a href="#">Gluten Free Baking Mix</a></li>
+              <li><a href="#">Organic Gluten Free Baking</a></li>
+            </ul> -->
+          <%# end %>
+      </ul>
+    </div>
+    <div class="sub-menu-wrap">
+      <ul class="sub-menu">
+        <li><a href="#" class="menuLink">Information</a>
+          <div class="sub-menu-lists">
+            <ul>
+              <li><%= link_to('About Us', about_us_path) %></li>
+              <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">Flavorful Bites Blog</a></li>
+              <li><%= link_to "Contact Us", contact_us_path %></li>
+              <li><%= link_to "Make a Beverage", beverage_development_path %></li>
+              <li><%= link_to "Shipments & Delivery", shipments_delivery_path %></li>
+              <li><%= link_to "Returns", returns_path %></li>
+              <li><%= link_to "Terms & Conditions", terms_and_conditions_path %></li> 
+              <li><%= link_to "Privacy Policy", privacy_path %></li>        
+              <li><a href="https://app.termly.io/notify/dbb05b70-45e7-458a-a7d5-fc3491d4c67a" target="_blank">DSAR Form</a></li>
+              <li><span onclick="displayPreferenceModal()">Manage Cookie Preferences</span></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#" class="menuLink">Product Info</a>
+          <div  class="sub-menu-lists">
+            <ul>
+              <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
+              <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
+              <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
+              <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
+              <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+              <li><a href="#">Reviews</a></li>
+              <li><%= link_to('FAQs', faq_path) %></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="sub-menu-footer d-flex align-items-center">
+      <div class="footer-phone"><a href="tel:1-714-744-3700">1-714-744-3700</a></div>
+      <div class="footere-business-hours">
+        <p>8:00 am - 5:00 pm,<br>
+          Monday - Friday, Pacific Time</p>
+      </div>
+    </div>
+  </div>
+</div>
+

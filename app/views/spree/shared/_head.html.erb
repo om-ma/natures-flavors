@@ -1,0 +1,18 @@
+<title><%= title %></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%== og_meta_data_tags %>
+<% if content_for?(:"meta_description") %>
+<meta name="description" content="<%= yield(:meta_description) %>">
+<% else %>
+<%== meta_data_tags %>
+<% end %>
+<%== meta_robots %>
+<%= canonical_tag %>
+<%= favicon_link_tag(spree_favicon_path) %>
+<%= stylesheet_link_tag 'spree/frontend/all', media: 'screen', 'data-turbolinks-track': 'reload' %>
+<%= csrf_meta_tags %>
+<%= render 'spree/shared/paths' %>
+<%= render 'spree/shared/locale_and_currency' %>
+<%= javascript_include_tag 'spree/frontend/all', defer: true, 'data-turbolinks-track': 'reload' %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%= yield :head %>

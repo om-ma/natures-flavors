@@ -1,0 +1,7 @@
+      <div data-hook="admin_product_form_description">
+        <%= f.field_container :short_description, class: ['form-group'] do %>
+          <%= f.label :short_description, Spree.t(:short_description) %>
+          <%= f.text_area :short_description, { rows: "#{unless @product.has_variants? then '15' else '10' end}", class: "form-control #{"spree-rte" if product_wysiwyg_editor_enabled? }" } %>
+          <%= f.error_message_on :short_description %>
+        <% end %>
+      </div>

@@ -1,0 +1,88 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    models:
+    attributes:
+      spree/order:
+        customer_name: "Customer Name"
+        production_state: "Production State"
+  hello: "Hello world"
+  spree:
+    password: "Password*"
+    email: "Email Address*"
+    forgot_password: "Forgot your password?"
+    login: "Sign In" 
+    confirm_password: "Confirm Password*"
+    search: "Search..."
+    address2: Address Line 2
+    country: Country*
+    phone: Phone Number
+    zipcode: Zip Code*
+    state: State*
+    cart_page:
+      title: My Cart
+      add_promo_code: Promo Code
+      checkout: Check Out
+      empty_info: Looks like you haven't made your choice yet...
+
+    # spree_contact_us
+    contact_us_title: "Contact Us"
+    send: Send
+    sent_by_contact_form: "Sent by contact form from %{email}"
+    sent_by_name: "Sent by %{name} from %{email}"
+    subject: "Contact Us message from %{email}"
+    submit: "Submit"
+    spree_contact_us:
+      send_message: Send Message
+      notices:
+        success: "Contact email was successfully sent."
+
+    # spree_html_invoice
+    footer_right: "Company<br/>Phone<br/>Website"
+    footer_right2: "Nature's Flavors<br/>(714) 744-3700<br/> https://www.naturesflavors.com"
+
+    h1_title: H1 Title
+    short_description: "Short Description"
+
+    # production states
+    production: Production
+    production_state: Production State
+    production_states:
+      ready: ready
+      processing: processing
+      follow_up_requested: follow up requested
+      production_room: production room
+      in_labels: in labels
+      complete: complete
+      canceled: canceled
+    production_state_selected_same_as_previous: The selected value is the same as the current value.

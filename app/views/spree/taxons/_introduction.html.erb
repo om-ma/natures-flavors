@@ -1,0 +1,31 @@
+<div class="category-intro-wrapper">
+   <div class="row no-gutters">
+      <div class="col-xl-8">
+         <div class="category-banner-wrap">
+            <%= spree_breadcrumbs(@taxon) %>
+            <h1 class="title">
+               <%= (@taxon.h1_title.blank? ? @taxon.name : @taxon.h1_title) %>
+            </h1>
+            <div class="category-banner phone-hide">
+            <% if @taxon.icon.present? %>
+               <%= image_tag @taxon.icon.my_cf_image_url, alt:"#{@taxon.name}" %> 
+            <% else %>
+               <%= image_tag "noimage/default-category-image.jpg", alt:"#{@taxon.name}" %>
+            <% end %>
+            </div>
+            <% if (browser.device.mobile?) %>
+               <div class="mobile-categories-wrap phone-visible">
+               <div class="header"><a href="#" class="mobile-category-toggle">Categories</a></div>
+                  <%= render partial: 'spree/shared/taxonomies', locals: {taxon: @taxon }%>
+               </div>
+            <% end %>   
+         </div>
+      </div>
+      <div class="col-xl-4">
+         <div class="category-intro more">
+            <%= taxon_short_description(@taxon) %>
+            <% if @has_description = true %><span class="moreellipses">...&nbsp;</span><a href="#more-category-description" data-turbolinks="false" class="morelink">more</a><% end %>
+         </div>
+      </div>
+   </div>
+</div>

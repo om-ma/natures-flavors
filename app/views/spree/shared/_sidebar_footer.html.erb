@@ -1,0 +1,9 @@
+<% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
+<% if best_sellers_product.present? %>
+	<div class="cart-similar-item">
+    	<%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: best_sellers_product }  %>
+    </div>	
+ <% end %> 
+<%= link_to spree.checkout_path do %>
+    <button type="button" class="btn btn-primary btn-block"><strong class="js-order-total"><%= @order.display_total %></strong><strong> - Check Out</strong></button>
+<% end %>

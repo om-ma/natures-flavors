@@ -1,0 +1,74 @@
+
+<nav class="navbar navbar-expand-xl"  id="spree-header">
+  <div class="row no-gutters w-100" id="header">
+    <div  id="home-link" class="col-xl-2" data-hook data-hook>
+      <%= link_to root_path, class: 'navbar-brand', data: { turbolinks: false } do %>
+        <%= image_tag 'theme_logo.svg', alt: "Nature's Flavors" %>
+      <% end %>
+    </div>      
+    <div class="col-xl-10 position-static" id="top-nav-bar">
+      <div class="navbar-collapse" id="nav-bar">
+        <ul class="navbar-nav tablet-hide">
+          <% if @all_categories.present? %>
+            <% @all_categories.each do |menu_category| %>
+              <% if menu_category.hide_from_nav == false && menu_category.users.present? ? (spree_current_user.present? ? menu_category.users.include?(spree_current_user) : false) : true %>
+                <li class="nav-item">
+                  <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link" %>
+                  <div class="dropdown-menu-wrap">
+                    <div class="row no-gutters">
+                      <div class="col-lg-2"></div>
+                      <div class="col-lg-7 has-gridlines">
+                        <div class="row no-gutters">
+                          <% menu_category.children.where(hide_from_nav: false).in_groups_of(6) do |categories|%>
+                            <div class="col">
+                              <ul class="dropdown-menu d-flex flex-column">
+                                <% categories.compact.each do |category| %>
+                                  <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
+                                    <li>
+                                      <%= link_to category.name, seo_url(category) %>
+                                    </li>
+                                  <% end %>  
+                                <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="col-lg-3"></div>
+                    </div>
+                  </div>
+                </li>
+              <% end %>  
+            <% end %>
+          <% end %>
+          <% products_on_sale = Spree::Product.in_sale.present? ? true : false %>
+          <% if products_on_sale %>
+            <li class="nav-item"><a class="nav-link" href="/sale"><strong>Deals</strong></a></li>
+          <% end %>  
+        </ul>
+        <div id="search-dropdown" class=" quick-menu ml-auto header-spree" >
+          <%= render partial: 'spree/shared/search' %>
+          <div id="account-button">
+            <% if spree_current_user.present? %>
+              <%= link_to account_path, :class => 'nav-profile tablet-hide' do %>
+                <span id="span">Profile</span>
+              <% end %>            
+            <% else %>
+              <%= link_to new_spree_user_session_path , :class => 'nav-profile tablet-hide' do %>
+                <span id="span">Login</span>    
+              <% end %>
+            <% end %>
+          </div>
+          <div id="link-to-cart">
+            <% item_count = current_order.present? ? current_order.item_count : 0 %>
+            <%= render 'spree/shared/cart', item_count: item_count, size: 36 %>
+          </div>
+          <a class="mobile-menu-link collapsed tablet-visible" href="#" data-toggle="collapse" data-target=".mobile-menu" area-expanded="false"><span>Menu</span></a>
+        </div>
+        <div id='shopping_cart_bag_area'>
+          <%= render partial: 'spree/shared/shopping_bag', locals: {user_current_order: current_order} %>
+        </div>
+      </div>
+    </div>
+  </div> 
+</nav>

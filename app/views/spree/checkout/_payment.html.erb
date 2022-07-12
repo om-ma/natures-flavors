@@ -1,0 +1,133 @@
+<!-- <div id="payment" data-hook>
+  <p class="payment-type checkout-content-header">
+    <%#= Spree.t(:payment_type).upcase %>
+  </p>
+
+  <div data-hook="checkout_payment_step">
+    <%#= render partial: 'spree/checkout/payment/storecredit' %>
+
+    <ul id="payment-method-fields" class="list-unstyled position-relative" data-hook>
+      <%# checkout_available_payment_methods.each do |method| %>
+        <li class="radio">
+          <%#= label_tag '', class: "form-check-label spree-radio-label payment-option", data: { type: method.id == @payment_sources&.first&.payment_method_id ? 'card' : nil } do %>
+            <%#= radio_button_tag "order[payments_attributes][][payment_method_id]",
+                                 method.id,
+                                 method.id == @order.payments.checkout.last&.payment_method_id || method == checkout_available_payment_methods.first %>
+            <span class="spree-radio-label-custom-input"></span>
+            <%#= Spree.t(method.name, scope: :payment_methods, default: method.name) %>
+          <%# end %>
+        </li>
+      <%# end %>
+    </ul>
+
+    <div class="payment-sources">
+      <%#= render partial: 'payment_sources' if @payment_sources.present? %>
+
+      <ul id="payment-methods" class="list-unstyled position-relative mb-0 payment-sources-add-form" data-hook>
+        <%# checkout_available_payment_methods.each do |method| %>
+          <li id="payment_method_<%#= method.id %>" class="<%#= 'last' if method == checkout_available_payment_methods.last %>" data-hook>
+            <fieldset>
+              <%#= render partial: "spree/checkout/payment/#{method.method_type}", locals: { payment_method: method } %>
+            </fieldset>
+          </li>
+        <%# end %>
+      </ul>
+    </div>
+  </div>
+</div> -->
+<ol class="breadcrumb mb-20">
+  <li class="breadcrumb-item"><a href="#">Cart</a></li>
+  <li class="breadcrumb-item"><a href="#">Information</a></li>
+  <li class="breadcrumb-item"><a href="#">Shipping</a></li>
+  <li class="breadcrumb-item"><a href="#">Payment</a></li>
+</ol>
+<div class="address-shipping-wrap">
+  <div class="address-wrap"> <!-- <a href="#">Edit</a> -->
+    <h5>Address</h5>
+    <%= render 'spree/shared/address', address: @order.ship_address %>
+    <%= checkout_edit_link %>
+  </div>
+  <div class="shipping-wrap">
+    <h5>Shipping</h5>
+    <%= checkout_edit_link('delivery') %>
+    <% @order.shipments.valid.each do |shipment| %>
+      <dd><%= shipment.shipping_method&.name %> </dd>
+    <% end %>
+  </div>
+</div>
+<div id="payment" data-hook>
+  <div data-hook="checkout_payment_step">
+    <ul id="payment-method-fields" class="payment-options" data-hook>
+      <% checkout_available_payment_methods.each do |method| %>
+      <% is_non_cim = method.type.parameterize == "spree-gateway-authorizenet" ? "d-none" : "" %>
+        <li class="<%= is_non_cim %> <%= method.type.parameterize %>" id="<%= method.type.parameterize %>-new"  >
+          <div class="custom-radio">
+            <%= label_tag '', class: "", data: { type: method.id == @payment_sources&.first&.payment_method_id ? 'card' : nil } do %>
+              <%= radio_button_tag "order[payments_attributes][][payment_method_id]",
+                                   method.id,
+                                   method.id == @order.payments.checkout.last&.payment_method_id || method == checkout_available_payment_methods.first, class: "custom-control-input #{method.type.parameterize}" %>
+              <span class="custom-control-label"></span>
+              <span class="<%= method.type.parameterize %>-name"><%= Spree.t(method.name, scope: :payment_methods, default: method.name) %></span>
+            <% end %>
+          </div>
+          <% if ALLOWED_CC_TYPES_FOR_CHECKOUT.include?(method.type.parameterize) %>
+            <%= image_tag "payments-icon.svg" %>
+          <% elsif method.type.parameterize == "spree-gateway-paypalexpress" %>
+            <%= link_to paypal_express_url(:payment_method_id => method.id), method: :post, :id => "paypal_button" do %>
+              <%= image_tag "paypal-icon.svg" %>
+            <% end %>  
+          <% else %>
+             <%= image_tag "check-icon.svg" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="payment-sources">
+      <%= render partial: 'payment_sources' if @payment_sources.present? %>
+      <ul id="payment-methods" class="list-unstyled position-relative mb-0 payment-sources-add-form" data-hook>
+        <% checkout_available_payment_methods.each do |method| %>
+          <li id="payment_method_<%= method.id %>" class="<%= 'last' if method == checkout_available_payment_methods.last %>" data-hook>
+            <fieldset>
+              <%= render partial: "spree/checkout/payment/#{method.method_type}", locals: { payment_method: method } %>
+            </fieldset>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="cart-header d-flex align-items-center justify-content-between mb-0">
+    <h5>Billing address</h5>
+  </div>
+  <ul class="shipping-options mb-0">
+    <li>
+      <div class="custom-radio">
+        <label>
+          <%#= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'custom-control-input payment-change-shipping-address'} %>
+          <input type="radio" name="radio" class="custom-control-input payment-change-shipping-address" checked="">
+          <span class="custom-control-label"></span>Same as shipping address</label>
+      </div>
+    </li>
+    <li>
+      <div class="custom-radio">
+        <label>
+          <input type="radio" name="radio" class="custom-control-input payment-change-billing-address">
+          <span class="custom-control-label"></span>Use a different billing address</label>
+      </div>
+    </li>
+  </ul>
+  <div class="row d-none" id="payment-billing-address" >
+     <% ['billing'].each do |address_type|
+    address_name = "#{address_type[0...4]}_address" %>
+        <%= form.fields_for address_name do |address_form| %>
+            <%= render partial: 'spree/addresses/form', locals: {
+              address_name: address_name,
+              address_form: address_form,
+              address_type: address_type,
+              address: Spree::Address.new(country: current_store.default_country),
+              form: form
+            } %>
+        <% end %>    
+    <% end %>
+  </div>
+  <button type="button" class="btn btn-primary btn-block design-submit-next-step">Next Step: <strong>Pay</strong></button>
+</div>

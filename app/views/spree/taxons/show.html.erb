@@ -1,0 +1,48 @@
+<!-- <div class="taxon">
+  <div class="container">
+    <%= spree_breadcrumbs(@taxon) %>
+    <%#= render 'header', taxon: @taxon %>
+  </div>
+  <%#= render 'subcategories', taxon: @taxon %>
+  <div data-hook="taxon_products">
+    <%#= render template: 'spree/products/index', colors: @colors, sizes: @sizes %>
+  </div>
+</div>
+ -->
+<% cache [@taxon, @products, @product_category, @all_categories] do %>
+<% desc = taxon_description(@taxon) %>
+<main class="page-contents">
+  <div class="category-wrapper">
+    <div class="row no-gutters">
+      <div class="col-xl-2 col-lg-3 phone-hide">
+        <div class="sidebar-categories">
+          <h4>Categories:</h4>
+          <%= render partial: 'spree/shared/taxonomies', locals: { taxon: @taxon }%>
+        </div>
+      </div>
+      <div class="col-xl-10 col-lg-9">
+        <div class="products-wrapper">
+          <div class="category-banner phone-visible"><div class="category-banner phone-visible">
+            <% if @taxon.icon.present? %>
+               <%= image_tag @taxon.icon.my_cf_image_url, alt:"#{@taxon.name}" %> 
+            <% else %>
+               <%= image_tag "noimage/default-category-image.jpg", alt:"#{@taxon.name}" %>
+            <% end %>
+          </div></div>
+          <%= render partial: 'spree/taxons/introduction', locals: { has_description: (desc.length > 0) } %>
+          <%= render partial: 'spree/taxons/filters' %>
+          <%= render partial: 'spree/taxons/mobile_filters' %> 
+          <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }%>
+        </div>
+        <%= render partial: 'spree/taxons/pagination', products: @products  %>
+      </div>
+    </div>
+  </div>
+  <div class="category-intro-footer" id="footer-text">
+    <% if desc.present? %>
+      <span id="more-category-description" class="more">More about <%= @taxon.name %></span><br><br>
+      <%= desc %>
+    <% end %>
+  </div>
+</main>
+<% end %>

@@ -1,0 +1,15 @@
+<% if promotion.nil? %>
+  <div class='promo-code-wrap d-flex align-items-center <%= classes %>' data-hook='coupon_code'>
+      <%= order_form.text_field :coupon_code, class: 'form-control ', placeholder: Spree.t('cart_page.add_promo_code'), aria: { label: Spree.t('cart_page.add_promo_code') } %>
+        <%= button_tag 'Apply', name: '', id: 'shopping-cart-coupon-code-button-checkout', class: 'btn btn-primary', type: 'button' %>
+  </div>
+<% else %>
+  <div class='promo-code-wrap d-flex align-items-center <%= classes %>' data-hook='coupon_code'>
+      <%= order_form.text_field :applied_coupon_code, name: '', class: 'form-control',
+        value: Spree.t(:promotion_label, name: promotion.name),
+        data: { code: promotion.code } %>
+      <div >
+        <%= button_tag 'Remove', name: '', id: 'shopping-cart-remove-coupon-code-button-checkout', class: 'btn btn-primary' , type: 'button' %>
+      </div>
+  </div>
+<% end %>

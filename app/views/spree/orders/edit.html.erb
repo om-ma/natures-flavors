@@ -1,0 +1,185 @@
+<%# @body_id = 'cart' %>
+
+<!-- <div data-hook="cart_container" class="container shopping-cart">
+  <%#= render 'spree/shared/breadcrumbs', current_page_name: Spree.t('cart_page.title') %>
+
+  <h1 class="text-uppercase shopping-cart-header"><%#= Spree.t('cart_page.header') %></h1>
+
+  <%# if @order.line_items.empty? %>
+    <div data-hook="empty_cart" class="shopping-cart-empty">
+      <div class="d-flex flex-column justify-content-between h-100">
+        <div class="d-flex flex-column align-items-center">
+          <%#= icon(name: 'empty-cart',
+                   classes: 'shopping-cart-empty-image',
+                   width: 83,
+                   height: 83) %>
+
+          <p class="text-center shopping-cart-empty-info"><%#= Spree.t('cart_page.empty_info').html_safe %></p>
+        </div>
+        <%#= link_to Spree.t(:continue_shopping), spree.products_path, class: 'btn btn-primary text-uppercase font-weight-bold shopping-cart-empty-continue-link' %>
+      </div>
+    </div>
+  <%# else %>
+    <div data-hook="outside_cart_form">
+      <%#= form_for @order, url: spree.update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+        <div data-hook="inside_cart_form">
+          <div data-hook="cart_items" class="shopping-cart-table">
+            <%#= render partial: 'form', locals: { order_form: order_form } %>
+          </div>
+
+          <div class="d-lg-flex flex-wrap justify-content-between">
+            <div class="text-uppercase d-none d-lg-block mt-3">
+              <%#= link_to Spree.t(:continue_shopping), spree.products_path, class: 'shopping-cart-buttons-continue' %>
+            </div>
+
+            <div class="text-right shopping-cart-total d-none d-lg-block">
+              <div class="row no-gutters align-items-center">
+                <div class="text-uppercase shopping-cart-total-text col-8 mr-0">
+                  <%#= Spree.t(:subtotal) %>
+                </div>
+                <div class="shopping-cart-total-amount col align-self-end">
+                  <%#= order_form.object.display_item_total %>
+                </div>
+              </div>
+              <%# if !order_form.object.cart_promo_total.zero? %>
+                <div class="row no-gutters align-items-center">
+                  <div class="text-uppercase shopping-cart-total-text col-8 mr-0">
+                    <%#= Spree.t(:promotion) %>
+                  </div>
+                  <div class="shopping-cart-total-amount col align-self-end">
+                    <%#= order_form.object.display_cart_promo_total %>
+                  </div>
+                </div>
+              <%# end %>
+            </div>
+
+            <%# if Spree::Frontend::Config[:coupon_codes_enabled] %>
+              <%#= render 'coupon_code',
+                promotion: @order.valid_coupon_promotions.first,
+                order_form: order_form,
+                classes: '' %>
+            <%# end %>
+
+            <div class="text-right shopping-cart-total d-lg-none">
+              <div class="row no-gutters align-items-center">
+                <div class="text-uppercase shopping-cart-total-text col-8 mr-0">
+                  <%#= Spree.t(:subtotal) %>
+                </div>
+                <div class="shopping-cart-total-amount col align-self-end">
+                  <%#= order_form.object.display_item_total %>
+                </div>
+              </div>
+              <%# if !order_form.object.cart_promo_total.zero? %>
+                <div class="row no-gutters align-items-center">
+                  <div class="text-uppercase shopping-cart-total-text col-8 mr-0">
+                    <%#= Spree.t(:promotion) %>
+                  </div>
+                  <div class="shopping-cart-total-amount col align-self-end">
+                    <%#= order_form.object.display_cart_promo_total %>
+                  </div>
+                </div>
+              <%# end %>
+            </div>
+
+            <div class="d-flex flex-column text-center shopping-cart-buttons" data-hook="cart_buttons">
+              <%#= link_to Spree.t('cart_page.checkout'), spree.checkout_path, class: 'btn btn-primary text-uppercase font-weight-bold cart-checkout-btn shopping-cart-buttons-checkout', id: 'checkout-link', method: :get %>
+              <span class="text-uppercase shopping-cart-buttons-or d-lg-none"><%#= Spree.t(:or) %></span>
+              <%#= link_to Spree.t(:continue_shopping), spree.products_path, class: 'btn btn-outline-primary text-uppercase font-weight-bold d-lg-none shopping-cart-buttons-continue' %>
+            </div>
+          </div>
+        </div>
+      <%# end %>
+    </div>
+  <%# end %>
+</div>
+</div> -->
+
+<!-- <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    Spree.current_order_token = "<%= @order.token %>"
+    <%# if flash.any? %>
+      document.getElementById('overlay').classList.add('shown');
+      document.getElementById('no-product-available').classList.add('shown');
+      window.scrollTo(0, 0);
+    <%# end %>
+  })
+</script> -->
+
+<% @body_id = 'cart' %>
+<main class="page-contents">
+  <div class="cart-wrapper" data-hook="cart_container" class="container shopping-cart">
+    <div class="row no-gutters">
+      <div class="col-xl-2 tablet-hide"></div>
+      <div class="col-xl-7 col-lg-8">
+        <div class="wrap">
+          <%= render 'spree/shared/breadcrumbs', current_page_name: Spree.t('cart_page.title') %>
+          <h1 class="title mb-20">My Cart</h1>
+          <% if @order.line_items.empty? %>
+            <hr>
+            <div data-hook="empty_cart">
+              <%= render 'spree/shared/empty_cart' %>
+            </div>
+          <% else %>
+            <div  data-hook="outside_cart_form">
+              <%= form_for @order, url: spree.update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+                <div data-hook="inside_cart_form">
+                  <ul class="cart-items all-cart">
+                    <%= render partial: 'form', locals: { order_form: order_form } %>
+                  </ul>
+                  <div class="cart-footer d-flex flex-column ml-auto">
+                    <% if Spree::Frontend::Config[:coupon_codes_enabled] %>
+                      <%= render 'coupon_code',
+                        promotion: @order.valid_coupon_promotions.first,
+                        order_form: order_form,
+                        classes: '' %>
+                    <% end %>
+                    <ul class="cart-totals">
+                      <li>
+                        <label>Subtotal:</label>
+                        <span><%= order_form.object.display_item_total %></span> 
+                      </li>
+                      <% if !order_form.object.cart_promo_total.zero? %>
+                        <li>
+                          <label>
+                            <%= Spree.t(:promotion) %>
+                          </label>
+                          <strong>
+                            <%= order_form.object.display_cart_promo_total %>
+                          </strong>
+                        </li>  
+                      <% end %>
+                      <li>
+                        <label>Shipping:</label>
+                        <span>Calculated in next step</span>
+                      </li>
+                      <li>
+                        <label>Total:</label>
+                          <strong> <%= order_form.object.display_total %> </strong> 
+                      </li>
+                    </ul>
+                  </div>
+                  <hr>
+                  <div class="text-right" data-hook="cart_buttons">
+                    <%= link_to spree.checkout_path, id: 'checkout-link', method: :get do %>
+                    <button class="btn btn-primary">
+                      <strong>  <%= order_form.object.display_total %>  -
+                        <%= Spree.t('cart_page.checkout') %> </strong>
+                    </button>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-4 phone-hide">
+        <% if @best_sellers_product.present? %>
+          <div class="cart-similar-item">
+            <%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: @best_sellers_product }  %>
+          </div>  
+        <% end %>
+      </div> 
+    </div>
+  </div>
+</main>

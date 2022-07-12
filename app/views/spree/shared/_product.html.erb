@@ -1,0 +1,39 @@
+<%# url = spree.product_path(product, taxon_id: @taxon&.id) %>
+<%#= link_to url, class: 'h-100 d-flex flex-column justify-content-between' do %>
+  <%# cache [common_product_cache_keys, product] do %>
+    <%#= plp_and_carousel_image(product, image_class) %>
+    <!-- <div>
+      <div class="product-component-name" title="<%#= product.name %>">
+        <%#= product.name %>
+      </div>
+      <div class="product-component-price"><%#= display_price(product) %></div>
+    </div> -->
+  <%# end %>
+<%# end %>
+<% url = spree.product_path(product, taxon_id: @taxon&.id) %>
+<% 
+  # For spree_yotpo override
+  @product = product
+%>
+<div class="col col-12">
+  <div class="product-wrap" id="product_<%= product.id %>" data-hook="products_list_item">
+    <%= link_to url do %>
+      <% cache [common_product_cache_keys, product] do %>
+        <div class="product-img">
+          <%= plp_and_carousel_image(product, image_class) %>
+          <div class="price">
+            <% if product&.sale_prices&.active&.present? %>
+              <span><%= display_original_price(product.lowest_sale_price.price.variant) %></span>
+              <%= product.lowest_sale_price.display_price %>
+            <% else %>
+              <%= display_price(product) %>
+            <% end %>  
+          </div>
+        </div>
+        <div class="product-desc"title="<%= product.name %>" >
+          <h4> <%= product.name %></h4>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.badge-in_labels, .badge-follow_up_requested, .badge-production_room {
+  background-color: #F8D053;
+}
+
+.badge-in_labels a, .badge-follow_up_requested a, .badge-production_room a {
+  color: white !important;
+}
+
+.container-lg {
+  max-width: 2000px;
+}

@@ -1,0 +1,13 @@
+  <!-- Termly custom blocking map -->
+  <script data-termly-config>
+    window.TERMLY_CUSTOM_BLOCKING_MAP = {
+      "<%= current_store.url %>": "essential",<% if ENV['CLOUDFRONT_ASSET_URL'] %>
+      "<%= ENV['CLOUDFRONT_ASSET_URL'] %>": "essential", <% end %>
+      "amazonaws.com": "essential",
+      "cdn.doofinder.com": "essential",
+      "chimpstatic.com": "advertising",
+      "frontapp.com": "essential",
+      "yotpo.com": "essential",
+    }
+  </script>
+  <script type="text/javascript" src="https://app.termly.io/embed.min.js" data-auto-block="on" data-website-uuid="38ed94dc-d316-4c17-abe1-b29b74f77515"></script>

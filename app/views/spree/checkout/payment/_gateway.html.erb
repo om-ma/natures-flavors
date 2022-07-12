@@ -1,0 +1,67 @@
+<div class="cart-header d-flex align-items-center justify-content-between">
+  <h5>Card Information</h5>
+</div>
+ <div class="row">
+  <div class="col-sm-12">
+    <%= render partial: 'payment_sources' if @payment_sources.present? %>
+  </div>
+</div>    
+<div class="row narrow-row">
+  <div class="col-md-12">
+    <div class="form-group form-floating mb-20">
+      <% param_prefix = "payment_source[#{payment_method.id}]" %>
+      <%= text_field_tag "#{param_prefix}[name]", "#{@order.bill_address_firstname} #{@order.bill_address_lastname}", { id: "name_on_card", class: 'form-control', placeholder: Spree.t(:name_on_card)} %>
+      <%= label_tag "name_on_card#{payment_method.id}" do %>
+        <%= Spree.t(:name_on_card) %><abbr>*</abbr>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row narrow-row">
+  <div class="col-12">
+    <div class="form-group form-floating mb-20" data-hook="card_number">
+     <% options_hash = Rails.env.production? ? {autocomplete: 'off'} : {} %>
+     <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(id: 'card_number', class: "form-control cardNumber #{payment_method.type.parameterize}-card-num ", size: 19, maxlength: 19, autocomplete: "off", placeholder: Spree.t(:card_number)) %>
+          <%= label_tag "card_number" do %>
+            Card number<abbr>*</abbr>
+          <% end %>
+      <span id="card_type" style="display:none;">
+      ( <span id="looks_like" ><%= Spree.t(:card_type_is) %> <span id="type"></span></span>
+        <span id="unrecognized"><%= Spree.t(:unrecognized_card_type) %></span>
+      )
+     </span>
+    </div>
+  </div>
+</div>
+<div class="row narrow-row">
+  <div class="col-6">
+    <div class="form-group form-floating mb-20" data-hook="card_expiration">
+      <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: "form-control cardExpiry #{payment_method.type.parameterize}-card-expiry ", placeholder: "MM/YYYY" %>
+      <%= label_tag "card_expiry", class: "control-label" do %>
+        Expiration<abbr>*</abbr>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-group form-floating mb-30" data-hook="card_code">
+      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', class: "form-control cardCode #{payment_method.type.parameterize}-card-code ", size: 5, placeholder: Spree.t(:cvv)) %>
+      <label>Security Code (CVV)*</label>
+    </div>
+  </div>
+  <%= hidden_field_tag "#{param_prefix}[cc_type]", '', id: "cc_type", class: 'ccType' %>
+</div>
+<%= hidden_field_tag "#{param_prefix}[temporary_credit_card]", true, data: { hook: "save_user_address" } %>
+<% if current_spree_user.present? %>
+  <div class="custom-checkbox mb-10">
+      <label>
+        <%= check_box_tag "is_save_card", true, true, class: 'custom-control-input js_user_credit_card_save'%>
+        <span class="custom-control-label"></span>Save Card in My Cards
+      </label>
+  </div>
+  <div class="custom-checkbox mb-60 save_user_card">
+    <label>
+      <%= check_box_tag "#{param_prefix}[default]", true, true, class: 'custom-control-input'%>
+      <span class="custom-control-label"></span>Save Card as Default
+    </label>
+  </div>
+<% end %>

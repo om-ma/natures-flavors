@@ -1,0 +1,103 @@
+<% address_id = address_type.chars.first %>
+  <% checkout_address = %w(firstname lastname address1 address2 country state city zipcode phone) %>
+  <% checkout_address.each do |field| %>
+    <% if field == "firstname"  %>
+      <div class="col-sm-6 ">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :firstname, class: 'form-control js-address-fields', placeholder:"First Name", required: true %>
+          <%= address_form.label :firstname do %>
+            First Name<abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "lastname"  %>
+      <div class="col-sm-6 ">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :lastname, class: 'form-control js-address-fields', placeholder:"Last Name", required: true %>
+          <%= address_form.label :firstname do %>
+            Last Name<abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "address1"  %>
+      <div class="col-sm-12 ">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :address1, class: 'form-control js-address-fields', placeholder:"Address*", required: true %>
+          <%= address_form.label :address1 do %>
+            <%= Spree.t(:address1) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "address2"  %>
+      <div class="col-sm-12 ">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :address2, class: 'form-control js-address-fields', placeholder:"Address Line 2", required: false %>
+          <%= address_form.label :address2 do %>
+            <%= Spree.t(:address2) %>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "country" %>
+      <div class="col-sm-6 " id="<%= "#{address_id}country" %>">
+        <div class="form-group form-floating mb-20" id="<%= "#{address_id}country-selection" %>" >
+          <%= address_form.collection_select :country_id, available_countries, :id, :name,
+                                              { prompt: Spree.t(:country).upcase },
+                                              { class: 'custom-select',
+                                                aria: { label: Spree.t(:country) } } %>
+          <%= address_form.label(Spree.t(:country)) %>
+        </div>
+      </div>
+    <%elsif field == "state" %>
+      <div class="col-sm-6 " >
+        <%= address_field(address_form, :state, address_id) { address_state(address_form, address.country, address_id) }  %>
+      </div>
+    <%elsif field == "city" %>
+      <div class="col-sm-6 ">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :city, class: 'form-control js-address-fields', placeholder:"City*", required: true %>
+          <%= address_form.label :city do %>
+            <%= Spree.t(:city) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "zipcode" %>
+        <div class="col-sm-6 ">
+        <%= address_field(address_form, :zipcode, address_id) { address_zipcode(address_form, address.country, address_id) } %>
+      </div>
+    <%elsif field == "phone" %>
+      <div class="col-sm-12">
+        <div class="form-group form-floating mb-10">
+          <%= address_form.text_field :phone, class: 'form-control js-address-fields', placeholder:"Phone Number*", required: true %>
+          <%= address_form.label :phone do %>
+            <%= Spree.t(:phone) %><abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div class="col-sm-6 ">
+        <%= address_field(address_form, field.to_sym, address_id) %>
+      </div>  
+    <% end %>
+  <% end %>
+  <% if spree_current_user.present? %>
+    <div class="col-sm-12">
+      <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center mb-60">
+        <% is_use_addresses_present = spree_current_user.addresses.present? ? true : false %>
+        <% if( request.fullpath.include? "/checkout") %>
+          <div class="custom-checkbox" >
+            <label>
+              
+              <input type="checkbox" class="custom-control-input" id="is_user_address_saved" checked>
+              <span class="custom-control-label"></span>Save to My Addresses
+            </label>
+          </div>
+        <% end %>
+        <div class="custom-checkbox">
+          <label>
+            <%= address_form.check_box :is_default, class: 'custom-control-input', checked: is_use_addresses_present ? "" : "checked" %>
+            <span class="custom-control-label"></span>Save as Default
+          </label>
+        </div>
+      </div>
+    </div>
+  <% end %>

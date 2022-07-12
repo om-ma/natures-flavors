@@ -1,0 +1,5 @@
+<ul id="sidebar-insights" class="collapse nav nav-pills nav-stacked pb-2" data-hook="admin_insights_sub_tabs">
+    <% Spree::ReportGenerationService.reports.each do |_key, _value| %>
+        <%= tab Spree.t(_key), url: spree.admin_insight_path(report_category: _key, id: _value.first) %>
+    <% end %>
+</ul>

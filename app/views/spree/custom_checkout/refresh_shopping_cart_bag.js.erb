@@ -1,0 +1,8 @@
+$('#shopping_cart_bag_area').html("<%= j render partial: 'spree/shared/shopping_bag', locals: {user_current_order: @order}  %>")
+$('.cart-sidebar').toggleClass("active");
+$('.overlay').toggleClass("active");
+$('body').toggleClass("hide-scroll");
+<% if @order&.item_count.present? %>
+	$("#shopping_cart_counter").html("<%= @order.item_count %>")
+<% end %>	
+$(".js_drop_down").click()

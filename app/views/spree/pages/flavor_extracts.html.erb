@@ -1,0 +1,128 @@
+<% self.title = "What Are Natural Flavors & Extracts?" %>
+<% meta_tag :description, "Learn more about natural flavors and extracts, their best applications, and usage percentages. Make perfect products, and never over or under-flavor them again!" %>
+<main class="page-contents">
+   <div class="category-wrapper">
+      <div class="row no-gutters">
+         <div class="col-xl-2 col-lg-3 phone-hide">
+            <div class="sidebar-categories">
+               <h4>More Information:</h4>
+               <ul class="sidebar-sub-categories">
+                  <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
+                  <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
+                  <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
+                  <li class="active"><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
+                  <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+                  <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
+                  <li><a href="#">Reviews</a></li>
+                  <li><%= link_to('FAQs', faq_path) %></li>
+               </ul>
+            </div>
+         </div>
+         <div class="col-xl-7 col-lg-9">
+            <div class="article-wrapper">
+               <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><%= link_to "Home", root_url %></li>
+                  <li class="breadcrumb-item active">Flavor Extracts</li>
+               </ol>
+               <h1 class="title mb-25">What Are Natural Flavors & Extracts?</h1>
+               <div class="mobile-categories-wrap phone-visible">
+                  <div class="header"><a class="mobile-category-toggle">More Information</a></div>
+                  <ul class="sidebar-sub-categories">
+                     <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
+                     <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
+                     <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
+                     <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
+                     <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+                     <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
+                     <li><a href="#">Reviews</a></li>
+                     <li><%= link_to('FAQs', faq_path) %></li>
+                  </ul>
+               </div>
+               <!-- Artivle -->  
+               <div class="articl-media">
+                  <div class="embed-responsive embed-responsive-16by9">
+                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/79FwSmSGHqE?rel=0" allowfullscreen></iframe>
+                  </div>
+               </div>
+               <div class="banner-caption-wrap">
+                  <div class="row">
+                     <div class="col-md-7">
+                        <p>Natural flavors and extracts come in many styles, colors, forms, and concentrations. Always be sure to experiment with the flavorings, and ask our flavorists if you need help to determine the proper starting amount for your application.</p>
+                     </div>
+                     <div class="col-md-5">
+                        <div class="wrap">
+                           <h5>Video Content</h5>
+                           <p>Watch this video to learn about natural flavor extracts from Bill "The Flavor Guy."</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="block d-flex flex-wrap">
+                  <div class="flex-fill">
+                     <h2>WHAT IS IN NATURAL FLAVORS & EXTRACTS?</h2>
+                     <p>Nature's Flavors' premium natural flavor extracts are made from the finest ingredients available. All of our natural flavor extracts are sourced from natural ingredients and never have artificial ingredients or additional sweeteners. “The Flavor Guy” shops the world over for the purest and most unique natural and organic raw materials to bring you new and innovative flavorings and extracts. The unique flavor profiles of our natural extracts and flavorings will tantalize your taste buds!</p>
+                  </div>
+               </div>
+               <div class="block d-flex flex-wrap">
+                  <div class="flex-fill">
+                     <h2>WHAT IS A NATURAL FLAVOR EXTRACT?</h2>
+                     <p>Our extracts are water-soluble flavors made in a base of natural ethyl alcohol. These all-natural <%= link_to "flavor extracts", (Spree::Taxon.find_by_name("Flavor Extracts").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Extracts")): '/')  %> and <%= link_to "organic flavoring extracts", (Spree::Taxon.find_by_name("Organic Flavor Extracts").present? ? seo_url(Spree::Taxon.find_by_name("Organic Flavor Extracts")): '/')  %> are food-grade, Kosher, vegan, and gluten-free. They are best used in clear beverages, dairy products, and applications where you don't want to disturb the clarity or translucency.</p>
+                     <p>Our natural flavor extracts are of comparable strength with our <%= link_to "flavor concentrates", (Spree::Taxon.find_by_name("Flavor Concentrates").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Concentrates")): '/')  %> and <%= link_to "flavor oils", (Spree::Taxon.find_by_name("Flavor Oils").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Oils")): '/')  %>. You will need to test the amount of the extract and flavoring to achieve the perfect strength for flavoring your recipe, but once you finish, you will be happy with the results.</p>
+                  </div>
+               </div>
+               <div class="block d-flex flex-wrap">
+                  <div class="flex-fill">
+                     <h2>WHY USE A NATURAL FLAVOR EXTRACT INSTEAD OF A FLAVOR CONCENTRATE?</h2>
+                     <p>Nature’s Flavors’ natural flavor extracts and natural flavor concentrates are very similar. They are both all-natural and water-soluble products. The difference is that flavor concentrates have a cloudy or opaque look to them, whereas most natural extracts are clear*. This physical property is due to the base that these flavors are set in.</p>
+                     <p>If your final application needs to be clear, then we recommend a natural flavor extract. Flavor concentrates are also more heat stable than extracts, so for baking, you might want to look at concentrates. Flavor extracts are in an alcohol base and will affect the freezing point of any recipe you put them into, while flavoring concentrates will not. *The few flavoring extracts that are not clear are mentioned on their product pages.</p>
+                  </div>
+               </div>
+
+               <div class="block d-flex flex-wrap">
+                  <div class="flex-fill">
+                     <h2>WHAT ARE THE BEST USES OF NATURAL FLAVOR EXTRACTS?</h2>
+                     <p>At Nature’s Flavors, our extracts and flavorings can be used in baking and clear beverages. The properties of natural flavor extracts include the following:</p>
+                     <ul>
+                        <li>Highly concentrated</li>
+                        <li>Clear liquids</li>
+                        <li>Water-based or alcohol-based only</li>
+                        <li>High heat-stable</li>
+                        <li>Alcohol bakes out at high temperatures</li>
+                        <li>Ingredients - ethyl alcohol, natural and organic flavor</li>
+                     </ul>
+                     <p>Caterers, restaurant chefs, home bakers, product manufacturers, brewers, and more will love using our natural flavorings and extracts to enhance the flavor profile of their desserts, culinary creations, alcoholic beverages, or products.</p>
+                  </div>
+               </div>
+               <div class="block d-flex flex-wrap">
+                  <div class="flex-fill">
+                     <h2>STARTING USAGE FOR FLAVORINGS & EXTRACTS</h2>
+                     <p>A good rule for starting usage is .25% by weight. Finding the perfect amount of a natural flavor extract for your recipe is an art form and requires practice! First, start with a small amount of our natural extracts and flavorings, such as .25% (up to 1%) of your vanilla extract or preferred flavor. Taste the vanilla flavor in the finished dough or ice cream. If the flavor tastes good and dissipates after three to five seconds, it's perfect!</p>
+                     <p>Note: if this is a baked product and it has not been baked, you will need to add 10% more natural flavor extracts to compensate for the loss of flavor during baking. When making and freezing ice cream, it is also possible that the natural extract will become diluted due to the whipping of air into the product from the ice cream machine, and you may need to add additional flavor extract.</p>
+                  </div>
+               </div>
+               <div class="block d-flex flex-wrap">
+                  <div class="flex-fill">
+                     <h2>More Videos on Natural Extracts & Flavorings:</h2>
+                     <div class="row">
+                        <div class="col-md-6">
+                              <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/izzzYCEDWZM?rel=0" allowfullscreen></iframe></div>
+                              <p>Check out this video on how Bill "The Flavor Guy" makes an orange extract out of essential oils.</p>
+                        </div>
+                        <div class="col-md-6">
+                              <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EbRiXvDhREw?rel=0" allowfullscreen></iframe></div>
+                              <p>In this video, Bill "The Flavor Guy" makes an organic alcohol-free vanilla extract. Check it out!</p>
+                        </div>                     
+                     </div>
+                  </div>
+               </div>                                                                                                         
+               <div class="attention-note">
+                  <h2>OVER FLAVORING YOUR PRODUCT WITH NATURAL FLAVOR EXTRACTS</h2>
+                  <p>If, at any time, you notice a minty taste on your palate or a medicinal taste, you have over-flavored your product with natural flavoring extracts. Or, if you are burping the flavor up an hour or more after you have eaten the finished product, then you have probably over-flavored it. The trick to making a product taste good is to add just enough extract and flavoring to tease the taste buds without overdoing it. That's what keeps customers coming back for more.</p>
+               </div>
+            </div>
+            <!-- /.Article --> 
+         </div>
+         <div class="col-xl-3 tablet-hide"></div>
+      </div>
+   </div>
+</main>

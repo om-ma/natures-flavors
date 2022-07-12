@@ -1,0 +1,9 @@
+<% if user_addresses.present? %>
+  <% user_addresses.each do |address| %>
+    <div class="col-md-6">
+      <% is_default = address.is_default %>
+      <% is_address_should_be_deleted = true %>
+      <%= render partial: 'spree/shared/print_address', locals: {address: address, is_default: is_default, is_address_should_be_deleted: is_address_should_be_deleted, remote_option: true} %>
+    </div>
+  <% end %>
+<% end %>

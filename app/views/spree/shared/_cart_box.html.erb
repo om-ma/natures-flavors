@@ -1,0 +1,89 @@
+<%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
+<% order_form&.object&.line_items.each do |line_item| %>
+  <%= order_form&.fields_for :line_items, line_item do |item_form| %>
+    <li class=" sip-box cart-item line-item cart-line-item-container-<%= line_item.id %> shopping-cart-item " data-lineitem-id= "<%= line_item.id %>">
+      <button type="button" class="btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= line_item.id %> " data-line-item-id="<%= line_item.id %>" >Close</button>
+      <% if line_item.variant.images.length == 0 %>
+        <% product_or_variant_first_img = image_tag(line_item.variant.product.images.first.my_cf_image_url(:small)) %>
+      <% else %>
+        <% product_or_variant_first_img = image_tag(line_item.variant.images.first.my_cf_image_url(:small)) %>
+      <% end %>
+      <%= link_to product_or_variant_first_img, spree.product_path(line_item.variant.product), class:'thumbnail' %>
+      <div class="cart-item-details d-flex flex-column justify-content-between jsAddItem jsSubItem">
+        <div class="d-flex cart-item-description">
+          <h4 ><%= link_to line_item&.name, line_item&.variant&.product %>
+            <% if line_item.variant.option_values.present? %>
+              - <%= line_item.variant.option_values.pluck(:presentation).join(",") %>
+            <% end %>
+          </h4>  
+        </div>
+          <% activeKlasSelectButton = line_item.quantity > 10 ? "btn btn-primary qty-dropdown-button " : "d-none" %>
+            <%= button_tag :class => "#{activeKlasSelectButton} btn btn-primary qty-dropdown-button button-#{line_item.id} mt-10 updateprice" ,type:'button' do %>
+            Update
+          <% end %>
+          <% activeKlas = line_item.quantity <= 10 ? "d-none" : "" %>
+          <%= item_form.number_field :quantity, min: 0, class: "quantity-box  line_item_quantity  js-qty-field custom-select quantity-change-input qty-dropdown shopping-cart-item-quantity-input quantity-box cart-line-item-#{line_item.id} #{activeKlas} input-#{line_item.id}", size: 5, data: { id: dom_id(line_item) }, aria: { label: Spree.t('cart_page.change_quantity') } %>
+          <% activeKlasSelect = line_item.quantity > 10 ? "d-none" : "" %>
+          <%= select_tag 'quantity', options_for_select([[1, 1], [2, 2], [3, 3],[4, 4],[5, 5],[6, 6],[7, 7],[8, 8], [9, 9], [10, 10], ['10+', 11]],line_item.quantity), id: "line_item_quantity-#{line_item.id}", class: "js-qty-select custom-select qty-dropdown shopping-cart-item-quantity-input quantity-box quantity-change-select #{activeKlasSelect} select-#{line_item.id}",data: { id: line_item.id }, aria: { label: Spree.t('cart_page.change_quantity') }  %>
+        <div class="price-size text-right" data-hook="cart_item_price" id=<%= line_item.single_money%> >
+          <div class="price-size text-right js-lineitem-total-<%= line_item.id%> " data-hook="cart_item_price" >
+            <span><%= line_item.quantity %>x<%= line_item.single_money.to_html%></span> <%= line_item.display_amount.to_html unless line_item.quantity.nil? %> 
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+<% end %>
+
+
+<div class="emptyCartPageSection" style="display:none" >
+  <div class="cart-sidebar-body d-flex flex-column justify-content-between"><div class="text-center"><%= image_tag "empty_cart.svg", alt:"Empty Cart" %><h3>Your cart is empty</h3><p>Looks like you haven&lsquo;t made your choice yet...</p><%= link_to shop_now_url do %><button type="button" class="btn btn-primary"><strong>Shop Now</strong></button><% end %></div></div>
+</div>
+<script>
+  $(document).ready(function(){
+
+  $(".quantity-change-select").change(function(){
+    
+    let item_quantity = this.value;
+    that = this.parentElement
+    updateItem(that,'add',item_quantity);
+    if(this.value > 10){
+      let classname = this.getAttribute("data-id")
+      let inputclassname = "input-" + classname
+      let btnclassname = "button-" + classname
+      $(this).hide();
+      let inputfield = document.getElementsByClassName(inputclassname)[0]
+      let updatebtn = document.getElementsByClassName(btnclassname)[0]
+      $(inputfield).removeClass("d-none")
+      $(inputfield).show()
+      $(updatebtn).removeClass("d-none")
+      $(updatebtn).show()
+      inputfield.value = this.value;
+    }
+  });
+  $(".quantity-change-input").change(function(){
+    if(this.value <= 10){
+      let classname = this.getAttribute("data-id").split("item_")[1]
+      let inputclassname = "select-" + classname
+      let btnclassname = "button-" + classname
+      $(this).hide();
+      let selectfield = document.getElementsByClassName(inputclassname)[0]
+      let updatebtn = document.getElementsByClassName(btnclassname)[0]
+      $(selectfield).removeClass("d-none")
+      $(selectfield).show()
+      $(updatebtn).addClass("d-none")
+      selectfield.value = this.value;
+      let item_quantity = this.value;
+      that = this.parentElement
+      updateItem(that,'add',item_quantity);
+    }
+  });
+  $(".updateprice").click(function(){
+    let cart_item = event.target.nextElementSibling
+    let item_quantity = parseInt(cart_item.value)
+    that = this.parentElement
+    updateItem(that,'add',item_quantity)
+  });
+
+});  
+</script>

@@ -1,0 +1,28 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <meta name="turbolinks-visit-control" content="reload">
+    <%= render 'spree/shared/cookie_consent_banner' %>
+    <%= render partial: 'spree/shared/head' %>
+  </head>
+  <body id="<%= @body_id || 'default' %>" data-hook="body">
+    <div id="wrapper" class="main-layout-section" data-current-order-number="<%= current_order.try(:number) %>" data-current-order-token="<%=  current_order.try(:token) %>" >
+      <%#= render partial: 'spree/shared/get_started' %>
+      <%= render partial: 'spree/shared/header' %>
+      <div id="overlay" class="overlay hide-on-esc"></div>
+      <div data-hook>
+        <main id="content" data-hook>
+          <%= yield %>
+        </main>
+        <%= yield :templates %>
+      </div>
+      <%= render partial: 'spree/shared/footer' %>
+      <%= render 'spree/shared/translations' %>
+    </div>
+    <%= render partial: 'spree/shared/frontapp_chat' %>
+  </body>
+</html>

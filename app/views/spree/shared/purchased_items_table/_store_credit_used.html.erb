@@ -1,0 +1,13 @@
+<tr>
+  <td></td>
+  <td>
+    <p class="f-fallback purchase_total purchase_total--label">
+      <strong><%= Spree.t(:store_credit_name) %></strong>
+    </p>
+  </td>
+  <td>
+    <p class="f-fallback purchase_total">
+      <strong><%= order.display_total_applied_store_credit.to_html %></strong>
+    </p>
+  </td>
+</tr>

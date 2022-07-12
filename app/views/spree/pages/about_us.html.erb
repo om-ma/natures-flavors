@@ -1,0 +1,89 @@
+<% self.title = "About Us" %>
+<% meta_tag :description, "With over 9,000 natural & organic flavorings, fragrances & more, Nature's Flavors is a leader in nutritional wellness. Learn more about Nature's Flavors." %>
+<main class="page-contents">
+   <div class="deals-wrapper">
+
+      <div class="title-wrap text-center">
+        <div class="sm-title">About Us</div>
+        <h1 class="title">About Nature's Flavors: The Experts in Flavorings & Fragrances</h1>
+      </div>
+
+      <div class="about_us_hero_image">
+         <%= image_tag "about-us/creating-flavors.jpg", alt:"Natural Blue Food Coloring" %>
+      </div>
+
+      <!-- What We Do -->
+      <div class="about_us_section">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6 grey_back">
+               <h2>What We Do at Nature's Flavors</h2>
+               <p>For over 40 years, we have been developing and producing custom flavors and <%= link_to "fragrances", (Spree::Taxon.find_by_name("Fragrances").present? ? seo_url(Spree::Taxon.find_by_name("Fragrances")): '/')  %> for both consumers and businesses.</p>
+               <p>Our skilled flavorists at Nature's Flavors use only the highest quality natural ingredients, sourced from around the world, to construct our <%= link_to "extracts & flavorings", (Spree::Taxon.find_by_name("Extracts & Flavorings").present? ? seo_url(Spree::Taxon.find_by_name("Extracts & Flavorings")): '/')  %>, flavor oils, <%= link_to "syrups", (Spree::Taxon.find_by_name("Syrups").present? ? seo_url(Spree::Taxon.find_by_name("Syrups")): '/')  %>, and fragrances.</p>
+               <p>All of our <%= link_to "natural flavorings oils", (Spree::Taxon.find_by_name("Natural Flavor Oil").present? ? seo_url(Spree::Taxon.find_by_name("Natural Flavor Oil")): '/')  %>, <%= link_to "flavor concentrates", (Spree::Taxon.find_by_name("Flavor Concentrates").present? ? seo_url(Spree::Taxon.find_by_name("Flavor Concentrates")): '/')  %>, extracts, citric acids, and fragrances are used to enhance, maintain, or improve the taste, aroma, color, and flavor of goods.</p>
+            </div>
+            <div class="col-lg-6 mobile-hide"><%= image_tag "about-us/lemonade.jpg", alt:"Natural Lemonade Syrup" %></div>
+          </div>
+        </div>
+      </div>
+      <!-- /.What We Do -->      
+
+      <!-- History -->
+      <div class="about_us_history">
+      
+         <div class="history_element">
+            <div class="since">Since 1983</div>
+            <h2>Our History</h2>
+         </div>
+
+         <div class="slider-wrapper reviews-wrap position-relative">
+            <ul id="reviews-slider">
+               <li data-aos="fade-up" data-aos-once="true"><%= image_tag "about-us/years_1.jpg", alt:"" %><h3>1983</h3><p>Nature's Flavors was formed in 1983 by Bill Sabo as Newport Flavors in Southern California to provide custom-made natural and organic flavors.</p></li>
+               <li data-aos="fade-up" data-aos-once="true"><%= image_tag "about-us/years_2.jpg", alt:"" %><h3>1983</h3><p>Place Holder Text Natures Flavors consists of 50+ skilled individuals, all of whom inherently provide an extraordinary. </p></li>
+               <li data-aos="fade-up" data-aos-once="true"><%= image_tag "about-us/years_3.jpg", alt:"" %><h3>1983</h3><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></li>
+               <li data-aos="fade-up" data-aos-once="true"><%= image_tag "about-us/years_1.jpg", alt:"" %><h3>1983</h3><p>Nature's Flavors was formed in 1983 by Bill Sabo as Newport Flavors in Southern California to provide custom-made natural and organic flavors.</p></li>
+               <li data-aos="fade-up" data-aos-once="true"><%= image_tag "about-us/years_2.jpg", alt:"" %><h3>1983</h3><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></li>
+               <li data-aos="fade-up" data-aos-once="true"><%= image_tag "about-us/years_3.jpg", alt:"" %><h3>1983</h3><p>Nature's Flavors was formed in 1983 by Bill Sabo as Newport Flavors in Southern California to provide custom-made natural and organic flavors.</p></li>               
+            </ul>
+         </div>
+
+      </div>
+      <!-- /.History -->
+
+
+      <div class="about_us_hero_image">
+         <%= image_tag "about-us/company.jpg", alt:"Family-owned business" %>
+      </div>
+
+      <!-- Why us -->
+      <div class="about_us_section">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-6 mobile-hide"><%= image_tag "about-us/why-us.jpg", alt:"Nature's Flavors Pippettes" %></div>  
+             <div class="col-lg-6 grey_back">
+               <h2>Why Nature's Flavors</h2>
+               <p>We are a family-owned business. At Nature's Flavors, our customer base ranges from individual buyers to small and medium-sized businesses, to Fortune 500 companies. But we still provide the expertise, flexibility, and personal attention of a family business.</p>
+               <p>All our work is done in-house at Nature's Flavors in Orange, CA. We manage everything internally from the development of new flavors through <%= link_to "research & development", (Spree::Taxon.find_by_name("Research & Development").present? ? seo_url(Spree::Taxon.find_by_name("Research & Development")): '/')  %>, to the management of accounts, and through the entire sales process.</p>
+               <p>Every product created by flavor chemists at Nature's Flavors is backed by an experienced customer support team that assists with recipes, provides customer service, and makes certain our products are the freshest. At Nature's Flavors, extracts, flavorings, and fragrances are made with only the finest natural and organic ingredients - the way that nature intended.</p>
+            </div>
+         </div>
+      </div>
+      </div>
+   <!-- /.Why us -->    
+
+
+      <div class="media-partners-wrapper our-brands">
+         <div class="container">
+         <div class="sm-title text-center">Our Brands:</div>
+            <ul class="media-list d-flex flex-wrap align-items-center justify-content-center">
+               <li><a href="https://naturesflavors.com"><%= image_tag "brand-natures-flavors.svg", alt:"Nature's Flavors" %></a></li>
+               <li><a href="https://www.naturlax.com/" target="_blank"><%= image_tag "brand-naturlax.svg", alt:"Naturlax" %></a></li>
+               <li><a href="https://www.seelecttea.com/" target="_blank"><%= image_tag "brand-seelect-tea.svg", alt:"Seelect Tea" %></a></li>
+               <li><a href="https://www.yummatchatea.com/" target="_blank"><%= image_tag "brand-yum-matcha.svg", alt:"Yum Matcha Tea" %></a></li>
+            </ul>
+         </div>
+      </div>
+
+
+   </div>
+</main>
