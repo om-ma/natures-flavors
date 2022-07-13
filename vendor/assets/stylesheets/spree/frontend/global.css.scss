@@ -3107,9 +3107,14 @@ h3 a{
 }
 
 .deal-expiry-wrap span {
-	margin: 0 0 0 8px;
+	margin: 0 0 0 2px;
 }
 
+.multiple-options-right-price {
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
+}
 .product-options-header {
 	font-size: 12px;
 	color: #070707;

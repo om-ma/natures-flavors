@@ -54,7 +54,6 @@
           <% sales_present = Spree::Product.in_sale.present? %>
           <% if sales_present %>
             <span data-turbolinks="false" class="link" onclick="location='<%= sale_path %>'">Deals</span>
-            <a href="#" data-turbolinks="false" class="hidden-title">Deals</a>
           <% end %>  
             <!-- <ul>
               <li>
