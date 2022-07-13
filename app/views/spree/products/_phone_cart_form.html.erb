@@ -29,12 +29,8 @@
         <% end %>
       <% end %>
       
-      <div class="product-options-header d-flex align-items-center justify-content-between">
-        <div class="left">Choose your option:</div>
-        <div class="right"><span id="js_selected_variantt_sku"><%= default_variant.sku%></span></div>
-      </div>
 
-      <ul class="phone_dropdown <%= kllas%>" id="product-variants">
+      <div class="phone_dropdown <%= kllas%>">
         <% if @product.variants_and_option_values(current_currency).any? %>
           <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
@@ -58,12 +54,17 @@
             </div>
           <% else %>
 
+          <div class="product-options-header d-flex align-items-center justify-content-between">
+            <div class="left">Choose your option:</div>
+            <div class="right"><span id="js_selected_variantt_sku"><%= default_variant.sku%></span></div>
+          </div>
+
             <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
               <!-- removed from mobile cart product-ov-js -->
               <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js js-variant-list <%= index == 0 ? 'active' : '' %>"
                 data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
                 <% option_value = variant.option_values.first %>
-                <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
+                <div class="multiple-options-right-price  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
                   <span content="<%= current_currency %>"></span>
                   <% if variant.on_sale? %>
                     <del><%= display_original_price(variant) %></del><%= variant.active_sale_in(current_currency).display_price %>
@@ -82,7 +83,7 @@
         <% else %>
           <%= hidden_field_tag "variant_id", @product.master.id %>
         <% end %>
-      </ul>
+      </div>
       <% if is_product_available_in_currency && @product.can_supply? %>
         <%= hidden_field_tag "variant_id", default_variant.id %>
         <div class="add-to-cart-wrap mb-30">

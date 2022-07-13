@@ -27,7 +27,7 @@
         <% kllas = "size-availability"%>
         <% end %>
       <% end %>
-      <ul class="<%= kllas%>" id="product-variants">
+      <div class="<%= kllas%>">
         <% if @product.variants_and_option_values(current_currency).any? %>
           <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
@@ -41,7 +41,7 @@
                 </li>
               <% end %>
             </ul>
-            <div class="left  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
+            <div class="multiple-options-right-price add-to-cart-form-price price selling" id="product-price" data-hook="product_price1">
               <span content="<%= current_currency %>"></span>
               <% if default_variant.on_sale? %>
                 <del><%= display_original_price(default_variant) %></del><%= default_variant.active_sale_in(current_currency).display_price %>
@@ -82,7 +82,7 @@
         <% else %>
           <%= hidden_field_tag "variant_id", @product.master.id %>
         <% end %>
-      </ul>
+      </div>
       <!-- <div class="d-flex justify-content-end mb-5">
         <button type="button" class="btn btn-white expand-list">More Options</button>
       </div> -->
