@@ -142,5 +142,5 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(aws_access_k
 SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-production-sitemaps.s3.amazonaws.com/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
-Rails.application.default_url_options = { host: "https://www.naturesflavors.com" }
-Spree::Core::Engine.routes.default_url_options[:host] = 'www.naturesflavors.com'
+Rails.application.default_url_options = { host: "https://www2.naturesflavors.com" }
+Spree::Core::Engine.routes.default_url_options[:host] = 'www2.naturesflavors.com'
