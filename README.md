@@ -1,4 +1,4 @@
-# Postgres
+# Postgres (local database)
 psql postgres
 postgres=# \du
 CREATE USER postgres WITH SUPERUSER PASSWORD 'password';
