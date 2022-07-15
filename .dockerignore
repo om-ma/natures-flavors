@@ -5,3 +5,10 @@
 /public/sitemaps/sitemap.*
 /public/spree/slides
 .byebug_history
+.gitignore
+.ruby-version
+build*
+docker-compose*
+Dockerfile*
+set-env-dev.sh
+start-sidekiq.sh

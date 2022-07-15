@@ -1,8 +1,20 @@
 #bin/sh
 
-cp ./.env-staging-naturesflavors ./.env
+source .set-build-env-staging
+
 git checkout staging
+git pull origin staging
 export BUILD_COMMIT_HASH=$(git rev-parse HEAD)
-docker-compose -f docker-compose-staging.yml build
-docker-compose -f docker-compose-staging.yml push app
-cp ./.env-development-naturesflavors ./.env
+
+docker buildx build \
+    --platform linux/amd64 \
+    --build-arg AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    --build-arg AWS_SECRET_KEY=${AWS_SECRET_KEY} \
+    --build-arg S3_ASSET_REGION=${S3_ASSET_REGION} \
+    --build-arg S3_ASSET_BUCKET=${S3_ASSET_BUCKET} \
+    --build-arg SECRET_KEY_BASE=${SECRET_KEY_BASE} \
+    -f ./Dockerfile-staging \
+    -t 284976415069.dkr.ecr.us-east-1.amazonaws.com/naturesflavors-staging:${BUILD_COMMIT_HASH} \
+    --push .
+
+source .set-build-env-clear
