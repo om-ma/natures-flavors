@@ -24,20 +24,6 @@ RUN bundle config --global frozen 1 \
 
 ADD . /app
 
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_KEY
-ARG S3_ASSET_REGION
-ARG S3_ASSET_BUCKET
-ARG SECRET_KEY_BASE
-
-RUN RAILS_ENV=staging \
-  AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-  AWS_SECRET_KEY=$AWS_SECRET_KEY \
-  S3_ASSET_REGION=$S3_ASSET_REGION \
-  S3_ASSET_BUCKET=$S3_ASSET_BUCKET \
-  SECRET_KEY_BASE=$SECRET_KEY_BASE \
-  bundle exec rake assets:precompile
-
 # Remove files/folders not needed in resulting image
 RUN rm -rf tmp/cache test public/robots.txt-staging public/robots.txt-staging-temp
 
