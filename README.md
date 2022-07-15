@@ -1,3 +1,5 @@
+# Version 1.0.1
+
 # Postgres (local database)
 psql postgres
 postgres=# \du
