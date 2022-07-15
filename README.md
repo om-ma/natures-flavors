@@ -57,6 +57,7 @@ rake db:migrate:up VERSION=20211026070924
 - Comment Types
 - Active Shipping Settings
 - Stock Locations
+- Roles
 
 * To recreate thumbnails
 Spree::Image.all.each do |image| image.create_sizes end
