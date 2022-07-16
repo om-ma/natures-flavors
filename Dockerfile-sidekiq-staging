@@ -25,7 +25,7 @@ RUN bundle config --global frozen 1 \
 ADD . /app
 
 # Remove files/folders not needed in resulting image
-RUN rm -rf tmp/cache test public/robots.txt-staging public/robots.txt-staging-temp
+RUN rm -rf .env* .set-build* tmp/cache test public/robots.txt-staging public/robots.txt-staging-temp
 
 ###############################
 # Stage Final
