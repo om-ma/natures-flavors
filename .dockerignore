@@ -6,10 +6,8 @@
 /public/spree/slides
 .byebug_history
 .dockerignore
-.env*
 .git
 .gitignore
-.set-build*
 .ruby-version
 build*
 docker-compose*

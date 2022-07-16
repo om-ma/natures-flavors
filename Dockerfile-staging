@@ -40,7 +40,7 @@ RUN RAILS_ENV=staging \
   bundle exec rake assets:precompile
 
 # Remove files/folders not needed in resulting image
-RUN rm -rf tmp/cache test public/robots.txt-staging public/robots.txt-staging-temp
+RUN rm -rf .env* .set-build* tmp/cache test public/robots.txt-staging public/robots.txt-staging-temp
 
 ###############################
 # Stage Final
