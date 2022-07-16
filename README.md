@@ -26,38 +26,38 @@ spree_shipstation (NEED TESTING)
 # Setup
 
 * To setup database
-rake db:create (might not need this)
-rake db:schema:load
-rake db:migrate
-rake db:seed
-rake spree_roles:permissions:populate
-rake spree_roles:permissions:populate_permission_sets
+rake db:create (might not need this) (DONE)
+rake db:schema:load (DONE)
+rake db:migrate (DONE)
+rake db:seed (DONE)
+rake spree_roles:permissions:populate (DONE)
+rake spree_roles:permissions:populate_permission_sets (DONE)
 
 STORE CREDIT ISSUE:
-rake db:migrate:down VERSION=20211026070924
-rake db:migrate:up VERSION=20211026070924
+rake db:migrate:down VERSION=20211026070924 (DONE)
+rake db:migrate:up VERSION=20211026070924 (DONE)
 
 # Backend Configuration
 
 * Configure Store:
-- name = Nature's Flavors (used in migration to look up store)
+- name = Nature's Flavors (used in migration to look up store) (DONE)
 
 * Create:
-- Option Types: Choose your option, Coffee options, Designs, Subscription, Choose First Extract, Choose Second Extract, Choose Your Food Coloring
-- Property: Ingredient Statement
-- Shipping Category; Default
-- Taxonomy: PRODUCTS (set old_cateogry_id = -1 in db after creation)
-- Taxon: set old_cateogry_id = -1 in db for PRODUCTS taxon
+- Option Types: Choose your option, Coffee options, Designs, Subscription, Choose First Extract, Choose Second Extract, Choose Your Food Coloring (DONE)
+- Property: Ingredient Statement (DONE)
+- Shipping Category; Default (DONE)
+- Taxonomy: PRODUCTS (set old_cateogry_id = -1 in db after creation) (DONE)
+- Taxon: set old_cateogry_id = -1 in db for PRODUCTS taxon (DONE)
 
 * Setup:
-- Payment Methods
-- Shipping Methods
-- Store Credit Categories
-- Analytics Trackers
-- Comment Types
-- Active Shipping Settings
-- Stock Locations
-- Roles
+- Payment Methods (DONE)
+- Shipping Methods (DONE)
+- Store Credit Categories (DONE)
+- Analytics Trackers (DONE)
+- Comment Types (DONE)
+- Active Shipping Settings (DONE)
+- Stock Locations (DONE)
+- Roles (DONE)
 
 * To recreate thumbnails
 Spree::Image.all.each do |image| image.create_sizes end
@@ -96,31 +96,31 @@ bundle exec sidekiq -q default -q mailers
 
 # Migration
 USERS:
-./bin/rails r "migration/users.rb"
+./bin/rails r "migration/users.rb" (DONE)
 
 PRODUCTS/TAXONS:
-gem install thor -v 0.20.3
+gem install thor -v 0.20.3 (DONE)
 
 bundle exec thor datashift_spree:load:products -i "migration/exports/test.csv"
 
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export1.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export2.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export3.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export4.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export5.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export6.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export7.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export8.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export9.csv"
-bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export10.csv"
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export1.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export2.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export3.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export4.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export5.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export6.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export7.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export8.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export9.csv" (DONE)
+bundle exec thor datashift_spree:load:products -i "migration/exports/Natures Flavors PrestaShop-Spree Data Migration - Products IMPORT SPLIT - Export10.csv" (DONE)
 
 RUN SQLs:
-migration/sql/delete_all_taxons_from_old_product_id_57612.sql
-migration/sql/do_not_track_inventory
-migration/sql/update_meta_data.sql
-migration/sql/update_products_properties.sql
-migration/sql/update_products_short_descriptions.sql
-migration/sql/update_taxons.sql
+migration/sql/delete_all_taxons_from_old_product_id_57612.sql (DONE)
+migration/sql/do_not_track_inventory (DONE)
+migration/sql/update_meta_data.sql (DONE)
+migration/sql/update_products_properties.sql (DONE)
+migration/sql/update_products_short_descriptions.sql (DONE)
+migration/sql/update_taxons.sql (DONE)
 
 TERMINAL:
 bin/rails r migration/upload_category_images.rb
