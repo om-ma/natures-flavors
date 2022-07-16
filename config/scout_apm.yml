@@ -1,5 +1,9 @@
 # This configuration file is used for Scout APM.
 # Environment variables can also be used to configure Scout. See our help docs at https://docs.scoutapm.com#environment-variables for more information.
+#
+# To run with ScoutApm DevTrace
+# SCOUT_DEV_TRACE=true rails server
+#
 common: &defaults
 
   # key: Your Organization key for Scout APM. Found on the settings screen.
