@@ -1,6 +1,7 @@
 #bin/sh
 
 source .set-build-env
+cp ./.env-production-naturesflavors ./.env
 
 git checkout master
 git pull origin master
@@ -18,3 +19,4 @@ docker buildx build \
     --push .
 
 source .set-build-env-clear
+cp ./.env-development-naturesflavors ./.env

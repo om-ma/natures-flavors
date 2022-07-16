@@ -1,6 +1,7 @@
 #bin/sh
 
 source .set-build-env-staging
+cp ./.env-staging-naturesflavors ./.env
 
 git checkout staging
 git pull origin staging
@@ -18,3 +19,4 @@ docker buildx build \
     --push .
 
 source .set-build-env-clear
+cp ./.env-development-naturesflavors ./.env
