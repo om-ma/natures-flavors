@@ -123,16 +123,16 @@ migration/sql/update_products_short_descriptions.sql (DONE)
 migration/sql/update_taxons.sql (DONE)
 
 TERMINAL:
-bin/rails r migration/upload_category_images.rb
-bin/rails r migration/delete_inactive_taxon.rb
-bin/rails r migration/fix_variant_master_price.rb
-bin/rails r migration/reorder_variants_by_price.rb
+bin/rails r migration/upload_category_images.rb (DONE)
+bin/rails r migration/delete_inactive_taxon.rb (DONE)
+bin/rails r migration/fix_variant_master_price.rb (DONE)
+bin/rails r migration/reorder_variants_by_price.rb (DONE)
 
 
 BACKEND:
-Reorder taxons in backend
-Rename taxon "More Products" to "More"
-Delete "Deals" taxon (do not need it statically created)
+Reorder taxons in backend (DONE)
+Rename taxon "More Products" to "More" (DONE)
+Delete "Deals" taxon (do not need it statically created) (DONE)
 
 # Create YotPo products feed. Run in rails console.
 YotpoFeedCreator.call(Rails.application.default_url_options)

@@ -1,7 +1,6 @@
 ######################
 # Stage: Builder
 FROM --platform=linux/amd64 ruby:3.0.1 as Builder
-#RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs libxml2
 RUN apt-get update -qq && apt-get install -y build-essential nodejs libxml2
 
 RUN mkdir -p /app
@@ -17,10 +16,6 @@ RUN bundle config --global frozen 1 \
   && rm -rf /usr/local/bundle/cache/*.gem \
   && find /usr/local/bundle/gems/ -name "*.c" -delete \
   && find /usr/local/bundle/gems/ -name "*.o" -delete
-
-# Install yarn packages
-#COPY package.json /app/
-#RUN yarn install
 
 ADD . /app
 
