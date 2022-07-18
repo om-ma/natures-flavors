@@ -56,3 +56,4 @@ Spree::PermittedAttributes.checkout_attributes << :production_state
 
 # Turn of tinymce (Open issue)
 Spree::Config.taxon_wysiwyg_editor_enabled = false
+Spree::Config.product_wysiwyg_editor_enabled = false
