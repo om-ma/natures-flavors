@@ -53,3 +53,7 @@ Spree::PermittedAttributes.variant_attributes << :old_product_id
 
 # Add production_state field to spree_orders table
 Spree::PermittedAttributes.checkout_attributes << :production_state
+
+# Turn off tinymce (Open issue)
+Spree::Config.taxon_wysiwyg_editor_enabled = false
+Spree::Config.product_wysiwyg_editor_enabled = false
