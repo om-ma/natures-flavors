@@ -1,7 +1,7 @@
-Generate product feed every night at 2 AM:
-  cron: "0 2 * * *"
-  class: "GenerateProductFeedWorker"
-  queue: default
+#Generate product feed every night at 2 AM:
+#  cron: "0 2 * * *"
+#  class: "GenerateProductFeedWorker"
+#  queue: default
 
 Refresh sitemap at 2:10 AM:
   cron: "10 2 * * *"
