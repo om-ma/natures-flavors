@@ -30,7 +30,7 @@
       <ul id="product-gallery" data-hook="product_images">
         <% @product_images.each do |i| %>
           <li data-thumb= "<%= i.my_cf_image_url(:pdp_thumbnail) %>" >
-            <%= image_tag(i.my_cf_image_url(:large)) %>
+            <%= image_tag(i.my_cf_image_url(:large), alt: (i.alt.present? ? i.alt : @product.name)) %>
           </li>
         <% end %>
       </ul>
@@ -40,6 +40,6 @@
   <%= image_tag(asset_path('noimage/default-product-image.jpg')) %>
 <% else %>
   <% @product_images.each do |i| %>
-    <%= image_tag(i.my_cf_image_url(:large)) %>
+    <%= image_tag(i.my_cf_image_url(:large), alt: (i.alt.present? ? i.alt : @product.name)) %>
   <% end %>
 <% end %>

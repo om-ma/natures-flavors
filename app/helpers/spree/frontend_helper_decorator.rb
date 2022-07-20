@@ -97,7 +97,7 @@ Spree::FrontendHelper.class_eval do
     lazy_image(
       src: image_url,
       srcset: carousel_image_source_set(image),
-      alt: product.name,
+      alt: (image&.alt.present? ? image.alt : product.name),
       width: image_style&.dig(:width) || 278,
       height: image_style&.dig(:height) || 371,
       class: "product-component-image d-block mw-100 #{image_class}"
@@ -169,6 +169,11 @@ Spree::FrontendHelper.class_eval do
         ""
       end
     end
+  end
+
+  def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
+    max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
+    all_categories_cache_keys = "spree/all_categories/#{all_categories.map(&:id).join('-')}"
   end
 end
 
