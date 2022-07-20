@@ -40,9 +40,7 @@ Spree::HomeController.class_eval do
       popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : []
     end
     
-    @active_home_tab           = Rails.cache.fetch("@active_home_tab", expires_in: Rails.configuration.x.cache.expiration) do
-      [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
-    end
+    @active_home_tab = [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
   end
 
 def sale

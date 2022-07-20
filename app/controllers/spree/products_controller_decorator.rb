@@ -37,6 +37,19 @@ module Spree
       @product = current_store.products.includes(prices: :sale_prices).references(prices: :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
     end
     
+    # Override to exclude master variant
+    def load_variants
+      @variants = @product.
+                  variants.
+                  spree_base_scopes.
+                  active(current_currency).
+                  includes(
+                    :default_price,
+                    option_values: [:option_value_variants],
+                    images: { attachment_attachment: :blob }
+                  )
+    end
+    
   end
 end
 ::Spree::ProductsController.prepend Spree::ProductsControllerDecorator
