@@ -4,6 +4,10 @@ module Spree
       redirect_to page_not_found_path
     end
     def show
+      @best_sellers = Rails.cache.fetch("@best_sellers", expires_in: Rails.configuration.x.cache.expiration) do
+        Spree::Product.best_sellers
+      end
+
       @best_sellers = Spree::Product.best_sellers
       if @best_sellers.present?
         loop do
