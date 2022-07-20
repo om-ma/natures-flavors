@@ -4,6 +4,10 @@ module Spree
       redirect_to page_not_found_path
     end
     def show
+      @best_sellers = Rails.cache.fetch("@best_sellers", expires_in: Rails.configuration.x.cache.expiration) do
+        Spree::Product.best_sellers
+      end
+
       @best_sellers = Spree::Product.best_sellers
       if @best_sellers.present?
         loop do
@@ -28,6 +32,11 @@ module Spree
         @related_products = @taxon&.products.present? ? @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil)&.last(2) : []
       end
     end
+
+    def load_product
+      @product = current_store.products.includes(prices: :sale_prices).references(prices: :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
+    end
+    
   end
 end
 ::Spree::ProductsController.prepend Spree::ProductsControllerDecorator

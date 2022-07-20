@@ -21,7 +21,7 @@
         <!-- </div> -->
       </div>
       
-      <% if @product.variants_and_option_values(current_currency).any? %>
+      <% if @variants.any? %>
         <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
           <% kllas = ""%>
         <% else %>
@@ -31,7 +31,7 @@
       
 
       <div class="phone_dropdown <%= kllas%>">
-        <% if @product.variants_and_option_values(current_currency).any? %>
+        <% if @variants.any? %>
           <% if Spree::OptionType.joins(option_values: :variants).where(variants: {product_id: @product} ).uniq.count > 1 %>
             <ul id="product-variants" class="product-variants list-unstyled">
               <% used_variants_options(@variants, @product).each_with_index do |option_type, index| %>
@@ -59,7 +59,7 @@
             <div class="right"><span id="js_selected_variantt_sku"><%= default_variant.sku%></span></div>
           </div>
 
-            <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
+            <% @variants.each_with_index do |variant, index| %>
               <!-- removed from mobile cart product-ov-js -->
               <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js js-variant-list <%= index == 0 ? 'active' : '' %>"
                 data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
