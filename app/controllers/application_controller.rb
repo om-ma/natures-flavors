@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
 	private
 
 	def set_categories
-		@product_category	= Spree::Taxon.find_by_name("PRODUCTS")
-		@all_categories   = @product_category.present? ? @product_category&.children : []
+		@all_categories = Rails.cache.fetch("@all_categories", expires_in: Rails.configuration.x.cache.expiration) do
+			@product_category	= Spree::Taxon.includes(children: :users).references(children: :users).find_by_name("PRODUCTS")
+			(@product_category.present? ? @product_category&.children: [])
+		end
 	end
 
 	def default_url_options

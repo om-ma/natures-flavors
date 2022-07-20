@@ -27,9 +27,9 @@ Spree::TaxonsController.class_eval do
     products_searcher = @searcher.retrieve_products
 
     if params[:sort_by] == "bestsellers"
-      @products =  products_searcher.preload(:product_properties).best_sellers
+      @products = products_searcher.includes(:product_properties).best_sellers
     else
-      @products =   products_searcher.preload(:product_properties)
+      @products = products_searcher.includes(:product_properties).references(:product_properties)
     end
   end
 end

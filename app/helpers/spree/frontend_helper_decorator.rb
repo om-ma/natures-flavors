@@ -170,6 +170,11 @@ Spree::FrontendHelper.class_eval do
       end
     end
   end
+
+  def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
+    max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
+    all_categories_cache_keys = "spree/all_categories/#{all_categories.map(&:id).join('-')}"
+  end
 end
 
 def google_product_type(product)

@@ -131,6 +131,9 @@ Rails.application.configure do
   config.x.yotpo.secret_key = 'y6m3AE0vSKKzZDRjP253weTFmn5O0o6RlMeL2mwe'
   config.x.yotpo.rich_snippets_refresh_time = 1.minutes
   config.x.yotpo.reviews_refresh_time = 1.minutes
+
+  # Low-level cache expiration
+  config.x.cache.expiration = 24.hours
 end
 
 ## spree_sitemap config

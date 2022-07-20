@@ -12,16 +12,37 @@ Spree::HomeController.class_eval do
     if http_cache_enabled?
       fresh_when etag: store_etag, last_modified: last_modified_index, public: true
     end
-    @home_slides 		           = Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
-    @best_sellers_products     = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
-    @deals_products            = Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
-    popular_extracts           = Spree::Taxon.find_by_name("Flavor Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''
-    @popular_extracts_products = popular_extracts.present? ?  popular_extracts.products.reorder(popularity: :desc).first(6) : [] 
-    popular_powders            = Spree::Taxon.find_by_name("Flavor Powders").present? ? Spree::Taxon.find_by_name("Flavor Powders") : ''
-    @popular_powders_products  = popular_powders.present? ? popular_powders.products.reorder(popularity: :desc).first(6) : [] 
-    popular_oils               = Spree::Taxon.find_by_name("Flavor Oils").present? ? Spree::Taxon.find_by_name("Flavor Oils") : ''
-    @popular_oils_products     = popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : []
-    @active_home_tab           = [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
+
+    @home_slides 		           = Rails.cache.fetch("@home_slides", expires_in: Rails.configuration.x.cache.expiration) do
+      Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
+    end
+    
+    @best_sellers_products     = Rails.cache.fetch("@best_sellers_products", expires_in: Rails.configuration.x.cache.expiration) do
+      Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
+    end
+    
+    @deals_products            = Rails.cache.fetch("@deals_products", expires_in: Rails.configuration.x.cache.expiration) do
+      Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
+    end
+    
+    @popular_extracts_products = Rails.cache.fetch("@popular_extracts_products", expires_in: Rails.configuration.x.cache.expiration) do
+      popular_extracts           = Spree::Taxon.find_by_name("Flavor Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''
+      popular_extracts.present? ?  popular_extracts.products.reorder(popularity: :desc).first(6) : [] 
+    end
+    
+    @popular_powders_products  = Rails.cache.fetch("@popular_powders_products", expires_in: Rails.configuration.x.cache.expiration) do
+      popular_powders            = Spree::Taxon.find_by_name("Flavor Powders").present? ? Spree::Taxon.find_by_name("Flavor Powders") : ''
+      popular_powders.present? ? popular_powders.products.reorder(popularity: :desc).first(6) : [] 
+    end
+    
+    @popular_oils_products     = Rails.cache.fetch("@popular_oils_products", expires_in: Rails.configuration.x.cache.expiration) do
+      popular_oils               = Spree::Taxon.find_by_name("Flavor Oils").present? ? Spree::Taxon.find_by_name("Flavor Oils") : ''
+      popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : []
+    end
+    
+    @active_home_tab           = Rails.cache.fetch("@active_home_tab", expires_in: Rails.configuration.x.cache.expiration) do
+      [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
+    end
   end
 
 def sale
