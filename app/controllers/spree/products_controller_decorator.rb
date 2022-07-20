@@ -28,6 +28,7 @@ module Spree
         @product_properties = @product.product_properties.includes(:property)
         @product_price = @product.price_in(current_currency).amount
         load_variants
+        @variants_master_only_or_no_master = (@variants.count == 1 ? @variants : @variants.reject { |v| v.is_master } )
         @product_images = product_images(@product, @variants)
         @related_products = @taxon&.products.present? ? @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil)&.last(2) : []
       end
@@ -35,19 +36,6 @@ module Spree
 
     def load_product
       @product = current_store.products.includes(prices: :sale_prices).references(prices: :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
-    end
-    
-    # Override to exclude master variant
-    def load_variants
-      @variants = @product.
-                  variants.
-                  spree_base_scopes.
-                  active(current_currency).
-                  includes(
-                    :default_price,
-                    option_values: [:option_value_variants],
-                    images: { attachment_attachment: :blob }
-                  )
     end
     
   end
