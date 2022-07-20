@@ -32,6 +32,11 @@ module Spree
         @related_products = @taxon&.products.present? ? @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil)&.last(2) : []
       end
     end
+
+    def load_product
+      @product = current_store.products.includes(prices: :sale_prices).references(prices: :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
+    end
+    
   end
 end
 ::Spree::ProductsController.prepend Spree::ProductsControllerDecorator
