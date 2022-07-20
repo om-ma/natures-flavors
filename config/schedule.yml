@@ -8,7 +8,7 @@ Refresh sitemap at 2:10 AM:
   class: "SitemapRefreshWorker"
   queue: default
 
-Generate Doofinder feed AWS S3 at 2:20 AM:
-  cron: "20 2 * * *"
-  class: "DoofinderFeedWorkerAwsS3"
-  queue: default
+#Generate Doofinder feed AWS S3 at 2:20 AM:
+#  cron: "20 2 * * *"
+#  class: "DoofinderFeedWorkerAwsS3"
+#  queue: default
