@@ -11,34 +11,35 @@
         <ul class="navbar-nav tablet-hide">
           <% if @all_categories.present? %>
             <% @all_categories.each do |menu_category| %>
-              <% if menu_category.hide_from_nav == false && menu_category.users.present? ? (spree_current_user.present? ? menu_category.users.include?(spree_current_user) : false) : true %>
-                <li class="nav-item">
-                  <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link" %>
-                  <div class="dropdown-menu-wrap">
-                    <div class="row no-gutters">
-                      <div class="col-lg-2"></div>
-                      <div class="col-lg-7 has-gridlines">
-                        <div class="row no-gutters">
-                          <% menu_category.children.where(hide_from_nav: false).in_groups_of(6) do |categories|%>
-                            <div class="col">
-                              <ul class="dropdown-menu d-flex flex-column">
-                                <% categories.compact.each do |category| %>
-                                  <% if category.users.present? ? (spree_current_user.present? ? category.users.include?(spree_current_user) : false) : true %>
-                                    <li>
-                                      <%= link_to category.name, seo_url(category) %>
-                                    </li>
-                                  <% end %>  
-                                <% end %>
-                              </ul>
-                            </div>
-                          <% end %>
-                        </div>
+              <li class="nav-item">
+                <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link" %>
+                <div class="dropdown-menu-wrap">
+                  <div class="row no-gutters">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-7 has-gridlines">
+                      <div class="row no-gutters">
+                        <% menu_category.children.in_groups_of(6) do |categories|%>
+                          <div class="col">
+                            <ul class="dropdown-menu d-flex flex-column">
+                              <% categories.compact.each do |category| %>
+                                <li>
+                                  <%= link_to category.name, seo_url(category) %>
+                                </li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        <% end %>
                       </div>
-                      <div class="col-lg-3"></div>
                     </div>
+                    <div class="col-lg-3"></div>
                   </div>
-                </li>
-              <% end %>  
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+          <% if spree_current_user.present? && @specialty_catetories.present? %>
+            <% @specialty_catetories.each do |speciality_category| %>
+              <%= link_to speciality_category.name, seo_url(speciality_category) %>
             <% end %>
           <% end %>
           <% products_on_sale = Spree::Product.in_sale.present? ? true : false %>
