@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	def set_categories
 		@all_categories = Rails.cache.fetch("@all_categories", expires_in: Rails.configuration.x.cache.expiration) do
 			@product_category	= Spree::Taxon.includes(children: :users).references(children: :users).find_by_name("PRODUCTS")
-			(@product_category.present? ? @product_category&.children: [])
+			(@product_category.present? ? @product_category&.children.order(:position): [])
 		end
 	end
 
