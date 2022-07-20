@@ -37,7 +37,7 @@
     </div>
   </div>
 <% elsif @product_images.size == 0 %>
-  <%= image_tag(asset_path('noimage/default-product-image.jpg')) %>
+  <%= image_tag(asset_path('noimage/default-product-image.jpg'), alt: @product.name) %>
 <% else %>
   <% @product_images.each do |i| %>
     <%= image_tag(i.my_cf_image_url(:large), alt: (i.alt.present? ? i.alt : @product.name)) %>
