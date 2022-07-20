@@ -97,7 +97,7 @@ Spree::FrontendHelper.class_eval do
     lazy_image(
       src: image_url,
       srcset: carousel_image_source_set(image),
-      alt: (image.alt.present? ? image.alt : product.name),
+      alt: (image&.alt.present? ? image.alt : product.name),
       width: image_style&.dig(:width) || 278,
       height: image_style&.dig(:height) || 371,
       class: "product-component-image d-block mw-100 #{image_class}"
