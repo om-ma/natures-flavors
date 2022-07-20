@@ -136,3 +136,6 @@ Delete "Deals" taxon (do not need it statically created) (DONE)
 
 # Create YotPo products feed. Run in rails console.
 YotpoFeedCreator.call(Rails.application.default_url_options)
+
+# Create YotPo products mapping file. Run in rails console.
+YotpoMappingCreator.call(Rails.application.default_url_options)
