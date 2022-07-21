@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_action :set_categories
-
-	STARTS_WITH_SPECIAL = 'Special'
-
+	
 	private
 
 	def set_categories
@@ -11,11 +9,11 @@ class ApplicationController < ActionController::Base
 		end
 
 		@all_categories = Rails.cache.fetch("@all_categories", expires_in: Rails.configuration.x.cache.expiration) do
-			(@product_category.present? ? @product_category&.children.where.not("lower(name) LIKE '#{STARTS_WITH_SPECIAL.downcase}%'").order(:position): [])
+			(@product_category.present? ? @product_category&.children.where(hide_from_nav: false).order(:position): [])
 		end
 
 		if spree_current_user.present?
-			@all_special_categories = (@product_category.present? ? @product_category&.children.where("lower(name) LIKE '#{STARTS_WITH_SPECIAL.downcase}%'").order(:position): [])
+			@all_special_categories = (@product_category.present? ? @product_category&.children.where(hide_from_nav: true).order(:position): [])
 			@special_catetories = []
 			if @all_special_categories.present?
 				if spree_current_user.admin?
