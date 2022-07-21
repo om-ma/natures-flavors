@@ -251,7 +251,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/duc.lam/spree_yotpo.git
-  revision: 1ad7b763015ec54518cbb78b51c5b80838369f93
+  revision: bfbb5e518f62557ce1deadba1f31671c112df6a1
   branch: naturesflavors
   specs:
     spree_yotpo (1.0.0)
@@ -1961,7 +1961,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
-    oj (3.13.16)
+    oj (3.13.17)
     optimist (3.0.1)
     orm_adapter (0.5.0)
     ovirt-engine-sdk (4.4.1)
