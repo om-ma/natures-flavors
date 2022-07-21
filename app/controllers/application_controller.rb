@@ -18,9 +18,13 @@ class ApplicationController < ActionController::Base
 			@all_special_categories = (@product_category.present? ? @product_category&.children.where("lower(name) LIKE '#{STARTS_WITH_SPECIAL.downcase}%'").order(:position): [])
 			@special_catetories = []
 			if @all_special_categories.present?
-				@all_special_categories.each { |category|
-					@special_catetories.push(category) if category.users.include?(spree_current_user)
-				}
+				if spree_current_user.admin?
+					@special_catetories = @all_special_categories
+				else
+					@all_special_categories.each { |category|
+						@special_catetories.push(category) if category.users.include?(spree_current_user)
+					}
+				end
 			end
 		end
 	end
