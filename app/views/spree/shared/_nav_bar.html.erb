@@ -37,9 +37,38 @@
               </li>
             <% end %>
           <% end %>
-          <% if spree_current_user.present? && @specialty_catetories.present? %>
-            <% @specialty_catetories.each do |speciality_category| %>
-              <%= link_to speciality_category.name, seo_url(speciality_category) %>
+          <% if spree_current_user.present? && spree_current_user.admin? && @special_catetories.present? %>
+            <li class="nav-item">
+              <%= link_to "Special", "#", class: "nav-link" %>
+              <div class="dropdown-menu-wrap">
+                <div class="row no-gutters">
+                  <div class="col-lg-2"></div>
+                  <div class="col-lg-7 has-gridlines">
+                    <div class="row no-gutters">
+                      <% @special_catetories.in_groups_of(6) do |categories| %>
+                        <div class="col">
+                          <ul class="dropdown-menu d-flex flex-column">
+                            <% categories.compact.each do |category| %>
+                              <li>
+                                <%= link_to category.name, seo_url(category) %>
+                              </li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="col-lg-3"></div>
+                  </div>
+                  <div class="col-lg-3"></div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+          <% if spree_current_user.present? && !spree_current_user.admin? && @special_catetories.present? %>
+            <% @special_catetories.each do |category| %>
+              <li class="nav-item">
+                <%= link_to category.name, seo_url(category), class: "nav-link" %>
+              </li>
             <% end %>
           <% end %>
           <% products_on_sale = Spree::Product.in_sale.present? ? true : false %>

@@ -44,14 +44,30 @@
               </li>
             <% end %>
           <% end %>
-          <% if spree_current_user.present? && @specialty_catetories.present? %>
-            <% @specialty_catetories.each do |speciality_category| %>
-              <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(speciality_category) %>'"><%= speciality_category.name %></span>
+          <% if spree_current_user.present? && spree_current_user.admin? && @special_catetories.present? %>
+            <li>
+              <span data-turbolinks="false" class="link">Special</span><a href="#" data-turbolinks="false" class="hidden-title">Special</a>
+              <ul>
+                <% @special_catetories.each do |category| %>
+                  <li>
+                    <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(category) %>'"><%= category.name %></span>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+          <% if spree_current_user.present? && !spree_current_user.admin? && @special_catetories.present? %>
+            <% @special_catetories.each do |category| %>
+              <li>
+                <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(category) %>'"><%= category.name %></span>
+              <li>
             <% end %>
           <% end %>
           <% sales_present = Spree::Product.in_sale.present? %>
           <% if sales_present %>
-            <span data-turbolinks="false" class="link" onclick="location='<%= sale_path %>'">Deals</span>
+            <li>
+              <span data-turbolinks="false" class="link" onclick="location='<%= sale_path %>'">Deals</span>
+            </li>
           <% end %>  
             <!-- <ul>
               <li>
