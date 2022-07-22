@@ -56,7 +56,7 @@
           <div class="product-detail-wrapper">
               <%= spree_breadcrumbs(@taxon, '', @product) %>
             <div class="title-wrap position-relative" data-hook="product_show">
-              <h1 class="title"> <%= @product.name %></h1>
+              <h1 class="title"><%= @product.name %></h1>
               <%#
               <ul class="product-standards d-flex flex-wrap align-items-center phone-visible">
                 <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-xl-5">
                   <%= render 'phone_cart_form', variant_change_identifier: 'productCarousel' %> 
-                  <div  id="product-description" >
+                  <div id="product-description" >
                     <%= render partial: 'description' %>
                   </div>
                 </div>
