@@ -1,4 +1,4 @@
-<h5> Add/Edit New Address </h5>
+<h5><%= (address.persisted? ? "Edit Address" : "Add New Address") %></h5>
   <%= render 'spree/shared/error_messages', target: address %>
   <%= form_for address, html: { id: 'checkout_form_address', remote: true } do |f| %>
       <div class=" row inner">
@@ -9,7 +9,7 @@
                    address: address
         %>
       </div>
-      <%= f.submit "Add Address", class: 'btn btn-primary' %>
+      <%= f.submit "#{(address.persisted? ? 'Save Address' : 'Add Address')}", class: 'btn btn-primary' %>
       <% if address.persisted? %>
         <%= link_to spree.address_path(address), :method => :delete, :confirm => "Are you sure?", :remote => true do %>
           <button type="button" class="btn btn-text">Delete This Address</button>
