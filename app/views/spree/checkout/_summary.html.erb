@@ -1,9 +1,10 @@
-<div class="order-summary mb-60  empty-cart-area " data-hook="order_summary">
-  <ul class="cart-items">
+<div class="order-summary mb-60 empty-cart-area " data-hook="order_summary">
+<ul class="cart-items">
+      <li class="cart-item line-item cart-edit"><%= link_to "Edit Cart", cart_path, class: "cart-edit-button" %></li>
     <% order.line_items.each do|s| %>
       <% variant = s.variant %>
       <li class="cart-item line-item empty-cart-area cart-line-item-container-<%= s.id %> shopping-cart-item " data-lineitem-id="<%= s.id %>"  >
-        <button type="button" class="  btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= s.id %>  " data-line-item-id= "<%= s.id %>"  >Close</button>
+        <!--<button type="button" class="btn btn-primary remove-btn popup-cart-delete js-line-item-delete-btn-<%= s.id %>  " data-line-item-id= "<%= s.id %>"  >Close</button>-->
         <% if variant.images.length == 0 %>
           <% product_or_variant_first_img = image_tag(variant.product.images.first.my_cf_image_url(:small)) %>
         <% else %>
