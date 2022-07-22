@@ -9,7 +9,7 @@
         elsif line_item.variant.images.count > 0
           img = line_item.variant.images.first.my_cf_image_url(:small)
         else
-          img = asset_path('noimage/default-product-image.jpg')
+          img = asset_path('noimage/default-product-image-small.jpg')
         end
       %>
       <% product_or_variant_first_img = image_tag(img) %>
