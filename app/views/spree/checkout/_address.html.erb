@@ -71,10 +71,10 @@
   <%#= render 'spree/shared/delete_address_popup' %>
 </div> -->
   <ol class="breadcrumb mb-35">
-    <li class="breadcrumb-item"><a href="#">Cart</a></li>
-    <li class="breadcrumb-item"><a href="#">Information</a></li>
-    <li class="breadcrumb-item"><a href="#" class="disabled" >Shipping</a></li>
-    <li class="breadcrumb-item"><a href="#" class="disabled">Payment</a></li>
+    <li class="breadcrumb-item"><%= link_to "Cart", cart_path, title: "Cart" %></li>
+    <li class="breadcrumb-item">Address</li>
+    <li class="breadcrumb-item">Shipping</li>
+    <li class="breadcrumb-item">Payment</li>
   </ol>
   <% if spree_current_user.present? %>
     <div class="cart-header d-flex align-items-center justify-content-between">
