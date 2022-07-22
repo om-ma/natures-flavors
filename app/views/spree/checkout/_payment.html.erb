@@ -36,10 +36,10 @@
   </div>
 </div> -->
 <ol class="breadcrumb mb-20">
-  <li class="breadcrumb-item"><a href="#">Cart</a></li>
-  <li class="breadcrumb-item"><a href="#">Information</a></li>
-  <li class="breadcrumb-item"><a href="#">Shipping</a></li>
-  <li class="breadcrumb-item"><a href="#">Payment</a></li>
+  <li class="breadcrumb-item"><%= link_to "Cart", cart_path, title: "Cart" %></li>
+  <li class="breadcrumb-item"><a href="/checkout/address">Address</a></li>
+  <li class="breadcrumb-item"><a href="/checkout/delivery">Shipping</a></li>
+  <li class="breadcrumb-item">Payment</li>
 </ol>
 <div class="address-shipping-wrap">
   <div class="address-wrap"> <!-- <a href="#">Edit</a> -->
