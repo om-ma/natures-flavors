@@ -72,8 +72,8 @@
               <%= recaptcha_v3(action: 'contact_us', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
             <% end %>
             This site is protected by reCAPTCHA and the Google
-            <a href="/privacy-policy">Privacy Policy</a> and
-            <a href="/terms-and-conditions">Terms of Service</a> apply.
+            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
             <%= f.submit Spree.t('spree_contact_us.send_message'), :class => 'btn btn-primary btn-block mt-25', tabindex: 5, :alt => Spree.t('spree_contact_us.send_messages'), :id => 'contact_us_contact_submit', :title => "Send Message" %>
           <% end %>
           </div>
