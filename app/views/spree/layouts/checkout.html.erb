@@ -9,7 +9,7 @@
     <%= render partial: 'spree/shared/translations' %>
     <%= render partial: 'spree/shared/accessibe' %>
   </head>
-  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body" data-turbolinks="false">
     <%= render partial: 'spree/shared/checkout_header' %>
     <div id="overlay" class="overlay"></div>
 
