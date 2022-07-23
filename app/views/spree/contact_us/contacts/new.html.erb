@@ -1,6 +1,15 @@
 <% self.title = "Contact Us" %>
 <% meta_tag :description, 'Send us a message' %>
-
+<% content_for :head do %>
+  <!-- reCAPTCHA -->
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[src*="recaptcha"], .g-recaptcha').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+<% end %>
 <main class="page-contents">
    <div class="deals-wrapper">
 
