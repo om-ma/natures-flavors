@@ -232,15 +232,6 @@ GIT
       spree_extension
 
 GIT
-  remote: https://github.com/umairrazam/spree_favorite_products.git
-  revision: 41bac948bea738fd166539ddca360db0fa113647
-  branch: natures
-  specs:
-    spree_favorite_products (3.3.0)
-      spree_core (>= 3.2.0, <= 4.5.0)
-      spree_extension (~> 0.0.5)
-
-GIT
   remote: https://gitlab.com/duc.lam/spree_common.git
   revision: b2b47c9c743c46035420b8563fd6449efab0eda1
   branch: master
@@ -248,6 +239,15 @@ GIT
     spree_common (0.0.1)
       spree (>= 4.3)
       spree_extension
+
+GIT
+  remote: https://gitlab.com/duc.lam/spree_favorite_products.git
+  revision: 7273468d0dfd666eae3a4b990105999c6a0122d4
+  branch: natures
+  specs:
+    spree_favorite_products (3.3.0)
+      spree_core (>= 3.2.0, <= 4.5.0)
+      spree_extension (~> 0.0.5)
 
 GIT
   remote: https://gitlab.com/duc.lam/spree_yotpo.git
