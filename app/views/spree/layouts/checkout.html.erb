@@ -6,6 +6,7 @@
 <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
   <head data-hook="inside_head">
     <%= render partial: 'spree/shared/head' %>
+    <%= render partial: 'spree/shared/translations' %>
   </head>
   <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
     <%= render partial: 'spree/shared/checkout_header' %>
@@ -23,6 +24,5 @@
     <footer>
       <%= render 'spree/shared/copyright' %>
     </footer>
-    <%= render 'spree/shared/translations' %>
   </body>
 </html>

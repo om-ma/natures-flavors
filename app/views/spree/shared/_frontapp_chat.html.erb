@@ -1,4 +1,16 @@
-  <script src="https://chat-assets.frontapp.com/v1/chat.bundle.js"></script>
-  <script>
-    window.FrontChat('init', {chatId: 'aa4c7bddd93cdb5c06931a6b6aedb070', useDefaultLauncher: true});
+  <!-- Front Chat -->
+  <script type="text/javascript">
+    $(document).on('turbolinks:load', function() {
+      delete window.FrontChat;
+
+      $.getScript('https://chat-assets.frontapp.com/v1/chat.bundle.js', function() {
+        window.FrontChat('init', {chatId: 'aa4c7bddd93cdb5c06931a6b6aedb070', useDefaultLauncher: true});
+      });
+    });
+
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[src*="frontapp"], #front-chat-container').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
   </script>

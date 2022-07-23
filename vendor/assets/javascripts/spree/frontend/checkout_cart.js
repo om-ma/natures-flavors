@@ -13,7 +13,6 @@ $( document ).on('turbolinks:load', function() {
          window.location = window.location
          return true
        } else {
-         alert("error")
          return false
        }
      }
