@@ -75,11 +75,16 @@
           <div class="checkout-confirm-order-details-line-items-line-item-name d-table-cell align-middle py-3 py-sm-4">
             <div class="d-flex align-items-lg-center">
               <div class="checkout-confirm-order-details-line-items-line-item-name-image" data-hook="order_item_image">
-                <% if item.variant.images.length == 0 %>
-                  <% product_or_variant_first_img = image_tag(item.variant.product.images.first.my_cf_image_url(:small)) %>
-                <% else %>
-                  <% product_or_variant_first_img = image_tag(item.variant.images.first.my_cf_image_url(:small)) %>
-                <% end %>
+                <%
+                  if item.variant.product.images.count > 0
+                    img = item.variant.product.images.first.my_cf_image_url(:small)
+                  elsif item.variant.images.count > 0
+                    img = item.variant.images.first.my_cf_image_url(:small)
+                  else
+                    img = asset_path('noimage/default-product-image-small.jpg')
+                  end
+                %>
+                <% product_or_variant_first_img = image_tag(img) %>
                 <%= link_to product_or_variant_first_img, spree.product_path(item.product), class:'thumbnail' %>
               </div>
               <div class="d-flex flex-column mt-2 mt-lg-0" data-hook="order_item_description">
