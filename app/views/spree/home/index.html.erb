@@ -1,24 +1,14 @@
-<%# if @homepage %>
-<%# @homepage.cms_sections.each do |section| %>
-  <%#= build_section(section) %>
-<%# end %>
-<%# else %>
-<!-- <div id="missingHomepage" class="container my-5">
-<div class="row my-5">
-  <div class="col-12">
-    <figure class="logo mx-auto missing-homepage-logo-container">
-      <%#= logo %>
-    </figure>
-  </div>
-  <div class="col-12 mb-5 text-center">
-    <h1 class="mb-3"><%#= Spree.t('we_will_be_back') %></h1>
-    <h4 class="text-dark"><%#= Spree.t('we_are_busy_updating', store_name: current_store.name) %></h4>
-    <h4 class="text-dark"><%#= Spree.t('please_check_back_soon') %></h4>
-  </div>
-</div>
-</div> -->
-<%# end %>
-<%#= render "spree/shared/cms/pages/edit_mode", edit_mode: @edit_mode %>
+<% content_for :head do %>
+  <!-- Cleanup organization structured data -->
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+  <%= organization_structured_data(current_store) %>
+<% end %>
 <%= render partial: 'spree/shared/slider', locals: { slider: @home_slides, cid: 'home', interval: "3500" } %>
   <div class="search-wrapper">
     <div class="container-fluid">
