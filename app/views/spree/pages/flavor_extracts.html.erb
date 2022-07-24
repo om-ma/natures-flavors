@@ -8,10 +8,10 @@
       });
     });
   </script>
-  <%= article_structured_data(title, description) %>
 <% end %>
 <% self.title = title %>
 <% meta_tag :description, description %>
+<%= article_structured_data(title, description) %>
 <main class="page-contents">
    <div class="category-wrapper">
       <div class="row no-gutters">
