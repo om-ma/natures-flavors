@@ -16,6 +16,14 @@ Spree::StructuredDataHelper.module_eval do
     end
   end
 
+  def article_structured_data(title, description)
+    content_tag :script, type: 'application/ld+json' do
+      raw(
+        structured_article_hash(title, description).to_json
+      )
+    end
+  end
+
   private
 
   def structured_organization_hash(store)
@@ -26,7 +34,7 @@ Spree::StructuredDataHelper.module_eval do
         '@id': 'https://' + store.url,
         name: store.name,
         url: 'https://' + store.url,
-        logo: asset_path('logo.png'),
+        logo: asset_url('logo.png'),
         address: {
           '@type': 'PostalAddress',
           addressCountry: 'United States',
@@ -72,4 +80,21 @@ Spree::StructuredDataHelper.module_eval do
       }
     }
   end
+
+  def structured_article_hash(title, description)
+    Rails.cache.fetch(['article', title, "spree/structured-data/#{description}"]) do
+      {
+        '@context': 'https://schema.org/',
+        '@type': 'Article',
+        headline: title,
+        abstract: description,
+        publisher: {
+          '@type': 'Organization',
+          name: "Nature's Flavors",
+          logo: asset_url('logo.png')
+        }
+      }
+    end
+  end
+
 end

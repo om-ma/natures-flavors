@@ -1,5 +1,17 @@
-<% self.title = "What Are Flavor Emulsions?" %>
-<% meta_tag :description, "Learn about flavor emulsions, their best uses, and usage percentages! Make the perfect products with bakery emulsions, and never over-flavor again!" %>
+<% title = "What Are Flavor Emulsions?" %>
+<% description = "Learn about flavor emulsions, their best uses, and usage percentages! Make the perfect products with bakery emulsions, and never over-flavor again!" %>
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+  <%= article_structured_data(title, description) %>
+<% end %>
+<% self.title = title %>
+<% meta_tag :description, description %>
 <main class="page-contents">
    <div class="category-wrapper">
       <div class="row no-gutters">

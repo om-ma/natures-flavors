@@ -1,5 +1,17 @@
-<% self.title = "What Are Natural Flavors & Extracts?" %>
-<% meta_tag :description, "Learn more about natural flavors and extracts, their best applications, and usage percentages. Make perfect products, and never over or under-flavor them again!" %>
+<% title = "What Are Natural Flavors & Extracts?" %>
+<% description = "Learn more about natural flavors and extracts, their best applications, and usage percentages. Make perfect products, and never over or under-flavor them again!" %>
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+  <%= article_structured_data(title, description) %>
+<% end %>
+<% self.title = title %>
+<% meta_tag :description, description %>
 <main class="page-contents">
    <div class="category-wrapper">
       <div class="row no-gutters">
