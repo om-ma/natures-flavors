@@ -1,3 +1,32 @@
+<% content_for :head do %>
+<!-- cart form deals expire -->
+<script type="text/javascript" defer="defer">
+ $(document).on('turbolinks:load', function() {
+    var SalesExpiryDate= $('#deals-expiry').attr("data-SalesExpiryDate");
+      
+      var countDownDate = new Date(SalesExpiryDate).getTime();
+      var x = setInterval(function() {
+      
+
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        if (!isNaN(days)) {
+          $('#deals-expiry').html("<strong>Deal Expires in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
+          + seconds + "</strong> seconds </span> ")
+        }
+
+        if (distance < 0) {
+          clearInterval(x);
+          $('#deals-expiry').html("Expired ")
+        }
+      }, 1000);
+  });
+</script>
+<% end %>
 <% is_product_available_in_currency = product_available_in_currency? %>
 <% default_variant = default_variant(@variants, @product) %>
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
@@ -109,27 +138,3 @@
     </div>  
   <% end %>  
 </div>
-<script type="text/javascript">
- $( document ).on('turbolinks:load', function() {
-    var SalesExpiryDate= $('#deals-expiry').attr("data-SalesExpiryDate");
-      
-      var countDownDate = new Date(SalesExpiryDate).getTime();
-      var x = setInterval(function() {
-      
-
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          
-        $('#deals-expiry').html("<strong>Deal Expires in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
-        + seconds + "</strong> seconds </span> ")
-          
-        if (distance < 0) {
-          clearInterval(x);
-          $('#deals-expiry').html("Expired ")
-        }
-      }, 1000);
-  });
-</script>
