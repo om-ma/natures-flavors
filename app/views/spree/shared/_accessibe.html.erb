@@ -8,7 +8,7 @@
     });
     
     $(document).on('turbolinks:before-cache', function() {
-      $('.acsb-trigger, .acsb-widget').each(function() {
+      $('.acsb-skip-links, .acsb-trigger, .acsb-widget, .acsb-widget-blocker, .acsb-processor, .acsb-dynamic-colors').each(function() {
         this.parentNode.removeChild(this);
       });
     });
