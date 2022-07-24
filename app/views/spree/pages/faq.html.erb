@@ -26,13 +26,12 @@
       ]
    ]
 %>
-  <!-- Cleanup faqs structured data -->
-  <script type="text/javascript">
-    $(document).on('turbolinks:before-cache', function() {
-      $('script[type="application/ld+json"]').each(function() {
-        this.parentNode.removeChild(this);
+   <script type="text/javascript">
+      $(document).on('turbolinks:before-cache', function() {
+         $('script[type="application/ld+json"]').each(function() {
+            this.parentNode.removeChild(this);
+         });
       });
-    });
   </script>
   <%= faqs_structured_data(faqs) %>
 <% end %>
