@@ -1,3 +1,41 @@
+<% content_for :head do 
+   faqs = [
+      [
+         'What is a natural flavor?',
+         'A natural flavor is derived from plant, vegetable or fruit material. It does not contain any artificial or synthetic additives.'
+      ],
+      [
+         'Are any of your products artificial?',
+         'No! All of our products are natural and derived from plant and vegetable extracts.'
+      ],
+      [
+         'Are your products certified organic? Who certifies you?',
+         'We carry many certified organic products! Our organic products are certified by Organic Certifiers (www.OrganicCertifiers.com). All of our organic products are clearly labeled such.'
+      ],
+      [
+         'How do you know that your ingredients are actually natural and organic?',
+         'Our quality control department is staffed by microbiologists and chemists that utilize modern gas chromatography mass spectrometry (GCMS), mass spectrometry (MS), as well as high performance liquid chromatography (HPLC) tactics to get insight into the chemicals in the ingredients we receive and export.'
+      ],
+      [
+         'Which type of flavoring should I use?',
+         'The type of flavoring depends heavily on what your end goal is. We have information based on every flavor type on the bottom of our home page. Concentrates are the most versatile and can be used for a majority of applications if you''re just starting out.'
+      ],
+      [
+         'I used your flavors and they taste medicinal, metallic, soapy, artificial, and tastes like pure chemicals, why is that? Am I using your flavors right? How much flavor should I use in my application?',
+         'That''s probably because you''ve over flavored your application. Our flavors are pure, concentrated flavors. You won''t get any watered down flavors from us. Most applications should start with .25% to 1% usage, and up to a maximum of 4% of flavor by total weight. For example, The Flavor Guy used 10g of our alcohol-free extract into a 1000g of water & sugar to make a flavored syrup. That’s 1% of flavor into the total application, and it came out delicious and ready to use for a variety of things from coffee, to snow cones, teas, and more. The most common reason that people over-flavor their applications is because there is no potentiator. Just as you would add cream & sugar to your coffee, or honey to your teas; you must be sure to add something that would drive the flavor. Without sugar and acidity, an orange wouldn’t taste good, so be sure to add potentiators such as sugar, citric acid for fruit flavors (.15% is usually a good starting point), or add some fat content. For more in-depth flavoring guides, see our product info pages in the footer of our homepage.'
+      ]
+   ]
+%>
+  <!-- Cleanup faqs structured data -->
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+  <%= faqs_structured_data(faqs) %>
+<% end %>
 <% self.title = "Frequently Asked Questions" %>
 <% meta_tag :description, "Have some questions regarding our natural and organic products? We've got answers. If have a specific question, feel free to contact us." %>
 <main class="page-contents">

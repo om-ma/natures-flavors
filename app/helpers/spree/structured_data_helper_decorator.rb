@@ -3,7 +3,15 @@ Spree::StructuredDataHelper.module_eval do
   def organization_structured_data(store)
     content_tag :script, type: 'application/ld+json' do
       raw(
-        structured_organization_hash(store)
+        structured_organization_hash(store).to_json
+      )
+    end
+  end
+
+  def faqs_structured_data(faqs)
+    content_tag :script, type: 'application/ld+json' do
+      raw(
+        structured_faqs_hash(faqs).to_json
       )
     end
   end
@@ -11,7 +19,7 @@ Spree::StructuredDataHelper.module_eval do
   private
 
   def structured_organization_hash(store)
-    Rails.cache.fetch(["spree/structured-data/#{store.cache_key_with_version}"]) do
+    Rails.cache.fetch([store.name, "spree/structured-data/#{store.cache_key_with_version}"]) do
       {
         '@context': 'https://schema.org/',
         '@type': 'Organization',
@@ -41,4 +49,27 @@ Spree::StructuredDataHelper.module_eval do
     end
   end
 
+  def structured_faqs_hash(faqs)
+    Rails.cache.fetch(['faqs', "spree/structured-data/#{faqs}"]) do
+      {
+        '@context': 'https://schema.org/',
+        '@type': 'FAQPage',
+        mainEntity: 
+          faqs.map do |faq|
+            structured_faq(faq)
+          end
+      }
+    end
+  end
+
+  def structured_faq(faq)
+    {
+      "@type": "Question",
+      name: faq[0],
+      acceptedAnswer: {
+        '@type': "Answer",
+        text: faq[1]
+      }
+    }
+  end
 end
