@@ -1,3 +1,32 @@
+<% content_for :head do %>
+<!-- phone cart form deals expire -->
+<script type="text/javascript" defer="defer">
+  $(document).on('turbolinks:load', function() {
+    $(".js_drop_down").click();
+    $('body').click()
+    var SalesExpiryDatePhone= $('#DealsExpiryPhone').attr("data-SalesExpiryDatePhone");
+    var countDownDatePhone = new Date(SalesExpiryDatePhone).getTime();
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDatePhone - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+      if (!isNaN(days)) {
+        $('#DealsExpiryPhone').html("<strong>Deal Expires in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
+        + seconds + "</strong> seconds </span> ")
+      }
+
+      if (distance < 0) {
+        clearInterval(x);
+        $('#DealsExpiryPhone').html(" Expired ")
+      }
+    }, 1000);
+  });
+</script>
+<% end %>
 <% if (browser.device.mobile?) %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
@@ -100,27 +129,3 @@
     <%end%>
   </div>
 <% end %>
-<script type="text/javascript">
-  $( document ).on('turbolinks:load', function() {
-    $(".js_drop_down").click();
-    $('body').click()
-    var SalesExpiryDatePhone= $('#DealsExpiryPhone').attr("data-SalesExpiryDatePhone");
-    var countDownDatePhone = new Date(SalesExpiryDatePhone).getTime();
-    var x = setInterval(function() {
-      var now = new Date().getTime();
-      var distance = countDownDatePhone - now;
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-      $('#DealsExpiryPhone').html("<strong>Deal Expires in: <span>" + days + "</strong> day </span><span><strong>" + hours + "</strong> hours </span><strong><span>"
-      + seconds + "</strong> seconds </span> ")
-         
-      if (distance < 0) {
-        clearInterval(x);
-        $('#DealsExpiryPhone').html(" Expired ")
-      }
-    }, 1000);
-  });
-</script>
