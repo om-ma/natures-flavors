@@ -1,4 +1,14 @@
-
+<% content_for :head do %>
+  <!-- Cleanup organization structured data -->
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+  <%= organization_structured_data(current_store) %>
+<% end %>
 <%= render partial: 'spree/shared/slider', locals: { slider: @home_slides, cid: 'home', interval: "3500" } %>
   <div class="search-wrapper">
     <div class="container-fluid">
