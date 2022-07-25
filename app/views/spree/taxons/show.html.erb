@@ -1,14 +1,3 @@
-<!-- <div class="taxon">
-  <div class="container">
-    <%= spree_breadcrumbs(@taxon) %>
-    <%#= render 'header', taxon: @taxon %>
-  </div>
-  <%#= render 'subcategories', taxon: @taxon %>
-  <div data-hook="taxon_products">
-    <%#= render template: 'spree/products/index', colors: @colors, sizes: @sizes %>
-  </div>
-</div>
- -->
 <% cache [@taxon, @products, @all_categories] do %>
 <% desc = taxon_description(@taxon) %>
 <main class="page-contents">
