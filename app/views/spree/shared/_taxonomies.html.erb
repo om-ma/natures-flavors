@@ -7,7 +7,7 @@
     <% else %>
       <ul class="sidebar-sub-categories">
         <li>
-          <%= link_to taxon.name, seo_url(taxon) %>
+          <%= link_to taxon.name, seo_url(taxon), data: { turbolinks: false } %>
         </li>
       </ul>
     <% end %>
@@ -17,7 +17,7 @@
   <% if all_categories.present? %>
     <% all_categories.each do |taxonomy| %>
       <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
-        <%= link_to taxonomy.name, seo_url(taxonomy) %>
+        <%= link_to taxonomy.name, seo_url(taxonomy), data: { turbolinks: false } %>
         <% if taxonomy.root.children.any? %>
           <%= taxons_tree(taxonomy, @taxon, max_level) %>
         <% end %>
