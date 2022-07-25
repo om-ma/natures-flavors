@@ -1,5 +1,17 @@
-<% self.title = "What Are Flavoring Oils for Candy, Baking & More?" %>
-<% meta_tag :description, "Flavoring oils are used in oil-based chocolates, lip balms, candles & more. Learn about flavoring oils for candy as well as baking & cooking applications." %>
+<% title = "What Are Flavoring Oils for Candy, Baking & More?" %>
+<% description = "Flavoring oils are used in oil-based chocolates, lip balms, candles & more. Learn about flavoring oils for candy as well as baking & cooking applications." %>
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+<% end %>
+<% self.title = title %>
+<% meta_tag :description, description %>
+<%= article_structured_data(title, description) %>
 <main class="page-contents">
    <div class="category-wrapper">
    <div class="row no-gutters">

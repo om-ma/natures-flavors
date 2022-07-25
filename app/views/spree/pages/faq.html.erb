@@ -1,4 +1,4 @@
-<% content_for :head do 
+<%
    faqs = [
       [
          'What is a natural flavor?',
@@ -26,18 +26,18 @@
       ]
    ]
 %>
-  <!-- Cleanup faqs structured data -->
-  <script type="text/javascript">
-    $(document).on('turbolinks:before-cache', function() {
-      $('script[type="application/ld+json"]').each(function() {
-        this.parentNode.removeChild(this);
+<% content_for :head do %>
+   <script type="text/javascript">
+      $(document).on('turbolinks:before-cache', function() {
+         $('script[type="application/ld+json"]').each(function() {
+            this.parentNode.removeChild(this);
+         });
       });
-    });
   </script>
-  <%= faqs_structured_data(faqs) %>
 <% end %>
 <% self.title = "Frequently Asked Questions" %>
 <% meta_tag :description, "Have some questions regarding our natural and organic products? We've got answers. If have a specific question, feel free to contact us." %>
+<%= faqs_structured_data(faqs) %>
 <main class="page-contents">
    <div class="category-wrapper">
       <div class="row no-gutters">

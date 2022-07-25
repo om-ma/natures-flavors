@@ -1,5 +1,17 @@
-<% self.title = "What Are Flavor Powder" %>
-<% meta_tag :description, "Our flavoring powders dissolve in warm water & are great for instant mixes. Learn about flavor powders & how they hold up to high heat for baking applications." %>
+<% title = "What Are Flavor Powder" %>
+<% description = "Our flavoring powders dissolve in warm water & are great for instant mixes. Learn about flavor powders & how they hold up to high heat for baking applications." %>
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+<% end %>
+<% self.title = title %>
+<% meta_tag :description, description %>
+<%= article_structured_data(title, description) %>
 <main class="page-contents">
    <div class="category-wrapper">
       <div class="row no-gutters">

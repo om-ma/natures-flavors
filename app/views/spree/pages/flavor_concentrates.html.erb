@@ -1,5 +1,17 @@
-<% self.title = "What Are Flavor Concentrates?" %>
-<% meta_tag :description, "See what the usage guidelines are for flavor concentrates & how to avoid over-flavoring your masterpiece. Learn what the best uses for flavor concentrates are." %>
+<% title = "What Are Flavor Concentrates?" %>
+<% description = "See what the usage guidelines are for flavor concentrates & how to avoid over-flavoring your masterpiece. Learn what the best uses for flavor concentrates are." %>
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).on('turbolinks:before-cache', function() {
+      $('script[type="application/ld+json"]').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+  </script>
+<% end %>
+<% self.title = title %>
+<% meta_tag :description, description %>
+<%= article_structured_data(title, description) %>
 <main class="page-contents">
    <div class="category-wrapper">
       <div class="row no-gutters">
