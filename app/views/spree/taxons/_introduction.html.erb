@@ -24,7 +24,7 @@
       <div class="col-xl-4">
          <div class="category-intro more">
             <%= taxon_short_description(@taxon) %>
-            <% if @has_description = true %><span class="moreellipses">...&nbsp;</span><a href="#more-category-description" data-turbolinks="false" class="morelink">more</a><% end %>
+            <% if @taxon.description.present? %><a href="#more-category-description" data-turbolinks="false"><strong>Read more</strong></a><% end %>
          </div>
       </div>
    </div>
