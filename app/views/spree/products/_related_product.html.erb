@@ -1,7 +1,7 @@
 <% url = spree.product_path(product, taxon_id: @taxon&.id) %>
 <div class="">
   <div class="product-wrap" id="product_<%= product.id %>">
-    <%= link_to url do %>
+    <%= link_to url, data: { turbolinks: false } do %>
       <div class="product-img">
         <%= plp_and_carousel_image(product, image_class) %>
         <div class="price"><%= display_price(product) %></div>

@@ -9,9 +9,9 @@
           <div class="wrap">
             <p>You might need this:</p>
             <div class="similar-item-thumb">
-              <%= link_to plp_and_carousel_image( product), product_path(product) %>
+              <%= link_to plp_and_carousel_image( product), product_path(product), data: { turbolinks: false }  %>
             </div>
-            <%= link_to product_path(product) do %>
+            <%= link_to product_path(product), data: { turbolinks: false } do %>
               <h4><%= truncate(product.name, :length => 50)%></h4>
             <% end %>
             <% favorite_item_present = spree_current_user.has_favorite_product?(object.id) || spree_current_user.has_favorite_variant?(object.id) %>
