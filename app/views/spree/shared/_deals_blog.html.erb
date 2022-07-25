@@ -13,7 +13,7 @@
           <% sale_products.sample(2).each do |sale_product| %>
             <div class="product-wrap">
               <% url = spree.product_path(sale_product, taxon_id: "") %>
-               <%= link_to url do %>
+               <%= link_to url, data: { turbolinks: false } do %>
                   <div class="product-img">
                     <% image_class = "" %>
                      <%= plp_and_carousel_image(sale_product, image_class) %>
