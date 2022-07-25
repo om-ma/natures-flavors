@@ -34,7 +34,7 @@ Spree::StructuredDataHelper.module_eval do
         '@id': 'https://' + store.url,
         name: store.name,
         url: 'https://' + store.url,
-        logo: asset_url('logo.png'),
+        logo: asset_url('theme_logo.svg'),
         address: {
           '@type': 'PostalAddress',
           addressCountry: 'United States',
@@ -91,7 +91,7 @@ Spree::StructuredDataHelper.module_eval do
         publisher: {
           '@type': 'Organization',
           name: "Nature's Flavors",
-          logo: asset_url('logo.png')
+          logo: asset_url('theme_logo.svg')
         }
       }
     end
