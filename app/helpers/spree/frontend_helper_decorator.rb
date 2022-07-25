@@ -132,7 +132,7 @@ Spree::FrontendHelper.class_eval do
 
   def taxon_short_description(taxon)
     if taxon.short_description.present?
-      strip_tags(taxon.short_description)
+      taxon.short_description.html_safe
     else
       if @taxon.description.present?
         sentences = strip_tags(@taxon.description).split('.')
