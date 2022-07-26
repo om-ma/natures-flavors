@@ -1,4 +1,8 @@
-<script>
+<!-- Doofinder -->
+<script type="text/javascript">
+$(document).on('turbolinks:load', function() {
+  delete window.doofinderLoader;
+
   const dfLayerOptions = {
   <% if Rails.env.production? %>
     installationId: '854e3298-7b2b-4e1c-b9b8-43ba9ca21aef',
@@ -14,4 +18,15 @@
   })(document, 'script', 'https://cdn.doofinder.com/livelayer/1/js/loader.min.js', function () {
     doofinderLoader.load(dfLayerOptions);
   });
+});
+
+$(document).on('turbolinks:before-cache', function() {
+  $('script[src*="doofinder"]').each(function() {
+    this.parentNode.removeChild(this);
+  });
+
+  $('.dfd-root').each(function() {
+    this.parentNode.removeChild(this);
+  });
+});
 </script>
