@@ -1023,7 +1023,7 @@ a.btn.btn-block {
 	background: linear-gradient(111deg, #fff 26%, #f1f1f1 73%);
 	height: 50px;
 	padding: 0 20px 0 50px;
-	max-width: 230px;
+	max-width: 260px;
 	border-color: transparent;
 }
 
@@ -2896,6 +2896,10 @@ h3 a{
 	z-index: 10;
 }
 
+.search-custom-btn:before {
+	cursor: default;
+}
+
 @media (max-width: 1790px)  { .category-intro { padding: 20px 30px 0px 60px; font-size: 20px;} }
 @media (max-width: 1680px)  { .category-intro { padding: 80px 60px 0px 60px; font-size: 18px;} }
 @media (max-width: 1440px)  { .category-intro { padding: 40px 30px 0px 60px; font-size: 16px;} }
@@ -3342,9 +3346,10 @@ h3 a{
 	padding: 35px 55px 35px 120px;
 }
 
-.tab-content-wrap p {
-	font-size: 19px;
-	line-height: 29px;
+
+.tab-pane p, .tab-content-wrap p {
+	font-size: 17px;
+	line-height: 26px;
 }
 
 .table.documents-table {
@@ -5219,6 +5224,12 @@ h3 a{
 }
 }
 
+@media (max-width: 1650px) {
+.header-search .form-control {
+	max-width: 180px;
+}
+}
+
 @media (max-width: 1450px) {
 .navbar-nav {
     margin: 0 0 0 30px;
@@ -5231,11 +5242,7 @@ h3 a{
 .navbar-nav .nav-link {
     font-size: 16px;
 }
-	
-.header-search .form-control {
-	max-width: 180px;
-}
-	
+
 .navbar-nav .dropdown-menu {
     margin: 0 0 0 30px;
 }
@@ -5929,11 +5936,11 @@ display: flex;
 	padding: 15px 20px;
 }
 	
-.tab-content-wrap p {
+.tab-pane p, .tab-content-wrap p{
     font-size: 17px;
-    line-height: 26px;
+    line-height: 24px;
 }
-	
+
 .product-tabs-wrapper .latest-deals {
     border-left: 0 none;
 }
