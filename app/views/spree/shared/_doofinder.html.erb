@@ -22,7 +22,7 @@ $(document).on('turbolinks:load', function() {
 
 $(document).on('turbolinks:before-cache', function() {
   $('#doofinder-search-results').each(function() {
-    this.innerHTML('');
+    this.parentNode.removeChild(this);
   });
 });
 </script>
