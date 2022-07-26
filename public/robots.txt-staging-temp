@@ -9,7 +9,7 @@ Disallow: /api
 Disallow: /password
 Disallow: /admin
 Disallow: /favorite_products
-Disallow: /*?*taxon_id=
-Disallow: /*?*sort_by=
+Disallow: /*?*taxon_id=*
+Disallow: /*?*sort_by=*
 
 Sitemap: https://naturesflavors.naturlax.org/sitemap

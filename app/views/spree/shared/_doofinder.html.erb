@@ -21,12 +21,8 @@ $(document).on('turbolinks:load', function() {
 });
 
 $(document).on('turbolinks:before-cache', function() {
-  $('script[src*="doofinder"]').each(function() {
-    this.parentNode.removeChild(this);
-  });
-
-  $('.dfd-root').each(function() {
-    this.parentNode.removeChild(this);
+  $('#doofinder-search-results').each(function() {
+    this.innerHTML('');
   });
 });
 </script>
