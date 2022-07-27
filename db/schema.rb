@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_27_213125) do
+ActiveRecord::Schema.define(version: 2022_07_27_173753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,17 @@ ActiveRecord::Schema.define(version: 2022_06_27_213125) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "mailchimp_settings", id: :serial, force: :cascade do |t|
+    t.string "mailchimp_api_key"
+    t.string "mailchimp_store_id"
+    t.string "mailchimp_list_id"
+    t.string "mailchimp_store_name"
+    t.string "cart_url"
+    t.string "mailchimp_account_name"
+    t.string "state", default: "inactive"
+    t.string "mailchimp_store_email"
   end
 
   create_table "spree_addresses", id: :serial, force: :cascade do |t|
@@ -564,6 +575,8 @@ ActiveRecord::Schema.define(version: 2022_06_27_213125) do
     t.decimal "non_taxable_adjustment_total", precision: 10, scale: 2, default: "0.0", null: false
     t.boolean "store_owner_notification_delivered"
     t.string "production_state"
+    t.boolean "mailchimp_cart_created"
+    t.string "mailchimp_campaign_id"
     t.index ["approver_id"], name: "index_spree_orders_on_approver_id"
     t.index ["bill_address_id"], name: "index_spree_orders_on_bill_address_id"
     t.index ["canceler_id"], name: "index_spree_orders_on_canceler_id"
