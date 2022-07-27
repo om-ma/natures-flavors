@@ -124,10 +124,10 @@ migration/sql/update_taxons.sql (DONE)
 migration/sql/delete_products_from_extracts_and_flavorings_taxon (DONE)
 
 TERMINAL:
-bin/rails r migration/upload_category_images.rb (DONE)
-bin/rails r migration/delete_inactive_taxon.rb (DONE)
-bin/rails r migration/fix_variant_master_price.rb (DONE)
-bin/rails r migration/reorder_variants_by_price.rb (DONE)
+bin/rails runner migration/upload_category_images.rb (DONE)
+bin/rails runner migration/delete_inactive_taxon.rb (DONE)
+bin/rails runner migration/fix_variant_master_price.rb (DONE)
+bin/rails runner migration/reorder_variants_by_price.rb (DONE)
 
 
 BACKEND:
