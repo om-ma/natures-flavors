@@ -178,6 +178,18 @@ GIT
       spree_extension (~> 0.0.5)
 
 GIT
+  remote: https://github.com/ducl13/spree_mailchimp_ecommerce.git
+  revision: aaead207049ad3383a02d680b7553f259ab263e7
+  branch: master
+  specs:
+    spree_mailchimp_ecommerce (1.0.2)
+      deface
+      gibbon (~> 3.3)
+      spree_backend (>= 3.3.0, < 5.0)
+      spree_core (>= 3.3.0, < 5.0)
+      spree_extension
+
+GIT
   remote: https://github.com/ducl13/spree_product_feed.git
   revision: db09101abe89d29a473c42044eaf33b3346ff44d
   branch: 3-7-caching
@@ -1860,6 +1872,9 @@ GEM
     fugit (1.5.3)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
+    gibbon (3.4.4)
+      faraday (>= 1.0)
+      multi_json (>= 1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     glyphicons (1.0.2)
@@ -2282,6 +2297,7 @@ DEPENDENCIES
   spree_gateway (~> 3.9)
   spree_html_invoice!
   spree_i18n (~> 5.0)
+  spree_mailchimp_ecommerce!
   spree_paypal_express!
   spree_product_feed!
   spree_sales!

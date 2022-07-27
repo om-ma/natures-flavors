@@ -121,6 +121,7 @@ migration/sql/update_meta_data.sql (DONE)
 migration/sql/update_products_properties.sql (DONE)
 migration/sql/update_products_short_descriptions.sql (DONE)
 migration/sql/update_taxons.sql (DONE)
+migration/sql/delete_products_from_extracts_and_flavorings_taxon (DONE)
 
 TERMINAL:
 bin/rails r migration/upload_category_images.rb (DONE)
