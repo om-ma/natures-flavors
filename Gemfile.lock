@@ -178,18 +178,6 @@ GIT
       spree_extension (~> 0.0.5)
 
 GIT
-  remote: https://github.com/ducl13/spree_product_feed.git
-  revision: db09101abe89d29a473c42044eaf33b3346ff44d
-  branch: 3-7-caching
-  specs:
-    spree_product_feed (0.0.1.alpha)
-      deface (~> 1.0)
-      spree_api (> 3.7, < 5.0)
-      spree_backend (> 3.7, < 5.0)
-      spree_core (> 3.7, < 5.0)
-      spree_extension
-
-GIT
   remote: https://github.com/ducl13/spree_sales.git
   revision: 2be56d96fb324ae336f0a51663415d60bba157e6
   branch: master
@@ -261,6 +249,16 @@ GIT
       spree_core (>= 3.2.0, < 5.0)
       spree_extension
       spree_frontend (>= 3.2.0, < 5.0)
+
+PATH
+  remote: ../spree_product_feed
+  specs:
+    spree_product_feed (0.0.1.alpha)
+      deface (~> 1.0)
+      spree_api (> 3.7, < 5.0)
+      spree_backend (> 3.7, < 5.0)
+      spree_core (> 3.7, < 5.0)
+      spree_extension
 
 GEM
   remote: https://rubygems.org/
