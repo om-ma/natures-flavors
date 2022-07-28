@@ -1,6 +1,6 @@
-Generate product feed every night at 2 AM:
+Generate product feed to AWS S3 every night at 2 AM:
   cron: "0 2 * * *"
-  class: "GenerateProductFeedWorker"
+  class: "GenerateProductFeedWorkerAwsS3"
   queue: default
 
 Refresh sitemap at 2:10 AM:
@@ -8,7 +8,7 @@ Refresh sitemap at 2:10 AM:
   class: "SitemapRefreshWorker"
   queue: default
 
-Generate Doofinder feed AWS S3 at 2:20 AM:
+Generate Doofinder feed to AWS S3 at 2:20 AM:
   cron: "20 2 * * *"
   class: "DoofinderFeedWorkerAwsS3"
   queue: default
