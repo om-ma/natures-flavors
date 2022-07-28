@@ -38,7 +38,7 @@
     <div class="form-group form-floating mb-20" data-hook="card_expiration">
       <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: "form-control cardExpiry #{payment_method.type.parameterize}-card-expiry ", placeholder: "MM/YYYY" %>
       <%= label_tag "card_expiry", class: "control-label" do %>
-        Expiration<abbr>*</abbr>
+        Expiration<abbr>* (MM/YYYY)</abbr>
       <% end %>
     </div>
   </div>

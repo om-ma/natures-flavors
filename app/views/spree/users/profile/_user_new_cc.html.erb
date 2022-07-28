@@ -30,7 +30,7 @@
         <div class="form-group form-floating mb-20" data-hook="card_expiration">
           <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: "form-control required cardExpiry", placeholder: "Expiration" %>
           <%= label_tag "card_expiry" do %>
-            <%= Spree.t(:expiration) %><abbr>*</abbr>
+            <%= Spree.t(:expiration) %><abbr>* (MM/YYYY)</abbr>
           <% end %>
         </div>
       </div>
