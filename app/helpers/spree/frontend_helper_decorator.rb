@@ -129,48 +129,7 @@ Spree::FrontendHelper.class_eval do
       "/"
     end
   end
-
-  def taxon_short_description(taxon)
-    if taxon.short_description.present?
-      taxon.short_description.html_safe
-    else
-      if @taxon.description.present?
-        sentences = strip_tags(@taxon.description).split('.')
-        short_description = ''
-        sentences.each do |sentence|
-          if (short_description + ". " + sentence).length > 260
-            return short_description
-          else
-            short_description = short_description + sentence + ". "
-          end
-        end
-      else
-        ""
-      end
-    end
-  end
-
-  def taxon_description(taxon)
-    if taxon.short_description.present?
-      taxon.description.html_safe
-    else
-      if @taxon.description.present?
-        sentences = strip_tags(@taxon.description).split('.')
-        short_description = ''
-        start_index = 0
-        sentences.each_with_index do |sentence, i|
-          if (short_description + ". " + sentence).length > 260
-            return sentences.drop(i).join(". ")
-          else
-            short_description = short_description + sentence + ". "
-          end
-        end
-      else
-        ""
-      end
-    end
-  end
-
+  
   def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
     max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
     all_categories_cache_keys = "spree/all_categories/#{all_categories.map(&:id).join('-')}"
