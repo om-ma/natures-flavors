@@ -251,7 +251,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/duc.lam/spree_yotpo.git
-  revision: ead4499bf9db80279e0e3355308395a288894ddc
+  revision: fd151ee7fd443f5d9ae7ed869be33b033f5f63af
   branch: naturesflavors
   specs:
     spree_yotpo (1.0.0)
@@ -1690,10 +1690,10 @@ GEM
       tzinfo
     excon (0.92.3)
     execjs (2.8.1)
-    faraday (2.3.0)
+    faraday (2.4.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
-    faraday-net_http (2.0.3)
+    faraday-net_http (2.1.0)
     ffaker (2.21.0)
     ffi (1.15.5)
     fission (0.5.0)
@@ -1961,7 +1961,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
-    oj (3.13.17)
+    oj (3.13.18)
     optimist (3.0.1)
     orm_adapter (0.5.0)
     ovirt-engine-sdk (4.4.1)
