@@ -37,7 +37,7 @@ Spree::FrontendHelper.class_eval do
     crumbs = [content_tag(:li, content_tag(
       :a, content_tag(
       :span, Spree.t(:home), itemprop: 'name'
-    ) << content_tag(:meta, nil, itemprop: 'position', content: '0'), itemprop: 'url', href: spree.root_path
+    ) << content_tag(:meta, nil, itemprop: 'position', content: '0'), itemprop: 'url', href: spree.root_path, data: { turbolinks: false }
     ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: spree.root_path), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')]
 
     if taxon
@@ -48,7 +48,7 @@ Spree::FrontendHelper.class_eval do
         content_tag(:li, content_tag(
           :a, content_tag(
           :span, ancestor.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: index + 1), itemprop: 'url', href: seo_url(ancestor, params: permitted_product_params)
+        ) << content_tag(:meta, nil, itemprop: 'position', content: index + 1), itemprop: 'url', href: seo_url(ancestor, params: permitted_product_params), data: { turbolinks: false }
         ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(ancestor, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')
       end
 
@@ -57,13 +57,13 @@ Spree::FrontendHelper.class_eval do
         crumbs << content_tag(:li, content_tag(
           :a,content_tag(
           :span, taxon.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params)
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params), data: { turbolinks: false }
         ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
       else
         crumbs << content_tag(:li, content_tag(
           :div,content_tag(
           :span, taxon.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params)
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params), data: { turbolinks: false }
         ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
       end
       # breadcrumbs for product
@@ -129,48 +129,7 @@ Spree::FrontendHelper.class_eval do
       "/"
     end
   end
-
-  def taxon_short_description(taxon)
-    if taxon.short_description.present?
-      taxon.short_description.html_safe
-    else
-      if @taxon.description.present?
-        sentences = strip_tags(@taxon.description).split('.')
-        short_description = ''
-        sentences.each do |sentence|
-          if (short_description + ". " + sentence).length > 260
-            return short_description
-          else
-            short_description = short_description + sentence + ". "
-          end
-        end
-      else
-        ""
-      end
-    end
-  end
-
-  def taxon_description(taxon)
-    if taxon.short_description.present?
-      taxon.description.html_safe
-    else
-      if @taxon.description.present?
-        sentences = strip_tags(@taxon.description).split('.')
-        short_description = ''
-        start_index = 0
-        sentences.each_with_index do |sentence, i|
-          if (short_description + ". " + sentence).length > 260
-            return sentences.drop(i).join(". ")
-          else
-            short_description = short_description + sentence + ". "
-          end
-        end
-      else
-        ""
-      end
-    end
-  end
-
+  
   def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
     max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
     all_categories_cache_keys = "spree/all_categories/#{all_categories.map(&:id).join('-')}"
