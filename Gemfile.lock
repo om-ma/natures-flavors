@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree-html-invoice.git
-  revision: 0d935f1dec531e2318d71224b76a0e76af727dea
+  revision: 18248cd512912d17fbb0d1f5076f522fd2df2433
   branch: master
   specs:
     spree_html_invoice (3.4.0)

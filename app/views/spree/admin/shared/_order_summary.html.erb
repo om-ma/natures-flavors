@@ -95,6 +95,16 @@
             </td>
           </tr>
         <% end %>
+          <tr>
+            <td>
+              <strong><%= Spree.t(:coa_requested) %>:</strong>
+            </td>
+            <td id='production_status'>
+              <span class="state badge badge-reqest_coa-<%= (@order.request_coa ? "yes" : "no") %>">
+                <%= (@order.request_coa ? "YES" : "No") %>
+              </span>
+            </td>
+          </tr>
         <% if @order.payment_state.present? %>
           <tr>
             <td>

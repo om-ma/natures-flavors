@@ -577,6 +577,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_173753) do
     t.string "production_state"
     t.boolean "mailchimp_cart_created"
     t.string "mailchimp_campaign_id"
+    t.boolean "request_coa", default: false
     t.index ["approver_id"], name: "index_spree_orders_on_approver_id"
     t.index ["bill_address_id"], name: "index_spree_orders_on_bill_address_id"
     t.index ["canceler_id"], name: "index_spree_orders_on_canceler_id"

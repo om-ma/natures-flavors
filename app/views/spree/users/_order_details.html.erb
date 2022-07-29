@@ -69,6 +69,14 @@
 											<% end %>
 										</p>
 									</div>
+									<% if order.request_coa %>
+									<div class="profile-order-summary">
+										<h6>Documentation:</h6>
+										<p>
+											COA (Certificate of Authenticity) requested.
+										</p>
+									</div>
+									<% end %>
 								</div>
 								<div class="order-summary">
 									<% order.line_items.each do|s| %>

@@ -36,6 +36,7 @@ en:
       spree/order:
         customer_name: "Customer Name"
         production_state: "Production State"
+        coa_requested: COA Requested
   hello: "Hello world"
   spree:
     password: "Password*"
@@ -86,3 +87,4 @@ en:
       complete: complete
       canceled: canceled
     production_state_selected_same_as_previous: The selected value is the same as the current value.
+    coa_requested: COA Requested

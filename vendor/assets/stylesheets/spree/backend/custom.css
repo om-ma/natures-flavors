@@ -6,6 +6,10 @@
   color: white !important;
 }
 
+.badge-reqest_coa-yes {
+  background-color: #F8D053;
+}
+
 .container-lg {
   max-width: 2000px;
 }
