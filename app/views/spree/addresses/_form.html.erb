@@ -81,7 +81,7 @@
   <% end %>
   <% if spree_current_user.present? %>
     <div class="col-sm-12">
-      <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center mb-60">
+      <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center">
         <% is_use_addresses_present = spree_current_user.addresses.present? ? true : false %>
         <% if( request.fullpath.include? "/checkout") %>
           <div class="custom-checkbox" >
