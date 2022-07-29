@@ -149,7 +149,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_comments.git
-  revision: 340cda07bb4a7860d5e81b718f02fd99373bc915
+  revision: 84bec21847bf6b338cffca5f21b64c779c8fc278
   branch: master
   specs:
     spree_comments (3.3.0)
