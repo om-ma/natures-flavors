@@ -22,7 +22,7 @@ RUN bundle config --global frozen 1 \
   && find /usr/local/bundle/gems/ -name "*.o" -delete
 
 ADD . /app
-RUN cp ./public/robots.txt-staging-temp ./public/robots.txt
+RUN cp ./public/robots.txt-staging ./public/robots.txt
 
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_KEY
