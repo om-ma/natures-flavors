@@ -10,28 +10,9 @@
           <div class="right"><a href="/sale" class="btn btn-primary">All Deals</a></div>
        </div>
        <div class="products-wrapper d-sm-flex align-items-start">
-          <% sale_products.sample(2).each do |sale_product| %>
-            <div class="product-wrap">
-              <% url = spree.product_path(sale_product, taxon_id: "") %>
-               <%= link_to url, data: { turbolinks: false } do %>
-                  <div class="product-img">
-                    <% image_class = "" %>
-                     <%= plp_and_carousel_image(sale_product, image_class) %>
-                     <div class="price">
-                      <% if sale_product&.sale_prices&.active&.present? %>
-                        <span> <%= display_original_price(sale_product.lowest_sale_price.price.variant) %></span>
-                        <%= sale_product.lowest_sale_price.display_price %>
-                      <% else %>
-                        <%= display_price(sale_product) %>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="product-desc">
-                     <h4>Acorn Flavored Powder, Natural</h4>
-                  </div>
-               <% end %>
-            </div>
-          <% end %>  
+         <% sale_products.sample(2).each do |sale_product| %>
+            <%= render 'spree/shared/deals_blog_product', product: sale_product %>
+         <% end %>  
        </div>
     </div>
  </div>

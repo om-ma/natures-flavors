@@ -1,6 +1,10 @@
 <% url = spree.product_path(product, taxon_id: @taxon&.id) %>
+<% 
+  # For spree_yotpo override
+  @product = product
+%>
 <div class="col-xl-2 col-lg-4 col-sm-6">
-  <div class="product-wrap" id="product_<%= product.id %>">
+  <div class="product-wrap" id="product_<%= product.id %>" data-hook="products_list_item">
     <%= link_to url, data: { turbolinks: false } do %>
       <div class="product-img">
         <%= plp_and_carousel_image(product, image_class) %>
