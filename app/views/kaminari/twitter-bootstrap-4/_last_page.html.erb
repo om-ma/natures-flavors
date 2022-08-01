@@ -12,5 +12,5 @@
   </li> -->
 <%# end %>
 <li class="page-item"><%# "next" class present for border styling in twitter bootstrap %>
-  <%= link_to total_pages, url, remote: remote, class: "page-link #{current_page == total_pages ? "active" : ''}"  %>
+  <%= link_to total_pages, url, remote: remote, class: "page-link #{current_page == total_pages ? "active" : ''}", data: { turbolinks: false } %>
 </li>

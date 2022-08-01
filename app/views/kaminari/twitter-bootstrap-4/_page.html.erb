@@ -17,5 +17,5 @@
     } %>
 </li> -->
 <li class="page-item">
-  <%= link_to page, url ,remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil, class: "page-link #{current_page==page ? "active" : ''}"  %>
+  <%= link_to page, url ,remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil, class: "page-link #{current_page==page ? "active" : ''}", data: { turbolinks: false } %>
 </li>
