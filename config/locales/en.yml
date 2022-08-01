@@ -37,7 +37,10 @@ en:
         customer_name: "Customer Name"
         production_state: "Production State"
         coa_requested: COA Requested
-  hello: "Hello world"
+  devise:
+    user_passwords:
+      spree_user:
+        send_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
   spree:
     password: "Password*"
     email: "Email Address*"
