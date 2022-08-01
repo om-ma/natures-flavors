@@ -42,5 +42,9 @@ module NaturesFlavors
     config.organization = "Nature's Flavors"
     config.brand = "Nature's Flavors"
     config.price_valid_until = "2100-01-01"
+
+    # Override field_error_proc (backend/config/initializers/form_builder.rb)
+    # Disable wrapping <span> around field errors
+    config.action_view.field_error_proc = proc { |html_tag, instance| html_tag.html_safe }
   end
 end
