@@ -1,4 +1,4 @@
-<% sale_products = Spree::Product.with_variant_sales %>
+<% sale_products = Spree::Product.in_sale %>
 <% if sale_products.present? %>
   <div class="col-lg-6">
     <div class="latest-deals">
