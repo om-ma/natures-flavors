@@ -12,3 +12,8 @@ Generate Doofinder feed to AWS S3 at 12:30 AM:
   cron: "30 0 * * *"
   class: "DoofinderFeedWorkerAwsS3"
   queue: default
+
+YotPo cache worker at 1:00 AM:
+  cron: "0 1 * * *"
+  class: "YotpoCacheWorker"
+  queue: default
