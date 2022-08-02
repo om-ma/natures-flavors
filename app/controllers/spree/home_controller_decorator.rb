@@ -21,7 +21,7 @@ Spree::HomeController.class_eval do
       Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
     end
     
-    @deals_products            = Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
+    @deals_products            = Spree::Product.with_variant_sales.present? ? Spree::Product.with_variant_sales.first(6) : []
     
     @popular_extracts_products = Rails.cache.fetch("@popular_extracts_products", expires_in: Rails.configuration.x.cache.expiration) do
       popular_extracts           = Spree::Taxon.find_by_name("Flavor Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''

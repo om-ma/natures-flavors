@@ -63,7 +63,7 @@
               <li>
             <% end %>
           <% end %>
-          <% sales_present = Spree::Product.in_sale.present? %>
+          <% sales_present = Spree::Product.with_variant_sales.present? %>
           <% if sales_present %>
             <li>
               <span data-turbolinks="false" class="link" onclick="location='<%= sale_path %>'">Deals</span>
