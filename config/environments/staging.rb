@@ -132,8 +132,8 @@ Rails.application.configure do
   # YotPo - Staging keys
   config.x.yotpo.app_key = 'j7hsvZFhxG8jUooYglRviEapbHJAmxE7hCrOhHmH'
   config.x.yotpo.secret_key = 'g6mJW31KvNIVFBNRU8pYrVGaY9kwPyAPZ76WZ6Zs'
-  config.x.yotpo.rich_snippets_refresh_time = 1.minutes
-  config.x.yotpo.reviews_refresh_time = 1.minutes
+  config.x.yotpo.rich_snippets_refresh_time = 25.hours
+  config.x.yotpo.reviews_refresh_time = 25.hours
 
   # Low-level cache expiration
   config.x.cache.expiration = 24.hours
