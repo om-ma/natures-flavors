@@ -1,7 +1,3 @@
-<% 
-  # For spree_yotpo override
-  @product = product
-%>
 <% url = spree.product_path(product, taxon_id: @taxon&.id) %>
 <div class="col-xl-2 col-lg-4 col-6">
   <div class="product-wrap" id="product_<%= product.id %>" data-hook="products_list_item">
