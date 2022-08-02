@@ -12,7 +12,7 @@
   </li> -->
 <%# end %>
   <li class="page-item">
-    <%= link_to url, rel: 'next', remote: remote, class:"btn btn-primary" do%>
+    <%= link_to url, rel: 'next', remote: remote, class:"btn btn-primary", data: { turbolinks: false } do%>
       <span>Next Page</span>
     <%end%>
   </li>

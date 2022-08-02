@@ -12,7 +12,7 @@
   </li>
 <%# end %>
   <li class="page-item" >
-    <%= link_to url, remote: remote, class: "page-link #{current_page == 1 ? "active" : ''}" do %>
+    <%= link_to url, remote: remote, class: "page-link #{current_page == 1 ? "active" : ''}", data: { turbolinks: false } do %>
       1
     <%end%>
   </li>

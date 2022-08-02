@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v14'
+  config.assets.prefix = '/assets/v16'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -129,8 +129,8 @@ Rails.application.configure do
   # YotPo
   config.x.yotpo.app_key = 'QtBlle6stNSGfvAinupFBB1fYpwkVCWH35MBh8LO'
   config.x.yotpo.secret_key = 'y6m3AE0vSKKzZDRjP253weTFmn5O0o6RlMeL2mwe'
-  config.x.yotpo.rich_snippets_refresh_time = 1.minutes
-  config.x.yotpo.reviews_refresh_time = 1.minutes
+  config.x.yotpo.rich_snippets_refresh_time = 25.hours
+  config.x.yotpo.reviews_refresh_time = 25.hours
 
   # Low-level cache expiration
   config.x.cache.expiration = 24.hours

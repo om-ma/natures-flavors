@@ -68,9 +68,9 @@ def sale
     # TODO: Refactor to include sales in searcher builder
     if params[:id]
       @taxon = Spree::Taxon.find_by!(slug: params[:id])
-      @products = products_searcher.with_variant_sales.in_taxon(@taxon)
+      @products = products_searcher.in_sale.in_taxon(@taxon)
     else
-      @products = products_searcher.with_variant_sales
+      @products = products_searcher.in_sale
     end
     @taxonomies = Spree::Taxonomy.includes(root: :children)
 

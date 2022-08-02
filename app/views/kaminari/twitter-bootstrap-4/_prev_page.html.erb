@@ -13,7 +13,7 @@
 <%# end %>
 <% prev_page_klass = current_page.last? ? 'btn btn-primary prev-page-icon' : 'btn btn-outline mobile-hide' %>
 <li  class="page-item">
-  <%= link_to url, remote: remote, class: "#{prev_page_klass}" do %>
+  <%= link_to url, remote: remote, class: "#{prev_page_klass}", data: { turbolinks: false } do %>
     <span>Previous Page</span>
   <%end%>
 </li>
