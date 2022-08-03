@@ -37,7 +37,7 @@
               </li>
             <% end %>
           <% end %>
-          <% if spree_current_user.present? && spree_current_user.admin? && @special_catetories.present? %>
+          <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
             <li class="nav-item">
               <%= link_to "Special", "#", class: "nav-link" %>
               <div class="dropdown-menu-wrap">
@@ -64,7 +64,7 @@
               </div>
             </li>
           <% end %>
-          <% if spree_current_user.present? && !spree_current_user.admin? && @special_catetories.present? %>
+          <% if spree_current_user.present? && !spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
             <% @special_catetories.each do |category| %>
               <li class="nav-item">
                 <%= link_to category.name, seo_url(category), class: "nav-link", data: { turbolinks: false } %>

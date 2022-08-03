@@ -44,7 +44,7 @@
               </li>
             <% end %>
           <% end %>
-          <% if spree_current_user.present? && spree_current_user.admin? && @special_catetories.present? %>
+          <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
             <li>
               <span data-turbolinks="false" class="link">Special</span><a href="#" data-turbolinks="false" class="hidden-title">Special</a>
               <ul>
@@ -56,7 +56,7 @@
               </ul>
             </li>
           <% end %>
-          <% if spree_current_user.present? && !spree_current_user.admin? && @special_catetories.present? %>
+          <% if spree_current_user.present? && !spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
             <% @special_catetories.each do |category| %>
               <li>
                 <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(category) %>'"><%= category.name %></span>
