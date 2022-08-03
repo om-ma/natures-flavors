@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 			@all_special_categories = (@product_category.present? ? @product_category&.children.where(hide_from_nav: true).order(:position): [])
 			@special_catetories = []
 			if @all_special_categories.present?
-				if spree_current_user.admin?
+				if spree_current_user.has_spree_role?('employee')
 					@special_catetories = @all_special_categories
 				else
 					@all_special_categories.each { |category|
