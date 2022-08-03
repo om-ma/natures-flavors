@@ -7,9 +7,6 @@ $( document ).on('turbolinks:load', function() {
       "<div id = 'product_variant_sku'>" + variantSku + "</div>"
     );
     var variantPrice = $(this).attr("data-btn-varient-price");
-    $("#product_btn_variant_price").replaceWith(
-      "<span id = 'product_btn_variant_price'>" + variantPrice + "</span>"
-    );
     var variantId = $(this).attr("data-varient-id");
 
     $('#selected_variant').val(variantId);
