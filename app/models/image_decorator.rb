@@ -1,7 +1,12 @@
 Spree::Image.class_eval do
 
-  #after_save :create_sizes
+  after_save :call_create_sizes_worker
   
+  # Use sidekiq worker to create images. Transaction issue.
+  def call_create_sizes_worker
+    ImageCreateSizesWorker.perform_async(self.id)
+  end
+
   def create_sizes
     Spree::Image.styles.keys.each do |style|
       obj = self.url(style)

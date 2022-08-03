@@ -221,7 +221,6 @@ function CartForm($, $cartForm) {
     var variant = this.selectedVariant()
     if (variant != null) {
       $(".cart_variant").html(variant.sku)
-      $(".add-to-cart-variant").html(variant.display_price)
     }
     this.$addToCart.prop('disabled', variant ? !variant.purchasable : true)
   }

@@ -55,8 +55,7 @@
                   <div class="text-right" data-hook="cart_buttons">
                     <%= link_to spree.checkout_path, id: 'checkout-link', method: :get do %>
                     <button class="btn btn-primary">
-                      <strong>  <%= order_form.object.display_total %>  -
-                        <%= Spree.t('cart_page.checkout') %> </strong>
+                      <strong><%= Spree.t('cart_page.checkout') %></strong>
                     </button>
                     <% end %>
                   </div>
