@@ -117,7 +117,6 @@ function cartForm(orderNumber, token) {
   }
 
   this.updateSummaryGeneral = function (order) {
-    $('.js-order-total').html(order.display_total);
     $('.js-product-total').html(order.display_item_total)
     $("#shopping_cart_counter").html(order.total_quantity)
 
