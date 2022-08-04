@@ -17,5 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%= render 'spree/shared/doofinder' %>
 <%= yield :head %>
+<% if Rails.env.production? %>
 <!-- MailChimp -->
 <%= MailchimpHelper.mailchimp_snippet %>
+<% end %>
