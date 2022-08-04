@@ -98,6 +98,9 @@ Rails.application.configure do
   config.x.backoffice.print_docs = true
   config.x.backoffice.to_address = 'it-group@naturesflavors.com'
 
+  # Google Tag Manager
+  config.x.trackers.google_tag_manager = 'GTM-KM359NN'
+  
   # YotPo - Staging keys
   config.x.yotpo.app_key = 'j7hsvZFhxG8jUooYglRviEapbHJAmxE7hCrOhHmH'
   config.x.yotpo.secret_key = 'g6mJW31KvNIVFBNRU8pYrVGaY9kwPyAPZ76WZ6Zs'

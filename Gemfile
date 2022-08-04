@@ -56,7 +56,6 @@ gem 'spree_emails', '= 4.3'
 gem 'spree_sample' # dummy data like products, taxons, etc
 gem 'spree_admin_insights', github: 'ducl13/spree-admin-insights', branch: 'master'
 gem 'spree_admin_roles_and_access', github: 'ducl13/spree_admin_roles_and_access', branch: 'master'
-gem 'spree_analytics_trackers', github: 'ducl13/spree_analytics_trackers', branch: 'master'
 gem 'spree_auth_devise', '~> 4.3' # Devise integration (optional)
 gem "spree_comments", github: 'ducl13/spree_comments', branch: 'master'
 gem 'spree_contact_us', github: 'ducl13/spree_contact_us', branch: 'naturesflavors'
@@ -73,7 +72,10 @@ gem 'spree_sitemap', github: 'ducl13/spree_sitemap', branch: 'master'
 gem 'spree_paypal_express', github: 'ducl13/better_spree_paypal_express'
 gem 'spree_product_feed', github: 'ducl13/spree_product_feed', branch: '3-7-caching'
 gem 'spree_yotpo', git: 'https://gitlab.com/duc.lam/spree_yotpo.git', branch: 'naturesflavors'
-gem 'spree_mailchimp_ecommerce', github: 'ducl13/spree_mailchimp_ecommerce', branch: 'master'
+
+group :production do
+  gem 'spree_mailchimp_ecommerce', github: 'ducl13/spree_mailchimp_ecommerce', branch: 'master'
+end
 
 # Use Redis & Sidekiq
 gem 'redis', github: 'ducl13/redis-rb'

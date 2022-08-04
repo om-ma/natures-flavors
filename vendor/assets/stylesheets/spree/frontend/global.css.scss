@@ -3347,7 +3347,7 @@ h3 a{
 }
 
 
-.tab-pane p, .tab-content-wrap p {
+.tab-pane p, .tab-content-wrap {
 	font-size: 17px;
 	line-height: 26px;
 }
@@ -5474,11 +5474,13 @@ display: flex;
 }
 
 @media (max-width: 991px) {
+
 .page-422-500-error {
 	border-top: #f0f0f0 1px solid;
 }
+
 .page-404-error img{
-	width: 40%;
+	width: 100%;
 }
 
 .phone-hide,
@@ -5972,7 +5974,7 @@ display: flex;
 	padding: 15px 20px;
 }
 	
-.tab-pane p, .tab-content-wrap p{
+.tab-pane p, .tab-content-wrap {
     font-size: 17px;
     line-height: 24px;
 }
