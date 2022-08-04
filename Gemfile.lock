@@ -180,7 +180,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_product_feed.git
-  revision: e4a22d4510cf454be65b346449d60ed33531cf99
+  revision: 85ea52ecdf97498d3c0eb24fa9ceba5b067b3b58
   branch: 3-7-caching
   specs:
     spree_product_feed (0.0.1.alpha)
