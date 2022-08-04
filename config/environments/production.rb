@@ -126,6 +126,9 @@ Rails.application.configure do
     :bucket => ENV['S3_ASSET_BUCKET']
   }
   
+  # Google Tag Manager
+  config.x.trackers.google_tag_manager = 'GTM-KWFR8LH'
+  
   # YotPo
   config.x.yotpo.app_key = 'QtBlle6stNSGfvAinupFBB1fYpwkVCWH35MBh8LO'
   config.x.yotpo.secret_key = 'y6m3AE0vSKKzZDRjP253weTFmn5O0o6RlMeL2mwe'
