@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree-html-invoice.git
-  revision: 18248cd512912d17fbb0d1f5076f522fd2df2433
+  revision: fde9bfc0e6df7631e0f65609ba5a30f548a2e13d
   branch: master
   specs:
     spree_html_invoice (3.4.0)
@@ -135,17 +135,6 @@ GIT
     spree_admin_roles_and_access (3.pre.0.pre.stable)
       spree_auth_devise
       spree_core (>= 3.2.0, < 5.0.0)
-
-GIT
-  remote: https://github.com/ducl13/spree_analytics_trackers.git
-  revision: 6583ff6f90650d08dfd2ed2e07ca10da31b7487a
-  branch: master
-  specs:
-    spree_analytics_trackers (2.1.1)
-      deface (~> 1.0)
-      spree_backend (>= 4.1.0, < 5.0)
-      spree_core (>= 4.1.0, < 5.0)
-      spree_extension
 
 GIT
   remote: https://github.com/ducl13/spree_comments.git
@@ -179,7 +168,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_mailchimp_ecommerce.git
-  revision: aaead207049ad3383a02d680b7553f259ab263e7
+  revision: c9dd2083ce52d7a5377729e22125020b9194118d
   branch: master
   specs:
     spree_mailchimp_ecommerce (1.0.2)
@@ -191,7 +180,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_product_feed.git
-  revision: e4a22d4510cf454be65b346449d60ed33531cf99
+  revision: b2491c36cce3d18f4a22d0fcfc771622e43e60f7
   branch: 3-7-caching
   specs:
     spree_product_feed (0.0.1.alpha)
@@ -2284,7 +2273,6 @@ DEPENDENCIES
   spree_active_shipping!
   spree_admin_insights!
   spree_admin_roles_and_access!
-  spree_analytics_trackers!
   spree_auth_devise (~> 4.3)
   spree_backend (= 4.3)
   spree_comments!
