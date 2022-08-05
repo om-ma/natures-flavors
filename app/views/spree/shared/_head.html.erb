@@ -13,8 +13,9 @@
 <%= csrf_meta_tags %>
 <%= render 'spree/shared/paths' %>
 <%= render 'spree/shared/locale_and_currency' %>
-<%= javascript_include_tag 'spree/frontend/all', defer: true, 'data-turbolinks-track': 'reload' %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%= render 'spree/shared/trackers/google_tag_manager' %>
+<%= javascript_include_tag 'spree/frontend/all', defer: true, 'data-turbolinks-track': 'reload' %>
 <%= render 'spree/shared/doofinder' %>
 <%= yield :head %>
 <% if Rails.env.production? %>
