@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_mailchimp_ecommerce.git
-  revision: aaead207049ad3383a02d680b7553f259ab263e7
+  revision: c9dd2083ce52d7a5377729e22125020b9194118d
   branch: master
   specs:
     spree_mailchimp_ecommerce (1.0.2)
