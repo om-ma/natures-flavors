@@ -11,7 +11,7 @@
         <div class="address-wrap" id="shipToLocation">
           <%= checkout_edit_link %>
           <h5>Address</h5>
-          <p><%= @order.shipping_address.full_name %><%= @order.shipping_address.address1 %> <%= @order.shipping_address.address2 %> <%=@order.shipping_address.city %> <%=@order.shipping_address.state_text %> <%=@order.shipping_address.zipcode %>,<%=@order.shipping_address.country.name %> </p>
+          <%= render 'spree/shared/address', address: @order.ship_address %>
         </div>
       </div>
       <div class="cart-header d-flex align-items-center justify-content-between mb-0">

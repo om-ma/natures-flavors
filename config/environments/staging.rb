@@ -130,7 +130,7 @@ Rails.application.configure do
   }
   
   # Google Tag Manager
-  config.x.trackers.google_tag_manager = 'GTM-KM359NN'
+  config.x.trackers.google_tag_manager = 'GTM-KGMXPGQ'
   
   # YotPo - Staging keys
   config.x.yotpo.app_key = 'j7hsvZFhxG8jUooYglRviEapbHJAmxE7hCrOhHmH'
