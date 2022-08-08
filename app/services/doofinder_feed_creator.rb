@@ -45,7 +45,7 @@ class DoofinderFeedCreator < ApplicationService
 
       categories = doofinder_categories(product)
 
-      file.write(product.master.sku)
+      file.write(product.id)
       file.write('|')
       file.write(product.name)
       file.write('|')
