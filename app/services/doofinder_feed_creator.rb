@@ -37,10 +37,10 @@ class DoofinderFeedCreator < ApplicationService
     @products = Spree::Product.active.distinct
     @products.each_with_index do |product, index|
       description = ""
-      if product.description.present?
-        description = product.description.gsub(/\s+/, ' ').strip
-      elsif product.short_description.present?
+      if product.short_description.present?
         description = product.short_description.gsub(/\s+/, ' ').strip
+      elsif product.description.present?
+        description = product.description.gsub(/\s+/, ' ').strip
       end
 
       categories = doofinder_categories(product)
