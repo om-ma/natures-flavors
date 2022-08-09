@@ -18,10 +18,6 @@ class YotpoFeedCreator < ApplicationService
 
     @products = Spree::Product.active.distinct
     @products.each_with_index do |product, index|
-      if product.is_in_hide_from_nav_taxon?
-        next
-      end
-      
       description = ""
       # Combine descriptions
       if product.short_description.present?
@@ -57,7 +53,10 @@ class YotpoFeedCreator < ApplicationService
       file.write(',')
       file.write(product.master.sku)
       file.write(',')
-      file.write('false')
+
+      blacklisted = (product.is_in_hide_from_nav_taxon? ? 'true' : 'false')
+      file.write(blacklisted)
+
       file.write("\r\n")
 
       GC.start if index % 100 == 0 # forcing garbage collection
