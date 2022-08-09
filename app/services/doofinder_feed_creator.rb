@@ -36,6 +36,10 @@ class DoofinderFeedCreator < ApplicationService
 
     @products = Spree::Product.active.distinct
     @products.each_with_index do |product, index|
+      if product.is_in_hide_from_nav_taxon?
+        next
+      end
+
       description = ""
       if product.short_description.present?
         description = product.short_description.gsub(/\s+/, ' ').strip
@@ -119,6 +123,10 @@ class DoofinderFeedCreator < ApplicationService
 
     @products = Spree::Product.active.distinct
     @products.each do |product|
+      if product.is_in_hide_from_nav_taxon?
+        next
+      end
+      
       description = ""
       if product.description.present?
         description = product.description.gsub(/\s+/, ' ').strip
