@@ -16,7 +16,17 @@ module Spree
 
     def lowest_expiry_at
       sale_prices.sort_by(&:end_at).first
-    end  
+    end
+    
+    def is_in_hide_from_nav_taxon?
+      taxons.each do |taxon|
+        if taxon.hide_from_nav
+          return true
+        end
+      end
+      return false
+    end
+
   end  
 end
 
