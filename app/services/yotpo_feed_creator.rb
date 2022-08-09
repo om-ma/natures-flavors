@@ -18,6 +18,10 @@ class YotpoFeedCreator < ApplicationService
 
     @products = Spree::Product.active.distinct
     @products.each_with_index do |product, index|
+      if product.is_in_hide_from_nav_taxon?
+        next
+      end
+      
       description = ""
       # Combine descriptions
       if product.short_description.present?
