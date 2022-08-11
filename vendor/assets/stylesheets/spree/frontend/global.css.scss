@@ -6904,3 +6904,22 @@ display: flex;
 .category-wrap li:hover {
 	text-decoration: none;
 }
+
+.product-sort-js {
+	border: none;
+	background: none;
+	padding: 15px 0;
+	margin: 0 5px;
+	font-weight: bold;
+}
+.product-sort-js.active{
+	border-bottom: 2px solid #A71E22;
+	color: #A71E22;
+}
+
+.sort-by-title {
+	padding: 0px 20px;
+}
+.sort-by-title label {
+	margin-bottom: 0;
+}
