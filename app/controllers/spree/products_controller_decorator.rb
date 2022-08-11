@@ -62,7 +62,7 @@ module Spree
           @sort_by = { sort: { title: 'asc' } }
         end
 
-        @results_json = client.search(api_key, hashid, @keywords, 'match_or', 'product', @filter, @page, @per_page, @sort_by)
+        @results_json = client.search(api_key, hashid, @keywords, 'match_and', 'product', @filter, @page, @per_page, @sort_by)
       rescue StandardError => e
         Rails.logger.warn "Doofinder: Failed to search for: #{@keywords}"
         Rails.logger.warn e
