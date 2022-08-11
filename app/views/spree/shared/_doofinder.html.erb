@@ -1,28 +1,37 @@
-<!-- Doofinder -->
+<%
+  search_zone = Rails.configuration.x.doofinder.search_zone
+  api_key = Rails.configuration.x.doofinder.api_key
+  hashid = Rails.configuration.x.doofinder.hashid
+%>
+<!-- Doofinder autocomplete -->
 <script type="text/javascript">
-$(document).on('turbolinks:load', function() {
-  delete window.doofinderLoader;
+  $(document).on('turbolinks:load', function() {
+    var options = {
+      url: function(keywords) {
+        return "https://<%= search_zone %>-search.doofinder.com/5/suggest?hashid=<%= hashid %>&query=" + encodeURIComponent(keywords) + "&type=product&page=1&rpp=10";
+      },
+      ajaxSettings: {
+        dataType: "json",
+        headers: {
+          "Authorization": "<%= api_key %>"
+        },
+      },
+      getValue: "term",
+      listLocation: "results",
+      requestDelay: 300,
+      list: {
+        onClickEvent: function() {
+          $("#global-search-button").submit()
+        }	
+      }
+    };
 
-  const dfLayerOptions = {
-  <% if Rails.env.production? %>
-    installationId: '854e3298-7b2b-4e1c-b9b8-43ba9ca21aef',
-  <% else %>
-    installationId: '9dbccc04-5491-4117-9ef9-5c36eafdee96',
-  <% end %>
-    zone: 'us1'
-  };
-
-  (function (l, a, y, e, r, s) {
-    r = l.createElement(a); r.onload = e; r.async = 1; r.src = y;
-    s = l.getElementsByTagName(a)[0]; s.parentNode.insertBefore(r, s);
-  })(document, 'script', 'https://cdn.doofinder.com/livelayer/1/js/loader.min.js', function () {
-    doofinderLoader.load(dfLayerOptions);
+    $('#keywords').easyAutocomplete(options);
+    
+    $('#keywords').keypress(function(e) {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        $("#global-search-button").submit()
+      }
+    });
   });
-});
-
-$(document).on('turbolinks:before-cache', function() {
-  $('#doofinder-search-results').each(function() {
-    this.parentNode.removeChild(this);
-  });
-});
 </script>
