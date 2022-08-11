@@ -1,0 +1,122 @@
+<% content_for :head do %>
+<!-- Search category filters -->
+<script type="text/javascript" id="search-category-filter-script">
+  $(document).on('turbolinks:load', function() {
+    $('.search-category-js').click(function() {
+      var filter_type = '#' + $(this).data('filter-type');
+      $(filter_type).get(0).click();
+    })
+  });
+</script>
+<% end %>
+  <div class="row no-gutters">
+    <div class="col-xl-2 col-lg-3 phone-hide">
+    <% @results_json['facets'].each_with_index do |facet, index| %>
+      <ul class="" style="display:none;">
+      <% facet[1]['terms']['buckets'].each do |category| %>
+        <% if !category['key'].include?('PRODUCTS')
+          clean_key = category['key'].gsub(/[^a-zA-Z0-9]/, '')
+
+          if request.parameters[:filter] &&
+              request.parameters[:filter][facet[0]] &&
+              request.parameters[:filter][facet[0]].include?(category['key'])
+            parameters = deep_dup(request.parameters)
+            if request.parameters[:filter][facet[0]].kind_of?(Array)
+              parameters[:filter][facet[0]].delete(category['key'])
+            else
+              parameters[:filter].delete(facet[0])
+            end
+          elsif request.parameters[:filter] &&
+              request.parameters[:filter][facet[0]]
+            parameters = deep_dup(request.parameters)
+            parameters[:filter][facet[0]] << category['key']
+          else
+            parameters = request.parameters.merge(filter: { facet[0] => [category['key']] } )
+          end
+        %>
+        <li><%= link_to category['key'], parameters, id: 'filter-' + clean_key, class: 'filter-' + clean_key, data: { turbolinks: false } %></li>
+        <% end %>
+      <% end %>
+      </ul>
+      <div class="sidebar-categories<%= (index == 0 ? '' : ' search-titles') %>">
+        <h4><%= facet[1]['label'] %>:</h4>
+        <ul class="sidebar-sub-categories search-categories">
+        <% facet[1]['terms']['buckets'].each do |category| %>
+          <% if !category['key'].include?('PRODUCTS') 
+            clean_key = category['key'].gsub(/[^a-zA-Z0-9]/, '')
+
+            checked = false
+            if request.parameters[:filter] &&
+                request.parameters[:filter][facet[0]] &&
+                request.parameters[:filter][facet[0]].include?(category['key'])
+              checked = true
+            end
+          %>
+          <li><label><input type="checkbox" class="search-category-js custom-control-input" data-filter-type="<%= 'filter-' + clean_key %>" <%= (checked ? 'checked' : '') %>><span class="custom-control-label"></span><div><%= category['key'] %>&nbsp;<span>(<%= category['doc_count'] %>)</span></div></label></li>
+          <% end %>
+        <% end %>
+          <%  
+            parameters = deep_dup(request.parameters)
+            if request.parameters[:filter] &&
+                request.parameters[:filter][facet[0]]
+              parameters[:filter].delete(facet[0])
+            end
+          %>
+          <li><label><%= link_to 'Clear', parameters, data: { turbolinks: false } %></label></li>
+        </ul>
+      </div>
+    <% end %>
+    </div>
+    <div class="col-xl-10 col-lg-9">
+      <div class="products-wrapper">
+        <div class="category-intro-wrapper new-search-wrapper">
+          <div class="row no-gutters">
+            <div class="col-xl-8">
+              <div class="category-banner-wrap">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><%= link_to "Home", root_url %></li>
+                    <li class="breadcrumb-item active">Search</li>
+                </ol>
+                <h1 class="title"><span>Results for:</span>&nbsp;<%= @keywords %></h1>
+                <div class="mobile-categories-wrap phone-visible">
+                  <div class="header"><a href="#" class="mobile-category-toggle">Filters</a></div>
+                  <% @results_json['facets'].each_with_index do |facet, index| %>
+                  <ul class="sidebar-sub-categories sidebar-sub-categories-search">
+                    <li><label><strong><%= facet[1]['label']  %></strong></label></li>
+                    <% facet[1]['terms']['buckets'].each do |category| %>
+                    <% if !category['key'].include?('PRODUCTS') 
+                      clean_key = category['key'].gsub(/[^a-zA-Z0-9]/, '')
+
+                      checked = false
+                      if request.parameters[:filter] &&
+                          request.parameters[:filter][facet[0]] &&
+                          request.parameters[:filter][facet[0]].include?(category['key'])
+                        checked = true
+                      end
+                    %>
+                    <li><label><input type="checkbox" class="search-category-js custom-control-input" data-filter-type="<%= 'filter-' + clean_key %>" <%= (checked ? 'checked' : '') %>><span class="custom-control-label"></span><div><%= category['key'] %>&nbsp;<span>(<%= category['doc_count'] %>)</span></div></label></li>
+                    <% end %>
+                    <% end %>
+                    <%  
+                      parameters = deep_dup(request.parameters)
+                      if request.parameters[:filter] &&
+                          request.parameters[:filter][facet[0]]
+                        parameters[:filter].delete(facet[0])
+                      end
+                    %>
+                    <li><label><%= link_to 'Clear', parameters, data: { turbolinks: false } %></label></li>
+                  </ul>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render partial: 'spree/products/search_filters' %>
+        <%= render partial: 'spree/products/search_mobile_filters' %>
+        <div class="row row-cols-xl-4 row-cols-sm-2 no-gutters" data-hook="search_products">
+          <%= render partial: 'spree/products/search_products', locals: { results_json: @results_json, keywords: @keywords } %>
+        </div>
+      </div>
+    </div>
+  </div>

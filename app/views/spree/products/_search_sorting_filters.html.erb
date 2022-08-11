@@ -1,0 +1,12 @@
+<ul class="" style="display:none;">
+  <li><%= link_to "Ascending name", request.parameters.merge(sort_by: 'name-a-z'), id: 'ascending_name',class: "assending-filter" %></li>
+  <li><%= link_to "Descending name", request.parameters.merge(sort_by: 'name-z-a'), id: 'descending_name', class: "descending-filter" %></li>
+</ul>
+<div class="sorting-filter d-flex align-items-center justify-content-end" >
+  <label>Sort by:</label>
+  <% active_klass_ascend_by_name = params[:sort_by].present? && params[:sort_by] == "name-a-z" || params[:sort_by].blank? ? 'active' : '' %>
+  <button type="button" class="product-sort-js <%= active_klass_ascend_by_name %>" data-filter-type="assending-filter" value="name-a-z">A to Z</button>
+
+  <% active_klass_descend_by_name = params[:sort_by].present? && params[:sort_by] == "name-z-a" ? 'active' : '' %>
+  <button type="button" class="product-sort-js <%= active_klass_descend_by_name %>" data-filter-type="descending-filter" value="name-z-a">Z to A</button>
+</div>

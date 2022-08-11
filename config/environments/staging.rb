@@ -140,6 +140,14 @@ Rails.application.configure do
 
   # Low-level cache expiration
   config.x.cache.expiration = 24.hours
+
+  # Sidekiq data workers cache expiration
+  config.x.products.refresh_time = 25.hours
+  
+  # Doofinder
+  config.x.doofinder.search_zone = 'us1'
+  config.x.doofinder.api_key = 'us1-aa01ed99b4e66cf41f0ce41ae96c7abf246264f5'
+  config.x.doofinder.hashid = '<TODO>'
 end
 
 # spree_sitemap config

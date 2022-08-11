@@ -1,0 +1,5 @@
+<% results_json['results'].each do |item|
+  product = Spree::Product.doofinder_cache_find(item['id'])
+%>
+  <%= render 'spree/products/search_product', product: product, image_class: 'product-component-plp-image' %>
+<% end %>

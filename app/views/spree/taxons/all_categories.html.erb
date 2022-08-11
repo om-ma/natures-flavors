@@ -1,0 +1,30 @@
+    <div class="deals-wrapper">
+      <div class="title-wrap text-center">
+        <h1 class="title"><span>Nature's Flavors</span> Categories</h1>
+      </div>
+      <div class="products-wrapper category-wrapper">
+        <div class="row row-cols-xl-4 row-cols-sm-2 no-gutters">
+          <% if @all_categories.present? %>
+            <% @all_categories.each do |menu_category|
+              if menu_category.icon.present?
+                img_tag = image_tag(menu_category.icon.my_cf_image_url, alt: menu_category.name)
+              else
+                img_tag = image_tag("noimage/default-category-image.jpg", alt: menu_category.name)
+              end
+            %>
+              <div class="col col-12 category-col">
+                <div class="category-wrap">
+                  <%= link_to img_tag, seo_url(menu_category), class: "nav-link", data: { turbolinks: false } %>
+                  <h2><%= link_to menu_category.name, seo_url(menu_category), class: "nav-link", data: { turbolinks: false } %></h2>
+                  <ul>
+                  <% menu_category.children.each do |category|%>
+                    <li><%= link_to category.name, seo_url(category), data: { turbolinks: false } %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
