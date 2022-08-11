@@ -46,6 +46,7 @@ SitemapGenerator::Sitemap.create do
   add_taxons({ priority: 1.0, changefreq: 'daily' })
   add_products({ priority: 1.0, changefreq: 'daily' })
 
+  add all_categories_path priority: 0.8, changefreq: 'daily'
   add flavor_powders_path priority: 0.8, changefreq: 'daily'
   add flavor_emulsions_path priority: 0.8, changefreq: 'daily'
   add flavor_concentrates_path priority: 0.8, changefreq: 'daily'
