@@ -1,0 +1,16 @@
+<% url = product['link'] %>
+              <div class="col col-12">
+                <div class="product-wrap" id="product_<%= product['id'] %>" data-hook="search_product_list_item">
+                  <%= link_to url, data: { turbolinks: false } do %>
+                    <div class="product-img">
+                      <%= image_tag product['image_link'], alt: product['title'] %>
+                      <div class="price">
+                        <%= sprintf("$%.2f", product['price']) %>
+                      </div>
+                    </div>
+                    <div class="product-desc" title="<%= product['title'] %>">
+                      <h4><%= product['title'] %></h4>
+                    </div>
+                  <% end %>
+                </div>
+              </div>

@@ -134,6 +134,10 @@ Spree::FrontendHelper.class_eval do
     max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
     all_categories_cache_keys = "spree/all_categories/#{all_categories.map(&:id).join('-')}"
   end
+
+  def deep_dup(obj)
+    Marshal.load(Marshal.dump(obj))
+  end
 end
 
 def google_product_type(product)

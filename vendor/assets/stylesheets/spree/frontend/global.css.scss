@@ -6794,3 +6794,113 @@ display: flex;
 	color: #A71E22;
 	display: inline-table;
 }
+
+.new-search-wrapper:after {
+	left: 100%;
+	border-left: none;
+	background-color: none;
+}
+.title span {
+	font-weight: normal;
+	color: #6A6A6A;
+}
+
+@media (max-width: 600px) {
+	.title span {
+		font-size: 17px;
+		display: block;
+		padding-top: 10px;
+	}
+}
+.search-categories {
+	padding: 0 0 0 30px;
+}
+.search-categories li {
+	border: none;
+}
+.sidebar-sub-categories > li > label {
+	font-size: 14px;
+	font-weight: normal;
+	color: #000;
+	line-height: 20px;
+	padding: 0 10px 0 0;
+}
+
+.sidebar-sub-categories > li > label:hover,
+.sidebar-sub-categories > li:hover > label {
+	color: #d24047;
+}
+.sidebar-sub-categories .custom-control-input:checked~.custom-control-label:after{
+	background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23000' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
+}
+.sidebar-sub-categories .custom-control-input:checked~.custom-control-label{
+	font-weight: bold;
+}
+.sidebar-sub-categories .custom-control-label {
+	float: left;
+}
+.sidebar-sub-categories label div{
+	float: left;
+	padding-left: 27px;
+	width: 100%;
+}
+.sidebar-sub-categories label div span{
+	font-size: 13px;
+	color: #6A6A6A;
+}
+.search-titles {
+	padding-top: 0;
+}
+.sidebar-sub-categories-search {
+	background: #F7F7F7;
+	padding-top: 15px;
+}
+.sidebar-sub-categories-search li {
+	border:none;
+}
+.category-wrapper {
+	border-top: #f0f0f0 1px solid;
+}
+.category-wrap {
+	border: #f0f0f0 1px solid;
+	border-left: 0 none;
+	border-top: 0 none;
+	padding: 10%;
+	height: 100%;
+	background-color: #F9F9F9;
+}
+.category-col:last-child .category-wrap {
+	border-right: #f0f0f0 1px solid;
+}
+.category-wrap a {
+	color: #A71E22;
+	display: block;
+}
+.category-wrap a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+.category-wrap h2 {
+	font-size: 20px;
+}
+.category-wrap h2 a{
+	color: #000;
+}
+.category-wrap img {
+	border-radius: 17px;
+	margin-bottom: 10px;
+}
+.category-wrap ul {
+	margin: 0;
+	padding: 0;
+	margin-top: 10px;
+}
+.category-wrap li {
+	font-size: 18px;
+	margin-left: 20px;
+	line-height: 30px;
+	text-decoration: underline;
+}
+.category-wrap li:hover {
+	text-decoration: none;
+}

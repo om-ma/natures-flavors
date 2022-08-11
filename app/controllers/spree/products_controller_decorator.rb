@@ -38,6 +38,39 @@ module Spree
       @product = current_store.products.includes(prices: :sale_prices).references(prices: :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
     end
     
+    def search
+      @keywords = params[:keywords]
+
+      if @keywords.blank?
+        redirect_to all_categories_path
+      end
+
+      client = DoofinderAPI::V5::Client.new
+      api_key = Rails.configuration.x.doofinder.api_key
+      hashid = Rails.configuration.x.doofinder.hashid
+
+      begin
+        @filter = params[:filter].blank? ? nil : { filter: params[:filter].to_unsafe_hash }
+        @page = (params[:page].blank? ? 1 : params[:page])
+        @per_page = 24
+        
+        if params[:sort_by] == 'name-a-z'
+          @sort_by = { sort: { title: 'asc' } }
+        elsif params[:sort_by] == 'name-z-a'
+          @sort_by = { sort: { title: 'desc' } }
+        else
+          @sort_by = { sort: { title: 'asc' } }
+        end
+
+        @results_json = client.search(api_key, hashid, @keywords, 'match_or', 'product', @filter, @page, @per_page, @sort_by)
+      rescue StandardError => e
+        Rails.logger.warn "Doofinder: Failed to search for: #{@keywords}"
+        Rails.logger.warn e
+
+        @results_json = {}
+      end
+    end
+    
   end
 end
 ::Spree::ProductsController.prepend Spree::ProductsControllerDecorator

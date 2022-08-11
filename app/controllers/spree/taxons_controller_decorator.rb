@@ -1,4 +1,7 @@
 Spree::TaxonsController.class_eval do
+
+  before_action :load_taxon, except: :all_categories
+
   def show
     @per_page = 24
     params['per_page'] = @per_page
@@ -32,4 +35,9 @@ Spree::TaxonsController.class_eval do
       @products = products_searcher.includes(:product_properties).references(:product_properties)
     end
   end
+
+  def all_categories
+
+  end
+
 end
