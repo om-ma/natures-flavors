@@ -59,7 +59,7 @@ module Spree
         elsif params[:sort_by] == 'name-z-a'
           @sort_by = { sort: { title: 'desc' } }
         else
-          @sort_by = { sort: { title: 'asc' } }
+          @sort_by = nil
         end
 
         @results_json = client.search(api_key, hashid, @keywords, 'match_and', 'product', @filter, @page, @per_page, @sort_by)

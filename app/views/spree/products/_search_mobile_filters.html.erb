@@ -2,6 +2,8 @@
           <div class="d-flex align-items-center">
             <div class="sort-by-title flex-fill">
               <label>Sort by:</label>
+              <% active_klass_by_relevance = params[:sort_by].present? && params[:sort_by] == "relevance" || params[:sort_by].blank? ? 'active' : '' %>
+              <button type="button" class="product-sort-js <%= active_klass_by_relevance %>" data-filter-type="relevance-filter">Relevance</button>
               <% active_klass_ascend_by_name = params[:sort_by].present? && params[:sort_by] == "name-a-z" ? 'active' : '' %>
               <button type="button" class="product-sort-js <%= active_klass_ascend_by_name %>" data-filter-type="assending-filter">A to Z</button>
               <% active_klass_descend_by_name = params[:sort_by].present? && params[:sort_by] == "name-z-a" ? 'active' : '' %>

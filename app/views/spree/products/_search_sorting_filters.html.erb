@@ -1,10 +1,15 @@
 <ul class="" style="display:none;">
+  <li><%= link_to "Relevance", request.parameters.merge(sort_by: 'relevance'), id: 'relevance_sort',class: "relevance-filter" %></li>
   <li><%= link_to "Ascending name", request.parameters.merge(sort_by: 'name-a-z'), id: 'ascending_name',class: "assending-filter" %></li>
   <li><%= link_to "Descending name", request.parameters.merge(sort_by: 'name-z-a'), id: 'descending_name', class: "descending-filter" %></li>
 </ul>
 <div class="sorting-filter d-flex align-items-center justify-content-end" >
   <label>Sort by:</label>
-  <% active_klass_ascend_by_name = params[:sort_by].present? && params[:sort_by] == "name-a-z" || params[:sort_by].blank? ? 'active' : '' %>
+  
+  <% active_klass_by_relevance = params[:sort_by].present? && params[:sort_by] == "relevance" || params[:sort_by].blank? ? 'active' : '' %>
+  <button type="button" class="product-sort-js <%= active_klass_by_relevance %>" data-filter-type="relevance-filter" value="relevance">Relevance</button>
+
+  <% active_klass_ascend_by_name = params[:sort_by].present? && params[:sort_by] == "name-a-z" ? 'active' : '' %>
   <button type="button" class="product-sort-js <%= active_klass_ascend_by_name %>" data-filter-type="assending-filter" value="name-a-z">A to Z</button>
 
   <% active_klass_descend_by_name = params[:sort_by].present? && params[:sort_by] == "name-z-a" ? 'active' : '' %>

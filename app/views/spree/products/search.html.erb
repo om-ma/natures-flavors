@@ -77,7 +77,7 @@
                     <li class="breadcrumb-item"><%= link_to "Home", root_url %></li>
                     <li class="breadcrumb-item active">Search</li>
                 </ol>
-                <h1 class="title"><span>Results for:</span>&nbsp;<%= @keywords %></h1>
+                <h1 class="title"><span><%= @results_json['total'] %> results for: </span><%= @keywords %></h1>
                 <div class="mobile-categories-wrap phone-visible">
                   <div class="header"><a href="#" class="mobile-category-toggle">Filters</a></div>
                   <% @results_json['facets'].each_with_index do |facet, index| %>
