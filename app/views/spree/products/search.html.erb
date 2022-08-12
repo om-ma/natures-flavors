@@ -16,8 +16,8 @@
       path: function() {
         if (this.loadCount < <%= (@results_json['total'].to_f / @per_page).ceil - 1 %>) {
           let page = this.loadCount + 2;
-          let url = '<%= url_for(request.parameters.merge(ajax: true)) %>';
-
+          let url = '<%= url_for(request.parameters.merge(ajax: true)).html_safe %>';
+          
           return url + `&page=${page}`;
         }
       },
