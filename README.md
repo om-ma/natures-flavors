@@ -140,3 +140,6 @@ YotpoFeedCreator.call(Rails.application.default_url_options)
 
 # Create YotPo products mapping file. Run in rails console.
 YotpoMappingCreator.call(Rails.application.default_url_options)
+
+# ShipStation setup
+https://github.com/ducl13/spree_shipstation-2
