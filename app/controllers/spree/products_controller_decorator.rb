@@ -69,6 +69,10 @@ module Spree
 
         @results_json = {}
       end
+
+      if params[:ajax]
+        render template: 'spree/products/_search_products', locals: { results_json: @results_json, keywords: @keywords }, layout: false
+      end
     end
     
   end

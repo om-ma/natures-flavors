@@ -1,10 +1,30 @@
 <% content_for :head do %>
-<!-- Search category filters -->
 <script type="text/javascript" id="search-category-filter-script">
   $(document).on('turbolinks:load', function() {
     $('.search-category-js').click(function() {
       var filter_type = '#' + $(this).data('filter-type');
       $(filter_type).get(0).click();
+    })
+    
+    $(document).on('turbolinks:before-cache', function() {
+      $('#search-category-filter-script').each(function() {
+        this.parentNode.removeChild(this);
+      });
+    });
+
+    $('.search-products').infiniteScroll({
+      path: function() {
+        if (this.loadCount < <%= (@results_json['total'].to_f / @per_page).ceil - 1 %>) {
+          let page = this.loadCount + 2;
+          let url = '<%= url_for(request.parameters.merge(ajax: true)) %>';
+
+          return url + `&page=${page}`;
+        }
+      },
+      append: '.search-product',
+      status: '.page-load-status',
+      button: '.show-more-button',
+      scrollThreshold: false,
     })
   });
 </script>
@@ -114,8 +134,21 @@
         </div>
         <%= render partial: 'spree/products/search_filters' %>
         <%= render partial: 'spree/products/search_mobile_filters' %>
-        <div class="row row-cols-xl-4 row-cols-sm-2 no-gutters" data-hook="search_products">
+        <div class="row row-cols-xl-4 row-cols-sm-2 no-gutters search-products" data-hook="search_products">
           <%= render partial: 'spree/products/search_products', locals: { results_json: @results_json, keywords: @keywords } %>
+        </div>
+        <div class="page-load-status">
+          <div class="loader-ellips infinite-scroll-request">
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+          </div>
+          <p class="infinite-scroll-last">End of results</p>
+          <p class="infinite-scroll-error">No more results to load</p>
+        </div>
+        <div class="pagination-wrap show-more-button">
+          <button type="button" class="btn btn-primary">Show More</button>
         </div>
       </div>
     </div>
