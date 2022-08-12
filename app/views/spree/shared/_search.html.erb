@@ -1,13 +1,10 @@
 <%= form_tag search_path, method: :get , id:'global-search-button' do%>
-  <div class="header-search tablet-hide">
-    <span class="search-custom-btn"></span>
+  <div class="search-auto">
     <%= search_field_tag :keywords,
                         params[:keywords],
-                        placeholder: Spree.t(:search),
-                        title: Spree.t(:search),
-                        class: " form-control search-keywords",      
+                        placeholder: "Search for extracts, flavorings, etc.",
+                        class: "form-control search-keywords",      
                         autofocus: false,
-                        'aria-label': Spree.t(:search)%>         
+                        'aria-label': "Search..."%>         
   </div>
-  <a class="nav-search tablet-visible search-keywords" href="#" data-turbolinks="false"><span>Find</span></a> 
 <% end %>
