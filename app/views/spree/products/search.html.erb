@@ -16,11 +16,10 @@
       path: function() {
         if (this.loadCount < <%= (@results_json['total'].to_f / @per_page).ceil - 1 %>) {
           let page = this.loadCount + 2;
-          let url = '<%= url_for(request.parameters.merge(ajax: true)) %>';
-
-          return url + `&page=${page}`;
+          return $(location).attr("href") + `&ajax=true&page=${page}`;
         }
       },
+      history: false,
       append: '.search-product',
       status: '.page-load-status',
       button: '.show-more-button',
@@ -144,8 +143,6 @@
             <span class="loader-ellips__dot"></span>
             <span class="loader-ellips__dot"></span>
           </div>
-          <p class="infinite-scroll-last">End of results</p>
-          <p class="infinite-scroll-error">No more results to load</p>
         </div>
         <% if @results_json['total'].to_i > @per_page %>
         <div class="pagination-wrap show-more-button">

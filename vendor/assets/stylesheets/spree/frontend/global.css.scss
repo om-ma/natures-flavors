@@ -4168,6 +4168,7 @@ h3 a{
 	border-top: #f0f0f0 1px solid;
 	border-bottom: #f0f0f0 1px solid;
 	margin: 0 0 -1px;
+	z-index: 0;
 }
 
 @media (min-width: 992px) {
@@ -4175,7 +4176,7 @@ h3 a{
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
-	z-index: 99;
+	z-index: 0;
 	background-color: #fff;
 }
 }
@@ -6928,6 +6929,23 @@ display: flex;
 	border-top: 1px solid #F0F0F0;
 	border-left: 1px solid #F0F0F0;
 	text-align: center;
+}
+
+@media (max-width: 767px){
+	.show-more-button { 
+		text-align: center !important;
+	}
+	.show-more-button .btn {
+	    width: 218px;
+	}
+}
+@media (max-width: 1199px){
+	.show-more-button {
+		text-align: center !important;
+	}
+	.show-more-button .btn {
+	    width: 218px;
+	}
 }
 
 .page-load-status {
