@@ -6930,6 +6930,23 @@ display: flex;
 	text-align: center;
 }
 
+@media (max-width: 767px){
+	.show-more-button { 
+		text-align: center !important;
+	}
+	.show-more-button .btn {
+	    width: 218px;
+	}
+}
+@media (max-width: 1199px){
+	.show-more-button {
+		text-align: center !important;
+	}
+	.show-more-button .btn {
+	    width: 218px;
+	}
+}
+
 .page-load-status {
   display: none;
   padding-top: 20px;
