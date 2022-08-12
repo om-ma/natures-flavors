@@ -147,9 +147,11 @@
           <p class="infinite-scroll-last">End of results</p>
           <p class="infinite-scroll-error">No more results to load</p>
         </div>
+        <% if @results_json['total'].to_i > @per_page %>
         <div class="pagination-wrap show-more-button">
           <button type="button" class="btn btn-primary">Show More</button>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
