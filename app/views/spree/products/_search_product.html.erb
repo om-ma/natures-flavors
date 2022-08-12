@@ -1,4 +1,16 @@
-<% url = spree.product_path(product) %>
+<% if product == nil %>
+              <div class="col col-12 search-product">
+                <div class="product-wrap">
+                    <div class="product-img">
+                      <%= image_tag asset_path('noimage/default-product-image.jpg') %>
+                    </div>
+                    <div class="product-desc">
+                      <h4>Missing Product. Please <%= link_to "contact us", contact_us_path %>.</h4>
+                    </div>
+                </div>
+              </div>
+<% else %>
+  <% url = spree.product_path(product) %>
               <div class="col col-12 search-product">
                 <div class="product-wrap" id="product_<%= product.id %>" data-hook="search_product_list_item">
                   <%= link_to url, data: { turbolinks: false } do %>
@@ -19,3 +31,4 @@
                   <% end %>
                 </div>
               </div>
+<% end %>
