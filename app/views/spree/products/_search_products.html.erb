@@ -1,5 +1,5 @@
 <% results_json['results'].each do |item|
-  product = Spree::Product.doofinder_cache_find(item['id'])
+  product = Spree::Product.yotpo_find_cached_by_id(item['id'])
 %>
   <%= render 'spree/products/search_product', product: product, image_class: 'product-component-plp-image' %>
 <% end %>
