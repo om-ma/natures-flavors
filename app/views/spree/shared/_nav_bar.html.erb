@@ -36,6 +36,7 @@
       <ul class="navbar-nav tablet-hide">
           <li class="nav-item"><a class="nav-link" href="/">Home</a>
       <% if @all_categories.present? %>
+        <% cache @all_categories do %>
         <% @all_categories.each do |menu_category| %>
           <li class="nav-item">
             <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link", data: { turbolinks: false } %>
@@ -60,6 +61,7 @@
               </div>
             </div>
           </li>
+        <% end %>
         <% end %>
       <% end %>
       <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
