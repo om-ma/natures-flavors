@@ -20,6 +20,7 @@
       <ul class="product-menu">
         <%# TODO: Optimize code. Make recursive using a frontend helper (taxon_tree) like for desktop. %>
           <% if @all_categories.present? %>
+            <% cache @all_categories do %>
             <% @all_categories.each do |menu_category| %>
               <li>
                  <span data-turbolinks="false" class="link" onclick="location='<%= seo_url(menu_category) %>'"><%= menu_category.name %></span><a href="#" data-turbolinks="false" class="hidden-title"><%= menu_category.name %></a>
@@ -42,6 +43,7 @@
                   </ul>
                 <% end %>  
               </li>
+            <% end %>
             <% end %>
           <% end %>
           <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
