@@ -42,30 +42,30 @@ Spree::HomeController.class_eval do
     @active_home_tab = [0, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
   end
 
-def sale
+  def sale
+    if params[:sort_by].blank?
+      params[:sort_by] = "descend_by_popularity"
+    end
+    
     search_params = params.merge(
-    current_store: current_store,
-    taxon: @taxon,
-    include_images: true
+      current_store: current_store,
+      taxon: @taxon,
+      include_images: true
     )
 
-    list = ['descend_by_popularity', 'ascend_by_name', 'descend_by_name']
-
-    if list.include?(params[:sorting])
-      sorting_scope = params[:sorting].try(:to_sym) || :ascend_by_name
-    else
-      sorting_scope = :ascend_by_name
+    if params[:sort_by] == "bestsellers"
+      search_params.delete :sort_by
     end
 
     @searcher = build_searcher(search_params)
-    products_searcher = @searcher.retrieve_products.send(sorting_scope)
-
-    if params[:sorting] == "bestsellers"
-      @products =  products_searcher.best_sellers
+    products_searcher = @searcher.retrieve_products
+    
+    if params[:sort_by] == "bestsellers"
+      @products = products_searcher.includes(:product_properties).best_sellers
     else
-      @products =   products_searcher
+      @products = products_searcher.includes(:product_properties).references(:product_properties)
     end
-
+    
     # TODO: Refactor to include sales in searcher builder
     if params[:id]
       @taxon = Spree::Taxon.find_by!(slug: params[:id])
