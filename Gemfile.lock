@@ -234,7 +234,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/duc.lam/spree_common.git
-  revision: b2b47c9c743c46035420b8563fd6449efab0eda1
+  revision: 2098c115752cf7c0c76caa66bb4b74beb28e7a37
   branch: master
   specs:
     spree_common (0.0.1)
