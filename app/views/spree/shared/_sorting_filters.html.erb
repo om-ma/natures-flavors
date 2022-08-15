@@ -2,7 +2,6 @@
   <li><%= link_to "Most Popular", request.parameters.merge(sort_by: :descend_by_popularity), id: 'descend_popularity',class: "most-popular" %></li>
   <li><%= link_to "Ascending name", request.parameters.merge(sort_by: 'name-a-z'), id: 'ascending_name',class: "assending-filter" %></li>
   <li><%= link_to "Descending name", request.parameters.merge(sort_by: 'name-z-a'), id: 'descending_name', class: "descending-filter" %></li>
-  <li><%= link_to "bestsellers", request.parameters.merge(sort_by: :bestsellers), id: 'bestsellers_filter', class: "bestsellers-filter" %></li>
 </ul>
 <div class="sorting-filter d-flex align-items-center justify-content-end" >
   <label>Sort by:</label>
@@ -14,7 +13,4 @@
 
   <% active_klass_descend_by_name = params[:sort_by].present? && params[:sort_by] == "name-z-a" ? 'active' : '' %>
   <button type="button" class="product-sort-js <%= active_klass_descend_by_name %>" data-filter-type="descending-filter">Z to A</button>
-
-  <% active_klass = params[:sort_by].present? && params[:sort_by] == "bestsellers" ? 'active' : '' %>
-  <button type="button" class="product-sort-js <%= active_klass %>" data-filter-type="bestsellers-filter">Best Sellers</button>
 </div>
