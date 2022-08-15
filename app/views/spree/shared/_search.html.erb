@@ -1,10 +1,8 @@
 <%= form_tag search_path, method: :get , id:'global-search-button' do%>
-  <div class="search-auto">
     <%= search_field_tag :keywords,
                         params[:keywords],
                         placeholder: "Search for extracts, flavorings, etc.",
                         class: "form-control search-keywords",      
                         autofocus: false,
                         'aria-label': "Search..."%>         
-  </div>
 <% end %>
