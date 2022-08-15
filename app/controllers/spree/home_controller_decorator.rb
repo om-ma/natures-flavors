@@ -37,8 +37,9 @@ Spree::HomeController.class_eval do
       popular_oils               = Spree::Taxon.find_by_name("Flavor Oils").present? ? Spree::Taxon.find_by_name("Flavor Oils") : ''
       popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : []
     end
-    
-    @active_home_tab = [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
+
+    #@active_home_tab = [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
+    @active_home_tab = [0, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
   end
 
 def sale
