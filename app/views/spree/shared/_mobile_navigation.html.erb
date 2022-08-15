@@ -1,21 +1,28 @@
  <div class="mobile-menu">
+   <div class="menu-sidebar-header">
+    <button type="button" class="btn menu-close-sidebar-btn close-menu">Close Menu</button>
+  </div>
   <div class="menu-scroll">
     <div class="sub-menu-header d-flex align-items-center">
       <div class="left d-flex align-items-center flex-fill text-uppercase"><%= link_to "Home", root_path %></div>
       <div class="right d-flex align-items-center flex-fill">
         <% if spree_current_user.present? %>
           <%= link_to destroy_spree_user_session_path do %>
-            <em class="text-uppercase">Log out</em>
+            <em>Log Out</em>
           <% end %>
         <% else %>
           <%= link_to "Log in", new_spree_user_session_path %>
-           
-          <%= link_to new_spree_user_registration_path, class: "btn" do %>
+           <%= link_to new_spree_user_registration_path, class: "btn" do %>
            or <em class="text-uppercase">Register</em>
           <% end %>
         <% end %>
       </div>
     </div>
+    <% if spree_current_user.present? %>
+      <%= link_to account_path, :class => 'menu-mobile-profile' do %>
+        <strong>My Profile</strong> <span>Orders, Wishlist, Settings...</span>
+      <% end %>
+    <% end %>
     <div id="menu">
       <ul class="product-menu">
         <%# TODO: Optimize code. Make recursive using a frontend helper (taxon_tree) like for desktop. %>
