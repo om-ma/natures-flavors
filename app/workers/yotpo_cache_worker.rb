@@ -5,6 +5,9 @@ class YotpoCacheWorker
     Spree::Product.all.where(discontinue_on: nil).each do |product|
       product.yotpo_rich_snippets(true)
       product.yotpo_reviews(true)
+
+      # Build product cache for search JSON results
+      Spree::Product.yotpo_find_cached_by_id(product.id)
     end
   end
 

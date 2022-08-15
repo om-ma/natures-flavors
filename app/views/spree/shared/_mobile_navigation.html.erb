@@ -58,6 +58,11 @@
               </ul>
             </li>
           <% end %>
+          <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') %>
+            <li>
+               <span data-turbolinks="false" class="link" onclick="location='<%= admin_path %>'">Admin</span>
+            </li>
+          <% end %>
           <% if spree_current_user.present? && !spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
             <% @special_catetories.each do |category| %>
               <li>
