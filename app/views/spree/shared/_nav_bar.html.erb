@@ -89,6 +89,11 @@
           </div>
         </li>
       <% end %>
+      <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') %>
+        <li class="nav-item">
+          <%= link_to 'Admin', admin_path, class: "nav-link", data: { turbolinks: false } %>
+        </li>
+      <% end %>
       <% if spree_current_user.present? && !spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
         <% @special_catetories.each do |category| %>
           <li class="nav-item">
