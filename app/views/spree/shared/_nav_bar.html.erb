@@ -75,44 +75,29 @@
         <li class="nav-item">
           <%= link_to "Special", "#", class: "nav-link" %>
           <div class="dropdown-menu-wrap">
-            <div class="row no-gutters">
-              <div class="col-lg-6">
-                <div class="row no-gutters">
-                  <% @special_catetories.in_groups_of(6) do |categories| %>
-                    <div class="col">
-                      <ul class="dropdown-menu d-flex flex-column">
-                        <% categories.compact.each do |category| %>
-                          <li>
-                            <%= link_to category.name, seo_url(category), data: { turbolinks: false } %>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="col-lg-6"></div>
-            </div>
+            <ul>
+              <% @special_catetories.in_groups_of(6) do |categories| %>
+                <% categories.compact.each do |category| %>
+                  <li><%= link_to category.name, seo_url(category), data: { turbolinks: false } %></li>
+                <% end %>
+              <% end %>
+            </ul>
           </div>
-        </li>
-      <% end %>
-      <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') %>
-        <li class="nav-item">
-          <%= link_to 'Admin', admin_path, class: "nav-link", data: { turbolinks: false } %>
         </li>
       <% end %>
       <% if spree_current_user.present? && !spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
         <% @special_catetories.each do |category| %>
-          <li class="nav-item">
-            <%= link_to category.name, seo_url(category), class: "nav-link", data: { turbolinks: false } %>
-          </li>
+          <li class="nav-item"><%= link_to category.name, seo_url(category), class: "nav-link", data: { turbolinks: false } %></li>
         <% end %>
       <% end %>
       <% products_on_sale = Spree::Product.in_sale.present? ? true : false %>
       <% if products_on_sale %>
         <li class="nav-item"><a class="nav-link" href="/sale" data-turbolinks="false"><strong>Deals</strong></a></li>
       <% end %>  
-    </ul>
+      <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') %>
+        <li class="nav-item"><%= link_to 'Admin', admin_path, class: "nav-link", data: { turbolinks: false } %></li>
+      <% end %>
+      </ul>
     </div>
   </div> 
 </nav>
