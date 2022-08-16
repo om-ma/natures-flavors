@@ -1,10 +1,10 @@
  <div class="mobile-menu">
    <div class="menu-sidebar-header">
-    <button type="button" class="btn menu-close-sidebar-btn close-menu">Close Menu</button>
+    <button type="button" class="btn menu-close-sidebar-btn close-menu-link">Close Menu</button>
   </div>
   <div class="menu-scroll">
     <div class="sub-menu-header d-flex align-items-center">
-      <div class="left d-flex align-items-center flex-fill text-uppercase"><%= link_to "Home", root_path %></div>
+      <div class="left d-flex align-items-center flex-fill"><%= link_to "Home", root_path %></div>
       <div class="right d-flex align-items-center flex-fill">
         <% if spree_current_user.present? %>
           <%= link_to destroy_spree_user_session_path do %>
@@ -137,4 +137,3 @@
     </div>
   </div>
 </div>
-
