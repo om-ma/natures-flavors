@@ -43,24 +43,29 @@
           <li class="nav-item">
             <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link", data: { turbolinks: false } %>
             <div class="dropdown-menu-wrap">
-              <div class="row no-gutters">
-                <div class="col-lg-6">
-                  <div class="row no-gutters">
-                    <% menu_category.children.in_groups_of(6) do |categories|%>
-                      <div class="col">
-                        <ul class="dropdown-menu d-flex flex-column">
-                          <% categories.compact.each do |category| %>
-                            <li>
-                              <%= link_to category.name, seo_url(category), data: { turbolinks: false } %>
-                            </li>
+            <ul>
+              <% menu_category.children.in_groups_of(6) do |categories|%>
+                <% categories.compact.each do |category| %>
+                  <li>
+                      <!-- Sub Menu -->
+                        <% if category.children.present? %>
+                          <ul class="dropdown-menu-wrap-sub">
+                          <% category.children.each do |sub_category| %>
+                            <li><%= link_to sub_category.name, seo_url(sub_category), data: { turbolinks: false } %></li>
                           <% end %>
-                        </ul>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="col-lg-6"></div>
-              </div>
+                          </ul>
+                        <% end %>
+                      <!-- Sub Menu End -->
+                    <% if category.children.any? %> 
+                      <%= link_to category.name, seo_url(category), class: "dropdown-menu-sub", data: { turbolinks: false } %> 
+                    <% else %>
+                      <%= link_to category.name, seo_url(category), data: { turbolinks: false } %> 
+                    <% end %> 
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+            <%= link_to seo_url(menu_category), class: "menu-see-all", data: { turbolinks: false } do %>See All <strong><%= menu_category.name%></strong><% end %>
             </div>
           </li>
         <% end %>
