@@ -1,5 +1,6 @@
 Spree::TaxonsController.class_eval do
 
+  before_action :load_taxon_with_children, only: :show
   before_action :load_taxon, except: :all_categories
 
   def show
@@ -9,6 +10,10 @@ Spree::TaxonsController.class_eval do
     if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
       load_products
     end
+  end
+
+  def load_taxon_with_children
+    @taxon = Spree::Taxon.includes(children: :children).references(children: :children).friendly.find(params[:id])
   end
 
   def load_products    
@@ -32,7 +37,7 @@ Spree::TaxonsController.class_eval do
     if params[:sort_by] == "bestsellers"
       @products = products_searcher.includes(:product_properties).best_sellers
     else
-      @products = products_searcher.includes(:product_properties).references(:product_properties)
+      @products = products_searcher.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices)
     end
   end
 

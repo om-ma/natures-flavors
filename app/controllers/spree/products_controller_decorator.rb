@@ -35,7 +35,7 @@ module Spree
     end
 
     def load_product
-      @product = current_store.products.includes(prices: :sale_prices).references(prices: :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
+      @product = current_store.products.includes(:prices, :sale_prices).references(:prices, :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
     end
     
     def search
