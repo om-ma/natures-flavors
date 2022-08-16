@@ -91,3 +91,11 @@ en:
       canceled: canceled
     production_state_selected_same_as_previous: The selected value is the same as the current value.
     coa_requested: COA Requested
+    shipment_state: Fulfillment Status
+    shipment_states:
+      backorder: backorder
+      canceled: canceled
+      partial: partial
+      pending: pending
+      ready: not yet shipped
+      shipped: shipped

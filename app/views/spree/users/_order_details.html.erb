@@ -14,12 +14,8 @@
 								<h5><%= order.number %></h5>
 							</div>
 							<div class="order-col flex-fill">
-								<label>Shipment Status #:</label>
+								<label>Fulfillment Status:</label>
 								<h5 class="shipment-text"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></h5>
-							</div>
-							<div class="order-col flex-fill">
-								<label><%= Spree.t(:status) %></label>
-								<h5 class="text-info"><%= Spree.t("order_state.#{order.state}").titleize %></h5>
 							</div>
 							<div class="order-col flex-fill">
 								<label><%= Spree.t(:total) %></label>
