@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
 	def set_categories
 		@product_category = Rails.cache.fetch("@product_category", expires_in: Rails.configuration.x.cache.expiration) do
-			Spree::Taxon.includes(children: :taxons_users).references(children: :taxons_users).find_by_name("PRODUCTS")
+			Spree::Taxon.includes(children: [ :children, :taxons_users ]).references(children: [ :children, :taxons_users ]).find_by_name("PRODUCTS")
 		end
 
 		@all_categories = Rails.cache.fetch("@all_categories", expires_in: Rails.configuration.x.cache.expiration) do
-			(@product_category.present? ? @product_category&.children.where(hide_from_nav: false).order(:position): [])
+			@product_category.present? ? Spree::Taxon.includes(children: :children).references(children: :children).where(parent_id: @product_category.id, hide_from_nav: false).order(:position) : []
 		end
 
 		if spree_current_user.present?
