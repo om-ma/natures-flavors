@@ -1,5 +1,6 @@
 module Spree
   module ProductsControllerDecorator
+
     def index
       redirect_to page_not_found_path
     end
@@ -30,7 +31,12 @@ module Spree
         load_variants
         @variants_master_only_or_no_master = (@variants.count == 1 ? @variants : @variants.reject { |v| v.is_master } )
         @product_images = product_images(@product, @variants)
-        @related_products = @taxon&.products.present? ? @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil)&.last(2) : []
+
+        if @product.has_related_products?('related') &&  @product.related.count > 0
+          @related_products = @product.related
+        else
+          @related_products = @taxon&.products.present? ? @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil)&.last(2) : []
+        end
       end
     end
 
