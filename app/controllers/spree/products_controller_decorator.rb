@@ -33,7 +33,7 @@ module Spree
         @product_images = product_images(@product, @variants)
 
         if @product.has_related_products?('related') &&  @product.related.count > 0
-          @related_products = @product.related
+          @related_products = @product.related.first(2)
         else
           @related_products = @taxon&.products.present? ? @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil)&.last(2) : []
         end
