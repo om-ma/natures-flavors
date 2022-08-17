@@ -69,6 +69,10 @@ module Spree
         end
 
         @results_json = client.search(api_key, hashid, @keywords, 'match_and', 'product', @filter, @page, @per_page, @sort_by)
+
+        if @results_json['total'].to_i == 0
+          @results_json = client.search(api_key, hashid, @keywords, 'fuzzy', 'product', @filter, @page, @per_page, @sort_by)
+        end
       rescue StandardError => e
         Rails.logger.warn "Doofinder: Failed to search for: #{@keywords}"
         Rails.logger.warn e
