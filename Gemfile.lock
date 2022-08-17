@@ -233,6 +233,16 @@ GIT
       spree_extension
 
 GIT
+  remote: https://github.com/spree-contrib/spree_related_products.git
+  revision: 3456b108b6301a955cb43e34d5e8e800450f072f
+  specs:
+    spree_related_products (3.4.0)
+      deface (~> 1.0)
+      spree_backend (>= 3.1.0)
+      spree_core (>= 3.1.0)
+      spree_extension
+
+GIT
   remote: https://gitlab.com/duc.lam/spree_common.git
   revision: e94bbc2d4fe454b4fb4a6bdca78d22fb576b8138
   branch: master
@@ -2288,6 +2298,7 @@ DEPENDENCIES
   spree_mailchimp_ecommerce!
   spree_paypal_express!
   spree_product_feed!
+  spree_related_products!
   spree_sales!
   spree_sample
   spree_shipstation!
