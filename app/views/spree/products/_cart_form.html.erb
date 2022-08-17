@@ -81,7 +81,7 @@
           <% else %>
           
             <div class="product-options-header d-flex align-items-center justify-content-between">
-              <div class="left">Choose your option:</div>
+              <div class="left"><%= @product.option_types.blank? ? 'Choose your option:' : "#{@product.option_types[0].presentation}:" %></div>
               <div class="right" id="js_product_variant_sku">
                 <% default_sku = @product.variants.present? ? @product.variants.first.sku : @product.master.sku %>
                 <%= default_sku%>
