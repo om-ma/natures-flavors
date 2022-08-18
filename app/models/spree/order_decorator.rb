@@ -47,7 +47,6 @@ Spree::Order.class_eval do
         if Rails.configuration.x.backoffice.print_docs
           deliver_backoffice_invoice_email
           deliver_backoffice_pick_list_email
-          deliver_backoffice_packing_list_email
         end
       end
 
