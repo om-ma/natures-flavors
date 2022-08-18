@@ -51,16 +51,16 @@
           </div>
         <% end %>  
       </div>
-        <div class="product-tabs-wrapper">
-          <div class="row no-gutters">
-            <div class="col-xl-1 tablet-hide"></div>
-            <div class="col-xl-7 col-lg-7" >
-            <%= render partial: 'overview_tabs' %>
-            </div>
-            <%= render partial: 'related_products' %>
+      <div class="product-tabs-wrapper">
+        <div class="row no-gutters">
+          <div class="col-xl-1 tablet-hide"></div>
+          <div class="col-xl-7 col-lg-7" >
+          <%= render partial: 'overview_tabs' %>
           </div>
+          <%= render partial: 'related_products' %>
         </div>
-          <%= render partial: 'customer_reviews' %> 
+      </div>
+      <%= render partial: 'customer_reviews' %> 
     <%end%>
     <%= render 'spree/shared/product_added_modal' %>
     <%= products_structured_data([@product]) %>
