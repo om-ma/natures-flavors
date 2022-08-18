@@ -18,7 +18,7 @@ Spree::TaxonsController.class_eval do
 
   def load_products    
     if params[:sort_by].blank?
-      params[:sort_by] = "descend_by_popularity"
+      params[:sort_by] = "name-a-z"
     end
 
     search_params = params.merge(
