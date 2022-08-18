@@ -27,7 +27,7 @@
   });
 </script>
 <% end %>
-<% if (browser.device.mobile?) %>
+<% if (browser.device.mobile? || browser.device.tablet?) %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
