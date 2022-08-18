@@ -1131,11 +1131,10 @@ a.btn.btn-block {
     transform: translateY(0);
 }
 
-.dropdown-menu-wrap ul, li {
+.dropdown-menu-wrap ul, .dropdown-menu-wrap li {
 	padding: 0;
 	margin: 0;
 	list-style: none;
-
 }
 
 .nav-item .dropdown-menu-wrap a{
