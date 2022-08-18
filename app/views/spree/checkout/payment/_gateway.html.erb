@@ -34,7 +34,7 @@
   </div>
 </div>
 <div class="row narrow-row">
-  <div class="col-6">
+  <div class="col-sm-6">
     <div class="form-group form-floating mb-20" data-hook="card_expiration">
       <%= text_field_tag "#{param_prefix}[expiry]", '', id: 'card_expiry', class: "form-control cardExpiry #{payment_method.type.parameterize}-card-expiry ", placeholder: "MM/YYYY" %>
       <%= label_tag "card_expiry", class: "control-label" do %>
@@ -42,7 +42,7 @@
       <% end %>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-sm-6">
     <div class="form-group form-floating mb-30" data-hook="card_code">
       <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(id: 'card_code', class: "form-control cardCode #{payment_method.type.parameterize}-card-code ", size: 5, placeholder: Spree.t(:cvv)) %>
       <label>Security Code (CVV)*</label>
