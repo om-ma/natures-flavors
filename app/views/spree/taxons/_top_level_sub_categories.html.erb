@@ -1,0 +1,66 @@
+<div class="main-category-wrap">
+  <div class="row">
+    <strong>Jump to: </strong>
+    <% taxon.children.each do |category| %>
+    <%= link_to category.name, seo_url(category), data: { turbolinks: false } %>
+    <% end %>
+  </div>
+</div>
+<div class="main-category-best">
+  <ul>
+    <li class="active-best">Most Popular</li>
+    <li>in <%= taxon.name %></li>
+  </ul>
+</div>
+<div class="row row-cols-xl-6 row-cols-lg-3 row-cols-sm-2 no-gutters">
+  <% products.each_with_index do |product, index| %>
+  <div class="col col-12">
+    <div class="product-wrap">
+      <%= link_to spree.product_path(product, taxon_id: @taxon&.id), data: { turbolinks: false } do %>
+      <div class="product-img">
+        <%= plp_and_carousel_image(product, 'product-component-plp-image') %>
+        <div class="price">
+          <% if product&.sale_prices&.active&.present? %>
+          <span><%= display_original_price(product.lowest_sale_price.price.variant) %></span><%= product.lowest_sale_price.display_price %>
+          <% else %>
+          <%= display_price(product) %>
+          <% end %>  
+        </div>
+      </div>
+      <div class="product-desc"title="<%= product.name %>" >
+        <h4> <%= product.name %></h4>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% cache [taxon, taxon.children] do %>
+<div class="sub-categories">
+  <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-sm-1 no-gutters">
+    <% taxon.children.each do |category| %>
+    <div class="col col-12">
+      <div class="sub-categories-preview">
+        <%= link_to seo_url(category), data: { turbolinks: false } do %>
+          <% if @taxon.icon.present? %>
+            <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
+          <% else %>
+            <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
+          <% end %>
+        <% end %>
+        <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false } %></h2>
+        <p><%= raw(category.short_description) %></p>
+        <% if category.children %>
+          <ul>
+            <% category.children.each do |sub_category| %>
+              <li><%= link_to sub_category.name, seo_url(sub_category), data: { turbolinks: false } %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <a class="btn btn-primary" href="#"><span>See All <%= category.name %></span></a>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
