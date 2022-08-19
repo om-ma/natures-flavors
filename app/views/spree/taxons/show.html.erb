@@ -10,19 +10,25 @@
       </div>
       <div class="col-xl-10 col-lg-9">
         <div class="products-wrapper">
-          <div class="category-banner phone-visible"><div class="category-banner phone-visible">
+          <div class="category-banner phone-visible">
             <% if @taxon.icon.present? %>
                <%= image_tag @taxon.icon.my_cf_image_url, alt:"#{@taxon.name}" %> 
             <% else %>
                <%= image_tag "noimage/default-category-image.jpg", alt:"#{@taxon.name}" %>
             <% end %>
-          </div></div>
+          </div>
           <%= render partial: 'spree/taxons/introduction' %>
-          <%= render partial: 'spree/taxons/filters' %>
-          <%= render partial: 'spree/taxons/mobile_filters' %> 
-          <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }, cached: true %>
+          <% if @is_top_level_menu_item %>
+            <%= render partial: 'spree/taxons/top_level_sub_categories', locals: { products: @products, taxon: @taxon } %>
+          <% else %>
+            <%= render partial: 'spree/taxons/filters' %>
+            <%= render partial: 'spree/taxons/mobile_filters' %> 
+            <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }, cached: true %>
+          <% end %>
         </div>
-        <%= render partial: 'spree/taxons/pagination', products: @products  %>
+        <% if !@is_top_level_menu_item %>
+          <%= render partial: 'spree/taxons/pagination', products: @products  %>
+        <% end %>
       </div>
     </div>
   </div>
