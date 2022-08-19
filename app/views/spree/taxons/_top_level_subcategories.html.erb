@@ -15,7 +15,7 @@
 <div class="row row-cols-xl-6 row-cols-lg-3 row-cols-sm-2 no-gutters">
   <% products.each_with_index do |product, index| %>
   <div class="col col-12">
-    <div class="product-wrap">
+    <div class="product-wrap" data-hook="top_level_subcategories_product_list_item">
       <%= link_to spree.product_path(product, taxon_id: @taxon&.id), data: { turbolinks: false } do %>
       <div class="product-img">
         <%= plp_and_carousel_image(product, 'product-component-plp-image') %>
