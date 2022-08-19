@@ -9,8 +9,11 @@ Spree::TaxonsController.class_eval do
 
     if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
       @is_top_level_menu_item = @taxon.is_top_level_menu_item
+      @is_hide_most_popular = (@taxon.name == 'Extracts & Flavorings')
       if @is_top_level_menu_item
-        load_most_popular_products
+        if !@is_hide_most_popular
+          load_most_popular_products
+        end
       else
         load_products
       end
