@@ -2,7 +2,7 @@
   <div class="row">
     <strong>Jump to: </strong>
     <% taxon.children.each do |category| %>
-    <%= link_to category.name, seo_url(category), data: { turbolinks: false } %>
+    <%= link_to category.name, "#sub-categories-preview-#{category.name}", data: { turbolinks: false } %>
     <% end %>
   </div>
 </div>
@@ -40,7 +40,7 @@
   <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-sm-1 no-gutters">
     <% taxon.children.each do |category| %>
     <div class="col col-12">
-      <div class="sub-categories-preview">
+      <div class="sub-categories-preview" id="<%= "sub-categories-preview-#{category.name}" %>">
         <%= link_to seo_url(category), data: { turbolinks: false } do %>
           <% if category.icon.present? %>
             <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
