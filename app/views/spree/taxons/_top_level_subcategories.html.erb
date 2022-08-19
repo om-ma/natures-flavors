@@ -42,7 +42,7 @@
     <div class="col col-12">
       <div class="sub-categories-preview">
         <%= link_to seo_url(category), data: { turbolinks: false } do %>
-          <% if @taxon.icon.present? %>
+          <% if category.icon.present? %>
             <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
           <% else %>
             <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
@@ -52,12 +52,14 @@
         <p><%= raw(category.short_description) %></p>
         <% if category.children %>
           <ul>
-            <% category.children.each do |sub_category| %>
-              <li><%= link_to sub_category.name, seo_url(sub_category), data: { turbolinks: false } %></li>
+            <% category.children.each do |subcategory| %>
+              <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false } %></li>
             <% end %>
           </ul>
         <% end %>
-        <a class="btn btn-primary" href="#"><span>See All <%= category.name %></span></a>
+        <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false } do %>
+          <span>See All <%= category.name %></span>
+        <% end %>
       </div>
     </div>
     <% end %>

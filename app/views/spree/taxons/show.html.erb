@@ -19,7 +19,7 @@
           </div>
           <%= render partial: 'spree/taxons/introduction' %>
           <% if @is_top_level_menu_item %>
-            <%= render partial: 'spree/taxons/top_level_sub_categories', locals: { products: @products, taxon: @taxon } %>
+            <%= render partial: 'spree/taxons/top_level_subcategories', locals: { products: @products, taxon: @taxon } %>
           <% else %>
             <%= render partial: 'spree/taxons/filters' %>
             <%= render partial: 'spree/taxons/mobile_filters' %> 
