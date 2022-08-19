@@ -6,6 +6,7 @@
     <% end %>
   </div>
 </div>
+<% if !@is_hide_most_popular %>
 <div class="main-category-best">
   <ul>
     <li class="active-best">Most Popular</li>
@@ -35,6 +36,7 @@
   </div>
   <% end %>
 </div>
+<% end %>
 <% cache [taxon, taxon.children] do %>
 <div class="sub-categories">
   <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-sm-1 no-gutters">
