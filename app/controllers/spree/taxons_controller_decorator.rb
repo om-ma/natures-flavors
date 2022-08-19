@@ -22,15 +22,9 @@ Spree::TaxonsController.class_eval do
   end
 
   def load_most_popular_products
-    search_params = {
-      sort_by: 'descend_by_popularity',
-      current_store: current_store,
-      taxon: @taxon,
-      include_images: true
-    }
-    
-    @searcher = build_searcher(search_params)
-    @products = products_searcher = @searcher.retrieve_products.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices).limit(6)
+    @products = Rails.cache.fetch("@pmost-popular-products/taxon/#{@taxon.name}", expires_in: Rails.configuration.x.cache.expiration) do
+      @taxon.products.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices).reorder(popularity: :desc).first(6)
+    end
   end
 
   def load_products    
