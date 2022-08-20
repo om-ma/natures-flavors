@@ -60,7 +60,14 @@
 										<p>
 											<% if order.has_step?("delivery") %>
 												<% order.shipments.valid.each do |shipment| %>
-													<%= shipment.shipping_method&.name %>
+													<%= shipment.number + ': ' + shipment.shipping_method&.name %><br/>
+													<% if shipment.state == 'shipped' %>
+														<% if shipment.tracking && shipment.tracking_url %>
+															Tracking Information: <%= link_to shipment.tracking, shipment.tracking_url, target: "_blank" %><br/>
+														<% else %>
+															No tracking details provided.
+														<% end %>
+													<% end %>
 												<% end %>
 											<% end %>
 										</p>
