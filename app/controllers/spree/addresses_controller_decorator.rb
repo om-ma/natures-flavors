@@ -1,6 +1,8 @@
 Spree::AddressesController.class_eval do
 
-
+  # Override load_and_authorize_resource in default Spree class
+  skip_authorize_resource :only => [ :create, :edit, :new, :update, :destroy, :set_as_default ]
+  
   def create
 
     @address = try_spree_current_user.addresses.build(address_params)
