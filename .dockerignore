@@ -16,3 +16,4 @@ set-env-dev.sh
 start-sidekiq.sh
 
 # Ignore data migration files
+/migration
