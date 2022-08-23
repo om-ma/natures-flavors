@@ -9,7 +9,6 @@ Disallow: /api
 Disallow: /password
 Disallow: /admin
 Disallow: /favorite_products
-Disallow: /*?*taxon_id=*
-Disallow: /*?*sort_by=*
+
 
 Sitemap: https://www.naturesflavors.com/sitemap
