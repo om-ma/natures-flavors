@@ -137,17 +137,6 @@ GIT
       spree_core (>= 3.2.0, < 5.0.0)
 
 GIT
-  remote: https://github.com/ducl13/spree_analytics_trackers.git
-  revision: 6583ff6f90650d08dfd2ed2e07ca10da31b7487a
-  branch: master
-  specs:
-    spree_analytics_trackers (2.1.1)
-      deface (~> 1.0)
-      spree_backend (>= 4.1.0, < 5.0)
-      spree_core (>= 4.1.0, < 5.0)
-      spree_extension
-
-GIT
   remote: https://github.com/ducl13/spree_comments.git
   revision: 84bec21847bf6b338cffca5f21b64c779c8fc278
   branch: master
@@ -2295,7 +2284,6 @@ DEPENDENCIES
   spree_active_shipping!
   spree_admin_insights!
   spree_admin_roles_and_access!
-  spree_analytics_trackers!
   spree_auth_devise (~> 4.3)
   spree_backend (= 4.3)
   spree_comments!
