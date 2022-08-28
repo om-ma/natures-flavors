@@ -87,11 +87,12 @@
             <div class="right"><span id="js_selected_variantt_sku"><%= default_variant.sku%></span></div>
           </div>
             <%
-              query_variant_id = params[:variant]
+              select_variant_id = params[:variant]&.to_i
               selected_variant_index = 0
-              if query_variant_id.present?
+              selected_variant_found = false
+              if select_variant_id.present?
                 @variants_master_only_or_no_master.each_with_index do |variant, index|
-                  if query_variant_id == variant.id
+                  if select_variant_id == variant.id
                     selected_variant_index = index
                     break
                   end
@@ -118,7 +119,7 @@
               </li>
             <% end %>
             </ul>
-            <% default_id = query_variant_id.present? ? query_variant_id : (@product.variants.present? ? @product.variants.first.id : @product.master.id) %>
+            <% default_id = selected_variant_found ? select_variant_id : (@product.variants.present? ? @product.variants.first.id : @product.master.id) %>
             <%= hidden_field_tag "variant_id", variant.id, id: "selected_variant" %>
           <% end %>
         <% else %>
