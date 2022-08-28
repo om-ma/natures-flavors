@@ -7,7 +7,7 @@ class YotpoCacheWorker
       product.yotpo_reviews(true)
 
       # Build product cache for search JSON results
-      Spree::Product.yotpo_find_cached_by_id(product.id)
+      Spree::Product.find_cached_by_id(product.id, true)
     end
   end
 
