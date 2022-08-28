@@ -94,6 +94,7 @@
                 @variants_master_only_or_no_master.each_with_index do |variant, index|
                   if select_variant_id == variant.id
                     selected_variant_index = index
+                    selected_variant_found = true
                     break
                   end
                 end
@@ -120,7 +121,7 @@
             <% end %>
             </ul>
             <% default_id = selected_variant_found ? select_variant_id : (@product.variants.present? ? @product.variants.first.id : @product.master.id) %>
-            <%= hidden_field_tag "variant_id", variant.id, id: "selected_variant" %>
+            <%= hidden_field_tag "variant_id", default_id, id: "selected_variant" %>
           <% end %>
         <% else %>
           <%= hidden_field_tag "variant_id", @product.master.id %>
