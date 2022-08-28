@@ -1,5 +1,3 @@
-SitemapGenerator::Sitemap.default_host = Spree::Store.default.url
-
 ##
 ## If using Heroku or similar service where you want sitemaps to live in S3 you'll need to setup these settings.
 ##
