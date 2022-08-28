@@ -36,7 +36,9 @@
                   <%= render partial: 'gallery' %>
                 </div>
                 <div class="col-xl-5">
+                <% if (browser.device.mobile? || browser.device.tablet?) %>
                   <%= render 'phone_cart_form', variant_change_identifier: 'productCarousel' %> 
+                <% end %>
                   <div id="product-description" >
                     <%= render partial: 'description' %>
                   </div>
@@ -45,7 +47,7 @@
             </div>
           </div>
         </div>
-        <%unless browser.device.mobile? %>
+        <% unless (browser.device.mobile? || browser.device.tablet?) %>
           <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart_form" data-hook="product_right_part" data-hook="product_right_part_wrap">
             <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>   
           </div>

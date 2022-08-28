@@ -2,19 +2,14 @@ $(document).on('turbolinks:load', function () {
   $('.product-ov-js').on('click', function (e) {
      $('.product-ov-js').removeClass("active");
      $(this).addClass('active')
-     var variantSku = $(this).attr("data-varient-sku");
-     $("#js-product_variant_sku").replaceWith(
-        "<div id = 'product_variant_sku'>" + variantSku + "</div>"
-     );
-     var variantPrice = $(this).attr("data-btn-varient-price");
-     var variantId = $(this).attr("data-varient-id");
+     var variantSku = $(this).attr("data-variant-sku");
+     var variantPrice = $(this).attr("data-btn-variant-price");
+     var variantId = $(this).attr("data-variant-id");
 
      $('#selected_variant').val(variantId);
      $('#variant_id').val(variantId);
-     $(".add-to-cart-button").removeAttr("disabled");
-     if ($("#js-select-display-price").length) {
-        $("#js-select-display-price").html(variantPrice)
-     }
+     
+     $('.add-to-cart-button').removeAttr("disabled");
   });
 });
 
