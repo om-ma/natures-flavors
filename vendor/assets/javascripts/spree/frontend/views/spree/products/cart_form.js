@@ -299,7 +299,7 @@ Spree.ready(function($) {
     var quantity = parseInt($cartForm.find('[name="quantity"]').val());
     var options = Spree.addToCartFormSubmissionOptions();
 
-    event.preventDefault()
+    event.preventDefault();
     $addToCart.prop('disabled', true);
     Spree.ensureCart(function() {
       SpreeAPI.Storefront.addToCart(
