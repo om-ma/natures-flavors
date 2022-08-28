@@ -273,7 +273,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/duc.lam/spree_yotpo.git
-  revision: b5f3fffba36e2341eda0331e314b7456094c6104
+  revision: 6a3d467c103edc7a4b91f4e3b2db2decfddc5a21
   branch: naturesflavors
   specs:
     spree_yotpo (1.0.0)

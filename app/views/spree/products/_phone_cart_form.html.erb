@@ -27,7 +27,6 @@
   });
 </script>
 <% end %>
-<% if (browser.device.mobile? || browser.device.tablet?) %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
@@ -73,7 +72,7 @@
                 </li>
               <% end %>
             </ul>
-            <div class=" add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
+            <div class=" add-to-cart-form-price price selling" data-hook="product_price1">
               <span content="<%= current_currency %>"></span>
               <% if default_variant.on_sale? %>
                 <del><%= display_original_price(default_variant) %></del><%= default_variant.active_sale_in(current_currency).display_price %>
@@ -87,13 +86,27 @@
             <div class="left"><%= @product.option_types.blank? ? 'Choose your option:' : "#{@product.option_types[0].presentation}:" %></div>
             <div class="right"><span id="js_selected_variantt_sku"><%= default_variant.sku%></span></div>
           </div>
-
+            <%
+              select_variant_id = params[:variant]&.to_i
+              selected_variant_index = 0
+              selected_variant_found = false
+              if select_variant_id.present?
+                @variants_master_only_or_no_master.each_with_index do |variant, index|
+                  if select_variant_id == variant.id
+                    selected_variant_index = index
+                    selected_variant_found = true
+                    break
+                  end
+                end
+              end
+            %>
+            <ul id="product-variants" class="product-variants product-variants-variant list-unstyled">
             <% @variants_master_only_or_no_master.each_with_index do |variant, index| %>
               <!-- removed from mobile cart product-ov-js -->
-              <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js js-variant-list <%= index == 0 ? 'active' : '' %>"
-                data-varient-id="<%= variant.id %>" data-varient-sku="<%= variant.sku %>" data-btn-varient-price="<%= variant.price_in(current_currency).money %>" >
+              <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js js-variant-list <%= selected_variant_index == index ? 'active' : '' %>"
+                data-variant-id="<%= variant.id %>" data-variant-sku="<%= variant.sku %>" data-btn-variant-price="<%= variant.price_in(current_currency).money %>" >
                 <% option_value = variant.option_values.first %>
-                <div class="multiple-options-right-price  add-to-cart-form-price price selling"  id="product-price"  data-hook="product_price1">
+                <div class="multiple-options-right-price  add-to-cart-form-price price selling" data-hook="product_price1">
                   <span content="<%= current_currency %>"></span>
                   <% if variant.on_sale? %>
                     <del><%= display_original_price(variant) %></del><%= variant.active_sale_in(current_currency).display_price %>
@@ -103,18 +116,18 @@
                 </div>
                 <div class="right">
                   <%= option_value&.presentation %>
-                  <% default_id = @product.variants.present? ? @product.variants.first.id : @product.master.id %>
-                  <%= hidden_field_tag "variant_id", variant.id, id: "selected_variant" %>  
                 </div>
               </li>
             <% end %>
+            </ul>
+            <% default_id = selected_variant_found ? select_variant_id : (@product.variants.present? ? @product.variants.first.id : @product.master.id) %>
+            <%= hidden_field_tag "variant_id", default_id, id: "selected_variant" %>
           <% end %>
         <% else %>
           <%= hidden_field_tag "variant_id", @product.master.id %>
         <% end %>
       </div>
       <% if is_product_available_in_currency && @product.can_supply? %>
-        <%= hidden_field_tag "variant_id", default_variant.id %>
         <div class="add-to-cart-wrap mb-30">
           <label>Quantity:</label>
           <div class="d-flex flex-wrap align-items-center">
@@ -127,4 +140,3 @@
       <%end%>
     <%end%>
   </div>
-<% end %>
