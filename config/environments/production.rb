@@ -155,6 +155,7 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(aws_access_k
                                                                     fog_directory:         ENV['S3_SITEMAPS_BUCKET'])
 SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-production-sitemaps.s3.amazonaws.com/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.default_host = "https://www.naturesflavors.com"
 
 Rails.application.default_url_options = { host: "https://www.naturesflavors.com" }
 Spree::Core::Engine.routes.default_url_options[:host] = 'www.naturesflavors.com'

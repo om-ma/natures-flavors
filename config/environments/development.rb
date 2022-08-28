@@ -127,5 +127,4 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(aws_access_k
                                                                     fog_directory:         ENV['S3_SITEMAPS_BUCKET'])
 SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-development-sitemaps.s3.amazonaws.com/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
-
-Rails.application.default_url_options = { host: "http://naturesflavors.localhost:3000" }
+SitemapGenerator::Sitemap.default_host = "http://naturesflavors.localhost:3000"
