@@ -128,3 +128,5 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(aws_access_k
 SitemapGenerator::Sitemap.sitemaps_host = "http://naturesflavors-development-sitemaps.s3.amazonaws.com/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.default_host = "http://naturesflavors.localhost:3000"
+
+Rails.application.default_url_options = { host: "http://naturesflavors.localhost:3000" }
