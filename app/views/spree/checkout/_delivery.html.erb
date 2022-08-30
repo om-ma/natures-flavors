@@ -43,12 +43,14 @@
       <% end %>
     <% end %>
     <% if Spree::Config[:shipping_instructions] %>
-      <div id="minstrs" data-hook>
-        <h4 class="h5">
-          <%= Spree.t(:shipping_instructions) %>
-        </h4>
-        <%= form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %>
+    <div id="faqaccordion" class="shipping-accordion">
+      <div id="minstrs" class="shipping-instructions" data-hook>
+        <button type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true">Add Shipping Instructions</button>
+        <div id="collapseTwo" class="collapse" data-parent="#faqaccordion" style="">
+          <%= form.text_area :special_instructions, cols: 40, rows: 2, class: "form-control" %>
+        </div>
       </div>
+    </div>
     <% end %>
   </div>
 </div>
