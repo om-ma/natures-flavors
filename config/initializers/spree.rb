@@ -19,6 +19,9 @@ Spree.config do |config|
   # Site title
   config.always_put_site_name_in_title = true
   config.title_site_name_separator = "|"
+
+  # Shipping instructions
+  config.shipping_instructions = true
 end
 
 # Configure Spree Dependencies
@@ -58,3 +61,6 @@ Spree::PermittedAttributes.checkout_attributes << :production_state
 # Turn off tinymce (Open issue)
 Spree::Config.taxon_wysiwyg_editor_enabled = false
 Spree::Config.product_wysiwyg_editor_enabled = false
+
+# Prevent split shipments
+Rails.application.config.spree.stock_splitters = []
