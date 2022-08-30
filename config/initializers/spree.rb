@@ -19,6 +19,9 @@ Spree.config do |config|
   # Site title
   config.always_put_site_name_in_title = true
   config.title_site_name_separator = "|"
+
+  # Shipping instructions
+  config.shipping_instructions = true
 end
 
 # Configure Spree Dependencies

@@ -80,6 +80,14 @@
 										</p>
 									</div>
 									<% end %>
+									<% if order.special_instructions.present? %>
+									<div class="profile-order-summary">
+										<h6>Special Instructions:</h6>
+										<p>
+											<%= order.special_instructions %>
+										</p>
+									</div>
+									<% end %>
 								</div>
 								<div class="order-summary">
 									<% order.line_items.each do|s| %>
