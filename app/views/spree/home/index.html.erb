@@ -16,8 +16,17 @@
         <div class="col-xl-6 col-lg-8">
           <div class="search-wrap">
           <div class="search-tags d-flex align-items-start">
+            <p>Family-owned and run for over 40 years, it is our mission to spread the natural and organic bounty of nature through our natural flavorings.</p>
+            <% if (browser.device.mobile? || browser.device.tablet?) %>
             <label>Jump to</label>
-            <div class="flex-fill"><a data-turbolinks="false" href="#categories-extracts">Extracts & Flavorings</a> <a href="">Fragrances</a> <a href="">Syrups</a> <a href="">Baking Ingredients</a> <a href="">Drinks</a> <a href="">More</a></div>
+            <div class="flex-fill">
+            <% if @all_categories.present? %>
+            <% @all_categories.each do |category| %>
+              <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, alt: "#{category.name}"  %>
+            <% end %>
+            <% end %>
+            </div>
+            <% end %>
           </div>
           </div>
         </div>
@@ -119,127 +128,29 @@
       </div>
     </div>
   </div>
-
-
-
-<div id="home-categories">
-  <div class="row row-cols-xl-3  row-cols-xs-2 row-cols-lg-2 row-cols-sm-1 no-gutters">
-
-    <div class="col col-12" id="categories-extracts">
-      <div class="sub-categories-preview">
-        <a href=""><img src="https://dx1wqezomiae6.cloudfront.net/clywszax9i1czn6i8rtp95r453p7?response-content-disposition=inline%3B%20filename%3D%22extracts-flavorings.jpg%22%3B%20filename%2A%3DUTF-8%27%27extracts-flavorings.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPJX7DQABALCI4GQ%2F20220829%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220829T212850Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=1ee4e4734c65f29f3e8cb39213021f798383fdd43cb93690db29344d54ed8cec" alt=""></a>
-        <h2><a href="">Flavorings and Extracts</a></h2>
-        <p>Nature’s Flavors has been producing organic and natural flavorings for over 40 years. We specialize in custom-made, all-natural, and organic flavorings for the food and beverage industry. The Flavor Guy travels the world to ensure our flavorings and extracts are sourced from the finest natural and organic ingredients.</p>
-        <ul>
-          <li><a href="">Flavor Extracts</a></li>
-          <li><a href="">Flavor Concentrates</a></li>
-          <li><a href="">Flavor Compounds</a></li>
-          <li><a href="">Flavor Emulsions</a></li>
-          <li><a href="">Flavor Powders</a></li>
-          <li><a href="">Flavor Oils</a></li>
-          <li><a href="">Vanilla Extracts</a></li>
-          <li><a href="">TTB Approved Flavors</a></li>
-          <li><a href="">Flavoring for Ice Cream</a></li>
-          <li><a href="">Flavoring for Water</a></li>
-          <li><a href="">Flavoring for Coffee & Tea</a></li>
-          <li><a href="">Flavoring for Lip Balm</a></li>
-          <li><a href="">Flavoring for Chocolate</a></li>
-          <li><a href="">Keto Friendly Flavors</a></li>
-          <li><a href="">Flavors Without Diacetyl</a></li>
-          <li><a href="">Flavor Sample Packs</a></li>
-        </ul>
+  <% if (browser.device.mobile? || browser.device.tablet?) %>
+  <div id="home-categories">
+    <div class="row row-cols-xl-3  row-cols-xs-2 row-cols-lg-2 row-cols-sm-1 no-gutters">
+    <% if @all_categories.present? %>
+    <% @all_categories.each do |category| %>
+      <div class="col col-12" id="categories-<%= category.name %>">
+          <div class="sub-categories-preview">
+          <%= link_to seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" do %>
+            <% if category.icon.present? %>
+              <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
+            <% else %>
+              <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
+            <% end %>
+          <% end %>
+          <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>
+          <p><%= raw(category.short_description) %></p>
+        </div>
       </div>
+    <% end %>
+    <% end %>
     </div>
-
-    <div class="col col-12">
-      <div class="sub-categories-preview">
-        <a href=""><img src="https://dx1wqezomiae6.cloudfront.net/p7geg8xtgz8i4ogruh4w5maj36k9?response-content-disposition=inline%3B%20filename%3D%22fragrances.jpg%22%3B%20filename%2A%3DUTF-8%27%27fragrances.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPJX7DQABALCI4GQ%2F20220829%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220829T232754Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=82ce172d6e8b57458800dd75357bc1a1af3e178eead73e4d20a92b27277eca55" alt=""></a>
-        <h2><a href="">Fragrances and Essential Oils</a></h2>
-        <p>At Nature's Flavors, we extract the purest natural fragrances and essential oils from fruit, vegetable, and plant sources to fulfill all your fragrance and flavor application needs. These essential oil fragrances are concentrated liquids derived from plant sources that contain beautiful aroma compounds.</p>
-        <ul>
-          <li><a href="">Fragrance Oils</a></li>
-          <li><a href="">Essential Oils</a></li>
-          <li><a href="">Massage Oils</a></li>
-          <li><a href="">Fragrance Powders</a></li>
-          <li><a href="">Fragrance Emulsions</a></li>
-          <li><a href="">Organic Fragrance Sample Packs</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col col-12">
-      <div class="sub-categories-preview">
-        <a href=""><img src="https://dx1wqezomiae6.cloudfront.net/yq27tshpxf9wtsyyczse1p9fuac3?response-content-disposition=inline%3B%20filename%3D%22syrups.jpg%22%3B%20filename%2A%3DUTF-8%27%27syrups.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPJX7DQABALCI4GQ%2F20220830%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220830T153843Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=79bee66fdb241bf2453d56c34a6ab004bf200590745a28ed6e95fbe308b21e1f" alt=""></a>
-        <h2><a href="">Flavored Syrups</a></h2>
-        <p>Syrup, sweet flavoring syrup. At Nature's Flavors, we take our flavored syrup seriously. At 155 varieties of natural and organic flavored syrups and counting, we are the unchallenged leader in naturally flavored, custom syrup creations without any artificial flavors, colors, or preservatives.</p>
-        <ul>
-          <li><a href="">Natural Flavored Syrups</a></li>
-          <li><a href="">Organic Flavored Syrups</a></li>
-          <li><a href="">Snow Cone Syrup</a></li>
-          <li><a href="">Coffee Syrup</a></li>
-          <li><a href="">Italian Soda Syrups</a></li>
-          <li><a href="">Sugar Free Syrup Powdered Formula</a></li>
-          <li><a href="">Low-Carb Erythritol Syrup</a></li>
-          <li><a href="">Pancake Syrup Organic</a></li>
-          <li><a href="">Bar Mix Syrup Organic</a></li>
-          <li><a href="">Syrup For Yogurt Organic</a></li>
-          <li><a href="">Organic Powdered Syrup</a></li>
-          <li><a href="">Shakes & Smoothies</a></li>
-          <li><a href="">Sample Packs & Bundles</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col col-12">
-      <div class="sub-categories-preview">
-        <a href=""><img src="https://dx1wqezomiae6.cloudfront.net/yq27tshpxf9wtsyyczse1p9fuac3?response-content-disposition=inline%3B%20filename%3D%22syrups.jpg%22%3B%20filename%2A%3DUTF-8%27%27syrups.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPJX7DQABALCI4GQ%2F20220830%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220830T153843Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=79bee66fdb241bf2453d56c34a6ab004bf200590745a28ed6e95fbe308b21e1f" alt=""></a>
-        <h2><a href="">Flavored Syrups</a></h2>
-        <p>Nature's Flavors' Flavor Concentrates are made from the finest ingredients available.</p>
-        <ul>
-          <li><a href="">Natural Flavored Syrups</a></li>
-          <li><a href="">Organic Flavored Syrups</a></li>
-          <li><a href="">Snow Cone Syrup</a></li>
-          <li><a href="">Coffee Syrup</a></li>
-          <li><a href="">Italian Soda Syrups</a></li>
-          <li><a href="">Sugar Free Syrup Powdered Formula</a></li>
-          <li><a href="">Low-Carb Erythritol Syrup</a></li>
-          <li><a href="">Pancake Syrup Organic</a></li>
-          <li><a href="">Bar Mix Syrup Organic</a></li>
-          <li><a href="">Syrup For Yogurt Organic</a></li>
-          <li><a href="">Organic Powdered Syrup</a></li>
-          <li><a href="">Shakes & Smoothies</a></li>
-          <li><a href="">Sample Packs & Bundles</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col col-12">
-      <div class="sub-categories-preview">
-        <a href=""><img src="https://dx1wqezomiae6.cloudfront.net/p7geg8xtgz8i4ogruh4w5maj36k9?response-content-disposition=inline%3B%20filename%3D%22fragrances.jpg%22%3B%20filename%2A%3DUTF-8%27%27fragrances.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPJX7DQABALCI4GQ%2F20220829%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220829T213013Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=dec0033da94d92d0c9e10895d5d86a36641b35ef880196c25ce5223df172dbff" alt=""></a>
-        <h2><a href="">Natural Fragrances and Essential Oils</a></h2>
-        <p>At Natures Flavors, we extract the purest natural fragrances and essential oils from fruit, vegetable, and plant sources to fulfill all your fragrance and flavor application needs. These essential oil fragrances are concentrated liquids derived from plant sources that contain beautiful aroma compounds.</p>
-        <ul>
-          <li><a href="">Organic Flavor Concentrate</a></li>
-          <li><a href="">Natural Flavor Concentrate</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col col-12">
-      <div class="sub-categories-preview">
-        <a href=""><img src="https://dx1wqezomiae6.cloudfront.net/clywszax9i1czn6i8rtp95r453p7?response-content-disposition=inline%3B%20filename%3D%22extracts-flavorings.jpg%22%3B%20filename%2A%3DUTF-8%27%27extracts-flavorings.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIPJX7DQABALCI4GQ%2F20220829%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220829T212850Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=1ee4e4734c65f29f3e8cb39213021f798383fdd43cb93690db29344d54ed8cec" alt=""></a>
-        <h2><a href="">Flavor Concetrates</a></h2>
-        <p>Nature's Flavors' Flavor Concentrates are made from the finest ingredients available.</p>
-        <ul>
-          <li><a href="">Organic Flavor Concentrate</a></li>
-          <li><a href="">Natural Flavor Concentrate</a></li>
-        </ul>
-      </div>
-    </div> 
-
-    </div>
-</div>
-
-
+  </div>
+  <% end %>
   <div class="home-videos-wrapper">
     <div class="container-fluid">
       <div class="row">
