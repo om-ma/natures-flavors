@@ -39,7 +39,7 @@
         <% end %>
       </ul>
       <% if sorted_shipping_rates.count == 1 && sorted_shipping_rates[0].shipping_method.calculator.class.name == "Spree::Calculator::Shipping::LocalPickupCalculator" %>
-      <p>For Custom Shipping rates contact us at <a href="tel:1-714-744-3700">1-714-744-3700</a> or <a href="mailto:customerservice@naturesflavors.com" target="_blank" alt="ailto:customerservice@naturesflavors.com">customerservice@naturesflavors.com</a></p>
+      <p>This order exceeds the standard weight limit.<br/>For custom shipping rates, contact us at <a href="tel:1-714-744-3700">1-714-744-3700</a> or email us at <a href="mailto:customerservice@naturesflavors.com" target="_blank" alt="ailto:customerservice@naturesflavors.com">customerservice@naturesflavors.com</a>.</p>
       <% end %>
     <% end %>
     <% if Spree::Config[:shipping_instructions] %>
