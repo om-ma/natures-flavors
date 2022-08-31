@@ -17,17 +17,7 @@
           <div class="search-wrap">
           <div class="search-tags d-flex align-items-start">
             <p>Family-owned and run for over 40 years, it is our mission to spread the natural and organic bounty of nature through our natural flavorings.</p>
-            <% if (browser.device.mobile? || browser.device.tablet?) %>
-            <label>Jump to</label>
-            <div class="flex-fill">
-            <% if @all_categories.present? %>
-            <% @all_categories.each do |category| %>
-              <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, alt: "#{category.name}"  %>
-            <% end %>
-            <% end %>
             </div>
-            <% end %>
-          </div>
           </div>
         </div>
         <div class="col-lg-4 phone-hide">
@@ -36,6 +26,18 @@
       </div>
     </div>
   </div>
+  <% if (browser.device.mobile? || browser.device.tablet?) %>
+  <div class="main-category-wrap">
+    <div class="row">
+      <strong>Jump to: </strong>
+      <% if @all_categories.present? %>
+      <% @all_categories.each do |category| %>
+        <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, alt: "#{category.name}"  %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
   <div class="home-intro-wrapper">
     <div class="container-fluid">
       <div class="row">
