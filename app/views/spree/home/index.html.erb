@@ -15,7 +15,9 @@
         <div class="col-xl-2 tablet-hide"></div>
         <div class="col-xl-6 col-lg-8">
           <div class="search-wrap">
+          <div class="search-tags d-flex align-items-start">
             <p>Family-owned and run for over 40 years, it is our mission to spread the natural and organic bounty of nature through our natural flavorings.</p>
+            </div>
           </div>
         </div>
         <div class="col-lg-4 phone-hide">
@@ -24,6 +26,18 @@
       </div>
     </div>
   </div>
+  <% if (browser.device.mobile? || browser.device.tablet?) %>
+  <div class="main-category-wrap">
+    <div class="row">
+      <strong>Jump to: </strong>
+      <% if @all_categories.present? %>
+      <% @all_categories.each do |category| %>
+        <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, alt: "#{category.name}"  %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
   <div class="home-intro-wrapper">
     <div class="container-fluid">
       <div class="row">
@@ -33,7 +47,7 @@
             <div class="gmp-certificate"></div>
             <h1>Natural and Organic Flavorings, Extracts, Syrups, and Fragrances</h1>
             <p><strong>Nature’s Flavors</strong> is where Mother Nature meets your kitchen. Our natural and organic flavorings are derived from the most remarkable fruits, vegetables, and herbs the earth has to offer. All of our products are made-to-order and delivered to your doorstep.</p>
-            <a href="<%= about_us_path %>" data-turbolinks="false" class="btn btn-primary"><span>More About Us</span></a> </div>
+            <a href="<%= about_us_path %>" data-turbolinks="false" class="btn btn-primary" alt="About Us"><span>More About Us</span></a> </div>
         </div>
         <div class="col-xl-4 col-lg-4">
           <div class="company-highlights-wrapper">
@@ -116,6 +130,29 @@
       </div>
     </div>
   </div>
+  <% if (browser.device.mobile? || browser.device.tablet?) %>
+  <div id="home-categories">
+    <div class="row row-cols-xl-3  row-cols-xs-2 row-cols-lg-2 row-cols-sm-1 no-gutters">
+    <% if @all_categories.present? %>
+    <% @all_categories.each do |category| %>
+      <div class="col col-12" id="categories-<%= category.name %>">
+          <div class="sub-categories-preview">
+          <%= link_to seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" do %>
+            <% if category.icon.present? %>
+              <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
+            <% else %>
+              <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
+            <% end %>
+          <% end %>
+          <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>
+          <p><%= raw(category.short_description) %></p>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
   <div class="home-videos-wrapper">
     <div class="container-fluid">
       <div class="row">
@@ -123,7 +160,7 @@
         <div class="col-lg-8">
           <div class="wrap">
             <div class="title-wrap d-xl-flex flex-row-reverse align-items-center justify-content-between">
-              <div class="right"> <a href="https://www.youtube.com/c/NaturesFlavors" class="youtube-link" target="_blank">More than 4k subscribers</a></div>
+              <div class="right"> <a href="https://www.youtube.com/c/NaturesFlavors" class="youtube-link" target="_blank">More than 5k subscribers</a></div>
               <div class="left d-flex align-items-start">
                 <div class="title-img"><%= image_tag "flavor-guy.jpg", alt:"" %></div>
                 <div class="title-info">
@@ -158,6 +195,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="site-reviews-wrapper">
     <div class="title-wrap text-center">
       <div class="reviews-title-icon"></div>
