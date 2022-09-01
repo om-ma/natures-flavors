@@ -72,6 +72,7 @@ Spree::AddressesController.class_eval do
     params[:address].permit(:address,
                             :firstname,
                             :lastname,
+                            :company,
                             :address1,
                             :address2,
                             :city,
