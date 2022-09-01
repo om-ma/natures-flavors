@@ -5,6 +5,7 @@ $( document ).on('turbolinks:load', function() {
       shipping_address_data = $("#payment-billing-address").html()
       $(".js-address-fields").val("")
       $("#payment-billing-address").removeClass("d-none");
+      Spree.onAddress();
     })
     $(".payment-change-shipping-address").on('click',function(){
       if(shipping_address_data != 0 ) {

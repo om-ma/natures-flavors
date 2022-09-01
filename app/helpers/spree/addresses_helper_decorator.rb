@@ -1,5 +1,6 @@
 module Spree
   module AddressesHelper
+
     def address_field(form, method, address_id = 'b', &handler)
       content_tag :div, id: [address_id, method].join, class: 'form-group form-floating mb-20' do
         if handler
@@ -51,5 +52,18 @@ module Spree
       
       state_elements.html_safe
     end
+
+    def user_available_addresses
+      @user_available_addresses ||= begin
+        return [] unless try_spree_current_user
+
+        states = current_store.countries_available_for_checkout.each_with_object([]) do |country, memo|
+          memo << current_store.states_available_for_checkout(country)
+        end.flatten
+
+        try_spree_current_user.addresses
+      end
+    end
+
   end
 end
