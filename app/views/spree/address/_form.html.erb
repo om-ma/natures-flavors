@@ -13,12 +13,10 @@
     <% end %>
     <%= form.text_field :lastname, class: 'form-control', required: true %>
   </div>
-  <% if Spree::Config[:company] %>
-    <div class="form-group" id='<%= "#{address_id}company" %>'>
-      <%= form.label :company, Spree.t(:company) %>
-      <%= form.text_field :company, class: 'form-control' %>
-    </div>
-  <% end %>
+  <div class="form-group" id='<%= "#{address_id}company" %>'>
+    <%= form.label :company, Spree.t(:company) %>
+    <%= form.text_field :company, class: 'form-control' %>
+  </div>
   <div class="form-group" id='<%= "#{address_id}address1" %>'>
     <%= form.label :address1 do %>
       <%= Spree.t(:street_address) %><abbr class="required" title="required">*</abbr>

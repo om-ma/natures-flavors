@@ -1,5 +1,5 @@
 <% address_id = address_type.chars.first %>
-  <% checkout_address = %w(firstname lastname address1 address2 country state city zipcode phone) %>
+  <% checkout_address = %w(firstname lastname company address1 address2 country state city zipcode phone) %>
   <% checkout_address.each do |field| %>
     <% if field == "firstname"  %>
       <div class="col-sm-6 ">
@@ -16,6 +16,15 @@
           <%= address_form.text_field :lastname, class: 'form-control js-address-fields', placeholder:"Last Name", required: true %>
           <%= address_form.label :firstname do %>
             Last Name<abbr>*</abbr>
+          <% end %>
+        </div>
+      </div>
+    <%elsif field == "company"  %>
+      <div class="col-sm-12 ">
+        <div class="form-group form-floating mb-20">
+          <%= address_form.text_field :company, class: 'form-control js-address-fields', placeholder:"Company", required: false %>
+          <%= address_form.label :company do %>
+            <%= Spree.t(:company) %>
           <% end %>
         </div>
       </div>
