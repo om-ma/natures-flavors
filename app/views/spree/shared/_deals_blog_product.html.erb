@@ -12,7 +12,7 @@
                       <% end %>
                     </div>
                   </div>
-                  <div class="product-desc">
+                  <div class="product-desc"><% if product&.sale_prices&.active&.present? %><span class="ending-badge"><%= display_highest_discount_percent(product) %></span><% end %>
                      <h4><%= product.name %></h4>
                   </div>
                <% end %>
