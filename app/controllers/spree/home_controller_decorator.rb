@@ -43,6 +43,9 @@ Spree::HomeController.class_eval do
   end
 
   def sale
+    @per_page = 24
+    params['per_page'] = @per_page
+    
     if params[:sort_by].blank?
       params[:sort_by] = "descend_by_popularity"
     end
