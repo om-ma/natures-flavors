@@ -4,9 +4,16 @@
     <%= link_to url, data: { turbolinks: false } do %>
       <div class="product-img">
         <%= plp_and_carousel_image(product, image_class) %>
-        <div class="price"><%= display_price(product) %></div>
+        <div class="price">
+          <% if product&.sale_prices&.active&.present? %>
+            <span><%= display_original_price(product.lowest_sale_price.price.variant) %></span>
+            <%= product.lowest_sale_price.display_price %>
+          <% else %>
+            <%= display_price(product) %>
+          <% end %> 
+        </div>
       </div>
-      <div class="product-desc">
+      <div class="product-desc"><% if product&.sale_prices&.active&.present? %><span class="ending-badge"><%= display_highest_discount_percent(product) %></span><% end %>
         <h4> <%= product.name %></h4>
       </div>
     <% end %>
