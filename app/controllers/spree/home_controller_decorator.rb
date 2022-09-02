@@ -102,6 +102,8 @@ Spree::HomeController.class_eval do
     page_last_modified = @cms_home_page&.maximum(:updated_at)&.utc if @cms_home_page.respond_to?(:maximum)
     current_store_last_modified = current_store.updated_at.utc
 
+    home_slides_last_modified               = @home_slides.maximum(:updated_at)&.utc if @home_slides.respond_to?(:maximum)
+    
     best_sellers_products_last_modified     = @best_sellers_products.maximum(:updated_at)&.utc if @best_sellers_products.respond_to?(:maximum)
     deals_products_last_modified            = @deals_products.maximum(:updated_at)&.utc if @deals_products.respond_to?(:maximum)
     popular_extracts_products_last_modified = @popular_extracts_products.maximum(:updated_at)&.utc if @popular_extracts_products.respond_to?(:maximum)
