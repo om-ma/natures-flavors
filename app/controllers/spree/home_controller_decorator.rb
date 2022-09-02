@@ -9,10 +9,6 @@ Spree::HomeController.class_eval do
       @edit_mode = true
     end
 
-    if http_cache_enabled?
-      fresh_when etag: store_etag, last_modified: last_modified_index, public: true
-    end
-
     @home_slides 		           = Rails.cache.fetch("@home_slides", expires_in: Rails.configuration.x.cache.expiration) do
       Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
     end
@@ -40,6 +36,10 @@ Spree::HomeController.class_eval do
 
     #@active_home_tab = [@best_sellers_products.count, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
     @active_home_tab = [0, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
+
+    if http_cache_enabled?
+      fresh_when etag: store_etag, last_modified: last_modified_index, public: true
+    end
   end
 
   def sale
@@ -83,6 +83,32 @@ Spree::HomeController.class_eval do
     unless @products.present?
       redirect_to root_path
     end
+  end
+
+  def etag_index
+    [
+      store_etag,
+      last_modified_index,
+      @home_slides,
+      @best_sellers_products,
+      @deals_products,
+      @popular_extracts_products,
+      @popular_powders_products,
+      @popular_oils_products
+    ]
+  end
+
+  def last_modified_index
+    page_last_modified = @cms_home_page&.maximum(:updated_at)&.utc if @cms_home_page.respond_to?(:maximum)
+    current_store_last_modified = current_store.updated_at.utc
+
+    best_sellers_products_last_modified     = @best_sellers_products.maximum(:updated_at)&.utc if @best_sellers_products.respond_to?(:maximum)
+    deals_products_last_modified            = @deals_products.maximum(:updated_at)&.utc if @deals_products.respond_to?(:maximum)
+    popular_extracts_products_last_modified = @popular_extracts_products.maximum(:updated_at)&.utc if @popular_extracts_products.respond_to?(:maximum)
+    popular_powders_products_last_modified  = @popular_powders_products.maximum(:updated_at)&.utc if @popular_powders_products.respond_to?(:maximum)
+    popular_oils_products_last_modified     = @popular_oils_products.maximum(:updated_at)&.utc if @popular_oils_products.respond_to?(:maximum)
+
+    [page_last_modified, current_store_last_modified, best_sellers_products_last_modified, deals_products_last_modified, popular_extracts_products_last_modified, popular_powders_products_last_modified, popular_oils_products_last_modified].compact.max
   end
 
 end
