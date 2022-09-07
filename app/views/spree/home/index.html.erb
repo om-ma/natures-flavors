@@ -147,6 +147,9 @@
           <% end %>
           <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>
           <p><%= raw(category.short_description) %></p>
+          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, alt: "#{category.name}" do %>
+            <span>See All <%= category.name %></span>
+          <% end %>
         </div>
       </div>
     <% end %>
