@@ -3403,6 +3403,12 @@ h3 a{
 	padding: 35px 55px 35px 120px;
 }
 
+.tab-content a {
+	text-decoration: underline;
+}
+.tab-content a:hover {
+	text-decoration: none;
+}
 
 .tab-pane p, .tab-content-wrap {
 	font-size: 17px;

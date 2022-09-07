@@ -7,64 +7,64 @@
     });
   </script>
 <% end %>
+<% cache cache_key_for_product(@product) do %>
 <% @body_id = 'product-details' %>
 <div
   data-related-products
   data-related-products-id="<%= @product.slug %>"
   data-related-products-enabled="<%= @product.respond_to?(:has_related_products?) %>" />
   <main class="page-contents">
-    <% cache cache_key_for_product do %>
-      <div class="row no-gutters">
-        <div class="col-xl-1 tablet-hide"></div>
+    <div class="row no-gutters">
+      <div class="col-xl-1 tablet-hide"></div>
         <div class="col-xl-8 col-lg-8">
           <div class="product-detail-wrapper">
-              <%= spree_breadcrumbs(@taxon, '', @product) %>
-            <div class="title-wrap position-relative" data-hook="product_show">
-              <h1 class="title"><%= @product.name %></h1>
-              <%#
-              <ul class="product-standards d-flex flex-wrap align-items-center phone-visible">
-                <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
-                <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
-                <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
-                <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
-              </ul>
-              %>
-            </div>
-            <div class="product-desc-wrap" > 
-              <div class="row" >
-                <div class="col-xl-7">
-                  <%= render partial: 'gallery' %>
-                </div>
-                <div class="col-xl-5">
-                <% if (browser.device.mobile? || browser.device.tablet?) %>
-                  <%= render 'phone_cart_form', variant_change_identifier: 'productCarousel' %> 
-                <% end %>
-                  <div id="product-description" >
-                    <%= render partial: 'description' %>
-                  </div>
+            <%= spree_breadcrumbs(@taxon, '', @product) %>
+          <div class="title-wrap position-relative" data-hook="product_show">
+            <h1 class="title"><%= @product.name %></h1>
+            <%#
+            <ul class="product-standards d-flex flex-wrap align-items-center phone-visible">
+              <li class="glutenfree-icon" data-toggle="tooltip" data-placement="bottom" title="Gluten free">Gluten free</li>
+              <li class="nongmo-icon" data-toggle="tooltip" data-placement="bottom" title="Non GMO">Non GMO</li>
+              <li class="u-icon" data-toggle="tooltip" data-placement="bottom" title="U">u</li>
+              <li class="vegan-icon" data-toggle="tooltip" data-placement="bottom" title="Vegan">Vegan</li>
+            </ul>
+            %>
+          </div>
+          <div class="product-desc-wrap" > 
+            <div class="row" >
+              <div class="col-xl-7">
+                <%= render partial: 'gallery' %>
+              </div>
+              <div class="col-xl-5">
+              <% if (browser.device.mobile? || browser.device.tablet?) %>
+                <%= render 'phone_cart_form', variant_change_identifier: 'productCarousel' %> 
+              <% end %>
+                <div id="product-description" >
+                  <%= render partial: 'description' %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <% unless (browser.device.mobile? || browser.device.tablet?) %>
-          <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart_form" data-hook="product_right_part" data-hook="product_right_part_wrap">
-            <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>   
-          </div>
-        <% end %>  
       </div>
-      <div class="product-tabs-wrapper">
-        <div class="row no-gutters">
-          <div class="col-xl-1 tablet-hide"></div>
-          <div class="col-xl-7 col-lg-7" >
-          <%= render partial: 'overview_tabs' %>
-          </div>
-          <%= render partial: 'related_products' %>
+      <% unless (browser.device.mobile? || browser.device.tablet?) %>
+        <div class="col-xl-3 col-lg-4 phone-hide" id="cart-form" data-hook="cart_form" data-hook="product_right_part" data-hook="product_right_part_wrap">
+          <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>   
         </div>
+      <% end %>  
+    </div>
+    <div class="product-tabs-wrapper">
+      <div class="row no-gutters">
+        <div class="col-xl-1 tablet-hide"></div>
+        <div class="col-xl-7 col-lg-7" >
+        <%= render partial: 'overview_tabs' %>
+        </div>
+        <%= render partial: 'related_products' %>
       </div>
-      <%= render partial: 'customer_reviews' %> 
-    <%end%>
+    </div>
+    <%= render partial: 'customer_reviews' %> 
     <%= render 'spree/shared/product_added_modal' %>
     <%= products_structured_data([@product]) %>
   </main>
 </div>
+<% end %>

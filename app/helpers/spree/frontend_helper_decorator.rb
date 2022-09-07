@@ -1,4 +1,75 @@
 Spree::FrontendHelper.class_eval do
+  
+  def pagy_url_for(pagy, page, absolute: false, html_escaped: false)  # it was (page, pagy) in previous versions
+    params = request.query_parameters.merge(pagy.vars[:page_param] => page, only_path: !absolute )
+    html_escaped ? url_for(params).gsub('&', '&amp;') : url_for(params)
+  end
+
+  # Pagination for bootstrap: it returns the html with the series of links to the pages
+  def pagy_bootstrap_nav(pagy, pagy_id: nil, link_extra: '', **vars)
+    return '' if pagy.pages == 1
+
+    link = pagy_link_proc(pagy, link_extra: %(#{link_extra}))
+
+    html = +%(<ul class="pagination d-flex align-items-center justify-content-center">)
+    html << pagy_bootstrap_prev_html(pagy, link)
+    
+    pagy.series(**vars).each do |item| # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36]
+      html << case item
+              when Integer
+                %(<li class="page-item">#{link.call item, item, 'data-turbolinks="false" class="page-link"'}</li>)
+              when String
+                %(<li class="page-item">#{link.call item, item, 'data-turbolinks="false" class="page-link active"'}</li>)
+              when :gap
+                %(<li class="page-item page gap disabled d-none d-lg-flex"><a href="#" onclick="return false;" data-turbolinks="false" class="page-link">#{pagy_t('pagy.nav.gap')}</a></li>)
+              else raise InternalError, "expected item types in series to be Integer, String or :gap; got #{item.inspect}"
+              end
+    end
+    html << pagy_bootstrap_next_html(pagy, link)
+    html << %(</ul>)
+    
+    html << %(<div class="pagination-counter d-flex align-items-center">)
+    html << %(Showing #{pagy.page == 1 ? pagy.page : pagy.page * Pagy::DEFAULT[:items] - (pagy.in)} - #{pagy.page * Pagy::DEFAULT[:items]} of #{pagy.count} products)
+    html << %(</div>)
+
+  end
+
+  def pagy_bootstrap_prev_html(pagy, link)
+    if (p_prev = pagy.prev)
+      prev_page_klass = pagy.page == pagy.pages ? 'btn btn-primary prev-page-icon' : 'btn btn-outline mobile-hide'
+      %(<li class="page-item">#{link.call pagy.prev, '<span>Previous Page</span>', "data-turbolinks=\"false\" class=\"#{prev_page_klass}\" aria-label=\"previous\""}</li>)
+    else
+      ''
+    end
+  end
+
+  def pagy_bootstrap_next_html(pagy, link)
+    if (p_next = pagy.next)
+      %(<li class="page-item next">#{link.call pagy.next, '<span>Next Page</span>', 'data-turbolinks="false" class="btn btn-primary" aria-label="next" rel="next"'}</li>)
+    else
+      ''
+    end
+  end
+  
+  # <link rel="next" href="/items/page/3"><link rel="prev" href="/items/page/1">
+  def pagy_rel_next_prev_link_tags(pagy)
+    next_page = pagy_next_page_path(pagy)
+    prev_page = pay_prev_page_path(pagy)
+
+    output = String.new
+    output << %Q|<link rel="next" href="#{next_page}">| if next_page
+    output << %Q|<link rel="prev" href="#{prev_page}">| if prev_page
+    output.html_safe
+  end
+
+  def pagy_next_page_path(pagy)
+    pagy_url_for(pagy, pagy.page + 1) if pagy.next
+  end
+
+  def pay_prev_page_path(pagy)
+    pagy_url_for(pagy, pagy.page - 1) if pagy.prev
+  end
+
   def checkout_edit_link(step = 'address', order = @order)
     return if order.uneditable?
 

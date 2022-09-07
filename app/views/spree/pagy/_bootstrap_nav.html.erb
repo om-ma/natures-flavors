@@ -1,0 +1,26 @@
+<%#
+  This template is i18n-ready: if you don't use i18n, then you can replace the pagy_t
+  calls with the actual strings ("&lsaquo; Prev", "Next &rsaquo;", "&hellip;").
+
+  The link variable is set to a proc that returns the link tag.
+  Usage: link.call( page_number [, text [, extra_attributes_string ]])
+-%>
+<% if pagy.pages > 1 %>
+<% prev_page_klass = pagy.page == pagy.pages ? 'btn btn-primary prev-page-icon' : 'btn btn-outline mobile-hide' %>
+<% link = pagy_link_proc(pagy) -%>
+<%#                            -%>  <ul class="pagination d-flex align-items-center justify-content-center">
+<% if pagy.prev                -%>    <li class="page-item"><%== link.call(pagy.prev, '<span>Previous Page</span>', "data-turbolinks=\"false\" class=\"#{prev_page_klass}\" aria-label=\"previous\"") %></li>
+<% end                         -%>
+<% pagy.series.each do |item| # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36] -%>
+<%   if    item.is_a?(Integer) -%>    <li class="page-item"><%== link.call(item, item, 'data-turbolinks="false" class="page-link"')  %></li>
+<%   elsif item.is_a?(String)  -%>    <li class="page-item"><%== link.call(item, item, 'data-turbolinks="false" class="page-link active"') %></li>
+<%   elsif item == :gap        -%>    <li class="page-item page gap disabled d-none d-lg-flex"><a href="#" onclick="return false;" data-turbolinks="false" class="page-link"><%== pagy_t('pagy.nav.gap') %></a></li>
+<%   end                       -%>
+<% end                         -%>
+<% if pagy.next                -%>    <li class="page-item next"><%== link.call(pagy.next, '<span>Next Page</span>', 'data-turbolinks="false" class="btn btn-primary" aria-label="next" rel="next"') %></li>
+<% end                         -%>
+<%#                            -%>  </ul>
+<%#                            -%>  <div class="pagination-counter d-flex align-items-center"> 
+<%#                            -%>  Showing <%= pagy.page == 1 ? pagy.page : pagy.page * Pagy::DEFAULT[:items] - (pagy.in) %> - <%= pagy.page * Pagy::DEFAULT[:items]  %> of <%= pagy.count %> products
+<%#                            -%>  </div>
+<% end %>

@@ -43,9 +43,6 @@ Spree::HomeController.class_eval do
   end
 
   def sale
-    @per_page = 24
-    params['per_page'] = @per_page
-    
     if params[:sort_by].blank?
       params[:sort_by] = "descend_by_popularity"
     end
@@ -61,24 +58,16 @@ Spree::HomeController.class_eval do
     end
 
     @searcher = build_searcher(search_params)
-    products_searcher = @searcher.retrieve_products
-    
-    if params[:sort_by] == "bestsellers"
-      @products = products_searcher.includes(:product_properties).best_sellers
-    else
-      @products = products_searcher.includes(:product_properties).references(:product_properties)
-    end
-    
-    # TODO: Refactor to include sales in searcher builder
-    if params[:id]
-      @taxon = Spree::Taxon.find_by!(slug: params[:id])
-      @products = products_searcher.in_sale.in_taxon(@taxon)
-    else
-      @products = products_searcher.in_sale
-    end
-    @taxonomies = Spree::Taxonomy.includes(root: :children)
+    @pagy, @products_searcher = pagy(@searcher.retrieve_products)
 
-    # @products = Spree::Product.where(id: @products.pluck(:id))
+    if params[:sort_by] == "bestsellers"
+      @products = @products_searcher.includes(:product_properties).best_sellers
+    else
+      @products = @products_searcher.includes(:product_properties).references(:product_properties)
+    end
+    
+    @products = @products_searcher.in_sale
+    @taxonomies = Spree::Taxonomy.includes(root: :children)
     
     unless @products.present?
       redirect_to root_path

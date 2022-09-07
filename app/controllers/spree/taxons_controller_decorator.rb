@@ -1,11 +1,10 @@
 Spree::TaxonsController.class_eval do
-
   before_action :load_taxon_with_children, only: :show
   before_action :load_taxon, except: :all_categories
 
   def show
-    @per_page = 24
-    params['per_page'] = @per_page
+    #@per_page = Pagy::DEFAULT[:items]
+    #params['per_page'] = @per_page
 
     if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
       @is_top_level_menu_item = @taxon.is_top_level_menu_item
@@ -46,12 +45,18 @@ Spree::TaxonsController.class_eval do
     end
 
     @searcher = build_searcher(search_params)
-    products_searcher = @searcher.retrieve_products
+
+    if (browser.device.mobile? || browser.device.tablet?)
+      @pagy, @products_searcher = pagy(@searcher.retrieve_products, size: Pagy::DEFAULT[:size_mobile])
+    else
+      @pagy, @products_searcher = pagy(@searcher.retrieve_products)
+    end
 
     if params[:sort_by] == "bestsellers"
-      @products = products_searcher.includes(:product_properties).best_sellers
+      @products = @products_searcher.includes(:product_properties).best_sellers
     else
-      @products = products_searcher.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices)
+      #@products = @products_searcher.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices)
+      @products = @products_searcher
     end
   end
 

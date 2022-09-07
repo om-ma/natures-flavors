@@ -1,70 +1,70 @@
-<div class="main-category-wrap">
-  <div class="row">
-    <strong>Jump to: </strong>
-    <% taxon.children.each do |category| %>
-    <%= link_to category.name, "#sub-categories-preview-#{category.name}", data: { turbolinks: false }, alt: "#{category.name}" %>
-    <% end %>
+<% cache [products, taxon] do %>
+  <div class="main-category-wrap">
+    <div class="row">
+      <strong>Jump to: </strong>
+      <% taxon.children.each do |category| %>
+      <%= link_to category.name, "#sub-categories-preview-#{category.name}", data: { turbolinks: false }, alt: "#{category.name}" %>
+      <% end %>
+    </div>
   </div>
-</div>
-<% if !@is_hide_most_popular %>
-<div class="main-category-best">
-  <ul>
-    <li class="active-best">Most Popular</li>
-    <li>in <%= taxon.name %></li>
-  </ul>
-</div>
-<div class="row row-cols-xl-6 row-cols-lg-3 row-cols-sm-2 no-gutters">
-  <% products.each_with_index do |product, index| %>
-  <div class="col col-12">
-    <div class="product-wrap" data-hook="top_level_subcategories_product_list_item">
-      <%= link_to spree.product_path(product, taxon_id: @taxon&.id), data: { turbolinks: false } do %>
-      <div class="product-img">
-        <%= plp_and_carousel_image(product, 'product-component-plp-image') %>
-        <div class="price">
-          <% if product&.sale_prices&.active&.present? %>
-          <span><%= display_original_price(product.lowest_sale_price.price.variant) %></span><%= product.lowest_sale_price.display_price %>
-          <% else %>
-          <%= display_price(product) %>
-          <% end %>  
+  <% if !@is_hide_most_popular %>
+    <div class="main-category-best">
+      <ul>
+        <li class="active-best">Most Popular</li>
+        <li>in <%= taxon.name %></li>
+      </ul>
+    </div>
+    <div class="row row-cols-xl-6 row-cols-lg-3 row-cols-sm-2 no-gutters">
+      <% products.each_with_index do |product, index| %>
+      <div class="col col-12">
+        <div class="product-wrap" data-hook="top_level_subcategories_product_list_item">
+          <%= link_to spree.product_path(product, taxon_id: @taxon&.id), data: { turbolinks: false } do %>
+          <div class="product-img">
+            <%= plp_and_carousel_image(product, 'product-component-plp-image') %>
+            <div class="price">
+              <% if product&.sale_prices&.active&.present? %>
+              <span><%= display_original_price(product.lowest_sale_price.price.variant) %></span><%= product.lowest_sale_price.display_price %>
+              <% else %>
+              <%= display_price(product) %>
+              <% end %>  
+            </div>
+          </div>
+          <div class="product-desc"title="<%= product.name %>" >
+            <h4> <%= product.name %></h4>
+          </div>
+          <% end %>
         </div>
       </div>
-      <div class="product-desc"title="<%= product.name %>" >
-        <h4> <%= product.name %></h4>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="sub-categories">
+    <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-sm-1 no-gutters">
+      <% taxon.children.each do |category| %>
+      <div class="col col-12">
+        <div class="sub-categories-preview" id="<%= "sub-categories-preview-#{category.name}" %>">
+          <%= link_to seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" do %>
+            <% if category.icon.present? %>
+              <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
+            <% else %>
+              <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
+            <% end %>
+          <% end %>
+          <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>
+          <p><%= raw(category.short_description) %></p>
+          <% if category.children %>
+            <ul>
+              <% category.children.each do |subcategory| %>
+                <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false }, alt: "#{subcategory.name}" %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, alt: "#{category.name}" do %>
+            <span>See All <%= category.name %></span>
+          <% end %>
+        </div>
       </div>
       <% end %>
     </div>
   </div>
-  <% end %>
-</div>
-<% end %>
-<% cache [taxon, taxon.children] do %>
-<div class="sub-categories">
-  <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-sm-1 no-gutters">
-    <% taxon.children.each do |category| %>
-    <div class="col col-12">
-      <div class="sub-categories-preview" id="<%= "sub-categories-preview-#{category.name}" %>">
-        <%= link_to seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" do %>
-          <% if category.icon.present? %>
-            <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
-          <% else %>
-            <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
-          <% end %>
-        <% end %>
-        <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>
-        <p><%= raw(category.short_description) %></p>
-        <% if category.children %>
-          <ul>
-            <% category.children.each do |subcategory| %>
-              <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false }, alt: "#{subcategory.name}" %></li>
-            <% end %>
-          </ul>
-        <% end %>
-        <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, alt: "#{category.name}" do %>
-          <span>See All <%= category.name %></span>
-        <% end %>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div>
 <% end %>

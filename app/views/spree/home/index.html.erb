@@ -7,8 +7,9 @@
     });
   </script>
 <% end %>
+<% cache [@all_categories, @home_slides, @best_sellers_products, @deals_products, @popular_extracts_products, @popular_powders_products, @popular_oils_products] do %>
 <%= organization_structured_data(current_store) %>
-<%= render partial: 'spree/shared/slider', locals: { slider: @home_slides, cid: 'home', interval: "3500" } %>
+<%= render partial: 'spree/shared/slider', locals: { slides: @home_slides, cid: 'home', interval: "3500" } %>
   <div class="search-wrapper ">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -423,3 +424,4 @@
       </div>
     </div>
   </div>
+  <% end %>

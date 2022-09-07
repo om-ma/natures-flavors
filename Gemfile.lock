@@ -64,6 +64,14 @@ GIT
     libxml-ruby (3.2.3.pre.dev)
 
 GIT
+  remote: https://github.com/ducl13/pagy.git
+  revision: dca8669a10cb3be13e053fe435301c22cc64406f
+  branch: master
+  specs:
+    pagy (5.10.1)
+      activesupport
+
+GIT
   remote: https://github.com/ducl13/recaptcha.git
   revision: 2fb1c3f9ad08887d9e8beed5f3cde4984fd95d07
   branch: master
@@ -244,7 +252,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_slider.git
-  revision: 8e9382981d46ee702f92adeddfd56cfb7cc87feb
+  revision: 5b4b466bccf7d1c4f5d601af67fd0d61836b4391
   branch: master
   specs:
     spree_slider (4.0.0)
@@ -2280,6 +2288,7 @@ DEPENDENCIES
   libxml-ruby!
   listen (>= 3.0.5, < 3.2)
   mini_racer
+  pagy!
   paperclip (~> 6.1.0)
   pg
   puma (~> 3.11)

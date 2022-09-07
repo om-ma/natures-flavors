@@ -44,6 +44,7 @@ gem 'dotenv-rails'
 gem 'fog', '~> 2.0.0'
 gem "fog-aws"
 gem "paperclip", "~> 6.1.0"
+gem "pagy", github: 'ducl13/pagy', branch: 'master'
 gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
 gem 'scout_apm'
 

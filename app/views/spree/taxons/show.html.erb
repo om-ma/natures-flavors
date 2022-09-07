@@ -23,11 +23,11 @@
           <% else %>
             <%= render partial: 'spree/taxons/filters' %>
             <%= render partial: 'spree/taxons/mobile_filters' %> 
-            <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon }, cached: true %>
+            <%= render partial: 'spree/shared/products', locals: { pagy: @pagy, products: @products, taxon: @taxon } %>
           <% end %>
         </div>
         <% if !@is_top_level_menu_item %>
-          <%= render partial: 'spree/taxons/pagination', products: @products  %>
+          <%= render partial: 'spree/taxons/pagination', locals: { pagy: @pagy, taxon: @taxon }  %>
         <% end %>
       </div>
     </div>
