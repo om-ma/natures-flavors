@@ -9,9 +9,7 @@ Spree::HomeController.class_eval do
       @edit_mode = true
     end
 
-    @home_slides 		           = Rails.cache.fetch("@home_slides", expires_in: Rails.configuration.x.cache.expiration) do
-      Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
-    end
+    @home_slides 		           = Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
     
     @best_sellers_products     = Rails.cache.fetch("@best_sellers_products", expires_in: Rails.configuration.x.cache.expiration) do
       Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
