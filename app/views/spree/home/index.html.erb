@@ -7,7 +7,7 @@
     });
   </script>
 <% end %>
-<% cache [@all_categories, @home_slides, @best_sellers_products, @deals_products, @popular_extracts_products, @popular_powders_products, @popular_oils_products] do %>
+<% cache cache_key_for_home_index do %>
 <%= organization_structured_data(current_store) %>
 <%= render partial: 'spree/shared/slider', locals: { slides: @home_slides, cid: 'home', interval: "3500" } %>
   <div class="search-wrapper ">
