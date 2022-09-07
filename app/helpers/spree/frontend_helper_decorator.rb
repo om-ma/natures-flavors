@@ -209,6 +209,11 @@ Spree::FrontendHelper.class_eval do
     end
   end
   
+  def cache_key_for_mobile_or_tablet
+    mobile_or_tablet = browser.device.mobile? || browser.device.tablet?
+    "mobile-tablet/#{mobile_or_tablet}"
+  end
+
   def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
     max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
     "spree/all_categories/#{all_categories.map(&:id).join('-')}"
@@ -224,6 +229,7 @@ Spree::FrontendHelper.class_eval do
   end
 
   def cache_key_for_home_index(all_categories = @all_categories, home_slides = @home_slides, best_sellers_products = @best_sellers_products, deals_products = @deals_products, popular_extracts_products = @popular_extracts_products, popular_powders_products = @popular_powders_products, popular_oils_products = @popular_oils_products)
+    mobile_or_tablet_cache_key           = cache_key_for_mobile_or_tablet
     all_categories_cache_keys            = cache_key_for_all_categories(all_categories)
     home_slides_cache_keys               = cache_key_for_sliders(home_slides)
     best_sellers_products_cache_keys     = cache_key_for_best_sellers(best_sellers_products)
@@ -231,7 +237,7 @@ Spree::FrontendHelper.class_eval do
     popular_extracts_products_cache_keys = cache_key_for_products_no_updated_at(popular_extracts_products)
     popular_powders_products_cache_keys  = cache_key_for_products_no_updated_at(popular_powders_products)
     popular_oils_products_cache_keys     = cache_key_for_products_no_updated_at(popular_oils_products)
-    ([all_categories_cache_keys] + [home_slides_cache_keys] + [best_sellers_products_cache_keys] + [deals_products_cache_keys] + [popular_extracts_products_cache_keys] + [popular_powders_products_cache_keys] + [popular_oils_products_cache_keys]).compact.join('/')
+    ([mobile_or_tablet_cache_key] + [all_categories_cache_keys] + [home_slides_cache_keys] + [best_sellers_products_cache_keys] + [deals_products_cache_keys] + [popular_extracts_products_cache_keys] + [popular_powders_products_cache_keys] + [popular_oils_products_cache_keys]).compact.join('/')
   end
 
   def cache_key_for_taxon_show(all_categories = @all_categories, products = @products)
