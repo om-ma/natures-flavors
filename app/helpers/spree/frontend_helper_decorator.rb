@@ -63,11 +63,11 @@ Spree::FrontendHelper.class_eval do
   end
 
   def pagy_next_page_path(pagy)
-    pagy_url_for(pagy, pagy.page + 1) if pagy.next
+    pagy_url_for(pagy, pagy.next) if pagy.next
   end
 
   def pay_prev_page_path(pagy)
-    pagy_url_for(pagy, pagy.page - 1) if pagy.prev
+    pagy_url_for(pagy, pagy.prev) if pagy.prev
   end
 
   def checkout_edit_link(step = 'address', order = @order)
