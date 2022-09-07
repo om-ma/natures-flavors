@@ -1,9 +1,9 @@
+<% content_for :head do %>
+  <%= pagy_rel_next_prev_link_tags pagy %>
+<% end %>
 <% cache_products = (params[:sort_by] == "bestsellers") ? cache_key_for_best_sellers(products) : cache_key_for_products(products) %>
 <% cache cache_products do %>
 <div  class="row row-cols-xl-4 row-cols-lg-4 row-cols-sm-2 no-gutters"  data-hook="homepage_products">
-  <% content_for :head do %>
-    <%= pagy_rel_next_prev_link_tags pagy %>
-  <% end %>
   <% products.each_with_index do |product, index| %>
     <%= render 'spree/shared/product', product: product, image_class: 'product-component-plp-image' %>
   <% end %>
