@@ -209,27 +209,21 @@ Spree::FrontendHelper.class_eval do
     end
   end
   
-  def base_home_controller_cache_key
-    'spree/home_controller'
-  end
-
   def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
     max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
     "spree/all_categories/#{all_categories.map(&:id).join('-')}"
   end
 
-  def cache_key_for_products_no_updated_at(products = @products, additional_cache_key = nil)
-    products_cache_keys = "spree/products/#{products.map(&:id).join('-')}-#{params[:page]}-#{params[:sort_by]}-#{@taxon&.id}"
+  def cache_key_for_products_no_updated_at(products = @products, taxon = @taxon, additional_cache_key = nil)
+    if products.present?
+      products_cache_keys = "spree/products/#{products.map(&:id).join('-')}-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}"
+    else
+      products_cache_keys = "spree/products/nil-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}"
+    end
     (common_product_cache_keys + [products_cache_keys] + [additional_cache_key]).compact.join('/')
   end
 
-  def cache_key_for_home(all_categories = @all_categories, 
-                            home_slides = @home_slides,
-                            best_sellers_products = @best_sellers_products,
-                            deals_products = @deals_products,
-                            popular_extracts_products = @popular_extracts_products,
-                            popular_powders_products = @popular_powders_products,
-                            popular_oils_products = @popular_oils_products)
+  def cache_key_for_home_index(all_categories = @all_categories, home_slides = @home_slides, best_sellers_products = @best_sellers_products, deals_products = @deals_products, popular_extracts_products = @popular_extracts_products, popular_powders_products = @popular_powders_products, popular_oils_products = @popular_oils_products)
     all_categories_cache_keys            = cache_key_for_all_categories(all_categories)
     home_slides_cache_keys               = cache_key_for_sliders(home_slides)
     best_sellers_products_cache_keys     = cache_key_for_best_sellers(best_sellers_products)
@@ -237,9 +231,20 @@ Spree::FrontendHelper.class_eval do
     popular_extracts_products_cache_keys = cache_key_for_products_no_updated_at(popular_extracts_products)
     popular_powders_products_cache_keys  = cache_key_for_products_no_updated_at(popular_powders_products)
     popular_oils_products_cache_keys     = cache_key_for_products_no_updated_at(popular_oils_products)
-    ([base_home_controller_cache_key] + [all_categories_cache_keys] + [home_slides_cache_keys] + [best_sellers_products_cache_keys] + [deals_products_cache_keys] + [popular_extracts_products_cache_keys] + [popular_powders_products_cache_keys] + [popular_oils_products_cache_keys]).compact.join('/')
+    ([all_categories_cache_keys] + [home_slides_cache_keys] + [best_sellers_products_cache_keys] + [deals_products_cache_keys] + [popular_extracts_products_cache_keys] + [popular_powders_products_cache_keys] + [popular_oils_products_cache_keys]).compact.join('/')
   end
-  
+
+  def cache_key_for_taxon_show(all_categories = @all_categories, products = @products)
+    all_categories_cache_keys = cache_key_for_all_categories(all_categories)
+    products_cache_keys       = cache_key_for_products_no_updated_at(products)
+    ([all_categories_cache_keys] + [products_cache_keys]).compact.join('/')
+  end
+
+  def cache_key_for_taxon_show_top_level_subcategories(products = @products, taxon = @taxon)
+    products_cache_keys = cache_key_for_products_no_updated_at(products)
+    ([products_cache_keys]).compact.join('/')
+  end
+
   def deep_dup(obj)
     Marshal.load(Marshal.dump(obj))
   end
