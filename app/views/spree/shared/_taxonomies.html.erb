@@ -15,14 +15,12 @@
 <% else %>
   <% all_categories = Spree::Taxonomy.all %>
   <% if all_categories.present? %>
-    <% cache @all_categories do %>
+    <% cache cache_key_for_all_categories(all_categories) do %>
     <% all_categories.each do |taxonomy| %>
-      <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
-        <%= link_to taxonomy.name, seo_url(taxonomy), data: { turbolinks: false } %>
-        <% if taxonomy.root.children.any? %>
-          <%= taxons_tree(taxonomy, @taxon, max_level) %>
-        <% end %>
-      <% end %>
+      <%= link_to taxonomy.name, seo_url(taxonomy), data: { turbolinks: false } %>
+       <% if taxonomy.root.children.any? %>
+         <%= taxons_tree(taxonomy, @taxon, max_level) %>
+       <% end %>  
     <% end %>
     <% end %>
   <% end %>  

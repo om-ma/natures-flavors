@@ -216,6 +216,10 @@ Spree::FrontendHelper.class_eval do
 
   def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
     max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
+    "spree/all_categories/#{all_categories.map(&:id).join('-')}-#{max_updated_at}"
+  end
+  
+  def cache_key_for_all_categories_without_version(all_categories = @all_categories, additional_cache_key = nil)
     "spree/all_categories/#{all_categories.map(&:id).join('-')}"
   end
 
@@ -234,7 +238,7 @@ Spree::FrontendHelper.class_eval do
 
   def cache_key_for_home_index(all_categories = @all_categories, home_slides = @home_slides, best_sellers_products = @best_sellers_products, deals_products = @deals_products, popular_extracts_products = @popular_extracts_products, popular_powders_products = @popular_powders_products, popular_oils_products = @popular_oils_products)
     mobile_or_tablet_cache_key           = cache_key_for_mobile_or_tablet
-    all_categories_cache_keys            = cache_key_for_all_categories(all_categories)
+    all_categories_cache_keys            = cache_key_for_all_categories_without_version(all_categories)
     home_slides_cache_keys               = cache_key_for_sliders(home_slides)
     best_sellers_products_cache_keys     = cache_key_for_best_sellers(best_sellers_products)
     deals_products_cache_keys            = cache_key_for_products_without_version(deals_products)
@@ -245,7 +249,7 @@ Spree::FrontendHelper.class_eval do
   end
 
   def cache_key_for_taxon_show(all_categories = @all_categories, products = @products)
-    all_categories_cache_keys = cache_key_for_all_categories(all_categories)
+    all_categories_cache_keys = cache_key_for_all_categories_without_version(all_categories)
     products_cache_keys       = cache_key_for_products_without_version(products)
     ([all_categories_cache_keys] + [products_cache_keys]).compact.join('/')
   end
