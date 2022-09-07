@@ -13,7 +13,7 @@ Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
-  config.products_per_page = 20
+  config.products_per_page = Pagy::DEFAULT[:items]
   confirmation_required = false
 
   # Site title

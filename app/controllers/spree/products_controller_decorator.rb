@@ -4,12 +4,12 @@ module Spree
     def index
       redirect_to page_not_found_path
     end
+    
     def show
       @best_sellers = Rails.cache.fetch("@best_sellers", expires_in: Rails.configuration.x.cache.expiration) do
         Spree::Product.best_sellers
       end
 
-      @best_sellers = Spree::Product.best_sellers
       if @best_sellers.present?
         loop do
           @best_sellers_product = @best_sellers.sample
@@ -39,6 +39,25 @@ module Spree
         end
       end
     end
+    
+    def etag_show
+      [
+        store_etag,
+        @product,
+        @taxon,
+        @product.possible_promotion_ids,
+        @product.possible_promotions.maximum(:updated_at),
+        @best_sellers_product
+      ]
+    end
+    
+    def last_modified_show
+      product_last_modified              = @product.updated_at.utc
+      current_store_last_modified        = current_store.updated_at.utc
+      best_sellers_product_last_modified = (@best_sellers_product.present? ? @best_sellers_product.updated_at.utc : nil)
+
+      [product_last_modified, current_store_last_modified, best_sellers_product_last_modified].compact.max
+    end
 
     def load_product
       @product = current_store.products.includes(:prices, :sale_prices).references(:prices, :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
@@ -58,7 +77,7 @@ module Spree
       begin
         @filter = params[:filter].blank? ? nil : { filter: params[:filter].to_unsafe_hash }
         @page = (params[:page].blank? ? 1 : params[:page])
-        @per_page = 24
+        @per_page = Pagy::DEFAULT[:items]
         
         if params[:sort_by] == 'name-a-z'
           @sort_by = { sort: { title: 'asc' } }

@@ -1,4 +1,4 @@
-<main class="page-contents">
+<% cache [@all_categories,  @products] do %>
   <div class="deals-wrapper">
     <div class="title-wrap text-center">
       <div class="sm-title">Weekly savings on flavors, aromas, and natural ingredients.</div>
@@ -7,7 +7,7 @@
     <div class="products-wrapper">
       <%= render partial: 'spree/taxons/filters' %>
       <div class="row no-gutters" data-hook="taxon_products">
-        <%= render partial: 'spree/shared/sale_products', locals: { products: @products, taxon: @taxon }%>
+        <%= render partial: 'spree/shared/sale_products', locals: { pagy: @pagy, products: @products }%>
       </div> 
     </div>
     <div class="title-wrap text-center">
@@ -15,4 +15,4 @@
       <div class="sm-title">Subscribe below to be the first to hear about our natural flavoring deals.</div>
     </div>
   </div>
-</main>
+<% end %>

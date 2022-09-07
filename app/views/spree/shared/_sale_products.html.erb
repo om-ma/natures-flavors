@@ -1,9 +1,6 @@
 <% content_for :head do %>
-    <% if products.respond_to?(:total_pages) %>
-      <%= rel_next_prev_link_tags products %>
-    <% end %>
-  <% end %>
+  <%= pagy_rel_next_prev_link_tags pagy %>
+<% end %>
 <% products.each_with_index do |product, index| %>
   <%= render 'spree/shared/sale_product', product: product, image_class: 'product-component-plp-image' %>
 <% end %>
-  

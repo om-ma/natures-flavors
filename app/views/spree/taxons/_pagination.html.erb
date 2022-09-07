@@ -1,19 +1,6 @@
-<%# if products.respond_to?(:total_pages) %>
-<!-- <div class="row pl-md-4 pl-sm-4">
-  <div class="col-12">
-    <div class="plp-pagination d-none d-lg-flex">
-      <%#= paginate products, window: 2, theme: 'twitter-bootstrap-4' %>
-    </div>
-
-    <div class="plp-pagination d-lg-none">
-      <%#= paginate products, window: 1, theme: 'twitter-bootstrap-4' %>
-    </div>
+<% cache [pagy, taxon] do %>
+  <div class="pagination-wrap">
+    <%== pagy_bootstrap_nav(pagy) %>
+    <%#== render partial: 'spree/pagy/bootstrap_nav', locals: {pagy: pagy} %>
   </div>
-</div>
-<%# end %>
-</div> -->
-<% if @products.respond_to?(:total_pages) %>
-    <div class="pagination-wrap">
-        <%= paginate @products, window: 2, theme: 'twitter-bootstrap-4', total_products_count: @taxon.products.length  %>
-    </div>
-<%end%>
+<% end %>
