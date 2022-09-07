@@ -228,6 +228,10 @@ Spree::FrontendHelper.class_eval do
     (common_product_cache_keys + [products_cache_keys] + [additional_cache_key]).compact.join('/')
   end
 
+  def cache_key_for_product_wihtout_version(product = @product)
+    product.cache_key
+  end
+
   def cache_key_for_home_index(all_categories = @all_categories, home_slides = @home_slides, best_sellers_products = @best_sellers_products, deals_products = @deals_products, popular_extracts_products = @popular_extracts_products, popular_powders_products = @popular_powders_products, popular_oils_products = @popular_oils_products)
     mobile_or_tablet_cache_key           = cache_key_for_mobile_or_tablet
     all_categories_cache_keys            = cache_key_for_all_categories(all_categories)

@@ -7,7 +7,7 @@
     });
   </script>
 <% end %>
-<% cache cache_key_for_product(@product) do %>
+<% cache cache_key_for_product_wihtout_version(@product) do %>
 <% @body_id = 'product-details' %>
 <div
   data-related-products

@@ -27,7 +27,7 @@
   });
 </script>
 <% end %>
-<% cache cache_key_for_product(@product) do %>
+<% cache cache_key_for_product_wihtout_version(@product) do %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
