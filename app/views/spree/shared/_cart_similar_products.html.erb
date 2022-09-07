@@ -1,7 +1,5 @@
-<% cache cache_key_for_product(best_sellers_product) do %>
-  <div class="wrap">
-    <p>You might need this:</p>
-    <div class="similar-item-thumb"><%= link_to plp_and_carousel_image(best_sellers_product), product_path(best_sellers_product), data: { turbolinks: false } %></div>
-    <h4><%= link_to best_sellers_product.name, product_path(best_sellers_product), data: { turbolinks: false } %></h4>
-  </div>
-<% end %>
+ <div class="wrap">
+  <p>You might need this:</p>
+  <div class="similar-item-thumb"><%= link_to plp_and_carousel_image(best_sellers_product), product_path(best_sellers_product), data: { turbolinks: false } %></div>
+  <h4><%= link_to best_sellers_product.name, product_path(best_sellers_product), data: { turbolinks: false } %></h4>
+</div>
