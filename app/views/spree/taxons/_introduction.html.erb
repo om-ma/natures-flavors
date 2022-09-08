@@ -1,4 +1,4 @@
-<% cache [@taxon, (browser.device.mobile? || browser.device.tablet?)] do %>
+<% cache [@taxon, (browser.device.mobile? || browser.device.tablet?), params[:sort_by]] do %>
 <div class="category-intro-wrapper">
    <div class="row no-gutters">
       <div class="col-xl-8">
