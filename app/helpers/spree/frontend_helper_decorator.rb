@@ -1,7 +1,8 @@
 Spree::FrontendHelper.class_eval do
   
-  def pagy_url_for(pagy, page, absolute: false, html_escaped: false)  # it was (page, pagy) in previous versions
-    params = request.query_parameters.merge(pagy.vars[:page_param] => page, only_path: !absolute )
+  def pagy_url_for(pagy, page, absolute: false, html_escaped: false, sort_by: true)  # it was (page, pagy) in previous versions
+    params = { pagy.vars[:page_param] => page, only_path: !absolute }
+    params = params.merge(sort_by: request.parameters[:sort_by]) if sort_by && request.parameters[:sort_by].present?
     html_escaped ? url_for(params).gsub('&', '&amp;') : url_for(params)
   end
 
@@ -64,7 +65,7 @@ Spree::FrontendHelper.class_eval do
 
   def pagy_next_page_path(pagy)
     if pagy.next
-      pagy_url_for(pagy, pagy.next)
+      pagy_url_for(pagy, pagy.next, sort_by: false)
     else
       nil
     end
@@ -72,7 +73,7 @@ Spree::FrontendHelper.class_eval do
 
   def pay_prev_page_path(pagy)
     if pagy.prev
-      pagy_url_for(pagy, pagy.prev)
+      pagy_url_for(pagy, pagy.prev, sort_by: false)
     else
       nil
     end
