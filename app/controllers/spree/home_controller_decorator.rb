@@ -9,9 +9,7 @@ Spree::HomeController.class_eval do
       @edit_mode = true
     end
 
-    @home_slides 		           = Rails.cache.fetch("@home_slides", expires_in: Rails.configuration.x.cache.expiration) do
-      Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
-    end
+    @home_slides 		           = Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
     
     @best_sellers_products     = Rails.cache.fetch("@best_sellers_products", expires_in: Rails.configuration.x.cache.expiration) do
       Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
@@ -38,7 +36,7 @@ Spree::HomeController.class_eval do
     @active_home_tab = [0, @deals_products.count, @popular_extracts_products.count, @popular_powders_products.count, @popular_oils_products.count ].index{ |x| x > 0 }
 
     if http_cache_enabled?
-      fresh_when etag: store_etag, last_modified: last_modified_index, public: true
+      fresh_when etag: etag_index, last_modified: last_modified_index, public: true
     end
   end
 

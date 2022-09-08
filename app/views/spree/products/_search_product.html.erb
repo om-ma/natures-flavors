@@ -10,7 +10,7 @@
                 </div>
               </div>
 <% else %>
-  <% cache cache_key_for_product product do %>
+  <% cache cache_key_for_product_wihtout_version(product) do %>
   <% url = spree.product_path(product) %>
               <div class="col col-12 search-product">
                 <div class="product-wrap" id="product_<%= product.id %>" data-hook="search_product_list_item">

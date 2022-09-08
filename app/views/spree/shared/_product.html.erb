@@ -1,4 +1,4 @@
-<% cache cache_key_for_product(product) do %>
+<% cache cache_key_for_product_wihtout_version(product) do %>
 <% url = spree.product_path(product, taxon_id: @taxon&.id) %>
 <div class="col col-12">
   <div class="product-wrap" id="product_<%= product.id %>" data-hook="products_list_item">

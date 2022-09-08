@@ -1,7 +1,8 @@
 Spree::FrontendHelper.class_eval do
   
-  def pagy_url_for(pagy, page, absolute: false, html_escaped: false)  # it was (page, pagy) in previous versions
-    params = request.query_parameters.merge(pagy.vars[:page_param] => page, only_path: !absolute )
+  def pagy_url_for(pagy, page, absolute: false, html_escaped: false, sort_by: true)  # it was (page, pagy) in previous versions
+    params = { pagy.vars[:page_param] => page, only_path: !absolute }
+    params = params.merge(sort_by: request.parameters[:sort_by]) if sort_by && request.parameters[:sort_by].present?
     html_escaped ? url_for(params).gsub('&', '&amp;') : url_for(params)
   end
 
@@ -64,7 +65,7 @@ Spree::FrontendHelper.class_eval do
 
   def pagy_next_page_path(pagy)
     if pagy.next
-      pagy_url_for(pagy, pagy.next)
+      pagy_url_for(pagy, pagy.next, sort_by: false)
     else
       nil
     end
@@ -72,7 +73,7 @@ Spree::FrontendHelper.class_eval do
 
   def pay_prev_page_path(pagy)
     if pagy.prev
-      pagy_url_for(pagy, pagy.prev)
+      pagy_url_for(pagy, pagy.prev, sort_by: false)
     else
       nil
     end
@@ -109,6 +110,10 @@ Spree::FrontendHelper.class_eval do
     end
   end
 
+  def breadcrumbs_permitted_product_params
+    params.permit(:sort_by)
+  end
+
   def spree_breadcrumbs(taxon, _separator = '', product = nil)
     return ''  if current_page?('/') || taxon.nil?
 
@@ -127,8 +132,8 @@ Spree::FrontendHelper.class_eval do
         content_tag(:li, content_tag(
           :a, content_tag(
           :span, ancestor.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: index + 1), itemprop: 'url', href: seo_url(ancestor, params: permitted_product_params), data: { turbolinks: false }
-        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(ancestor, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')
+        ) << content_tag(:meta, nil, itemprop: 'position', content: index + 1), itemprop: 'url', href: seo_url(ancestor, params: breadcrumbs_permitted_product_params), data: { turbolinks: false }
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(ancestor, params: breadcrumbs_permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')
       end
 
       # breadcrumbs for current taxon
@@ -136,14 +141,14 @@ Spree::FrontendHelper.class_eval do
         crumbs << content_tag(:li, content_tag(
           :a,content_tag(
           :span, taxon.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params), data: { turbolinks: false }
-        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: breadcrumbs_permitted_product_params), data: { turbolinks: false }
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: breadcrumbs_permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
       else
         crumbs << content_tag(:li, content_tag(
           :div,content_tag(
           :span, taxon.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params), data: { turbolinks: false }
-        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: breadcrumbs_permitted_product_params), data: { turbolinks: false }
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: breadcrumbs_permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
       end
       # breadcrumbs for product
       # if product
@@ -209,12 +214,21 @@ Spree::FrontendHelper.class_eval do
     end
   end
   
+  def cache_key_for_mobile_or_tablet
+    mobile_or_tablet = browser.device.mobile? || browser.device.tablet?
+    "mobile-tablet/#{mobile_or_tablet}"
+  end
+
   def cache_key_for_all_categories(all_categories = @all_categories, additional_cache_key = nil)
     max_updated_at = (all_categories.except(:group, :order).maximum(:updated_at) || Date.today).to_s(:number)
+    "spree/all_categories/#{all_categories.map(&:id).join('-')}-#{max_updated_at}"
+  end
+  
+  def cache_key_for_all_categories_without_version(all_categories = @all_categories, additional_cache_key = nil)
     "spree/all_categories/#{all_categories.map(&:id).join('-')}"
   end
 
-  def cache_key_for_products_no_updated_at(products = @products, taxon = @taxon, additional_cache_key = nil)
+  def cache_key_for_products_without_version(products = @products, taxon = @taxon, additional_cache_key = nil)
     if products.present?
       products_cache_keys = "spree/products/#{products.map(&:id).join('-')}-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}"
     else
@@ -223,25 +237,30 @@ Spree::FrontendHelper.class_eval do
     (common_product_cache_keys + [products_cache_keys] + [additional_cache_key]).compact.join('/')
   end
 
+  def cache_key_for_product_wihtout_version(product = @product)
+    product.cache_key
+  end
+
   def cache_key_for_home_index(all_categories = @all_categories, home_slides = @home_slides, best_sellers_products = @best_sellers_products, deals_products = @deals_products, popular_extracts_products = @popular_extracts_products, popular_powders_products = @popular_powders_products, popular_oils_products = @popular_oils_products)
-    all_categories_cache_keys            = cache_key_for_all_categories(all_categories)
+    mobile_or_tablet_cache_key           = cache_key_for_mobile_or_tablet
+    all_categories_cache_keys            = cache_key_for_all_categories_without_version(all_categories)
     home_slides_cache_keys               = cache_key_for_sliders(home_slides)
     best_sellers_products_cache_keys     = cache_key_for_best_sellers(best_sellers_products)
-    deals_products_cache_keys            = cache_key_for_products_no_updated_at(deals_products)
-    popular_extracts_products_cache_keys = cache_key_for_products_no_updated_at(popular_extracts_products)
-    popular_powders_products_cache_keys  = cache_key_for_products_no_updated_at(popular_powders_products)
-    popular_oils_products_cache_keys     = cache_key_for_products_no_updated_at(popular_oils_products)
-    ([all_categories_cache_keys] + [home_slides_cache_keys] + [best_sellers_products_cache_keys] + [deals_products_cache_keys] + [popular_extracts_products_cache_keys] + [popular_powders_products_cache_keys] + [popular_oils_products_cache_keys]).compact.join('/')
+    deals_products_cache_keys            = cache_key_for_products_without_version(deals_products)
+    popular_extracts_products_cache_keys = cache_key_for_products_without_version(popular_extracts_products)
+    popular_powders_products_cache_keys  = cache_key_for_products_without_version(popular_powders_products)
+    popular_oils_products_cache_keys     = cache_key_for_products_without_version(popular_oils_products)
+    ([mobile_or_tablet_cache_key] + [all_categories_cache_keys] + [home_slides_cache_keys] + [best_sellers_products_cache_keys] + [deals_products_cache_keys] + [popular_extracts_products_cache_keys] + [popular_powders_products_cache_keys] + [popular_oils_products_cache_keys]).compact.join('/')
   end
 
   def cache_key_for_taxon_show(all_categories = @all_categories, products = @products)
-    all_categories_cache_keys = cache_key_for_all_categories(all_categories)
-    products_cache_keys       = cache_key_for_products_no_updated_at(products)
+    all_categories_cache_keys = cache_key_for_all_categories_without_version(all_categories)
+    products_cache_keys       = cache_key_for_products_without_version(products)
     ([all_categories_cache_keys] + [products_cache_keys]).compact.join('/')
   end
 
   def cache_key_for_taxon_show_top_level_subcategories(products = @products, taxon = @taxon)
-    products_cache_keys = cache_key_for_products_no_updated_at(products)
+    products_cache_keys = cache_key_for_products_without_version(products)
     ([products_cache_keys]).compact.join('/')
   end
 
