@@ -1,4 +1,5 @@
 <% content_for :head do %>
+  <!-- product structured data -->
   <script type="text/javascript">
     $(document).on('turbolinks:before-cache', function() {
       $('script[type="application/ld+json"]').each(function() {
@@ -7,14 +8,13 @@
     });
   </script>
 <% end %>
-<% cache cache_key_for_product_wihtout_version(@product) do %>
 <% @body_id = 'product-details' %>
 <div
   data-related-products
   data-related-products-id="<%= @product.slug %>"
   data-related-products-enabled="<%= @product.respond_to?(:has_related_products?) %>" />
   <main class="page-contents">
-    <div class="row no-gutters">
+    <% cache [cache_key_for_product_wihtout_version(@product), (browser.device.mobile? || browser.device.tablet?)] do %>    <div class="row no-gutters">
       <div class="col-xl-1 tablet-hide"></div>
         <div class="col-xl-8 col-lg-8">
           <div class="product-detail-wrapper">
@@ -65,6 +65,6 @@
     <%= render partial: 'customer_reviews' %> 
     <%= render 'spree/shared/product_added_modal' %>
     <%= products_structured_data([@product]) %>
+    <% end %>
   </main>
 </div>
-<% end %>
