@@ -1,4 +1,4 @@
-<% cache cache_key_for_taxon_show do %>
+<% cache [cache_key_for_taxon_show, (browser.device.mobile? || browser.device.tablet?)] do %>
 <main class="page-contents">
   <div class="category-wrapper">
     <div class="row no-gutters">
