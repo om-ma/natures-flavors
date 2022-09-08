@@ -230,7 +230,8 @@ Spree::FrontendHelper.class_eval do
 
   def cache_key_for_products_without_version(products = @products, taxon = @taxon, additional_cache_key = nil)
     if products.present?
-      products_cache_keys = "spree/products/#{products.map(&:id).join('-')}-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}"
+      count = products.length
+      products_cache_keys = "spree/products/#{products.map(&:id).join('-')}-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}-#{count}"
     else
       products_cache_keys = "spree/products/nil-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}"
     end
