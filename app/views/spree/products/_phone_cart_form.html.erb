@@ -3,7 +3,7 @@
 <script type="text/javascript" defer="defer">
   $(document).on('turbolinks:load', function() {
     $(".js_drop_down").click();
-    $('body').click()
+    $('body').click();
     var SalesExpiryDatePhone= $('#DealsExpiryPhone').attr("data-SalesExpiryDatePhone");
     var countDownDatePhone = new Date(SalesExpiryDatePhone).getTime();
     var x = setInterval(function() {
@@ -27,7 +27,7 @@
   });
 </script>
 <% end %>
-<% cache cache_key_for_product_wihtout_version(@product) do %>
+<%# cache cache_key_for_product_wihtout_version(@product) do %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
@@ -141,4 +141,4 @@
       <%end%>
     <%end%>
   </div>
-<% end %>
+<%# end %>
