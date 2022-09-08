@@ -66,12 +66,12 @@ Spree::TaxonsController.class_eval do
     [
       store_etag,
       @taxon,
-      @products.maximum(:updated_at).to_f
+      @products&.maximum(:updated_at)&.to_f
     ]
   end
 
   def last_modified_show
-    products_last_modified      = @products.maximum(:updated_at).utc
+    products_last_modified      = @products&.maximum(:updated_at)&.utc
     taxon_last_modified         = @taxon&.updated_at&.utc
     current_store_last_modified = current_store.updated_at.utc
 
