@@ -7,37 +7,37 @@
       <% end %>
     </div>
   </div>
-  <% if !@is_hide_most_popular %>
-    <div class="main-category-best">
-      <ul>
-        <li class="active-best">Most Popular</li>
-        <li>in <%= taxon.name %></li>
-      </ul>
-    </div>
-    <div class="row row-cols-xl-6 row-cols-lg-3 row-cols-sm-2 no-gutters">
-      <% products.each_with_index do |product, index| %>
-      <div class="col col-12">
-        <div class="product-wrap" data-hook="top_level_subcategories_product_list_item">
-          <%= link_to spree.product_path(product, taxon_id: @taxon&.id), data: { turbolinks: false } do %>
-          <div class="product-img">
-            <%= plp_and_carousel_image(product, 'product-component-plp-image') %>
-            <div class="price">
-              <% if product&.sale_prices&.active&.present? %>
+
+  <div class="main-category-best">
+    <ul>
+      <li class="active-best">Most Popular</li>
+      <li>in <%= taxon.name %></li>
+     </ul>
+  </div>
+  <div class="row row-cols-xl-6 row-cols-lg-3 row-cols-sm-2 no-gutters">
+    <% products.each_with_index do |product, index| %>
+    <div class="col col-12">
+      <div class="product-wrap" data-hook="top_level_subcategories_product_list_item">
+        <%= link_to spree.product_path(product, taxon_id: @taxon&.id), data: { turbolinks: false } do %>
+        <div class="product-img">
+          <%= plp_and_carousel_image(product, 'product-component-plp-image') %>
+          <div class="price">
+            <% if product&.sale_prices&.active&.present? %>
               <span><%= display_original_price(product.lowest_sale_price.price.variant) %></span><%= product.lowest_sale_price.display_price %>
-              <% else %>
+            <% else %>
               <%= display_price(product) %>
-              <% end %>  
-            </div>
+            <% end %>  
           </div>
-          <div class="product-desc"title="<%= product.name %>" >
-            <h4> <%= product.name %></h4>
-          </div>
-          <% end %>
         </div>
+        <div class="product-desc"title="<%= product.name %>" >
+          <h4> <%= product.name %></h4>
+        </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
-  <% end %>
+    <% end %>
+  </div>
+
   <div class="sub-categories">
     <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-sm-1 no-gutters">
       <% taxon.children.each do |category| %>

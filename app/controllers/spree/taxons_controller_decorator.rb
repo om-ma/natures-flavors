@@ -3,29 +3,28 @@ Spree::TaxonsController.class_eval do
   before_action :load_taxon, except: :all_categories
 
   def show
-    #@per_page = Pagy::DEFAULT[:items]
-    #params['per_page'] = @per_page
-
-    if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
-      @is_top_level_menu_item = @taxon.is_top_level_menu_item
-      @is_hide_most_popular = (@taxon.name == 'Extracts & Flavorings')
-      if @is_top_level_menu_item
-        if !@is_hide_most_popular
-          load_most_popular_products
-        end
-      else
+    @is_top_level_menu_item = @taxon.is_top_level_menu_item
+    
+    if @is_top_level_menu_item
+      if !http_cache_enabled? || stale?(etag: etag_show_top_level_menu_item, last_modified: last_modified_show_top_level_menu_item, public: true)
+        load_most_popular_products
+      end
+    else
+      if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
         load_products
       end
     end
   end
 
+  private
+  
   def load_taxon_with_children
-    @taxon = Spree::Taxon.includes(children: :children).references(children: :children).friendly.find(params[:id])
+    @taxon = Spree::Taxon.includes(:children).references(:children).friendly.find(params[:id])
   end
 
   def load_most_popular_products
     @products = Rails.cache.fetch("@pmost-popular-products/taxon/#{@taxon.name}", expires_in: Rails.configuration.x.cache.expiration) do
-      @taxon.products.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices).reorder(popularity: :desc).first(6)
+      @taxon.products.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices).reorder(popularity: :desc).limit(6)
     end
   end
 
@@ -62,6 +61,20 @@ Spree::TaxonsController.class_eval do
 
   def all_categories
 
+  end
+
+  def etag_show_top_level_menu_item
+    [
+      store_etag,
+      @taxon
+    ]
+  end
+
+  def last_modified_show_top_level_menu_item
+    taxon_last_modified = @taxon&.updated_at&.utc
+    current_store_last_modified = current_store.updated_at.utc
+
+    [taxon_last_modified, current_store_last_modified].compact.max
   end
 
 end
