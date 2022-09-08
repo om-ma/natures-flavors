@@ -6,14 +6,12 @@ Spree::TaxonsController.class_eval do
     @is_top_level_menu_item = @taxon.is_top_level_menu_item
     
     if @is_top_level_menu_item
-      if !http_cache_enabled? || stale?(etag: etag_show_top_level_menu_item, last_modified: last_modified_show_top_level_menu_item, public: true)
-        load_most_popular_products
-      end
+      load_most_popular_products
     else
-      if !http_cache_enabled? || stale?(etag: etag, last_modified: last_modified, public: true)
-        load_products
-      end
+      load_products
     end
+
+    fresh_when etag: etag_show, last_modified: last_modified_show, public: true
   end
 
   private
@@ -23,9 +21,10 @@ Spree::TaxonsController.class_eval do
   end
 
   def load_most_popular_products
-    @products = Rails.cache.fetch("@pmost-popular-products/taxon/#{@taxon.name}", expires_in: Rails.configuration.x.cache.expiration) do
-      @taxon.products.includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices).reorder(popularity: :desc).limit(6)
+    ids = Rails.cache.fetch("@pmost-popular-products/taxon/#{@taxon.name}", expires_in: Rails.configuration.x.cache.expiration) do
+      @taxon.products.reorder(popularity: :desc).limit(6).pluck(:id)
     end
+    @products = Spree::Product.where(id: ids).includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices)
   end
 
   def load_products    
@@ -62,19 +61,21 @@ Spree::TaxonsController.class_eval do
   def all_categories
 
   end
-
-  def etag_show_top_level_menu_item
+  
+  def etag_show
     [
       store_etag,
-      @taxon
+      @taxon,
+      @products.maximum(:updated_at).to_f
     ]
   end
 
-  def last_modified_show_top_level_menu_item
-    taxon_last_modified = @taxon&.updated_at&.utc
+  def last_modified_show
+    products_last_modified      = @products.maximum(:updated_at).utc
+    taxon_last_modified         = @taxon&.updated_at&.utc
     current_store_last_modified = current_store.updated_at.utc
 
-    [taxon_last_modified, current_store_last_modified].compact.max
+    [products_last_modified, taxon_last_modified, current_store_last_modified].compact.max
   end
 
 end
