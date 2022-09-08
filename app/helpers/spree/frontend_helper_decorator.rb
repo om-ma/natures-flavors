@@ -109,6 +109,11 @@ Spree::FrontendHelper.class_eval do
     end
   end
 
+  def breadcrumbs_permitted_product_params
+    params.permit(:sort_by)
+  end
+
+
   def spree_breadcrumbs(taxon, _separator = '', product = nil)
     return ''  if current_page?('/') || taxon.nil?
 
@@ -127,8 +132,8 @@ Spree::FrontendHelper.class_eval do
         content_tag(:li, content_tag(
           :a, content_tag(
           :span, ancestor.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: index + 1), itemprop: 'url', href: seo_url(ancestor, params: permitted_product_params), data: { turbolinks: false }
-        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(ancestor, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')
+        ) << content_tag(:meta, nil, itemprop: 'position', content: index + 1), itemprop: 'url', href: seo_url(ancestor, params: breadcrumbs_permitted_product_params), data: { turbolinks: false }
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(ancestor, params: breadcrumbs_permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item')
       end
 
       # breadcrumbs for current taxon
@@ -136,14 +141,14 @@ Spree::FrontendHelper.class_eval do
         crumbs << content_tag(:li, content_tag(
           :a,content_tag(
           :span, taxon.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params), data: { turbolinks: false }
-        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: breadcrumbs_permitted_product_params), data: { turbolinks: false }
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: breadcrumbs_permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
       else
         crumbs << content_tag(:li, content_tag(
           :div,content_tag(
           :span, taxon.name, itemprop: 'name'
-        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: permitted_product_params), data: { turbolinks: false }
-        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
+        ) << content_tag(:meta, nil, itemprop: 'position', content: ancestors.size + 1), itemprop: 'url', href: seo_url(taxon, params: breadcrumbs_permitted_product_params), data: { turbolinks: false }
+        ) << content_tag(:span, nil, itemprop: 'item', itemscope: 'itemscope', itemtype: 'https://schema.org/Thing', itemid: seo_url(taxon, params: breadcrumbs_permitted_product_params)), itemscope: 'itemscope', itemtype: 'https://schema.org/ListItem', itemprop: 'itemListElement', class: 'breadcrumb-item active' )
       end
       # breadcrumbs for product
       # if product
