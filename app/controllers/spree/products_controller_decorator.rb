@@ -24,22 +24,30 @@ module Spree
       @taxon = params[:taxon_id].present? ? taxons_scope.find_by(id: params[:taxon_id]) : nil
       @taxon = @product.taxons.first unless @taxon.present?
 
-      if !http_cache_enabled? || stale?(etag: etag_show, last_modified: last_modified_show, public: true)
-        @product_summary = Spree::ProductSummaryPresenter.new(@product).call
-        @product_properties = @product.product_properties.includes(:property)
-        @product_price = @product.price_in(current_currency).amount
-        load_variants
-        @variants_master_only_or_no_master = (@variants.count == 1 ? @variants : @variants.reject { |v| v.is_master } )
-        @product_images = product_images(@product, @variants)
+      @product_summary = Spree::ProductSummaryPresenter.new(@product).call
+      @product_properties = @product.product_properties.includes(:property)
+      @product_price = @product.price_in(current_currency).amount
+      load_variants
+      @variants_master_only_or_no_master = (@variants.count == 1 ? @variants : @variants.reject { |v| v.is_master } )
+      @product_images = product_images(@product, @variants)
 
-        if @product.has_related_products?('related') &&  @product.related.count > 0
-          @related_products = @product.related.first(2)
-        else
-          @related_products = @taxon&.products.present? ? @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil)&.last(2) : []
-        end
+      if @product.has_related_products?('related') &&  @product.related.count > 0
+        @related_products = @product.related.take(2)
+      else
+        @related_products = @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil).take(2)
       end
+
+      fresh_when etag: etag_show, last_modified: last_modified_show, public: true
     end
     
+    def related_products_max_updated_at
+      if @related_products.present?
+        @related_products.max_by(&:updated_at).updated_at
+      else
+         Date.today
+      end
+    end
+
     def etag_show
       [
         store_etag,
@@ -47,7 +55,8 @@ module Spree
         @taxon,
         @product.possible_promotion_ids,
         @product.possible_promotions.maximum(:updated_at),
-        @best_sellers_product
+        @best_sellers_product,
+        related_products_max_updated_at.to_f
       ]
     end
     
@@ -55,8 +64,9 @@ module Spree
       product_last_modified              = @product.updated_at.utc
       current_store_last_modified        = current_store.updated_at.utc
       best_sellers_product_last_modified = (@best_sellers_product.present? ? @best_sellers_product.updated_at.utc : nil)
+      related_products_last_modified     = (@related_products.present? ? related_products_max_updated_at.utc : nil)
 
-      [product_last_modified, current_store_last_modified, best_sellers_product_last_modified].compact.max
+      [product_last_modified, current_store_last_modified, best_sellers_product_last_modified, related_products_last_modified].compact.max
     end
 
     def load_product

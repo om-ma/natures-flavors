@@ -14,7 +14,7 @@
   data-related-products-id="<%= @product.slug %>"
   data-related-products-enabled="<%= @product.respond_to?(:has_related_products?) %>" />
   <main class="page-contents">
-    <% cache [cache_key_for_product_wihtout_version(@product), (browser.device.mobile? || browser.device.tablet?)] do %>
+    <% cache [cache_key_for_product_wihtout_version(@product), (browser.device.mobile? || browser.device.tablet?), params[:variant]] do %>
     <div class="row no-gutters">
       <div class="col-xl-1 tablet-hide"></div>
         <div class="col-xl-8 col-lg-8">

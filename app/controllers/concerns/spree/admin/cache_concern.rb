@@ -7,20 +7,23 @@ module Spree
       include Spree::ProductsHelper
 
       def clear_views_product_cache(product = @product)
-        views = [
-          'views/spree/products/_cart_form',
-          'views/spree/products/_overview_tabs',
-          'views/spree/products/_phone_cart_form',
-          'views/spree/products/_product',
-          'views/spree/products/_related_product',
-          'views/spree/products/_search_product',
-          'views/spree/products/show',
-          'views/spree/shared/_product',
-          'views/spree/shared/_sale_product'
+        views_key = [
+          "views/spree/products/_cart_form*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/products/_overview_tabs*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/products/_phone_cart_form*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/products/_product*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/products/_related_product*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/products/_search_product*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/products/show*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/shared/_product*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/shared/_products*#{product.id}*",
+          "views/spree/shared/_sale_product*#{cache_key_for_product_wihtout_version(product)}*",
+          "views/spree/taxons/show*#{product.id}*",
+          "views/spree/taxons/_top_level_subcategories*#{product.id}*",
+          "views/spree/products/show*#{product.id}*"
         ]
-        views.each { |view|
-          keys = "#{view}*#{cache_key_for_product_wihtout_version(product)}"
-          Rails.cache.delete_matched(keys)
+        views_key.each { |key|
+          Rails.cache.delete_matched(key)
         } 
       end
 

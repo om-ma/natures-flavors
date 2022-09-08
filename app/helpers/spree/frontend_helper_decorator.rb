@@ -52,31 +52,31 @@ Spree::FrontendHelper.class_eval do
     end
   end
   
-  # <link rel="next" href="/items/page/3"><link rel="prev" href="/items/page/1">
-  def pagy_rel_next_prev_link_tags(pagy)
-    next_page = pagy_next_page_path(pagy)
-    prev_page = pay_prev_page_path(pagy)
-
-    output = String.new
-    output << %Q|<link rel="next" href="#{next_page}">| if next_page
-    output << %Q|<link rel="prev" href="#{prev_page}">| if prev_page
-    output.html_safe
-  end
-
   def pagy_next_page_path(pagy)
-    if pagy.next
+    if pagy.next.present?
       pagy_url_for(pagy, pagy.next, sort_by: false)
     else
       nil
     end
   end
 
-  def pay_prev_page_path(pagy)
-    if pagy.prev
+  def pagy_prev_page_path(pagy)
+    if pagy.prev.present?
       pagy_url_for(pagy, pagy.prev, sort_by: false)
     else
       nil
     end
+  end
+
+  # <link rel="next" href="/items/page/3"><link rel="prev" href="/items/page/1">
+  def pagy_rel_next_prev_link_tags(pagy)
+    next_page = pagy_next_page_path(pagy)
+    prev_page = pagy_prev_page_path(pagy)
+
+    output = String.new
+    output << %Q|<link rel="next" href="#{next_page}">| if next_page
+    output << %Q|<link rel="prev" href="#{prev_page}">| if prev_page
+    output.html_safe
   end
 
   def checkout_edit_link(step = 'address', order = @order)
@@ -230,7 +230,8 @@ Spree::FrontendHelper.class_eval do
 
   def cache_key_for_products_without_version(products = @products, taxon = @taxon, additional_cache_key = nil)
     if products.present?
-      products_cache_keys = "spree/products/#{products.map(&:id).join('-')}-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}"
+      count = products.length
+      products_cache_keys = "spree/products/#{products.map(&:id).join('-')}-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}-#{count}"
     else
       products_cache_keys = "spree/products/nil-#{params[:page]}-#{params[:sort_by]}-#{taxon&.id}"
     end
