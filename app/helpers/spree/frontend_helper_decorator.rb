@@ -113,7 +113,6 @@ Spree::FrontendHelper.class_eval do
     params.permit(:sort_by)
   end
 
-
   def spree_breadcrumbs(taxon, _separator = '', product = nil)
     return ''  if current_page?('/') || taxon.nil?
 
