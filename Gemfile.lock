@@ -177,15 +177,6 @@ GIT
       spree_core (>= 3.7.0)
 
 GIT
-  remote: https://github.com/ducl13/spree_events_tracker.git
-  revision: 811faa89bb72e08ae87815c8b06708ebc6431a6e
-  branch: naturesflavors
-  specs:
-    spree_events_tracker (3.3.2)
-      spree_core (>= 3.2.0)
-      spree_extension (~> 0.0.5)
-
-GIT
   remote: https://github.com/ducl13/spree_mailchimp_ecommerce.git
   revision: af91225002405a06bcd3f775eb445a89ec01623d
   branch: master
@@ -2311,7 +2302,6 @@ DEPENDENCIES
   spree_common!
   spree_contact_us!
   spree_emails (= 4.3)
-  spree_events_tracker!
   spree_favorite_products!
   spree_frontend (= 4.3)
   spree_gateway (~> 3.9)
