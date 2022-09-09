@@ -25,8 +25,8 @@ class Spree::UserCreditCardsController < Spree::StoreController
   
   def destroy
     checkout_cc_current_payments        = @cc.payments.checkout
-    current_order_checkout_payment_ids  = current_order.payments.checkout.pluck(:id)
-    cc_payments_in_current_order        = checkout_cc_current_payments.where(id: current_order_checkout_payment_ids )
+    current_order_checkout_payment_ids  = current_order.payments.checkout.pluck(:id) if current_order.present?
+    cc_payments_in_current_order        = checkout_cc_current_payments.where(id: current_order_checkout_payment_ids ) if checkout_cc_current_payments.present?
     
     ActiveRecord::Base.transaction do
       if @cc.destroy
