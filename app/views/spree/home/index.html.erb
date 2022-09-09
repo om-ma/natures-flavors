@@ -147,6 +147,13 @@
           <% end %>
           <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>
           <p><%= raw(category.short_description) %></p>
+          <% if category.children %>
+            <ul>
+              <% category.children.each do |subcategory| %>
+                <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false }, alt: "#{subcategory.name}" %></li>
+              <% end %>
+            </ul>
+          <% end %>
           <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, alt: "#{category.name}" do %>
             <span>See All <%= category.name %></span>
           <% end %>
