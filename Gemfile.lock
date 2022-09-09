@@ -243,7 +243,7 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_slider.git
-  revision: 5b4b466bccf7d1c4f5d601af67fd0d61836b4391
+  revision: c3984ac410a4f8f34a3c5323e0a9752ca28db0e2
   branch: master
   specs:
     spree_slider (4.0.0)
