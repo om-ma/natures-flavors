@@ -54,7 +54,8 @@ class Spree::UserCreditCardsController < Spree::StoreController
   end
   
   def load_user_ccs
-    @user_ccs = current_spree_user.credit_cards
+    authorize_net_cim_payment_method = Spree::PaymentMethod.find_by_type('Spree::Gateway::AuthorizeNetCim')
+    @user_ccs = current_spree_user.credit_cards.where(payment_method: authorize_net_cim_payment_method)
   end
 
   def load_cc
