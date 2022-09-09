@@ -5,7 +5,9 @@ module Spree
         @favorite_products = spree_current_user.favorite_products
         @orders           = @user.orders.complete.order('completed_at desc')
         @user_addresses  = spree_current_user.present? ? spree_current_user.addresses : []
-        @profile_ccs 	 = spree_current_user.present? ? current_spree_user.credit_cards : []
+        
+        authorize_net_cim_payment_method = Spree::PaymentMethod.find_by_type('Spree::Gateway::AuthorizeNetCim')
+        @profile_ccs 	 = spree_current_user.present? ? current_spree_user.credit_cards.where(payment_method: authorize_net_cim_payment_method) : []
       end
     end
   end
