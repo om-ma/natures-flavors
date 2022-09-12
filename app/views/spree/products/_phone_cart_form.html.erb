@@ -1,3 +1,5 @@
+<% 
+=begin %>
 <% content_for :head do %>
 <!-- phone cart form deals expire -->
 <script type="text/javascript" defer="defer">
@@ -27,13 +29,19 @@
   });
 </script>
 <% end %>
-<%# cache cache_key_for_product_wihtout_version(@product) do %>
+<% 
+=end %>
+<% cache cache_key_for_product_wihtout_version(@product) do %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
+<% 
+=begin %>
     <% if @product&.sale_prices&.active&.present? %>
       <div class="deal-expiry-wrap" id="DealsExpiryPhone" data-SalesExpiryDatePhone="<%= sale_date_time_counter(@product.lowest_expiry_at&.end_at) %>"></div>
     <% end %>
+<% 
+=end %>
     <%= form_for :order, html: {
       id: 'add-to-cart-form',
       class: 'add-to-cart-form',
@@ -141,4 +149,4 @@
       <%end%>
     <%end%>
   </div>
-<%# end %>
+<% end %>
