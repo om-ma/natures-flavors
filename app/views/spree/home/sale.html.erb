@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <%= pagy_rel_next_prev_link_tags @pagy %>
+<% end %>
 <% cache [@all_categories,  @products] do %>
   <div class="deals-wrapper">
     <div class="title-wrap text-center">

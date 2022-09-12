@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <%= pagy_rel_next_prev_link_tags @pagy %>
+<% end %>
 <% cache [cache_key_for_taxon_show, (browser.device.mobile? || browser.device.tablet?), params[:sort_by]] do %>
 <main class="page-contents">
   <div class="category-wrapper">
