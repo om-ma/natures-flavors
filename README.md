@@ -60,7 +60,10 @@ rake db:migrate:up VERSION=20211026070924 (DONE)
 - Roles (DONE)
 
 * To recreate thumbnails
-Spree::Image.all.each do |image| image.create_sizes end
+Spree::Image.all.each do |image| image.create_sizes end (Need to change this to product images only)
+
+* To regenerate taxon image sizes
+Spree::Taxon.all.each do |taxon| taxon.icon&.create_sizes end
 
 * To generate sitemap manually
 - rake sitemap:refresh

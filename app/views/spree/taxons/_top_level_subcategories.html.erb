@@ -44,10 +44,18 @@
       <div class="col col-12">
         <div class="sub-categories-preview" id="<%= "sub-categories-preview-#{category.name}" %>">
           <%= link_to seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" do %>
-            <% if category.icon.present? %>
-              <%= image_tag category.icon.my_cf_image_url, alt:"#{category.name}" %> 
+            <% if browser.device.mobile? %>
+               <% if category.icon.present? %>
+                  <%= image_tag category.icon.my_cf_image_url(:small), alt:"#{category.name}" %> 
+               <% else %>
+                  <%= image_tag "noimage/default-category-image-small.jpg", alt:"#{category.name}" %>
+               <% end %>
             <% else %>
-              <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
+               <% if category.icon.present? %>
+                  <%= image_tag category.icon.my_cf_image_url(:large), alt:"#{category.name}" %> 
+               <% else %>
+                  <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
+               <% end %>
             <% end %>
           <% end %>
           <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>

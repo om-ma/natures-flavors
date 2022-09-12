@@ -7,9 +7,9 @@
           <% if @all_categories.present? %>
             <% @all_categories.each do |menu_category|
               if menu_category.icon.present?
-                img_tag = image_tag(menu_category.icon.my_cf_image_url, alt: menu_category.name)
+                img_tag = image_tag(menu_category.icon.my_cf_image_url(:small), alt: menu_category.name)
               else
-                img_tag = image_tag("noimage/default-category-image.jpg", alt: menu_category.name)
+                img_tag = image_tag("noimage/default-category-image-small.jpg", alt: menu_category.name)
               end
             %>
               <div class="col col-12 category-col">
