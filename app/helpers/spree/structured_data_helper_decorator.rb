@@ -5,7 +5,6 @@ Spree::StructuredDataHelper.module_eval do
       {
         '@context': 'https://schema.org/',
         '@type': 'Product',
-        #'@id': "#{spree.root_url}product_#{product.id}",
         aggregate_rating: structured_aggregate_rating(product),
         url: spree.product_url(product),
         name: product.name,
@@ -21,7 +20,7 @@ Spree::StructuredDataHelper.module_eval do
           availabilityEnds: product.discontinue_on ? product.discontinue_on.strftime('%F') : ''
         },
         review: structured_reviews(product)
-      }.compact
+      }.compact_blank
     end
   end
 
@@ -51,11 +50,11 @@ Spree::StructuredDataHelper.module_eval do
           reviewRating: {
             '@type': 'Rating',
             ratingValue: review['score']
-          }
+          },
           author: {
             '@type': 'Person',
             name: review['user']['display_name']
-          }
+          },
           datePublished: review['created_at'],
           reviewBody: review['content']
         }
@@ -64,7 +63,7 @@ Spree::StructuredDataHelper.module_eval do
       nil
     end
   end
-  
+
   def organization_structured_data(store)
     content_tag :script, type: 'application/ld+json' do
       raw(
