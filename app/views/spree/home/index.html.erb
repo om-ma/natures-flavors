@@ -6,6 +6,21 @@
       });
     });
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.naturesflavors.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.naturesflavors.com/search?keywords={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
 <% end %>
 <% cache cache_key_for_home_index do %>
 <%= organization_structured_data(current_store) %>
