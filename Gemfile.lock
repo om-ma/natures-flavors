@@ -21,10 +21,10 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/browser.git
-  revision: 5f13125e6b5f9d86edbc1465591cbd081a8937d8
+  revision: 5f07b44444e72cf6cc0282cdf4d0c04221641f47
   branch: master
   specs:
-    browser (2.5.3)
+    browser (4.2.0)
 
 GIT
   remote: https://github.com/ducl13/canonical-rails.git
@@ -272,7 +272,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/duc.lam/spree_yotpo.git
-  revision: 6a3d467c103edc7a4b91f4e3b2db2decfddc5a21
+  revision: d20e95c7e1ef4ad056b80ffb0aa2f50909012c96
   branch: naturesflavors
   specs:
     spree_yotpo (1.0.0)
