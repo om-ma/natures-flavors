@@ -1,5 +1,70 @@
 Spree::StructuredDataHelper.module_eval do
 
+  def structured_product_hash(product)
+    Rails.cache.fetch(common_product_cache_keys + ["spree/structured-data/#{product.cache_key_with_version}"]) do
+      {
+        '@context': 'https://schema.org/',
+        '@type': 'Product',
+        #'@id': "#{spree.root_url}product_#{product.id}",
+        aggregate_rating: structured_aggregate_rating(product),
+        url: spree.product_url(product),
+        name: product.name,
+        image: structured_images(product),
+        description: product.description,
+        sku: structured_sku(product),
+        offers: {
+          '@type': 'Offer',
+          price: product.default_variant.price_in(current_currency).amount,
+          priceCurrency: current_currency,
+          availability: product.in_stock? ? 'InStock' : 'OutOfStock',
+          url: spree.product_url(product),
+          availabilityEnds: product.discontinue_on ? product.discontinue_on.strftime('%F') : ''
+        },
+        review: structured_reviews(product)
+      }.compact
+    end
+  end
+
+  def structured_aggregate_rating(product)
+    rich_snippets = product.yotpo_rich_snippets()
+
+    if rich_snippets.present? && rich_snippets['response']['bottomline']['average_score'].to_i > 0
+      {
+        '@type': 'AggregateRating',
+        ratingValue: rich_snippets['response']['bottomline']['average_score'],
+        reviewCount: rich_snippets['response']['bottomline']['total_reviews'],
+        bestRating: 5,
+        worstRating: 1
+      }
+    else
+      nil
+    end
+  end
+
+  def structured_reviews(product)
+    reviews = product.yotpo_reviews()
+    
+    if reviews.present?
+      reviews['response']['reviews'].map do |review|
+        {
+          '@type': 'Review',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: review['score']
+          }
+          author: {
+            '@type': 'Person',
+            name: review['user']['display_name']
+          }
+          datePublished: review['created_at'],
+          reviewBody: review['content']
+        }
+      end
+    else
+      nil
+    end
+  end
+  
   def organization_structured_data(store)
     content_tag :script, type: 'application/ld+json' do
       raw(
