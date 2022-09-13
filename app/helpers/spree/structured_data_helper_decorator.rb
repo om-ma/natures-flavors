@@ -5,7 +5,7 @@ Spree::StructuredDataHelper.module_eval do
       {
         '@context': 'https://schema.org/',
         '@type': 'Product',
-        aggregate_rating: structured_aggregate_rating(product),
+        aggregateRating: structured_aggregate_rating(product),
         url: spree.product_url(product),
         name: product.name,
         image: structured_images(product),
