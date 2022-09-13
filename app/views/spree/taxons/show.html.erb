@@ -1,4 +1,7 @@
-<% cache [cache_key_for_taxon_show, (browser.device.mobile? || browser.device.tablet?), params[:sort_by]] do %>
+<% content_for :head do %>
+  <%= pagy_rel_next_prev_link_tags @pagy %>
+<% end %>
+<% cache [cache_key_for_taxon_show, params[:sort_by]] do %>
 <main class="page-contents">
   <div class="category-wrapper">
     <div class="row no-gutters">
@@ -11,10 +14,18 @@
       <div class="col-xl-10 col-lg-9">
         <div class="products-wrapper">
           <div class="category-banner phone-visible">
-            <% if @taxon.icon.present? %>
-               <%= image_tag @taxon.icon.my_cf_image_url, alt:"#{@taxon.name}" %> 
+            <% if browser.device.mobile? %>
+               <% if @taxon.icon.present? %>
+                  <%= image_tag @taxon.icon.my_cf_image_url(:small), alt:"#{@taxon.name}" %> 
+               <% else %>
+                  <%= image_tag "noimage/default-category-image-small.jpg", alt:"#{@taxon.name}" %>
+               <% end %>
             <% else %>
-               <%= image_tag "noimage/default-category-image.jpg", alt:"#{@taxon.name}" %>
+               <% if @taxon.icon.present? %>
+                  <%= image_tag @taxon.icon.my_cf_image_url(:large), alt:"#{@taxon.name}" %> 
+               <% else %>
+                  <%= image_tag "noimage/default-category-image.jpg", alt:"#{@taxon.name}" %>
+               <% end %>
             <% end %>
           </div>
           <%= render partial: 'spree/taxons/introduction' %>

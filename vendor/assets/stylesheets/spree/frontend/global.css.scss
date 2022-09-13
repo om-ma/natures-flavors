@@ -3403,10 +3403,10 @@ h3 a{
 	padding: 35px 55px 35px 120px;
 }
 
-.tab-content a {
+.tab-content-wrap a {
 	text-decoration: underline;
 }
-.tab-content a:hover {
+.tab-content-wrap a:hover {
 	text-decoration: none;
 }
 
@@ -7483,14 +7483,14 @@ display: flex;
 
 #home-categories .sub-categories-preview li a{
 	font-size: 15px;
-	font-weight: bold;
-	text-decoration: none;
+	text-decoration: underline;
 	display: flex;
 	line-height: 18px;
 }
 
 #home-categories .sub-categories-preview li a:hover{
 	color: #000;
+	text-decoration: none;
 }
 
 @media (max-width: 768px) {

@@ -53,7 +53,7 @@ Spree::FrontendHelper.class_eval do
   end
   
   def pagy_next_page_path(pagy)
-    if pagy.next.present?
+    if pagy&.next.present?
       pagy_url_for(pagy, pagy.next, sort_by: false)
     else
       nil
@@ -61,7 +61,7 @@ Spree::FrontendHelper.class_eval do
   end
 
   def pagy_prev_page_path(pagy)
-    if pagy.prev.present?
+    if pagy&.prev.present?
       pagy_url_for(pagy, pagy.prev, sort_by: false)
     else
       nil
@@ -70,6 +70,8 @@ Spree::FrontendHelper.class_eval do
 
   # <link rel="next" href="/items/page/3"><link rel="prev" href="/items/page/1">
   def pagy_rel_next_prev_link_tags(pagy)
+    return '' if pagy.blank?
+    
     next_page = pagy_next_page_path(pagy)
     prev_page = pagy_prev_page_path(pagy)
 
@@ -88,8 +90,14 @@ Spree::FrontendHelper.class_eval do
       "Edit"
     end
   end
+
   def taxons_tree(root_taxon, current_taxon, max_level = 3)
     return '' if max_level < 1
+
+    if max_level == 3 && root_taxon.leaf?
+      root_taxon = root_taxon.parent
+    end
+
     selected_parent_taxon_name = params["id"]
     show_klass =  (root_taxon.children.where(hide_from_nav: false).pluck("permalink").include?(selected_parent_taxon_name) && root_taxon.parent.present?) ? 'show' : ''
     parent_klass = (root_taxon.children.where(hide_from_nav: false).present? && ((root_taxon&.parent&.name == "PRODUCTS") || (root_taxon == current_taxon ))) ? 'sidebar-sub-categories' : "dropdown-menu sub-child-manu-js #{show_klass}"
