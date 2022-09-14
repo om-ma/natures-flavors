@@ -34,6 +34,13 @@ module Spree
         end
       end
 
+      def new
+        ActiveRecord::Base.connected_to(role: :writing) do
+          @order = scope.create(order_params)
+        end
+        redirect_to cart_admin_order_url(@order)
+      end
+
     end
   end
 end
