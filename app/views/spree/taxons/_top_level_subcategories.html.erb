@@ -44,7 +44,7 @@
       <div class="col col-12">
         <div class="sub-categories-preview" id="<%= "sub-categories-preview-#{category.name}" %>">
           <%= link_to seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" do %>
-            <% if browser.device.mobile? %>
+            <% if browser.device.mobile? || !browser.device.tablet? %>
                <% if category.icon.present? %>
                   <%= image_tag category.icon.my_cf_image_url(:small), alt:"#{category.name}" %> 
                <% else %>
