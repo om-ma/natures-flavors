@@ -31,7 +31,21 @@
 <% end %>
 <% 
 =end %>
-<% cache cache_key_for_product_wihtout_version(@product) do %>
+<%
+  select_variant_id = params[:variant]&.to_i
+  selected_variant_index = 0
+  selected_variant_found = false
+  if select_variant_id.present?
+    @variants_master_only_or_no_master.each_with_index do |variant, index|
+      if select_variant_id == variant.id
+        selected_variant_index = index
+        selected_variant_found = true
+        break
+      end
+    end
+  end
+%>
+<% cache [cache_key_for_product_wihtout_version(@product), select_variant_id] do %>
 <% is_product_available_in_currency = product_available_in_currency? %>
 <% default_variant = default_variant(@variants, @product) %>
 <div class="product-side-details d-flex flex-column justify-content-between h-100"  >
@@ -95,21 +109,6 @@
                 <%= default_sku%>
               </div>
             </div>
-            <%
-              select_variant_id = params[:variant]&.to_i
-              selected_variant_index = 0
-              selected_variant_found = false
-              if select_variant_id.present?
-                @variants_master_only_or_no_master.each_with_index do |variant, index|
-                  if select_variant_id == variant.id
-                    selected_variant_index = index
-                    selected_variant_found = true
-                    break
-                  end
-                end
-              end
-
-            %>
             <ul id="product-variants" class="product-variants product-variants-variant list-unstyled"">
             <% @variants_master_only_or_no_master.each_with_index do |variant, index| %>
               <li class="d-flex flex-wrap align-items-center justify-content-between product-ov-js js-variant-list <%= (selected_variant_index == index ? 'active' : '') %>"

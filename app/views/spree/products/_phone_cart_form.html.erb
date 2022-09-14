@@ -31,7 +31,21 @@
 <% end %>
 <% 
 =end %>
-<% cache cache_key_for_product_wihtout_version(@product) do %>
+<%
+  select_variant_id = params[:variant]&.to_i
+  selected_variant_index = 0
+  selected_variant_found = false
+  if select_variant_id.present?
+    @variants_master_only_or_no_master.each_with_index do |variant, index|
+      if select_variant_id == variant.id
+        selected_variant_index = index
+        selected_variant_found = true
+        break
+      end
+    end
+  end
+%>
+<% cache [cache_key_for_product_wihtout_version(@product), select_variant_id] do %>
   <% is_product_available_in_currency = product_available_in_currency? %>
   <% default_variant = default_variant(@variants, @product) %>
   <div class="phone-visible">
@@ -95,20 +109,6 @@
             <div class="left"><%= @product.option_types.blank? ? 'Choose your option:' : "#{@product.option_types[0].presentation}:" %></div>
             <div class="right"><span id="js_selected_variantt_sku"><%= default_variant.sku%></span></div>
           </div>
-            <%
-              select_variant_id = params[:variant]&.to_i
-              selected_variant_index = 0
-              selected_variant_found = false
-              if select_variant_id.present?
-                @variants_master_only_or_no_master.each_with_index do |variant, index|
-                  if select_variant_id == variant.id
-                    selected_variant_index = index
-                    selected_variant_found = true
-                    break
-                  end
-                end
-              end
-            %>
             <ul id="product-variants" class="product-variants product-variants-variant list-unstyled">
             <% @variants_master_only_or_no_master.each_with_index do |variant, index| %>
               <!-- removed from mobile cart product-ov-js -->
