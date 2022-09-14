@@ -52,3 +52,6 @@ on_worker_boot do
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.establish_connection
 end
+
+# Based on https://www.godaddy.com/engineering/2022/01/10/running-puma-in-aws (Keep-Alive timeout)
+persistent_timeout(75)

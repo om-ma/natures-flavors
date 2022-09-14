@@ -32,3 +32,6 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+# Based on https://www.godaddy.com/engineering/2022/01/10/running-puma-in-aws (Keep-Alive timeout)
+persistent_timeout(75)
