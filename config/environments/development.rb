@@ -116,7 +116,7 @@ Rails.application.configure do
   # Doofinder
   config.x.doofinder.search_zone = 'us1'
   config.x.doofinder.api_key = 'us1-aa01ed99b4e66cf41f0ce41ae96c7abf246264f5'
-  config.x.doofinder.hashid = '2b1c2463f14b3cbcc820d2df13a5eb89'
+  config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
 end
 
 # spree_sitemap config
