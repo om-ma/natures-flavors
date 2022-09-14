@@ -2,7 +2,6 @@
   <%= pagy_rel_next_prev_link_tags @pagy %>
 <% end %>
 <% cache [cache_key_for_taxon_show, params[:sort_by]] do %>
-<main class="page-contents">
   <div class="category-wrapper">
     <div class="row no-gutters">
       <div class="col-xl-2 col-lg-3 phone-hide">
@@ -49,5 +48,7 @@
       <%= raw(@taxon.description) %>
     <% end %>
   </div>
-</main>
+  <% unless @products.empty? %>
+    <%= products_structured_data(@products) %>
+  <% end %>
 <% end %>
