@@ -28,4 +28,16 @@ Spree::Shipment.class_eval do
     shipping_rates
   end
 
+  def update_amounts
+    if selected_shipping_rate
+      ActiveRecord::Base.connected_to(role: :writing) do
+        update_columns(
+          cost: selected_shipping_rate.cost,
+          adjustment_total: adjustments.additional.map(&:update!).compact.sum,
+          updated_at: Time.current
+        )
+      end
+    end
+  end
+
 end
