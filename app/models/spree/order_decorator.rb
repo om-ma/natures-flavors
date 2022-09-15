@@ -4,7 +4,7 @@ Spree::Order.class_eval do
     attr_accessor :current_user
 
     # Update production state
-    PRODUCTION_STATES = %w(ready processing follow_up_requested production_room in_labels complete canceled)
+    PRODUCTION_STATES = %w(ready processing follow_up_requested production_room in_labels in_qc complete canceled)
 
     validates :production_state,       inclusion:    { in: PRODUCTION_STATES, allow_blank: true }
 

@@ -87,6 +87,7 @@ en:
       follow_up_requested: follow up requested
       production_room: production room
       in_labels: in labels
+      in_qc: in qc
       complete: complete
       canceled: canceled
     production_state_selected_same_as_previous: The selected value is the same as the current value.
