@@ -11,4 +11,11 @@ Spree::CheckoutController.class_eval do
       end
     end
 
+    def load_order_with_lock
+      ActiveRecord::Base.connected_to(role: :writing) do
+        @order = current_order(lock: true)
+      end
+      redirect_to(spree.cart_path) && return unless @order
+    end
+
 end
