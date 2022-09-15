@@ -94,6 +94,13 @@ GIT
       sidekiq (>= 4.2.1)
 
 GIT
+  remote: https://github.com/ducl13/sidekiq-failures.git
+  revision: 0d4ba77bfda94d4a2673968279018c89d07fa6fb
+  specs:
+    sidekiq-failures (1.0.4)
+      sidekiq (>= 4.0.0)
+
+GIT
   remote: https://github.com/ducl13/sidekiq.git
   revision: f38cf3050cf62e34a38ef47cd5d812108e7308cf
   branch: naturesflavors
@@ -2291,6 +2298,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq!
   sidekiq-cron!
+  sidekiq-failures!
   spree (= 4.3)
   spree_active_shipping!
   spree_admin_insights!
