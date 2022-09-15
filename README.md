@@ -36,6 +36,8 @@ rake spree_roles:permissions:populate_permission_sets (DONE)
 STORE CREDIT ISSUE:
 rake db:migrate:down VERSION=20211026070924 (DONE)
 rake db:migrate:up VERSION=20211026070924 (DONE)
+OR
+rake db:migrate:redo VERSION=20211026070924
 
 # Backend Configuration
 
