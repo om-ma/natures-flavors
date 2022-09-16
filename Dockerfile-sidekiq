@@ -37,4 +37,4 @@ WORKDIR /app
 RUN date -u > BUILD_TIME
 
 # Start up
-CMD ["bundle", "exec", "sidekiq", "-d", "-q", "default", "-q", "mailers"]
+CMD ["bundle", "exec", "sidekiq"]
