@@ -42,7 +42,7 @@ module Spree
     
     def related_products_max_updated_at
       if @related_products.present?
-        @related_products.except(:group, :order).maximum(:updated_at)
+        @related_products.max_by(&:updated_at).updated_at
       else
          Date.today
       end
