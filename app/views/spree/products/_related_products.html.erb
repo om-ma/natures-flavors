@@ -1,5 +1,6 @@
 <div class="col-xl-4 col-lg-5" id="related-products">
   <div class="latest-deals">
+  <% if @related_products.count > 0 %>
     <h3>Related Products</h3>
     <div class="products-wrapper d-sm-flex align-items-start">
       <% @related_products.each do |product| %>
@@ -8,5 +9,6 @@
         </div>
       <% end %>
     </div>
+  <% end %>
   </div>
 </div>
