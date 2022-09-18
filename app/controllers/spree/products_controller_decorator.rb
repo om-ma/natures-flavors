@@ -1,6 +1,12 @@
 module Spree
   module ProductsControllerDecorator
 
+    def self.prepended(base)
+      base.after_action :update_product_popularity, only: :show
+    end
+
+    MAX_BEST_SELLERS = 100
+
     def index
       redirect_to page_not_found_path
     end
@@ -111,6 +117,15 @@ module Spree
 
       if params[:ajax]
         render template: 'spree/products/_search_products', locals: { results_json: @results_json, keywords: @keywords }, layout: false
+      end
+    end
+
+    private
+
+    def update_product_popularity
+      ActiveRecord::Base.connected_to(role: :writing) do
+        @product.popularity += 1
+        @product.save
       end
     end
     
