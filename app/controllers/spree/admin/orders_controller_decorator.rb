@@ -34,6 +34,33 @@ module Spree
         end
       end
 
+      def new
+        ActiveRecord::Base.connected_to(role: :writing) do
+          @order = scope.create(order_params)
+        end
+        redirect_to cart_admin_order_url(@order)
+      end
+
+      def open_adjustments
+        adjustments = @order.all_adjustments.finalized
+        ActiveRecord::Base.connected_to(role: :writing) do
+          adjustments.update_all(state: 'open')
+        end
+        flash[:success] = Spree.t(:all_adjustments_opened)
+
+        respond_with(@order) { |format| format.html { redirect_back fallback_location: spree.admin_order_adjustments_url(@order) } }
+      end
+
+      def close_adjustments
+        adjustments = @order.all_adjustments.not_finalized
+        ActiveRecord::Base.connected_to(role: :writing) do
+          adjustments.update_all(state: 'closed')
+        end
+        flash[:success] = Spree.t(:all_adjustments_closed)
+
+        respond_with(@order) { |format| format.html { redirect_back fallback_location: spree.admin_order_adjustments_url(@order) } }
+      end
+
     end
   end
 end

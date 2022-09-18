@@ -58,11 +58,13 @@ Spree::AddressesController.class_eval do
     user_addresses            = spree_current_user.addresses
     current_user_address      = user_addresses.find_by(id: params[:id])
 
-    ActiveRecord::Base.transaction do
-      if current_user_address.present?
-        user_addresses.update_all(is_default: false)
-        current_user_address.update(is_default: true)
-        spree_current_user.update(ship_address: current_user_address, bill_address: current_user_address)
+    ActiveRecord::Base.connected_to(role: :writing) do
+      ActiveRecord::Base.transaction do
+        if current_user_address.present?
+          user_addresses.update_all(is_default: false)
+          current_user_address.update(is_default: true)
+          spree_current_user.update(ship_address: current_user_address, bill_address: current_user_address)
+        end
       end
     end
   end

@@ -40,10 +40,12 @@ class Spree::UserCreditCardsController < Spree::StoreController
 
   def set_as_default
     if @cc.present?
-      ActiveRecord::Base.transaction do
-        @user_ccs.update_all(default: false)
-        @cc.update(default: true)
-      end  
+      ActiveRecord::Base.connected_to(role: :writing) do
+        ActiveRecord::Base.transaction do
+          @user_ccs.update_all(default: false)
+          @cc.update(default: true)
+        end
+      end
     end
   end
 
