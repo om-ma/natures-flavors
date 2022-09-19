@@ -7501,3 +7501,5 @@ display: flex;
 @media (min-width: 1200px) and (max-width: 1441px){
 	#home-categories .sub-categories-preview ul {column-count: 1; }
 }
+
+input::-webkit-search-cancel-button{-webkit-appearance:searchfield-cancel-button;}
