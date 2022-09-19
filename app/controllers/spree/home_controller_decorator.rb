@@ -13,23 +13,23 @@ Spree::HomeController.class_eval do
 
     @home_slides 		           = Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
     
-    @best_sellers_products     = Rails.cache.fetch("@best_sellers_products", expires_in: Rails.configuration.x.cache.expiration) do
+    @best_sellers_products     = Rails.cache.fetch("@best_sellers_products", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
       Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
     end
     
     @deals_products            = Spree::Product.in_sale.present? ? Spree::Product.in_sale.first(6) : []
     
-    @popular_extracts_products = Rails.cache.fetch("@popular_extracts_products", expires_in: Rails.configuration.x.cache.expiration) do
+    @popular_extracts_products = Rails.cache.fetch("@popular_extracts_products", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
       popular_extracts           = Spree::Taxon.find_by_name("Flavor Extracts").present? ? Spree::Taxon.find_by_name("Flavor Extracts") : ''
       popular_extracts.present? ?  popular_extracts.products.reorder(popularity: :desc).first(6) : [] 
     end
     
-    @popular_powders_products  = Rails.cache.fetch("@popular_powders_products", expires_in: Rails.configuration.x.cache.expiration) do
+    @popular_powders_products  = Rails.cache.fetch("@popular_powders_products", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
       popular_powders            = Spree::Taxon.find_by_name("Flavor Powders").present? ? Spree::Taxon.find_by_name("Flavor Powders") : ''
       popular_powders.present? ? popular_powders.products.reorder(popularity: :desc).first(6) : [] 
     end
     
-    @popular_oils_products     = Rails.cache.fetch("@popular_oils_products", expires_in: Rails.configuration.x.cache.expiration) do
+    @popular_oils_products     = Rails.cache.fetch("@popular_oils_products", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
       popular_oils               = Spree::Taxon.find_by_name("Flavor Oils").present? ? Spree::Taxon.find_by_name("Flavor Oils") : ''
       popular_oils.present? ? popular_oils.products.reorder(popularity: :desc).first(6) : []
     end
