@@ -22,7 +22,8 @@
       history: false,
       append: '.search-product',
       status: '.page-load-status',
-      scrollThreshold: 100
+      button: '.show-more-button',
+      scrollThreshold: false
     })
   });
 </script>
@@ -142,9 +143,12 @@
             <span class="loader-ellips__dot"></span>
             <span class="loader-ellips__dot"></span>
           </div>
-          <p class="infinite-scroll-last">End of search</p>
-          <p class="infinite-scroll-error">No more pages to load</p>
         </div>
+        <% if @results_json['total'].to_i > @per_page %>
+        <div class="pagination-wrap show-more-button">
+          <button type="button" class="btn btn-primary">Show More</button>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
