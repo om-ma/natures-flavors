@@ -12,18 +12,28 @@ module Spree
     end
     
     def show
-      @best_sellers = Rails.cache.fetch("@best_sellers", expires_in: Rails.configuration.x.cache.expiration) do
-        Spree::Product.best_sellers
-      end
-
-      if @best_sellers.present?
-        loop do
-          @best_sellers_product = @best_sellers.sample
-          break if @best_sellers_product.option_types.count == 1
+      best_sellers_product_id = Rails.cache.fetch(cache_key_for_best_sellers_product(@product), expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
+        best_sellers_ids = Rails.cache.fetch("@best_sellers/count/#{MAX_BEST_SELLERS}", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
+          Spree::Product.best_sellers.take(MAX_BEST_SELLERS).pluck(:id)
         end
-      else
-        ""
+        best_sellers = Spree::Product.where(id: best_sellers_ids).includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices)
+        
+        # Pick one best seller product
+        best_sellers_product = nil
+        if best_sellers.present?
+          loop do
+            best_sellers_product = best_sellers.sample
+            break if best_sellers_product.option_types.count == 1
+          end
+        end
+        
+        if best_sellers_product.present? 
+          best_sellers_product.id
+        else
+          nil
+        end
       end
+      @best_sellers_product = Spree::Product.where(id: best_sellers_product_id).includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices).first
 
       redirect_if_legacy_path
 
@@ -37,15 +47,18 @@ module Spree
       @variants_master_only_or_no_master = (@variants.count == 1 ? @variants : @variants.reject { |v| v.is_master } )
       @product_images = product_images(@product, @variants)
 
-      if @product.has_related_products?('related') &&  @product.related.count > 0
-        @related_products = @product.related.take(2)
-      else
-        @related_products = @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil).take(2)
+      related_products_ids = Rails.cache.fetch(cache_key_for_related_product(@product), expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
+        if @product.has_related_products?('related') &&  @product.related.count > 0
+          @product.related.take(2).pluck(:id)
+        else
+          @taxon&.products.where.not(id: @product.id).where(deleted_at: nil).where(discontinue_on: nil).take(2).pluck(:id)
+        end
       end
-
+      @related_products = Spree::Product.where(id: related_products_ids).includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices)
+      
       fresh_when etag: etag_show, last_modified: last_modified_show, public: true
     end
-    
+
     def related_products_max_updated_at
       if @related_products.present?
         @related_products.max_by(&:updated_at).updated_at
@@ -76,7 +89,10 @@ module Spree
     end
 
     def load_product
-      @product = current_store.products.includes(:prices, :sale_prices).references(:prices, :sale_prices).for_user(try_spree_current_user).friendly.find(params[:id])
+      id = Rails.cache.fetch(cache_key_for_product_by_friendly_url(params[:id]), expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
+        current_store.products.for_user(try_spree_current_user).friendly.find(params[:id]).id
+      end
+      @product = Spree::Product.where(id: id).includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices).first
     end
     
     def search
