@@ -149,10 +149,10 @@ Rails.application.configure do
   # Sidekiq data workers cache expiration
   config.x.products.refresh_time = 25.hours
   
-  # Doofinder
+  # Doofinder (production)
   config.x.doofinder.search_zone = 'us1'
   config.x.doofinder.api_key = 'us1-aa01ed99b4e66cf41f0ce41ae96c7abf246264f5'
-  config.x.doofinder.hashid = '<TODO>'
+  config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
 end
 
 # spree_sitemap config
