@@ -21,7 +21,7 @@ Spree::TaxonsController.class_eval do
   end
 
   def load_most_popular_products
-    ids = Rails.cache.fetch("@pmost-popular-products/taxon/#{@taxon.name}", expires_in: Rails.configuration.x.cache.expiration) do
+    ids = Rails.cache.fetch("@pmost-popular-products/taxon/#{@taxon.name}", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
       @taxon.products.reorder(popularity: :desc).limit(6).pluck(:id)
     end
     @products = Spree::Product.where(id: ids).includes(:product_properties, :prices, :sale_prices).references(:product_properties, :prices, :sale_prices)

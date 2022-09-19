@@ -122,7 +122,7 @@ Spree::StructuredDataHelper.module_eval do
   end
 
   def structured_faqs_hash(faqs)
-    Rails.cache.fetch(['faqs', "spree/structured-data/#{faqs}"]) do
+    Rails.cache.fetch(['faqs', "spree/structured-data/#{faqs}"], expires_in: Rails.configuration.x.cache.expiration) do
       {
         '@context': 'https://schema.org/',
         '@type': 'FAQPage',
@@ -146,7 +146,7 @@ Spree::StructuredDataHelper.module_eval do
   end
 
   def structured_article_hash(title, description)
-    Rails.cache.fetch(['article', title, "spree/structured-data/#{description}"]) do
+    Rails.cache.fetch(['article', title, "spree/structured-data/#{description}"], expires_in: Rails.configuration.x.cache.expiration) do
       {
         '@context': 'https://schema.org/',
         '@type': 'Article',

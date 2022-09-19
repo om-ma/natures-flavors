@@ -20,7 +20,9 @@ module Spree
           "views/spree/shared/_sale_product*#{cache_key_for_product_wihtout_version(product)}*",
           "views/spree/taxons/show*#{product.id}*",
           "views/spree/taxons/_top_level_subcategories*#{product.id}*",
-          "views/spree/products/show*#{product.id}*"
+          "views/spree/products/show*#{product.id}*",
+          "spree/best_seller_product/for/product/id/#{product.id}",
+          "spree/relates_products/for/product/id/#{product.id}",
         ]
         views_key.each { |key|
           Rails.cache.delete_matched(key)

@@ -61,4 +61,15 @@ Spree::CacheHelper.module_eval do
     ([mobile_cache_key] + [tablet_cache_key] + [products_cache_keys]).compact.join('/')
   end
 
+  def cache_key_for_best_sellers_product(product = @product)
+    "spree/best_seller_product/for/product/id/#{product.id}"
+  end
+
+  def cache_key_for_related_product(product = @product)
+    "spree/relates_products/for/product/id/#{product.id}"
+  end
+
+  def cache_key_for_product_by_friendly_url(slug)
+    "spree/product/by/friendly/url/#{slug}"
+  end
 end

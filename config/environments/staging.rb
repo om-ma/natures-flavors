@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v37'
+  config.assets.prefix = '/assets/v39'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -149,10 +149,10 @@ Rails.application.configure do
   # Sidekiq data workers cache expiration
   config.x.products.refresh_time = 25.hours
   
-  # Doofinder
+  # Doofinder (production)
   config.x.doofinder.search_zone = 'us1'
   config.x.doofinder.api_key = 'us1-aa01ed99b4e66cf41f0ce41ae96c7abf246264f5'
-  config.x.doofinder.hashid = '<TODO>'
+  config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
 end
 
 # spree_sitemap config
