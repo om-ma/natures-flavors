@@ -72,4 +72,9 @@ Spree::CacheHelper.module_eval do
   def cache_key_for_product_by_friendly_url(slug)
     "spree/product/by/friendly/url/#{slug}"
   end
+
+  def cache_key_for_variants(product = @product)
+    "spree/variants/for/product/id/#{product.id}"
+  end
+  
 end
