@@ -44,10 +44,13 @@ module Spree
       @product_properties = @product.product_properties.includes(:property)
       @product_price = @product.price_in(current_currency).amount
       
-      variants_master_only_or_no_master_ids = Rails.cache.fetch(cache_key_for_variants(@product), expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
-        load_variants_ids
-      end
-      @variants_master_only_or_no_master = load_variants_by_ids(variants_master_only_or_no_master_ids)
+      load_variants
+      @variants_master_only_or_no_master = (@variants.count == 1 ? @variants : @variants.reject { |v| v.is_master } )
+
+      #variants_master_only_or_no_master_ids = Rails.cache.fetch(cache_key_for_variants(@product), expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
+      #  load_variants_ids
+      #end
+      #@variants_master_only_or_no_master = load_variants_by_ids(variants_master_only_or_no_master_ids)
 
       @product_images = product_images(@product, @variants)
 
