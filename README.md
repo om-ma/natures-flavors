@@ -62,7 +62,7 @@ rake db:migrate:redo VERSION=20211026070924
 - Roles (DONE)
 
 * To recreate thumbnails
-Spree::Image.all.each do |image| image.create_sizes end (Need to change this to product images only)
+Spree::Product.all.each do |product| product.images.each do |image| image.create_sizes end end
 
 * To regenerate taxon image sizes
 Spree::Taxon.all.each do |taxon| taxon.icon&.create_sizes end
