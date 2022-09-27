@@ -7501,3 +7501,8 @@ display: flex;
 @media (min-width: 1200px) and (max-width: 1441px){
 	#home-categories .sub-categories-preview ul {column-count: 1; }
 }
+
+[type=search]::-webkit-search-decoration{
+	-webkit-appearance: auto !important;
+	appearance: auto !important;
+}
