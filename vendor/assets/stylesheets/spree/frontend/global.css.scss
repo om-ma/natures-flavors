@@ -7502,7 +7502,7 @@ display: flex;
 	#home-categories .sub-categories-preview ul {column-count: 1; }
 }
 
-[type=search]::-webkit-search-decoration{
-	-webkit-appearance: auto !important;
-	appearance: auto !important;
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: auto !important;
+  appearance: auto !important;
 }
