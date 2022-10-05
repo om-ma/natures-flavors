@@ -1,0 +1,9 @@
+<% if order_just_completed?(@order) && (Rails.env.production? || Rails.env.staging?) %>
+  <% content_for :head do %>
+    <script type="text/javascript">
+      $(document).on('turbolinks:load', function() {
+        fbq('track', 'Purchase', {currency: "<%= @order.currency %>", value: <%= sprintf("%.2f", @order.total) %>});        
+      });
+    </script>
+  <% end %>
+<% end %>
