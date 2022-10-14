@@ -58,5 +58,8 @@ EXPOSE 3000
 # Save timestamp of image building
 RUN date -u > BUILD_TIME
 
+# Run migrations
+RUN rake db:migrate
+
 # Start up
 CMD ["bundle", "exec", "rails", "server","-p","3000", "-b", "0.0.0.0"]
