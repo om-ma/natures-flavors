@@ -147,7 +147,7 @@ Rails.application.configure do
   config.x.yotpo.reviews_refresh_time = 25.hours
 
   # Low-level cache expiration
-  config.x.cache.expiration = 168.hours
+  config.x.cache.expiration = 14.days
 
   # Sidekiq data workers cache expiration
   config.x.products.refresh_time = 25.hours
