@@ -63,7 +63,7 @@ gem "spree_comments", github: 'ducl13/spree_comments', branch: 'master'
 gem 'spree_contact_us', github: 'ducl13/spree_contact_us', branch: 'naturesflavors'
 gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
 gem 'spree_favorite_products', git: 'https://gitlab.com/duc.lam/spree_favorite_products.git', branch: 'natures'
-gem 'spree_html_invoice', github: 'ducl13/spree-html-invoice', branch: 'master'
+gem 'spree_html_invoice', github: 'ducl13/spree-html-invoice', branch: 'route'
 gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3'

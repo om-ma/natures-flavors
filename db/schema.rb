@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_17_033655) do
+ActiveRecord::Schema.define(version: 2022_09_22_190311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -578,6 +578,9 @@ ActiveRecord::Schema.define(version: 2022_08_17_033655) do
     t.boolean "mailchimp_cart_created"
     t.string "mailchimp_campaign_id"
     t.boolean "request_coa", default: false
+    t.boolean "route_insurance_selected", default: false
+    t.string "route_insurance_currency", default: "USD"
+    t.decimal "route_insurance_price", precision: 10, scale: 2, default: "0.0", null: false
     t.index ["approver_id"], name: "index_spree_orders_on_approver_id"
     t.index ["bill_address_id"], name: "index_spree_orders_on_bill_address_id"
     t.index ["canceler_id"], name: "index_spree_orders_on_canceler_id"

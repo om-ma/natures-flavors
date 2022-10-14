@@ -37,6 +37,8 @@ en:
         customer_name: "Customer Name"
         production_state: "Production State"
         coa_requested: COA Requested
+        route_insurance: Route Insurance
+        shipping_protection: Route+ Shipping Protection
   devise:
     user_passwords:
       spree_user:

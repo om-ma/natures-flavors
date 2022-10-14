@@ -42,7 +42,7 @@
           <% end %></span> </li>
         <% end %>
       
-       <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
+        <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
         <li>
          <label><div><%= label %></label>
           <span><% tax_total = Spree::Money.new(adjustments.sum(&:amount), currency: order.currency) %>
@@ -56,17 +56,53 @@
             <%= tax_total.to_html %>
           </div></span></li>
         <% end %>
-      <li> 
-      <label><%= Spree.t(:shipping) %>:</label>
-      <% if order.state == "address" %>
-        <span>Calculated in next step</span>
-      <% else %>  
+      <% kclass = (order.route_insurance_selected ? '' : ' route-insurance-hide') %>
+      <li class="route-insurance-container<%= kclass %>">
+        <label><%= I18n.t(:shipping_protection, scope: 'activerecord.attributes.spree/order') %></label>
+        <% route_insurance_total = Spree::Money.new(order.route_insurance_price, currency: order.currency) %>
         <span>
-          <% if order.passed_checkout_step?("address") && order.shipments.any? %>
-          <% if order.has_free_shipping? %>                      
-            <div class="d-table-cell text-right" data-hook="is-free-shipping"><%= Spree.t(:free) %></div>
-          <% else %>                      
-            <% shipping_total = Spree::Money.new(order.shipments.to_a.sum(&:cost), currency: order.currency) %>
+          <div class="d-table-cell text-right">
+            <span
+                data-hook='route-insurance-total'
+                data-currency='<%= Money::Currency.find(order.currency).symbol %>'
+                thousands-separator='<%= route_insurance_total.thousands_separator %>'
+                decimal-mark='<%= route_insurance_total.decimal_mark %>'
+                precision='<%= Money::Currency.find(order.currency).exponent %>'>
+              <%= route_insurance_total.to_html %>
+            </span>
+          </div>
+        </span>
+      </li>
+      <li>
+      <% if order.shipments.any? %>
+        <label><%= Spree.t(:shipping) %>:</label>
+          <span>
+            <% if order.has_free_shipping? %>                      
+              <div class="d-table-cell text-right" data-hook="is-free-shipping"><%= Spree.t(:free) %></div>
+            <% else %>                      
+              <% shipping_total = Spree::Money.new(order.shipments.to_a.sum(&:cost), currency: order.currency) %>
+              <div class="d-table-cell text-right"
+                  data-hook='shipping-total'
+                  data-currency='<%= Money::Currency.find(order.currency).symbol %>'
+                  thousands-separator='<%= shipping_total.thousands_separator %>'
+                  decimal-mark='<%= shipping_total.decimal_mark %>'
+                  precision='<%= Money::Currency.find(order.currency).exponent %>'>
+                <%= shipping_total.to_html %>
+              </div>
+              <% if order.shipment_adjustments.nonzero.exists? %>
+                <% order.shipment_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+                  <div class="d-table-cell"><%= label %>:</div>
+                  <div class="d-table-cell text-right">
+                    <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </span> 
+      <% else %>
+        <label><%= Spree.t(:shipping) %>:</label>
+          <span>
+            <% shipping_total = Spree::Money.new(order.shipment_total, currency: order.currency) %>
             <div class="d-table-cell text-right"
                 data-hook='shipping-total'
                 data-currency='<%= Money::Currency.find(order.currency).symbol %>'
@@ -75,17 +111,8 @@
                 precision='<%= Money::Currency.find(order.currency).exponent %>'>
               <%= shipping_total.to_html %>
             </div>
-            <% if order.shipment_adjustments.nonzero.exists? %>
-              <% order.shipment_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
-                <div class="d-table-cell"><%= label %>:</div>
-                <div class="d-table-cell text-right">
-                  <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
-                </div>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %></span>
-      <% end %>  
+          </span>
+      <% end %>
       </li>
       <% if order.adjustments.nonzero.eligible.exists? %>
         <% order.adjustments.nonzero.eligible.each do |adjustment| %>

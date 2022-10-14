@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v42'
+  config.assets.prefix = '/assets/v43'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -121,6 +121,9 @@ Rails.application.configure do
   # Email address for sending back office invoice and packaging list for an order to be printed automatically
   config.x.backoffice.print_docs = true
   config.x.backoffice.to_address = 'it-group@naturesflavors.com'
+  
+  # Email address to send system errors
+  config.x.systemerror.email = 'it-group@naturesflavors.com'
 
   # paperclip with S3. for spree_slider images, etc.
   config.paperclip_defaults = {
@@ -148,11 +151,18 @@ Rails.application.configure do
 
   # Sidekiq data workers cache expiration
   config.x.products.refresh_time = 25.hours
+
+  # Route quote cache expiration
+  config.x.cache.route_quote_expiration = 24.hours
   
   # Doofinder (production)
   config.x.doofinder.search_zone = 'us1'
   config.x.doofinder.api_key = 'us1-aa01ed99b4e66cf41f0ce41ae96c7abf246264f5'
   config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
+
+  # Route insurance
+  config.x.route.public_token = '88eea6ed-496f-4e4e-a0e0-a2ff4e53bf93'
+  config.x.route.secret_token = 'test-18219816-7b41-44f0-b489-ab2477765eb2'
 end
 
 # spree_sitemap config

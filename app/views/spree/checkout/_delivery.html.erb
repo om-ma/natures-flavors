@@ -1,3 +1,22 @@
+<% content_for :head do %>
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function() {
+    routeapp.get_quote("<%= Rails.configuration.x.route.public_token %>", <%= @order.item_total %>, "<%= current_currency %>", function(insurance_details){
+    });
+    routeapp.on_insured_change(function(insurance_details){
+        if (insurance_details.insurance_selected) {
+          $('#order_route_insurance_selected').val(true)
+          $('#order_route_insurance_price').val(insurance_details.insurance_price)
+        }
+        else {
+          $('#order_route_insurance_selected').val(false)
+          $('#order_route_insurance_price').val('0.0')
+        }
+    });
+  });
+</script>
+<% end %>
+
 <div id="shipping-method" data-hook>
   <ol class="breadcrumb mb-20">
     <li class="breadcrumb-item"><%= link_to "Cart", cart_path, title: "Cart" %></li>
@@ -14,6 +33,11 @@
           <%= render 'spree/shared/address', address: @order.ship_address %>
         </div>
       </div>
+      <% routewidget_default_checked = (@order.route_insurance_selected ? 'data-default-checked="true"' : '') %>
+      <div id="RouteWidget" class="route-widget" <%= routewidget_default_checked.html_safe %>></div>
+      <%= form.hidden_field :route_insurance_selected %>
+      <%= form.hidden_field :route_insurance_currency, value: current_currency %>
+      <%= form.hidden_field :route_insurance_price %>
       <div class="cart-header d-flex align-items-center justify-content-between mb-0">
         <h5>Shipping</h5>
       </div>

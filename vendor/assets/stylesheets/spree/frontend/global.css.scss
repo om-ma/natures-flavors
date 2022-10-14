@@ -7501,3 +7501,12 @@ display: flex;
 @media (min-width: 1200px) and (max-width: 1441px){
 	#home-categories .sub-categories-preview ul {column-count: 1; }
 }
+
+.route-widget {
+	margin: -10px 0px 15px 0px;
+	padding-left: 0px;
+}
+
+.route-insurance-hide {
+	display: none !important;
+}

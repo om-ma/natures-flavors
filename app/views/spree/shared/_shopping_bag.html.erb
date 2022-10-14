@@ -11,7 +11,7 @@
         <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
           <ul class="cart-items empty-cart-area" data-hook="inside_cart_form">
             <%= render partial: 'spree/shared/cart_box', locals: { order_form: order_form } %>
-            <li class="grand-total d-flex align-items-center justify-content-between">Total:<strong class="js-product-total"><%= @order.display_total %></strong></li>
+            <li class="grand-total d-flex align-items-center justify-content-between">Total:<strong class="js-product-total"><%= @order.display_item_total %></strong></li>
           </ul>
           <div class="body-sidebar-footer">
             <%= render partial: 'spree/shared/sidebar_footer' %>
