@@ -229,8 +229,8 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_shipstation-2.git
-  revision: ef626354df8237dc4f29fe2519f61dfdd63b32f0
-  branch: master
+  revision: fc5b0817e37f3b17f9279146cafebf9a518d0dc1
+  branch: route
   specs:
     spree_shipstation (2.0.6)
       spree_api (>= 3.2.0, < 5.0)

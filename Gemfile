@@ -68,7 +68,7 @@ gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3'
 gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
-gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'master'
+gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'route'
 gem 'spree_sitemap', github: 'ducl13/spree_sitemap', branch: 'master'
 gem 'spree_paypal_express', github: 'ducl13/better_spree_paypal_express'
 gem 'spree_product_feed', github: 'ducl13/spree_product_feed', branch: '3-7-caching'
