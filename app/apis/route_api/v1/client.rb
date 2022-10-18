@@ -40,8 +40,6 @@ module RouteAPI
 
         response = conn.post('/v1/orders') do |req|
           req.body = create_order_hash(order).to_json
-
-          Rails.logger.info req.body
         end
 
         parsed_response = Oj.load(response.body)
@@ -100,8 +98,6 @@ module RouteAPI
 
         response = conn.post('/v1/shipments') do |req|
           req.body = create_shipment_hash(shipment).to_json
-
-          Rails.logger.info req.body
         end
         
         parsed_response = Oj.load(response.body)
