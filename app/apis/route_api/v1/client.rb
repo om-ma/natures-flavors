@@ -211,9 +211,9 @@ module RouteAPI
 
       def product_image(item)
         if item.variant.images.length == 0
-          product_image = item.variant.product.images.first.my_cf_image_url("small")
+          product_image = item.variant.product.images.first.my_cf_image_url("large")
         else
-          product_image = item.variant.images.first.my_cf_image_url("small")
+          product_image = item.variant.images.first.my_cf_image_url("large")
         end
       end
 
