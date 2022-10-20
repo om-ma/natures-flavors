@@ -2016,7 +2016,8 @@ GEM
     polyglot (0.3.5)
     popper_js (1.16.0)
     public_suffix (4.0.7)
-    puma (3.12.6)
+    puma (6.0.0)
+      nio4r (~> 2.0)
     raabro (1.4.0)
     rabl (0.15.0)
       activesupport (>= 2.3.14)
@@ -2289,7 +2290,7 @@ DEPENDENCIES
   pagy!
   paperclip (~> 6.1.0)
   pg
-  puma (~> 3.11)
+  puma (~> 6.0)
   rails (~> 6.1.5)
   recaptcha!
   redis!
