@@ -44,15 +44,15 @@ SitemapGenerator::Sitemap.create do
   add_taxons({ priority: 1.0, changefreq: 'daily' })
   add_products({ priority: 1.0, changefreq: 'daily' })
 
-  add all_categories_path priority: 0.8, changefreq: 'daily'
-  add flavor_powders_path priority: 0.8, changefreq: 'daily'
-  add flavor_emulsions_path priority: 0.8, changefreq: 'daily'
-  add flavor_concentrates_path priority: 0.8, changefreq: 'daily'
-  add flavor_extracts_path priority: 0.8, changefreq: 'daily'
-  add flavor_oils_path priority: 0.8, changefreq: 'daily'
+  add(all_categories_path, { priority: 0.8, changefreq: 'daily' })
+  add(flavor_powders_path, { priority: 0.8, changefreq: 'daily' })
+  add(flavor_emulsions_path, { priority: 0.8, changefreq: 'daily' })
+  add(flavor_concentrates_path, { priority: 0.8, changefreq: 'daily' })
+  add(flavor_extracts_path, { priority: 0.8, changefreq: 'daily' })
+  add(flavor_oils_path, { priority: 0.8, changefreq: 'daily' })
 
-  add faq_path priority: 0.8, changefreq: 'daily'
-  add about_us_path priority: 0.8, changefreq: 'daily'
-  #add privacy_policy_path priority: 0.8, changefreq: 'daily'
-  #add terms_of_use_path priority: 0.8, changefreq: 'daily'
+  add(faq_path, { priority: 0.8, changefreq: 'daily' })
+  add(about_us_path, { priority: 0.8, changefreq: 'daily' })
+  #add(privacy_policy_path, { priority: 0.8, changefreq: 'daily' })
+  #add(terms_of_use_path, { priority: 0.8, changefreq: 'daily' })
 end
