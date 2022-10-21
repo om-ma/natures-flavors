@@ -161,6 +161,7 @@ Rails.application.configure do
   config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
 
   # Route insurance
+  config.x.route.integration_enabled = ENV['ROUTE_INTEGRATION_ENABLED']
   config.x.route.public_token = '88eea6ed-496f-4e4e-a0e0-a2ff4e53bf93'
   config.x.route.secret_token = 'test-18219816-7b41-44f0-b489-ab2477765eb2'
 end

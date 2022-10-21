@@ -2,6 +2,8 @@ class RouteCreateShipmentWorker
   include Sidekiq::Worker
 
   def perform(shipment_id)
+    return if !Rails.configuration.x.route.integration_enabled
+
     client = RouteAPI::V1::Client.new
     token  = Rails.configuration.x.route.secret_token
     shipment = Spree::Shipment.where(id: shipment_id).first

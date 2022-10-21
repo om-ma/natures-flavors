@@ -2,6 +2,8 @@ class RouteCancelOrderWorker
   include Sidekiq::Worker
 
   def perform(order_id)
+    return if !Rails.configuration.x.route.integration_enabled
+
     client = RouteAPI::V1::Client.new
     token  = Rails.configuration.x.route.secret_token
     order = Spree::Order.where(id: order_id).first
