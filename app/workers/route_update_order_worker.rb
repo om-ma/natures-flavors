@@ -2,7 +2,7 @@ class RouteUpdateOrderWorker
   include Sidekiq::Worker
 
   def perform(order_id)
-    return if !Rails.configuration.x.route.integration_enabled
+    return if Rails.configuration.x.route.integration_enabled == 'false'
 
     client = RouteAPI::V1::Client.new
     token  = Rails.configuration.x.route.secret_token
