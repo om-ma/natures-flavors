@@ -140,14 +140,14 @@ Rails.application.configure do
   # YotPo - Staging keys
   config.x.yotpo.app_key = 'j7hsvZFhxG8jUooYglRviEapbHJAmxE7hCrOhHmH'
   config.x.yotpo.secret_key = 'g6mJW31KvNIVFBNRU8pYrVGaY9kwPyAPZ76WZ6Zs'
-  config.x.yotpo.rich_snippets_refresh_time = 25.hours
-  config.x.yotpo.reviews_refresh_time = 25.hours
+  config.x.yotpo.rich_snippets_refresh_time = 72.hours
+  config.x.yotpo.reviews_refresh_time = 72.hours
 
   # Low-level cache expiration
-  config.x.cache.expiration = 14.days
+  config.x.cache.expiration = 30.days
 
   # Sidekiq data workers cache expiration
-  config.x.products.refresh_time = 25.hours
+  config.x.products.refresh_time = 72.hours
   
   # Doofinder (production)
   config.x.doofinder.search_zone = 'us1'
