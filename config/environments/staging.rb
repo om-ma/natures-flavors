@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v44'
+  config.assets.prefix = '/assets/v45'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -158,9 +158,11 @@ Rails.application.configure do
   config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
 
   # Route insurance
+  config.x.cache.route_quote_expiration = 24.hours
   config.x.route.integration_enabled = ENV['ROUTE_INTEGRATION_ENABLED']
-  config.x.route.public_token = '88eea6ed-496f-4e4e-a0e0-a2ff4e53bf93'
-  config.x.route.secret_token = 'test-18219816-7b41-44f0-b489-ab2477765eb2'
+  config.x.route.merchant_id = 'merch_vvxkoH49riWxHopnelN3'
+  config.x.route.public_token = '35539ae7-a7b6-436e-bee5-4d22665cd0a4'
+  config.x.route.secret_token = 'test-4cddd2d4-7429-43ec-98b1-255075fa85fd'
 end
 
 # spree_sitemap config

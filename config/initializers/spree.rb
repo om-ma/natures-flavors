@@ -66,4 +66,4 @@ Spree::Config.product_wysiwyg_editor_enabled = false
 Rails.application.config.spree.stock_splitters = []
 
 # Route insurance
-Spree::PermittedAttributes.checkout_attributes << [:route_insurance_selected, :route_insurance_currency, :route_insurance_price]
+Spree::PermittedAttributes.checkout_attributes << [:route_insurance_selected, :route_insurance_currency, :route_insurance_price, :route_insurance_quote_id, :route_insurance_quote_premium]

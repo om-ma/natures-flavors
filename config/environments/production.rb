@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v44'
+  config.assets.prefix = '/assets/v45'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -155,7 +155,9 @@ Rails.application.configure do
   config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
 
   # Route insurance
+  config.x.cache.route_quote_expiration = 24.hours
   config.x.route.integration_enabled = ENV['ROUTE_INTEGRATION_ENABLED']
+  config.x.route.merchant_id = 'merch_m03oIkRGvFwJ2Gug8Y9U'
   config.x.route.public_token = '88eea6ed-496f-4e4e-a0e0-a2ff4e53bf93'
   config.x.route.secret_token = 'f4e5f55f-5f61-4d20-89ae-672d938afdda'
 end

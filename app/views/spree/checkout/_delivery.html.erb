@@ -1,18 +1,77 @@
 <% content_for :head do %>
 <script type="text/javascript">
+  function parseCurrencyToFloat(input, formatOptions) {
+    return accounting.unformat(input, formatOptions.decimal)
+  }
+
+  function totalInsuranceAmount(newInsuranceTotal, oldInsuranceTotal) {
+    return newInsuranceTotal - oldInsuranceTotal
+  }
+
+  function readjustSummarySection(routeInsuranceTotal, routeInsuranceContainer, orderTotalContainer, formatOptions, insuranceSelected, orderTotal, newInsuranceTotal, oldInsuranceTotal) {
+    routeInsuranceTotal.html(accounting.formatMoney(accounting.toFixed(newInsuranceTotal, 10), formatOptions));
+    if (insuranceSelected) {
+      routeInsuranceContainer.removeClass('route-insurance-hide')
+    } else {
+      routeInsuranceContainer.addClass('route-insurance-hide')
+    }
+
+    var newOrderTotal = orderTotal + totalInsuranceAmount(newInsuranceTotal, oldInsuranceTotal)
+    return orderTotalContainer.html(accounting.formatMoney(accounting.toFixed(newOrderTotal, 10), formatOptions))
+  }
+
+  function routeUpdate(insuranceSelected) {
+    orderTotalContainer = $('#summary-order-total');
+    routeInsuranceContainer = $('.route-insurance-container');
+    routeInsuranceTotal = $('[data-hook="route-insurance-total"]');
+    orderRouteInsuranceSelected = $('#order_route_insurance_selected');
+    orderRouteInsurancePrice = $('#order_route_insurance_price');
+
+    formatOptions = {
+      symbol: routeInsuranceTotal.data('currency'),
+      decimal: routeInsuranceTotal.attr('decimal-mark'),
+      thousand: routeInsuranceTotal.attr('thousands-separator'),
+      precision: routeInsuranceTotal.attr('precision')
+    }
+
+    if (insuranceSelected == 0) {
+      orderRouteInsuranceSelected.val(false);
+      orderRouteInsurancePrice.val('0.0');
+    } else if (insuranceSelected == 1) {
+      orderRouteInsuranceSelected.val(true);
+      orderRouteInsurancePrice.val(<%= @order.route_insurance_quote_premium %>);
+    }
+
+    readjustSummarySection(
+      routeInsuranceTotal, routeInsuranceContainer, orderTotalContainer, formatOptions,
+      insuranceSelected,
+      parseCurrencyToFloat(orderTotalContainer.html(), formatOptions),
+      orderRouteInsurancePrice.val(),
+      parseCurrencyToFloat(routeInsuranceTotal.html(), formatOptions)
+    );
+  }
+
   $(document).on('turbolinks:load', function() {
-    routeapp.get_quote("<%= Rails.configuration.x.route.public_token %>", <%= @order.item_total %>, "<%= current_currency %>", function(insurance_details){
+    window.Route.Protection.render({
+      storeDomain: "<%= current_store.url %>",
+      subtotal: <%= @order.item_total %>,
+      currency: "<%= current_currency %>",
+      environment: window.Route.Environment.Production,
+      status: <% if @order.route_insurance_selected || @order.route_insurance_selected.nil? %>window.Route.Coverage.ActiveByDefault<% else %>window.Route.Coverage.InactiveByDefault<% end %>,
+      merchantId: "<%= Rails.configuration.x.route.merchant_id %>",
+      theming: {
+        mode: window.Route.Theme.Mode.LightMode,
+        alignment: window.Route.Theme.Alignment.Left
+      }
     });
-    routeapp.on_insured_change(function(insurance_details){
-        if (insurance_details.insurance_selected) {
-          $('#order_route_insurance_selected').val(true)
-          $('#order_route_insurance_price').val(insurance_details.insurance_price)
-        }
-        else {
-          $('#order_route_insurance_selected').val(false)
-          $('#order_route_insurance_price').val('0.0')
-        }
+    
+    window.Route.Protection.on("status_change", function (event) {
+      routeUpdate(event.to);
     });
+
+    <% if @order.route_insurance_selected.nil? %>
+    routeUpdate(1);
+    <% end %>
   });
 </script>
 <% end %>
@@ -33,10 +92,9 @@
           <%= render 'spree/shared/address', address: @order.ship_address %>
         </div>
       </div>
-      <% routewidget_default_checked = (@order.route_insurance_selected ? 'data-default-checked="true"' : '') %>
-      <div id="RouteWidget" class="route-widget" <%= routewidget_default_checked.html_safe %>></div>
+      <div class="route-div route-widget"></div>
       <%= form.hidden_field :route_insurance_selected %>
-      <%= form.hidden_field :route_insurance_currency, value: current_currency %>
+      <%= form.hidden_field :route_insurance_currency %>
       <%= form.hidden_field :route_insurance_price %>
       <div class="cart-header d-flex align-items-center justify-content-between mb-0">
         <h5>Shipping</h5>
