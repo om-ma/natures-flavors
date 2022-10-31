@@ -8,7 +8,7 @@
     return newInsuranceTotal - oldInsuranceTotal
   }
 
-  function readjustSummarySection(routeInsuranceTotal, routeInsuranceContainer, orderTotalContainer, formatOptions, insuranceSelected, orderTotal, newInsuranceTotal, oldInsuranceTotal) {
+  function readjustSummarySection(routeInsuranceTotal, routeInsuranceContainer, orderTotalContainer, mobileOrderTotalContainer, formatOptions, insuranceSelected, orderTotal, newInsuranceTotal, oldInsuranceTotal) {
     routeInsuranceTotal.html(accounting.formatMoney(accounting.toFixed(newInsuranceTotal, 10), formatOptions));
     if (insuranceSelected) {
       routeInsuranceContainer.removeClass('route-insurance-hide')
@@ -17,11 +17,13 @@
     }
 
     var newOrderTotal = orderTotal + totalInsuranceAmount(newInsuranceTotal, oldInsuranceTotal)
-    return orderTotalContainer.html(accounting.formatMoney(accounting.toFixed(newOrderTotal, 10), formatOptions))
+    mobileOrderTotalContainer.html('My Cart / ' + accounting.formatMoney(accounting.toFixed(newOrderTotal, 10), formatOptions))
+    orderTotalContainer.html(accounting.formatMoney(accounting.toFixed(newOrderTotal, 10), formatOptions))
   }
 
   function routeUpdate(insuranceSelected) {
     orderTotalContainer = $('#summary-order-total');
+    mobileOrderTotalContainer = $('#mobile-cart-summary-header-order-total');
     routeInsuranceContainer = $('.route-insurance-container');
     routeInsuranceTotal = $('[data-hook="route-insurance-total"]');
     orderRouteInsuranceSelected = $('#order_route_insurance_selected');
@@ -43,7 +45,7 @@
     }
 
     readjustSummarySection(
-      routeInsuranceTotal, routeInsuranceContainer, orderTotalContainer, formatOptions,
+      routeInsuranceTotal, routeInsuranceContainer, orderTotalContainer, mobileOrderTotalContainer, formatOptions,
       insuranceSelected,
       parseCurrencyToFloat(orderTotalContainer.html(), formatOptions),
       orderRouteInsurancePrice.val(),
