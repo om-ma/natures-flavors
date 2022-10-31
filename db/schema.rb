@@ -578,7 +578,7 @@ ActiveRecord::Schema.define(version: 2022_10_26_232209) do
     t.boolean "mailchimp_cart_created"
     t.string "mailchimp_campaign_id"
     t.boolean "request_coa", default: false
-    t.boolean "route_insurance_selected", default: false
+    t.boolean "route_insurance_selected"
     t.string "route_insurance_currency", default: "USD"
     t.decimal "route_insurance_price", precision: 10, scale: 2, default: "0.0", null: false
     t.string "route_insurance_quote_id", default: ""
