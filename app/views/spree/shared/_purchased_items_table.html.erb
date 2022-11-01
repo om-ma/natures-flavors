@@ -41,6 +41,23 @@
       </td>
     </tr>
   <% end %>
+  <% if @order.route_insurance_selected 
+      route_insurance_total = Spree::Money.new(order.route_insurance_price, currency: order.currency)
+  %>
+    <tr>
+      <td></td>
+      <td>
+        <p class="f-fallback purchase_total purchase_total--label">
+          <%= I18n.t(:shipping_protection, scope: 'activerecord.attributes.spree/order') %>:
+        </p>
+      </td>
+      <td class="purchase_total-col">
+        <p class="f-fallback purchase_total">
+          <%= route_insurance_total.to_html %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
   <% if order.additional_tax_total != 0 %>
     <tr>
       <td></td>
