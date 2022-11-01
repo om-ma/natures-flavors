@@ -1,3 +1,27 @@
+<%
+   faqs = [
+      [
+        "What are Flavor Extracts?",
+        "Flavor Extracts can be used in baking and clear beverages. Natural flavors and extracts come in many styles, colors, forms, and concentrations. Our Extracts are water soluble flavors made in a base of Natural Ethyl Alcohol. These all natural flavor extracts and organic flavor extracts are food grade, Kosher, vegan, gluten Free. <a href='#{flavor_extracts_url}'>Learn More</a>"
+      ],
+      [
+        "What are Flavor Concentrates?",
+        "Flavor concentrates are ideal for use in syrups, ice cream, baked goods, yogurt, beverages, and more. <a href='#{flavor_concentrates_url}'>Learn More</a>"
+      ],
+      [
+        "What are Flavor Oils?",
+        "Flavor Oils are used in oil-based products, such as chocolate oil and lip balm oil. <a href='#{flavor_oils_url}'>Learn More</a>"
+      ],
+      [
+        "What are Flavor Powders?",
+        "Flavor Powders can be used in smoothies, baked goods, and dry mixes. <a href='#{flavor_powders_url}'>Learn More</a>"
+      ],
+      [
+        "What are Flavor Emulsions?",
+        "Flavor Emulsions can be used in soft and hard candy. <a href='#{flavor_emulsions_url}'>Learn More</a>"
+      ]
+   ]
+%>
 <% content_for :head do %>
   <script type="text/javascript">
     $(document).on('turbolinks:before-cache', function() {
@@ -21,6 +45,7 @@
       }
     }
   </script>
+  <%= faqs_structured_data(faqs) %>
 <% end %>
 <% cache cache_key_for_home_index do %>
 <%= organization_structured_data(current_store) %>
