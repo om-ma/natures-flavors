@@ -174,7 +174,7 @@ module RouteAPI
           taxes: order.tax_total,
           currency: order.currency,
           paid_to_insure: (order.route_insurance_selected ? order.route_insurance_price : 0.00),
-          insurance_selected: order.route_insurance_selected,
+          insurance_selected: (order.route_insurance_selected ? true : false),
           customer_details: {
             first_name: order.ship_address.first_name,
             last_name: order.ship_address.last_name,
@@ -211,7 +211,7 @@ module RouteAPI
           taxes: order.tax_total,
           currency: order.currency,
           paid_to_insure: (order.route_insurance_selected ? order.route_insurance_price : 0.00),
-          insurance_selected: order.route_insurance_selected,
+          insurance_selected: (order.route_insurance_selected ? true : false),
           customer_details: {
             first_name: order.ship_address.first_name,
             last_name: order.ship_address.last_name,
