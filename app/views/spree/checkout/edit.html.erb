@@ -25,7 +25,7 @@ end
       <div class="row flex-row-reverse no-gutters" data-hook="checkout_progress" data-hook="checkout_content">
         <div class="col-lg-6">
           <div class="mobile-cart-summary-header phone-visible">
-            <h4>My Cart / <%= @order.display_total.to_html %></h4>
+            <h4 id="mobile-cart-summary-header-order-total">My Cart / <%= @order.display_total.to_html %></h4>
            <button type="button" class="show-cart-summary"><span>Show</span></button>
           </div>
           <div class="wrap mobile-cart-summary d-flex flex-column justify-content-between h-100">

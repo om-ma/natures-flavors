@@ -11,7 +11,7 @@
   </script>
 <% end %>
 <main class="page-contents"  data-turbolinks="false">
-   <div class="deals-wrapper">
+  <div class="deals-wrapper">
 
     <div class="title-wrap text-center">
       <div class="sm-title">For further information, please</div>
@@ -19,81 +19,74 @@
     </div>
 
 
-  <div class="contact_us_section">
-  <div class="container-fluid">
-    
-    <div class="row">
-
-      <div class="col-md-4">
-        <span class="more">Address:</span>
-        <h4>833 N. Elm St. Orange,<br>California 92867</h4>
-        <br>
-        <span class="more">Phone:</span>
-        <h4>1-714-744-3700</h4>
-        <br>
-        <span class="more">E-mail:</span>
-        <h4><a href="mailto:customerservice@naturesflavors.com">customerservice@naturesflavors.com</a></h4>
-        <br>
-        <span class="more"> Business Hours:</span>
-        <h4>8:00 am - 5:00 pm,<br>Monday - Friday, Pacific Time</h4>        
-      </div>
-
-
-      <div class="col-md-8">
-          <%= form_for @contact, :html => {:class => "contact-form"}, :url => contact_us_path do |f| %>
-            <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @contact } %>
-            <p>Fields marked with an asterisk (*) are required.</p>
-            <div class="row narrow-row-md">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label class="control-label">Name<span class="required">*</span></label>
-                <%= f.text_field :name, :class => 'form-control', tabindex: 1, :placeholder => "Name", required:  true %>
-                </div>
-              </div>
-            </div>
-            <div class="row narrow-row-md">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label class="control-label">Email Address<span class="required">*</span></label>
-                <%= f.text_field :email, :class => 'form-control', tabindex: 2, :placeholder => "Email Address", required:  true %>
-                </div>
-              </div>
-            </div>
-            <div class="row narrow-row-md">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label class="control-label">Order #</label>
-                  <%= f.text_field :order_number, :class => 'form-control', tabindex: 3, :placeholder => "Order Number" %>
-                </div>
-              </div>
-            </div>
-            <div class="row narrow-row-md">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label class="control-label">Message<span class="required">*</span></label>
-                  <%= f.text_area :message, :class => 'form-control', tabindex: 4, :placeholder => "Message", required:  true %>
-                </div>
-              </div>
-            </div>
-            <% if @show_checkbox_recaptcha %>
-              <%= recaptcha_tags %>
-            <% else %>
-              <%= recaptcha_v3(action: 'contact_us', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
-            <% end %>
-            This site is protected by reCAPTCHA and the Google
-            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-            <%= f.submit Spree.t('spree_contact_us.send_message'), :class => 'btn btn-primary btn-block mt-25', tabindex: 5, :alt => Spree.t('spree_contact_us.send_messages'), :id => 'contact_us_contact_submit', :title => "Send Message" %>
-          <% end %>
+    <div class="contact_us_section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="more">Address:</span>
+            <h4>833 N. Elm St. Orange,<br>California 92867</h4>
+            <br>
+            <span class="more">Phone:</span>
+            <h4>1-714-744-3700</h4>
+            <br>
+            <span class="more">E-mail:</span>
+            <h4><a href="mailto:customerservice@naturesflavors.com">customerservice@naturesflavors.com</a></h4>
+            <br>
+            <span class="more"> Business Hours:</span>
+            <h4>8:00 am - 5:00 pm,<br>Monday - Friday, Pacific Time</h4>
+            <br>
+            <span class="more">Damaged, Lost, or Stolen Orders?</span>
+            <h4>If you added Green Package Protection at checkout, please file a claim with the Route team <a href="https://claims.route.com/" target="_blank">here</a> for quick assistance with “in-transit” related issues.</h4>
           </div>
-
+          <div class="col-md-8">
+            <%= form_for @contact, :html => {:class => "contact-form"}, :url => contact_us_path do |f| %>
+              <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @contact } %>
+              <p>Fields marked with an asterisk (*) are required.</p>
+              <div class="row narrow-row-md">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label">Name<span class="required">*</span></label>
+                  <%= f.text_field :name, :class => 'form-control', tabindex: 1, :placeholder => "Name", required:  true %>
+                  </div>
+                </div>
+              </div>
+              <div class="row narrow-row-md">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label">Email Address<span class="required">*</span></label>
+                  <%= f.text_field :email, :class => 'form-control', tabindex: 2, :placeholder => "Email Address", required:  true %>
+                  </div>
+                </div>
+              </div>
+              <div class="row narrow-row-md">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label">Order #</label>
+                    <%= f.text_field :order_number, :class => 'form-control', tabindex: 3, :placeholder => "Order Number" %>
+                  </div>
+                </div>
+              </div>
+              <div class="row narrow-row-md">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label">Message<span class="required">*</span></label>
+                    <%= f.text_area :message, :class => 'form-control', tabindex: 4, :placeholder => "Message", required:  true %>
+                  </div>
+                </div>
+              </div>
+              <% if @show_checkbox_recaptcha %>
+                <%= recaptcha_tags %>
+              <% else %>
+                <%= recaptcha_v3(action: 'contact_us', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
+              <% end %>
+              This site is protected by reCAPTCHA and the Google
+              <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+              <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+              <%= f.submit Spree.t('spree_contact_us.send_message'), :class => 'btn btn-primary btn-block mt-25', tabindex: 5, :alt => Spree.t('spree_contact_us.send_messages'), :id => 'contact_us_contact_submit', :title => "Send Message" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-
-
-
-
   </div>
 </main>

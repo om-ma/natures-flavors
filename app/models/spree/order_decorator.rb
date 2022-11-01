@@ -1,5 +1,7 @@
 Spree::Order.class_eval do
 
+    money_methods :route_insurance_price
+
     # Set by admin/order_controller to be used to log state change for production state
     attr_accessor :current_user
 
@@ -94,4 +96,11 @@ Spree::Order.class_eval do
       end
     end
 
+    def route_create_order
+      RouteCreateOrderWorker.perform_async(self.id)
+    end
+
 end
+
+Spree::Order.state_machine.after_transition :to => :complete,
+                                            :do => :route_create_order

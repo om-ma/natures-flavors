@@ -118,6 +118,24 @@
 											</ul>
 									<% end %>
 									<ul class="cart-totals">
+							      <li>
+											<label><%= Spree.t(:subtotal) %>:</label>
+											<span><%= order.display_item_total.to_html %></span> </li>
+											<% if order.line_item_adjustments.nonzero.exists? %>
+												<li> 
+												<label><%#= label %></label>
+												<span>
+												<% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+													<%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>                      
+												<% end %>
+												</span> </li>
+											<% end %>
+										<% if order.route_insurance_selected? %>
+										<li>
+											<label><%= I18n.t(:shipping_protection, scope: 'activerecord.attributes.spree/order') %></label>
+											<% route_insurance_total = Spree::Money.new(order.route_insurance_price, currency: order.currency) %>
+											<span><%= route_insurance_total.to_html %></span> </li>
+										<% end %>
 										<li>
 											<label>Shipping:</label>
 											<% shipping_total = Spree::Money.new(order.shipments.to_a.sum(&:cost), currency: order.currency) %>

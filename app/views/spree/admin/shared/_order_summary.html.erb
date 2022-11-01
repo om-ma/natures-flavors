@@ -30,6 +30,17 @@
         </td>
       </tr>
 
+      <% if @order.route_insurance_selected %>
+        <tr>
+          <td data-hook='admin_order_tab_ship_total_title'>
+            <strong><%= I18n.t(:route_insurance, scope: 'activerecord.attributes.spree/order') %>:</strong>
+          </td>
+          <td id='route_insurance_total'>
+            <%= @order.display_route_insurance_price.to_html %>
+          </td>
+        </tr>
+      <% end %>
+
       <% if @order.checkout_steps.include?("delivery") && @order.ship_total > 0 %>
         <tr>
           <td data-hook='admin_order_tab_ship_total_title'>
@@ -102,6 +113,16 @@
             <td id='production_status'>
               <span class="state badge badge-reqest_coa-<%= (@order.request_coa ? "yes" : "no") %>">
                 <%= (@order.request_coa ? "YES" : "No") %>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong><%= Spree.t(:route_insurance) %>:</strong>
+            </td>
+            <td id='production_status'>
+              <span class="state badge badge-route_insurance_selected-<%= (@order.route_insurance_selected ? "yes" : "no") %>">
+                <%= (@order.route_insurance_selected ? "YES" : "No") %>
               </span>
             </td>
           </tr>

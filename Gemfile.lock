@@ -123,8 +123,8 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree-html-invoice.git
-  revision: 8a36c9036c42d452b1eff7861f117a5b526e64aa
-  branch: master
+  revision: 58870fb655428bb0477758b68e055d65a2dbe41a
+  branch: route
   specs:
     spree_html_invoice (3.4.0)
       barby
@@ -229,8 +229,8 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_shipstation-2.git
-  revision: ef626354df8237dc4f29fe2519f61dfdd63b32f0
-  branch: master
+  revision: fc5b0817e37f3b17f9279146cafebf9a518d0dc1
+  branch: route
   specs:
     spree_shipstation (2.0.6)
       spree_api (>= 3.2.0, < 5.0)
