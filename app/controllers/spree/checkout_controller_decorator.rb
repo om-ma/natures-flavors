@@ -21,7 +21,10 @@ Spree::CheckoutController.class_eval do
   end
 
   def get_route_quote
-    if (@order.state == 'address' && !@order.bill_address_id.nil? && !@order.ship_address_id.nil?) || @order.state == 'delivery'
+    # state == address: Something changed in the cart/first time checkout.
+    # state != address and quote_id is blank: Pre-Route orders
+    if (@order.state == 'address' && !@order.bill_address_id.nil? && !@order.ship_address_id.nil?) || 
+        (@order.state != 'address' && !@order.bill_address_id.nil? && !@order.ship_address_id.nil? && @order.route_insurance_quote_id.blank?)
       quote_id, quote_premium, quote_currency = Rails.cache.fetch("@route/quote/order/#{@order.number}/item_total/#{@order.item_total}", expires_in: Rails.configuration.x.cache.route_quote_expiration, race_condition_ttl: 30.seconds) do
         client = RouteAPI::V1::Client.new
         merchant_id = Rails.configuration.x.route.merchant_id
