@@ -13,8 +13,8 @@ class RouteCancelOrderWorker
       Rails.logger.info "ROUTE: Successfully cancelled order: #{order.number}"
     rescue StandardError => e
       Spree::ErrorMailer.cancel_order_error_email(order.number, e.message).deliver_later
-      Rails.logger.info "ROUTE: Failed to cancel order: #{order.number}"
-      Rails.logger.info e
+      Rails.logger.error "ROUTE: Failed to cancel order: #{order.number}"
+      Rails.logger.error e
     end
   end
 

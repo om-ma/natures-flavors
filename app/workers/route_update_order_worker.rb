@@ -13,8 +13,8 @@ class RouteUpdateOrderWorker
       Rails.logger.info "ROUTE: Successfully updated order: #{order.number}"
     rescue StandardError => e
       Spree::ErrorMailer.update_order_error_email(order.number, e.message).deliver_later
-      Rails.logger.info "ROUTE: Failed to update order: #{order.number}"
-      Rails.logger.info e
+      Rails.logger.error "ROUTE: Failed to update order: #{order.number}"
+      Rails.logger.error e
     end
   end
 

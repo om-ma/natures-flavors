@@ -270,12 +270,16 @@ module RouteAPI
             country_code: stock_location.country.iso,
             zip: stock_location.zipcode
           }
-        }
+        }.compact_blank
       end
 
       def product_image(item)
         if item.variant.images.length == 0
-          product_image = item.variant.product.images.first.my_cf_image_url("large")
+          if item.variant.product.images.length == 0
+            product_image = nil
+          else
+            product_image = item.variant.product.images.first.my_cf_image_url("large")
+          end
         else
           product_image = item.variant.images.first.my_cf_image_url("large")
         end
@@ -323,7 +327,7 @@ module RouteAPI
             value: item.variant.weight,
             weight_unit: 'pound'
           }
-        }
+        }.compact_blank
       end
 
       # Get shipping method from first shipment

@@ -13,8 +13,8 @@ class RouteCreateShipmentWorker
       Rails.logger.info "ROUTE: Successfully created shipment: #{shipment.number}"
     rescue StandardError => e
       Spree::ErrorMailer.shipment_error_email(shipment.number, e.message).deliver_later
-      Rails.logger.info "ROUTE: Failed to create shipment: #{shipment.number}"
-      Rails.logger.info e
+      Rails.logger.error "ROUTE: Failed to create shipment: #{shipment.number}"
+      Rails.logger.error e
     end
   end
 
