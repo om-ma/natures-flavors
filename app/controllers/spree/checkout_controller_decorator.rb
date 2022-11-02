@@ -39,7 +39,7 @@ Spree::CheckoutController.class_eval do
           Rails.logger.error "Route: Failed to update insurance price for order: #{@order.number}"
           Rails.logger.error e
 
-          ["", 0.00 ,response['premium']['currency']]
+          ["", 0.00 , @order.currency]
         end
       end
       
