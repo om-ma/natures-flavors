@@ -8,7 +8,9 @@ module Spree
         ]
 
         def route_update_order
-          RouteUpdateOrderWorker.perform_async(@order.id)
+          if @order.state == 'complete' || @order.state == 'canceled'
+            RouteUpdateOrderWorker.perform_async(@order.id)
+          end
         end
 
       end
