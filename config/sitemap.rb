@@ -55,4 +55,5 @@ SitemapGenerator::Sitemap.create do
   add(about_us_path, { priority: 0.8, changefreq: 'daily' })
   #add(privacy_policy_path, { priority: 0.8, changefreq: 'daily' })
   #add(terms_of_use_path, { priority: 0.8, changefreq: 'daily' })
+  add(route_path, { priority: 0.8, changefreq: 'daily' })
 end
