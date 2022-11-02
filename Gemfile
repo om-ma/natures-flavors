@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.5'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use terser as compressor for JavaScript assets
@@ -63,12 +63,12 @@ gem "spree_comments", github: 'ducl13/spree_comments', branch: 'master'
 gem 'spree_contact_us', github: 'ducl13/spree_contact_us', branch: 'naturesflavors'
 gem 'spree_gateway', '~> 3.9' # payment gateways eg. Stripe, Braintree (optional)
 gem 'spree_favorite_products', git: 'https://gitlab.com/duc.lam/spree_favorite_products.git', branch: 'natures'
-gem 'spree_html_invoice', github: 'ducl13/spree-html-invoice', branch: 'master'
+gem 'spree_html_invoice', github: 'ducl13/spree-html-invoice', branch: 'route'
 gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
 gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3'
 gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
-gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'master'
+gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'route'
 gem 'spree_sitemap', github: 'ducl13/spree_sitemap', branch: 'master'
 gem 'spree_paypal_express', github: 'ducl13/better_spree_paypal_express'
 gem 'spree_product_feed', github: 'ducl13/spree_product_feed', branch: '3-7-caching'

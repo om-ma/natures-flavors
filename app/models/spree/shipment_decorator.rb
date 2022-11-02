@@ -1,6 +1,6 @@
 Spree::Shipment.class_eval do
 
-  def refresh_rates(shipping_method_filter = ShippingMethod::DISPLAY_ON_FRONT_END)
+  def refresh_rates(shipping_method_filter = Spree::ShippingMethod::DISPLAY_ON_FRONT_END)
     return shipping_rates if shipped?
     return [] unless can_get_rates?
 

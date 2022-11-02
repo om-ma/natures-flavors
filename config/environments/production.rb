@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v42'
+  config.assets.prefix = '/assets/v46'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -119,6 +119,9 @@ Rails.application.configure do
   config.x.backoffice.print_docs = true
   config.x.backoffice.to_address = 'weborders@sfgorders.com'
 
+  # Email address to send system errors
+  config.x.systemerror.email = 'it-group@naturesflavors.com'
+
   # paperclip with S3. for spree_slider images, etc.
   config.paperclip_defaults = {
     :storage => :s3,
@@ -137,19 +140,26 @@ Rails.application.configure do
   # YotPo
   config.x.yotpo.app_key = 'QtBlle6stNSGfvAinupFBB1fYpwkVCWH35MBh8LO'
   config.x.yotpo.secret_key = 'y6m3AE0vSKKzZDRjP253weTFmn5O0o6RlMeL2mwe'
-  config.x.yotpo.rich_snippets_refresh_time = 48.hours
-  config.x.yotpo.reviews_refresh_time = 48.hours
+  config.x.yotpo.rich_snippets_refresh_time = 72.hours
+  config.x.yotpo.reviews_refresh_time = 72.hours
 
   # Low-level cache expiration
-  config.x.cache.expiration = 14.days
+  config.x.cache.expiration = 30.days
   
   # Sidekiq data workers cache expiration
-  config.x.products.refresh_time = 25.hours
+  config.x.products.refresh_time = 72.hours
   
   # Doofinder
   config.x.doofinder.search_zone = 'us1'
   config.x.doofinder.api_key = 'us1-aa01ed99b4e66cf41f0ce41ae96c7abf246264f5'
   config.x.doofinder.hashid = 'e5a0cc4ebeb29bd09d2801b99933812f'
+
+  # Route insurance
+  config.x.cache.route_quote_expiration = 24.hours
+  config.x.route.integration_enabled = ENV['ROUTE_INTEGRATION_ENABLED']
+  config.x.route.merchant_id = 'merch_m03oIkRGvFwJ2Gug8Y9U'
+  config.x.route.public_token = '88eea6ed-496f-4e4e-a0e0-a2ff4e53bf93'
+  config.x.route.secret_token = 'f4e5f55f-5f61-4d20-89ae-672d938afdda'
 end
 
 ## spree_sitemap config

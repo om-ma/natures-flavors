@@ -45,4 +45,9 @@ Spree::OrderUpdater.class_eval do
     order.production_state
   end
 
+  def update_order_total
+    order.total = order.item_total + order.shipment_total + order.adjustment_total
+    order.total += order.route_insurance_price if order.route_insurance_selected
+  end
+
 end

@@ -2,8 +2,15 @@
 
 cp ./.env-staging-naturesflavors ./.env
 
-git checkout staging
-git pull origin staging
+if [ "$#" -eq  "0" ]
+then
+    git checkout staging
+    git pull origin staging
+else
+    git checkout $1
+    git pull origin $1
+fi
+
 export BUILD_COMMIT_HASH=$(git rev-parse HEAD)
 
 docker buildx build \

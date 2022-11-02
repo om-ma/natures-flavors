@@ -15,6 +15,12 @@
   <%= Spree.t(:shipping) %>: <%= name %> <%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency) %>
 <% end %>
 
+<% if @order.route_insurance_selected 
+    route_insurance_total = Spree::Money.new(order.route_insurance_price, currency: order.currency)
+%>
+  <%= I18n.t(:shipping_protection, scope: 'activerecord.attributes.spree/order') %>: <%= route_insurance_total.to_html %>
+<% end %>
+
 <% if order.additional_tax_total != 0 %>
   <%= Spree.t(:tax) %>: <%= order.display_additional_tax_total.to_html %>
 <% end %>

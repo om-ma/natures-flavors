@@ -179,6 +179,7 @@
           <th><%= sort_link @search, :payment_state,    I18n.t(:payment_state, scope: 'activerecord.attributes.spree/order') %></th>
           <th><%= sort_link @search, :production_state, I18n.t(:production_state, scope: 'activerecord.attributes.spree/order') %></th>
           <th><%= sort_link @search, :request_coa,      I18n.t(:coa_requested, scope: 'activerecord.attributes.spree/order') %></th>
+          <th><%= sort_link @search, :route_insurance_selected,      I18n.t(:route_insurance, scope: 'activerecord.attributes.spree/order') %></th>
            <% if Spree::Order.checkout_step_names.include?(:delivery) %>
             <th><%= sort_link @search, :shipment_state, I18n.t(:shipment_state, scope: 'activerecord.attributes.spree/order') %></th>
            <% end %>
@@ -228,6 +229,10 @@
           <td>
             <span class="badge badge-reqest_coa-<%= (order.request_coa ? "yes" : "no") %>"><%= (order.request_coa ? "YES" : "No") %></span>
             <span class="filterable js-add-filter" data-ransack-field="q_request_coa_eq" data-ransack-value="<%= order.request_coa %>"></span>
+          </td>
+          <td>
+            <span class="badge badge-route_insurance_selected-<%= (order.route_insurance_selected ? "yes" : "no") %>"><%= (order.route_insurance_selected ? "YES" : "No") %></span>
+            <span class="filterable js-add-filter" data-ransack-field="q_route_insurance_selected_eq" data-ransack-value="<%= order.route_insurance_selected %>"></span>
           </td>
           <% if Spree::Order.checkout_step_names.include?(:delivery) %>
             <td class="no-wrap">

@@ -8,6 +8,8 @@ module Spree
         close_adjustments cart channel set_channel
         production set_production
       ]
+
+      after_action :route_cancel_order, only: :cancel
       
       def production
       end
@@ -22,6 +24,10 @@ module Spree
 
           if @order.update(production_state: params[:order][:production_state])
             flash[:success] = flash_message_for(@order, :successfully_updated)
+
+            if params[:order][:production_state] == 'canceled'
+              route_cancel_order
+            end
           else
             flash[:error] = @order.errors.full_messages.join(', ')
           end
@@ -59,6 +65,10 @@ module Spree
         flash[:success] = Spree.t(:all_adjustments_closed)
 
         respond_with(@order) { |format| format.html { redirect_back fallback_location: spree.admin_order_adjustments_url(@order) } }
+      end
+
+      def route_cancel_order
+        RouteCancelOrderWorker.perform_async(@order.id)
       end
 
     end

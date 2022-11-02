@@ -20,34 +20,10 @@
                     <%= render partial: 'form', locals: { order_form: order_form } %>
                   </ul>
                   <div class="cart-footer d-flex flex-column ml-auto">
-                    <% if Spree::Frontend::Config[:coupon_codes_enabled] %>
-                      <%= render 'coupon_code',
-                        promotion: @order.valid_coupon_promotions.first,
-                        order_form: order_form,
-                        classes: '' %>
-                    <% end %>
                     <ul class="cart-totals">
                       <li>
-                        <label>Subtotal:</label>
-                        <span><%= order_form.object.display_item_total %></span> 
-                      </li>
-                      <% if !order_form.object.cart_promo_total.zero? %>
-                        <li>
-                          <label>
-                            <%= Spree.t(:promotion) %>
-                          </label>
-                          <strong>
-                            <%= order_form.object.display_cart_promo_total %>
-                          </strong>
-                        </li>  
-                      <% end %>
-                      <li>
-                        <label>Shipping:</label>
-                        <span>Calculated in next step</span>
-                      </li>
-                      <li>
                         <label>Total:</label>
-                          <strong> <%= order_form.object.display_total %> </strong> 
+                        <strong><%= order_form.object.display_item_total %></strong> 
                       </li>
                     </ul>
                   </div>
