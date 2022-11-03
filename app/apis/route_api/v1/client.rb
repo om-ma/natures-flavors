@@ -194,7 +194,7 @@ module RouteAPI
             },
           line_items: line_items_hash(order, stock_location),
           cart_ref: order.number,
-          quote_id: order.route_insurance_quote_id,
+          quote_id: (order.route_insurance_quote_id.blank? ? 'UNKNOWN' : order.route_insurance_quote_id),
           source_created_on: order.completed_at.iso8601,
           source_updated_on: order.updated_at.iso8601
         }
@@ -231,7 +231,7 @@ module RouteAPI
             },
           line_items: line_items_hash(order, stock_location),
           cart_ref: order.number,
-          quote_id: order.route_insurance_quote_id,
+          quote_id: (order.route_insurance_quote_id.blank? ? 'UNKNOWN' : order.route_insurance_quote_id),
           source_created_on: order.completed_at.iso8601,
           source_updated_on: order.updated_at.iso8601
         }
