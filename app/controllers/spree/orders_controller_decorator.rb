@@ -17,5 +17,19 @@ Spree::OrdersController.class_eval do
     ActiveRecord::Base.connected_to(role: :writing) do
       associate_user
     end
+
+    fresh_when etag: etag_edit, last_modified: last_modified_edit, public: true
   end
+
+  def etag_edit
+    [
+      store_etag,
+      @order
+    ]
+  end
+  
+  def last_modified_edit
+    @order.updated_at.utc
+  end
+
 end
