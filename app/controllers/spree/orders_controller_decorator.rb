@@ -13,6 +13,9 @@ Spree::OrdersController.class_eval do
     @order = current_order || current_store.orders.incomplete.
              includes(line_items: [variant: [:images, :product, option_values: :option_type]]).
              find_or_initialize_by(token: cookies.signed[:token])
-    associate_user
+    
+    ActiveRecord::Base.connected_to(role: :writing) do
+      associate_user
+    end
   end
 end
