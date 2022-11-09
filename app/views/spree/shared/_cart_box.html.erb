@@ -13,10 +13,10 @@
         end
       %>
       <% product_or_variant_first_img = image_tag(img) %>
-      <%= link_to product_or_variant_first_img, spree.product_path(line_item.variant.product), class:'thumbnail' %>
+      <%= link_to product_or_variant_first_img, spree.product_path(line_item.variant.product), class:'thumbnail', data: { turbolinks: false } %>
       <div class="cart-item-details d-flex flex-column justify-content-between jsAddItem jsSubItem">
         <div class="d-flex cart-item-description">
-          <h4 ><%= link_to line_item&.name, line_item&.variant&.product %>
+          <h4 ><%= link_to line_item&.name, line_item&.variant&.product, data: { turbolinks: false }  %>
             <% if line_item.variant.option_values.present? %>
               - <%= line_item.variant.option_values.pluck(:presentation).join(",") %>
             <% end %>

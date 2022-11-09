@@ -45,9 +45,9 @@
       end
     %>
     <% product_or_variant_first_img = image_tag(img) %>
-    <%= link_to product_or_variant_first_img, spree.product_path(variant.product), class: "thumbnail", data: "cart_item_image" %>
+    <%= link_to product_or_variant_first_img, spree.product_path(variant.product), class: "thumbnail", data: { turbolinks: false } %>
     <div class="cart-item-details d-flex flex-column justify-content-between" data-hook="cart_item_description"  data-hook="line_item_description">
-      <h4><%= link_to line_item.name + (line_item.variant.option_values.present? ? ' - ' + line_item.variant.option_values.pluck(:presentation).join(",") : ''), spree.product_path(variant.product) %></h4>
+      <h4><%= link_to line_item.name + (line_item.variant.option_values.present? ? ' - ' + line_item.variant.option_values.pluck(:presentation).join(",") : ''), spree.product_path(variant.product), data: { turbolinks: false } %></h4>
       <%= render 'line_item_data', view: 'desktop', line_item: line_item, item_form: item_form %>
     </div>
   <% end %>
