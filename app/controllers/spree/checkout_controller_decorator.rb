@@ -35,7 +35,7 @@ Spree::CheckoutController.class_eval do
 
           [response['id'], response['premium']['amount'].to_f, response['premium']['currency']]
         rescue StandardError => e
-          Spree::ErrorMailer.order_error_email(@order.number, e.message).deliver_later
+          Spree::ErrorMailer.quote_error_email(@order.number, e.message).deliver_later
           Rails.logger.error "Route: Failed to update insurance price for order: #{@order.number}"
           Rails.logger.error e
 

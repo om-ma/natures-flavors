@@ -23,9 +23,9 @@ module RouteAPI
           req.body = quote_hash(merchant_id, cart, stock_location).to_json
         end
 
-        parsed_response = Oj.load(response.body)
-        
-        return parsed_response if response_successful?(response)
+        if response_successful?(response)
+          return Oj.load(response.body)
+        end
 
         raise error_class(response, "Method: quote, Code: #{response.status}, response: #{response.body}")
       end
@@ -45,9 +45,9 @@ module RouteAPI
           req.body = create_order_hash(order, stock_location).to_json
         end
 
-        parsed_response = Oj.load(response.body)
-
-        return parsed_response if response_successful?(response)
+        if response_successful?(response)
+          return Oj.load(response.body)
+        end
 
         raise error_class(response, "Method: create_order, Code: #{response.status}, response: #{response.body}")
       end
@@ -67,9 +67,9 @@ module RouteAPI
           req.body = update_order_hash(order, stock_location).to_json
         end
 
-        parsed_response = Oj.load(response.body)
-
-        return parsed_response if response_successful?(response)
+        if response_successful?(response)
+          return Oj.load(response.body)
+        end
 
         raise error_class(response, "Method: update_order, Code: #{response.status}, response: #{response.body}")
       end
@@ -85,9 +85,9 @@ module RouteAPI
 
         response = conn.post("/v1/orders/#{order.number}/cancel")
 
-        parsed_response = Oj.load(response.body)
-
-        return parsed_response if response_successful?(response)
+        if response_successful?(response)
+          return Oj.load(response.body)
+        end
 
         raise error_class(response, "Method: cancel_order, Code: #{response.status}, response: #{response.body}")
       end
@@ -105,9 +105,9 @@ module RouteAPI
           req.body = create_shipment_hash(shipment).to_json
         end
         
-        parsed_response = Oj.load(response.body)
-
-        return parsed_response if response_successful?(response)
+        if response_successful?(response)
+          return Oj.load(response.body)
+        end
 
         raise error_class(response, "Method: create_shipment, Code: #{response.status}, response: #{response.body}")
       end
