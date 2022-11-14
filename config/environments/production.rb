@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v47'
+  config.assets.prefix = '/assets/v48'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -145,6 +145,7 @@ Rails.application.configure do
 
   # Low-level cache expiration
   config.x.cache.expiration = 30.days
+  config.x.cache.images_backend_clear_on_update = ENV['CACHE_IMAGES_BACKEND_CLEAR_ON_UPDATE']
   
   # Sidekiq data workers cache expiration
   config.x.products.refresh_time = 72.hours
