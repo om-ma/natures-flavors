@@ -4570,7 +4570,7 @@ h3 a{
 	border: solid 1px #f0f0f0;
 	background-color: #fff;
 	border-radius: 7px;
-	margin: 0 0 60px;
+	margin: 0 0 40px;
 }
 
 .address-shipping-wrap .address-wrap,
@@ -7508,8 +7508,12 @@ display: flex;
 }
 
 .route-widget {
-	margin: -10px 0px 15px 0px;
+	margin: -10px 0px 0px 0px;
 	padding-left: 0px;
+}
+
+.route-disclaimer {
+	margin: -10px 10px 60px 10px;
 }
 
 .route-insurance-hide {

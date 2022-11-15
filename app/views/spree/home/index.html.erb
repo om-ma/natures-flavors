@@ -88,7 +88,7 @@
             <div class="gmp-certificate"></div>
             <h1>Natural and Organic Flavorings, Extracts, Syrups, and Fragrances</h1>
             <p><strong>Nature’s Flavors</strong> is where Mother Nature meets your kitchen. Our natural and organic flavorings are derived from the most remarkable fruits, vegetables, and herbs the earth has to offer. All of our products are made-to-order and delivered to your doorstep.</p>
-            <a href="<%= about_us_path %>" data-turbolinks="false" class="btn btn-primary" alt="About Us"><span>More About Us</span></a> </div>
+            <a href="<%= about_us_path %>" data-turbolinks="false" class="btn btn-primary" title="About Nature's Flavors"><span>More About Us</span></a> </div>
         </div>
         <div class="col-xl-4 col-lg-4">
           <div class="company-highlights-wrapper">
@@ -202,7 +202,7 @@
               <% end %>
             </ul>
           <% end %>
-          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, alt: "#{category.name}" do %>
+          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, title: "#{category.name}" do %>
             <span>See All <%= category.name %></span>
           <% end %>
         </div>
