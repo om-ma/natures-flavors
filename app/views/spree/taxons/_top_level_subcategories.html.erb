@@ -67,7 +67,7 @@
               <% end %>
             </ul>
           <% end %>
-          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, alt: "#{category.name}" do %>
+          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, title: "#{category.name}" do %>
             <span>See All <%= category.name %></span>
           <% end %>
         </div>
