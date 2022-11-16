@@ -29,7 +29,7 @@
     <div class="product-gallery-wrap" data-hook="product_thumbnails">
       <ul id="product-gallery" data-hook="product_images">
         <% @product_images.each do |i| %>
-          <li data-thumb= "<%= i.my_cf_image_url(:pdp_thumbnail) %>" >
+          <li data-thumb= "<%= i.my_cf_image_url(:pdp_thumbnail) %>" data-alt="<%= @product.name + ' Thumbnail' %>" >
             <%= image_tag(i.my_cf_image_url(:large), alt: (i.alt.present? ? i.alt : @product.name)) %>
           </li>
         <% end %>

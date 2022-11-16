@@ -17,30 +17,30 @@
             <li><%= link_to "Terms & Conditions", terms_and_conditions_path %></li> 
             <li><%= link_to "Privacy Policy", privacy_path %></li>        
             <li><a href="https://app.termly.io/notify/dbb05b70-45e7-458a-a7d5-fc3491d4c67a" target="_blank">DSAR Form</a></li>
-            <li><a onclick="displayPreferenceModal()">Manage Cookie Preferences</a></li>
+            <li><a href="#" onclick="displayPreferenceModal()" data-turbolinks="false">Manage Cookie Preferences</a></li>
          </ul>
       </div>
       <div class="col-xl-2 col-lg-4">
          <%= render partial: 'spree/shared/mailchimp_subscribe_form' %>
          <ul class="footer-nav">
             <li class="header">Our Brands</li>
-            <li><a href="https://www.naturesflavors.com/" target="_blank">Nature's Flavors</a></li>
-            <li><a href="https://www.naturlax.com/" target="_blank">Naturlax</a></li>
-            <li><a href="https://www.seelecttea.com/" target="_blank">Seelect Tea</a></li>
-            <li><a href="https://www.yummatchatea.com/" target="_blank">Yum Matcha</a></li>
+            <li><a href="https://www.naturesflavors.com/" title="Go to the Nature's Flavors Website" target="_blank">Nature's Flavors</a></li>
+            <li><a href="https://www.naturlax.com/" title="Go to the Naturlax Website" target="_blank">Naturlax</a></li>
+            <li><a href="https://www.seelecttea.com/" title="Go to the Seelect Tea Website" target="_blank">Seelect Tea</a></li>
+            <li><a href="https://www.yummatchatea.com/" title="Go to the Yum Matcha Website" target="_blank">Yum Matcha</a></li>
           </ul>
       </div>
       <div class="col-xl-2 col-lg-4" data-hook="footer-nav-product-info">
          <div class="footer-spacer"></div>
          <ul class="footer-nav">
             <li class="header">Product Info</li>
-            <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
-            <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
-            <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
-            <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
-            <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
-            <li><%= link_to('FAQs', faq_path) %></li>
-            <li><%= link_to('Route FAQs', route_path) %></li>
+            <li><%= link_to('Flavor Powders', flavor_powders_path, title: 'What Are Flavoring Powders?') %></li>
+            <li><%= link_to('Flavor Emulsions', flavor_emulsions_path, title: 'What Are Flavor Emulsions?') %></li>
+            <li><%= link_to('Flavor Concentrates', flavor_concentrates_path, title: 'What Are Flavor Concentrates?') %></li>
+            <li><%= link_to('Flavor Extracts', flavor_extracts_path, title: 'What Are Natural Flavors & Extracts?') %></li>
+            <li><%= link_to('Flavor Oils', flavor_oils_path, title: 'What Are Flavoring Oils?') %></li>
+            <li><%= link_to('FAQs', faq_path, title: 'Natures Flavors FAQs') %></li>
+            <li><%= link_to('Route FAQs', route_path, title: 'Route+ Shipping Protection & Package Tracking FAQs') %></li>
          </ul>
       </div>
       <div class="col-xl-2 col-lg-12">
