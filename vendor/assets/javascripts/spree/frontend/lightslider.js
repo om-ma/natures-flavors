@@ -6,6 +6,7 @@
         slideMove: 1,
         slideMargin: 10,
         addClass: '',
+        alt: '',
         mode: 'slide',
         useCSS: true,
         cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',
@@ -354,8 +355,9 @@
                             }
                         }
                         var thumb = $children.eq(i * settings.slideMove).attr('data-thumb');
+                        var altImage = $children.eq(i * settings.alt).attr('data-alt');
                         if (settings.gallery === true) {
-                            pagers += '<li style="width:100%;' + property + ':' + thumbWidth + 'px;' + gutter + ':' + settings.thumbMargin + 'px"><a href="#"><img src="' + thumb + '" /></a></li>';
+                            pagers += '<li style="width:100%;' + property + ':' + thumbWidth + 'px;' + gutter + ':' + settings.thumbMargin + 'px"><a href="#"><img src="' + thumb + '" alt="' + altImage + '" /></a></li>';
                         } else {
                             pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
                         }

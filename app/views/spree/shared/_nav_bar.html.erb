@@ -2,7 +2,7 @@
   <div class="row no-gutters w-100" id="header">
     <div class="col-xl-2 position-static" id="home-link" data-hook>
       <%= link_to root_path, class: 'navbar-brand', data: { turbolinks: false } do %>
-        <%= image_tag 'theme_logo.svg', alt: "Nature's Flavors" %>
+        <%= image_tag 'theme_logo.svg', alt: "Go to Nature's Flavors Homepage" %>
       <% end %>
     </div>      
     <div class="col-xl-8 position-static" id="top-nav-bar">
@@ -13,11 +13,11 @@
         <div id="search-dropdown" class=" quick-menu ml-auto header-spree" >
           <div id="account-button">
             <% if spree_current_user.present? %>
-              <%= link_to account_path, :class => 'nav-profile tablet-hide' do %>
+              <%= link_to account_path, :class => 'nav-profile tablet-hide', :title => 'My Profile: Orders, Wishlist and Settings' do %>
                 <span id="span">Profile</span>
               <% end %>            
             <% else %>
-              <%= link_to new_spree_user_session_path , :class => 'nav-profile tablet-hide' do %>
+              <%= link_to new_spree_user_session_path, :class => 'nav-profile tablet-hide', :title => 'Sign In'  do %>
                 <span id="span">Login</span>    
               <% end %>
             <% end %>
