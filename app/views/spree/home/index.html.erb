@@ -73,7 +73,7 @@
       <strong>Jump to: </strong>
       <% if @all_categories.present? %>
       <% @all_categories.each do |category| %>
-        <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, alt: "#{category.name}"  %>
+        <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, title: "Go to #{category.name}"  %>
       <% end %>
       <% end %>
     </div>
@@ -178,18 +178,18 @@
     <% @all_categories.each do |category| %>
       <div class="col col-12" id="categories-<%= category.name %>">
           <div class="sub-categories-preview">
-          <%= link_to seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" do %>
+          <%= link_to seo_url(category), data: { turbolinks: false }, title: "All #{category.name} Products" do %>
             <% if browser.device.mobile? %>
                <% if category.icon.present? %>
-                  <%= image_tag category.icon.my_cf_image_url(:small), alt:"#{category.name}" %> 
+                  <%= image_tag category.icon.my_cf_image_url(:small), alt:"#{category.name} Image" %> 
                <% else %>
-                  <%= image_tag "noimage/default-category-image-small.jpg", alt:"#{category.name}" %>
+                  <%= image_tag "noimage/default-category-image-small.jpg", alt:"#{category.name} Image" %>
                <% end %>
             <% else %>
                <% if category.icon.present? %>
-                  <%= image_tag category.icon.my_cf_image_url(:large), alt:"#{category.name}" %> 
+                  <%= image_tag category.icon.my_cf_image_url(:large), alt:"#{category.name} Image" %> 
                <% else %>
-                  <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name}" %>
+                  <%= image_tag "noimage/default-category-image.jpg", alt:"#{category.name} Image" %>
                <% end %>
             <% end %>
           <% end %>
@@ -202,7 +202,7 @@
               <% end %>
             </ul>
           <% end %>
-          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, title: "#{category.name}" do %>
+          <%= link_to seo_url(category), class: 'btn btn-primary', data: { turbolinks: false }, title: "See All #{category.name} Products" do %>
             <span>See All <%= category.name %></span>
           <% end %>
         </div>
@@ -339,10 +339,10 @@
     <div class="container">
     <div class="sm-title text-center">Our Brands:</div>
       <ul class="media-list d-flex flex-wrap align-items-center justify-content-center">
-          <li><a href="https://naturesflavors.com"><%= image_tag "brand-natures-flavors.svg", alt:"Nature's Flavors" %></a></li>
-          <li><a href="https://www.seelecttea.com/" target="_blank"><%= image_tag "brand-seelect-tea.svg", alt:"Seelect Tea" %></a></li>
-          <li><a href="https://www.naturlax.com/" target="_blank"><%= image_tag "brand-naturlax.svg", alt:"Naturlax" %></a></li>
-          <li><a href="https://www.yummatchatea.com/" target="_blank"><%= image_tag "brand-yum-matcha.svg", alt:"Yum Matcha Tea" %></a></li>
+          <li><a href="https://naturesflavors.com"><%= image_tag "brand-natures-flavors.svg", alt:"Nature's Flavors Website" %></a></li>
+          <li><a href="https://www.seelecttea.com/" target="_blank"><%= image_tag "brand-seelect-tea.svg", alt:"Seelect Tea Website" %></a></li>
+          <li><a href="https://www.naturlax.com/" target="_blank"><%= image_tag "brand-naturlax.svg", alt:"Naturlax Website" %></a></li>
+          <li><a href="https://www.yummatchatea.com/" target="_blank"><%= image_tag "brand-yum-matcha.svg", alt:"Yum Matcha Tea Website" %></a></li>
       </ul>
     </div>
   </div>
