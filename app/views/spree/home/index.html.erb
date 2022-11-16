@@ -178,7 +178,7 @@
     <% @all_categories.each do |category| %>
       <div class="col col-12" id="categories-<%= category.name %>">
           <div class="sub-categories-preview">
-          <%= link_to seo_url(category), data: { turbolinks: false }, alt: "All #{category.name} Products" do %>
+          <%= link_to seo_url(category), data: { turbolinks: false }, title: "All #{category.name} Products" do %>
             <% if browser.device.mobile? %>
                <% if category.icon.present? %>
                   <%= image_tag category.icon.my_cf_image_url(:small), alt:"#{category.name} Image" %> 
