@@ -620,51 +620,60 @@ a.btn {
 .btn-primary,
 .btn-primary:focus,
 .cart-similar-item .dropdown .btn:focus {
-	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
 }
 
 .btn-primary:hover,
 .lSAction > a:hover,
 .cart-similar-item .dropdown .btn:hover {
-    background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
 .lSAction > a:not(:disabled):not(.disabled):active,
 .cart-similar-item .dropdown .btn:not(:disabled):not(.disabled):active {
-    background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
 .prev-page-icon,
 .prev-page-icon:focus {
-	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
 }
 
 .prev-page-icon:hover,
 .lSAction > a:hover {
-    background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
 }
 
 .prev-page-icon:not(:disabled):not(.disabled):active,
 .lSAction > a:not(:disabled):not(.disabled):active {
-    background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
 
 
 .prev-page-icon,
 .prev-page-icon:focus {
-	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
 }
 
 .prev-page-icon:hover,
 .lSAction > a:hover {
-    background: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #a71e22 16%, #d34047 82%);
 }
 
 .prev-page-icon:not(:disabled):not(.disabled):active,
 .lSAction > a:not(:disabled):not(.disabled):active {
-    background: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #a71e22 16%, #a71e22 82%);
 }
 
 
@@ -800,6 +809,7 @@ a.btn.btn-block {
 	overflow: hidden;
 	border: 0 none;
 	padding: 0;
+	color: #fff;
 	background-color: transparent;
 }
 
@@ -811,10 +821,12 @@ a.btn.btn-block {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
+	background-color: #a71e22;
+	background-image: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
 }
 
 .icon-btn:after {
+	background-color: #a71e22;
 	background-image: image-url("arrow-right-white-icon.svg");
 	background-repeat: no-repeat;
 	background-position:   center;
@@ -909,7 +921,8 @@ a.btn.btn-block {
 .navbar,
 .simple-header {
     padding: 0;
-	background: linear-gradient(96deg, #d34047 19%, #a71e22 79%);
+	background-color: #a71e22;
+	background-image: linear-gradient(96deg, #d34047 19%, #a71e22 79%);
 	margin: 0 0 1px;
 }
 
@@ -1022,7 +1035,8 @@ a.btn.btn-block {
 	font-size: 17px;
 	color: #ad2327;
 	border-radius: 21px;
-	background: linear-gradient(111deg, #fff 26%, #f1f1f1 73%);
+	background-color: #ffffff;
+	background-image: linear-gradient(111deg, #fff 26%, #f1f1f1 73%);
 	height: 50px;
 	padding: 0 20px 0 50px;
 	max-width: 260px;
@@ -1101,6 +1115,7 @@ a.btn.btn-block {
 	line-height: 16px;
 	border-radius: 5px;
 	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.13);
+	background-color: #ffe186;
 	background-image: linear-gradient(149deg, #ffe186 30%, #feca2b 81%);
 	position: absolute;
 	left: 50%;
@@ -1111,7 +1126,8 @@ a.btn.btn-block {
 
 .dropdown-menu-wrap {
 	width: 100%;
-	background: linear-gradient(108deg, #d34047 18%, #a71e22 80%);
+	background-color: #a71e22;
+	background-image: linear-gradient(108deg, #d34047 18%, #a71e22 80%);
     opacity: 0;
     visibility: hidden;
     position: absolute;
@@ -1166,7 +1182,8 @@ a.btn.btn-block {
 .dropdown-menu-wrap-sub {
 	min-width: 270px;
 	margin-left: 270px !important;
-	background: linear-gradient(108deg, #d34047 18%, #a71e22 80%);
+	background-color: #a71e22;
+	background-image: linear-gradient(108deg, #d34047 18%, #a71e22 80%);
     opacity: 0;
     visibility: hidden;
     position: absolute;
@@ -1187,6 +1204,7 @@ a.btn.btn-block {
 }
 
 .menu-see-all {
+	background-color: #FFE186;
 	background-image: linear-gradient(175deg, #FFE186 0%, #FECA2B 100%);
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.03);
 	border-radius: 5px;
@@ -1215,7 +1233,8 @@ a.btn.btn-block {
 
 .popular-badge {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
-  background: linear-gradient(167deg, #ffe186 13%, #feca2b 90%);
+  background-color: #ffe186;
+  background-image: inear-gradient(167deg, #ffe186 13%, #feca2b 90%);
 }
 
 
@@ -1229,7 +1248,8 @@ a.btn.btn-block {
 	top: 0;
 	right: -420px;
 	bottom: 0;
-	background: linear-gradient(168deg, #d34047 15%, #a71e22 84%);
+	background-color: #a71e22;
+	background-image: linear-gradient(168deg, #d34047 15%, #a71e22 84%);
 	width: 420px;
 	z-index: 1070;
 	transition: right .3s ease-in-out;
@@ -1295,7 +1315,8 @@ a.btn.btn-block {
     bottom: 0;
     z-index: 999;
     color: #000;
-	background: linear-gradient(178deg, #d34047 -8%, #a71e22 116%);
+	background-color: #a71e22;
+	background-image: linear-gradient(178deg, #d34047 -8%, #a71e22 116%);
     overflow: auto;
     transition: right 0.3s ease;
     opacity: 0;
@@ -1343,7 +1364,8 @@ a.btn.btn-block {
 	padding: 3px 10px;
 	border-radius: 5px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
-	background: linear-gradient(150deg, #ffe186 36%, #feca2b 67%);
+	background-color: #ffe186;
+	background-image: linear-gradient(150deg, #ffe186 36%, #feca2b 67%);
 }
 
 .product-menu a.back {
@@ -1530,7 +1552,8 @@ a.btn.btn-block {
 	padding: 0 8px;
 	border-radius: 5px;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.03);
-	background: linear-gradient(163deg, #ffe186 22%, #feca2b 81%);
+	background-color: #a71e22;
+	background-image: linear-gradient(163deg, #ffe186 22%, #feca2b 81%);
 	margin: 0 0 0 6px;
 }
 
@@ -1555,7 +1578,8 @@ a.btn.btn-block {
 
 .carousel-control-next:hover,
 .carousel-control-prev:hover {
-	background: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
+	background-color: #a71e22;
+	background-image: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
 }
 
 .carousel-control-prev {
@@ -1616,7 +1640,8 @@ a.btn.btn-block {
 }
 
 .search-wrapper {
-	background: linear-gradient(103deg, #d34047 49%, #a71e22 100%);
+	background-color: #a71e22;
+	background-image: linear-gradient(103deg, #d34047 49%, #a71e22 100%);
 	position: relative;
 }
 
@@ -1660,7 +1685,8 @@ a.btn.btn-block {
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position:   center;
-	background: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
+	background-color: #a71e22;
+	background-image: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
 	border-radius: 23px;
 	width: 50px;
 	height: 50px;
@@ -1837,7 +1863,8 @@ a.btn.btn-block {
 	background-image: image-url("customer-support-icon.svg");
 }
 
-.company-highlights h4 {
+.company-title {
+	font-weight: bold;
 	font-size: 20px;
 	text-transform: uppercase;
 	letter-spacing: -0.7px;
@@ -2016,7 +2043,8 @@ h3 a{
 	display: inline-block;
 	border-radius: 15px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
-	background: linear-gradient(168deg, #ffe186 11%, #feca2b 92%);
+	background-color: #ffe186;
+	background-image: linear-gradient(168deg, #ffe186 11%, #feca2b 92%);
 	position: absolute;
 	right: 14px;
 	top: 16px;
@@ -2026,7 +2054,7 @@ h3 a{
 	padding: 17px 0 23px;
 }
 
-.product-desc h4 {
+.product-desc h4, .product-desc-title {
     font-size: 16px;
     font-weight: 700;
 	text-align: center;
@@ -2201,7 +2229,8 @@ h3 a{
 	padding: 0 7px !important;
 	border-radius: 5px;
 	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.07);
-	background: linear-gradient(125deg, #c52a2e 35%, #a71e22 76%);
+	background-color: #a71e22;
+	background-image: linear-gradient(125deg, #c52a2e 35%, #a71e22 76%);
 	position: absolute;
 	margin: -5px 0 0 -32px !important;
 	display: inline-block !important;
@@ -2248,14 +2277,15 @@ h3 a{
 }
 
 .site-reviews-wrapper .title-wrap {
-	background: linear-gradient(98deg, #c52a2e 37%, #a71e22 74%);
+	background-color: #a71e22;
+	background-image: linear-gradient(98deg, #c52a2e 37%, #a71e22 74%);
 	padding: 25px 0;
 	position: relative;
 	margin: 0;
 }
 
 .site-reviews-wrapper .title-wrap:after {
-	background: linear-gradient(98deg, #c52a2e 37%, #a71e22 74%);
+	background-image: linear-gradient(98deg, #c52a2e 37%, #a71e22 74%);
 	content: '';
 	position: absolute;
 	display: block;
@@ -2314,7 +2344,8 @@ h3 a{
 }
 
 .reviews-wrap .lSAction > a:hover {
-	background: linear-gradient(111deg, #fff 26%, #f1f1f1 73%);
+	background-color: #ffffff;
+	background-image: linear-gradient(111deg, #fff 26%, #f1f1f1 73%);
 }
 
 .reviews-wrap .lSAction > .lSPrev:after {
@@ -2424,7 +2455,8 @@ h3 a{
 	height: 16px;
 	line-height: 16px;
 	border-radius: 5px;
-	background: linear-gradient(to bottom, #ffe186 -23%, #feca2b 50%, #feca2b 50%);
+	background-color: #ffe186;
+	background-image: linear-gradient(to bottom, #ffe186 -23%, #feca2b 50%, #feca2b 50%);
 	position: absolute;
 	left: 50%;
 	top: -8px;
@@ -2510,7 +2542,8 @@ h3 a{
 }
 
 .faqs-wrapper {
-	background: linear-gradient(122deg, #c52a2e 35%, #a71e22 76%);
+	background-color: #a71e22;
+	background-image: linear-gradient(122deg, #c52a2e 35%, #a71e22 76%);
 }
 
 .faqs-title-wrap {
@@ -2620,7 +2653,8 @@ h3 a{
 
 .footer-links-wrap {
 	color: #fff;
-	background: linear-gradient(127deg, #c52a2e 34%, #a71e22 77%);
+	background-color: #a71e22;
+	background-image: linear-gradient(127deg, #c52a2e 34%, #a71e22 77%);
 	padding: 120px 0 85px;
 	position: relative;
 }
@@ -2634,7 +2668,7 @@ h3 a{
     border-left-color: rgba(240,240,240,0.09);
 }
 
-.footer-links-wrap h4 {
+.footer-links-wrap h4, .footer-links-wrap-title {
 	font-size: 16px;
 	font-weight: 700;
 	line-height: 26px;
@@ -2667,7 +2701,8 @@ h3 a{
 
 .footer-nav li.header,
 .footer-address h5,
-.footere-business-hours h5 {
+.footer-business-hours h5,
+.footer-address-title {
 	font-size: 13px;
 	font-weight: 700;
 	line-height: 21px;
@@ -2804,7 +2839,8 @@ h3 a{
 	top: 9px;
 	border-radius: 12px;
 	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.07);
-	background: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
+	background-color: #a71e22;
+	background-image: linear-gradient(149deg, #c52a2e 30%, #a71e22 81%);
 	width: 32px;
 	height: 32px;
 	z-index: 1;
@@ -2844,7 +2880,8 @@ h3 a{
 
 .simple-footer {
 	padding: 60px 0;
-	background: linear-gradient(97deg, #d34047 19%, #a71e22 79%);
+	background-color: #a71e22;
+	background-image: linear-gradient(97deg, #d34047 19%, #a71e22 79%);
 }
 
 .simple-footer-links {
@@ -2986,7 +3023,8 @@ h3 a{
 	text-align: center;
 	border-radius: 11px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
-	background: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
+	background-color: #ffe186;
+	background-image: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
 	margin-bottom:20px;
 	font-weight: bold;
 }
@@ -3101,7 +3139,7 @@ h3 a{
 	margin: 0 0 30px;
 }
 
-.product-ingredients h5 {
+.product-ingredients h5, .product-ingredients-title {
 	font-size: 15px;
 	font-weight: 700;
 	color: #070707;
@@ -3164,7 +3202,8 @@ h3 a{
 	text-align: center;
 	border-radius: 11px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
-	background: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
+	background-color: #ffe186;
+	background-image: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
 	margin: 0 0 20px;
 }
 
@@ -3563,7 +3602,8 @@ h3 a{
 	margin: -1px 0 0;
 	border-top: rgba(255,255,255,0.2) 1px solid;
 	height: 51px;
-	background: linear-gradient(159deg, #d34047 28%, #a71e22 65%);
+	background-color: #a71e22;
+	background-image: linear-gradient(159deg, #d34047 28%, #a71e22 65%);
 }
 
 .mobile-cart-summary-header h4 {
@@ -3865,6 +3905,7 @@ h3 a{
 
 
 .menu-mobile-profile {
+	background-color: #FFE186;
 	background-image: linear-gradient(175deg, #FFE186 0%, #FECA2B 100%);
 	color: #B02226;
 	display: block;
@@ -3884,7 +3925,8 @@ h3 a{
 
 
 .cart-sidebar-header {
-	background: linear-gradient(112deg, #d34047 17%, #a71e22 81%);
+	background-color: #d34047;
+	background-image: linear-gradient(112deg, #d34047 17%, #a71e22 81%);
 	height: 90px;
 	padding: 0 20px;
 	display: flex;
@@ -4116,7 +4158,8 @@ h3 a{
 .cart-similar-item .dropdown .btn {
 	color: #fff !important;
 	min-width: 1px;
-	background: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
+	background-color: #a71e22;
+	background-image: linear-gradient(167deg, #d34047 16%, #a71e22 82%);
 	position: relative;
 }
 
@@ -4165,7 +4208,7 @@ h3 a{
 	padding: 45px 0;
 }
 
-.sidebar-categories h4 {
+.sidebar-categories h4, .sidebar-categories-title {
 	font-size: 13px;
 	color: rgba(7,7,7,0.6);
 	text-transform: uppercase;
@@ -4176,6 +4219,7 @@ h3 a{
 	border-radius: 0 17px 17px 0;
 	background-color: #fff;
 	display: inline-block;
+	font-weight: bold;
 }
 
 .sidebar-sub-categories {
@@ -4856,7 +4900,8 @@ h3 a{
 	color: #fff;
 	padding: 50px 60px;
 	border-radius: 23px;
-	background: linear-gradient(168deg, #d34047 15%, #a71e22 83%);
+	background-color: #a71e22;
+	background-image: linear-gradient(168deg, #d34047 15%, #a71e22 83%);
 }
 
 .contact-wrap h3 {
@@ -4973,7 +5018,8 @@ h3 a{
 .attention-note {
 	padding: 50px 60px 35px 240px;
 	border-radius: 23px;
-	background: linear-gradient(172deg, #d34047 5%, #a71e22 97%);
+	background-color: #a71e22;
+	background-image: linear-gradient(172deg, #d34047 5%, #a71e22 97%);
 	position: relative;
 	margin: 0 0 50px;
 }
@@ -5872,7 +5918,7 @@ display: flex;
     margin: 3px 0 0;
 }
     
-.product-desc h4 {
+.product-desc h4, .product-desc-title {
     font-size: 14px;
 }
     
@@ -6297,7 +6343,8 @@ display: flex;
 	line-height: 50px;
 	padding: 0 20px;
 	margin: 0 -20px;
-	background: linear-gradient(159deg, #d34047 28%, #a71e22 65%);
+	background-color: #d34047;
+	background-image: linear-gradient(159deg, #d34047 28%, #a71e22 65%);
 	display: block;
 	position: relative;
 }
@@ -6327,7 +6374,8 @@ display: flex;
 .sidebar-sub-categories {
 	padding: 5px 20px;
 	margin: 0 -20px;
-	background: linear-gradient(178deg, #d34047 -8%, #a71e22 116%);
+	background-color: #d34047;
+	background-image: linear-gradient(178deg, #d34047 -8%, #a71e22 116%);
 	display: none;
 }
 	
@@ -6347,6 +6395,7 @@ display: flex;
 	height: 5px;
 	border-radius: 2.5px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
+	background-color: #ffe186;
 	background-image: linear-gradient(176deg, #ffe186 -7%, #feca2b 110%);
 }
 	
@@ -6620,7 +6669,8 @@ display: flex;
 	
 .product-wrap .price {
 	color: #fff;
-	background: linear-gradient(170deg, #d34047 10%, #a71e22 90%);
+	background-color: #d34047;
+	background-image: linear-gradient(170deg, #d34047 10%, #a71e22 90%);
     left: 140px;
     top: 2px;
     bottom: auto;
@@ -6639,7 +6689,7 @@ display: flex;
 	padding: 42px 0 0;
 }
 	
-.product-wrap .product-desc h4 {
+.product-wrap .product-desc h4, .product-desc-title {
 	font-size: 16px;
 	text-align: left;
 	line-height: 1.38;
@@ -6668,7 +6718,7 @@ display: flex;
 }
 
 	
-.home-products-wrapper .product-wrap .product-desc h4 {
+.home-products-wrapper .product-wrap .product-desc h4, .product-desc-title {
     font-size: 14px;
     line-height: 20px;
 }
@@ -6888,7 +6938,8 @@ display: flex;
 	text-align: center;
 	border-radius: 11px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
-	background: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
+	background-color: #ffe186;
+	background-image: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
 	margin-bottom:20px;
 	font-weight: bold;
 }
@@ -6909,7 +6960,9 @@ display: flex;
 	padding: 3px 10px;
 	border-radius: 11px;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
-	background: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
+	background-color: #ffe186;
+	background-image: linear-gradient(143deg, #ffe186 40%, #feca2b 63%);
+
 	font-weight: bold;
 	color: #A71E22;
 	display: inline-table;
@@ -7349,7 +7402,7 @@ display: flex;
 .main-category-best li {
 	float: left;
 	line-height: 40px;
-	color: grey;
+	color: #595959;
 }
 
 .active-best {
