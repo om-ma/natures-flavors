@@ -73,7 +73,7 @@
       <strong>Jump to: </strong>
       <% if @all_categories.present? %>
       <% @all_categories.each do |category| %>
-        <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, title: "Go to #{category.name}"  %>
+        <%= link_to category.name, "#categories-#{category.name}", data: { turbolinks: false }, 'aria-label' => "Go to #{category.name}"  %>
       <% end %>
       <% end %>
     </div>
@@ -95,7 +95,7 @@
             <div class="company-highlights d-flex align-items-start mb-60"  data-aos="fade-up" data-aos-once="true" data-aos-duration="700">
               <div class="icon-wrap delivery-icon"></div>
               <div class="flex-fill">
-                <h4>FAST SHIPPING IN THE U.S.</h4>
+                <div class="company-title">FAST SHIPPING IN THE U.S.</div>
                 <p>1 to 3 days processing time for all non-commercial orders</p>
                 <p><small>Nature’s Flavors defines commercial based on order over 1 gallon. Pending availability.</small></p>
               </div>
@@ -103,14 +103,14 @@
             <div class="company-highlights d-flex align-items-start mb-60" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
               <div class="icon-wrap quality-icon"></div>
               <div class="flex-fill">
-                <h4>PURE ORGANIC & NATURAL</h4>
+                <div class="company-title">PURE ORGANIC & NATURAL</div>
                 <p>Ingredients sourced from the best producers</p>
               </div>
             </div>
             <div class="company-highlights d-flex align-items-start mb-60" data-aos="fade-up" data-aos-once="true" data-aos-duration="1300">
               <div class="icon-wrap customer-support-icon"></div>
               <div class="flex-fill">
-                <h4>PROMPT CUSTOMER SUPPORT</h4>
+                <div class="company-title">PROMPT CUSTOMER SUPPORT</div>
                 <p>A Professional, Knowledgeable Team</p>
                 <p><a href="tel:(714) 744-3700">(714) 744-3700</a></p>
               </div>
@@ -193,12 +193,12 @@
                <% end %>
             <% end %>
           <% end %>
-          <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, alt: "#{category.name}" %></h2>
+          <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, title: "#{category.name}" %></h2>
           <p><%= raw(category.short_description) %></p>
           <% if category.children %>
             <ul>
               <% category.children.each do |subcategory| %>
-                <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false }, alt: "#{subcategory.name}" %></li>
+                <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false }, title: "#{subcategory.name}" %></li>
               <% end %>
             </ul>
           <% end %>
@@ -393,7 +393,7 @@
               </h2>
             </div>
             <div id="collapseOne" class="collapse show" data-parent="#faqaccordion">
-              <div class="card-body">Flavor Extracts can be used in baking and clear beverages. Natural flavors and extracts come in many styles, colors, forms, and concentrations. Our Extracts are water soluble flavors made in a base of Natural Ethyl Alcohol. These all natural flavor extracts and organic flavor extracts are food grade, Kosher, vegan, gluten Free. <%= link_to 'Learn More', flavor_extracts_path, :class => 'faq-learn-more' %></div>
+              <div class="card-body">Flavor Extracts can be used in baking and clear beverages. Natural flavors and extracts come in many styles, colors, forms, and concentrations. Our Extracts are water soluble flavors made in a base of Natural Ethyl Alcohol. These all natural flavor extracts and organic flavor extracts are food grade, Kosher, vegan, gluten Free. <%= link_to 'More About Natural Flavors & Extracts?', flavor_extracts_path, :class => 'faq-learn-more' %></div>
             </div>
           </div>
           <div class="card">
