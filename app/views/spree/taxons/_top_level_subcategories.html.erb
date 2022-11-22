@@ -18,7 +18,7 @@
     <% products.each_with_index do |product, index| %>
     <div class="col col-12">
       <div class="product-wrap" data-hook="top_level_subcategories_product_list_item">
-        <%= link_to spree.product_path(product, taxon_id: @taxon&.id), data: { turbolinks: false } do %>
+        <%= link_to spree.product_path(product, taxon_id: @taxon&.id), 'aria-label': 'Most Popular: '+product.name, data: { turbolinks: false } do %>
         <div class="product-img">
           <%= plp_and_carousel_image(product, 'product-component-plp-image') %>
           <div class="price">
