@@ -43,16 +43,16 @@
       <div class="row no-gutters">
          <div class="col-xl-2 col-lg-3 phone-hide">
             <div class="sidebar-categories">
-               <h4>More Information:</h4>
+               <div class="sidebar-categories-title">More Information:</div>
                <ul class="sidebar-sub-categories">
-                  <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
-                  <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
-                  <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
-                  <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
-                  <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+                  <li><%= link_to('Flavor Powders', flavor_powders_path, 'aria-label': 'More Information About Flavor Powders') %></li>
+                  <li><%= link_to('Flavor Emulsions', flavor_emulsions_path, 'aria-label': 'More Information About Flavor Emulsions') %></li>
+                  <li><%= link_to('Flavor Concentrates', flavor_concentrates_path, 'aria-label': 'More Information About Flavor Concentrates') %></li>
+                  <li><%= link_to('Flavor Extracts', flavor_extracts_path, 'aria-label': 'More Information About Flavor Extracts') %></li>
+                  <li><%= link_to('Flavor Oils', flavor_oils_path, 'aria-label': 'More Information About Flavor Oils') %></li>
                   <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
                   <li><%= link_to('Reviews', reviews_path) %></li>
-                  <li class="active"><%= link_to('FAQs', faq_path) %></li>
+                  <li class="active"><%= link_to('FAQs', faq_path, 'aria-label': 'Natures Flavors FAQs') %></li>
                </ul>
             </div>
          </div>
@@ -66,14 +66,14 @@
                <div class="mobile-categories-wrap phone-visible">
                   <div class="header"><a class="mobile-category-toggle">More Information</a></div>
                   <ul class="sidebar-sub-categories">
-                     <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
-                     <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
-                     <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
-                     <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
-                     <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+                     <li><%= link_to('Flavor Powders', flavor_powders_path, 'aria-label': 'More Information About Flavor Powders') %></li>
+                     <li><%= link_to('Flavor Emulsions', flavor_emulsions_path, 'aria-label': 'More Information About Flavor Emulsions') %></li>
+                     <li><%= link_to('Flavor Concentrates', flavor_concentrates_path, 'aria-label': 'More Information About Flavor Concentrates') %></li>
+                     <li><%= link_to('Flavor Extracts', flavor_extracts_path, 'aria-label': 'More Information About Flavor Extracts') %></li>
+                     <li><%= link_to('Flavor Oils', flavor_oils_path, 'aria-label': 'More Information About Flavor Oils') %></li>
                      <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
                      <li><%= link_to('Reviews', reviews_path) %></li>
-                     <li><%= link_to('FAQs', faq_path) %></li>
+                     <li class="active"><%= link_to('FAQs', faq_path, 'aria-label': 'Natures Flavors FAQs') %></li>
                   </ul>
                </div>
                <div class="accordion" id="faqaccordion">

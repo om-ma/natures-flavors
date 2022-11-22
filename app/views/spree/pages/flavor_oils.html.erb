@@ -17,43 +17,43 @@
    <div class="row no-gutters">
       <div class="col-xl-2 col-lg-3 phone-hide">
          <div class="sidebar-categories">
-            <h4>More Information:</h4>
+            <div class="sidebar-categories-title">More Information:</div>
             <ul class="sidebar-sub-categories">
-               <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
-               <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
-               <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
-               <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
-               <li class="active"><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+               <li><%= link_to('Flavor Powders', flavor_powders_path, 'aria-label': 'More Information About Flavor Powders') %></li>
+               <li><%= link_to('Flavor Emulsions', flavor_emulsions_path, 'aria-label': 'More Information About Flavor Emulsions') %></li>
+               <li><%= link_to('Flavor Concentrates', flavor_concentrates_path, 'aria-label': 'More Information About Flavor Concentrates') %></li>
+               <li><%= link_to('Flavor Extracts', flavor_extracts_path, 'aria-label': 'More Information About Flavor Extracts') %></li>
+               <li class="active"><%= link_to('Flavor Oils', flavor_oils_path, 'aria-label': 'More Information About Flavor Oils') %></li>
                <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
                <li><%= link_to('Reviews', reviews_path) %></li>
-               <li><%= link_to('FAQs', faq_path) %></li>
+               <li><%= link_to('FAQs', faq_path, 'aria-label': 'Natures Flavors FAQs') %></li>
             </ul>
          </div>
       </div>
       <div class="col-xl-7 col-lg-9">
          <div class="article-wrapper">
             <ol class="breadcrumb">
-               <li class="breadcrumb-item"><%= link_to "Home", root_url %></li>
+               <li class="breadcrumb-item"><%= link_to "Home", root_url, 'aria-label': "Nature's Home Page" %></li>
                <li class="breadcrumb-item active">Flavor Oils</li>
             </ol>
             <h1 class="title mb-25">What Are Flavoring Oils?</h1>
             <div class="mobile-categories-wrap phone-visible">
                <div class="header"><a class="mobile-category-toggle">More Information</a></div>
                <ul class="sidebar-sub-categories">
-                  <li><%= link_to('Flavor Powders', flavor_powders_path) %></li>
-                  <li><%= link_to('Flavor Emulsions', flavor_emulsions_path) %></li>
-                  <li><%= link_to('Flavor Concentrates', flavor_concentrates_path) %></li>
-                  <li><%= link_to('Flavor Extracts', flavor_extracts_path) %></li>
-                  <li><%= link_to('Flavor Oils', flavor_oils_path) %></li>
+                  <li><%= link_to('Flavor Powders', flavor_powders_path, 'aria-label': 'More Information About Flavor Powders') %></li>
+                  <li><%= link_to('Flavor Emulsions', flavor_emulsions_path, 'aria-label': 'More Information About Flavor Emulsions') %></li>
+                  <li><%= link_to('Flavor Concentrates', flavor_concentrates_path, 'aria-label': 'More Information About Flavor Concentrates') %></li>
+                  <li><%= link_to('Flavor Extracts', flavor_extracts_path, 'aria-label': 'More Information About Flavor Extracts') %></li>
+                  <li class="active"><%= link_to('Flavor Oils', flavor_oils_path, 'aria-label': 'More Information About Flavor Oils') %></li>
                   <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></li>
                   <li><%= link_to('Reviews', reviews_path) %></li>
-                  <li><%= link_to('FAQs', faq_path) %></li>
+                  <li><%= link_to('FAQs', faq_path, 'aria-label': 'Natures Flavors FAQs') %></li>
                </ul>
             </div>
             <!-- Artivle -->  
             <div class="articl-media">
                <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/izzzYCEDWZM?rel=0" allowfullscreen></iframe>
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/izzzYCEDWZM?rel=0" aria-label="Making an Orange Extract With Essential Oils" allowfullscreen></iframe>
                </div>
             </div>
             <div class="banner-caption-wrap">
@@ -63,7 +63,7 @@
                   </div>
                   <div class="col-md-5">
                      <div class="wrap">
-                        <h5>Video Content</h5>
+                        <div class="wrap-title">Video Content</div>
                         <p>Watch Bill, “the Flavor Guy,” demonstrate how essential oils or food-grade flavoring oils are used to make an all-natural flavor extract.</p>
                      </div>
                   </div>
