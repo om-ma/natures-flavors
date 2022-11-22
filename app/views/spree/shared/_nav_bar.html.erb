@@ -41,7 +41,7 @@
         <% cache cache_key_for_all_categories(@all_categories) do %>
         <% @all_categories.each do |menu_category| %>
           <li class="nav-item">
-            <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link", data: { turbolinks: false } %>
+            <%= link_to menu_category.name, seo_url(menu_category), class: "nav-link", 'aria-label': "Menu "+menu_category.name, data: { turbolinks: false } %>
             <div class="dropdown-menu-wrap">
             <ul>
               <% menu_category.children.in_groups_of(6) do |categories|%>
