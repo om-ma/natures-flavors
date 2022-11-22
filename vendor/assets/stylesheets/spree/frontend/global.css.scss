@@ -1526,7 +1526,7 @@ a.btn.btn-block {
 }
 
 .sub-menu-header .flex-fill {
-	max-width: 50%;
+	/* max-width: 50%; */
 	height: 60px;
 	padding: 0 20px;
 }
@@ -3513,7 +3513,7 @@ h3 a{
 	min-height: 500px;
 }
 
-.product-comments .title {
+.product-comments .title, #related-products .title {
 	font-size: 21px;
 	line-height: 35px;
 	letter-spacing: normal;

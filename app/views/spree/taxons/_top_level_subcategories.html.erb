@@ -58,12 +58,12 @@
                <% end %>
             <% end %>
           <% end %>
-          <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false },  'aria-label' => "#{category.name}" %></h2>
+          <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, 'aria-label' => "List all #{category.name}" %></h2>
           <p><%= raw(category.short_description) %></p>
           <% if category.children %>
             <ul>
               <% category.children.each do |subcategory| %>
-                <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false }, alt: "#{subcategory.name}" %></li>
+                <li><%= link_to subcategory.name, seo_url(subcategory), data: { turbolinks: false }, 'aria-label': "Subcategory #{subcategory.name}" %></li>
               <% end %>
             </ul>
           <% end %>
