@@ -4320,7 +4320,7 @@ h3 a{
 }
 
 .sidebar-sub-categories .active a{
-	color: #d24047 !important;
+	color: #AC2024 !important;
 }
 
 .category-filters-wrap {
@@ -4947,7 +4947,7 @@ h3 a{
 	position: relative;
 }
 
-.banner-caption-wrap .wrap h5 {
+.banner-caption-wrap .wrap h5, .wrap-title {
 	font-size: 15px;
 	line-height: 1.67;
 	color: #070707;
@@ -4955,6 +4955,7 @@ h3 a{
 	position: absolute;
 	top: -14px;
 	left: 20px;
+	font-weight: 700;
 }
 
 .banner-caption-wrap .wrap p {
