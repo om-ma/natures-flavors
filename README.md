@@ -149,3 +149,10 @@ YotpoMappingCreator.call(Rails.application.default_url_options)
 
 # ShipStation setup
 https://github.com/ducl13/spree_shipstation-2
+
+
+# Route Commands
+#
+# Create order
+o = Spree::Order.where(number: 'R100009870').first;
+RouteCreateOrderWorker.perform_async(o.id)
