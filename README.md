@@ -156,3 +156,7 @@ https://github.com/ducl13/spree_shipstation-2
 # Create order
 o = Spree::Order.where(number: 'R100009870').first;
 RouteCreateOrderWorker.perform_async(o.id)
+#
+# Create shopment
+o = Spree::Order.where(number: 'R100009870').first;
+RouteCreateShipmentWorker.perform_async(o.shipments.first.id)
