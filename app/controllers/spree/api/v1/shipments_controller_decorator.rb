@@ -11,7 +11,9 @@ module Spree
         end
 
         def route_create_shipment
-          RouteCreateShipmentWorker.perform_async(@shipment.id)
+          if (@shipment.shipping_method.calculator.class.name != "Spree::Calculator::Shipping::LocalPickupCalculator") 
+            RouteCreateShipmentWorker.perform_async(@shipment.id)
+          end
         end
 
       end
