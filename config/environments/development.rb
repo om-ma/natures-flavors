@@ -129,7 +129,7 @@ Rails.application.configure do
 
   # Route insurance
   config.x.cache.route_quote_expiration = 24.hours
-  config.x.route.integration_enabled = 'true'
+  config.x.route.integration_enabled = 'false'
   # Dev merchant
   config.x.route.merchant_id = 'merch_vvxkoH49riWxHopnelN3'
   config.x.route.public_token = '35539ae7-a7b6-436e-bee5-4d22665cd0a4'
