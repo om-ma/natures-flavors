@@ -1,1 +1,1 @@
-$("#current-user-addresses-profile").html("<%= j render partial: 'spree/users/profile/user_addresses', locals: {user_addresses: spree_current_user.addresses} %>");
+$("#current-user-addresses-profile").html("<%= j render partial: 'spree/users/profile/user_addresses', locals: { user_addresses: spree_current_user.addresses.sort_by{ |a| a.id } } %>");
