@@ -65,5 +65,20 @@ module Spree
       end
     end
 
+    def select_user_available_addresses(order_address_id)
+      return nil if user_available_addresses.empty?
+
+      if order_address_id.nil?
+        user_available_addresses.each do |address|
+          return address.id if address.is_default
+        end
+        return user_available_addresses.first.id
+      else
+        user_available_addresses.each do |address|
+          return address.id if address.id == order_address_id
+        end
+        return user_available_addresses.first.id
+      end
+    end
   end
 end

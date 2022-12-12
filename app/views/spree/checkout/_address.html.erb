@@ -46,11 +46,12 @@
   <div class="cart-header d-flex align-items-center justify-content-between">
     <h5>Shipping Address</h5>
   </div>
+  <% selected_ship_address_id = select_user_available_addresses(@order.ship_address_id) %>
   <% if spree_current_user.present? %>
     <div class="form-group form-floating mb-5">
       <select class="custom-select address-select-change-js ">
         <% user_available_addresses.each_with_index do |address, idx| %>
-          <option value= "billing_address__<%=address.id%>" >
+          <option value= "billing_address__<%=address.id%>" <%= (address.id == selected_ship_address_id ? 'selected' : '') %>>
             <%= render "spree/users/address", address: address %>
           </option>
         <% end %>
@@ -84,7 +85,7 @@
             <% user_available_addresses.each_with_index do |address, idx| %>
               <div class="row" id="<%= [address_type, dom_id(address)].join('_') %>">
                 <label class="form-check-label spree-radio-label col-8 d-none">
-                  <%= form.radio_button "#{address_name}_id", address.id, checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0), class: "billing_address__#{address.id} d-none" %>
+                  <%= form.radio_button "#{address_name}_id", address.id, checked: (address.id == selected_ship_address_id), class: "billing_address__#{address.id} d-none" %>
                   <span class="spree-radio-label-custom-input"></span>
                     <%= render "spree/users/address", address: address %>
                 </label>
