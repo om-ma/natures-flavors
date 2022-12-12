@@ -61,7 +61,7 @@ module Spree
           memo << current_store.states_available_for_checkout(country)
         end.flatten
 
-        try_spree_current_user.addresses
+        try_spree_current_user.addresses.sort_by{ |a| a.id }
       end
     end
 
