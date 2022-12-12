@@ -91,7 +91,6 @@
   <% if spree_current_user.present? %>
     <div class="col-sm-12">
       <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center">
-        <% is_use_addresses_present = spree_current_user.addresses.present? ? true : false %>
         <% if( request.fullpath.include? "/checkout") %>
           <div class="custom-checkbox" >
             <label>
@@ -103,7 +102,7 @@
         <% end %>
         <div class="custom-checkbox">
           <label>
-            <%= address_form.check_box :is_default, class: 'custom-control-input', checked: is_use_addresses_present ? "" : "checked" %>
+            <%= address_form.check_box :is_default, class: 'custom-control-input' %>
             <span class="custom-control-label"></span>Save as Default
           </label>
         </div>
