@@ -8,7 +8,7 @@ module Spree
 
     def clear_other_is_default
       if is_default && user.present?
-        Spree::Address.where.not(id: id).where(user_id: 1, is_default: true, deleted_at: nil).each do |address|
+        Spree::Address.where.not(id: id).where(user_id: user.id, is_default: true, deleted_at: nil).each do |address|
           address.is_default = false
           address.save!
         end
