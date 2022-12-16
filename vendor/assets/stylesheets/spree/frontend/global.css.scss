@@ -7581,3 +7581,24 @@ display: flex;
 .recaptcha-disclaimer {
 	margin-bottom: 25px;
 }
+
+.top-banner-message {
+	font-size: 12px;
+	line-height: 15px;
+    color: #a71e22;
+    padding: 5px 0;
+    background-color: #feca2b;
+    background-image: linear-gradient(149deg, #ffe186 30%, #feca2b 81%);
+    text-align: center;
+}
+.top-banner-message a {
+	text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+	.top-banner-message {
+		text-align: left;
+		padding: 10px 20px;
+		margin-bottom: 1px;
+	}
+}
