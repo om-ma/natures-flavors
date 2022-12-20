@@ -12,8 +12,20 @@
     <%= render partial: 'spree/shared/accessibe' %>
   </head>
   <body id="<%= @body_id || 'default' %>" data-hook="body">
-  <% if Spree::Config[:banner_message].present? %>
+  <% if (Spree::Config[:banner_message].present? && Spree::Config[:banner_message2].blank?) %>
     <div class="top-banner-message"><%= Spree::Config[:banner_message].html_safe %></div>
+  <% elsif (Spree::Config[:banner_message].blank? && Spree::Config[:banner_message2].present?) %>
+    <div class="top-banner-message"><%= Spree::Config[:banner_message2].html_safe %></div>
+  <% elsif Spree::Config[:banner_message].present? && Spree::Config[:banner_message2].present? %>
+    <div class="top-banner-message">
+      <div id="top-banner-message-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active"><%= Spree::Config[:banner_message].html_safe %></div>
+          <div class="carousel-item"><%= Spree::Config[:banner_message2].html_safe %></div>
+        </div>
+      </div>
+      <script>$('.carousel').carousel({interval: 3000})</script>
+    </div>
   <% end %>
     <%= render partial: 'spree/shared/trackers/google_tag_manager_body' %>
     <div id="wrapper" class="main-layout-section" data-current-order-number="<%= current_order.try(:number) %>" data-current-order-token="<%=  current_order.try(:token) %>" >
