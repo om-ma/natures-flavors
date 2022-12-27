@@ -5117,7 +5117,8 @@ h3 a{
 }
 
 .shipping-options .custom-radio label,
-.payment-options .custom-radio label {
+.payment-options .custom-radio label,
+.payment-options .custom-checkbox label {
     font-size: 16px;
     font-weight: 400;
 }
@@ -7610,4 +7611,7 @@ display: flex;
 		padding: 10px 20px;
 		margin-bottom: 1px;
 	}
+}
+.billing_fieldset_wrapper {
+	margin-bottom: 40px;
 }

@@ -1,5 +1,8 @@
 Spree::Order.class_eval do
 
+    before_validation :clone_shipping_address, if: :use_shipping?
+    attr_accessor :use_shipping
+
     money_methods :route_insurance_price
 
     # Set by admin/order_controller to be used to log state change for production state
@@ -100,6 +103,9 @@ Spree::Order.class_eval do
       RouteCreateOrderWorker.perform_async(self.id)
     end
 
+    def use_shipping?
+      use_shipping.in?([true, 'true', '1'])
+    end
 end
 
 Spree::Order.state_machine.after_transition :to => :complete,

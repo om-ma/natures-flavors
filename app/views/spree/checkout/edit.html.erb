@@ -20,6 +20,7 @@ end
 %>
 <div data-hook="checkout_header"  ></div>
 <main class="page-contents" id="checkout" data-hook >
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
   <div class="checkout-wrapper" data-hook="checkout_title">
     <%= form_for @order, url: spree.update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}", class: "" } do |form| %>
       <div class="row flex-row-reverse no-gutters" data-hook="checkout_progress" data-hook="checkout_content">

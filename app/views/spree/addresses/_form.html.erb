@@ -88,14 +88,23 @@
       </div>  
     <% end %>
   <% end %>
-  <% if spree_current_user.present? %>
+  <% if spree_current_user.present?
+    if request.parameters[:save_user_address].present?
+      if request.parameters[:save_user_address].to_b
+        save_user_address_checked = 'checked'
+      else
+        save_user_address_checked = ''
+      end
+    else
+      save_user_address_checked = 'checked'
+    end 
+  %>
     <div class="col-sm-12">
       <div class="custom-checkbox-wrap d-flex flex-wrap align-items-center">
         <% if( request.fullpath.include? "/checkout") %>
           <div class="custom-checkbox" >
             <label>
-              
-              <input type="checkbox" class="custom-control-input" id="is_user_address_saved" checked>
+              <input type="checkbox" class="custom-control-input" id="is_user_address_saved" <%= save_user_address_checked %>>
               <span class="custom-control-label"></span>Save to My Addresses
             </label>
           </div>

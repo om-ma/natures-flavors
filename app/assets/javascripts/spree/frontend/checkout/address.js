@@ -128,23 +128,6 @@ Spree.ready(function($) {
         Spree.updateState('s')
       })
       Spree.updateState('b')
-
-      var orderUseBilling = $('input#order_use_billing')
-      orderUseBilling.change(function() {
-        updateShippingFormState(orderUseBilling)
-      })
-      updateShippingFormState(orderUseBilling)
-    }
-
-    function updateShippingFormState(orderUseBilling) {
-      if (orderUseBilling.is(':checked')) {
-        $('#shipping .inner').hide()
-        $('#shipping .inner input, #shipping .inner select').prop('disabled', true)
-      } else {
-        $('#shipping .inner').show()
-        $('#shipping .inner input, #shipping .inner select').prop('disabled', false)
-        Spree.updateState('s')
-      }
     }
 
     function getCountryId(region) {

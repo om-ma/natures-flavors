@@ -20,11 +20,33 @@ Spree::CheckoutController.class_eval do
     redirect_to(spree.cart_path) && return unless @order
   end
 
+  # Override to not set @order.bill_address
+  def before_address
+    @order.ship_address ||= Spree::Address.new(country: current_store.default_country, user: try_spree_current_user) if @order.checkout_steps.include?('delivery')
+  end
+
+  # Override to set @order.bill_address
+  def before_payment
+    @order.bill_address ||= Spree::Address.new(country: current_store.default_country, user: try_spree_current_user)
+
+    if @order.checkout_steps.include? 'delivery'
+      packages = @order.shipments.map(&:to_package)
+      @differentiator = Spree::Stock::Differentiator.new(@order, packages)
+      @differentiator.missing.each do |variant, quantity|
+        Spree::Dependencies.cart_remove_item_service.constantize.call(order: @order, variant: variant, quantity: quantity)
+      end
+    end
+
+    return unless try_spree_current_user.respond_to?(:payment_sources)
+
+    @payment_sources = try_spree_current_user.payment_sources.where(payment_method: @order.available_payment_methods)
+  end
+
   def get_route_quote
     # state == address: Something changed in the cart/first time checkout.
     # state != address and quote_id is blank: Pre-Route orders
-    if (@order.state == 'address' && !@order.bill_address_id.nil? && !@order.ship_address_id.nil?) || 
-        (@order.state != 'address' && !@order.bill_address_id.nil? && !@order.ship_address_id.nil? && @order.route_insurance_quote_id.blank?)
+    if (@order.state == 'address' && !@order.ship_address_id.nil?) || 
+        (@order.state != 'address' && !@order.ship_address_id.nil? && @order.route_insurance_quote_id.blank?)
       quote_id, quote_premium, quote_currency = Rails.cache.fetch("@route/quote/order/#{@order.number}/item_total/#{@order.item_total}", expires_in: Rails.configuration.x.cache.route_quote_expiration, race_condition_ttl: 30.seconds) do
         client = RouteAPI::V1::Client.new
         merchant_id = Rails.configuration.x.route.merchant_id

@@ -11,9 +11,9 @@ $( document ).on('turbolinks:load', function() {
 	
 	$("#is_user_address_saved").on('change',function(){
 		if (this.checked){
-			$("#save_user_address").val("true")
+			$("#save_user_address").val("true");
 		}else{
-			$("#save_user_address").replaceWith("");
+			$("#save_user_address").val("false");
 		}
 	});
 
