@@ -119,4 +119,19 @@
     </label>
   </div>
 <button type="button" class="btn btn-primary btn-block design-submit-next-step">Next Step: <strong>Choose Delivery</strong></button>
-<%= hidden_field_tag 'save_user_address', (selected_ship_address_id ? false : true), data: { hook: "save_user_address" } %>
+<%
+  if request.parameters[:save_user_address].present?
+    if request.parameters[:save_user_address].to_b
+       save_user_address_checked = true
+    else
+      save_user_address_checked = false
+    end
+  else
+    if selected_ship_address_id
+      save_user_address_checked = false
+    else
+      save_user_address_checked = true
+    end
+  end 
+%>
+<%= hidden_field_tag 'save_user_address', save_user_address_checked, data: { hook: "save_user_address" } %>
