@@ -46,15 +46,22 @@
   <div class="cart-header d-flex align-items-center justify-content-between">
     <h5>Shipping Address</h5>
   </div>
-  <% if spree_current_user.present? %>
+  <% selected_ship_address_id = -1 %>
+  <% if spree_current_user.present? 
+    if @order.errors.count > 0
+      selected_ship_address_id = -1
+    else 
+      selected_ship_address_id = select_user_available_addresses(@order.ship_address_id)
+    end
+  %>
     <div class="form-group form-floating mb-5">
       <select class="custom-select address-select-change-js ">
         <% user_available_addresses.each_with_index do |address, idx| %>
-          <option value= "billing_address__<%=address.id%>" >
+          <option value= "shipping_address__<%=address.id%>" <%= (address.id == selected_ship_address_id ? 'selected' : '') %>>
             <%= render "spree/users/address", address: address %>
           </option>
         <% end %>
-        <option value= "new_address_selected">
+        <option value= "new_address_selected" <%= (selected_ship_address_id == -1 ? 'selected' : '') %>>
           New Address
         </option>
       </select>
@@ -63,28 +70,17 @@
       </label>
     </div>
   <% end %>
-  <% ['billing', 'shipping'].each do |address_type|
+  <% ['shipping'].each do |address_type|
   address_name = "#{address_type[0...4]}_address" %>
   <div  data-hook="<%= address_type %>_fieldset_wrapper">
     <div id="<%= address_type %>" data-hook>
-      <h5 class="text-uppercase checkout-content-header">
-      </h5>
-      <% if address_type == 'shipping' %>
-        <div class="spree-cspree-radio-label-custom-inputheckbox-container checkout-content-billing-checkbox" data-hook="use_billing">
-          <div class="spree-checkbox d-none">
-            <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'form-check-input'} %>
-            <%= label_tag :order_use_billing, nil, id: 'use_billing' %>
-          </div>
-          <%#= label_tag :order_use_billing, Spree.t(:use_billing_address), class: 'spree-checkbox-label d-nonehtm' %>
-        </div>
-      <% end %>
       <% if user_available_addresses.present? %>
         <div class="select_address mb-5">
           <div class="form-group col">
             <% user_available_addresses.each_with_index do |address, idx| %>
               <div class="row" id="<%= [address_type, dom_id(address)].join('_') %>">
                 <label class="form-check-label spree-radio-label col-8 d-none">
-                  <%= form.radio_button "#{address_name}_id", address.id, checked: (address.id == try_spree_current_user["#{address_name}_id"] || idx == 0), class: "billing_address__#{address.id} d-none" %>
+                  <%= form.radio_button "#{address_name}_id", address.id, checked: (address.id == selected_ship_address_id), class: "shipping_address__#{address.id} d-none" %>
                   <span class="spree-radio-label-custom-input"></span>
                     <%= render "spree/users/address", address: address %>
                 </label>
@@ -93,7 +89,7 @@
             <% end %>
             <div class="row">
               <label class="form-check-label spree-radio-label col">
-                <%= form.radio_button "#{address_name}_id", 0, class: 'form-check-input d-none' %> <h4><%#= Spree.t('address_book.other_address') %></h4>
+                <%= form.radio_button "#{address_name}_id", 0, checked: (selected_ship_address_id == -1), class: 'form-check-input d-none' %>
                 <span class="spree-radio-label-custom-input"></span>
               </label>
             </div>
@@ -107,7 +103,7 @@
               address_name: address_name,
               address_form: address_form,
               address_type: address_type,
-              address: Spree::Address.new(country: current_store.default_country),
+              address: @order.ship_address,
               form: form
             } %>
           </div>
@@ -115,7 +111,7 @@
       <% end %>
     </div>
   </div>  
-<% end %>
+  <% end %>
   <div class="custom-checkbox request_coa">
     <label>
       <%= form.check_box :request_coa, class: "custom-control-input" %>
@@ -123,4 +119,19 @@
     </label>
   </div>
 <button type="button" class="btn btn-primary btn-block design-submit-next-step">Next Step: <strong>Choose Delivery</strong></button>
-<%= hidden_field_tag 'save_user_address', true, data: { hook: "save_user_address" } %>
+<%
+  if request.parameters[:save_user_address].present?
+    if request.parameters[:save_user_address].to_b
+       save_user_address_checked = true
+    else
+      save_user_address_checked = false
+    end
+  else
+    if selected_ship_address_id
+      save_user_address_checked = false
+    else
+      save_user_address_checked = true
+    end
+  end 
+%>
+<%= hidden_field_tag 'save_user_address', save_user_address_checked, data: { hook: "save_user_address" } %>

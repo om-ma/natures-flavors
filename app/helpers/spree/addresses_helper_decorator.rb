@@ -61,9 +61,25 @@ module Spree
           memo << current_store.states_available_for_checkout(country)
         end.flatten
 
-        try_spree_current_user.addresses
+        try_spree_current_user.addresses.sort_by{ |a| a.id }
       end
     end
 
+    def select_user_available_addresses(order_ship_address_id)
+      return nil if user_available_addresses.empty?
+
+      if order_ship_address_id.nil?
+        user_available_addresses.each do |address|
+          return address.id if address.is_default
+        end
+        return user_available_addresses.first.id
+      else
+        user_available_addresses.each do |address|
+          return address.id if address.id == order_ship_address_id
+        end
+        return user_available_addresses.first.id
+      end
+    end
   end
+
 end

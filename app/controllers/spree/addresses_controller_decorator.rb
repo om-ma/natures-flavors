@@ -71,6 +71,7 @@ Spree::AddressesController.class_eval do
 
   private
   def address_params
+    params[:address].transform_values! { |v| v == '' ? nil : v }
     params[:address].permit(:address,
                             :firstname,
                             :lastname,

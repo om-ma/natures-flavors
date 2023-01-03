@@ -9,11 +9,19 @@ $( document ).on('turbolinks:load', function() {
 	    e.preventDefault();
 	});
 	
+	if ($("#is_user_address_saved").is(':checked') == false) {
+		$(".save_address_as_default").attr("disabled", true);
+		$(".save_address_as_default").prop("checked", false);
+	}
+	
 	$("#is_user_address_saved").on('change',function(){
 		if (this.checked){
-			$("#save_user_address").val("true")
+			$("#save_user_address").val("true");
+			$(".save_address_as_default").removeAttr("disabled");
 		}else{
-			$("#save_user_address").replaceWith("");
+			$("#save_user_address").val("false");
+			$(".save_address_as_default").attr("disabled", true);
+			$(".save_address_as_default").prop("checked", false);
 		}
 	});
 

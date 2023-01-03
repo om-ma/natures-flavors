@@ -98,36 +98,112 @@
   <div class="cart-header d-flex align-items-center justify-content-between mb-0">
     <h5>Billing address</h5>
   </div>
-  <ul class="shipping-options mb-0">
+  <% 
+    if request.parameters[:order_use_shipping_checked].present?
+      if request.parameters[:order_use_shipping_checked].to_b
+        order_use_shipping_checked = true
+      else
+        order_use_shipping_checked = false
+      end
+    else
+      order_use_shipping_checked = true
+    end
+  %>
+  <ul class="payment-options mb-0">
     <li>
-      <div class="custom-radio">
+      <div class="custom-checkbox">
         <label>
-          <%#= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address?, { class: 'custom-control-input payment-change-shipping-address'} %>
-          <input type="radio" name="radio" class="custom-control-input payment-change-shipping-address" checked="">
-          <span class="custom-control-label"></span>Same as shipping address</label>
-      </div>
-    </li>
-    <li>
-      <div class="custom-radio">
-        <label>
-          <input type="radio" name="radio" class="custom-control-input payment-change-billing-address">
-          <span class="custom-control-label"></span>Use a different billing address</label>
+          <%= check_box_tag 'order[use_shipping]', 1, order_use_shipping_checked, { class: 'custom-control-input' } %>
+          <span class="custom-control-label"></span>Same as shipping address
+        </label>
       </div>
     </li>
   </ul>
-  <div class="row d-none" id="payment-billing-address" >
-     <% ['billing'].each do |address_type|
-    address_name = "#{address_type[0...4]}_address" %>
-        <%= form.fields_for address_name do |address_form| %>
+  <% selected_bill_address_id = -1 %>
+  <% if spree_current_user.present? 
+    if @order.errors.count > 0
+      selected_bill_address_id = -1
+    else 
+      selected_bill_address_id = @order.ship_address_id
+    end
+  %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="select_billing_address form-group form-floating mb-20 d-none">
+        <select class="custom-select billing-address-select-change-js">
+          <% user_available_addresses().each_with_index do |address, idx| %>
+            <option value= "billing_address__<%=address.id%>" <%= (address.id == selected_bill_address_id ? 'selected' : '') %>>
+              <%= render "spree/users/address", address: address %>
+            </option>
+          <% end %>
+          <option value= "new_address_selected" <%= (selected_bill_address_id == -1 ? 'selected' : '') %>>
+            New Address
+          </option>
+        </select>
+        <label>
+          My Addresses
+        </label>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% ['billing'].each do |address_type|
+  address_name = "#{address_type[0...4]}_address" %>
+  <div class="<%= address_type %>_fieldset_wrapper" data-hook="<%= address_type %>_fieldset_wrapper">
+    <div id="<%= address_type %>" data-hook>
+      <% if user_available_addresses.present? %>
+        <div class="select_address mb-5">
+          <div class="form-group col">
+            <% user_available_addresses.each_with_index do |address, idx| %>
+              <div class="row" id="<%= [address_type, dom_id(address)].join('_') %>">
+                <label class="form-check-label spree-radio-label col-8 d-none">
+                  <%= form.radio_button "#{address_name}_id", address.id, checked: (address.id == selected_bill_address_id), class: "billing_address__#{address.id} d-none" %>
+                  <span class="spree-radio-label-custom-input"></span>
+                    <%= render "spree/users/address", address: address %>
+                </label>
+              </div>
+            <% end %>
+            <div class="row">
+              <label class="form-check-label spree-radio-label col">
+                <%= form.radio_button "#{address_name}_id", 0, checked: (selected_bill_address_id == -1), class: 'form-check-input d-none' %>
+                <span class="spree-radio-label-custom-input"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= form.fields_for address_name do |address_form| %>
+        <div class="inner checkout-content-inner" data-hook='<%= "#{address_type}_inner" %>'>
+          <div class="row">
             <%= render partial: 'spree/addresses/form', locals: {
               address_name: address_name,
               address_form: address_form,
               address_type: address_type,
-              address: Spree::Address.new(country: current_store.default_country),
+              address: @order.bill_address,
               form: form
             } %>
-        <% end %>    
-    <% end %>
-  </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>  
+  <% end %>
   <button type="button" class="btn btn-primary btn-block design-submit-next-step">Next Step: <strong>Pay</strong></button>
 </div>
+<%
+  if request.parameters[:save_user_address].present?
+    if request.parameters[:save_user_address].to_b
+       save_user_address_checked = true
+    else
+      save_user_address_checked = false
+    end
+  else
+    if selected_bill_address_id
+      save_user_address_checked = false
+    else
+      save_user_address_checked = true
+    end
+  end 
+%>
+<%= hidden_field_tag 'save_user_address', save_user_address_checked, data: { hook: "save_user_address" } %>
+<%= hidden_field_tag 'order_use_shipping_checked', order_use_shipping_checked, data: { hook: "order_use_shipping_checked" } %>
