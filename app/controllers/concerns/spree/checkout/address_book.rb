@@ -33,10 +33,12 @@ module Spree
 
       def normalize_addresses
         if params[:state] == 'address' && @order.ship_address_id
-
           if params[:save_user_address].present? && params[:save_user_address].to_b && try_spree_current_user.present?
             @order.ship_address.update_attribute(:user_id, try_spree_current_user&.id)
           end
+
+          @order.bill_address = @order.ship_address
+          @order.save!
         elsif params[:state] == 'payment' && @order.bill_address_id
           bill_address = @order.bill_address
           ship_address = @order.ship_address
