@@ -1,15 +1,15 @@
 <div class="footer-links-wrap">
    <div class="row no-gutters">
       <div class="col-xl-2 tablet-hide"></div>
-      <div class="col-xl-2 col-lg-4">
+      <div class="col-xl-2 col-lg-4" role="navigation" aria-label="Family owned and run for over 40 years. It is our mission to spread the Natural and Organic bounty of nature through our products.">
          <div class="footer-logo-wrap">
-            <figure>  <%= image_tag 'footer_logo.svg', alt: "Nature's Flavors" %></figure>
+            <figure><%= image_tag 'footer_logo.svg', alt: "Nature's Flavors" %></figure>
             <p>Family owned and run for over 40 years. It is our mission to spread the Natural and Organic bounty of nature through our products.</p>
          </div>
          <ul class="footer-nav">
             <li class="header">Information</li>
             <li><%= link_to('About Us', about_us_path) %></li>
-            <li><a href="https://blog.naturesflavors.com/videos/" target="_blank">Flavorful Bites Blog</a></li>
+            <li><a href="https://blog.naturesflavors.com/videos/" target="_blank" aria-label="Blog New Window">Flavorful Bites Blog</a></li>
             <li><%= link_to "Contact Us", contact_us_path %></li>
             <li><%= link_to "Make a Beverage", beverage_development_path %></li>
             <li><%= link_to "Shipments & Delivery", shipments_delivery_path %></li>
@@ -17,7 +17,7 @@
             <li><%= link_to "Terms & Conditions", terms_and_conditions_path %></li> 
             <li><%= link_to "Privacy Policy", privacy_path %></li>        
             <li><a href="https://app.termly.io/notify/dbb05b70-45e7-458a-a7d5-fc3491d4c67a" target="_blank">DSAR Form</a></li>
-            <li><a onclick="displayPreferenceModal()" onkeypress="displayPreferenceModal()" tabindex="0" role="button" data-turbolinks="false">Manage Cookie Preferences</a></li>
+            <li><a onclick="displayPreferenceModal()" onkeypress="displayPreferenceModal()" role="button" data-turbolinks="false" data-acsb-clickable="true" data-acsb-navigable="true" data-acsb-now-navigable="true" data-acsb-menu="a" data-acsb-menu-root-link="true">Manage Cookie Preferences</a></li>
          </ul>
       </div>
       <div class="col-xl-2 col-lg-4">
@@ -45,13 +45,13 @@
       </div>
       <div class="col-xl-2 col-lg-12">
          <div class="row-tablet-only">
-            <div class="col-md-4 col-12">
+            <div class="col-md-4 col-12" role="navigation" aria-label="Follow us">
                <div class="footer-links-wrap-title">Follow us</div>
                <ul class="social-nav d-flex flex-wrap align-items-center">
-                  <li><a href="http://www.facebook.com/NaturesFlavors" target="_blank" class="facebook-icon">Facebook</a></li>
-                  <li><a href="https://www.instagram.com/natures_flavors/" target="_blank" class="instagram-icon">Intagram</a></li>
-                  <li><a href="https://www.pinterest.com/naturesflavors" target="_blank" class="pinterest-icon">Pinterest</a></li>
-                  <li><a href="https://www.youtube.com/user/NaturesFlavors" target="_blank" class="youtube-icon">Youtube</a></li>
+                  <li><a href="http://www.facebook.com/NaturesFlavors" aria-label="Facebook New Window" aria-hidden="false" target="_blank" class="facebook-icon">Facebook</a></li>
+                  <li><a href="https://www.instagram.com/natures_flavors/" aria-label="Instagram New Window" aria-hidden="false" target="_blank" class="instagram-icon">Intagram</a></li>
+                  <li><a href="https://www.pinterest.com/naturesflavors" aria-label="Pinterest New Window" aria-hidden="false" target="_blank" class="pinterest-icon">Pinterest</a></li>
+                  <li><a href="https://www.youtube.com/user/NaturesFlavors" aria-label="Youtube New Window" aria-hidden="false" target="_blank" class="youtube-icon">Youtube</a></li>
                </ul>
             </div>
             <div class="col-lg-4 mobile-hide">
@@ -59,7 +59,7 @@
                   <div class="footer-address-title">Address</div>
                   <p>833 N. Elm Street, Orange,<br>California 92867</p>
                </div>
-               <div class="footer-phone mobile-hide"><a href="tel:1-714-744-3700">1-714-744-3700</a></div>
+               <div class="footer-phone mobile-hide"><a href="tel:714-744-3700" aria-label="Click to Call" aria-hidden="false">714-744-3700</a></div>
             </div>
             <div class="col-lg-4 mobile-hide">
                <div class="footer-business-hours">

@@ -84,11 +84,11 @@
       <div class="row">
         <div class="col-xl-2 tablet-hide"></div>
         <div class="col-xl-6 col-lg-8">
-          <div class="intro-wrap">
+          <div class="intro-wrap" data-acsb-main="true" role="main">
             <div class="gmp-certificate"></div>
-            <h1>Natural and Organic Flavorings, Extracts, Syrups, and Fragrances</h1>
+            <h1 role="heading" aria-level="1">Natural and Organic Flavorings, Extracts, Syrups, and Fragrances</h1>
             <p><strong>Nature’s Flavors</strong> is where Mother Nature meets your kitchen. Our natural and organic flavorings are derived from the most remarkable fruits, vegetables, and herbs the earth has to offer. All of our products are made-to-order and delivered to your doorstep.</p>
-            <a href="<%= about_us_path %>" data-turbolinks="false" class="btn btn-primary" title="About Nature's Flavors"><span>More About Us</span></a> </div>
+            <a href="<%= about_us_path %>" data-turbolinks="false" class="btn btn-primary" aria-label="About Nature's Flavors"><span>More About Us</span></a></div>
         </div>
         <div class="col-xl-4 col-lg-4">
           <div class="company-highlights-wrapper">
@@ -112,7 +112,7 @@
               <div class="flex-fill">
                 <div class="company-title">PROMPT CUSTOMER SUPPORT</div>
                 <p>A Professional, Knowledgeable Team</p>
-                <p><a href="tel:(714) 744-3700">(714) 744-3700</a></p>
+                <p><a href="tel:714-744-370" aria-label="Click to Call" aria-hidden="false">(714) 744-3700</a></p>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@
   <div class="products-wrapper home-products-wrapper">
     <div class="row no-gutters">
       <div class="col-xl-2 tablet-hide"></div>
-      <div class="col-xl-6 col-lg-8">
+      <div class="col-xl-6 col-lg-8" role="navigation" aria-label="Page Menu">
         <ul class="nav nav-tabs" role="tablist">
           <% if @deals_products.present? %>
             <li class="nav-item" role="presentation"><a class="nav-link<%= @active_home_tab == 1 ? ' active' : '' %>" data-toggle="tab" href="#deals">Deals</a></li>
@@ -219,30 +219,30 @@
         <div class="col-lg-8">
           <div class="wrap">
             <div class="title-wrap d-xl-flex flex-row-reverse align-items-center justify-content-between">
-              <div class="right"> <a href="https://www.youtube.com/c/NaturesFlavors" class="youtube-link" target="_blank">More than 5k subscribers</a></div>
+              <div class="right"><a href="https://www.youtube.com/c/NaturesFlavors" class="youtube-link" target="_blank" aria-label="YouTube New Window" aria-hidden="false">More than 5k subscribers</a></div>
               <div class="left d-flex align-items-start">
                 <div class="title-img"><%= image_tag "flavor-guy.jpg", alt:"" %></div>
                 <div class="title-info">
-                  <h3 class="title"><a href="https://blog.naturesflavors.com/videos/" target="_blank">The Flavor Guy Videos</a></h3>
+                  <h3 class="title" role="heading" aria-level="3"><a href="https://blog.naturesflavors.com/videos/" target="_blank" aria-label="YouTube New Window" aria-hidden="false" >The Flavor Guy Videos</a></h3>
                   <div class="sm-title">He goes on adventures around the world in search of new flavors.</div>
                 </div>
               </div>
             </div>
-            <div class="slider-wrapper position-relative">
+            <div class="slider-wrapper position-relative" role="region" data-acsb-carousel="true" data- acsb-force-visible="true" aria-label="Carousel">
               <ul id="videos-slider" class="ontent-slider">
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/the-difference-between-a-flavor-concentrate-and-a-flavor-extract/" class="video-thumb-wrap" target="_blank" data-target=".video-modal">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/the-difference-between-a-flavor-concentrate-and-a-flavor-extract/" class="video-thumb-wrap" target="_blank" data-target=".video-modal" aria-label="New Window" aria-hidden="false">
                   <div class="video-thumb mb-10"><%= image_tag "videos/flavor-concentrate-extracs.jpg", alt:"The Difference Between a Flavor Concentrate and a Flavor Extract" %><span class="video-btn"></span></div>
                   <h4>The Difference Between a Flavor Concentrate and a Flavor Extract</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/watch-a-giant-bee-removal-with-the-flavor-guy/" target="_blank" class="video-thumb-wrap">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/watch-a-giant-bee-removal-with-the-flavor-guy/" target="_blank" class="video-thumb-wrap" aria-label="New Window" aria-hidden="false">
                   <div class="video-thumb mb-10"><%= image_tag "videos/giant-bee-removal.jpg", alt:"Giant Bee Removal" %><span class="video-btn"></span></div>
                   <h4>Watch a Giant Bee Removal with The Flavor Guy</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/whats-the-difference-between-organic-and-natural/" target="_blank" class="video-thumb-wrap">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/whats-the-difference-between-organic-and-natural/" target="_blank" class="video-thumb-wrap" aria-label="New Window" aria-hidden="false">
                   <div class="video-thumb mb-10"><%= image_tag "videos/difference-organic-natural.jpg", alt:"Difference Between Organic and Natural" %><span class="video-btn"></span></div>
                   <h4>What’s the Difference Between Organic and Natural</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/homemade-alchohol-free-vanilla-extract-recipe/" target="_blank" class="video-thumb-wrap">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/homemade-alchohol-free-vanilla-extract-recipe/" target="_blank" class="video-thumb-wrap" aria-label="New Window" aria-hidden="false">
                   <div class="video-thumb mb-10"><%= image_tag "videos/how-to-vanilla-extract.jpg", alt:"How To Make Alcohol Free Vanilla Extract" %><span class="video-btn"></span></div>
                   <h4>How To Make Alcohol Free Vanilla Extract</h4>
                   </a></li>
@@ -262,7 +262,7 @@
       <div class="title">Nature&apos;s Flavors Reviews and Testimonials</div>
       <div class="sm-title">Real Reviews From Real Customers</div>
     </div>
-    <div class="slider-wrapper reviews-wrap position-relative">
+    <div class="slider-wrapper reviews-wrap position-relative" role="region" data-acsb- carousel="true" data-acsb-force-visible="true" aria-label="Carousel">
       <ul id="reviews-slider" class="ontent-slider">
         <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700">
           <div class="review-wrap">
@@ -339,35 +339,35 @@
     <div class="container">
     <div class="sm-title text-center">Our Brands:</div>
       <ul class="media-list d-flex flex-wrap align-items-center justify-content-center">
-          <li><a href="https://naturesflavors.com"><%= image_tag "brand-natures-flavors.svg", alt:"Nature's Flavors Website" %></a></li>
-          <li><a href="https://www.seelecttea.com/" target="_blank"><%= image_tag "brand-seelect-tea.svg", alt:"Seelect Tea Website" %></a></li>
-          <li><a href="https://www.naturlax.com/" target="_blank"><%= image_tag "brand-naturlax.svg", alt:"Naturlax Website" %></a></li>
-          <li><a href="https://www.yummatchatea.com/" target="_blank"><%= image_tag "brand-yum-matcha.svg", alt:"Yum Matcha Tea Website" %></a></li>
+          <li><a href="https://naturesflavors.com" aria-label="Nature's Flavors Website"><%= image_tag "brand-natures-flavors.svg", alt:"Nature's Flavors Website" %></a></li>
+          <li><a href="https://www.seelecttea.com/" aria-label="New Window" aria-hidden="false" target="_blank"><%= image_tag "brand-seelect-tea.svg", alt:"Seelect Tea Website" %></a></li>
+          <li><a href="https://www.naturlax.com/" aria-label="New Window" aria-hidden="false" target="_blank"><%= image_tag "brand-naturlax.svg", alt:"Naturlax Website" %></a></li>
+          <li><a href="https://www.yummatchatea.com/" aria-label="New Window" aria-hidden="false" target="_blank"><%= image_tag "brand-yum-matcha.svg", alt:"Yum Matcha Tea Website" %></a></li>
       </ul>
     </div>
   </div>
 
   <div class="instagram-wrapper">
     <div class="container">
-      <div class="instagram-btn"><a href="https://www.instagram.com/natures_flavors/" target="_blank">Follow us<span>natures_flavors</span></a></div>
+      <div class="instagram-btn"><a href="https://www.instagram.com/natures_flavors/" target="_blank" aria-label="Instagram New Window" aria-hidden="false">Follow us<span>natures_flavors</span></a></div>
       <div class="row narrow-row">
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CinSCRAhThT" target="_blank"><%= image_tag "instagram/nf_instagram_1.jpg", alt:"Espresso Martini" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CinSCRAhThT" aria-label="Instagram New Window - Espresso Martini" aria-hidden="false" target="_blank"><%= image_tag "instagram/nf_instagram_1.jpg", alt:"Espresso Martini" %></a></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CjjGMdPPMVD" target="_blank"><%= image_tag "instagram/nf_instagram_2.jpg", alt:"Vanilla Extract & Cupcakes" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CjjGMdPPMVD" aria-label="Instagram New Window - Vanilla Extract & Cupcakes" aria-hidden="false" target="_blank"><%= image_tag "instagram/nf_instagram_2.jpg", alt:"Vanilla Extract & Cupcakes" %></a></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CkMkPHMPHMF" target="_blank"><%= image_tag "instagram/nf_instagram_3.jpg", alt:"Pumpkin Candles" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CkMkPHMPHMF" aria-label="Instagram New Window - Pumpkin Candles" aria-hidden="false" target="_blank"><%= image_tag "instagram/nf_instagram_3.jpg", alt:"Pumpkin Candles" %></a></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/Ce7EVgPvAV2" target="_blank"><%= image_tag "instagram/nf_instagram_4.jpg", alt:"Dip with Chili Pepper Extract" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/Ce7EVgPvAV2" aria-label="Instagram New Window - Dip with Chili Pepper Extract" aria-hidden="false" target="_blank"><%= image_tag "instagram/nf_instagram_4.jpg", alt:"Dip with Chili Pepper Extract" %></a></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CkOgBPFvUNx" target="_blank"><%= image_tag "instagram/nf_instagram_5.jpg", alt:"Pumpkin Cocktail with coloring" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/p/CkOgBPFvUNx" aria-label="Instagram New Window - Pumpkin Cocktail with coloring" aria-hidden="false" target="_blank"><%= image_tag "instagram/nf_instagram_5.jpg", alt:"Pumpkin Cocktail with coloring" %></a></div>
         </div>
         <div class="col-lg-2 col-md-4 col-6">
-          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/reel/Ck1MYwWPS8k" target="_blank"><%= image_tag "instagram/nf_instagram_6.jpg", alt:"Holiday Cookie Decorating with Natural Colors" %></a></div>
+          <div class="instagram-img" data-aos="fade-in" data-aos-once="true" data-aos-duration="700"><a href="https://www.instagram.com/reel/Ck1MYwWPS8k" aria-label="Instagram New Window - Holiday Cookie Decorating with Natural Colors" aria-hidden="false" target="_blank"><%= image_tag "instagram/nf_instagram_6.jpg", alt:"Holiday Cookie Decorating with Natural Colors" %></a></div>
         </div>
 
       </div>
@@ -388,7 +388,7 @@
         <div class="accordion" id="faqaccordion">
           <div class="card">
             <div class="card-header">
-              <h2 class="mb-0">
+              <h2 class="mb-0" role="heading" aria-level="2">
                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What are Flavor Extracts?</button>
               </h2>
             </div>
@@ -398,7 +398,7 @@
           </div>
           <div class="card">
             <div class="card-header">
-              <h2 class="mb-0">
+              <h2 class="mb-0" role="heading" aria-level="2">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">What are Flavor Concentrates?</button>
               </h2>
             </div>
@@ -408,7 +408,7 @@
           </div>
           <div class="card">
             <div class="card-header">
-              <h2 class="mb-0">
+              <h2 class="mb-0" role="heading" aria-level="2">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">What are Flavor Oils?</button>
               </h2>
             </div>
@@ -418,7 +418,7 @@
           </div>
           <div class="card">
             <div class="card-header">
-              <h2 class="mb-0">
+              <h2 class="mb-0" role="heading" aria-level="2">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour">What are Flavor Powders?</button>
               </h2>
             </div>
@@ -428,7 +428,7 @@
           </div>
           <div class="card">
             <div class="card-header">
-              <h2 class="mb-0">
+              <h2 class="mb-0" role="heading" aria-level="2">
                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive">What are Flavor Emulsions?</button>
               </h2>
             </div>
@@ -447,32 +447,32 @@
         <div class="col-lg-8">
           <div class="wrap">
             <div class="title-wrap d-xl-flex flex-row-reverse align-items-center justify-content-between">
-              <div class="right"> <a href="https://blog.naturesflavors.com" target="_blank" class="blog-link">More from our blog</a></div>
+              <div class="right"> <a href="https://blog.naturesflavors.com" target="_blank" class="blog-link" aria-label="New Window Blog" aria-hidden="false">More from our blog</a></div>
               <div class="left d-flex flex- align-items-start">
                 <div class="title-img"><%= image_tag "blog-icon.svg", alt:"Flavorful Bites Blog" %></div>
                 <div class="title-info">
-                  <h3 class="title"><a href="https://blog.naturesflavors.com/" target="_blank">Flavorful Bites</a><span class="blog-badge">Blog</span></h3>
+                  <h3 class="title"><a href="https://blog.naturesflavors.com/" target="_blank" aria-label="New Window Blog" aria-hidden="false">Flavorful Bites</a><span class="blog-badge">Blog</span></h3>
                   <div class="sm-title text-uppercase">RECIPES | TIPS AND TRICKS | helpful information</div>
                 </div>
               </div>
             </div>
-            <div class="slider-wrapper position-relative">
+            <div class="slider-wrapper position-relative" role="region" data-acsb-carousel="true" data- acsb-force-visible="true" aria-label="Carousel">
               <ul id="blog-slider" class="ontent-slider">
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/how-to-make-a-homemade-soda/" target="_blank" class="video-thumb-wrap">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/how-to-make-a-homemade-soda/" target="_blank" aria-label="New Window" aria-hidden="false" class="video-thumb-wrap">
                   <div class="video-thumb mb-10"><%= image_tag "blog/home-made-soda.jpg", alt:"How to Make Homemade Sodas" %></div>
-                  <h4>How to Make Homemade Sodas</h4>
+                  <h4 role="heading" aria-level="5">How to Make Homemade Sodas</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/add-citric-acid-powder-to-your-kitchen-recipe/" target="_blank" class="video-thumb-wrap">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/add-citric-acid-powder-to-your-kitchen-recipe/" target="_blank" aria-label="New Window" aria-hidden="false" class="video-thumb-wrap">
                   <div class="video-thumb mb-10"><%= image_tag "blog/citric-acid-powder.jpg", alt:"Citric Acid Powder" %></div>
-                  <h4>Add Citric Acid Powder to Your Kitchen (Recipe)</h4>
+                  <h4 role="heading" aria-level="5">Add Citric Acid Powder to Your Kitchen (Recipe)</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/why-you-need-essential-oils-for-better-sleep/" target="_blank" class="video-thumb-wrap">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/why-you-need-essential-oils-for-better-sleep/" target="_blank" aria-label="New Window" aria-hidden="false" class="video-thumb-wrap">
                   <div class="video-thumb mb-10"><%= image_tag "blog/better-sleep.jpg", alt:"Why You Need Essential Oils For Better Sleep" %></div>
-                  <h4>Why You Need Essential Oils For Better Sleep</h4>
+                  <h4 role="heading" aria-level="5">Why You Need Essential Oils For Better Sleep</h4>
                   </a></li>
-                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/how-to-use-natural-food-colorings/" target="_blank" class="video-thumb-wrap">
+                <li data-aos="fade-up" data-aos-once="true" data-aos-duration="700"><a href="https://blog.naturesflavors.com/how-to-use-natural-food-colorings/" target="_blank" aria-label="New Window" aria-hidden="false" class="video-thumb-wrap">
                   <div class="video-thumb mb-10"><%= image_tag "blog/food-colorings.jpg", alt:"How to Use Natural Food Colorings to Get the Best Results" %></div>
-                  <h4>How to Use Natural Food Colorings to Get the Best Results</h4>
+                  <h4 role="heading" aria-level="5">How to Use Natural Food Colorings to Get the Best Results</h4>
                   </a></li>
               </ul>
             </div>
