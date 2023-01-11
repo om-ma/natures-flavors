@@ -5,7 +5,7 @@
         <%= image_tag 'theme_logo.svg', alt: "Go to Nature's Flavors Homepage" %>
       <% end %>
     </div>      
-    <div class="col-xl-8 position-static" id="top-nav-bar">
+    <div class="col-xl-8 position-static" id="top-nav-bar" role="search">
       <%= render partial: 'spree/shared/search' %>
     </div>
     <div class="col-xl-2 position-static">
@@ -13,11 +13,11 @@
         <div id="search-dropdown" class=" quick-menu ml-auto header-spree" >
           <div id="account-button">
             <% if spree_current_user.present? %>
-              <%= link_to account_path, :class => 'nav-profile tablet-hide', :title => 'My Profile: Orders, Wishlist and Settings' do %>
+              <%= link_to account_path, :class => 'nav-profile tablet-hide', 'aria-label': 'My Profile: Orders, Wishlist and Settings' do %>
                 <span id="span">Profile</span>
               <% end %>            
             <% else %>
-              <%= link_to new_spree_user_session_path, :class => 'nav-profile tablet-hide', :title => 'Sign In'  do %>
+              <%= link_to new_spree_user_session_path, :class => 'nav-profile tablet-hide', 'aria-label': 'Sign In' do %>
                 <span id="span">Login</span>    
               <% end %>
             <% end %>
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="navbar-new">
+    <div class="navbar-new" role="navigation" data-acsb-main-menu="true" aria-label="Main Menu">
       <ul class="navbar-nav tablet-hide">
           <li class="nav-item"><a class="nav-link" href="/" aria-label="Nature's Flavors Home Page">Home</a>
       <% if @all_categories.present? %>
