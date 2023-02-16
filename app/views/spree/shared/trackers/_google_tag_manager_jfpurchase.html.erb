@@ -1,4 +1,4 @@
-<% if order_just_completed?(@order) && Rails.configuration.x.trackers.google_tag_manager.present? %>
+<% if order_just_completed?(@order) %>
   <% content_for :head do %>
     <script type="text/javascript">
       $(document).on('turbolinks:load', function() {
