@@ -1,0 +1,21 @@
+<% if order_just_completed?(@order) %>
+  <% content_for :head do %>
+    <script type="text/javascript">
+      $(document).on('turbolinks:load', function() {
+        gtag('event', 'purchase', {
+          transaction_id: '<%= @order.number %>',
+          value: <%= @order.total&.to_f %>,
+          currency: '<%= @order.currency %>',
+          tax: <%= @order.tax_total&.to_f %>,
+          shipping: <%= @order.shipment_total&.to_f %>,
+          coupon: '<%= @order.promo_code %>',
+          items: [
+            <% @order.line_items.each_with_index do |line_item, index| %>
+              <%= ga_line_item(line_item, index) %>,
+            <% end %>
+          ]
+        });
+      });
+    </script>
+  <% end %>
+<% end %>
