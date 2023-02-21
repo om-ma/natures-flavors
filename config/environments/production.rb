@@ -134,6 +134,9 @@ Rails.application.configure do
     :bucket => ENV['S3_ASSET_BUCKET']
   }
   
+  # Google Tag (GA4)
+  config.x.trackers.google_tag_ga4 = 'G-F5G7BX0SWZ'
+
   # Google Tag Manager
   config.x.trackers.google_tag_manager = 'GTM-KWFR8LH'
   
