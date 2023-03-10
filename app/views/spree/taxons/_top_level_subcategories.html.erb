@@ -59,7 +59,13 @@
             <% end %>
           <% end %>
           <h2><%= link_to category.name, seo_url(category), data: { turbolinks: false }, 'aria-label' => "List all #{category.name}" %></h2>
-          <p><%= raw(category.short_description) %></p>
+          <p>
+          <% if category.top_level_category_description.present? %>
+            <%= raw(category.top_level_category_description) %>
+          <% else %>
+            <%= raw(category.short_description) %>
+          <% end %>
+          </p>
           <% if category.children %>
             <ul>
               <% category.children.each do |subcategory| %>
