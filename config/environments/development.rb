@@ -117,7 +117,6 @@ Rails.application.configure do
 
   # Low-level cache expiration
   config.x.cache.expiration = 30.days
-  config.x.cache.images_backend_clear_on_update = ENV['CACHE_IMAGES_BACKEND_CLEAR_ON_UPDATE']
 
   # Sidekiq data workers cache expiration
   config.x.products.refresh_time = 72.hours

@@ -1,5 +1,7 @@
 Spree::Admin::ProductsController.class_eval do
-  include Spree::Admin::CacheConcern
-  
-  update.after :clear_views_product_cache
+
+  def clear_product_cache
+    ClearProductCacheWorker.perform_async(params[:id])
+  end
+
 end
