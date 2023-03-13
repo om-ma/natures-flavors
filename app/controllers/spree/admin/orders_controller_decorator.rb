@@ -7,6 +7,7 @@ module Spree
         edit update cancel resume approve resend open_adjustments
         close_adjustments cart channel set_channel
         production set_production
+        create_route_order
       ]
 
       after_action :route_cancel_order, only: :cancel
@@ -70,6 +71,10 @@ module Spree
       def route_cancel_order
         RouteCancelOrderWorker.perform_async(@order.id)
       end
+
+      def create_route_order
+        RouteCreateOrderWorker.perform_async(@order.id)
+      end    
 
     end
   end

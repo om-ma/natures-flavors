@@ -75,6 +75,7 @@ Spree::Core::Engine.routes.draw do
     resources :orders, except: [:show] do
       get :production, on: :member
       put :set_production, on: :member
+      post :create_route_order, on: :member
     end
   end
 
