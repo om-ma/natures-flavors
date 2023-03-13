@@ -3,6 +3,7 @@ module Spree
     module CacheConcern
       extend ActiveSupport::Concern
 
+      include Spree::CacheHelper
       include Spree::FrontendHelper
       include Spree::ProductsHelper
 

@@ -2,6 +2,9 @@
 <%= content_for(:body_attributes) do %>data-turbolink="false"<% end %>
 <% content_for :page_actions do %>
   <%= product_preview_link(@product) %>
+  <div data-hook="products_clear_cache">
+    <%= button Spree.t(:clear_cache), 'recycle.svg', 'button', id: "admin_product_clear_cache" %>
+  </div>
   <% if can?(:create, Spree::Product) %>
     <%= button_link_to Spree.t(:new_product), new_object_url, { class: "btn-success", icon: 'add.svg', id: 'admin_new_product' } %>
   <% end %>
