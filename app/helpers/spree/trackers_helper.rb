@@ -1,5 +1,7 @@
 module Spree
   module TrackersHelper
+    WORDS_CONNECTOR = ', '.freeze
+
     def ga_line_item(line_item, index)
       variant = line_item.variant
 
@@ -13,16 +15,25 @@ module Spree
 
       Rails.cache.fetch(cache_key) do
         product = line_item.product
+
+        if product.variants_and_option_values(current_currency).any?
+          item_variant = variant.option_values.map{ |o| o.name }.to_sentence(words_connector: WORDS_CONNECTOR, two_words_connector: WORDS_CONNECTOR)
+          item_name = product.name + ' ' + item_variant
+        else
+          item_variant = ''
+          item_name = product.name
+        end
+
         {
           item_id: variant.sku,
-          item_name: variant.name,
+          item_name: item_name,
           index: index,
           item_brand: product.brand&.name,
           item_category: product.category&.name,
-          item_variant: variant.options_text,
+          item_variant: item_variant,
           price: variant.price_in(current_currency).amount&.to_f,
           quantity: line_item.quantity
-        }.to_json.html_safe
+        }.compact_blank.to_json.html_safe
       end
     end
   end

@@ -288,6 +288,10 @@ Spree.ready(function($) {
     )
   }
 
+  Spree.getCartProduct = function($cartForm) {
+    return JSON.parse($cartForm.attr('data-product-summary'));
+  }
+
   Spree.addToCartFormSubmissionOptions = function() {
     return {};
   }
@@ -317,6 +321,7 @@ Spree.ready(function($) {
           $cartForm.trigger({
             type: 'product_add_to_cart',
             variant: Spree.variantById($cartForm, variantId),
+            product: Spree.getCartProduct($cartForm),
             quantity_increment: quantity,
             cart: response.attributes
           })
@@ -343,4 +348,18 @@ Spree.ready(function($) {
   document.addEventListener('turbolinks:request-start', function () {
     Spree.hideProductAddedModal()
   })
+})
+
+$( document ).ready(function () {
+  var $cartForm = $(ADD_TO_CART_FORM_SELECTOR);
+  
+  var productDetailsPage = $('#product-details');
+  if (productDetailsPage.length) {
+    productDetailsPage.trigger({
+      type: 'product_view_item',
+      variants: JSON.parse($cartForm.attr('data-variants')),
+      product: Spree.getCartProduct($cartForm),
+      currency: 'USD'  // [DTL] Fix Hardcoding
+    });
+  }
 })
