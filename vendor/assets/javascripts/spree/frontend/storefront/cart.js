@@ -46,6 +46,16 @@ SpreeAPI.Storefront.addToCart = function (variantId, quantity, options, successC
           var cartBagElement  = $('.cart-nav')
           cartForm(json.data.attributes.number, json.data.attributes.token);
 
+          // Trigger product_add_to_cart event for GA
+          var addToCartForn = $(document.getElementById('add-to-cart-form'));
+          addToCartForn.trigger({
+            type: 'product_add_to_cart',
+            variant: Spree.variantById(addToCartForn, variantId),
+            product: Spree.getCartProduct(addToCartForn),
+            quantity_increment: quantity,
+            cart: json.data
+          });
+          
           $.ajax({
             type: 'GET',
             url: '/refresh_cart_bag.js',

@@ -106,6 +106,9 @@ Rails.application.configure do
   # Email address to send system errors
   config.x.systemerror.email = 'it-group@naturesflavors.com'
 
+  # Google Tag (GA4)
+  config.x.trackers.google_tag_ga4 = 'G-JL2DWKH5YE'
+
   # Google Tag Manager
   config.x.trackers.google_tag_manager = 'GTM-KGMXPGQ'
   
@@ -133,6 +136,8 @@ Rails.application.configure do
   config.x.route.merchant_id = 'merch_vvxkoH49riWxHopnelN3'
   config.x.route.public_token = '35539ae7-a7b6-436e-bee5-4d22665cd0a4'
   config.x.route.secret_token = 'test-4cddd2d4-7429-43ec-98b1-255075fa85fd'
+
+  config.hosts << "www.publicdomain.com"
 end
 
 # spree_sitemap config
