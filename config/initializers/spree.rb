@@ -39,7 +39,7 @@ end
 Spree.user_class = "Spree::User"
 Spree::PermittedAttributes.product_attributes << :short_description
 Spree::PermittedAttributes.taxon_attributes << [user_ids:[]]
-Spree::PermittedAttributes.taxon_attributes << [:short_description, :noindex, :h1_title]
+Spree::PermittedAttributes.taxon_attributes << [:short_description, :noindex, :h1_title, :top_level_category_description]
 Spree::PermittedAttributes.address_attributes << :is_default
 Spree::PermittedAttributes.checkout_attributes << [:request_coa, :use_shipping]
 Spree::Auth::Config[:registration_step]= false
@@ -67,3 +67,7 @@ Rails.application.config.spree.stock_splitters = []
 
 # Route insurance
 Spree::PermittedAttributes.checkout_attributes << [:route_insurance_selected, :route_insurance_currency, :route_insurance_price, :route_insurance_quote_id, :route_insurance_quote_premium]
+
+# Properties
+Rails.application.config.x.property.ingredients = "Ingredients"
+Rails.application.config.x.property.prop65 = "Prop65"

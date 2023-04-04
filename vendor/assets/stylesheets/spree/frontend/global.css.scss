@@ -1776,7 +1776,7 @@ a.btn.btn-block {
 
 .home-intro-wrapper {
 	position: relative;
-	padding: 55px 0 15px;
+	padding: 55px 0 80px;
 }
 
 .home-intro-wrapper:before,
@@ -1830,6 +1830,15 @@ a.btn.btn-block {
 
 .home-intro-wrapper .btn {
 	padding: 0 65px;
+}
+
+.home-video {
+	margin: 0 0 50px;
+}
+
+.home-video h2 {
+	margin: 0 0 20px;
+	max-width: none;
 }
 
 .company-highlights-wrapper {

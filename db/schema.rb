@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_26_232209) do
+ActiveRecord::Schema.define(version: 2023_03_10_182754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1495,6 +1495,7 @@ ActiveRecord::Schema.define(version: 2022_10_26_232209) do
     t.integer "old_category_id"
     t.string "old_category_url"
     t.string "h1_title"
+    t.text "top_level_category_description"
     t.index ["lft"], name: "index_spree_taxons_on_lft"
     t.index ["name", "parent_id", "taxonomy_id"], name: "index_spree_taxons_on_name_and_parent_id_and_taxonomy_id", unique: true
     t.index ["name"], name: "index_spree_taxons_on_name"

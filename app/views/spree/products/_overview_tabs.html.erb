@@ -6,6 +6,16 @@
   <div class="tab-pane fade show active" id="description" role="tabpanel">
     <div class="tab-content-wrap" id="product-description-long"  data-hook="description">
       <%= raw product_description(@product) %>
+      <% unless @product_properties.blank? %>
+        <% @product_properties.each do |product_property| %>
+          <% if product_property.property.name == Rails.configuration.x.property.prop65 && product_property.show_property? %>
+            <br/>
+            <p><b>Proposition 65 Warning for California Consumers</b></p>
+            <p><b>WARNING:</b> Consuming this product can expose you to chemicals including <%= product_property.value %> which is known to the State of California to cause cancer and birth defects or other reproductive harm. For more information go to <a href="https://www.P65Warnings.ca.gov/food" target="_blank">www.P65Warnings.ca.gov/food</a>
+            <% break %>
+          <% end %>
+        <%end %>
+      <%end %>
     </div>
   </div>
 </div>

@@ -75,6 +75,14 @@ Spree::Core::Engine.routes.draw do
     resources :orders, except: [:show] do
       get :production, on: :member
       put :set_production, on: :member
+      post :create_route_order, on: :member
+    end
+  end
+
+  # Clear product cache
+  namespace :admin, path: Spree.admin_path do
+    resources :products, except: [:show] do
+      post :clear_product_cache, on: :member
     end
   end
 end
