@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
   config.assets.digest = true
   config.assets.enabled = true
-  config.assets.prefix = '/assets/v57'
+  config.assets.prefix = '/assets/v58'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -137,6 +137,9 @@ Rails.application.configure do
     :bucket => ENV['S3_ASSET_BUCKET']
   }
   
+  # Google Tag (GA4)
+  config.x.trackers.google_tag_ga4 = 'G-JL2DWKH5YE'
+
   # Google Tag Manager
   config.x.trackers.google_tag_manager = 'GTM-KGMXPGQ'
   
