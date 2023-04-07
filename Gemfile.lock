@@ -82,6 +82,7 @@ GIT
 GIT
   remote: https://github.com/ducl13/redis-rb.git
   revision: 59a2102993c32228ce46425a019a2f6e362d9abf
+  branch: naturesflavors
   specs:
     redis (4.6.0)
 
