@@ -1,4 +1,4 @@
-# Version 1.0.2.1
+# Version 1.0.2.2
 
 # Postgres (local database)
 psql postgres
