@@ -4,7 +4,7 @@ Spree::Image.class_eval do
   
   # Use sidekiq worker to create images. Transaction issue.
   def call_create_sizes_worker
-    ImageCreateSizesWorker.perform_async(self.id)
+    ImageCreateSizesWorker.perform_in(1.minute, self.id)
   end
 
   def create_sizes
