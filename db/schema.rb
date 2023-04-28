@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_10_182754) do
+ActiveRecord::Schema.define(version: 2023_04_28_180522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -720,6 +720,7 @@ ActiveRecord::Schema.define(version: 2023_03_10_182754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "compare_at_amount", precision: 10, scale: 2
+    t.decimal "amount_old"
     t.index ["deleted_at"], name: "index_spree_prices_on_deleted_at"
     t.index ["variant_id", "currency"], name: "index_spree_prices_on_variant_id_and_currency"
     t.index ["variant_id"], name: "index_spree_prices_on_variant_id"
