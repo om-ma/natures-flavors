@@ -1,12 +1,17 @@
 class YotpoFeedCreator < ApplicationService
   FEED_FILE_NAME = "yotpo-feed.csv"
 
-  def initialize(url_options)
+  def initialize(url_options, write_to_aws_s3 = false)
     @url_options = url_options
+    @write_to_aws_s3 = write_to_aws_s3
   end
 
   def call()
     generate_feed_file()
+
+    if @write_to_aws_s3
+      upload_to_s3()
+    end
   end
 
   private
@@ -70,6 +75,44 @@ class YotpoFeedCreator < ApplicationService
     url = url + ":" + @url_options[:port].to_s if @url_options[:port]
     url = url + "/products/" + product.slug
     url
+  end
+
+  def object_uploaded?(s3_client, bucket_name, object_key, file)
+    response = s3_client.put_object(
+      bucket: bucket_name,
+      key: object_key,
+      body: file
+    )
+    if response.etag
+      return true
+    else
+      return false
+    end
+  rescue StandardError => e
+    puts "Error uploading object: #{e.message}"
+    return false
+  end
+
+  def upload_to_s3()
+    bucket_name = "#{ENV['S3_YOTPO_FEED_BUCKET']}"
+    object_key = FEED_FILE_NAME
+    region = "#{ENV['S3_YOTPO_FEED_REGION']}"
+
+    s3_client = Aws::S3::Client.new(
+      region:            ENV['S3_YOTPO_FEED_REGION'],
+      access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_KEY']
+    )
+    
+    file = File.open("./tmp/#{FEED_FILE_NAME}", 'rb')
+
+    if object_uploaded?(s3_client, bucket_name, object_key, file)
+      puts "Object '#{object_key}' uploaded to bucket '#{bucket_name}'."
+    else
+      puts "Object '#{object_key}' not uploaded to bucket '#{bucket_name}'."
+    end
+
+    file.close()
   end
 
 end
