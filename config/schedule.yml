@@ -22,3 +22,8 @@ Data cache worker at 3:00 AM:
   cron: "0 3 * * *"
   class: "DataCacheWorker"
   queue: default
+
+Generate YotPo feed to AWS S3 every night at 4 AM:
+  cron: "0 4 * * *"
+  class: "YotpoFeedWorkerAwsS3"
+  queue: default
