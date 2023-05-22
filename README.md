@@ -160,3 +160,19 @@ RouteCreateOrderWorker.perform_async(o.id)
 # Create shopment
 o = Spree::Order.where(number: 'R100009870').first;
 RouteCreateShipmentWorker.perform_async(o.shipments.first.id)
+
+
+# Order lines option types and option values for testing taxon/option values promotion rule
+select v.id, p.name, t.name, pt.taxon_id, ot.option_type_id, ov.option_value_id, l.quantity, l.price
+from spree_line_items l
+join spree_variants v on v.id = l.variant_id
+join spree_products p on p.id = v.product_id
+join spree_products_taxons pt on pt.product_id = p.id
+join spree_taxons t on t.id = pt.taxon_id
+join spree_product_option_types ot on ot.product_id = p.id
+join spree_option_value_variants ov on ov.variant_id = v.id
+join spree_orders o on o.id = l.order_id
+join spree_users u on u.id = o.user_id
+where
+o.id = 244 and pt.taxon_id in (275,303)
+order by o.updated_at desc
