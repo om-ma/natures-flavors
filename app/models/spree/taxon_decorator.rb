@@ -4,6 +4,7 @@ module Spree
     def self.prepended(base)
     	base.has_many :taxons_users
     	base.has_many :users, :through => :taxons_users
+      base.has_many :promotion_rule_taxons_option_value, class_name: 'Spree::PromotionRuleTaxonOptionValue', dependent: :destroy
     end
 
     def is_top_level_menu_item

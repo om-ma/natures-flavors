@@ -1,0 +1,43 @@
+<div class="card-body">
+  <div class="form-group taxons_option_value_rule_taxons">
+    <%= label_tag "#{param_prefix}_taxon_ids", Spree.t('taxon_option_value_rule.choose_taxons') %>
+    <%= select_tag "#{param_prefix}[taxon_ids]", options_from_collection_for_select(promotion_rule.taxons, :id, :pretty_name, promotion_rule.taxon_ids), class: 'taxon_picker d-block w-100', multiple: true, id: :taxon_option_value_product_taxon_ids %>
+  </div>
+</div>
+
+
+<div class="card-body">
+  <div class="promo-rule-option-values">
+    <div class="js-promo-rule-taxon-option-values"></div> <!-- display div for option value select -->
+    <button class="btn btn-primary btn-success js-add-promo-rule-taxon-option-value">
+      <%= svg_icon name: "add.svg", width: '16', height: '16' %>
+      <%= Spree.t("Add Option Value") %>
+    </button>
+  </div>
+</div>
+
+<%= content_tag :div, nil, class: "hidden js-original-promo-rule-taxon-option-values",
+  data: { :'original-option-values' => promotion_rule.preferred_eligible_values } %>
+
+<script type="text/x-handlebars-template" id="promo-rule-taxon-option-value-option-values-select-name-template">
+  <%= param_prefix %>[preferred_eligible_values][{{optionTypeId}}][]
+</script>
+
+<script type="text/x-handlebars-template" id="promo-rule-taxon-option-value-template">
+  <div class="promo-rule-taxon-option-value panel card mb-3" id="promo-rule-taxon-option-value-{{optionTypeId}}">
+    <div class="card-header d-flex justify-content-between">
+      <label><%= Spree.t(:option_type_values) %></label>
+      <a class="js-remove-promo-rule-taxon-option-value delete pull-right">
+        <%= svg_icon name: "delete.svg", width: '16', height: '16' %>
+      </a>
+    </div>
+    <div class="card-body row p-3">
+      <div class="col-12 col-md-6 product-select">
+        <%= select_tag "option-type", nil, class: 'js-promo-rule-taxon-option-value-option-type-select d-block w-100', id: "promo-rule-taxon-option-value-option-type-select-{{optionTypeId}}" %>
+      </div>
+      <div class="col-12 col-md-6 option-value-select">
+        <%= select_tag "#{param_prefix}[preferred_eligible_values][{{ optionTypeId }}][]", nil, multiple: true, disabled: true, class: 'js-promo-rule-taxon-option-value-option-type-option-values-select d-none w-100', id: "promo-rule-taxon-option-value-option-values-select-{{optionTypeId}}" %>
+      </div>
+    </div>
+  </div>
+</script>

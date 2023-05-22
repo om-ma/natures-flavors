@@ -71,3 +71,7 @@ Spree::PermittedAttributes.checkout_attributes << [:route_insurance_selected, :r
 # Properties
 Rails.application.config.x.property.ingredients = "Ingredients"
 Rails.application.config.x.property.prop65 = "Prop65"
+
+Rails.application.config.after_initialize do
+  Rails.application.config.spree.promotions.rules << Spree::Promotion::Rules::TaxonOptionValue
+end

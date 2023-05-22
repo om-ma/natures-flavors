@@ -118,3 +118,10 @@ en:
         no_user_or_email_specified: You need to login or provide your email before applying this coupon code.
         no_user_specified: 'This coupon code is for registered user only. Click to <a href="/signup" alt="Register">register</a> or <a href="/user/spree_user/sign_in" alt="Login">login</a>.'
         not_first_order: This coupon code can only be applied to your first order.
+    promotion_rule_types:
+      taxon_option_value:
+        description: Order includes products with specified taxon(s) and matching option value(s)
+        name: Taxon(s) with Option Value(s)
+    taxon_option_value_rule:
+      choose_taxons: Choose taxons
+    option_type_values: Option Type Values

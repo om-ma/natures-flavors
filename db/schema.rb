@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_28_180522) do
+ActiveRecord::Schema.define(version: 2023_05_20_220517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -720,7 +720,7 @@ ActiveRecord::Schema.define(version: 2023_04_28_180522) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "compare_at_amount", precision: 10, scale: 2
-    t.decimal "amount_old"
+    t.decimal "amount_old", precision: 10, scale: 2, default: "0.0", null: false
     t.index ["deleted_at"], name: "index_spree_prices_on_deleted_at"
     t.index ["variant_id", "currency"], name: "index_spree_prices_on_variant_id_and_currency"
     t.index ["variant_id"], name: "index_spree_prices_on_variant_id"
@@ -854,6 +854,15 @@ ActiveRecord::Schema.define(version: 2023_04_28_180522) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "code"
+  end
+
+  create_table "spree_promotion_rule_taxon_option_values", force: :cascade do |t|
+    t.bigint "taxon_id"
+    t.bigint "promotion_rule_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["promotion_rule_id"], name: "idx_spree_promotion_rule_taxon_option_values_promotion_rule_id"
+    t.index ["taxon_id"], name: "index_spree_promotion_rule_taxon_option_values_on_taxon_id"
   end
 
   create_table "spree_promotion_rule_taxons", id: :serial, force: :cascade do |t|
