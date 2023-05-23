@@ -34,12 +34,15 @@
         <label><%= Spree.t(:subtotal) %>:</label>
         <span><div class="d-table-cell text-right js-product-total"><%= order.display_item_total.to_html %></div></span> </li>
         <% if order.line_item_adjustments.nonzero.exists? %>
-          <li> 
-          <label><%#= label %></label>
-          <span><% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
-          <div class="d-table-cell text-right"><%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>                      
-          </div>
-          <% end %></span> </li>
+          <% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+            <li> 
+            <label><%= label %></label>
+              <span>
+                <div class="d-table-cell text-right"><%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>                      
+                </div>
+              </span>
+            </li>
+          <% end %>
         <% end %>
       
         <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
