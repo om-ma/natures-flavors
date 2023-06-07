@@ -1,5 +1,3 @@
-<%# Override for tinymce iisue: https://github.com/spohlenz/tinymce-rails/issues/188 %>
-<%= content_for(:body_attributes) do %>data-turbolink="false"<% end %>
 <% content_for :page_actions do %>
   <%= product_preview_link(@product) %>
   <div data-hook="products_clear_cache">

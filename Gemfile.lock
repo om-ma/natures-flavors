@@ -10,6 +10,16 @@ GIT
       nokogiri (>= 1.6)
 
 GIT
+  remote: https://github.com/ducl13/asset_sync.git
+  revision: 60443687f8638da52f303fcb1378d0ce47f09f42
+  specs:
+    asset_sync (2.18.0)
+      activemodel (>= 4.1.0)
+      fog-core
+      mime-types (>= 2.99)
+      unf
+
+GIT
   remote: https://github.com/ducl13/better_spree_paypal_express.git
   revision: 49c579ac7eb968bba67b97126bd4473f709174ad
   specs:
@@ -250,6 +260,13 @@ GIT
       spree_extension
 
 GIT
+  remote: https://github.com/ducl13/tinymce-rails.git
+  revision: a1e6d2413c58cca1ec1412f962cbcdb4fd732f0a
+  specs:
+    tinymce-rails (6.4.2)
+      railties (>= 3.1.1)
+
+GIT
   remote: https://gitlab.com/duc.lam/spree_common.git
   revision: 4cfb5b1c69f057c1717fecc3db2b576591e5ec3f
   branch: master
@@ -367,11 +384,6 @@ GEM
       rest-client (~> 2.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
-    asset_sync (2.15.2)
-      activemodel (>= 4.1.0)
-      fog-core
-      mime-types (>= 2.99)
-      unf
     ast (2.4.2)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
@@ -2231,8 +2243,6 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.1.0)
-    tinymce-rails (6.4.2)
-      railties (>= 3.1.1)
     tunemygc (1.0.71)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -2279,7 +2289,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_shipping!
-  asset_sync
+  asset_sync!
   aws-sdk (~> 3)
   bootsnap (>= 1.1.0)
   browser!
@@ -2346,6 +2356,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   stackprof
   terser (~> 1.1, >= 1.1.1)
+  tinymce-rails!
   tunemygc
   turbolinks (~> 5)
   tzinfo-data
