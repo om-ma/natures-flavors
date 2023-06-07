@@ -23,8 +23,19 @@ module TinyMCE
 
         def symlink_asset(src, dest)
           with_asset(src, dest) do |src, dest|
-            create_symlink(src, dest)
-            create_symlink("#{src}.gz", "#{dest}.gz") if File.exist?("#{src}.gz")
+            create_symlink_follow(src, dest)
+            create_symlink_follow("#{src}.gz", "#{dest}.gz") if File.exist?("#{src}.gz")
+          end
+        end
+
+        def create_symlink_follow(src, dest)
+          target = File.basename(src)
+
+          unless File.exist?(dest)
+            logger.info "Creating symlink #{dest} follow"
+            FileUtils.cp(target, dest)
+          else
+            logger.debug "Skipping symlink #{dest} follow, already exists"
           end
         end
 
