@@ -29,11 +29,9 @@ module TinyMCE
         end
 
         def create_symlink_follow(src, dest)
-          target = File.basename(src)
-
           unless File.exist?(dest)
             logger.info "Creating symlink #{dest} follow"
-            FileUtils.cp(target, dest)
+            FileUtils.cp(src, dest)
           else
             logger.debug "Skipping symlink #{dest} follow, already exists"
           end
