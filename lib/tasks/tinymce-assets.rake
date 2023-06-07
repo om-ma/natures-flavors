@@ -1,4 +1,4 @@
-task :assets:precompile:tinymce do
+task :tinymce do
   require "tinymce/rails/asset_installer"
 
   assets = Pathname.new(File.expand_path(File.dirname(__FILE__) + "/../../vendor/assets/javascripts/tinymce"))
@@ -16,5 +16,5 @@ end
 assets_task = Rake::Task.task_defined?('assets:precompile:primary') ? 'assets:precompile:primary' : 'assets:precompile'
 
 Rake::Task[assets_task].enhance do
-  Rake::Task[:assets:precompile:tinymce].invoke
+  Rake::Task[:tinymce].invoke
 end
