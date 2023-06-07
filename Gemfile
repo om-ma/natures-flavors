@@ -36,7 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem "asset_sync"
+gem 'tinymce-rails', github: 'ducl13/tinymce-rails'
+gem "asset_sync", github: 'ducl13/asset_sync'
 gem 'aws-sdk', '~> 3'
 gem "bugsnag", "~> 6.24", groups: [:staging, :production]
 gem 'canonical-rails', github: 'ducl13/canonical-rails'
