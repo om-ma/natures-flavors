@@ -41,6 +41,12 @@ if defined?(AssetSync)
     # Upload the manifest file also.
     # config.include_manifest = false
     #
+    # Upload files concurrently
+    config.concurrent_uploads = true
+    #
+    # Number of threads when concurrent_uploads is enabled
+    config.concurrent_uploads_max_threads = 10
+    #
     # Fail silently.  Useful for environments such as Heroku
     # config.fail_silently = true
     #
