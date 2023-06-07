@@ -13,8 +13,8 @@ namespace :assets do
 
 end
 
-if Rake::Task.task_defined?("tinymce")
-  Rake::Task["tinymce"].enhance do
+if Rake::Task.task_defined?("assets:tinymce")
+  Rake::Task["assets:tinymce"].enhance do
     Rake::Task["assets:sync"].invoke if defined?(AssetSync) && AssetSync.config.run_on_precompile
   end
 end
