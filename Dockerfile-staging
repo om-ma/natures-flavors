@@ -38,14 +38,6 @@ RUN \
   SECRET_KEY_BASE=$SECRET_KEY_BASE \
   bundle exec rake assets:precompile
 
-RUN \
-  AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-  AWS_SECRET_KEY=$AWS_SECRET_KEY \
-  S3_ASSET_REGION=$S3_ASSET_REGION \
-  S3_ASSET_BUCKET=$S3_ASSET_BUCKET \
-  SECRET_KEY_BASE=$SECRET_KEY_BASE \
-  bundle exec rake assets:clobber
-
 # Remove files/folders not needed in resulting image
 RUN rm -rf .env* .set-build* tmp/cache test public/robots.txt-staging public/robots.txt-staging-temp
 
