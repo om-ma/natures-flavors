@@ -11,12 +11,15 @@ module Spree
           content_type: params[:file].content_type
         )
 
-        render json: {location: cdn_url(main_app.rails_blob_url(blob))}, content_type: "text/html"
+        render json: {location: get_url(blob)}, content_type: "text/html"
       end
 
-      def cdn_url(str)
-        path = str.split('//').last.split("/",2).last
-        Rails.env.development? ? str : "https://#{ENV['CLOUDFRONT_ASSET_URL']}/#{path}"
+      def get_url(blob)
+        if !Rails.env.development?
+          main_app.rails_blob_url(blob)
+        else
+          cdn_image_url(blob)
+        end
       end
     end
   end

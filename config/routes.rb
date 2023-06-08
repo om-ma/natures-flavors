@@ -91,3 +91,28 @@ Spree::Core::Engine.routes.draw do
     post 'uploader/image'
   end
 end
+
+Rails.application.routes.draw do
+  direct :cdn_image do |model, options|
+    if model.respond_to?(:signed_id)
+      route_for(
+        :rails_service_blob_proxy,
+        model.signed_id(),
+        model.filename,
+        options.merge(host: "https://#{ENV['CLOUDFRONT_ASSET_URL']}")
+      )
+    else
+      signed_blob_id = model.blob.signed_id()
+      variation_key  = model.variation.key
+      filename       = model.blob.filename
+
+      route_for(
+        :rails_blob_representation_proxy,
+        signed_blob_id,
+        variation_key,
+        filename,
+        options.merge(host: "https://#{ENV['CLOUDFRONT_ASSET_URL']}")
+      )
+    end
+  end
+end
