@@ -71,6 +71,7 @@
         <% end %>
         <% end %>
       <% end %>
+        <li class="nav-item"><%= link_to 'Flavorful Bites Blog', "https://blog.naturesflavors.com", class: "nav-link", target: "_blank" %></li>
       <% if spree_current_user.present? && spree_current_user.has_spree_role?('employee') && @special_catetories.present? %>
         <li class="nav-item">
           <%= link_to "Special", "#", class: "nav-link" %>
