@@ -18,7 +18,8 @@ module Spree
         if Rails.env.development?
           main_app.rails_blob_url(blob)
         else
-          rails_public_blob(blob)
+          path = blob.url.split('//').last.split("/",2).last
+         "https://#{ENV['CLOUDFRONT_ASSET_URL']}/#{path}"
         end
       end
     end
