@@ -18,7 +18,7 @@ module Spree
         if Rails.env.development?
           main_app.rails_blob_url(blob)
         else
-          cdn_image_url(blob)
+          rails_public_blob(blob)
         end
       end
     end
