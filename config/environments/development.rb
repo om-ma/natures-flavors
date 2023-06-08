@@ -67,7 +67,7 @@ Rails.application.configure do
 
   config.after_initialize do
     Bullet.enable        = true
-    Bullet.console       = true
+    Bullet.console       = false
     Bullet.rails_logger  = true
   end
 

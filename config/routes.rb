@@ -85,4 +85,9 @@ Spree::Core::Engine.routes.draw do
       post :clear_product_cache, on: :member
     end
   end
+
+  # ActiveStorage image upload for tinymce
+  namespace :admin, path: Spree.admin_path do
+    post 'uploader/image'
+  end
 end
