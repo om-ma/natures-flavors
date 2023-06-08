@@ -3449,7 +3449,11 @@ h3 a{
 }
 
 .product-tabs-wrapper .nav-tabs {
-    margin: -40px 0 0 120px;
+	margin: -40px 0 0 120px;
+}
+
+.product-tabs-wrapper .nav-tabs h2 {
+	font-size: 24px;
 }
 
 .product-tabs-wrapper .tab-content {
