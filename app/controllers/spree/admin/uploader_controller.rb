@@ -19,7 +19,7 @@ module Spree
           main_app.rails_blob_url(blob)
         else
           path = blob.url.split('//').last.split("/",2).last
-         "https://#{ENV['CLOUDFRONT_ASSET_URL']}/#{path}"
+          "https://#{ENV['CLOUDFRONT_ASSET_URL']}/#{path}"
         end
       end
     end
