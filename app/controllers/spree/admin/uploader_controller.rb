@@ -15,7 +15,7 @@ module Spree
       end
 
       def get_url(blob)
-        if !Rails.env.development?
+        if Rails.env.development?
           main_app.rails_blob_url(blob)
         else
           cdn_image_url(blob)
