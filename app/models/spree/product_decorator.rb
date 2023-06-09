@@ -27,6 +27,14 @@ module Spree
       return false
     end
 
+    # override to exclude master if has_variants?
+    def can_supply?
+      if has_variants?
+        variants.any?(&:can_supply?)
+      else
+        variants_including_master.any?(&:can_supply?)
+      end
+    end
   end  
 end
 
