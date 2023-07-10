@@ -145,8 +145,8 @@ GIT
 
 GIT
   remote: https://github.com/ducl13/spree_active_shipping.git
-  revision: 055767334e3859e6d592f43eb82f599740d9b428
-  branch: 4-3
+  revision: a1d65985ac35e654b48e22af66f47622e35f54e8
+  branch: 4-3-patch
   specs:
     spree_active_shipping (3.3.0.beta)
       active_shipping (~> 2.2)

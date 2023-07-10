@@ -67,7 +67,7 @@ gem 'spree_favorite_products', git: 'https://gitlab.com/duc.lam/spree_favorite_p
 gem 'spree_html_invoice', github: 'ducl13/spree-html-invoice', branch: 'route'
 gem 'spree_i18n', '~> 5.0' # translation files (optional)
 gem 'spree_sales', github: 'ducl13/spree_sales', branch: 'master'
-gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3'
+gem 'spree_active_shipping', github: 'ducl13/spree_active_shipping', branch: '4-3-patch'
 gem 'active_shipping', github: 'ducl13/active_shipping', branch: '4-3'
 gem 'spree_shipstation', github: 'ducl13/spree_shipstation-2', branch: 'route'
 gem 'spree_sitemap', github: 'ducl13/spree_sitemap', branch: 'master'
