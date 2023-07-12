@@ -16,7 +16,7 @@
 <% if product_property.property.name == Rails.configuration.x.property.ingredients && product_property.show_property? %>
   <div class="product-ingredients" id="product-properties"  data-hook data-hook="product_properties">
     <div class="product-ingredients-title">Ingredients</div>
-    <span ><%= product_property.value %></span>
+    <span ><%= product_property.value.html_safe %></span>
   </div>
   <% break %>
 <% end %>
