@@ -50,6 +50,8 @@ gem "pagy", github: 'ducl13/pagy', branch: 'master'
 gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
 gem 'scout_apm'
 
+gem 'deface'
+
 #Spree
 gem 'spree', '= 4.3'
 gem 'spree_common', git: 'https://gitlab.com/duc.lam/spree_common.git', branch: 'master'

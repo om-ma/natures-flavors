@@ -2302,6 +2302,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   datashift!
   datashift_spree!
+  deface
   dotenv-rails
   erubis (~> 2.7)
   flamegraph
