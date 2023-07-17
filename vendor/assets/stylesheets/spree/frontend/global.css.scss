@@ -918,6 +918,127 @@ a.btn.btn-block {
     padding-top: 19px;
 }
 
+.top-bar {
+	background-color: #f8f8f8;
+	height: 44px;
+	overflow: hidden;
+	position: relative;
+}
+
+.sister-sites-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+}
+
+.sister-sites-list li {
+	height: 48px;
+	margin: 0 5px;
+	background-color: #fff;
+}
+
+.sister-sites-list li a {
+	display: block;
+	width: 101px;
+	height: 44px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto 44px;
+	text-indent: -9999px;
+}
+
+.sister-sites-list li.active {
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+	pointer-events: none;
+}
+
+.sister-sites-list li a.seelect-logo {
+	background-image: image-url("sister-sites/seelect-logo.png");
+}
+
+.sister-sites-list li a.naturlax-logo {
+	background-image: image-url("sister-sites/naturlax-logo.png");
+}
+
+.sister-sites-list li a.yummatcha-logo {
+	background-image: image-url("sister-sites/yummatcha-logo.png");
+}
+
+.sister-sites-list li a.natures-logo {
+	background-image: image-url("sister-sites/natures-logo.png");
+}
+
+.shipping-info-banner {
+	position: absolute;
+	right: 17px;
+	top: 0;
+	line-height: 44px;
+	text-align: right;
+	z-index: 1;
+	font-size: 18px;
+}
+
+.toogle-banner-btn {
+	background: #f8f8f8 image-url("sister-sites/toogle-btn.svg") no-repeat scroll center;
+	height: 44px;
+	width: 44px;
+	border: 0 none;
+	text-indent: -9999px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 2;
+	padding: 0;
+	outline: none !important;
+}
+
+@media (max-width: 991px) {
+.shipping-info-banner {
+	font-size: 14px;
+}
+}
+
+@media (max-width: 767px) {
+.sister-sites-list li a {
+	width: 44px;
+	height: 44px;
+}
+
+.sister-sites-list li a.seelect-logo {
+	background-image: image-url("sister-sites/seelect-mobile-logo.png");
+}
+
+.sister-sites-list li a.naturlax-logo {
+	background-image: image-url("sister-sites/naturlax-mobile-logo.png");
+}
+
+.sister-sites-list li a.yummatcha-logo {
+	background-image: image-url("sister-sites/yummatcha-mobile-logo.png");
+}
+
+.sister-sites-list li a.natures-logo {
+	background-image: image-url("sister-sites/natures-mobile-logo.png");
+}
+
+.shipping-info-banner {
+	visibility: hidden;
+	opacity: 0;
+	width: 100%;
+	right: -100%;
+	background-color: #fafafa;
+	padding: 0 15px;
+	transition: right 0.5s ease-in;
+	text-align: left;
+}
+
+.shipping-info-banner.show {
+	visibility: visible;
+	opacity: 1;
+	right: 0;
+}
+}
+
 .navbar,
 .simple-header {
     padding: 0;
