@@ -84,6 +84,7 @@ end
 
 # Use Redis & Sidekiq
 gem 'redis', github: 'ducl13/redis-rb', branch: 'naturesflavors'
+gem 'connection_pool'
 gem 'sidekiq', github: 'ducl13/sidekiq', branch: 'naturesflavors'
 gem "sidekiq-cron", github: 'ducl13/sidekiq-cron'
 gem 'sidekiq-failures', github: 'ducl13/sidekiq-failures'
