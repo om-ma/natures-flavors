@@ -12,13 +12,12 @@
   </ul> -->
 <%# end %>
 <% unless @product_properties.blank? %>
-<% @product_properties.each do |product_property| %>
-<% if product_property.property.name == Rails.configuration.x.property.ingredients && product_property.show_property? %>
+<% @product_properties.sort_by { |p| [ p.property.name == Rails.configuration.x.property.ingredients ? 0 : p.property.name == Rails.configuration.x.property.allergens ? 1 : 2, p ] }.each do |product_property| %>
+<% if [ Rails.configuration.x.property.ingredients, Rails.configuration.x.property.allergens ].include?(product_property.property.name) && product_property.show_property? %>
   <div class="product-ingredients" id="product-properties"  data-hook data-hook="product_properties">
-    <div class="product-ingredients-title">Ingredients</div>
+    <div class="product-ingredients-title"><%= product_property.property.name %></div>
     <span ><%= product_property.value.html_safe %></span>
   </div>
-  <% break %>
 <% end %>
 <% end %>
 <% end %>

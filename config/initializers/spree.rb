@@ -69,6 +69,7 @@ Rails.application.config.spree.stock_splitters = []
 Spree::PermittedAttributes.checkout_attributes << [:route_insurance_selected, :route_insurance_currency, :route_insurance_price, :route_insurance_quote_id, :route_insurance_quote_premium]
 
 # Properties
+Rails.application.config.x.property.allergens = "Allergens"
 Rails.application.config.x.property.ingredients = "Ingredients"
 Rails.application.config.x.property.prop65 = "Prop65"
 
