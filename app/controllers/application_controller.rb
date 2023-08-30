@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 	include Pagy::Backend
 
 	before_action :set_categories
+	before_action :set_best_sellers
 	
 	private
 
@@ -28,6 +29,12 @@ class ApplicationController < ActionController::Base
 					end
 				end
 			end
+		end
+	end
+
+	def set_best_sellers
+		@best_sellers_products_sample = Rails.cache.fetch("@best_sellers_products_sample", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
+			Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : []
 		end
 	end
 

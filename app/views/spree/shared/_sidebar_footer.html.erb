@@ -1,5 +1,4 @@
-<% best_sellers_product = Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : "" %> 
-<% if best_sellers_product.present? %>
+<% if @best_sellers_products_sample.present? %>
 	<div class="cart-similar-item">
     	<%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: best_sellers_product }  %>
     </div>	

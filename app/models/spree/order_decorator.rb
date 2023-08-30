@@ -99,6 +99,11 @@ Spree::Order.class_eval do
       end
     end
 
+    def post_completion_work
+      update_product_sold_counts
+      route_create_order
+    end
+
     def route_create_order
       RouteCreateOrderWorker.perform_async(self.id)
     end
@@ -106,7 +111,11 @@ Spree::Order.class_eval do
     def use_shipping?
       use_shipping.in?([true, 'true', '1'])
     end
+
+    def update_product_sold_counts
+      UpdateProductSoldCountsWorker.perform_async(self.id)
+    end
 end
 
 Spree::Order.state_machine.after_transition :to => :complete,
-                                            :do => :route_create_order
+                                            :do => :post_completion_work
