@@ -34,31 +34,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def set_categories
-		@product_category = Rails.cache.fetch("@product_category", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
-			Spree::Taxon.includes(children: :taxons_users).references(children: :taxons_users).find_by_name("PRODUCTS")
-		end
-	
-		@all_categories = Rails.cache.fetch("@all_categories", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
-			@product_category&.children&.where(hide_from_nav: false).order(:position).to_a
-		end
-	
-		if spree_current_user.present?
-			@all_special_categories = Rails.cache.fetch("@all_special_categories", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
-				@product_category&.children&.where(hide_from_nav: true).order(:position).to_a
-			end
-	
-			if @all_special_categories.present?
-				if spree_current_user.has_spree_role?('employee')
-					@special_catetories = @all_special_categories
-				else
-					@special_catetories = @all_special_categories.select { |category| category.users.include?(spree_current_user) }
-				end
-			end
-		end
-	end
-	
-
 	def set_best_sellers
 		@best_sellers_products_sample = Rails.cache.fetch("@best_sellers_products_sample", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
 			Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.sample : []
