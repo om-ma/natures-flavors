@@ -1,6 +1,6 @@
 <% if @best_sellers_products_sample.present? %>
 	<div class="cart-similar-item">
-    	<%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: best_sellers_product }  %>
+    	<%= render partial: 'spree/shared/cart_similar_products', locals: { best_sellers_product: @best_sellers_products_sample }  %>
     </div>	
  <% end %> 
 <%= link_to spree.checkout_path do %>
