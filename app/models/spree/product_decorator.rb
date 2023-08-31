@@ -6,7 +6,13 @@ module Spree
       base.scope :best_sellers, -> {
         active.where.not(total_units_sold: 0).order(total_units_sold: :desc)
       }
-      base.scope :with_variant_sales, -> { joins(variants: :sale_prices).active.uniq }      
+      base.scope :on_sale, -> {
+        joins(variants: { sale_prices: :price })
+        .where("spree_sale_prices.enabled = ? AND (spree_sale_prices.value < spree_prices.amount) AND (spree_sale_prices.start_at <= ? OR spree_sale_prices.start_at IS NULL) AND (spree_sale_prices.end_at >= ? OR spree_sale_prices.end_at IS NULL)",
+          true, Time.now, Time.now)
+      }
+      base.scope :with_variant_sales, -> { joins(variants: :sale_prices).active.uniq }  
+          
     end
 
     def lowest_sale_price
