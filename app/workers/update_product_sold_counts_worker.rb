@@ -3,7 +3,7 @@ class UpdateProductSoldCountsWorker
   include Sidekiq::Worker
 
   def perform(order_id)
-    order = Spree::Order.find(id: order_id)
+    order = Spree::Order.where(id: order_id).first
 
     begin
       order.line_items.each do |line_item|
