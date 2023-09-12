@@ -1,0 +1,92 @@
+<%#-Start Middle Banner %>
+  <div class="banners-wrapper middle">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="wrap">
+            <div class="embed-responsive embed-responsive-1by1">
+              <div class="embed-responsive-item">
+                <div class="img-wrap">
+                 <% if middle_1_slide.present? %>
+                    <%= render partial: 'spree/shared/slider_home', locals: { slider: middle_1_slide , cid: 'middle_1', interval: false } %>
+                  <% end %>
+                </div>
+
+                <%= render partial: 'image_text_block', locals: { slide: middle_1_slide } %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-6">
+              <div class="wrap">
+                <div class="embed-responsive embed-responsive-1by1 custom-1by1">
+                  <div class="embed-responsive-item">
+                    <div class="img-wrap">
+                      <% if middle_2_slide.present? %>
+                        <%= render partial: 'spree/shared/slider_home', locals: { slider: middle_2_slide , cid: 'middle_2', interval: false } %>
+                      <% end %>
+                    </div>
+
+                    <%= render partial: 'image_text_block', locals: { slide: middle_2_slide } %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="wrap">
+                <div class="embed-responsive embed-responsive-1by1 custom-1by1">
+                  <div class="embed-responsive-item">
+                    <div class="img-wrap">
+                      <% if middle_3_slide.present? %>
+                        <%= render partial: 'spree/shared/slider_home', locals: { slider: middle_3_slide , cid: 'middle_3', interval: false } %>
+                      <% end %>
+                    </div>
+
+                    <%= render partial: 'image_text_block', locals: { slide: middle_3_slide } %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="wrap">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <div class="embed-responsive-item">
+                    <div class="img-wrap">
+                      <% if middle_5_slide.present? %>
+                        <%= render partial: 'spree/shared/slider_home', locals: { slider: middle_5_slide , cid: 'middle_5', interval: false } %>
+                      <% end %>
+                    </div>
+
+                    <%= render partial: 'image_text_block', locals: { slide: middle_5_slide } %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="wrap">
+            <div class="embed-responsive embed-responsive-2by1">
+              <div class="embed-responsive-item">
+                <div class="img-wrap">
+                  <% if middle_4_slide.present? %>
+                    <%= render partial: 'spree/shared/slider_home', locals: { slider: middle_4_slide , cid: 'middle_4', interval: false } %>
+                  <% end %>
+                </div>
+
+                <%= render partial: 'image_text_block', locals: { slide: middle_4_slide } %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%#-End Middle Banner %>

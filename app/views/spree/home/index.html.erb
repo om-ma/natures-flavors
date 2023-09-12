@@ -49,7 +49,27 @@
 <% end %>
 <% cache cache_key_for_home_index do %>
 <%= organization_structured_data(current_store) %>
-<%= render partial: 'spree/shared/slider', locals: { slides: @home_slides, cid: 'home', interval: "3500" } %>
+
+<!-- Hero Banner Slider Images -->
+
+  <% top_banner_locals = {
+        top_1_slide: @top_1_slide[0],
+        top_2_slide: @top_2_slide[0],
+        top_3_slide: @top_3_slide[0],
+        top_4_slide: @top_4_slide[0],
+        top_5_slide: @top_5_slide[0],
+        top_6_slide: @top_6_slide[0],
+        top_7_slide: @top_7_slide[0],
+        top_8_slide: @top_8_slide[0],
+      } 
+  %>
+
+  <%= render partial: 'desktop_banner_top', locals: top_banner_locals %>
+
+  <%= render partial: 'mobile_banner_top', locals: top_banner_locals %>
+
+  <!-- /.Hero banner -->
+
   <div class="search-wrapper ">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -212,6 +232,20 @@
     </div>
   </div>
   <% end %>
+
+  <%#- Best Selling Products Slider Images %>
+
+  <% middle_banner_locals = {
+        middle_1_slide: @middle_1_slide[0],
+        middle_2_slide: @middle_2_slide[0],
+        middle_3_slide: @middle_3_slide[0],
+        middle_4_slide: @middle_4_slide[0],
+        middle_5_slide: @middle_5_slide[0],
+      } 
+  %>
+
+  <%= render partial: 'middle_banner', locals: middle_banner_locals %>
+
   <div class="home-videos-wrapper">
     <div class="container-fluid">
       <div class="row">

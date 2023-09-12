@@ -1,0 +1,120 @@
+<div class="banners-wrapper mobile-show">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="wrap">
+            <div class="embed-responsive embed-responsive-16by9">
+              <div class="embed-responsive-item">
+                <div class="img-wrap">
+                  <% if top_1_slide.present? %>
+                    <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_1_slide , cid: 'top_1', interval: false } %>
+                  <% end %>
+                </div>
+                <%= render partial: 'image_text_block', locals: { slide: top_1_slide } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="wrap">
+            <div class="embed-responsive embed-responsive-4by3">
+              <div class="embed-responsive-item">
+                <div class="img-wrap">
+                  <% if top_5_slide.present? %>
+                    <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_5_slide , cid: 'top_5', interval: false } %>
+                  <% end %>
+                </div>
+                <%= render partial: 'image_text_block', locals: { slide: top_5_slide } %> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="wrap">
+            <div class="embed-responsive embed-responsive-4by3">
+              <div class="embed-responsive-item">
+                <div class="img-wrap">
+                  <% if top_4_slide.present? %>
+                    <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_4_slide , cid: 'top_4', interval: false } %>
+                  <% end %>
+                </div>
+                <%= render partial: 'image_text_block', locals: { slide: top_4_slide } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="wrap">
+            <div class="embed-responsive embed-responsive-16by9">
+              <div class="embed-responsive-item">
+                <div class="img-wrap">
+                  <% if top_2_slide.present? %>
+                    <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_2_slide , cid: 'top_2', interval: false } %>
+                  <% end %>
+                </div>
+                <%= render partial: 'image_text_block', locals: { slide: top_2_slide } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <div class="wrap">
+                <div class="embed-responsive embed-responsive-4by3 custom-4by3">
+                  <div class="embed-responsive-item">
+                    <div class="img-wrap">
+                      <% if top_8_slide.present? %>
+                        <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_8_slide , cid: 'top_8', interval: false } %>
+                      <% end %>
+                    </div>
+                    <%= render partial: 'image_text_block', locals: { slide: top_8_slide } %>
+                  </div>
+                </div>
+              </div>
+              <div class="wrap">
+                <div class="embed-responsive embed-responsive-16by9 custom-16by9-1">
+                  <div class="embed-responsive-item">
+                    <div class="img-wrap">
+                      <% if top_6_slide.present? %>
+                        <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_6_slide , cid: 'top_6', interval: false } %>
+                      <% end %>
+                    </div>
+                    <%= render partial: 'image_text_block', locals: { slide: top_6_slide } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="wrap">
+                <div class="embed-responsive embed-responsive-1by1">
+                  <div class="embed-responsive-item">
+                    <div class="img-wrap">
+                      <% if top_3_slide.present? %>
+                        <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_3_slide , cid: 'top_3', interval: false } %>
+                      <% end %>
+                    </div>
+                    <%= render partial: 'image_text_block', locals: { slide: top_3_slide } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="wrap">
+            <div class="embed-responsive embed-responsive-4by3">
+              <div class="embed-responsive-item">
+                <div class="img-wrap">
+                  <% if top_7_slide.present? %>
+                    <%= render partial: 'spree/shared/slider_home_mobile', locals: { slider: top_7_slide , cid: 'top_7', interval: false } %>
+                  <% end %>
+                </div>
+                <%= render partial: 'image_text_block', locals: { slide: top_7_slide } %> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

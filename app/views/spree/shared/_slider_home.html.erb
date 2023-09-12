@@ -1,0 +1,6 @@
+<% if slider.present? %>
+  <% cache cache_key_for_slider(slider) do %>
+    <% image_url = slider.slide_image ?  main_app.url_for(slider.slide_image) : "noimage/large"%>
+    <%= link_to image_tag(image_url, alt: slider.slide_name,class:'w-100'), url_for(slider.slide_link) %>
+  <% end %>
+<% end %>

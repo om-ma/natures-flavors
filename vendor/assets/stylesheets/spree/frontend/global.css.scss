@@ -7759,3 +7759,234 @@ display: flex;
 .billing_fieldset_wrapper {
 	margin-bottom: 40px;
 }
+
+// New Banners CSS Styles Start
+
+.banners-wrapper {
+	padding: 24px 0 0;
+}
+
+.banners-wrapper.middle {
+	padding: 80px 0 56px;
+	background-color: #fff;
+	border-bottom: rgba(0, 0, 0, 0.06) 1px solid;
+}
+
+.banners-wrapper .container {
+	max-width: 1614px;
+}
+
+.banners-wrapper .container > .row {
+	margin-left: -12px;
+	margin-right: -12px;
+}
+
+.banners-wrapper .container > .row > * {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.banners-wrapper .wrap {
+	overflow: hidden;
+	border-radius: 20px;
+	margin: 0 0 24px;
+	position: relative;
+}
+
+.banners-wrapper .text-block {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.banners-wrapper .text-block > a {
+	color: #000;
+	padding: 20px;
+	display: block;
+	max-width: 60%;
+	height: 100%;
+	position: relative;
+}
+
+.banners-wrapper .text-block h3,
+.banners-wrapper .text-block p {
+	line-height: 150%;
+	margin: 0px;
+}
+
+.banners-wrapper .text-block p {
+	font-size: 13px;
+	margin: 0 0 5px;
+}
+
+.banners-wrapper .text-block span {
+	font-size: 13px;
+	line-height: 150%;
+	display: block;
+	text-decoration: underline;
+}
+
+.banners-wrapper .img-wrap,
+.banners-wrapper .img-wrap img {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+.banners-wrapper .img-wrap img {
+	width: 100%;
+}
+
+.banners-wrapper .custom-16by9-1:before {
+	padding-top: 58%;
+}
+
+.banners-wrapper .custom-16by9-2:before {
+	padding-top: 66%;
+}
+
+.banners-wrapper:not(.middle) .embed-responsive-1by1:before {
+	padding-top: 128%;
+}
+
+.banners-wrapper .embed-responsive-2by1:before {
+	padding-top: 171.5%;
+}
+
+.banners-wrapper .custom-1by1:before {
+	padding-top: 139%;
+}
+
+@media (max-width: 1400px) {
+	.banners-wrapper .text-block h3 {
+		font-size: 20px;
+	}
+
+	.banners-wrapper.mobile-hide .custom-16by9-1:before {
+    padding-top: 58.6%;
+	}
+}
+
+@media (max-width: 1300px) {
+	.banners-wrapper.mobile-hide .embed-responsive-1by1:before {
+    padding-top: 130%;
+	}
+
+	.banners-wrapper .embed-responsive-2by1:before {
+    padding-top: 172.5%;
+	}
+
+	.banners-wrapper .custom-1by1:before {
+    padding-top: 139%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.banners-wrapper .embed-responsive-2by1:before {
+    padding-top: 173%;
+	}
+
+	.banners-wrapper .custom-1by1:before {
+    padding-top: 139.5%;
+	}
+}
+
+@media (max-width: 991px) {
+	.banners-wrapper.mobile-hide .custom-16by9-1:before {
+		padding-top: 59.7%;
+	}
+
+	.banners-wrapper.mobile-hide .custom-16by9-2:before {
+		padding-top: 71%;
+	}
+
+	.banners-wrapper .text-block > a {
+		max-width: 75%;
+	}
+
+	.banners-wrapper .text-block h3 {
+		font-size: 13px;
+	}
+
+	.banners-wrapper .text-block p {
+		font-size: 12px;
+	}
+
+	.banners-wrapper .embed-responsive-2by1:before {
+    padding-top: 174%;
+	}
+}
+
+@media (max-width: 767px) {
+	.banners-wrapper .container .row {
+		margin-left: -6px;
+		margin-right: -6px;
+	}
+	
+	.banners-wrapper .container > .row .col-6,
+	.banners-wrapper .container > .row .col-12 {
+		padding-left: 6px;
+		padding-right: 6px;
+	}
+
+	.banners-wrapper .wrap {
+		border-radius: 10px;
+		margin: 0 0 12px;
+	}
+
+	.banners-wrapper:not(.middle) .embed-responsive-1by1:before {
+    padding-top: 150%;
+  }
+
+	.banners-wrapper .custom-4by3:before {
+		padding-top: 82%;
+	}
+
+	.banners-wrapper .custom-16by9-1:before {
+    padding-top: 64%;
+	}
+
+	.banners-wrapper .text-block h3 {
+		font-size: 14px;
+	}
+
+	.banners-wrapper .embed-responsive-2by1:before {
+    padding-top: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+	.banners-wrapper .custom-16by9-1:before {
+    padding-top: 62%;
+	}
+
+	.banners-wrapper .custom-4by3:before {
+		padding-top: 83.5%;
+	}
+}
+
+@media (max-width: 450px) {
+	.banners-wrapper .custom-16by9-1:before {
+    padding-top: 61%;
+	}
+
+	.banners-wrapper .custom-4by3:before {
+		padding-top: 83%;
+	}
+}
+
+@media (max-width: 400px) {
+	.banners-wrapper .custom-16by9-1:before {
+    padding-top: 60%;
+	}
+
+	.banners-wrapper .custom-4by3:before {
+		padding-top: 82%;
+	}
+}
+
+// New Banners Styles End

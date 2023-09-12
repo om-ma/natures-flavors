@@ -10,9 +10,17 @@ Spree::HomeController.class_eval do
       @homepage = @cms_home_page
       @edit_mode = true
     end
-
-    @home_slides 		           = Spree::Slide.published.order('position ASC').includes([image_attachment: :blob, mobile_image_attachment: :blob])
     
+    (1..8).each do |number|
+      slide_location_name = "top_#{number}"
+      load_image_slides(slide_location_name)
+    end
+    
+    (1..5).each do |number|
+      slide_location_name = "middle_#{number}"
+      load_image_slides(slide_location_name)
+    end
+
     @best_sellers_products     = Rails.cache.fetch("@best_sellers_products", expires_in: Rails.configuration.x.cache.expiration, race_condition_ttl: 30.seconds) do
       Spree::Product.best_sellers.present? ? Spree::Product.best_sellers.first(6) : []
     end
@@ -99,5 +107,12 @@ Spree::HomeController.class_eval do
 
     [page_last_modified, current_store_last_modified, best_sellers_products_last_modified, deals_products_last_modified, popular_extracts_products_last_modified, popular_powders_products_last_modified, popular_oils_products_last_modified].compact.max
   end
+
+  private
+
+  def load_image_slides slide_location_name
+    instance_variable_set("@slide_location_#{slide_location_name}", Spree::SlideLocation.find_by(name: slide_location_name))
+    instance_variable_set("@#{slide_location_name}_slide", instance_variable_get("@slide_location_#{slide_location_name}").present? ? Spree::Slide.joins(:slide_locations).where(spree_slide_locations: { id: instance_variable_get("@slide_location_#{slide_location_name}").id }) : "")
+  end  
 
 end
