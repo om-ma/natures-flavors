@@ -7813,7 +7813,8 @@ display: flex;
 .banners-wrapper .text-block h3,
 .banners-wrapper .text-block p {
 	line-height: 150%;
-	margin: 0px;
+	margin: 0 0 10px;
+	color: white;
 }
 
 .banners-wrapper .text-block p {
@@ -7826,6 +7827,7 @@ display: flex;
 	line-height: 150%;
 	display: block;
 	text-decoration: underline;
+	color: white;
 }
 
 .banners-wrapper .img-wrap,
