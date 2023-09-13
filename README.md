@@ -85,6 +85,10 @@ redis-cli (command line)
 
 redis-cli INFO | grep ^db (list databases)
 
+redis-cli -h naturesflavors-prod.q6xse8.0001.use1.cache.amazonaws.com -n 0 keys "*views/spree/shared/_slider_home_*"
+
+rails c:
+Rails.cache.delete_matched("views/spree/shared/_slider_home_*")
 
 # Generate Doofinder data feed manually
 # Can run these locally by setting RAILS_ENV first
