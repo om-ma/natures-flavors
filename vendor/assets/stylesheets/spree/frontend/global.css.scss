@@ -7801,20 +7801,32 @@ display: flex;
 	bottom: 0;
 }
 
+.banners-wrapper .text-block:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
+	z-index: 1;
+}
+
 .banners-wrapper .text-block > a {
 	color: #000;
 	padding: 20px;
 	display: block;
-	max-width: 60%;
 	height: 100%;
 	position: relative;
+	z-index: 5;
 }
 
 .banners-wrapper .text-block h3,
 .banners-wrapper .text-block p {
+	color: white;
 	line-height: 150%;
 	margin: 0 0 10px;
-	color: white;
+	max-width: 60%;
 }
 
 .banners-wrapper .text-block p {
