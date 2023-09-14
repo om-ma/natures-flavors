@@ -89,6 +89,7 @@ redis-cli -h naturesflavors-prod.q6xse8.0001.use1.cache.amazonaws.com -n 0 keys 
 
 rails c:
 Rails.cache.delete_matched("views/spree/shared/_slider_home_*")
+Rails.cache.delete_matched("views/spree/home/index*")
 
 # Generate Doofinder data feed manually
 # Can run these locally by setting RAILS_ENV first
