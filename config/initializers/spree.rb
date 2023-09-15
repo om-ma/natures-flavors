@@ -48,6 +48,7 @@ Spree::SalesConfiguration::Config = Spree::SalesConfiguration.new
 Spree::SalesConfiguration::Config.calculators << Spree::Calculator::AmountSalePriceCalculator
 Spree::SalesConfiguration::Config.calculators << Spree::Calculator::PercentOffSalePriceCalculator
 Spree::PermittedAttributes.payment_attributes << :check_no
+Spree::PermittedAttributes.user_attributes << [:first_name, :last_name]
 
 # PrestaShop data migration fields
 Spree::PermittedAttributes.product_attributes << [:old_product_id, :old_product_url]
