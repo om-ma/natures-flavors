@@ -1,0 +1,66 @@
+default: &default  
+  adapter: postgresql  
+  encoding: utf8
+  pool: 10
+  timeout: 5000
+
+test:
+  <<: *default  
+  database: naturesflavors_test
+  pool: 5  
+  
+development:
+  primary:
+    <<: *default
+    host: localhost
+    database: naturesflavors_development
+  primary_replica:
+    <<: *default
+    host: localhost
+    database: naturesflavors_development
+    username: root_readonly
+    replica: true
+staging:
+  primary:
+    host: <%= ENV['DB_HOST'] %>
+    port: 5432
+    encoding: utf8
+    database: <%= ENV['DB_NAME'] %>
+    username: root
+    password: <%= ENV['DB_ROOT_PASSWORD'] %>
+    adapter: postgresql
+    pool: <%= ENV['DB_POOL'] %>
+    timeout: <%= ENV['DB_TIMEOUT'] %>
+  primary_replica:
+    host: <%= ENV['DB_HOST_READONLY'] %>
+    port: 5432
+    encoding: utf8
+    database: <%= ENV['DB_NAME'] %>
+    username: root_readonly
+    password: <%= ENV['DB_ROOT_READONLY_PASSWORD'] %>
+    adapter: postgresql
+    pool: <%= ENV['DB_POOL'] %>
+    timeout: <%= ENV['DB_TIMEOUT'] %>
+    replica: true
+production: 
+  primary:
+    host: <%= ENV['DB_HOST'] %>
+    port: 5432
+    encoding: utf8
+    database: <%= ENV['DB_NAME'] %>
+    username: root
+    password: <%= ENV['DB_ROOT_PASSWORD'] %>
+    adapter: postgresql
+    pool: <%= ENV['DB_POOL'] %>
+    timeout: <%= ENV['DB_TIMEOUT'] %>
+  primary_replica:
+    host: <%= ENV['DB_HOST_READONLY'] %>
+    port: 5432
+    encoding: utf8
+    database: <%= ENV['DB_NAME'] %>
+    username: root_readonly
+    password: <%= ENV['DB_ROOT_READONLY_PASSWORD'] %>
+    adapter: postgresql
+    pool: <%= ENV['DB_POOL'] %>
+    timeout: <%= ENV['DB_TIMEOUT'] %>
+    replica: true
