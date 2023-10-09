@@ -123,16 +123,16 @@ Rails.application.configure do
   config.x.systemerror.email = 'it-group@naturesflavors.com'
 
   # paperclip with S3. for spree_slider images, etc.
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :preserve_files => true,
-    :s3_credentials => {
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_KEY'],
-      :s3_region => ENV['S3_ASSET_REGION']
-    },
-    :bucket => ENV['S3_ASSET_BUCKET']
-  }
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :preserve_files => true,
+  #   :s3_credentials => {
+  #     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+  #     :secret_access_key => ENV['AWS_SECRET_KEY'],
+  #     :s3_region => ENV['S3_ASSET_REGION']
+  #   },
+  #   :bucket => ENV['S3_ASSET_BUCKET']
+  # }
   
   # Google Tag (GA4)
   config.x.trackers.google_tag_ga4 = 'G-F5G7BX0SWZ'
