@@ -18,8 +18,8 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
 
     #config.cache_store = :memory_store
-    #config.cache_store = :redis_store, "#{ENV['CACHE_URL']}/#{ENV['CACHE_DB_NUM']}"
-    config.cache_store = :redis_cache_store, { url: "#{ENV['CACHE_URL']}/#{ENV['CACHE_DB_NUM']}" }
+    #config.cache_store = :redis_store, ""
+    config.cache_store = :redis_cache_store, { url: "" }
 
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=0"

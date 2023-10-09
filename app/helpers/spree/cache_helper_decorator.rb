@@ -34,7 +34,7 @@ Spree::CacheHelper.module_eval do
   end
 
   def cache_key_for_slider(slide)
-    "slider/slides/#{slide.id}"
+    "slider/slides/#{slide&.id}"
   end
 
   def cache_key_for_home_index(all_categories = @all_categories, home_slides = @home_slides, best_sellers_products = @best_sellers_products, deals_products = @deals_products, popular_extracts_products = @popular_extracts_products, popular_powders_products = @popular_powders_products, popular_oils_products = @popular_oils_products)

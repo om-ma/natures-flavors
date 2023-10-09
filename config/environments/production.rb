@@ -57,14 +57,14 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :mem_cache_store
-  # config.cache_store = :redis_cache_store, { url: "#{ENV['CACHE_URL']}/#{ENV['CACHE_DB_NUM']}", pool_size: "#{ENV['CACHE_POOL_SIZE']}".to_i, pool_timeout: "#{ENV['CACHE_POOL_TIMEOUT']}".to_i }
+  # config.cache_store = :mem_cache_store
+  config.cache_store = :redis_cache_store, { url: "", pool_size: "".to_i, pool_timeout: "".to_i }
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter     = :sidekiq
   # config.active_job.queue_name_prefix = "naturesflavors_#{Rails.env}"
 
-  config.action_controller.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
+  config.action_controller.asset_host = ""
   config.assets.digest = true
   config.assets.enabled = true
   config.assets.prefix = '/assets/v68'
@@ -97,21 +97,21 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_caching = false
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: "www.naturesflavors.com" }
-  config.action_mailer.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "email-smtp.us-east-1.amazonaws.com",
-    :port                 =>  587,
-    :domain               => "us-east-1.amazonaws.com",
-    :user_name            => ENV['ACTION_MAILER_USER_NAME'],
-    :password             => ENV['ACTION_MAILER_PASSWORD'],
-    :authentication       => "plain",
-    :enable_starttls_auto => true
-  }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_caching = false
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.default_url_options = { host: "www.naturesflavors.com" }
+  # config.action_mailer.asset_host = "https://#{ENV['CLOUDFRONT_ASSET_URL']}"
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "email-smtp.us-east-1.amazonaws.com",
+  #   :port                 =>  587,
+  #   :domain               => "us-east-1.amazonaws.com",
+  #   :user_name            => ENV['ACTION_MAILER_USER_NAME'],
+  #   :password             => ENV['ACTION_MAILER_PASSWORD'],
+  #   :authentication       => "plain",
+  #   :enable_starttls_auto => true
+  # }
   config.action_mailer.default_options = { from: ENV['ACTION_MAILER_FROM'] }
   config.action_mailer.deliver_later_queue_name = "mailers"
 

@@ -19,7 +19,7 @@ Spree::TaxonImage.class_eval do
     ActiveStorage::Current.host = default_options[:host]
     str = self.url(style).url
     path = str.split('//').last.split("/",2).last
-    Rails.env.development? ? str : "https://#{ENV['CLOUDFRONT_ASSET_URL']}/#{path}"
+    Rails.env.development? ? str : ""
   end
 
 end

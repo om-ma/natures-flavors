@@ -1,5 +1,5 @@
 class DoofinderFeedCreator < ApplicationService
-  CACHED_KEY = "#{ENV['DOOFINDER_FEED_CACHED_KEY']}"
+  CACHED_KEY = ""
   FEED_FILE_NAME = "doofinder-feed.csv"
 
   def initialize(url_options, refresh, write_to_aws_s3 = false)
@@ -97,9 +97,9 @@ class DoofinderFeedCreator < ApplicationService
   end
 
   def upload_to_s3()
-    bucket_name = "#{ENV['S3_DOOFINDER_FEED_BUCKET']}"
+    bucket_name = ""
     object_key = FEED_FILE_NAME
-    region = "#{ENV['S3_DOOFINDER_FEED_REGION']}"
+    region = ""
 
     s3_client = Aws::S3::Client.new(
       region:            ENV['S3_DOOFINDER_FEED_REGION'],

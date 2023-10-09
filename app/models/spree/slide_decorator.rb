@@ -6,7 +6,7 @@ module Spree
 	    ActiveStorage::Current.host = default_options[:host]
 	    str = self.slide_mobile_image.url
 	    path = str.split('//').last.split("/",2).last
-	    Rails.env.development? ? str : "https://#{ENV['CLOUDFRONT_ASSET_URL']}/#{path}"
+	    Rails.env.development? ? str : ""
 	  end
 
 	  def my_cf_desktop_image_url
@@ -14,7 +14,7 @@ module Spree
 	    ActiveStorage::Current.host = default_options[:host]
 	    str = self.slide_image.url
 	    path = str.split('//').last.split("/",2).last
-	    Rails.env.development? ? str : "https://#{ENV['CLOUDFRONT_ASSET_URL']}/#{path}"
+	    Rails.env.development? ? str : ""
 	  end
   end
 end

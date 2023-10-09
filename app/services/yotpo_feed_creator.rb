@@ -94,9 +94,9 @@ class YotpoFeedCreator < ApplicationService
   end
 
   def upload_to_s3()
-    bucket_name = "#{ENV['S3_YOTPO_FEED_BUCKET']}"
+    bucket_name = ""
     object_key = FEED_FILE_NAME
-    region = "#{ENV['S3_YOTPO_FEED_REGION']}"
+    region = ""
 
     s3_client = Aws::S3::Client.new(
       region:            ENV['S3_YOTPO_FEED_REGION'],

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-sidekiq_config = { url: "#{ENV['SIDEKIQ_REDIS_URL']}", db: ENV['SIDEKIQ_REDIS_DB_NUM'] }
+sidekiq_config = { url: "" }
 
 Sidekiq.configure_server do |config|
   config.redis = sidekiq_config
