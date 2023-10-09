@@ -133,4 +133,4 @@ gem 'datashift_spree', github: 'ducl13/datashift_spree', branch: 'naturesflavors
 gem 'spree_slider', github: 'ducl13/spree_slider', branch: 'master'
 
 # For tunning Ruby GC https://tunemygc.com
-gem 'tunemygc'
+gem 'tunemygc',  require: false
